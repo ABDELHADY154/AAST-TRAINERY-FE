@@ -3,7 +3,7 @@ import logo from "./logo.svg";
 import "./App.css";
 
 function App() {
-  return <div className="App">Mohamed abdelhady elshamy</div>;
+  return <div className="App">AAST TRAINERY - under developement</div>;
 }
 
 export default App;
