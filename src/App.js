@@ -1,9 +1,8 @@
-import React from "react";
-import logo from "./logo.svg";
-import "./App.css";
+/** @format */
 
+import React from "react";
 function App() {
-  return <div className="App">AAST TRAINERY - under developement</div>;
+  return <div className='App'>AAST TRAINERY - under developement</div>;
 }
 
 export default App;
