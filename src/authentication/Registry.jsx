@@ -3,6 +3,10 @@ import { axios } from "./axios";
 import React, { Component } from "react";
 
 class Registry extends React.Component {
+  state = {
+    data: [],
+    error: "",
+  };
   handleSubmit = (e) => {
     e.preventDefault();
     const data = {
@@ -21,12 +25,18 @@ class Registry extends React.Component {
           window.alert("Sent Successfully");
         }
       })
-      .catch((errors) => {
-        e.preventDefault();
-        console.log(errors);
-        // window.location.reload();
+      .catch((error) => {
+        this.setState({
+          error: {
+            emailErr: error.response.data.errors.email,
+            regnumErr: error.response.data.errors.reg_no,
+            startERR: error.response.data.errors.start_year,
+            endERR: error.response.data.errors.end_year,
+          },
+        });
       });
-    console.log(data);
+
+    console.table(this.state);
     // console.table(data);
   };
   render() {
@@ -37,12 +47,17 @@ class Registry extends React.Component {
           <div className='form-row'>
             <div className='form-group col-md-6'>
               <label>Username:</label>
-              <input
-                type='text'
-                className='form-control'
-                id='username'
-                onChange={(e) => (this.Username = e.target.value)}
-              />
+              <span className='danger'>
+                {this.state.error && (
+                  <h3 className='error'> {this.state.error.emailErr} </h3>
+                )}{" "}
+                <input
+                  type='text'
+                  className='form-control'
+                  id='username'
+                  onChange={(e) => (this.Username = e.target.value)}
+                />
+              </span>
             </div>
           </div>
           <div className='form-row'>
