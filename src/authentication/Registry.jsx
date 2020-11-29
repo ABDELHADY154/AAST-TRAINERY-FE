@@ -47,17 +47,13 @@ class Registry extends React.Component {
           <div className='form-row'>
             <div className='form-group col-md-6'>
               <label>Username:</label>
-              <span className='danger'>
-                {this.state.error && (
-                  <h3 className='error'> {this.state.error.emailErr} </h3>
-                )}{" "}
-                <input
-                  type='text'
-                  className='form-control'
-                  id='username'
-                  onChange={(e) => (this.Username = e.target.value)}
-                />
-              </span>
+
+              <input
+                type='text'
+                className='form-control'
+                id='username'
+                onChange={(e) => (this.Username = e.target.value)}
+              />
             </div>
           </div>
           <div className='form-row'>
@@ -69,6 +65,11 @@ class Registry extends React.Component {
                 id='Email'
                 onChange={(e) => (this.Email = e.target.value)}
               />
+              <div className='alert-info'>
+                {this.state.error && (
+                  <p className='error'> {this.state.error.emailErr} </p>
+                )}
+              </div>
             </div>
           </div>
           <div className='row'>
@@ -79,6 +80,7 @@ class Registry extends React.Component {
                 placeholder='Enter your password'
                 onChange={(e) => (this.Password = e.target.value)}
               />
+              
             </div>
             {/* <div className='col'>
               <input
@@ -97,6 +99,11 @@ class Registry extends React.Component {
                 placeholder='Enter your Registration number'
                 onChange={(e) => (this.RegNum = e.target.value)}
               />
+                 <div className='alert-info'>
+                {this.state.error && (
+                  <p className='error'> {this.state.error.regnumErr} </p>
+                )}
+              </div>
             </div>
           </div>
           <div className='form-row'>
@@ -108,6 +115,11 @@ class Registry extends React.Component {
                 id='Fyear'
                 onChange={(e) => (this.Fyear = e.target.value)}
               />
+                 <div className='alert-info'>
+                {this.state.error && (
+                  <p className='error'> {this.state.error.startERR} </p>
+                )}
+              </div>
             </div>
           </div>
           <div className='form-row'>
@@ -119,6 +131,11 @@ class Registry extends React.Component {
                 id='Lyear'
                 onChange={(e) => (this.Lyear = e.target.value)}
               />
+                 <div className='alert-info'>
+                {this.state.error && (
+                  <p className='error'> {this.state.error.endERR} </p>
+                )}
+              </div>
             </div>
           </div>
           {/* <div className='form-group'>
