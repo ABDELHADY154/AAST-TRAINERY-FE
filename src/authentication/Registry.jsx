@@ -36,7 +36,6 @@ class Registry extends React.Component {
         });
       });
 
-    console.table(this.state);
     // console.table(data);
   };
   render() {
@@ -82,13 +81,7 @@ class Registry extends React.Component {
               />
               
             </div>
-            {/* <div className='col'>
-              <input
-                type='password'
-                className='form-control'
-                placeholder='re-enter password'
-              />
-            </div> */}
+        
           </div>
           <div className='form-row pt-4'>
             <div className='form-group col-md-6'>
@@ -138,18 +131,7 @@ class Registry extends React.Component {
               </div>
             </div>
           </div>
-          {/* <div className='form-group'>
-            <div className='form-check'>
-              <input
-                className='form-check-input'
-                type='checkbox'
-                id='gridCheck'
-              />
-              <label className='form-check-label' for='gridCheck'>
-                Check me out
-              </label>
-            </div>
-          </div> */}
+  
           <button type='submit' className='btn btn-primary btn-block'>
             Sign up
           </button>
