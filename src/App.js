@@ -11,7 +11,7 @@ function App() {
   return (
     <>
       <BrowserRouter>
-      <Nav/>
+        <Nav />
 
         <div className='app'>
           <div className='auth-wrapper'>

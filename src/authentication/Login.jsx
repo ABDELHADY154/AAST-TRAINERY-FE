@@ -1,8 +1,13 @@
 /** @format */
 import { axios } from "./axios";
 import React from "react";
-
+import "../styles/auth.css";
 class Login extends React.Component {
+  state = {
+    data: [],
+    error: "",
+  };
+  handleS;
   handleSubmit = (e) => {
     e.preventDefault();
 
@@ -17,24 +22,29 @@ class Login extends React.Component {
         localStorage.setItem("token", response.data.response.data.token);
         if (response.status == "201") {
           window.alert("Sent Successfully");
-          console.log(response.data.response.data.token);
+          // console.log(response.data.response.data.token);
         }
       })
-      .catch((errors) => {
+      .catch((error) => {
         e.preventDefault();
-        console.log(errors);
-        // window.location.reload();
+        this.setState({
+          error: {
+            emailErr: error.response.data.errors.email,
+          },
+        });
       });
   };
   render() {
-    // console.log(localStorage.getItem("token"));
+    console.log(this.state.error);
 
     return (
       <div className='container p2'>
         <div className='container p2'>
           <form onSubmit={this.handleSubmit}>
             <div className='form-group'>
-              <label >Email address</label>
+              <label>Email address</label>
+              <div className='invalid-feedback'>{this.state.error.emailErr}</div>
+
               <input
                 type='email'
                 className='form-control'
@@ -58,9 +68,7 @@ class Login extends React.Component {
                 className='form-check-input'
                 id='exampleCheck1'
               />
-              <label className='form-check-label'>
-                Check me out
-              </label>
+              <label className='form-check-label'>Check me out</label>
             </div>
             <button type='submit' className='btn btn-primary'>
               Login

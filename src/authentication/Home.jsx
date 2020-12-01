@@ -9,12 +9,8 @@ import ContentLoader, { Facebook } from 'react-content-loader'
 
 class Home extends Component {
   componentDidMount() {
-    const config = {
-      headers: {
-        Authorization: "Bearer " + localStorage.getItem("token"),
-      },
-    };
-    axios.get("/W/get-profile", config).then(
+
+    axios.get("/W/get-profile").then(
       (response) => {
         this.setState({
           name: response.data.response.data.name,
@@ -27,7 +23,6 @@ class Home extends Component {
   }
 
   render() {
-    //   console.log(this.state)
         if(this.state){
             return(
                 <div className='container'>

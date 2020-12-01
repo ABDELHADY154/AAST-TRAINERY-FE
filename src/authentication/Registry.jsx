@@ -32,6 +32,7 @@ class Registry extends React.Component {
             regnumErr: error.response.data.errors.reg_no,
             startERR: error.response.data.errors.start_year,
             endERR: error.response.data.errors.end_year,
+
           },
         });
       });
@@ -41,119 +42,91 @@ class Registry extends React.Component {
   };
   render() {
     return (
-      <div className='container p2'>
-        <form onSubmit={this.handleSubmit}>
-          <h1>Sign Up</h1>
-          <div className='form-row'>
-            <div className='form-group col-md-6'>
-              <label>Username:</label>
+      <div className=' container-md   m-auto'>
+        <div className='mx-auto'>
+          <form onSubmit={this.handleSubmit}>
+            <h1>Sign Up</h1>
 
-              <input
-                type='text'
-                className='form-control'
-                id='username'
-                onChange={(e) => (this.Username = e.target.value)}
-              />
-            </div>
-          </div>
-          <div className='form-row'>
-            <div className='form-group col-md-6'>
-              <label>Email:</label>
-              <input
-                type='email'
-                className='form-control'
-                id='Email'
-                onChange={(e) => (this.Email = e.target.value)}
-              />
-              <div className='alert-info'>
-                {this.state.error && (
-                  <p className='error'> {this.state.error.emailErr} </p>
-                )}
+            <div className='form-row'>
+              <div className='form-group col-6'>
+                <input
+                  type='email'
+                  className='form-control'
+                  id='Email'
+                  placeholder='Enter Your Sudent Email'
+                  onChange={(e) => (this.Email = e.target.value)}
+                />
+                <div className='alert-info'>
+                  {this.state.error && (
+                    <p className='error'> {this.state.error.emailErr} </p>
+                  )}
+                </div>
               </div>
             </div>
-          </div>
-          <div className='row'>
-            <div className='col'>
-              <input
-                type='password'
-                class='form-control'
-                placeholder='Enter your password'
-                onChange={(e) => (this.Password = e.target.value)}
-              />
-              
-            </div>
-            {/* <div className='col'>
-              <input
-                type='password'
-                className='form-control'
-                placeholder='re-enter password'
-              />
-            </div> */}
-          </div>
-          <div className='form-row pt-4'>
-            <div className='form-group col-md-6'>
-              <input
-                type='text'
-                className='form-control'
-                id='Reg-num'
-                placeholder='Enter your Registration number'
-                onChange={(e) => (this.RegNum = e.target.value)}
-              />
-                 <div className='alert-info'>
-                {this.state.error && (
-                  <p className='error'> {this.state.error.regnumErr} </p>
-                )}
+            <div className='form-row'>
+              <div className='form-group col-6'>
+                <input
+                  type='password'
+                  class='form-control'
+                  placeholder='Enter your password'
+                  onChange={(e) => (this.Password = e.target.value)}
+                />
               </div>
             </div>
-          </div>
-          <div className='form-row'>
-            <div className='form-group col-md-4'>
-              <label>Enter your first year in college:</label>
-              <input
-                type='text'
-                className='form-control'
-                id='Fyear'
-                onChange={(e) => (this.Fyear = e.target.value)}
-              />
-                 <div className='alert-info'>
-                {this.state.error && (
-                  <p className='error'> {this.state.error.startERR} </p>
-                )}
+            <div className='form-row'>
+              <div className='form-group col-6'>
+                <input
+                  type='text'
+                  className='form-control'
+                  id='Reg-num'
+                  placeholder='Enter your Registration number'
+                  onChange={(e) => (this.RegNum = e.target.value)}
+                />
+                <div className='alert-info'>
+                  {this.state.error && (
+                    <p className='error'> {this.state.error.regnumErr} </p>
+                  )}
+                </div>
               </div>
             </div>
-          </div>
-          <div className='form-row'>
-            <div className='form-group col-md-4'>
-              <label>when will sa</label>
-              <input
-                type='text'
-                className='form-control'
-                id='Lyear'
-                onChange={(e) => (this.Lyear = e.target.value)}
-              />
-                 <div className='alert-info'>
-                {this.state.error && (
-                  <p className='error'> {this.state.error.endERR} </p>
-                )}
+            <div className='form-row'>
+              <div className='form-group col-6'>
+                <input
+                  type='text'
+                  placeholder='Enter your first year in college.'
+                  className='form-control'
+                  id='Fyear'
+                  onChange={(e) => (this.Fyear = e.target.value)}
+                />
+                <div className='alert-info'>
+                  {this.state.error && (
+                    <p className='error'> {this.state.error.startERR} </p>
+                  )}
+                </div>
               </div>
             </div>
-          </div>
-          {/* <div className='form-group'>
-            <div className='form-check'>
-              <input
-                className='form-check-input'
-                type='checkbox'
-                id='gridCheck'
-              />
-              <label className='form-check-label' for='gridCheck'>
-                Check me out
-              </label>
+            <div className='form-row'>
+              <div className='form-group col-6'>
+                <input
+                  type='text'
+                  placeholder='Enter your Last year in college.'
+                  className='form-control'
+                  id='Lyear'
+                  onChange={(e) => (this.Lyear = e.target.value)}
+                />
+                <div className='alert-info'>
+                  {this.state.error && (
+                    <p className='error'> {this.state.error.endERR} </p>
+                  )}
+                </div>
+              </div>
             </div>
-          </div> */}
-          <button type='submit' className='btn btn-primary btn-block'>
-            Sign up
-          </button>
-        </form>
+
+            <button type='submit' className='btn btn-primary p3'>
+              Sign up
+            </button>
+          </form>
+        </div>
       </div>
     );
   }
