@@ -5,50 +5,55 @@ import "../styles/auth.css";
 import { Redirect } from "react-router-dom";
 class Login extends React.Component {
   state = {
-    data: [],
-    error: "",
+    loggedIn: false,
   };
 
-  handleSubmit = (e) => {
+  handleSubmit = async (e) => {
     e.preventDefault();
     const Login = {
       email: this.email,
       password: this.Password,
     };
-    axios
+    await axios
       .post("/login", Login)
       .then((response) => {
-        console.log(response.status);
+        // console.log(response.status);
         localStorage.setItem("token", response.data.response.data.token);
         this.setState({
           loggedIn: true,
         });
-        this.props.setUser(response.data.response.data);
+        console.log(this.state.loggedIn, 22);
 
         // if (response.status == "422") {
-        //   window.alert("Sent Successfully");
-        // console.log(response.data.response.data);
+        //   this.setState({
+        //     error: {
+        //       emailErr: "",
+        //     },
+        //   });
         // }
       })
       .catch((error) => {
-        // this.setState({
-        //   error: {
-        //     emailErr: response.data.errors.email,
-        //   },
-        // });
-        console.log(error);
+        this.setState({
+          emailErr: error.response.data.errors.email,
+        });
       });
   };
 
   render() {
+    if ((this.state.loggedIn = true)) {
+      // return <Redirect user={this.state.user} />;
+    }
     return (
       <div className='container p2'>
         <div className='container p2'>
           <form onSubmit={this.handleSubmit}>
             <div className='form-group'>
               <label>Email address</label>
-              <div class='invalid-feedback'>{this.state.error.emailErr}</div>
-
+              <div className='alert-info'>
+                {this.state.emailErr && (
+                  <p className='error'> {this.state.emailErr} </p>
+                )}
+              </div>
               <input
                 type='email'
                 className='form-control'
@@ -58,7 +63,7 @@ class Login extends React.Component {
               />
             </div>
             <div className='form-group'>
-              <label for='exampleInputPassword1'>Password</label>
+              <label htmlFor='exampleInputPassword1'>Password</label>
               <input
                 type='password'
                 className='form-control'

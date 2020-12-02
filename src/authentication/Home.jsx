@@ -1,12 +1,10 @@
 /** @format */
 
 import React, { Component } from "react";
-import { axios } from "./axios";
-import ContentLoader, { Facebook } from "react-content-loader";
 import { Redirect } from "react-router-dom";
 class Home extends Component {
   render() {
-    console.log(this.props);
+    // console.log(this.props);
     if (this.props.user) {
       return (
         <div className='container'>
@@ -15,7 +13,8 @@ class Home extends Component {
       );
     }
 
-    return <Redirect to='/login' />;
+    // return <Redirect to='/login' />;
+    return <h2>hi </h2>;
   }
 }
 export default Home;

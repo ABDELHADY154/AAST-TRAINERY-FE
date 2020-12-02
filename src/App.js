@@ -10,21 +10,21 @@ import { axios } from "./authentication/axios";
 
 export default class App extends Component {
   state = {};
-  componentDidMount = () => {
-    axios.get("/W/get-profile").then(
-      (response) => {
-        this.setuser(response.data.response.data);
-      },
-      (err) => {
-        console.log(err);
-      }
-    );
-  };
-  setuser = (user) => {
-    this.setState({
-      user: user,
-    });
-  };
+  // componentDidMount = () => {
+  //   axios.get("/W/get-profile").then(
+  //     (response) => {
+  //       this.setuser(response.data.response.data);
+  //     },
+  //     (err) => {
+  //       console.log(err);
+  //     }
+  //   );
+  // };
+  // setuser = (user) => {
+  //   this.setState({
+  //     user: user,
+  //   });
+  // };
   render() {
     return (
       <BrowserRouter>

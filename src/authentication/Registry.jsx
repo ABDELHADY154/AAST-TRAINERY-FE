@@ -1,7 +1,6 @@
 /** @format */
 import { axios } from "./axios";
 import React, { Component } from "react";
-import ContentLoader, { Facebook } from "react-content-loader";
 // const MyFacebookLoader = () => <Facebook />;
 import { Loader2 } from "../loader";
 
@@ -37,7 +36,7 @@ class Registry extends React.Component {
       .post("/register", data)
       .then((response) => {
         // console.log(response.status);
-        if (response.status == "200") {
+        if (response.status === "200") {
           window.alert("Sent Successfully");
         }
       })
@@ -133,7 +132,7 @@ class Registry extends React.Component {
             <div className='form-row'>
               <div className='form-group col-6'>
                 {this.state.loading == false ? (
-                    <Loader2 />
+                  <Loader2 />
                 ) : (
                   <select
                     type='text'
