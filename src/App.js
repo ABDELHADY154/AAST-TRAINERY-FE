@@ -1,32 +1,56 @@
 /** @format */
 
-import React, { component } from "react";
+import React, { Component } from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import Registry from "./authentication/Registry";
 import Home from "./authentication/Home";
 import Login from "./authentication/Login";
 import Nav from "./authentication/Nav";
+import { axios } from "./authentication/axios";
 
-function App() {
-  return (
-    <>
+export default class App extends Component {
+  state = {};
+  componentDidMount = () => {
+    axios.get("/W/get-profile").then(
+      (response) => {
+        this.setuser(response.data.response.data);
+      },
+      (err) => {
+        console.log(err);
+      }
+    );
+  };
+  setuser = (user) => {
+    this.setState({
+      user: user,
+    });
+  };
+  render() {
+    return (
       <BrowserRouter>
-        <Nav />
+        <Nav user={this.state.user} />
 
         <div className='app'>
           <div className='auth-wrapper'>
             <div className='auth-inner'>
               <Switch>
-                <Route exact path='/Register' component={Registry}></Route>
-                <Route exact path='/Login' component={Login}></Route>
-                <Route exact path='/Home' component={Home}></Route>
+                <Route
+                  exact
+                  path='/Home'
+                  component={() => <Home user={this.state.user} />}
+                />
+                <Route exact path='/Register' component={Registry} />
+
+                <Route
+                  exact
+                  path='/Login'
+                  component={() => <Login user={this.setuser.user} />}
+                />
               </Switch>
             </div>
           </div>
         </div>
       </BrowserRouter>
-    </>
-  );
+    );
+  }
 }
-
-export default App;

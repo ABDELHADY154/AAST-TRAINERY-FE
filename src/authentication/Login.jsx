@@ -2,15 +2,15 @@
 import { axios } from "./axios";
 import React from "react";
 import "../styles/auth.css";
+import { Redirect } from "react-router-dom";
 class Login extends React.Component {
   state = {
     data: [],
     error: "",
   };
-  handleS;
+
   handleSubmit = (e) => {
     e.preventDefault();
-
     const Login = {
       email: this.email,
       password: this.Password,
@@ -20,30 +20,34 @@ class Login extends React.Component {
       .then((response) => {
         console.log(response.status);
         localStorage.setItem("token", response.data.response.data.token);
-        if (response.status == "201") {
-          window.alert("Sent Successfully");
-          // console.log(response.data.response.data.token);
-        }
+        this.setState({
+          loggedIn: true,
+        });
+        this.props.setUser(response.data.response.data);
+
+        // if (response.status == "422") {
+        //   window.alert("Sent Successfully");
+        // console.log(response.data.response.data);
+        // }
       })
       .catch((error) => {
-        e.preventDefault();
-        this.setState({
-          error: {
-            emailErr: error.response.data.errors.email,
-          },
-        });
+        // this.setState({
+        //   error: {
+        //     emailErr: response.data.errors.email,
+        //   },
+        // });
+        console.log(error);
       });
   };
-  render() {
-    console.log(this.state.error);
 
+  render() {
     return (
       <div className='container p2'>
         <div className='container p2'>
           <form onSubmit={this.handleSubmit}>
             <div className='form-group'>
               <label>Email address</label>
-              <div className='invalid-feedback'>{this.state.error.emailErr}</div>
+              <div class='invalid-feedback'>{this.state.error.emailErr}</div>
 
               <input
                 type='email'

@@ -2,42 +2,20 @@
 
 import React, { Component } from "react";
 import { axios } from "./axios";
-import ContentLoader, { Facebook } from 'react-content-loader'
-
-// const MyLoader = () => <ContentLoader />
-// const MyFacebookLoader = () => <Facebook />
-
+import ContentLoader, { Facebook } from "react-content-loader";
+import { Redirect } from "react-router-dom";
 class Home extends Component {
-  componentDidMount() {
-
-    axios.get("/W/get-profile").then(
-      (response) => {
-        this.setState({
-          name: response.data.response.data.name,
-        });
-      },
-      (err) => {
-        console.log(err);
-      }
-    );
-  }
-
   render() {
-        if(this.state){
-            return(
-                <div className='container'>
-                    <h2>hi {this.state.name}</h2>
-                </div>
-            )
-        }
-    return (
-        
-      <div className='container'>
-        <h2 className='navbar-brand' href='#'>
-          not loggined in
-        </h2>
-      </div>
-    );
+    console.log(this.props);
+    if (this.props.user) {
+      return (
+        <div className='container'>
+          <h2>hi {this.props.user.name}</h2>
+        </div>
+      );
+    }
+
+    return <Redirect to='/login' />;
   }
 }
 export default Home;
