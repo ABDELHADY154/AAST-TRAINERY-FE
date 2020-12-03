@@ -2,14 +2,14 @@
 import { axios } from "./axios";
 import React from "react";
 import "../styles/auth.css";
+import Auth from "./Auth";
 import { Redirect } from "react-router-dom";
 class Login extends React.Component {
-  state = {
-    loggedIn: false,
-  };
+  state = {};
 
   handleSubmit = async (e) => {
     e.preventDefault();
+
     const Login = {
       email: this.email,
       password: this.Password,
@@ -17,32 +17,35 @@ class Login extends React.Component {
     await axios
       .post("/login", Login)
       .then((response) => {
-        // console.log(response.status);
+        console.log(response.status);
         localStorage.setItem("token", response.data.response.data.token);
-        this.setState({
-          loggedIn: true,
+        // this.setState({
+        //   loggedIn: true,
+        // });
+        Auth.Login(() => {
+          this.props.history.push("/Home");
+          return <Redirect to='/Home'/>;
         });
-        console.log(this.state.loggedIn, 22);
-
-        // if (response.status == "422") {
-        //   this.setState({
-        //     error: {
-        //       emailErr: "",
-        //     },
-        //   });
-        // }
       })
       .catch((error) => {
-        this.setState({
-          emailErr: error.response.data.errors.email,
-        });
+        console.log(error);
       });
   };
+  //   .catch((error) => {
+  //     this.setState({
+  //       emailErr: error.response.data.errors.email,
+  //     });
+  //   });
+  // // if (this.state.loggedIn === true) {
+  // }
 
   render() {
-    if ((this.state.loggedIn = true)) {
-      // return <Redirect user={this.state.user} />;
-    }
+    // console.log(this.state.loggedIn);
+
+    // if ((this.state.loggedIn = true)) {
+    //   return <Redirect to='/Home' />;
+    // }
+
     return (
       <div className='container p2'>
         <div className='container p2'>
@@ -79,7 +82,15 @@ class Login extends React.Component {
               />
               <label className='form-check-label'>Check me out</label>
             </div>
-            <button type='submit' className='btn btn-primary'>
+            <button
+              type='submit'
+              className='btn btn-primary'
+              // onClick={() => {
+              //   Auth.Login(() => {
+              //     this.props.history.push("/Home");
+              //   });
+              // }}
+            >
               Login
             </button>
           </form>
