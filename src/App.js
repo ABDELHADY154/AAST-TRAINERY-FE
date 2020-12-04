@@ -9,7 +9,7 @@ import Nav from "./authentication/Nav";
 import { axios } from "./authentication/axios";
 
 export default class App extends Component {
-  state = {};
+  // state = {};
   // componentDidMount = () => {
   //   axios.get("/W/get-profile").then(
   //     (response) => {
@@ -28,24 +28,16 @@ export default class App extends Component {
   render() {
     return (
       <BrowserRouter>
-        <Nav user={this.state.user} />
+        <Nav />
 
         <div className='app'>
           <div className='auth-wrapper'>
             <div className='auth-inner'>
               <Switch>
-                <Route
-                  exact
-                  path='/Home'
-                  component={() => <Home user={this.state.user} />}
-                />
+                <Route exact path='/Home' component={() => <Home />} />
                 <Route exact path='/Register' component={Registry} />
 
-                <Route
-                  exact
-                  path='/Login'
-                  component={() => <Login user={this.setuser.user} />}
-                />
+                <Route exact path='/Login' component={() => <Login />} />
               </Switch>
             </div>
           </div>
