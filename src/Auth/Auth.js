@@ -7,7 +7,7 @@ class Auth {
   Login() {
     this.Authorization = true;
   }
-  Logout(cb) {
+  Logout() {
     this.Authorization = false;
   }
 

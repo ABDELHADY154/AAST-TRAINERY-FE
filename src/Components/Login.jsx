@@ -1,48 +1,32 @@
 /** @format */
-import { axios } from "./axios";
-import React from "react";
-import "../styles/auth.css";
-import Auth from "./Auth";
-import { Redirect } from "react-router-dom";
+import React, { Component } from "react";
+import { login } from "../Auth/AuthApi";
+
 class Login extends React.Component {
+  // constructor() {
+  //   super();
   state = {};
 
+  // }
   handleSubmit = async (e) => {
     e.preventDefault();
+    login({
+      "email": this.Email,
+      "password": this.Password,
+    });
 
-    const Login = {
-      email: this.email,
-      password: this.Password,
-    };
-    await axios
-      .post("/login", Login)
-      .then((response) => {
-        console.log(response.status);
-        localStorage.setItem("token", response.data.response.data.token);
-        // this.setState({
-        //   loggedIn: true,
-        // });
-        Auth.Login(() => {
-          this.props.history.push("/Home");
-          return <Redirect to='/Home'/>;
-        });
-      })
-      .catch((error) => {
-        console.log(error);
-      });
   };
-  //   .catch((error) => {
-  //     this.setState({
-  //       emailErr: error.response.data.errors.email,
-  //     });
-  //   });
-  // // if (this.state.loggedIn === true) {
+
+  // async login() {
+  //   const user = await login(this.props);
+  //   console.log(this.props);
+  // if (user.error) this.setState({ error: user.error });
+  // else this.setState({ user: user.data });
   // }
+  // if (this.state.loggedIn === true) {
 
   render() {
-    // console.log(this.state.loggedIn);
-
-    // if ((this.state.loggedIn = true)) {
+    // if (this.state.loggedIn) {
     //   return <Redirect to='/Home' />;
     // }
 
@@ -62,7 +46,7 @@ class Login extends React.Component {
                 className='form-control'
                 id='email'
                 aria-describedby='emailHelp'
-                onChange={(e) => (this.email = e.target.value)}
+                onChange={(e) => (this.Email = e.target.value)}
               />
             </div>
             <div className='form-group'>

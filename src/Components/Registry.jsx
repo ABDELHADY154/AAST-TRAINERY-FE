@@ -1,5 +1,5 @@
 /** @format */
-import { axios } from "./axios";
+import { axios } from "../Api/axios";
 import React, { Component } from "react";
 // const MyFacebookLoader = () => <Facebook />;
 import { Loader2 } from "../loader";
@@ -35,10 +35,8 @@ class Registry extends React.Component {
     await axios
       .post("/register", data)
       .then((response) => {
-        // console.log(response.status);
-        // if (response.status === "200") {
-        // window.alert("Sent Successfully");
-        // }
+        localStorage.setItem("token", response.data.response.data.token);
+
       })
       .catch((error) => {
         this.setState({

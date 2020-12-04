@@ -2,12 +2,11 @@
 
 import React, { Component } from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
-import Registry from "./authentication/Registry";
-import Home from "./authentication/Home";
-import Login from "./authentication/Login";
-import Nav from "./authentication/Nav";
-import Landing from "./authentication/Landing";
-import { Protected } from "./authentication/Protected";
+import Registry from "./Components/Registry";
+import Home from "./Components/Home";
+import Login from "./Components/Login";
+import Nav from "./Nav/Nav";
+import Landing from "./Components/Landing";
 
 export default class App extends Component {
   render() {
@@ -21,12 +20,16 @@ export default class App extends Component {
                 {/* <== Home for Guest */}
                 <Route exact path='/' component={Landing} />
                 {/* <== Home for Users */}
-                <Protected exact path='/Home' component={Home} />
+                <Route exact path='/Home' component={Home} />
                 {/* <== Register Guests */}
-                <Route path='/Register' component={Registry} />
-                <Route path='/Login' component={Login} />
-                <Route path='*' component={Landing} />
 
+                <Route path='/Register' component={Registry} />
+                {/* <Route path='/LoginApi' component={LoginApi} /> */}
+                <Route
+                  path='/Login'
+                  component={() => <Login isLoggedin={this.isLoggedin} />}
+                />
+                {/* <Route path='*' component={Landing} /> */}
               </Switch>
             </div>
           </div>
