@@ -10,7 +10,7 @@ class Nav extends React.Component {
   render() {
     let buttons;
 
-    if (this.props.user) {
+    if (localStorage.getItem("data") != "") {
       buttons = (
         <ul className='navbar-nav'>
           <li className='nav-item '>

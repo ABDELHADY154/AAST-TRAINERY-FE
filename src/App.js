@@ -7,6 +7,7 @@ import Home from "./Components/Home";
 import Login from "./Components/Login";
 import Nav from "./Nav/Nav";
 import Landing from "./Components/Landing";
+import Profile from "./Components/Profile";
 
 export default class App extends Component {
   render() {
@@ -28,7 +29,10 @@ export default class App extends Component {
                 <Route
                   path='/Login'
                   component={() => <Login isLoggedin={this.isLoggedin} />}
+                  // component={() => <Login isLoggedin={this.isLoggedin} />}
                 />
+                <Route path='/Profile' component={Profile} />
+
                 {/* <Route path='*' component={Landing} /> */}
               </Switch>
             </div>
