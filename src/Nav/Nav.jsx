@@ -1,11 +1,16 @@
 /** @format */
 
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
 class Nav extends React.Component {
+  handleLogout() {
+    localStorage.clear();
+    // this.setuser(null);
+  }
   render() {
     let buttons;
-    if (this.props.user) {
+
+    if (localStorage.getItem("data") != "") {
       buttons = (
         <ul className='navbar-nav'>
           <li className='nav-item '>
@@ -15,11 +20,7 @@ class Nav extends React.Component {
             </Link>
           </li>
           <li className='nav-item'>
-            <Link
-              className='nav-link'
-              to='/'
-              onClick={() => localStorage.clear()}
-            >
+            <Link className='nav-link' to='/' onClick={this.handleLogout}>
               Logout
             </Link>
           </li>
@@ -28,6 +29,7 @@ class Nav extends React.Component {
     } else {
       buttons = (
         <ul className='navbar-nav'>
+          <Link to='/Landing' />
           <li className='nav-item'>
             <Link className='nav-link' to='/Login'>
               Login

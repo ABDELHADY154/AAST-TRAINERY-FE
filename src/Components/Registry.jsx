@@ -1,5 +1,5 @@
 /** @format */
-import { axios } from "./axios";
+import { axios } from "../Api/axios";
 import React, { Component } from "react";
 // const MyFacebookLoader = () => <Facebook />;
 import { Loader2 } from "../loader";
@@ -17,7 +17,7 @@ class Registry extends React.Component {
         departs: dep.data.response.data,
         loading: true,
       });
-      console.log(this.state);
+      // console.log(this.state);
     });
   }
   handleSubmit = async (e) => {
@@ -35,10 +35,8 @@ class Registry extends React.Component {
     await axios
       .post("/register", data)
       .then((response) => {
-        // console.log(response.status);
-        if (response.status === "200") {
-          window.alert("Sent Successfully");
-        }
+        localStorage.setItem("token", response.data.response.data.token);
+
       })
       .catch((error) => {
         this.setState({
@@ -141,6 +139,8 @@ class Registry extends React.Component {
                     id='departs'
                     onChange={(e) => (this.depart = e.target.value)}
                   >
+                    <option>Please Select Your Department</option>
+
                     {this.state.departs.map((depart) => (
                       <option value={depart.id}>{depart.dep_name}</option>
                     ))}
