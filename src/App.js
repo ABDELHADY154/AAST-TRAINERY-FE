@@ -1,7 +1,7 @@
 /** @format */
 
 import React, { Component } from "react";
-import { BrowserRouter, Route, Switch } from "react-router-dom";
+import { BrowserRouter, Redirect, Route, Switch } from "react-router-dom";
 import Registry from "./Components/Registry";
 import Home from "./Components/Home";
 import Login from "./Components/Login";
@@ -9,6 +9,23 @@ import Nav from "./Nav/Nav";
 import Landing from "./Components/Landing";
 import Profile from "./Components/Profile";
 
+const checkAuth = () => {
+  const token = localStorage.getItem("token");
+  const data = localStorage.getItem("data");
+  if (!token || !data) {
+
+    return false;
+  }
+  // this.setState.isLoggedin = { isLoggedin: true };
+  return true;
+};
+
+const AuthRoute = ({ component: Component, ...rest }) => (
+  <Route
+    {...rest}
+    render={(props) => (checkAuth() ? <Component /> : <Redirect to='/Login' />)}
+  />
+);
 export default class App extends Component {
   render() {
     return (
@@ -21,17 +38,18 @@ export default class App extends Component {
                 {/* <== Home for Guest */}
                 <Route exact path='/' component={Landing} />
                 {/* <== Home for Users */}
-                <Route exact path='/Home' component={Home} />
+                <AuthRoute exact path='/Home' component={Home} />
                 {/* <== Register Guests */}
 
                 <Route path='/Register' component={Registry} />
                 {/* <Route path='/LoginApi' component={LoginApi} /> */}
                 <Route
                   path='/Login'
-                  component={() => <Login isLoggedin={this.isLoggedin} />}
+                  component={() => <Login />}
                   // component={() => <Login isLoggedin={this.isLoggedin} />}
                 />
-                <Route path='/Profile' component={Profile} />
+                <AuthRoute path='/Profile' component={Profile} />
+                <Route path='/Landing' component={Landing} />
 
                 {/* <Route path='*' component={Landing} /> */}
               </Switch>

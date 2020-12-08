@@ -2,15 +2,18 @@
 
 import React, { Component } from "react";
 import { Link, Redirect } from "react-router-dom";
+import logo from "../Components/assests/imgs/logo.png";
+import "../layout/Nav.css";
+import { useHistory } from "react-router-dom";
+
 class Nav extends React.Component {
   handleLogout() {
     localStorage.clear();
-    // this.setuser(null);
   }
   render() {
     let buttons;
 
-    if (localStorage.getItem("data") != "") {
+    if (localStorage.getItem("data")) {
       buttons = (
         <ul className='navbar-nav'>
           <li className='nav-item '>
@@ -46,7 +49,7 @@ class Nav extends React.Component {
     return (
       <div>
         <nav className='navbar navbar-expand-lg navbar-light bg-light'>
-          <h1 className='navbar-brand'>Logo</h1>
+          <img className='navbar-brand' src={logo} width='150'></img>
           <button
             className='navbar-toggler'
             type='button'

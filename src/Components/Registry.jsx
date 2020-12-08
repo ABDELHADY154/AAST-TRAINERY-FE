@@ -17,7 +17,6 @@ class Registry extends React.Component {
         departs: dep.data.response.data,
         loading: true,
       });
-      // console.log(this.state);
     });
   }
   handleSubmit = async (e) => {

@@ -19,7 +19,12 @@ class Profile extends Component {
     //     </div>
     //   );
     // }
-    return <h1>profile</h1>;
+    return (
+      <div className='container text-center'>
+        <h1>profile</h1>
+        <h2> hi {localStorage.getItem("data.name")}</h2>
+      </div>
+    );
   }
 }
 export default Profile;

@@ -2,13 +2,14 @@
 
 import React from "react";
 import ContentLoader from "react-content-loader";
-const Loader = (props) => (
+
+export const Loader = (props) => (
   <ContentLoader
     speed={2}
     width={476}
     height={124}
     viewBox='0 0 476 124'
-    backgroundColor='#e60505'
+    backgroundColor='#1c79f1'
     foregroundColor='#ecebeb'
     {...props}
   >
@@ -20,7 +21,6 @@ const Loader = (props) => (
     <circle cx='20' cy='20' r='20' />
   </ContentLoader>
 );
-export default Loader;
 export const Loader2 = (props) => (
   <ContentLoader
     speed={2}

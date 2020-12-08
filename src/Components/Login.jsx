@@ -2,6 +2,7 @@
 import React, { Component } from "react";
 import { Redirect } from "react-router-dom";
 import { login } from "../Api/AuthApi";
+
 class Login extends React.Component {
   constructor(props) {
     super(props);
@@ -18,8 +19,10 @@ class Login extends React.Component {
   };
 
   render() {
-    if (localStorage.getItem("token")) {
-      return <Redirect to='/Profile' />;
+    const token = localStorage.getItem("token");
+    const userdata = localStorage.getItem("data");
+    if (!token || !userdata) {
+      return <Redirect to='/Home' />;
     } else {
       return (
         <div className='container p2'>
@@ -27,11 +30,7 @@ class Login extends React.Component {
             <form onSubmit={this.handleSubmit}>
               <div className='form-group'>
                 <label>Email address</label>
-                {/* <div className='alert-info'>
-                {this.state.emailErr && (
-                  <p className='error'> {this.state.emailErr} </p>
-                )}
-              </div> */}
+
                 <input
                   type='email'
                   className='form-control'
@@ -67,4 +66,5 @@ class Login extends React.Component {
     }
   }
 }
+
 export default Login;
