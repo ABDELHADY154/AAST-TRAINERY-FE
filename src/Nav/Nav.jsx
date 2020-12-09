@@ -1,19 +1,19 @@
 /** @format */
 
-import React, { Component } from "react";
+import React, { useEffect } from "react";
 import { Link, Redirect } from "react-router-dom";
 import logo from "../Components/assests/imgs/logo.png";
 import "../layout/Nav.css";
-import { useHistory } from "react-router-dom";
 
 class Nav extends React.Component {
   handleLogout() {
-    localStorage.clear();
+    sessionStorage.clear();
   }
+
   render() {
     let buttons;
 
-    if (localStorage.getItem("data")) {
+    if (this.props.auth) {
       buttons = (
         <ul className='navbar-nav'>
           <li className='nav-item '>
@@ -23,7 +23,11 @@ class Nav extends React.Component {
             </Link>
           </li>
           <li className='nav-item'>
-            <Link className='nav-link' to='/' onClick={this.handleLogout}>
+            <Link
+              className='nav-link'
+              to='/Landing'
+              onClick={this.handleLogout}
+            >
               Logout
             </Link>
           </li>
@@ -46,10 +50,12 @@ class Nav extends React.Component {
         </ul>
       );
     }
+
+
     return (
       <div>
         <nav className='navbar navbar-expand-lg navbar-light bg-light'>
-          <img className='navbar-brand' src={logo} width='150'></img>
+          <img className='navbar-brand' src={logo} width='150' alt=''></img>
           <button
             className='navbar-toggler'
             type='button'

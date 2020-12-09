@@ -1,7 +1,5 @@
 /** @format */
 
-import React from "react";
-
 export async function resolve(promise) {
   const resolved = {
     data: null,

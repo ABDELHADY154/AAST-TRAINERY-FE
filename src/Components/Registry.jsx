@@ -1,6 +1,6 @@
 /** @format */
 import { axios } from "../Api/axios";
-import React, { Component } from "react";
+import React from "react";
 // const MyFacebookLoader = () => <Facebook />;
 import { Loader2 } from "../loader";
 
@@ -35,7 +35,6 @@ class Registry extends React.Component {
       .post("/register", data)
       .then((response) => {
         localStorage.setItem("token", response.data.response.data.token);
-
       })
       .catch((error) => {
         this.setState({
@@ -99,7 +98,7 @@ class Registry extends React.Component {
               <div className='form-group col-6'>
                 <input
                   type='password'
-                  class='form-control'
+                  className='form-control'
                   placeholder='Enter your password'
                   onChange={(e) => (this.Password = e.target.value)}
                 />
@@ -128,7 +127,7 @@ class Registry extends React.Component {
             </div>
             <div className='form-row'>
               <div className='form-group col-6'>
-                {this.state.loading == false ? (
+                {this.state.loading === false ? (
                   <Loader2 />
                 ) : (
                   <select
@@ -141,7 +140,9 @@ class Registry extends React.Component {
                     <option>Please Select Your Department</option>
 
                     {this.state.departs.map((depart) => (
-                      <option value={depart.id}>{depart.dep_name}</option>
+                      <option value={depart.id} key={depart.id}>
+                        {depart.dep_name}
+                      </option>
                     ))}
                   </select>
                 )}

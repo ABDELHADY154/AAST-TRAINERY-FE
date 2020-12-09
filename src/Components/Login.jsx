@@ -1,36 +1,39 @@
 /** @format */
-import React, { Component } from "react";
+import React from "react";
 import { Redirect } from "react-router-dom";
 import { login } from "../Api/AuthApi";
 
 class Login extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
+    this.setState = {
       data: "",
     };
   }
   handleSubmit = async (e) => {
     e.preventDefault();
-    login({
+    await login({
       email: this.Email,
       password: this.Password,
+    });
+    this.setState({
+      token: sessionStorage.getItem("token"),
+      status: sessionStorage.getItem("status"),
     });
   };
 
   render() {
-    const token = localStorage.getItem("token");
-    const userdata = localStorage.getItem("data");
-    if (!token || !userdata) {
-      return <Redirect to='/Home' />;
-    } else {
+    console.log(this.peops);
+
+    const token = sessionStorage.getItem("token");
+    const status = sessionStorage.getItem("status");
+    if (!token && !status) {
       return (
         <div className='container p2'>
           <div className='container p2'>
             <form onSubmit={this.handleSubmit}>
               <div className='form-group'>
                 <label>Email address</label>
-
                 <input
                   type='email'
                   className='form-control'
@@ -63,6 +66,8 @@ class Login extends React.Component {
           </div>
         </div>
       );
+    } else {
+      return <Redirect to='/Home' />;
     }
   }
 }

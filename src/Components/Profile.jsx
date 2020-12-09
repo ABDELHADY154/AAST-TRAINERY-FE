@@ -1,8 +1,8 @@
 /** @format */
 
 import React, { Component } from "react";
-import { Redirect } from "react-router-dom";
-import { axios } from "../Api/axios";
+// import { Redirect } from "react-router-dom";
+// import { axios } from "../Api/axios";
 
 class Profile extends Component {
   render() {
@@ -22,7 +22,7 @@ class Profile extends Component {
     return (
       <div className='container text-center'>
         <h1>profile</h1>
-        <h2> hi {localStorage.getItem("data.name")}</h2>
+        <h2> hi {sessionStorage.getItem("name")}</h2>
       </div>
     );
   }

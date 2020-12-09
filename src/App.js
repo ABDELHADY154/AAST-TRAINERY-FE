@@ -9,34 +9,41 @@ import Nav from "./Nav/Nav";
 import Landing from "./Components/Landing";
 import Profile from "./Components/Profile";
 
-const checkAuth = () => {
-  const token = localStorage.getItem("token");
-  const data = localStorage.getItem("data");
-  if (!token || !data) {
-
+const CheckAuth = () => {
+  const token = sessionStorage.getItem("token");
+  const status = sessionStorage.getItem("status");
+  if (!token && !status) {
     return false;
   }
-  // this.setState.isLoggedin = { isLoggedin: true };
   return true;
 };
-
 const AuthRoute = ({ component: Component, ...rest }) => (
   <Route
     {...rest}
-    render={(props) => (checkAuth() ? <Component /> : <Redirect to='/Login' />)}
+    render={() => (CheckAuth() ? <Component /> : <Redirect to='/Login' />)}
   />
 );
+
 export default class App extends Component {
+  componentDidMount() {
+    if (sessionStorage.getItem("status") && sessionStorage.getItem("token")) {
+      return this.setState({
+        auth: true,
+      });
+    }
+  }
+
   render() {
+    // console.log(this.state);
     return (
       <BrowserRouter>
-        <Nav />
+        <Nav auth={this.state} />
         <div className='app'>
           <div className='auth-wrapper'>
             <div className='auth-inner'>
               <Switch>
                 {/* <== Home for Guest */}
-                <Route exact path='/' component={Landing} />
+                <Route exact path='/' component={<Login auth={this.state} />} />
                 {/* <== Home for Users */}
                 <AuthRoute exact path='/Home' component={Home} />
                 {/* <== Register Guests */}
@@ -48,7 +55,7 @@ export default class App extends Component {
                   component={() => <Login />}
                   // component={() => <Login isLoggedin={this.isLoggedin} />}
                 />
-                <AuthRoute path='/Profile' component={Profile} />
+                <AuthRoute exact path='/Profile' component={Profile} />
                 <Route path='/Landing' component={Landing} />
 
                 {/* <Route path='*' component={Landing} /> */}
@@ -57,31 +64,6 @@ export default class App extends Component {
           </div>
         </div>
       </BrowserRouter>
-
-      //  <BrowserRouter>
-      //  <Nav user={} />
-
-      //  <div className='app'>
-      //    <div className='auth-wrapper'>
-      //      <div className='auth-inner'>
-      //        <Switch>
-      //          <Route
-      //            exact
-      //            path='/Home'
-      //            component={() => <Home user={this.state.user} />}
-      //          />
-      //          <Route exact path='/Register' component={Registry} />
-
-      //          <Route
-      //            exact
-      //            path='/Login'
-      //            component={() => <Login user={this.setuser.user} />}
-      //          />
-      //        </Switch>
-      //      </div>
-      //    </div>
-      //  </div>
-      // </BrowserRouter>
     );
   }
 }
