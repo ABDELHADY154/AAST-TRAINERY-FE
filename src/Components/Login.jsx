@@ -10,7 +10,6 @@ class Login extends React.Component {
       token: sessionStorage.getItem("token"),
       status: sessionStorage.getItem("status"),
       error: "",
-      loggedIn: false,
     };
   }
 
@@ -47,12 +46,9 @@ class Login extends React.Component {
     if (status && token) {
       return this.setState({ loggedIn: true });
     }
-    //     loggedIn: this.props.setUser,
   };
 
   render() {
-    console.log(this.state);
-
     if (this.state.loggedIn === true) {
       return <Redirect to='/Home' />;
     } else {
