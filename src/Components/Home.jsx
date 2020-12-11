@@ -20,7 +20,7 @@ class Home extends Component {
       axios
         .get("/W/get-profile")
         .then((res) => {
-          if (res.status == 200) {
+          if (res.status === 200) {
             this.setState({
               user: res.data.response.data,
               loading: true,
@@ -34,7 +34,7 @@ class Home extends Component {
               usernameErr: error.response.status,
             },
           });
-          if (this.state.error.usernameErr == 401) {
+          if (this.state.error.usernameErr === 401) {
             window.location.reload();
           }
         })
@@ -42,7 +42,7 @@ class Home extends Component {
   }
 
   render() {
-    if (this.state.loading == false) {
+    if (this.state.loading === false) {
       return (
         <div className='container text-center'>
           <Loader />

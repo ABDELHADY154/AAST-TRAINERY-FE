@@ -1,7 +1,7 @@
 /** @format */
 
-import React, { useEffect } from "react";
-import { Link, Redirect } from "react-router-dom";
+import React from "react";
+import { Link } from "react-router-dom";
 import logo from "../Components/assests/imgs/logo.png";
 import "../layout/Nav.css";
 
@@ -17,25 +17,7 @@ class Nav extends React.Component {
   handleLogout() {
     sessionStorage.clear();
   }
-  // componentDidMount() {
-  //   this.setState({
-  //     token: sessionStorage.getItem("token"),
-  //     status: sessionStorage.getItem("status"),
-  //   });
-  //   if (this.props.setUser === true) {
-  //     this.setState({
-  //       loggedIn: this.props.setUser,
-  //     });
-  //   }
-  // }
 
-  // counter = () => {
-  //   this.setState({
-  //     token: sessionStorage.getItem("token"),
-  //     status: sessionStorage.getItem("status"),
-  //     loggedIn: this.props.setUser,
-  //   });
-  // };
   componentDidMount = () => {
     const token = sessionStorage.getItem("token");
     const status = sessionStorage.getItem("status");
@@ -44,10 +26,9 @@ class Nav extends React.Component {
     if (status && token) {
       return this.setState({ loggedIn: true });
     }
-    //     loggedIn: this.props.setUser,
   };
   render() {
-    if (this.props.setUser == true) {
+    if (this.props.setUser === true) {
       return (
         <div>
           <nav className='navbar navbar-expand-lg navbar-light bg-light'>

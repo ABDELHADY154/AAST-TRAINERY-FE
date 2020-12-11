@@ -2,7 +2,6 @@
 import React from "react";
 import { Redirect } from "react-router-dom";
 import { axios } from "../Api/axios";
-import { resolve } from "../Api/Resolvers/resolver";
 
 class Login extends React.Component {
   constructor() {
@@ -54,7 +53,7 @@ class Login extends React.Component {
   render() {
     console.log(this.state);
 
-    if (this.state.loggedIn == true) {
+    if (this.state.loggedIn === true) {
       return <Redirect to='/Home' />;
     } else {
       return (

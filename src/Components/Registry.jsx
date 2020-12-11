@@ -58,17 +58,10 @@ class Registry extends React.Component {
             passwordErr: error.response.data.errors.password,
           },
         });
-        // console.log(error.response.data.errors);
       });
-
-    // console.table(this.state.error.departErr);
   };
   render() {
-    const token = this.state.token;
-    const status = this.state.status;
-    console.log(this.state.status);
-
-    if (this.state.loggedIn == true) {
+    if (this.state.loggedIn === true) {
       return <Redirect to='/Home' />;
     } else {
       return (
