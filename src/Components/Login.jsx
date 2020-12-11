@@ -1,39 +1,69 @@
 /** @format */
 import React from "react";
 import { Redirect } from "react-router-dom";
-import { login } from "../Api/AuthApi";
+import { axios } from "../Api/axios";
+import { resolve } from "../Api/Resolvers/resolver";
 
 class Login extends React.Component {
-  constructor(props) {
-    super(props);
-    this.setState = {
-      data: "",
-    };
-  }
-  handleSubmit = async (e) => {
-    e.preventDefault();
-    await login({
-      email: this.Email,
-      password: this.Password,
-    });
-    this.setState({
+  constructor() {
+    super();
+    this.state = {
       token: sessionStorage.getItem("token"),
       status: sessionStorage.getItem("status"),
-    });
+      error: "",
+      loggedIn: false,
+    };
+  }
+
+  handleSubmit = async (e) => {
+    e.preventDefault();
+    e.target.reset();
+    const data = {
+      email: this.Email,
+      password: this.Password,
+    };
+    return await axios
+      .post("/login", data)
+      .then((response) => {
+        sessionStorage.setItem("token", response.data.response.data.token);
+        sessionStorage.setItem("status", response.statusText);
+        this.props.setUser(true);
+        this.setState({
+          loggedIn: true,
+        });
+      })
+      .catch((error) => {
+        this.setState({
+          error: {
+            usernameErr: error.response.data.errors.name,
+            emailErr: error.response.data.errors.email,
+          },
+        });
+      });
+  };
+
+  componentDidMount = () => {
+    const token = sessionStorage.getItem("token");
+    const status = sessionStorage.getItem("status");
+    if (status && token) {
+      return this.setState({ loggedIn: true });
+    }
+    //     loggedIn: this.props.setUser,
   };
 
   render() {
-    console.log(this.peops);
+    console.log(this.state);
 
-    const token = sessionStorage.getItem("token");
-    const status = sessionStorage.getItem("status");
-    if (!token && !status) {
+    if (this.state.loggedIn == true) {
+      return <Redirect to='/Home' />;
+    } else {
       return (
-        <div className='container p2'>
+        <div className='conta¬iner p2'>
           <div className='container p2'>
             <form onSubmit={this.handleSubmit}>
               <div className='form-group'>
                 <label>Email address</label>
+
                 <input
                   type='email'
                   className='form-control'
@@ -66,8 +96,6 @@ class Login extends React.Component {
           </div>
         </div>
       );
-    } else {
-      return <Redirect to='/Home' />;
     }
   }
 }

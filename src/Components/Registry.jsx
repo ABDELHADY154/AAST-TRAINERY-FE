@@ -3,6 +3,7 @@ import { axios } from "../Api/axios";
 import React from "react";
 // const MyFacebookLoader = () => <Facebook />;
 import { Loader2 } from "../loader";
+import { Redirect } from "react-router-dom";
 
 class Registry extends React.Component {
   state = {
@@ -18,6 +19,11 @@ class Registry extends React.Component {
         loading: true,
       });
     });
+    const token = sessionStorage.getItem("token");
+    const status = sessionStorage.getItem("status");
+    if (status && token) {
+      return this.setState({ loggedIn: true });
+    }
   }
   handleSubmit = async (e) => {
     e.preventDefault();
@@ -34,7 +40,13 @@ class Registry extends React.Component {
     await axios
       .post("/register", data)
       .then((response) => {
-        localStorage.setItem("token", response.data.response.data.token);
+        sessionStorage.setItem("token", response.data.response.data.token);
+        sessionStorage.setItem("status", response.statusText);
+        this.setState({
+          token: sessionStorage.getItem("token"),
+          status: sessionStorage.getItem("status"),
+          loggedIn: true,
+        });
       })
       .catch((error) => {
         this.setState({
@@ -52,113 +64,116 @@ class Registry extends React.Component {
     // console.table(this.state.error.departErr);
   };
   render() {
-    // if (this.state.loading == false) {
-    //   return (
+    const token = this.state.token;
+    const status = this.state.status;
+    console.log(this.state.status);
 
-    //   );
-    // } else if (this.state.loading == true) {
-    return (
-      <div className=' container-md m-auto'>
-        <div className='mx-auto'>
-          <form onSubmit={this.handleSubmit}>
-            <h1>Sign Up</h1>
-            <div className='form-row'>
-              <div className='form-group col-6'>
-                <input
-                  type='name'
-                  placeholder='Enter your Full Name.'
-                  className='form-control'
-                  id='Lyear'
-                  onChange={(e) => (this.username = e.target.value)}
-                />
-                <div className='alert-info'>
-                  {this.state.error && (
-                    <p className='error'> {this.state.error.usernameErr} </p>
-                  )}
-                </div>
-              </div>
-            </div>
-            <div className='form-row'>
-              <div className='form-group col-6'>
-                <input
-                  type='email'
-                  className='form-control'
-                  id='Email'
-                  placeholder='Enter Your Sudent Email'
-                  onChange={(e) => (this.Email = e.target.value)}
-                />
-                <div className='alert-info'>
-                  {this.state.error && (
-                    <p className='error'> {this.state.error.emailErr} </p>
-                  )}
-                </div>
-              </div>
-            </div>
-            <div className='form-row'>
-              <div className='form-group col-6'>
-                <input
-                  type='password'
-                  className='form-control'
-                  placeholder='Enter your password'
-                  onChange={(e) => (this.Password = e.target.value)}
-                />
-                <div className='alert-info'>
-                  {this.state.error && (
-                    <p className='error'> {this.state.error.passwordErr} </p>
-                  )}
-                </div>
-              </div>
-            </div>
-            <div className='form-row'>
-              <div className='form-group col-6'>
-                <input
-                  type='text'
-                  className='form-control'
-                  id='Reg-num'
-                  placeholder='Enter your Registration number'
-                  onChange={(e) => (this.RegNum = e.target.value)}
-                />
-                <div className='alert-info'>
-                  {this.state.error && (
-                    <p className='error'> {this.state.error.regnumErr} </p>
-                  )}
-                </div>
-              </div>
-            </div>
-            <div className='form-row'>
-              <div className='form-group col-6'>
-                {this.state.loading === false ? (
-                  <Loader2 />
-                ) : (
-                  <select
-                    type='text'
-                    placeholder='Enter your ....'
+    if (this.state.loggedIn == true) {
+      return <Redirect to='/Home' />;
+    } else {
+      return (
+        <div className=' container-md m-auto'>
+          <div className='mx-auto'>
+            <form onSubmit={this.handleSubmit}>
+              <h1>Sign Up</h1>
+              <div className='form-row'>
+                <div className='form-group col-6'>
+                  <input
+                    type='name'
+                    placeholder='Enter your Full Name.'
                     className='form-control'
-                    id='departs'
-                    onChange={(e) => (this.depart = e.target.value)}
-                  >
-                    <option>Please Select Your Department</option>
-
-                    {this.state.departs.map((depart) => (
-                      <option value={depart.id} key={depart.id}>
-                        {depart.dep_name}
-                      </option>
-                    ))}
-                  </select>
-                )}
-                {this.state.error && (
-                  <p className='error'> {this.state.error.departErr} </p>
-                )}{" "}
+                    id='Lyear'
+                    onChange={(e) => (this.username = e.target.value)}
+                  />
+                  <div className='alert-info'>
+                    {this.state.error && (
+                      <p className='error'> {this.state.error.usernameErr} </p>
+                    )}
+                  </div>
+                </div>
               </div>
-            </div>
+              <div className='form-row'>
+                <div className='form-group col-6'>
+                  <input
+                    type='email'
+                    className='form-control'
+                    id='Email'
+                    placeholder='Enter Your Sudent Email'
+                    onChange={(e) => (this.Email = e.target.value)}
+                  />
+                  <div className='alert-info'>
+                    {this.state.error && (
+                      <p className='error'> {this.state.error.emailErr} </p>
+                    )}
+                  </div>
+                </div>
+              </div>
+              <div className='form-row'>
+                <div className='form-group col-6'>
+                  <input
+                    type='password'
+                    className='form-control'
+                    placeholder='Enter your password'
+                    onChange={(e) => (this.Password = e.target.value)}
+                  />
+                  <div className='alert-info'>
+                    {this.state.error && (
+                      <p className='error'> {this.state.error.passwordErr} </p>
+                    )}
+                  </div>
+                </div>
+              </div>
+              <div className='form-row'>
+                <div className='form-group col-6'>
+                  <input
+                    type='text'
+                    className='form-control'
+                    id='Reg-num'
+                    placeholder='Enter your Registration number'
+                    onChange={(e) => (this.RegNum = e.target.value)}
+                  />
+                  <div className='alert-info'>
+                    {this.state.error && (
+                      <p className='error'> {this.state.error.regnumErr} </p>
+                    )}
+                  </div>
+                </div>
+              </div>
+              <div className='form-row'>
+                <div className='form-group col-6'>
+                  {this.state.loading === false ? (
+                    <Loader2 />
+                  ) : (
+                    <select
+                      type='text'
+                      placeholder='Enter your ....'
+                      className='form-control'
+                      id='departs'
+                      onChange={(e) => (this.depart = e.target.value)}
+                    >
+                      <option>Please Select Your Department</option>
 
-            <button type='submit' className='btn btn-primary btn-block'>
-              Sign up
-            </button>
-          </form>
+                      {this.state.departs.map((depart) => (
+                        <option value={depart.id} key={depart.id}>
+                          {depart.dep_name}
+                        </option>
+                      ))}
+                    </select>
+                  )}
+                  {this.state.error && (
+                    <p className='error'> {this.state.error.departErr} </p>
+                  )}
+                </div>
+              </div>
+
+              <button type='submit' className='btn btn-primary btn-block'>
+                Sign up
+              </button>
+            </form>
+          </div>
         </div>
-      </div>
-    );
+      );
+    }
   }
 }
 

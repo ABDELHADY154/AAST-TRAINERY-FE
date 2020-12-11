@@ -21,8 +21,7 @@ class Profile extends Component {
     // }
     return (
       <div className='container text-center'>
-        <h1>profile</h1>
-        <h2> hi {sessionStorage.getItem("name")}</h2>
+        <h1>404 page is not found </h1>
       </div>
     );
   }
