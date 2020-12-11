@@ -14,21 +14,21 @@ class Nav extends React.Component {
       // number: 0,
     };
   }
-  handleLogout() {
+  handleLogout = () => {
     sessionStorage.clear();
-  }
+    this.props.setUser(false);
+  };
 
   componentDidMount = () => {
     const token = sessionStorage.getItem("token");
     const status = sessionStorage.getItem("status");
-    console.log(this.props.setUser);
 
     if (status && token) {
       return this.setState({ loggedIn: true });
     }
   };
   render() {
-    if (this.props.setUser === true) {
+    if (this.props.loggedIn === true) {
       return (
         <div>
           <nav className='navbar navbar-expand-lg navbar-light bg-light'>

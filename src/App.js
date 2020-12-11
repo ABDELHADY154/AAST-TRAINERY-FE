@@ -46,7 +46,7 @@ class App extends React.Component {
     console.log(this.state.loggedIn);
     return (
       <BrowserRouter>
-        <Nav setUser={this.state.loggedIn} />
+        <Nav loggedIn={this.state.loggedIn} setUser={this.setUser} />
         <div className='app'>
           <div className='auth-wrapper'>
             <div className='auth-inner'>
