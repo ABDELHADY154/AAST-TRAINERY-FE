@@ -3,7 +3,9 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import logo from "../Components/assests/imgs/logo.png";
+import avatar from "../Components/Home";
 import "../layout/Nav.css";
+import notifications from "../Components/assests/icons/alarm.svg";
 
 class Nav extends React.Component {
   constructor() {
@@ -31,8 +33,13 @@ class Nav extends React.Component {
     if (this.props.loggedIn === true) {
       return (
         <div>
-          <nav className='navbar navbar-expand-lg navbar-light bg-light'>
-            <img className='navbar-brand' src={logo} width='150' alt=''></img>
+          <nav className='navbar navbar-expand-lg navbar-light bg-light  '>
+            <img
+              className='navbar-brand img-rounded'
+              src={logo}
+              width='150'
+              alt=''
+            ></img>
             <button
               className='navbar-toggler'
               type='button'
@@ -44,28 +51,46 @@ class Nav extends React.Component {
             >
               <span className='navbar-toggler-icon'></span>
             </button>
-            <div className='collapse navbar-collapse' id='navbarNav'>
+            <div className='collapse navbar-collapse ' id='navbarNav'>
               <ul className='navbar-nav'>
                 <li className='nav-item '>
-                  <Link className='nav-link' to='/Home'>
-                    Home
+                  <Link className='nav-link item' to='/Home'>
+                    Explore
                     <span className='sr-only' />
                   </Link>
                 </li>
-                <li className='nav-item'>
+                <li className='nav-item '>
                   <Link
-                    className='nav-link'
-                    to='/Landing'
-                    onClick={this.handleLogout}
+                    className='nav-link item'
+                    to='#'
+                    // onClick={this.handleLogout}
                   >
-                    Logout
+                    Career Coaching
                   </Link>
                 </li>
-              </ul>{" "}
+              </ul>
             </div>
+            <ul className='nav  pt-3'>
+              <li className='nav-item  pt-1'>
+                <img
+                  src={notifications}
+                  alt='Avatar'
+                  width='21'
+                  height='18'
+                  className='avatar'
+                />
+              </li>
+              <li className='nav-item'>
+                <img
+                  src={sessionStorage.getItem("avatar")}
+                  alt='Avatar'
+                  width='40'
+                  height='40'
+                  className='avatar'
+                />
+              </li>
+            </ul>
           </nav>
-          {/* <Link add</Link> */}
-          {/* <h1>{this.props.login}</h1> */}
         </div>
       );
     } else {
@@ -84,17 +109,30 @@ class Nav extends React.Component {
             >
               <span className='navbar-toggler-icon'></span>
             </button>
-            <div className='collapse navbar-collapse' id='navbarNav'>
-              <ul className='navbar-nav'>
+            <div
+              className='collapse navbar-collapse flex-container'
+              id='navbarNav'
+            >
+              <ul className='nav navbar-nav btn '>
                 <Link to='/Landing' />
                 <li className='nav-item'>
-                  <Link className='nav-link' to='/Login'>
-                    Login
+                  <Link to='/Login'>
+                    <button
+                      renderAs='button'
+                      className='btn btn-login btn-small btn-nav'
+                    >
+                      <span>Login</span>
+                    </button>
                   </Link>
                 </li>
                 <li className='nav-item'>
-                  <Link className='nav-link' to='/Register'>
-                    Register
+                  <Link to='/Register'>
+                    <button
+                      renderAs='button'
+                      className='btn btn-outline-primary btn-small btn-nav'
+                    >
+                      <span>Sign up</span>
+                    </button>
                   </Link>
                 </li>
               </ul>

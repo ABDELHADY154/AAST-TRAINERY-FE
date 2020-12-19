@@ -2,7 +2,7 @@
 import React from "react";
 import { Redirect } from "react-router-dom";
 import { axios } from "../Api/axios";
-
+import "../layout/Login.css";
 class Login extends React.Component {
   constructor() {
     super();
@@ -33,7 +33,7 @@ class Login extends React.Component {
       .catch((error) => {
         this.setState({
           error: {
-            usernameErr: error.response.data.errors.name,
+            passwrodErr: error.response.data.errors.name,
             emailErr: error.response.data.errors.email,
           },
         });
@@ -47,47 +47,106 @@ class Login extends React.Component {
       return this.setState({ loggedIn: true });
     }
   };
-
   render() {
+    // console.log(this.state.error);
+
+    if (this.state.error && this.state.error.emailErr) {
+      Invaldemail = (
+        <div>
+          <div className='invalid-feedback'>
+            {this.state.error && (
+              <p className='error'>{this.state.error.emailErr}</p>
+            )}
+          </div>
+          <div className='form-label-group'>
+            <input
+              type='text'
+              className='form-control is-invalid error-input'
+              id='validationServer05'
+              placeholder='College Email'
+              required
+            />
+          </div>
+
+          <div className='form-label-group'>
+            <input
+              type='password'
+              id='inputPassword'
+              className='form-control  is-invalid error-input'
+              placeholder='Password'
+              required
+              onChange={(e) => (this.Password = e.target.value)}
+            />
+          </div>
+        </div>
+      );
+    } else {
+      var Invaldemail = (
+        <div>
+          <div className='form-label-group'>
+            <input
+              type='email'
+              id='inputEmail'
+              className='form-control'
+              placeholder='College Email'
+              required
+              autoFocus
+              onChange={(e) => (this.Email = e.target.value)}
+            />
+          </div>
+
+          <div className='form-label-group'>
+            <input
+              type='password'
+              id='inputPassword'
+              className='form-control'
+              placeholder='Password'
+              required
+              onChange={(e) => (this.Password = e.target.value)}
+            />
+          </div>
+        </div>
+      );
+    }
+
     if (this.state.loggedIn === true) {
       return <Redirect to='/Home' />;
     } else {
       return (
-        <div className='conta¬iner p2'>
-          <div className='container p2'>
-            <form onSubmit={this.handleSubmit}>
-              <div className='form-group'>
-                <label>Email address</label>
+        <div className='container-fluid'>
+          <div className='row no-gutter'>
+            <div className='col-md-9 col-lg-7 '>
+              <div className='login d-flex align-items-center py-5'>
+                <div className='container'>
+                  <div className='row'>
+                    <div className='col-md-7 col-lg-7 mx-auto login h-100'>
+                      <h3 className='login-heading mb-5'>Sign In </h3>
+                      <form onSubmit={this.handleSubmit}>
+                        {Invaldemail}
 
-                <input
-                  type='email'
-                  className='form-control'
-                  id='email'
-                  aria-describedby='emailHelp'
-                  onChange={(e) => (this.Email = e.target.value)}
-                />
+                        <button
+                          className='btn btn-lg col-sm-5 btn-outline-primary d-block text-uppercase font-weight-bold mb-2'
+                          type='submit'
+                        >
+                          Sign in
+                        </button>
+                        <a className='color-orange ' href='/Register'>
+                          Dont' Have An Account ?
+                        </a>
+
+                        <div className='text-center'>
+                          <a className='small' href='#'>
+                            Forgot password?
+                          </a>
+                        </div>
+                      </form>
+                    </div>
+                  </div>
+                </div>
               </div>
-              <div className='form-group'>
-                <label htmlFor='exampleInputPassword1'>Password</label>
-                <input
-                  type='password'
-                  className='form-control'
-                  id='Password'
-                  onChange={(e) => (this.Password = e.target.value)}
-                />
-              </div>
-              <div className='form-group form-check'>
-                <input
-                  type='checkbox'
-                  className='form-check-input'
-                  id='exampleCheck1'
-                />
-                <label className='form-check-label'>Check me out</label>
-              </div>
-              <button type='submit' className='btn btn-primary'>
-                Login
-              </button>
-            </form>
+            </div>
+
+            <div className='d-none d-md-flex col-md-5 col-lg-5 bg-image rounded'></div>
           </div>
         </div>
       );

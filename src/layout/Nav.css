@@ -1,1 +1,29 @@
 /** @format */
+
+.nav-item {
+  padding-bottom: 0.5em;
+}
+.flex-container {
+  display: flexbox;
+  justify-content: flex-end;
+}
+.btn-login {
+  background-color: #cd8930;
+  color: #fff;
+  padding: 0.5em 2em;
+}
+.btn-outline-primary {
+  padding: 0.5em 1.5em;
+}
+.nav-item {
+  margin-left: 10px;
+}
+.item {
+  font-family: SF Compact Display;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 19px;
+  text-align: center;
+  line-height: 28px;
+  color: #1e4274 !important;
+}

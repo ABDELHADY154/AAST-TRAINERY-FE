@@ -43,7 +43,7 @@ class App extends React.Component {
     return this.setState({ loggedIn: data });
   };
   render() {
-    console.log(this.state.loggedIn);
+    // console.log(this.state.loggedIn);
     return (
       <BrowserRouter>
         <Nav loggedIn={this.state.loggedIn} setUser={this.setUser} />
@@ -69,7 +69,10 @@ class App extends React.Component {
                 {/* //component={() => <Login isLoggedin={this.isLoggedin} />} */}
 
                 <AuthRoute exact path='/Profile' component={Profile} />
-                <Route path='/Landing' component={Landing} />
+                <Route
+                  path='/Landing'
+                  component={() => <Landing loggedIn={this.state.loggedIn} />}
+                />
 
                 {/* <Route exact path='*' component={Profile} /> */}
               </Switch>

@@ -12,6 +12,7 @@ class Home extends Component {
       user: "",
       loading: false,
       token: sessionStorage.getItem("token"),
+      avatar: "",
     };
   }
 
@@ -21,6 +22,8 @@ class Home extends Component {
         .get("/W/get-profile")
         .then((res) => {
           if (res.status === 200) {
+            sessionStorage.setItem("avatar", res.data.response.data.image);
+
             this.setState({
               user: res.data.response.data,
               loading: true,
