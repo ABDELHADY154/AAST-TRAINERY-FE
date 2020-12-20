@@ -69,7 +69,7 @@ class Registry extends React.Component {
       this.state.error.departErr ||
       this.state.error.passwordErr
     ) {
-      Invaldedata = (
+      var Invaldedata = (
         <div>
           <div className='form-label-group'>
             <input
@@ -90,7 +90,7 @@ class Registry extends React.Component {
               type='text'
               className='form-control is-invalid error-input'
               id='validationServer05'
-              placeholder='College Email'
+              placeholder='Student Email'
               required
             />
             <div>
@@ -210,7 +210,6 @@ class Registry extends React.Component {
                             ) : (
                               <select
                                 type='text'
-                                placeholder='Enter your ....'
                                 className='form-control'
                                 id='departs'
                                 onChange={(e) => (this.depart = e.target.value)}

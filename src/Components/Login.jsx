@@ -63,7 +63,7 @@ class Login extends React.Component {
               type='text'
               className='form-control is-invalid error-input'
               id='validationServer05'
-              placeholder='College Email'
+              placeholder='Student Email'
               required
             />
           </div>
@@ -88,7 +88,7 @@ class Login extends React.Component {
               type='email'
               id='inputEmail'
               className='form-control'
-              placeholder='College Email'
+              placeholder='Student Email'
               required
               autoFocus
               onChange={(e) => (this.Email = e.target.value)}
@@ -145,8 +145,7 @@ class Login extends React.Component {
                 </div>
               </div>
             </div>
-
-            <div className='d-none d-md-flex col-md-5 col-lg-5 bg-image rounded'></div>
+            <div className='col-md-3 col-lg-5 bg-image'></div>
           </div>
         </div>
       );

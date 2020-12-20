@@ -7,14 +7,23 @@
 .logine {
   width: 100%;
 }
+
 .bg-image {
-  background-image: url("../Components/assests/imgs/login.jpg");
-  background-size: cover;
+  background-image: url(/static/media/login.17a8782a.jpg);
   background-position: center;
-  min-height: 90vh;
-  border-radius: 15px !important;
-  display: flexbox;
-  justify-content: flex-end;
+  background-size: cover;
+  min-height: 92%;
+  min-width: 50%;
+  height: auto;
+  position: fixed;
+  left: 50%;
+  border-top-left-radius: 15px;
+}
+@media screen and (max-width: 1024px) {
+  /* Specific to this particular image */
+  .bg-image {
+    display: none !important;
+  }
 }
 
 .small {
