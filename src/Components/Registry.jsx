@@ -69,7 +69,7 @@ class Registry extends React.Component {
       this.state.error.departErr ||
       this.state.error.passwordErr
     ) {
-      var Invaldedata = (
+      let Invaldedata = (
         <div>
           <div className='form-label-group'>
             <input
@@ -243,7 +243,7 @@ class Registry extends React.Component {
               </div>
             </div>
 
-            <div className=' img-fluid d-none d-md-flex col-md-5 col-lg-5 bg-image rounded'></div>
+            <div className='img-fluid d-none d-md-flex col-md-5 col-lg-5 bg-image rounded'></div>
           </div>
         </div>
       );

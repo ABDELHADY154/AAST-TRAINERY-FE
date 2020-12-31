@@ -9,22 +9,22 @@
 }
 
 .bg-image {
-  background-image: url(/static/media/login.17a8782a.jpg);
+  background-image: url(../Components/assests/imgs/login.jpg);
   background-position: center;
   background-size: cover;
   min-height: 92%;
   min-width: 50%;
+
   height: auto;
   position: fixed;
   left: 50%;
   border-top-left-radius: 15px;
 }
-@media screen and (max-width: 1024px) {
-  /* Specific to this particular image */
+/* @media screen and (max-width: 1024px) {
   .bg-image {
     display: none !important;
   }
-}
+}  */
 
 .small {
   float: left;

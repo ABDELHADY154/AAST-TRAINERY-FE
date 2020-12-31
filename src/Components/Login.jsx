@@ -145,7 +145,7 @@ class Login extends React.Component {
                 </div>
               </div>
             </div>
-            <div className='col-md-3 col-lg-5 bg-image'></div>
+            <div className='col-md-3 col-lg-6 bg-image'></div>
           </div>
         </div>
       );
