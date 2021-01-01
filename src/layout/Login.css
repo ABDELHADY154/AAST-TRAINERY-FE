@@ -1,0 +1,80 @@
+/** @format */
+
+.login {
+  min-height: 100%;
+  width: 80%;
+}
+.logine {
+  width: 100%;
+}
+
+.bg-image {
+  background-image: url(../Components/assests/imgs/login.jpg);
+  background-position: center;
+  background-size: cover;
+  min-height: 92%;
+  min-width: 50%;
+
+  height: auto;
+  position: fixed;
+  left: 50%;
+  border-top-left-radius: 15px;
+}
+/* @media screen and (max-width: 1024px) {
+  .bg-image {
+    display: none !important;
+  }
+}  */
+
+.small {
+  float: left;
+}
+.color-blue {
+  background-color: #1e4274;
+}
+.mb-2 {
+  float: right;
+  text-align: center !important;
+  width: auto;
+  box-sizing: border-box;
+  /* margin-top: 100%; */
+  margin-top: 15%;
+  font-size: 1rem !important;
+}
+.color-orange {
+  color: #cd8930;
+}
+.form-label-group {
+  padding-bottom: 5%;
+}
+input {
+  border: 0 !important;
+  outline: 0 !important;
+  background: transparent;
+  border-bottom: 1px solid #1e4274 !important;
+}
+
+input:focus {
+  border: 0 !important;
+  outline: 0 !important;
+  background: transparent;
+  border-bottom: 2px solid #cd8930 !important;
+}
+.error {
+  color: #f44336;
+  font-size: 14px;
+}
+.error-input {
+  color: #f44336;
+  font-size: 14px;
+  border-bottom: 1px solid #f44336 !important;
+}
+
+.login-heading {
+  font-weight: 500;
+  font-size: 40px;
+  color: #1e4274;
+}
+.invalid-feedback {
+  display: block !important;
+}
