@@ -1,0 +1,143 @@
+/** @format */
+/*         Utiles          */
+.prim {
+  color: #1e4274;
+}
+.seco {
+  color: #cd8930;
+}
+* {
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  overflow-x: hidden; /* Hide horizontal scrollbar */
+}
+.item img {
+  width: 100%;
+}
+.header {
+  font-family: SF Compact Display;
+  font-style: normal;
+  font-weight: 800;
+  font-size: 40px;
+  line-height: 44px;
+  color: #1e4274;
+}
+.text {
+  font-family: SF Compact Display;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 20px;
+  line-height: 27px;
+  color: #1e4274;
+}
+.pw {
+  font-family: SF Compact Display;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 27px;
+  color: #1e4274;
+  margin: auto !important;
+  display: block;
+}
+.justify-content-end img {
+  background-image: url("/src/Components/Landing/bg2.png");
+}
+.infoApi {
+  font-family: SF Compact Display;
+  font-style: normal;
+  font-weight: 800 !important;
+  font-size: 30px;
+  line-height: 35px;
+  color: #cd8930;
+  display: inline-flex;
+  min-width: 100%;
+  flex-wrap: nowrap;
+}
+
+.carousel-caption1 {
+  position: absolute;
+  right: 15%;
+  top: 140px;
+  left: 15%;
+  padding: 3px 10px;
+  margin-bottom: 10px;
+  color: #fff;
+  background: rgba(255, 255, 255, 0.85);
+  text-align: center;
+  backdrop-filter: blur(5px);
+  border-radius: 10px;
+  color: #1e4274;
+}
+.carousel-caption1:hover {
+  position: absolute;
+  right: 15%;
+  top: 140px;
+  left: 15%;
+  padding: 3px 10px;
+  margin-bottom: 10px;
+  background: #cd8930;
+  text-align: center;
+  backdrop-filter: blur(5px);
+  border-radius: 10px;
+  color: #1e4274;
+}
+.textt {
+  font-family: SF Compact Display;
+  font-weight: 400 !important;
+  font-size: 25px !important;
+  line-height: 27px !important;
+
+  text-align: justify;
+}
+.li {
+  list-style-type: none;
+}
+.img-responsive {
+  width: 100%;
+}
+@media (max-width: 1423px) {
+  .pw {
+    display: none;
+  }
+  .sms {
+    display: none;
+  }
+  .sssss {
+    width: 25%;
+    background-image: url("/src/Components/Landing/bg2.png");
+  }
+  .header {
+    font-family: SF Compact Display;
+    font-style: normal;
+    font-weight: 800;
+    font-size: 30px;
+    line-height: 35px;
+    color: #1e4274;
+  }
+  .infoApi {
+    font-family: SF Compact Display;
+    font-style: normal;
+    font-weight: 800 !important;
+    font-size: 20px;
+    line-height: 27px;
+    color: #cd8930;
+    min-width: 100%;
+    flex-wrap: nowrap;
+  }
+}
+@media (max-width: 550px) {
+  .infoApi {
+    font-family: SF Compact Display;
+    font-style: normal;
+    font-weight: 800 !important;
+    font-size: 20px;
+    line-height: 27px;
+    color: #cd8930;
+    min-width: 100%;
+    flex-wrap: wrap;
+  }
+}

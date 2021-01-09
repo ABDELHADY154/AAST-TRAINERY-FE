@@ -6,7 +6,7 @@ import Registry from "./Components/Registry";
 import Home from "./Components/Home";
 import Login from "./Components/Login";
 import Nav from "./Nav/Nav";
-import Landing from "./Components/Landing";
+import Landing from "./Components/Landing/Landing";
 import Profile from "./Components/Profile";
 // import Maintains from "./Components/Maintains";
 const CheckAuth = () => {

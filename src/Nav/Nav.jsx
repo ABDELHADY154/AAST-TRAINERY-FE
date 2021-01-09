@@ -5,6 +5,8 @@ import { Link } from "react-router-dom";
 import logo from "../Components/assests/imgs/logo.png";
 import avatar from "../Components/Home";
 import "../layout/Nav.css";
+import "../layout/Main.css";
+
 import notifications from "../Components/assests/icons/alarm.svg";
 
 class Nav extends React.Component {
@@ -96,46 +98,53 @@ class Nav extends React.Component {
     } else {
       return (
         <div>
-          <nav className='navbar navbar-expand-lg navbar-light bg-light'>
-            <img className='navbar-brand' src={logo} width='150' alt=''></img>
-            <button
-              className='navbar-toggler'
-              type='button'
-              data-toggle='collapse'
-              data-target='#navbarNav'
-              aria-controls='navbarNav'
-              aria-expanded='false'
-              aria-label='Toggle navigation'
-            >
-              <span className='navbar-toggler-icon'></span>
-            </button>
-            <div
-              className='collapse navbar-collapse flex-container'
-              id='navbarNav'
-            >
-              <ul className='nav navbar-nav btn '>
-                <Link to='/Landing' />
-                <li className='nav-item'>
-                  <Link to='/Login'>
-                    <button
-                      renderAs='button'
-                      className='btn btn-login btn-small btn-nav'
-                    >
-                      <span>Login</span>
-                    </button>
-                  </Link>
-                </li>
-                <li className='nav-item'>
-                  <Link to='/Register'>
-                    <button
-                      renderAs='button'
-                      className='btn btn-outline-primary btn-small btn-nav'
-                    >
-                      <span>Sign up</span>
-                    </button>
-                  </Link>
-                </li>
-              </ul>
+          <nav className='navbar navbar-expand-lg navbar-light bg-light w-100 '>
+            <div className='container-fluid'>
+              <img
+                className='navbar-brand ml-5'
+                src={logo}
+                width='170'
+                alt=''
+              ></img>
+              <button
+                className='navbar-toggler'
+                type='button'
+                data-toggle='collapse'
+                data-target='#navbarNav'
+                aria-controls='navbarNav'
+                aria-expanded='false'
+                aria-label='Toggle navigation'
+              >
+                <span className='navbar-toggler-icon'></span>
+              </button>
+              <div
+                className='collapse navbar-collapse flex-container'
+                id='navbarNav'
+              >
+                <ul className='nav navbar-nav btn '>
+                  <Link to='/Landing' />
+                  <li className='nav-item'>
+                    <Link to='/Login'>
+                      <button
+                        renderAs='button'
+                        className='btn btn-login btn-small btn-nav mr-1'
+                      >
+                        <span>Login</span>
+                      </button>
+                    </Link>
+                  </li>
+                  <li className='nav-item'>
+                    <Link to='/Register'>
+                      <button
+                        renderAs='button'
+                        className='btn btn-outline-primary btn-small btn-nav mr-1'
+                      >
+                        <span>Sign up</span>
+                      </button>
+                    </Link>
+                  </li>
+                </ul>
+              </div>
             </div>
           </nav>
         </div>
