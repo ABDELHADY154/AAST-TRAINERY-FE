@@ -16,11 +16,11 @@ class Landing extends React.Component {
       return <Redirect to='/Home' />;
     } else {
       return (
-        <div className=''>
+        <div className='test'>
           <Caro />
           <div className='container-fluid'>
-            <div className=' d-flex row'>
-              <div className='m-auto p-5 col-xs-12 col-sm-5 col-md-5 .col-lg-5 container w-100'>
+            <div className=' d-flex row '>
+              <div className='m-auto p-5 col-xs-12 col-sm-12 col-md-7 .col-lg-5 container w-100'>
                 <h1 className='header m-auto'>
                   We Provide The Best Experience
                 </h1>
@@ -54,7 +54,7 @@ class Landing extends React.Component {
               />
             </div>
             <hr className='prim border' />
-            <div className='justify-content-between m-5 p-5 col-sm-12 col-md-12 container'>
+            <div className='justify-content-between m-5 p-5 col-sm-12 col-md-12 container-fluid'>
               <h1 className='header m-auto text-left'>
                 Career Coaching Guidance
               </h1>
@@ -70,29 +70,29 @@ class Landing extends React.Component {
                 consectetur adipiscing elit. Ut dolor quis morbi sagittis donec
                 sed massa.
               </p>
-              <div className='row m-auto d-flex justify-content-center'>
-                <div className=' mt-4'>
-                  <div className='card'>
-                    <img src={img1} height='200' />
-                    <div className='carousel-caption1'>
-                      <h5 className='textt'>CV writing Coaching</h5>
-                    </div>
+            </div>
+            <div className='row m-auto d-flex justify-content-center'>
+              <div className=' mt-4'>
+                <div className='card'>
+                  <img className='cardImg' src={img1} height='200' />
+                  <div className='carousel-caption1'>
+                    <h5 className='textt'>CV writing Coaching</h5>
                   </div>
                 </div>
-                <div className=' mt-4'>
-                  <div className='card'>
-                    <img src={img2} height='200' />
-                    <div className='carousel-caption1'>
-                      <h5 className='textt'>Interview Coaching</h5>
-                    </div>
+              </div>
+              <div className=' mt-4'>
+                <div className='card'>
+                  <img className='cardImg' src={img2} height='200' />
+                  <div className='carousel-caption1'>
+                    <h5 className='textt'>Interview Coaching</h5>
                   </div>
                 </div>
-                <div className=' mt-4'>
-                  <div className='card'>
-                    <img src={img3} height='200' />
-                    <div className='carousel-caption1'>
-                      <h5 className='textt'> Coaching Coaching Path</h5>
-                    </div>
+              </div>
+              <div className=' mt-4'>
+                <div className='card'>
+                  <img className='cardImg' src={img3} height='200' />
+                  <div className='carousel-caption1'>
+                    <h5 className='textt'> Coaching Coaching Path</h5>
                   </div>
                 </div>
               </div>

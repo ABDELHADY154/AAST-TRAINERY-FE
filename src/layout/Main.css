@@ -11,8 +11,12 @@
   margin: 0;
 }
 
+html,
 body {
-  overflow-x: hidden; /* Hide horizontal scrollbar */
+  overflow-x: hidden;
+}
+body {
+  position: relative;
 }
 .item img {
   width: 100%;
@@ -60,7 +64,7 @@ body {
 
 .carousel-caption1 {
   position: absolute;
-  right: 15%;
+  right: 10%;
   top: 140px;
   left: 15%;
   padding: 3px 10px;
@@ -88,7 +92,7 @@ body {
 .textt {
   font-family: SF Compact Display;
   font-weight: 400 !important;
-  font-size: 25px !important;
+  font-size: 23px !important;
   line-height: 27px !important;
 
   text-align: justify;
@@ -98,6 +102,9 @@ body {
 }
 .img-responsive {
   width: 100%;
+}
+.test {
+  position: -webkit-sticky !important;
 }
 @media (max-width: 1423px) {
   .pw {
@@ -114,9 +121,16 @@ body {
     font-family: SF Compact Display;
     font-style: normal;
     font-weight: 800;
-    font-size: 30px;
     line-height: 35px;
     color: #1e4274;
+    clear: both;
+    display: inline-block;
+    overflow: hidden;
+    white-space: nowrap;
+    padding: 0;
+    margin: auto;
+
+    font-size: 24px;
   }
   .infoApi {
     font-family: SF Compact Display;
@@ -129,6 +143,7 @@ body {
     flex-wrap: nowrap;
   }
 }
+
 @media (max-width: 550px) {
   .infoApi {
     font-family: SF Compact Display;
@@ -138,6 +153,15 @@ body {
     line-height: 27px;
     color: #cd8930;
     min-width: 100%;
+    margin: auto;
     flex-wrap: wrap;
+  }
+  .cardImg {
+    width: 100%;
+  }
+}
+@media (max-width: 1200px) {
+  .header {
+    font-size: 35px;
   }
 }
