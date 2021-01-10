@@ -8,6 +8,8 @@ import Login from "./Components/Login";
 import Nav from "./Nav/Nav";
 import Landing from "./Components/Landing/Landing";
 import Profile from "./Components/Profile";
+import "./layout/Footer.css";
+
 // import Maintains from "./Components/Maintains";
 const CheckAuth = () => {
   const token = sessionStorage.getItem("token");

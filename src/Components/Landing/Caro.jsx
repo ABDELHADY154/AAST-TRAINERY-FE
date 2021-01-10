@@ -1,6 +1,5 @@
 /** @format */
 import React, { Component } from "react";
-import Slider from "react-slick";
 
 import img from "./bg1.png";
 export default class Caro extends Component {
@@ -53,6 +52,7 @@ export default class Caro extends Component {
           <img src={img} className='img-responsive' />
           <img src={img} className='img-responsive' />
         </div>
+        
       </div>
     );
   }

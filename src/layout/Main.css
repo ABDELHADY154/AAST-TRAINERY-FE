@@ -29,6 +29,14 @@ body {
   line-height: 44px;
   color: #1e4274;
 }
+.header-seco {
+  font-family: SF Compact Display;
+  font-style: normal;
+  font-weight: 800;
+  font-size: 40px;
+  line-height: 44px;
+  color: #cd8930;
+}
 .text {
   font-family: SF Compact Display;
   font-style: normal;
@@ -106,12 +114,18 @@ body {
 .test {
   position: -webkit-sticky !important;
 }
-@media (max-width: 1423px) {
-  .pw {
-    display: none;
+
+/* @media (max-width: 1700px) {
+  .imgbook {
+    width: 50%;
   }
+} */
+@media (max-width: 1500px) {
   .sms {
     display: none;
+  }
+  .imgbook {
+    display: none !important;
   }
   .sssss {
     width: 25%;
@@ -128,7 +142,7 @@ body {
     overflow: hidden;
     white-space: nowrap;
     padding: 0;
-    margin: auto;
+    margin: 0;
 
     font-size: 24px;
   }
@@ -142,9 +156,42 @@ body {
     min-width: 100%;
     flex-wrap: nowrap;
   }
+  .header {
+    font-size: 35px;
+  }
 }
-
+@media (max-width: 1200px) {
+  .header {
+    font-family: SF Compact Display;
+    font-style: normal;
+    font-weight: 800;
+    line-height: 35px;
+    clear: both !important;
+    overflow: hidden !important;
+    white-space: nowrap;
+    padding: 0 !important;
+    margin: 0 !important;
+    font-size: 24px;
+  }
+  .respo {
+    font-family: SF Compact Display;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 18px;
+    font-size: 15px !important;
+    clear: both !important;
+    overflow: hidden !important;
+    white-space: nowrap;
+    padding: 0 !important;
+    margin: 0 !important;
+    font-size: 24px;
+  }
+}
 @media (max-width: 550px) {
+  .pw {
+    display: none;
+  }
+
   .infoApi {
     font-family: SF Compact Display;
     font-style: normal;
@@ -159,9 +206,10 @@ body {
   .cardImg {
     width: 100%;
   }
-}
-@media (max-width: 1200px) {
-  .header {
-    font-size: 35px;
+  .text {
+    font-family: SF Compact Display;
+    font-style: normal;
+    font-weight: 400 !important;
+    font-size: 16px;
   }
 }
