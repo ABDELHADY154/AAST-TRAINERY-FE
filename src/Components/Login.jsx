@@ -82,29 +82,27 @@ class Login extends React.Component {
       );
     } else {
       var Invaldemail = (
-        <div className='container m-5'>
-          <div className='form-label-group input-data '>
+        <div className='o-scroll'>
+          <div className='form-label-group input-field'>
             <input
               type='email'
               id='inputEmail'
-              className='form-control'
+              className=''
               required
-              autoFocus
               onChange={(e) => (this.Email = e.target.value)}
             ></input>
-            <label>Email</label>
+            <label className='label'>Email</label>
           </div>
 
-          <div className='form-label-group input-data '>
+          <div className='form-label-group input-field'>
             <input
               type='password'
               id='inputPassword'
-              className='form-control'
+              className=''
               required
               onChange={(e) => (this.Password = e.target.value)}
             />
-            <div class='underline'></div>
-            <label>Password</label>
+            <label className='label'>Password</label>
           </div>
         </div>
       );
@@ -114,28 +112,28 @@ class Login extends React.Component {
       return <Redirect to='/Home' />;
     } else {
       return (
-        <div className='container-fluid'>
-          <div className='row no-gutter'>
+        <div className='container-fluid h-90 no-scroll'>
+          <div className='row no-gutter  '>
             <div className='col-md-9 col-lg-7 '>
-              <div className='login d-flex align-items-center py-5'>
-                <div className='container'>
-                  <div className='row'>
-                    <div className='col-md-7 col-lg-7 mx-auto login h-100'>
-                      <h3 className='login-heading mb-5'>Sign In </h3>
+              <div className='login d-flex align-items-center p-3'>
+                <div className='container '>
+                  <div className='row m-auto'>
+                    <div className='col-md-7 col-lg-7 mx-auto login h-100 shadow rounded '>
+                      <h3 className='login-heading'>Sign In </h3>
                       <form onSubmit={this.handleSubmit}>
                         {Invaldemail}
 
                         <button
-                          className='btn btn-lg col-sm-5 btn-outline-primary d-block text-uppercase font-weight-bold mb-2'
+                          className='btn btn-lg col-sm-5 btn-outline-primary d-block text-uppercase font-weight-bold mb-2 py-3'
                           type='submit'
                         >
                           Sign in
                         </button>
-                        <a className='color-orange ' href='/Register'>
+                        <a className='color-orange py-3' href='/Register'>
                           Dont' Have An Account ?
                         </a>
 
-                        <div className='text-center'>
+                        <div className='text-center py-3'>
                           <a className='small' href='#'>
                             Forgot password?
                           </a>
@@ -146,7 +144,7 @@ class Login extends React.Component {
                 </div>
               </div>
             </div>
-            <div className='col-md-3 col-lg-6 bg-image'></div>
+            <div className='col-md-3 col-lg-6 bg-image rounded'></div>
           </div>
         </div>
       );

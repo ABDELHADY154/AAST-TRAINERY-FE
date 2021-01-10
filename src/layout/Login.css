@@ -3,22 +3,36 @@
 .login {
   min-height: 100%;
   width: 80%;
+  overflow-y: hidden;
+}
+.shadow {
+  width: 100%;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 .logine {
   width: 100%;
 }
-
-.bg-image {
+.no-scroll {
+  overflow-y: hidden;
+  overflow-x: hidden;
   background-image: url(../Components/assests/imgs/login.jpg);
-  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  opacity: 100%;
+  right: 0;
+  float: right;
+}
+.bg-image {
+  /* background-image: url(../Components/assests/imgs/login.jpg); */
+  background-repeat: no-repeat;
   background-size: cover;
-  min-height: 92%;
-  min-width: 50%;
-
-  height: auto;
   position: fixed;
-  left: 50%;
-  border-top-left-radius: 15px;
+  width: 588px;
+  height: 730px;
+  left: 852px;
+  top: 79px;
+
+  border-radius: 15px;
 }
 /* @media screen and (max-width: 1024px) {
   .bg-image {
@@ -73,41 +87,49 @@ input:focus {
 .login-heading {
   font-weight: 500;
   font-size: 40px;
+
   color: #1e4274;
+  margin-bottom: 85px;
 }
 .invalid-feedback {
   display: block !important;
 }
-@import url("https://fonts.googleapis.com/css?family=Poppins:400,500,600,700&display=swap");
 
-.wrapper {
-  background: #fff;
-  padding: 5%;
-  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-}
-.wrapper .input-data {
-  height: 40px;
-  width: 100%;
+.input-field {
   position: relative;
 }
-.wrapper .input-data input {
-  height: 100%;
-  width: 100%;
-  border: none;
-  font-size: 17px;
-  border-bottom: 2px solid silver;
-}
-.input-data input:focus ~ label,
-.input-data input:valid ~ label {
-  transform: translateY(-20px);
-  font-size: 15px;
-  color: #4158d0;
-}
-.wrapper .input-data label {
+.label {
   position: absolute;
-  bottom: 10px;
+  top: 0;
   left: 0;
-  color: grey;
-  pointer-events: none;
-  transition: all 0.3s ease;
+  width: 100%;
+  color: #1e4274;
+  transition: 0.2s all;
+  cursor: text;
+}
+input {
+  width: 100%;
+  border: 0;
+  outline: 0;
+  padding: 0.5rem 0;
+  border-bottom: 4px solid #1e4274;
+  box-shadow: none;
+  color: #111;
+  margin-bottom: 50px;
+}
+
+input:focus,
+input:valid {
+  border-color: #cd8930;
+}
+input:focus ~ label,
+input:valid ~ label {
+  font-size: 14px;
+  top: -24px;
+  color: #cd8930;
+}
+@media (max-width: 768px) {
+  .bg-image {
+    display: none;
+  }
 }
