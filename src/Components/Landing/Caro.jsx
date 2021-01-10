@@ -47,12 +47,25 @@ export default class Caro extends Component {
         >
           <div className='carousel'>
             <img src={img} className='img-responsive'></img>
-            <h1 className='carousel-caption1'>saas</h1>
+            <div className='carousel-caption1'>
+              <h1 className='carousel-header'>
+                Start Your Non-Experience Career
+              </h1>
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut
+                dolor quis morbi sagittis donec sed massa.
+              </p>
+              <button
+                renderAs='button'
+                className='btn btn-outline-light btn-small btn-nav mr-1 pl-4 pr-4'
+              >
+                <span>Sign up</span>
+              </button>
+            </div>
           </div>
           <img src={img} className='img-responsive' />
           <img src={img} className='img-responsive' />
         </div>
-        
       </div>
     );
   }

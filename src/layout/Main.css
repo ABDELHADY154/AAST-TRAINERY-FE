@@ -78,30 +78,28 @@ body {
   padding: 3px 10px;
   margin-bottom: 10px;
   color: #fff;
-  background: rgba(255, 255, 255, 0.85);
-  text-align: center;
-  backdrop-filter: blur(5px);
+  text-align: left;
   border-radius: 10px;
-  color: #1e4274;
 }
-.carousel-caption1:hover {
+.carousel-caption2 {
   position: absolute;
   right: 15%;
   top: 140px;
   left: 15%;
   padding: 3px 10px;
-  margin-bottom: 10px;
-  background: #cd8930;
-  text-align: center;
+  margin-bottom: 15px;
+  background: rgba(255, 255, 255, 0.85);
   backdrop-filter: blur(5px);
   border-radius: 10px;
-  color: #1e4274;
+  text-align: center;
 }
 .textt {
   font-family: SF Compact Display;
-  font-weight: 400 !important;
-  font-size: 23px !important;
-  line-height: 27px !important;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 20px;
+  line-height: 27px;
+  color: #1e4274;
 
   text-align: justify;
 }
@@ -115,11 +113,10 @@ body {
   position: -webkit-sticky !important;
 }
 
-/* @media (max-width: 1700px) {
-  .imgbook {
-    width: 50%;
-  }
-} */
+.cardImg2{
+width: 20%;
+
+}
 @media (max-width: 1500px) {
   .sms {
     display: none;
@@ -177,8 +174,8 @@ body {
     font-family: SF Compact Display;
     font-style: normal;
     font-weight: 600;
-    line-height: 18px;
-    font-size: 15px !important;
+    line-height: 24px;
+    font-size: 20px !important;
     clear: both !important;
     overflow: hidden !important;
     white-space: nowrap;

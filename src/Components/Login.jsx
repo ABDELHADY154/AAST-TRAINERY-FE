@@ -82,28 +82,29 @@ class Login extends React.Component {
       );
     } else {
       var Invaldemail = (
-        <div>
-          <div className='form-label-group'>
+        <div className='container m-5'>
+          <div className='form-label-group input-data '>
             <input
               type='email'
               id='inputEmail'
               className='form-control'
-              placeholder='Student Email'
               required
               autoFocus
               onChange={(e) => (this.Email = e.target.value)}
-            />
+            ></input>
+            <label>Email</label>
           </div>
 
-          <div className='form-label-group'>
+          <div className='form-label-group input-data '>
             <input
               type='password'
               id='inputPassword'
               className='form-control'
-              placeholder='Password'
               required
               onChange={(e) => (this.Password = e.target.value)}
             />
+            <div class='underline'></div>
+            <label>Password</label>
           </div>
         </div>
       );

@@ -138,6 +138,7 @@ class Nav extends React.Component {
                       <button
                         renderAs='button'
                         className='btn btn-outline-primary btn-small btn-nav mr-1'
+                        href='?/regster'
                       >
                         <span>Sign up</span>
                       </button>

@@ -79,7 +79,7 @@ class Landing extends React.Component {
               <div className=' mt-4'>
                 <div className='card m-2'>
                   <img className='cardImg' src={img1} height='200' />
-                  <div className='carousel-caption1'>
+                  <div className='carousel-caption2'>
                     <h5 className='textt'>CV writing Coaching</h5>
                   </div>
                 </div>
@@ -87,7 +87,7 @@ class Landing extends React.Component {
               <div className=' mt-4 '>
                 <div className=' card m-2'>
                   <img className='cardImg' src={img2} height='200' />
-                  <div className='carousel-caption1'>
+                  <div className='carousel-caption2'>
                     <h5 className='textt'>Interview Coaching</h5>
                   </div>
                 </div>
@@ -95,7 +95,7 @@ class Landing extends React.Component {
               <div className=' mt-4'>
                 <div className=' card m-2'>
                   <img className='cardImg' src={img3} height='200' />
-                  <div className='carousel-caption1'>
+                  <div className='carousel-caption2'>
                     <h5 className='textt '> Coaching Coaching Path</h5>
                   </div>
                 </div>
@@ -107,7 +107,7 @@ class Landing extends React.Component {
           <div className=' d-flex row'>
             <div className='row '>
               <div className='justify-content-between m-5 p-5 container'>
-                <h1 className='header m-auto respo'>Why Join Us ? </h1>
+                <h1 className='header  respo mb-5'>Why Join Us ? </h1>
                 <p className='text pw'>
                   Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut
                   dolor quis morbi sagittis donec sed massa.
@@ -136,8 +136,8 @@ class Landing extends React.Component {
                       Lorem ipsum dolor sit amet, consectetur adipiscing elit.
                     </p>
                     <div className='d-flex m-auto w-100 store row m-auto d-flex justify-content-center'>
-                      <img src={google} className='m-3 cardImg' />
-                      <img src={apple} className='m-3 cardImg' />
+                      <img src={google} className='m-3 cardImg2' />
+                      <img src={apple} className='m-3 cardImg2' />
                     </div>
                   </li>
                 </ul>
