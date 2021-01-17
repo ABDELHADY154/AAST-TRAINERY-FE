@@ -32,6 +32,7 @@ class Registry extends React.Component {
       name: this.username,
       email: this.Email,
       password: this.Password,
+      // password_confirmation: this.Password,
       reg_no: this.RegNum,
       department_id: this.depart,
     };
