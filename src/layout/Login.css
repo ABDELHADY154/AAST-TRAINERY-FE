@@ -15,7 +15,7 @@
 .no-scroll {
   overflow-y: hidden;
   overflow-x: hidden;
-  background-image: url(../Components/assests/imgs/login.jpg);
+  /* background-image: url(../Components/assests/imgs/login.jpg); */
   background-repeat: no-repeat;
   background-size: contain;
   opacity: 100%;
@@ -23,13 +23,15 @@
   float: right;
 }
 .bg-image {
-  /* background-image: url(../Components/assests/imgs/login.jpg); */
+  overflow-y: hidden;
+  overflow-x: hidden;
+  background-image: url(../Components/assests/imgs/login.jpg);
   background-repeat: no-repeat;
   background-size: cover;
-  position: fixed;
-  width: 588px;
-  height: 730px;
-  left: 852px;
+  position: absolute;
+  width: 45%;
+  height: 87%;
+  right: 0;
   top: 79px;
 
   border-radius: 15px;

@@ -1,14 +1,9 @@
 /** @format */
 
 import React, { Component } from "react";
-import logo from "./Logo.png";
-import {
-  FaFacebookSquare,
-  FaInstagramSquare,
-  FaLinkedinIn,
-} from "react-icons/fa";
+import logo from "../Components/assests/icons/White-Logo.png";
+import { FaFacebookSquare, FaInstagramSquare, FaLinkedinIn } from "react-icons/fa";
 import { BsArrowUp } from "react-icons/bs";
-
 import ScrollTop from "react-scrolltop-button";
 
 export default class Footer extends React.Component {
@@ -17,7 +12,7 @@ export default class Footer extends React.Component {
       <div>
         <footer className='footer-area footer--light m-auto prim'>
           <div className='footer-big'>
-            <div className='container-fluid '>
+            <div className='container-fluid'>
               <div className='row ml-4'>
                 <div className='col-md-5 col-sm-4 '>
                   <div className='footer-widget d-flex justify-content-center '>
@@ -30,12 +25,9 @@ export default class Footer extends React.Component {
                       ></img>
                       <p className='mt-5'>
                         Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                        Consectetur dictumst nisi blandit ornare viverra
-                        eleifend
+                        Consectetur dictumst nisi blandit ornare viverra eleifend
                       </p>
-                      <p className='mt-3'>
-                        © 2020 Life Labour. All Rights Reserved.
-                      </p>
+                      <p className='mt-3'>© 2020 Life Labour. All Rights Reserved.</p>
                     </div>
                   </div>
                 </div>

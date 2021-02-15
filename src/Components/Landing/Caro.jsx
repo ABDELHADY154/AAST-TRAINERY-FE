@@ -1,4 +1,3 @@
-/** @format */
 import React, { Component } from "react";
 
 import img from "./bg1.png";
@@ -48,12 +47,10 @@ export default class Caro extends Component {
           <div className='carousel'>
             <img src={img} className='img-responsive'></img>
             <div className='carousel-caption1'>
-              <h1 className='carousel-header'>
-                Start Your Non-Experience Career
-              </h1>
+              <h1 className='carousel-header'>Start Your Non-Experience Career</h1>
               <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut
-                dolor quis morbi sagittis donec sed massa.
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut dolor quis
+                morbi sagittis donec sed massa.
               </p>
               <button
                 renderAs='button'

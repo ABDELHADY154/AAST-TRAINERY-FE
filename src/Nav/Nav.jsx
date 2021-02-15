@@ -2,12 +2,12 @@
 
 import React from "react";
 import { Link } from "react-router-dom";
-import logo from "../Components/assests/imgs/logo.png";
+import logo from "../Components/assests/icons/Main-Logo.png";
 import avatar from "../Components/Home";
 import "../layout/Nav.css";
 import "../layout/Main.css";
 
-import notifications from "../Components/assests/icons/alarm.svg";
+// import notifications from "../Components/assests/icons/alarm.svg";
 
 class Nav extends React.Component {
   constructor() {
@@ -32,16 +32,11 @@ class Nav extends React.Component {
     }
   };
   render() {
-    if (this.props.loggedIn === true) {
+    if (this.props.loggedIn === true) { 
       return (
         <div>
           <nav className='navbar navbar-expand-lg navbar-light bg-light  '>
-            <img
-              className='navbar-brand img-rounded'
-              src={logo}
-              width='150'
-              alt=''
-            ></img>
+            <img className='navbar-brand img-rounded' src={logo}></img>
             <button
               className='navbar-toggler'
               type='button'
@@ -75,7 +70,7 @@ class Nav extends React.Component {
             <ul className='nav  pt-3'>
               <li className='nav-item  pt-1'>
                 <img
-                  src={notifications}
+                  // src={notifications}
                   alt='Avatar'
                   width='21'
                   height='18'
@@ -100,12 +95,7 @@ class Nav extends React.Component {
         <div>
           <nav className='navbar navbar-expand-lg navbar-light bg-light w-100 '>
             <div className='container-fluid'>
-              <img
-                className='navbar-brand ml-5'
-                src={logo}
-                width='170'
-                alt=''
-              ></img>
+              <img className='navbar-brand ml-5' src={logo} width='170' alt=''></img>
               <button
                 className='navbar-toggler'
                 type='button'
@@ -117,10 +107,7 @@ class Nav extends React.Component {
               >
                 <span className='navbar-toggler-icon'></span>
               </button>
-              <div
-                className='collapse navbar-collapse flex-container'
-                id='navbarNav'
-              >
+              <div className='collapse navbar-collapse flex-container' id='navbarNav'>
                 <ul className='nav navbar-nav btn '>
                   <Link to='/Landing' />
                   <li className='nav-item'>

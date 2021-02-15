@@ -54,9 +54,7 @@ class Login extends React.Component {
       Invaldemail = (
         <div>
           <div className='invalid-feedback'>
-            {this.state.error && (
-              <p className='error'>{this.state.error.emailErr}</p>
-            )}
+            {this.state.error && <p className='error'>{this.state.error.emailErr}</p>}
           </div>
           <div className='form-label-group'>
             <input
@@ -104,6 +102,7 @@ class Login extends React.Component {
             />
             <label className='label'>Password</label>
           </div>
+         
         </div>
       );
     }
@@ -112,13 +111,13 @@ class Login extends React.Component {
       return <Redirect to='/Home' />;
     } else {
       return (
-        <div className='container-fluid h-90 no-scroll'>
-          <div className='row no-gutter  '>
+        <div className='container-fluid h-100 no-scroll'>
+          <div className='row no-gutter '>
             <div className='col-md-9 col-lg-7 '>
               <div className='login d-flex align-items-center p-3'>
                 <div className='container '>
                   <div className='row m-auto'>
-                    <div className='col-md-7 col-lg-7 mx-auto login h-100 shadow rounded '>
+                    <div className='col-md-7 col-lg-7 mx-auto login h-100 rounded '>
                       <h3 className='login-heading'>Sign In </h3>
                       <form onSubmit={this.handleSubmit}>
                         {Invaldemail}
@@ -144,7 +143,7 @@ class Login extends React.Component {
                 </div>
               </div>
             </div>
-            <div className='col-md-3 col-lg-6 bg-image rounded'></div>
+            <div className='col-8 col-md-8 col-xl-6 align-self-end bg-image rounded'></div>
           </div>
         </div>
       );

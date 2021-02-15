@@ -58,10 +58,7 @@ class App extends React.Component {
                 {/* <Route exact path='/'>
                   <Redirect to='/Login' />
                 </Route> */}
-                <Route
-                  path='/Login'
-                  component={() => <Login setUser={this.setUser} />}
-                />
+                <Route path='/Login' component={() => <Login setUser={this.setUser} />} />
 
                 {/* <== Home for Users */}
                 <AuthRoute exact path='/Home' component={Home} />
