@@ -113,9 +113,8 @@ body {
   position: -webkit-sticky !important;
 }
 
-.cardImg2{
-width: 20%;
-
+.cardImg2 {
+  width: 20%;
 }
 @media (max-width: 1500px) {
   .sms {
@@ -151,7 +150,7 @@ width: 20%;
     line-height: 27px;
     color: #cd8930;
     min-width: 100%;
-    flex-wrap: nowrap;
+    flex-wrap: wrap;
   }
   .header {
     font-size: 35px;

@@ -1,0 +1,16 @@
+@font-face {
+  font-family: SF reg;
+  font-style: normal;
+  font-weight: 400;
+  src: url("../Components/assests/Fonts/SF-Compact-Display-Regular.otf");
+}
+@font-face {
+  font-family: SF bold;
+  src: url("../Components/assests/Fonts/SF-Compact-Display-Bold.otf");
+}
+#Experienceimg {
+  width: 40% !important;
+  height: 20% !important;
+  /* align-content: flex-end !important; */
+  margin-left: 60%;
+}
