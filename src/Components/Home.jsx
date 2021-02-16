@@ -23,7 +23,6 @@ class Home extends Component {
         .then((res) => {
           if (res.status === 200) {
             sessionStorage.setItem("avatar", res.data.response.data.image);
-
             this.setState({
               user: res.data.response.data,
               loading: true,

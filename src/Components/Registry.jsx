@@ -4,6 +4,7 @@ import React from "react";
 // const MyFacebookLoader = () => <Facebook />;
 import { Loader2 } from "../loader";
 import { Redirect } from "react-router-dom";
+import "../layout/Registry.css";
 class Registry extends React.Component {
   state = {
     error: "",
@@ -26,16 +27,18 @@ class Registry extends React.Component {
   }
   handleSubmit = async (e) => {
     e.preventDefault();
-    e.target.reset();
+    // e.target.reset();
 
     const data = {
       name: this.username,
       email: this.Email,
       password: this.Password,
+      password_confirmation: this.password_confirmation,
+      gender: this.gender,
       reg_no: this.RegNum,
       department_id: this.depart,
     };
-
+    console.log(data);
     await axios
       .post("/register", data)
       .then((response) => {
@@ -46,6 +49,7 @@ class Registry extends React.Component {
           status: sessionStorage.getItem("status"),
           loggedIn: true,
         });
+        console.log(response);
       })
       .catch((error) => {
         console.log(error);
@@ -56,63 +60,92 @@ class Registry extends React.Component {
             regnumErr: error.response.data.errors.reg_no,
             departErr: error.response.data.errors.department_id,
             passwordErr: error.response.data.errors.password,
+            passwordConfErr: error.response.data.errors.password,
+            genderErr: error.response.data.errors.gender,
           },
         });
       });
   };
   render() {
-    if (
-      this.state.error ||
-      this.state.error.usernameErr ||
-      this.state.error.emailErr ||
-      this.state.error.regnumErr ||
-      this.state.error.departErr ||
-      this.state.error.passwordErr
-    ) {
-      let Invaldedata = (
+    if (this.state.error) {
+      Invaldedata = (
         <div>
-          <div className='form-label-group'>
-            <input
-              type='name'
-              placeholder='Enter your Full Name.'
-              className='form-control is-invalid error-input'
-              id='Lyear'
-              onChange={(e) => (this.username = e.target.value)}
-            />
-            <div>
+          <div className='form-row'>
+            <div className='form-group col-12'>
+              <input
+                type='name'
+                placeholder='Enter your Full Name.'
+                className='form-control'
+                id='Lyear'
+                onChange={(e) => (this.username = e.target.value)}
+              />
               {this.state.error && (
-                <p className='error'> {this.state.error.usernameErr} </p>
+                <p className='error'>{this.state.error.usernameErr}</p>
               )}
             </div>
           </div>
-          <div className='form-label-group'>
-            <input
-              type='text'
-              className='form-control is-invalid error-input'
-              id='validationServer05'
-              placeholder='Student Email'
-              required
-            />
-            <div>
-              {this.state.error && (
-                <p className='error'> {this.state.error.emailErr} </p>
-              )}
+          <div className='form-row'>
+            <div className='form-group col-12'>
+              <input
+                type='email'
+                className='form-control'
+                id='Email'
+                placeholder='Enter Your Sudent Email'
+                onChange={(e) => (this.Email = e.target.value)}
+              />
+              {this.state.error && <p className='error'>{this.state.error.emailErr}</p>}
             </div>
           </div>
 
           <div className='form-label-group'>
-            <input
-              type='password'
-              id='inputPassword'
-              className='form-control is-invalid error-input'
-              placeholder='Password'
-              required
-              onChange={(e) => (this.Password = e.target.value)}
-            />
-            <div>
-              {this.state.error && (
-                <p className='error'> {this.state.error.passwordErr} </p>
-              )}
+            <h2>Gender</h2>
+            <div class='form-check form-check-inline'>
+              <input
+                class=''
+                type='radio'
+                name='inlineRadioOptions'
+                id='inlineRadio1'
+                value='male'
+                onChange={(e) => (this.gender = e.target.value)}
+              />
+              <label class='form-check-label' for='inlineCheckbox3'>
+                Male
+              </label>
+            </div>
+            <div class='checkbox form-check-inline'>
+              <input
+                class=''
+                type='radio'
+                name='inlineRadioOptions'
+                id='Gender'
+                value='female'
+                onChange={(e) => (this.gender = e.target.value)}
+              />
+              <label class='form-check-label' for='inlineCheckbox3'>
+                Female
+              </label>
+            </div>
+            {this.state.error && <p className='error'>{this.state.error.genderErr}</p>}
+          </div>
+
+          <div className='form-row'>
+            <div className='form-group col-12'>
+              <input
+                type='password'
+                className='form-control'
+                placeholder='Enter your password'
+                onChange={(e) => (this.Password = e.target.value)}
+              />
+              <p className='error'> {this.state.error.passwordConfErr} </p>
+            </div>
+            <div className='form-group col-12'>
+              <input
+                type='password'
+                className='form-control'
+                placeholder='ReEnter your password'
+                onChange={(e) => (this.password_confirmation = e.target.value)}
+              />
+              <p className='error'> {this.state.error.passwordConfErr} </p>
             </div>
           </div>
           <h3 className='login-heading mb-5'>College Information</h3>
@@ -121,16 +154,38 @@ class Registry extends React.Component {
             <div className='form-group col-12'>
               <input
                 type='text'
-                className='form-control is-invalid error-input'
+                className='form-control'
                 id='Reg-num'
                 placeholder='Enter your Registration number'
                 onChange={(e) => (this.RegNum = e.target.value)}
               />
-              <div>
-                {this.state.error && (
-                  <p className='error'> {this.state.error.regnumErr} </p>
-                )}
-              </div>
+              {this.state.error && (
+                <p className='error'> {this.state.error.regnumErr} </p>
+              )}
+            </div>
+          </div>
+
+          <div className='form-row'>
+            <div className='form-group col-12'>
+              {this.state.loading === false ? (
+                <Loader2 />
+              ) : (
+                <select
+                  type='text'
+                  className='form-control'
+                  id='departs'
+                  onChange={(e) => (this.depart = e.target.value)}
+                >
+                  <option>Please Select Your Department</option>
+
+                  {this.state.departs.map((depart) => (
+                    <option value={depart.id} key={depart.id}>
+                      {depart.dep_name}
+                    </option>
+                  ))}
+                </select>
+              )}
+              {this.state.error && <p className='error'>{this.state.error.departErr}</p>}
             </div>
           </div>
         </div>
@@ -161,6 +216,36 @@ class Registry extends React.Component {
             </div>
           </div>
 
+          <div className='form-label-group'>
+            <h2>Gender</h2>
+            <div class='form-check form-check-inline'>
+              <input
+                class=''
+                type='radio'
+                name='inlineRadioOptions'
+                id='inlineRadio1'
+                value='male'
+                onChange={(e) => (this.gender = e.target.value)}
+              />
+              <label class='form-check-label' for='inlineCheckbox3'>
+                Male
+              </label>
+            </div>
+            <div class='checkbox form-check-inline'>
+              <input
+                class=''
+                type='radio'
+                name='inlineRadioOptions'
+                id='Gender'
+                value='female'
+                onChange={(e) => (this.gender = e.target.value)}
+              />
+              <label class='form-check-label' for='inlineCheckbox3'>
+                Female
+              </label>
+            </div>
+          </div>
+
           <div className='form-row'>
             <div className='form-group col-12'>
               <input
@@ -168,6 +253,14 @@ class Registry extends React.Component {
                 className='form-control'
                 placeholder='Enter your password'
                 onChange={(e) => (this.Password = e.target.value)}
+              />
+            </div>
+            <div className='form-group col-12'>
+              <input
+                type='password'
+                className='form-control'
+                placeholder='ReEnter your password'
+                onChange={(e) => (this.password_confirmation = e.target.value)}
               />
             </div>
           </div>
@@ -184,11 +277,35 @@ class Registry extends React.Component {
               />
             </div>
           </div>
+
+          <div className='form-row'>
+            <div className='form-group col-12'>
+              {this.state.loading === false ? (
+                <Loader2 />
+              ) : (
+                <select
+                  type='text'
+                  className='form-control'
+                  id='departs'
+                  onChange={(e) => (this.depart = e.target.value)}
+                >
+                  <option>Please Select Your Department</option>
+
+                  {this.state.departs.map((depart) => (
+                    <option value={depart.id} key={depart.id}>
+                      {depart.dep_name}
+                    </option>
+                  ))}
+                </select>
+              )}
+              {this.state.error && <p className='error'>{this.state.error.departErr}</p>}
+            </div>
+          </div>
         </div>
       );
     }
 
-    if (this.state.loggedIn === true) {
+    if (this.state.loggedIn === "0000") {
       return <Redirect to='/Home' />;
     } else {
       return (
@@ -203,38 +320,11 @@ class Registry extends React.Component {
                       <form onSubmit={this.handleSubmit}>
                         {Invaldedata}
 
-                        <div className='form-row'>
-                          <div className='form-group col-12'>
-                            {this.state.loading === false ? (
-                              <Loader2 />
-                            ) : (
-                              <select
-                                type='text'
-                                className='form-control'
-                                id='departs'
-                                onChange={(e) => (this.depart = e.target.value)}
-                              >
-                                <option>Please Select Your Department</option>
-
-                                {this.state.departs.map((depart) => (
-                                  <option value={depart.id} key={depart.id}>
-                                    {depart.dep_name}
-                                  </option>
-                                ))}
-                              </select>
-                            )}
-                            {this.state.error && (
-                              <p className='error'>
-                                {this.state.error.departErr}
-                              </p>
-                            )}
-                          </div>
-                        </div>
                         <button
                           className='btn btn-lg col-sm-5 btn-outline-primary d-block text-uppercase font-weight-bold mb-2'
                           type='submit'
                         >
-                          Sign in
+                          Sign up
                         </button>
                       </form>
                     </div>

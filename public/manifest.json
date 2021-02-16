@@ -1,7 +1,6 @@
 {
   "short_name": "TRAINERY",
   "name": "AAST-TRAINERY",
-
   "start_url": ".",
   "display": "standalone",
   "theme_color": "#000000",
