@@ -55,10 +55,10 @@ export default class Footer extends React.Component {
 
                         <li s>
                           <a href="#">
-                            <FaInstagram className="m-2" />
+                            <FaInstagram id="instagram" />
                           </a>
                           <a href="#">
-                            <FaFacebookF className="m-2 " />
+                            <FaFacebookF className="m-2" />
                           </a>
                           <a href="#">
                             <FaLinkedinIn className="m-2" />

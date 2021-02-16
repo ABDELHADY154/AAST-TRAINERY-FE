@@ -2,7 +2,7 @@ import React from "react";
 import { axios } from "../../Api/axios";
 
 import { Redirect } from "react-router-dom";
-import Caro from "./Caro";
+// import Caro from "./Caro";
 import Footer from "../Footer";
 import img from "./bg (2).png";
 import img1 from "./Rectangle1.png";
@@ -39,7 +39,7 @@ class Landing extends React.Component {
     } else {
       return (
         <div className="test">
-          <Caro />
+          {/* <Caro /> */}
           <div className="container-fluid">
             <div className=" d-flex row ">
               <div className="m-auto p-5 col-xs-12 col-sm-12 col-md-7 .col-lg-5 container w-100">
