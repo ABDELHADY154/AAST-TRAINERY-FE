@@ -1,6 +1,5 @@
 import React from "react";
 import { axios } from "../../Api/axios";
-
 import { Redirect } from "react-router-dom";
 import Caro from "./Caro";
 import Footer from "../Footer";
@@ -12,7 +11,6 @@ import img4 from "./2.png";
 import google from "./google.png";
 import apple from "./apple.png";
 import { Loader } from "../../loader";
-
 import { FaCheck } from "react-icons/fa";
 import { Component } from "react";
 

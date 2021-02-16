@@ -1,5 +1,3 @@
-/** @format */
-
 import React from "react";
 import { BrowserRouter, Redirect, Route, Switch } from "react-router-dom";
 import Registry from "./Components/Registry";
