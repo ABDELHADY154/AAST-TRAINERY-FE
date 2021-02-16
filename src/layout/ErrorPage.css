@@ -42,13 +42,3 @@
   /* justify-content: center; */
   /* align-items: center; */
 }
-
-/* @media (min-width: 375px) and (max-width: 400px),
-  (min-width: 468px),
-  (-webkit-min-device-pixel-ratio: 2),
-  (min-resolution: 192dpi) {
-  errorImg {
-    height: 40px;
-    width: 55px;
-  }
-} */

@@ -8,7 +8,6 @@ import Login from "./Components/Login";
 import Nav from "./Nav/Nav";
 import Landing from "./Components/Landing";
 import Profile from "./Components/Profile";
-import ErrorPage from "./Components/ErrorPage404";
 // import Maintains from "./Components/Maintains";
 const CheckAuth = () => {
   const token = sessionStorage.getItem("token");
@@ -45,7 +44,6 @@ class App extends React.Component {
   };
   render() {
     // console.log(this.state.loggedIn);
-    return <ErrorPage />;
 
     return (
       <BrowserRouter>

@@ -21,7 +21,7 @@ class ErrorPage extends React.Component {
           {/* </div> */}
         </nav>
         <div className="content d-flex flex-column flex-lg-row justify-content-Center">
-          <div className="col-6  errolCol">
+          <div className="col-lg-6 col-12 errolCol">
             <div className="errorTitle">
               <h1 className="title">4</h1>
               <span class="material-icons ">warning</span>
@@ -34,7 +34,7 @@ class ErrorPage extends React.Component {
             </p>
           </div>
           <div className="col"></div>
-          <img src={error} alt="" class=" col-4 errorImg " />
+          <img src={error} alt="" class=" col-lg-4 col-12 errorImg " />
         </div>
       </div>
     );
