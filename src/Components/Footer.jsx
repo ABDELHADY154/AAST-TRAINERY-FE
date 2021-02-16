@@ -47,8 +47,6 @@ export default class Footer extends React.Component {
                           <FaInstagramSquare className='m-2' />
                           <FaFacebookSquare className='m-2 ' />
                           <FaLinkedinIn className='m-2' />
-                          <BsArrowUp />
-                          <BsArrowUp />
                         </li>
                       </ul>
                     </div>
@@ -73,7 +71,15 @@ export default class Footer extends React.Component {
               </div>
             </div>
           </div>
-          <ScrollTop icon={<BsArrowUp />} />
+          <ScrollTop
+            text='take me to your header'
+            distance={100}
+            breakpoint={660}
+            className='scroll-your-role'
+            speed={1000}
+            target={100}
+            icon={<BsArrowUp />}
+          />
         </footer>
       </div>
     );

@@ -27,7 +27,6 @@ class Landing extends React.Component {
         opportunities: data.data.response.data.opportunities,
         applied: data.data.response.data.applied,
       });
-      console.log(data.data.response.data);
     });
   }
   render() {
@@ -39,7 +38,7 @@ class Landing extends React.Component {
           <Caro />
           <div className='container-fluid'>
             <div className=' d-flex row '>
-              <div className='m-auto p-5 col-xs-12 col-sm-12 col-md-7 .col-lg-5 container w-100'>
+              <div className='m-auto p-5 col-xs-12 col-sm-12 col-md-7 col-lg-5 container w-100'>
                 <h1 className='header m-auto respo'>We Provide The Best Experience</h1>
                 <p className='pw'>
                   Lorem ipsum dolor sit amet, consectetur adipiscing elit. Consectetur
@@ -66,22 +65,8 @@ class Landing extends React.Component {
                       </div>
                     </div>
                   )}
-
-                  <div className='mr-5 pr-5'>
-                    <p>500</p>
-                    <p className='text-left'> Opportunity</p>
-                  </div>
-                  <div className='mr-5 pr-5'>
-                    <p> 500</p>
-                    <p className='text-left'>Student</p>
-                  </div>
-                  <div className='mr-5  pr-5'>
-                    <p>500</p>
-                    <p className='text-left'>Accpected</p>
-                  </div>
                 </div>
               </div>
-
               <img
                 src={img}
                 className='rounded col-4 col-sm-4  mt-5 ml-auto justify-content-between sms p-0 w-100'
