@@ -5,6 +5,13 @@
 li {
   list-style: none;
 }
+ul {
+  margin: 0;
+  padding: 0;
+}
+a {
+  text-decoration: none;
+}
 .Container {
   display: flexbox;
 }
@@ -14,27 +21,6 @@ li {
 .flex-column {
   margin-left: 10% !important;
   margin-top: 10% !important;
-}
-
-.go_top {
-  line-height: 40px;
-  cursor: pointer;
-  width: 40px;
-  background: #1e4274;
-  color: #fff;
-  position: fixed;
-  -webkit-box-shadow: 0 4px 4px rgba(0, 0, 0, 0.1);
-  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.1);
-  -webkit-border-radius: 50%;
-  border-radius: 50%;
-  right: -webkit-calc((100% - 1140px)/ 2);
-  right: calc((100% - 1140px) / 2);
-  z-index: 111;
-  bottom: 80px;
-  text-align: center;
-}
-.go_top span {
-  display: flex;
 }
 
 .footer-big .footer-widget {
@@ -62,7 +48,7 @@ li {
   color: #cd8930;
 }
 #About {
-  margin-top: 28% !important;
+  margin-top: 21% !important;
 }
 #Account {
   margin-top: 28% !important;
@@ -105,6 +91,12 @@ li {
     padding: 0;
   }
 }
-/* #footlogo {
-  margin-bottom: auto;
-} */
+
+@media screen and (max-width: 600px) {
+  #About {
+    margin-top: 0 !important;
+  }
+  #Account {
+    margin-top: 0 !important;
+  }
+}

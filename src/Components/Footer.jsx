@@ -29,7 +29,7 @@ export default class Footer extends React.Component {
                         src={logo}
                         width="40%"
                       ></img>
-                      <p className="mt-5 ">
+                      <p className="mt-2 ">
                         Lorem ipsum dolor sit amet, consectetur adipiscing elit.
                         Consectetur dictumst nisi blandit ornare viverra
                         eleifend
@@ -40,23 +40,31 @@ export default class Footer extends React.Component {
                     </div>
                   </div>
                 </div>
-                <div className="col-md-2 col-sm-4 mt-2 ">
-                  <div className="footer-widget d-flex ">
-                    <div id="About" className="footer-menu flex-column ">
+                <div className="col-md-2 col-sm-4  ">
+                  <div id="About" className="footer-widget d-flex ">
+                    <div className="footer-menu flex-column ">
                       <h4 className="footer-widget-title  ">About</h4>
                       <ul>
                         <li>
-                          <a href="#">About us</a>
+                          <a href="#">About Us</a>
                         </li>
                         <li>
-                          <a href="#">Contact us</a>
+                          <a href="#">Contact Us</a>
                         </li>
 
-                        <li>
-                          <FaInstagram className="m-2" />
-                          <FaFacebookF className="m-2 " />
-                          <FaLinkedinIn className="m-2" />
-                          <FaYoutube className="m-2" />
+                        <li s>
+                          <a href="#">
+                            <FaInstagram className="m-2" />
+                          </a>
+                          <a href="#">
+                            <FaFacebookF className="m-2 " />
+                          </a>
+                          <a href="#">
+                            <FaLinkedinIn className="m-2" />
+                          </a>
+                          <a href="#">
+                            <FaYoutube className="m-2" />
+                          </a>
                         </li>
                       </ul>
                     </div>
@@ -65,11 +73,11 @@ export default class Footer extends React.Component {
 
                 <div className="col-md-2 col-sm-4 mt-2">
                   <div className="footer-widget d-flex">
-                    <div id="Account" className="footer-menu  flex-column">
+                    <div id="Account" className="footer-menu flex-column">
                       <h4 className="footer-widget-title">Account</h4>
                       <ul>
                         <li>
-                          <a href="#">Sign up</a>
+                          <a href="#">Sign Up</a>
                         </li>
                         <li>
                           <a href="#">Sign In</a>
