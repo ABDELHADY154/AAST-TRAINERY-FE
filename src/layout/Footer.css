@@ -51,7 +51,7 @@ a {
   margin-top: 21% !important;
 }
 #Account {
-  margin-top: 28% !important;
+  margin-top: 27% !important;
 }
 .footer-widget-title {
   color: #ffff;
@@ -62,7 +62,7 @@ a {
 
 .widget-about img {
   display: flex;
-  margin-bottom: 30px;
+  /* margin-bottom: 30px; */
 }
 .widget-about p {
   font-weight: 400;
@@ -95,8 +95,12 @@ a {
 @media screen and (max-width: 600px) {
   #About {
     margin-top: 0 !important;
+    margin-left: 30% !important;
+    text-align: center;
   }
   #Account {
     margin-top: 0 !important;
+    margin-left: 42.5% !important;
+    text-align: center;
   }
 }

@@ -7,6 +7,7 @@ import {
   FaInstagram,
   FaLinkedinIn,
   FaYoutube,
+  FaChevronUp,
 } from "react-icons/fa";
 import { BsArrowUp } from "react-icons/bs";
 import ScrollTop from "react-scrolltop-button";
@@ -34,7 +35,7 @@ export default class Footer extends React.Component {
                         Consectetur dictumst nisi blandit ornare viverra
                         eleifend
                       </p>
-                      <p className="mt-3">
+                      <p id="Allrights" className="mt-3">
                         © 2020 AAST Trainery. All Rights Reserved.
                       </p>
                     </div>
@@ -89,7 +90,16 @@ export default class Footer extends React.Component {
               </div>
             </div>
           </div>
-          <ScrollTop icon={<BsArrowUp />} />
+          <ScrollTop
+            text={<FaChevronUp fontSize="30px" />}
+            style={{
+              backgroundColor: "transparent",
+              borderRadius: "5px",
+              color: "#cd8930",
+              borderColor: "#cd8930",
+            }}
+            icon={<FaChevronUp />}
+          />
         </footer>
       </div>
     );
