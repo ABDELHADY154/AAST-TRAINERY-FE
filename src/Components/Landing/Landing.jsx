@@ -13,6 +13,7 @@ import google from "./google.png";
 import apple from "./apple.png";
 import { Loader } from "../../loader";
 import "../../layout/Landing.css";
+import { BsCheck } from "react-icons/bs";
 
 import { FaCheck } from "react-icons/fa";
 import { Component } from "react";
@@ -38,16 +39,16 @@ class Landing extends React.Component {
       <div className="container-fluid">
         <div className="d-flex flex-row">
           <div id="DescCont" className="d-flex flex-column text-wrap bg-none">
-            <div class="fs-2" id="Provide">
+            <div className="fs-2" id="Title">
               We Provide The Best Experience
             </div>
-            <div class="fs-6 " id="DescProv">
+            <div className="fs-6 " id="DescProv">
               Lorem ipsum dolor sit amet consectetur, adipisicing elit.
               Reiciendis numquam similique eum repellat nesciunt beatae error
               quod, tenetur aspernatur a cumque, non maxime sit nulla excepturi
               pariatur inventore illum placeat.
             </div>
-            <div class="d-flex flex-row mt-5 justify-content-between">
+            <div className="d-flex flex-row mt-5 justify-content-between">
               <div>
                 <p className="Numbers">{this.state.opportunities}</p>
                 <div className="NumTitle">Opportunities</div>
@@ -66,6 +67,118 @@ class Landing extends React.Component {
             <img className="ml-200" src={img} />
           </div>
         </div>
+        <div className="d-flex flex-row">
+          <div id="Career" className="fs-2">
+            Career Coaching Guidance
+          </div>
+        </div>
+        <div className="d-flex flex-row" id="CoachCont">
+          <div className="fs-6 " id="DescProv">
+            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Reiciendis
+            numquam similique eum repellat nesciunt beatae error quod, tenetur
+            aspernatur a cumque, non maxime sit nulla excepturi pariatur
+            inventore illum placeat.
+          </div>
+        </div>
+        <div className="d-flex flex-row justify-content-center" id="CoachCont">
+          <div className=" mt-4">
+            <div className="card m-5">
+              <img className="cardImg" src={img1} height="200" />
+              <div className="carousel-caption2">
+                <h5 className="textt">CV writing Coaching</h5>
+              </div>
+            </div>
+          </div>
+          <div className=" mt-4 ">
+            <div className=" card m-5">
+              <img className="cardImg" src={img3} height="200" />
+              <div className="carousel-caption2">
+                <h5 className="textt">Interview Coaching</h5>
+              </div>
+            </div>
+          </div>
+          <div className=" mt-4">
+            <div className=" card m-5">
+              <img className="cardImg" src={img2} height="200" />
+              <div className="carousel-caption2">
+                <h5 className="textt "> Career Coaching Path</h5>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div className="d-flex flex-row">
+          <div id="DescCont" className="d-flex flex-column text-wrap bg-none">
+            <div className="fs-2" id="Title">
+              Why Join Us?
+            </div>
+            <div className="fs-6 " id="DescProv">
+              Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+              Reiciendis numquam similique eum repellat nesciunt beatae error
+              quod, tenetur aspernatur a cumque, non maxime sit nulla excepturi
+              pariatur inventore illum placeat.
+            </div>
+            <div>
+              <div id="checklist" className="d-flex flex-column  ">
+                <div>
+                  <BsCheck color="cd8930" className="fs-3" />
+                  {"    "}
+                  <span>
+                    Lorem ipsum, dolor sit amet consectetur adipisicing elit.
+                  </span>{" "}
+                </div>
+
+                <div className="mt-3">
+                  <BsCheck color="cd8930" className="fs-3" />
+                  {"    "}
+                  <span>
+                    Lorem ipsum, dolor sit amet consectetur adipisicing elit.
+                  </span>
+                </div>
+
+                <div className="mt-3">
+                  <BsCheck color="cd8930" className="fs-3" />
+                  {"    "}
+                  <span>
+                    Lorem ipsum, dolor sit amet consectetur adipisicing elit.
+                  </span>{" "}
+                </div>
+                <div className="mt-4">
+                  <span id="apps" className=" mx-5">
+                    Download Trainery and Start Training
+                  </span>
+                </div>
+                <div className="my-3">
+                  <a href="#">
+                    <img className="mx-5" src={google} height="40" />
+                  </a>
+                  <a href="#">
+                    <img className="mx-3" src={apple} height="40" />
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div id="Experienceimg" className="d-flex flex-column  ">
+            <img className="ml-200" src={img4} />
+          </div>
+        </div>
+
+        <div className="d-flex flex-row">
+          <div id="opportunities" className="fs-2">
+            Over 1000 Opportunities Just For Students
+          </div>
+        </div>
+        <div className="d-flex flex-row" id="CoachCont">
+          <div className="fs-6 mb-1  " id="DescProv">
+            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Reiciendis
+            numquam similique eum repellat nesciunt beatae error quod, tenetur
+            aspernatur a cumque, non maxime sit nulla excepturi pariatur
+            inventore illum placeat.
+          </div>
+        </div>
+
+        <Footer />
       </div>
     );
   }

@@ -11,15 +11,24 @@
   font-family: SF light;
   src: url("../Components/assests/Fonts/SF-Compact-Display-Light.otf");
 }
+@font-face {
+  font-family: SF med;
+  src: url("../Components/assests/Fonts/SF-Compact-Display-Medium.otf");
+}
+.container-fluid {
+  padding: 0;
+}
 #Experienceimg {
   width: 40% !important;
-  height: 36% !important;
+  /* height: 40% !important; */
 }
-#Provide {
-  font-family: SF reg;
+#Title {
+  font-family: SF med;
   color: #1e4274 !important;
 }
+
 #DescProv {
+  margin-top: 1em;
   font-family: SF light !important;
   color: #1e4274 !important;
 }
@@ -37,3 +46,42 @@
   font-size: 1.5em !important;
   color: #cd8930 !important;
 }
+#Career {
+  margin-top: 2em;
+  margin-left: 9.5% !important;
+  font-family: SF med;
+  color: #1e4274 !important;
+}
+#CoachCont {
+  width: 85% !important;
+  margin-left: 9.5% !important;
+}
+.textt {
+  margin-top: 0.3em;
+  font-family: SF light;
+  color: #1e4274 !important;
+}
+#checklist {
+  margin-left: 0;
+  color: #cd8930;
+}
+
+span {
+  color: #1e4274;
+}
+#apps {
+  font-family: SF med;
+  color: #1e4274 !important;
+  font-size: 1.3em !important;
+}
+
+#opportunities {
+  font-family: SF med;
+  color: #cd8930 !important;
+  font-size: 1.3em !important;
+  margin-left: 9.5% !important;
+  margin-top: 3em !important;
+}
+/* @media screen and (max-width: 1315px) {
+
+} */
