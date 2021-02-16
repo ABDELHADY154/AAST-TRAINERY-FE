@@ -1,16 +1,39 @@
 @font-face {
   font-family: SF reg;
-  font-style: normal;
-  font-weight: 400;
+
   src: url("../Components/assests/Fonts/SF-Compact-Display-Regular.otf");
 }
 @font-face {
   font-family: SF bold;
   src: url("../Components/assests/Fonts/SF-Compact-Display-Bold.otf");
 }
+@font-face {
+  font-family: SF light;
+  src: url("../Components/assests/Fonts/SF-Compact-Display-Light.otf");
+}
 #Experienceimg {
   width: 40% !important;
-  height: 20% !important;
-  /* align-content: flex-end !important; */
-  margin-left: 60%;
+  height: 36% !important;
+}
+#Provide {
+  font-family: SF reg;
+  color: #1e4274 !important;
+}
+#DescProv {
+  font-family: SF light !important;
+  color: #1e4274 !important;
+}
+#DescCont {
+  width: 45% !important;
+}
+.Numbers {
+  margin-left: 31% !important;
+  font-family: SF bold;
+  font-size: 2em !important;
+  color: #cd8930 !important;
+}
+.NumTitle {
+  font-family: SF light;
+  font-size: 1.5em !important;
+  color: #cd8930 !important;
 }
