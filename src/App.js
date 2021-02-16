@@ -44,7 +44,6 @@ class App extends React.Component {
   };
   render() {
     // console.log(this.state.loggedIn);
-
     return (
       <BrowserRouter>
         <Nav loggedIn={this.state.loggedIn} setUser={this.setUser} />

@@ -8,7 +8,6 @@ class ErrorPage extends React.Component {
     return (
       <div className="container-fluid">
         <nav className="navbar ">
-          {/* <div className="container-fluid"> */}
           <a className="navbar-brand" href="#">
             <img
               src={logo}
@@ -18,7 +17,6 @@ class ErrorPage extends React.Component {
               className=" d-inline-block align-top img-fluid"
             />
           </a>
-          {/* </div> */}
         </nav>
         <div className="content d-flex flex-column flex-lg-row justify-content-Center">
           <div className="col-lg-6 col-12 errolCol">
@@ -34,7 +32,7 @@ class ErrorPage extends React.Component {
             </p>
           </div>
           <div className="col"></div>
-          <img src={error} alt="" class=" col-lg-4 col-12 errorImg " />
+          <img src={error} alt="" class=" col-lg-4 col-12  " />
         </div>
       </div>
     );

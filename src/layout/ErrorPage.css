@@ -1,19 +1,6 @@
 .content {
   margin: 10vh 5vw;
 }
-.errorImg {
-  /* margin: 0 7vw; */
-  /* display: flex;
-  justify-content: flex-end;
-  align-items: flex-end; */
-  /* background-size: contain;
-
-  width: 30%;
-  min-width: 20%;
-  height: auto;
-  min-height: auto; */
-}
-
 .title {
   font-size: 7rem;
   color: #1e4274;
@@ -26,7 +13,6 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  /* width: 358vw; */
 }
 .text {
   color: #1e4274;
@@ -39,6 +25,4 @@
 .errolCol {
   display: flex;
   flex-direction: column;
-  /* justify-content: center; */
-  /* align-items: center; */
 }
