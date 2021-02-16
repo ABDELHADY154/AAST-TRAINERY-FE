@@ -9,7 +9,7 @@ import {
   FaYoutube,
   FaChevronUp,
 } from "react-icons/fa";
-import { BsArrowUp } from "react-icons/bs";
+import { BsChevronUp } from "react-icons/bs";
 import ScrollTop from "react-scrolltop-button";
 import "../layout/Footer.css";
 
@@ -91,14 +91,14 @@ export default class Footer extends React.Component {
             </div>
           </div>
           <ScrollTop
-            text={<FaChevronUp fontSize="30px" />}
+            text={<BsChevronUp fontSize="30px" />}
             style={{
               backgroundColor: "transparent",
               borderRadius: "5px",
               color: "#cd8930",
               borderColor: "#cd8930",
             }}
-            icon={<FaChevronUp />}
+            icon={<BsChevronUp />}
           />
         </footer>
       </div>
