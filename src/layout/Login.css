@@ -1,5 +1,7 @@
 /** @format */
-
+* {
+  /* overflow-x: visible; */
+}
 .login {
   min-height: 100%;
   width: 80%;
