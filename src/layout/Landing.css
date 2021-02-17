@@ -18,6 +18,9 @@
 .container-fluid {
   padding: 0;
 }
+/* .container {
+  padding: 0;
+} */
 #Experienceimg {
   width: 40% !important;
 }
@@ -36,11 +39,15 @@
   font-family: SF bold;
   font-size: 2em !important;
   color: #cd8930 !important;
+  margin: 0;
 }
 .NumTitle {
-  font-family: SF light;
+  font-family: SF reg;
   font-size: 1.5em !important;
   color: #cd8930 !important;
+}
+#Num {
+  line-height: 45px;
 }
 #Career {
   margin-top: 2em;
