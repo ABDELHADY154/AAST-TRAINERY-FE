@@ -23,7 +23,7 @@ export default class Footer extends React.Component {
               <div className="row ml-4">
                 <div className="col-md-5 col-sm-4 ">
                   <div className="footer-widget d-flex justify-content-center ">
-                    <div className="mt-2 flex-column">
+                    <div id="foot-column" className="mt-2 flex-column">
                       <img
                         id="footlogo"
                         // className="navbar-brand img-rounded m-auto "
@@ -43,7 +43,7 @@ export default class Footer extends React.Component {
                 </div>
                 <div className="col-md-2 col-sm-4  ">
                   <div id="About" className="footer-widget d-flex ">
-                    <div className="footer-menu flex-column ">
+                    <div id="foot-column" className="footer-menu flex-column ">
                       <h4 className="footer-widget-title  ">About</h4>
                       <ul>
                         <li>
@@ -72,7 +72,7 @@ export default class Footer extends React.Component {
                   </div>
                 </div>
 
-                <div className="col-md-2 col-sm-4 mt-2">
+                <div className="col-md-2 col-sm-4 mt-5">
                   <div className="footer-widget d-flex">
                     <div id="Account" className="footer-menu flex-column">
                       <h4 className="footer-widget-title">Account</h4>

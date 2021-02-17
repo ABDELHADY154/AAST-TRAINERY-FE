@@ -18,7 +18,7 @@ a {
 .no-padding {
   padding: 0 !important;
 }
-.flex-column {
+#foot-column {
   margin-left: 10% !important;
   margin-top: 10% !important;
 }
@@ -51,7 +51,9 @@ a {
   margin-top: 21% !important;
 }
 #Account {
-  margin-top: 27% !important;
+  /* margin-top: 6em !important; */
+  margin-left: 10% !important;
+  margin-top: 10% !important;
 }
 .footer-widget-title {
   color: #ffff;

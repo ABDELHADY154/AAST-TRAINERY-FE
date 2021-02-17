@@ -20,7 +20,6 @@
 }
 #Experienceimg {
   width: 40% !important;
-  /* height: 40% !important; */
 }
 #Title {
   font-family: SF med;
@@ -32,11 +31,8 @@
   font-family: SF light !important;
   color: #1e4274 !important;
 }
-#DescCont {
-  width: 45% !important;
-}
+
 .Numbers {
-  margin-left: 31% !important;
   font-family: SF bold;
   font-size: 2em !important;
   color: #cd8930 !important;
@@ -48,14 +44,10 @@
 }
 #Career {
   margin-top: 2em;
-  margin-left: 9.5% !important;
   font-family: SF med;
   color: #1e4274 !important;
 }
-#CoachCont {
-  width: 85% !important;
-  margin-left: 9.5% !important;
-}
+
 .textt {
   margin-top: 0.3em;
   font-family: SF light;
@@ -79,9 +71,5 @@ span {
   font-family: SF med;
   color: #cd8930 !important;
   font-size: 1.3em !important;
-  margin-left: 9.5% !important;
   margin-top: 3em !important;
 }
-/* @media screen and (max-width: 1315px) {
-
-} */
