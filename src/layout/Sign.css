@@ -62,7 +62,7 @@ a {
   transition: 0.2s all;
   cursor: text;
 }
-
+/* mohanad */
 .label-before,
 .field input:focus + label::before,
 .field input:valid + label::before {
@@ -70,7 +70,6 @@ a {
   font-size: 12px;
   top: -20px;
   left: 0;
-
   background: #fff;
   padding: 0 6px;
 }
@@ -93,9 +92,6 @@ a {
 .field input:valid + label::before {
   content: attr(data-title);
 }
-
-
-
 /* Basma */
 input {
   border: 0 !important;

@@ -212,7 +212,6 @@ class Registry extends React.Component {
                 type='name'
                 placeholder='Full Name'
                 onChange={(e) => (this.username = e.target.value)}
-                className='form-control'
               />
             </div>
           </div>
