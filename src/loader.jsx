@@ -5,32 +5,29 @@ import ContentLoader from "react-content-loader";
 
 export const Loader = (props) => (
   <ContentLoader
-    speed={2}
-    width={476}
-    height={124}
-    viewBox='0 0 476 124'
-    backgroundColor='#1c79f1'
-    foregroundColor='#ecebeb'
+    speed={3}
+    width={1000}
+    height={129}
+    viewBox="0 0 1000 129"
+    backgroundColor="#f3f3f3"
+    foregroundColor="#dedede"
     {...props}
   >
-    <rect x='48' y='8' rx='3' ry='3' width='88' height='6' />
-    <rect x='48' y='26' rx='3' ry='3' width='52' height='6' />
-    <rect x='0' y='56' rx='3' ry='3' width='410' height='6' />
-    <rect x='0' y='72' rx='3' ry='3' width='380' height='6' />
-    <rect x='0' y='88' rx='3' ry='3' width='178' height='6' />
-    <circle cx='20' cy='20' r='20' />
+    <rect x="6" y="7" rx="2" ry="2" width="120" height="50" />
+    <rect x="271" y="8" rx="2" ry="2" width="120" height="50" />
+    <rect x="138" y="7" rx="2" ry="2" width="120" height="50" />
   </ContentLoader>
 );
 export const Loader2 = (props) => (
   <ContentLoader
-    speed={2}
-    width={400}
-    height={150}
-    viewBox='0 0 400 150'
-    backgroundColor='#f3f3f3'
-    foregroundColor='#ecebeb'
+    speed={1}
+    width={1000}
+    height={129}
+    viewBox="0 0 1000 129"
+    backgroundColor="#f3f3f3"
+    foregroundColor="#dedede"
     {...props}
   >
-    <rect x='25' y='15' rx='5' ry='5' width='220' height='10' />
+    <rect x="7" y="4" rx="2" ry="2" width="230" height="21" />
   </ContentLoader>
 );
