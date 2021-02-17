@@ -46,13 +46,13 @@ class Home extends Component {
   render() {
     if (this.state.loading === false) {
       return (
-        <div className="container text-center">
+        <div className='container text-center'>
           <Loader />
         </div>
       );
     } else {
       return (
-        <div className="container text-center">
+        <div className='container text-center'>
           <h2> hi {this.state.user.name}</h2>
           <h2> {this.state.user.email}</h2>
           <h2> {this.state.user.department}</h2>
