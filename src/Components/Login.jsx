@@ -58,29 +58,25 @@ class Login extends React.Component {
     if (this.state.error && this.state.error.emailErr) {
       Invaldemail = (
         <div>
-          <div className='col-md-10 col-lg-12 form-label-group input-field'>
+          <div className='col-md-10 col-lg-12 form-label-group input-field field'>
             <input
-              type='text'
-              class='form-control wrong'
-              id='validationServer03'
-              aria-describedby='validationServer03Feedback'
+              type='email'
+              class='wrong'
+              required
               onChange={(e) => (this.Email = e.target.value)}
-
             />
-            <label className='label'>Email</label>
+            <label title='Email' />
             {this.state.error && <p className='error'>{this.state.error.emailErr}</p>}
           </div>
 
-          <div className='col-md-10 col-lg-12 form-label-group input-field'>
+          <div className='col-md-10 col-lg-12 form-label-group input-field field'>
             <input
               type='password'
-              id='inputPassword'
-              class='form-control wrong'
-              id='validationServer03'
-              aria-describedby='validationServer03Feedback'
+              class='wrong'
+              required
               onChange={(e) => (this.Password = e.target.value)}
             />
-            <label className='label'>Password</label>
+            <label title='Password' />
             {this.state.error && <p className='error'>{this.state.error.passwordErr}</p>}
           </div>
         </div>
@@ -88,24 +84,22 @@ class Login extends React.Component {
     } else {
       var Invaldemail = (
         <div className=''>
-          <div className='col-md-10 col-lg-12 form-label-group input-field'>
+          <div className='col-md-10 col-lg-12 form-label-group input-field field'>
             <input
               type='email'
-              id='inputEmail'
-              // required
+              required
               onChange={(e) => (this.Email = e.target.value)}
-            ></input>
-            <label className='label'>Email</label>
+            />
+            <label title='Email' />
           </div>
 
-          <div className='col-md-10 col-lg-12 form-label-group input-field'>
+          <div className='col-md-10 col-lg-12 form-label-group input-field field'>
             <input
               type='password'
-              id='inputPassword'
-              // required
+              required
               onChange={(e) => (this.Password = e.target.value)}
             />
-            <label className='label'>Password</label>
+            <label title='Password' />
           </div>
         </div>
       );

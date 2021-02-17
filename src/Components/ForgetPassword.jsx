@@ -65,15 +65,9 @@ class Forget extends React.Component {
   render() {
     if (this.state.error && this.state.error.emailErr) {
       Invaldemail = (
-        <div className='col-md-10 col-lg-12 form-label-group input-field'>
-          <input
-            type='text'
-            class='form-control wrong'
-            id='validationServer03'
-            aria-describedby='validationServer03Feedback'
-            onChange={(e) => (this.Email = e.target.value)}
-          />
-          <label className='label'>Email</label>
+        <div className='col-md-10 col-lg-12 form-label-group input-field field'>
+          <input type='text' required onChange={(e) => (this.Email = e.target.value)} />
+          <label title='Email' />
           {this.state.error && <p className='error'>{this.state.error.emailErr}</p>}
         </div>
       );
@@ -87,9 +81,13 @@ class Forget extends React.Component {
               </div>
             </div>
           ) : (
-            <div className='col-md-10 col-lg-12 form-label-group input-field'>
-              <input type='text' onChange={(e) => (this.Email = e.target.value)} />
-              <label className='label'>Email</label>
+            <div className='col-md-10 col-lg-12 form-label-group input-field field'>
+              <input
+                type='text'
+                required
+                onChange={(e) => (this.Email = e.target.value)}
+              />
+              <label title='Email' />
             </div>
           )}
         </div>

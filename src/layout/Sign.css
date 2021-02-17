@@ -62,10 +62,41 @@ a {
   transition: 0.2s all;
   cursor: text;
 }
-.input-field {
+
+.label-before,
+.field input:focus + label::before,
+.field input:valid + label::before {
+  line-height: 15px;
+  font-size: 12px;
+  top: -20px;
+  left: 0;
+
+  background: #fff;
+  padding: 0 6px;
+}
+.field {
   position: relative;
+  margin-bottom: 20px;
+  margin-top: 10px;
+  display: inline-block;
+}
+.field label::before {
+  content: attr(title);
+  position: absolute;
+  top: -10px;
+  left: 15px;
+  line-height: 30px;
+  font-size: 18px;
+  color: #777;
+  transition: 300ms all;
+}
+.field input:valid + label::before {
+  content: attr(data-title);
 }
 
+
+
+/* Basma */
 input {
   border: 0 !important;
   outline: 0 !important;
@@ -98,8 +129,7 @@ input:valid ~ label {
   top: -24px;
   color: #cd8930;
 }
-
-.depError {
+*/ .depError {
   color: #f44336;
   font-size: 14px;
 }

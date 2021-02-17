@@ -79,36 +79,31 @@ class Registry extends React.Component {
   render() {
     if (this.state.error) {
       Invaldedata = (
-        <div className='o-scroll'>
+        <div className=''>
           <div className='form-row'>
             <h3 className='mb-5 signSubTitle'>Personal Information</h3>
 
-            <div className=' col-md-10 col-lg-12 form-label-group input-field'>
+            <div className='col-md-10 col-lg-12 form-label-group input-field'>
               <input
                 type='name'
-                // required
+                placeholder='Full Name'
                 onChange={(e) => (this.username = e.target.value)}
                 className='form-control wrong'
               />
-              <label className='label'>Full Name</label>
               {this.state.error && (
                 <p className='error'>{this.state.error.usernameErr}</p>
               )}
             </div>
           </div>
-          {/* <div className="form-row"> */}
-          <div className=' col-md-10 col-lg-12 form-label-group input-field'>
+          <div className='col-md-10 col-lg-12 form-label-group input-field'>
             <input
-              type='email'
-              // required
-              id='Email'
+              placeholder='Email'
               className='form-control wrong'
               onChange={(e) => (this.Email = e.target.value)}
             />
             <label className='label'>Email</label>
             {this.state.error && <p className='error'>{this.state.error.emailErr}</p>}
           </div>
-          {/* </div> */}
 
           <div className=' row form-label-group '>
             <h2 className='genderLabel'>Gender</h2>
@@ -148,18 +143,18 @@ class Registry extends React.Component {
               <input
                 type='password'
                 className='form-control wrong'
+                placeholder='Password'
                 onChange={(e) => (this.Password = e.target.value)}
               />
-              <label className='label'>Password</label>
               <p className='error'> {this.state.error.passwordConfErr} </p>
             </div>
             <div className='col-md-10 col-lg-12 form-label-group input-field'>
               <input
                 type='password'
                 className='form-control wrong'
+                placeholder='Confirm Password'
                 onChange={(e) => (this.password_confirmation = e.target.value)}
               />
-              <label className='label'> Confirm Password</label>
               <p className='error'> {this.state.error.passwordConfErr} </p>
             </div>
           </div>
@@ -170,9 +165,9 @@ class Registry extends React.Component {
               <input
                 type='text'
                 className='form-control wrong'
+                placeholder='Registration number'
                 onChange={(e) => (this.RegNum = e.target.value)}
               />
-              <label className='label'>Registration number</label>
 
               {this.state.error && (
                 <p className='error'> {this.state.error.regnumErr} </p>
@@ -212,14 +207,13 @@ class Registry extends React.Component {
         <div>
           <div className='form-row'>
             <h3 className='mb-5 signSubTitle'>Personal Information</h3>
-
             <div className='col-md-10 col-lg-12 form-label-group input-field'>
               <input
                 type='name'
-                // required
+                placeholder='Full Name'
                 onChange={(e) => (this.username = e.target.value)}
+                className='form-control'
               />
-              <label className='label'>Full Name</label>
             </div>
           </div>
           <div className='form-row'>
@@ -227,10 +221,9 @@ class Registry extends React.Component {
               <input
                 type='email'
                 id='Email'
-                // required
+                placeholder='Email'
                 onChange={(e) => (this.Email = e.target.value)}
               />
-              <label className='label'>Email</label>
             </div>
           </div>
 
@@ -245,7 +238,6 @@ class Registry extends React.Component {
                 className='radio'
                 onChange={(e) => (this.gender = e.target.value)}
               />
-              {/* <BsCheck color="cd8930" className="fs-3" /> */}
               <label class='form-check-label raioLabel' for='inlineCheckbox3'>
                 Male
               </label>
@@ -269,18 +261,16 @@ class Registry extends React.Component {
             <div className='col-md-10 col-lg-12 form-label-group input-field'>
               <input
                 type='password'
-                // required
+                placeholder='Password'
                 onChange={(e) => (this.Password = e.target.value)}
               />
-              <label className='label'>Password</label>
             </div>
             <div className='col-md-10 col-lg-12 form-label-group input-field'>
               <input
                 type='password'
-                // required
+                placeholder='Confirm Password'
                 onChange={(e) => (this.password_confirmation = e.target.value)}
               />
-              <label className='label'>Confirm Password</label>
             </div>
           </div>
           <h3 className='mb-5 signSubTitle'>College Information</h3>
@@ -289,10 +279,9 @@ class Registry extends React.Component {
             <div className='col-md-10 col-lg-12 form-label-group input-field'>
               <input
                 type='text'
-                // required
+                placeholder='Registration number'
                 onChange={(e) => (this.RegNum = e.target.value)}
               />
-              <label className='label'>Registration number</label>
             </div>
           </div>
 
