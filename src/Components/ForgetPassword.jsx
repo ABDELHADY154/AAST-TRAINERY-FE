@@ -2,7 +2,9 @@
 import React from "react";
 import { Redirect } from "react-router-dom";
 import { axios } from "../Api/axios";
-import "../layout/Login.css";
+import "../layout/Sign.css";
+import loginBG from "../Components/assests/imgs/login.jpg";
+
 class Forget extends React.Component {
   constructor() {
     super();
@@ -28,19 +30,30 @@ class Forget extends React.Component {
         });
       })
       .catch((error) => {
-        console.log(error);
-        if (error.response.data.errors.message) {
-          // console.log(error.response.data.errors.message);
+        // console.log(error.response.status);
+        if (error.response.status === 422) {
+          console.log(error.response.data.message);
+          this.setState({
+            error: {
+              emailErr: error.response.data.message,
+            },
+          });
+        } else if (error.response.status === 404) {
+          console.log(error.response.data.errors.message);
           this.setState({
             error: {
               emailErr: error.response.data.errors.message,
             },
           });
+        } else {
+          this.setState({
+            error: {
+              emailErr: "Please Enter Your Email",
+            },
+          });
         }
       });
   };
-
-  // });
 
   componentDidMount = () => {
     const token = sessionStorage.getItem("token");
@@ -50,23 +63,18 @@ class Forget extends React.Component {
     }
   };
   render() {
-
     if (this.state.error && this.state.error.emailErr) {
       Invaldemail = (
-        <div>
-          <div className='form-label-group input-field'>
-            <input
-              type='email'
-              id='inputEmail'
-              className=''
-              required
-              onChange={(e) => (this.Email = e.target.value)}
-            ></input>
-            <label className='label'>Email</label>
-            <div className='alert alert-danger' role='alert'>
-              {this.state.error.emailErr}
-            </div>
-          </div>
+        <div className='col-md-10 col-lg-12 form-label-group input-field'>
+          <input
+            type='text'
+            class='form-control wrong'
+            id='validationServer03'
+            aria-describedby='validationServer03Feedback'
+            onChange={(e) => (this.Email = e.target.value)}
+          />
+          <label className='label'>Email</label>
+          {this.state.error && <p className='error'>{this.state.error.emailErr}</p>}
         </div>
       );
     } else {
@@ -79,14 +87,8 @@ class Forget extends React.Component {
               </div>
             </div>
           ) : (
-            <div className='form-label-group input-field'>
-              <input
-                type='email'
-                id='inputEmail'
-                className=''
-                required
-                onChange={(e) => (this.Email = e.target.value)}
-              ></input>
+            <div className='col-md-10 col-lg-12 form-label-group input-field'>
+              <input type='text' onChange={(e) => (this.Email = e.target.value)} />
               <label className='label'>Email</label>
             </div>
           )}
@@ -98,32 +100,37 @@ class Forget extends React.Component {
       return <Redirect to='/Home' />;
     } else {
       return (
-        <div className='container-fluid h-100 no-scroll'>
-          <div className='row no-gutter '>
-            <div className='col-md-9 col-lg-7 '>
-              <div className='login d-flex align-items-center p-3'>
-                <div className='container '>
-                  <div className='row m-auto'>
-                    <div className='col-md-7 col-lg-7 mx-auto login h-100 rounded '>
-                      <h3 className='login-heading'>Sign In </h3>
-                      <form onSubmit={this.handleSubmit}>
+        <div className='container-fluid h-100 '>
+          <div className='row no-gutter'>
+            <div className='col-md-10 col-lg-8 '>
+              <div className='d-flex align-items-center py-2'>
+                <div className='container my-5'>
+                  <div className='row'>
+                    <div className='col-md-9 col-lg-8 mx-auto  h-100'>
+                      <h3 className=' mb-5 signTitle'>Forget Password</h3>
+                      <form className='col-md-8' onSubmit={this.handleSubmit}>
                         {Invaldemail}
-                        <button
-                          className='btn btn-lg col-sm-5 btn-outline-primary d-block text-uppercase font-weight-bold mb-2 py-3'
-                          type='submit'
-                        >
-                          Sign in
-                        </button>
-                        <a className='color-orange py-3' href='/Register'>
-                          Dont' Have An Account ?
-                        </a>
+                        <div className='col-md-10 col-lg-12'>
+                          <a href='/Register'>
+                            <p className='account'>Don’t have an account ?</p>
+                          </a>
+                          <button
+                            className='btn shadow-none submitBtn col-sm-5 col-5 col-md-4 col-xs-5 btn-outline-primary d-block text-uppercase font-weight-bold mb-2'
+                            type='submit'
+                          >
+                            Reset
+                          </button>
+                        </div>
                       </form>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
-            <div className='col-8 col-md-8 col-xl-6 align-self-end bg-image rounded'></div>
+
+            <div className='img-fluid d-none d-md-flex col-md-3 col-lg-4 '>
+              <img src={loginBG} class='img-fluid bg-image-no-img h-100 ' width='100%' />
+            </div>
           </div>
         </div>
       );
