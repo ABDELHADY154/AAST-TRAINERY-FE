@@ -54,18 +54,24 @@ class Landing extends React.Component {
                 id="Num"
                 className="d-flex flex-row flex-wrap mt-5 justify-content-between"
               >
-                <div className="col-12 col-md-4 d-flex justify-content-center text-center flex-column align-items-center">
-                  <p className="Numbers">{this.state.opportunities}</p>
-                  <div className="NumTitle">Opportunities</div>
-                </div>
-                <div className="col-12 col-md-4 d-flex justify-content-center text-center flex-column align-items-center">
-                  <p className="Numbers">{this.state.students}</p>
-                  <div className="NumTitle">Students</div>
-                </div>
-                <div className="col-12 col-md-4 d-flex justify-content-center text-center flex-column align-items-center">
-                  <p className="Numbers">{this.state.applied}</p>
-                  <div className="NumTitle">Accepted</div>
-                </div>
+                {this.state.loading === false ? (
+                  <Loader />
+                ) : (
+                  <>
+                    <div className="col-12 col-md-4 d-flex justify-content-center text-center flex-column align-items-center">
+                      <p className="Numbers">{this.state.opportunities}</p>
+                      <div className="NumTitle">Opportunities</div>
+                    </div>
+                    <div className="col-12 col-md-4 d-flex justify-content-center text-center flex-column align-items-center">
+                      <p className="Numbers">{this.state.students}</p>
+                      <div className="NumTitle">Students</div>
+                    </div>
+                    <div className="col-12 col-md-4 d-flex justify-content-center text-center flex-column align-items-center">
+                      <p className="Numbers">{this.state.applied}</p>
+                      <div className="NumTitle">Accepted</div>
+                    </div>
+                  </>
+                )}
               </div>
             </div>
             <div
