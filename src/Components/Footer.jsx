@@ -53,7 +53,7 @@ export default class Footer extends React.Component {
                           <a href="#">Contact Us</a>
                         </li>
 
-                        <li s>
+                        <li>
                           <a href="#">
                             <FaInstagram id="instagram" />
                           </a>

@@ -1,6 +1,5 @@
 import React from "react";
 import { axios } from "../../Api/axios";
-
 import { Redirect } from "react-router-dom";
 // import Caro from "./Caro";
 import Footer from "../Footer";
@@ -31,7 +30,6 @@ class Landing extends React.Component {
         opportunities: data.data.response.data.opportunities,
         applied: data.data.response.data.applied,
       });
-      console.log(data.data.response.data);
     });
   }
   render() {
