@@ -4,7 +4,9 @@ import React from "react";
 // const MyFacebookLoader = () => <Facebook />;
 import { Loader2 } from "../loader";
 import { Redirect } from "react-router-dom";
-import "../layout/Registry.css";
+import "../layout/Sign.css";
+import { BsFillChatFill } from "react-icons/bs";
+import { BsCheck } from "react-icons/bs";
 class Registry extends React.Component {
   state = {
     error: "",
@@ -69,111 +71,119 @@ class Registry extends React.Component {
   render() {
     if (this.state.error) {
       Invaldedata = (
-        <div>
-          <div className='form-row'>
-            <div className='form-group col-12'>
+        <div className="o-scroll">
+          <div className="form-row">
+            <h3 className="mb-5 signSubTitle">Personal Information</h3>
+
+            <div className=" col-md-10 col-lg-12 form-label-group input-field">
               <input
-                type='name'
-                placeholder='Enter your Full Name.'
-                className='form-control'
-                id='Lyear'
+                type="name"
+                // required
                 onChange={(e) => (this.username = e.target.value)}
               />
+              <label className="label">Full Name</label>
               {this.state.error && (
-                <p className='error'>{this.state.error.usernameErr}</p>
+                <p className="error">{this.state.error.usernameErr}</p>
               )}
             </div>
           </div>
-          <div className='form-row'>
-            <div className='form-group col-12'>
-              <input
-                type='email'
-                className='form-control'
-                id='Email'
-                placeholder='Enter Your Sudent Email'
-                onChange={(e) => (this.Email = e.target.value)}
-              />
-              {this.state.error && <p className='error'>{this.state.error.emailErr}</p>}
-            </div>
+          {/* <div className="form-row"> */}
+          <div className=" col-md-10 col-lg-12 form-label-group input-field">
+            <input
+              type="email"
+              // required
+              id="Email"
+              // placeholder="Enter Your Sudent Email"
+              onChange={(e) => (this.Email = e.target.value)}
+            />
+            <label className="label">Email</label>
+            {this.state.error && (
+              <p className="error">{this.state.error.emailErr}</p>
+            )}
           </div>
+          {/* </div> */}
 
-          <div className='form-label-group'>
-            <h2>Gender</h2>
-            <div class='form-check form-check-inline'>
+          <div className=" row form-label-group ">
+            <h2 className="genderLabel">Gender</h2>
+            <div class="col form-check form-check-inline d-flex">
               <input
-                class=''
-                type='radio'
-                name='inlineRadioOptions'
-                id='inlineRadio1'
-                value='male'
+                class=""
+                type="radio"
+                className="radio"
+                name="inlineRadioOptions"
+                id="inlineRadio1"
+                value="male"
                 onChange={(e) => (this.gender = e.target.value)}
               />
-              <label class='form-check-label' for='inlineCheckbox3'>
+              <label class="form-check-label raioLabel" for="inlineCheckbox3">
                 Male
               </label>
             </div>
-            <div class='checkbox form-check-inline'>
+            <div class="col checkbox form-check-inline d-flex">
               <input
-                class=''
-                type='radio'
-                name='inlineRadioOptions'
-                id='Gender'
-                value='female'
+                class=""
+                type="radio"
+                className="radio"
+                name="inlineRadioOptions"
+                id="Gender"
+                value="female"
                 onChange={(e) => (this.gender = e.target.value)}
               />
-              <label class='form-check-label' for='inlineCheckbox3'>
+              <label class="form-check-label raioLabel" for="inlineCheckbox3">
                 Female
               </label>
             </div>
-            {this.state.error && <p className='error'>{this.state.error.genderErr}</p>}
+            {this.state.error && (
+              <p className="error">{this.state.error.genderErr}</p>
+            )}
           </div>
 
-          <div className='form-row'>
-            <div className='form-group col-12'>
+          <div className="form-row">
+            <div className=" col-md-10 col-lg-12 form-label-group input-field">
               <input
-                type='password'
-                className='form-control'
-                placeholder='Enter your password'
+                type="password"
+                // required
                 onChange={(e) => (this.Password = e.target.value)}
               />
-              <p className='error'> {this.state.error.passwordConfErr} </p>
+              <label className="label">Password</label>
+              <p className="error"> {this.state.error.passwordConfErr} </p>
             </div>
-            <div className='form-group col-12'>
+            <div className="col-md-10 col-lg-12 form-label-group input-field">
               <input
-                type='password'
-                className='form-control'
-                placeholder='ReEnter your password'
+                type="password"
+                // required
                 onChange={(e) => (this.password_confirmation = e.target.value)}
               />
-              <p className='error'> {this.state.error.passwordConfErr} </p>
+              <label className="label"> Confirm Password</label>
+              <p className="error"> {this.state.error.passwordConfErr} </p>
             </div>
           </div>
-          <h3 className='login-heading mb-5'>College Information</h3>
+          <h3 className="mb-5 signSubTitle">College Information</h3>
 
-          <div className='form-row'>
-            <div className='form-group col-12'>
+          <div className="form-row">
+            <div className="col-md-10 col-lg-12 form-label-group input-field">
               <input
-                type='text'
-                className='form-control'
-                id='Reg-num'
-                placeholder='Enter your Registration number'
+                type="text"
+                // required
                 onChange={(e) => (this.RegNum = e.target.value)}
               />
+              <label className="label">Registration number</label>
+
               {this.state.error && (
-                <p className='error'> {this.state.error.regnumErr} </p>
+                <p className="error"> {this.state.error.regnumErr} </p>
               )}
             </div>
           </div>
 
-          <div className='form-row'>
-            <div className='form-group col-12'>
+          <div className="form-row">
+            <div className="col-md-10 col-lg-12 form-group col-12">
               {this.state.loading === false ? (
                 <Loader2 />
               ) : (
                 <select
-                  type='text'
-                  className='form-control'
-                  id='departs'
+                  type="text"
+                  className="form-control dep dropDown"
+                  id="departs"
                   onChange={(e) => (this.depart = e.target.value)}
                 >
                   <option>Please Select Your Department</option>
@@ -185,7 +195,9 @@ class Registry extends React.Component {
                   ))}
                 </select>
               )}
-              {this.state.error && <p className='error'>{this.state.error.departErr}</p>}
+              {this.state.error && (
+                <p className="depError">{this.state.error.departErr}</p>
+              )}
             </div>
           </div>
         </div>
@@ -193,103 +205,105 @@ class Registry extends React.Component {
     } else {
       var Invaldedata = (
         <div>
-          <div className='form-row'>
-            <div className='form-group col-12'>
+          <div className="form-row">
+            <h3 className="mb-5 signSubTitle">Personal Information</h3>
+
+            <div className="col-md-10 col-lg-12 form-label-group input-field">
               <input
-                type='name'
-                placeholder='Enter your Full Name.'
-                className='form-control'
-                id='Lyear'
+                type="name"
+                // required
                 onChange={(e) => (this.username = e.target.value)}
               />
+              <label className="label">Full Name</label>
             </div>
           </div>
-          <div className='form-row'>
-            <div className='form-group col-12'>
+          <div className="form-row">
+            <div className="col-md-10 col-lg-12 form-label-group input-field">
               <input
-                type='email'
-                className='form-control'
-                id='Email'
-                placeholder='Enter Your Sudent Email'
+                type="email"
+                id="Email"
+                // required
                 onChange={(e) => (this.Email = e.target.value)}
               />
+              <label className="label">Email</label>
             </div>
           </div>
 
-          <div className='form-label-group'>
-            <h2>Gender</h2>
-            <div class='form-check form-check-inline'>
+          <div className="row form-label-group">
+            <h2 className="genderLabel">Gender</h2>
+            <div class="col form-check form-check-inline d-flex">
               <input
-                class=''
-                type='radio'
-                name='inlineRadioOptions'
-                id='inlineRadio1'
-                value='male'
+                type="radio"
+                name="inlineRadioOptions"
+                id="inlineRadio1"
+                value="male"
+                className="radio"
                 onChange={(e) => (this.gender = e.target.value)}
               />
-              <label class='form-check-label' for='inlineCheckbox3'>
+              {/* <BsCheck color="cd8930" className="fs-3" /> */}
+              <label class="form-check-label raioLabel" for="inlineCheckbox3">
                 Male
               </label>
             </div>
-            <div class='checkbox form-check-inline'>
+            <div class="col checkbox form-check-inline d-flex">
               <input
-                class=''
-                type='radio'
-                name='inlineRadioOptions'
-                id='Gender'
-                value='female'
+                className="radio"
+                type="radio"
+                name="inlineRadioOptions"
+                id="Gender"
+                value="female"
                 onChange={(e) => (this.gender = e.target.value)}
               />
-              <label class='form-check-label' for='inlineCheckbox3'>
+              <label class="form-check-label raioLabel" for="inlineCheckbox3">
                 Female
               </label>
             </div>
           </div>
 
-          <div className='form-row'>
-            <div className='form-group col-12'>
+          <div className="form-row">
+            <div className="col-md-10 col-lg-12 form-label-group input-field">
               <input
-                type='password'
-                className='form-control'
-                placeholder='Enter your password'
+                type="password"
+                // required
                 onChange={(e) => (this.Password = e.target.value)}
               />
+              <label className="label">Password</label>
             </div>
-            <div className='form-group col-12'>
+            <div className="col-md-10 col-lg-12 form-label-group input-field">
               <input
-                type='password'
-                className='form-control'
-                placeholder='ReEnter your password'
+                type="password"
+                // required
                 onChange={(e) => (this.password_confirmation = e.target.value)}
               />
+              <label className="label">Confirm Password</label>
             </div>
           </div>
-          <h3 className='login-heading mb-5'>College Information</h3>
+          <h3 className="mb-5 signSubTitle">College Information</h3>
 
-          <div className='form-row'>
-            <div className='form-group col-12'>
+          <div className="form-row">
+            <div className="col-md-10 col-lg-12 form-label-group input-field">
               <input
-                type='text'
-                className='form-control'
-                id='Reg-num'
-                placeholder='Enter your Registration number'
+                type="text"
+                // required
                 onChange={(e) => (this.RegNum = e.target.value)}
               />
+              <label className="label">Registration number</label>
             </div>
           </div>
 
-          <div className='form-row'>
-            <div className='form-group col-12'>
+          <div className="form-row">
+            <div className="col-md-10 col-lg-12 form-group col-12">
               {this.state.loading === false ? (
                 <Loader2 />
               ) : (
                 <select
-                  type='text'
-                  className='form-control'
-                  id='departs'
+                  className="dep"
+                  type="text"
+                  className="form-control dropDown"
+                  id="departs"
                   onChange={(e) => (this.depart = e.target.value)}
                 >
-                  <option>Please Select Your Department</option>
+                  <option>Please Select Your Department </option>
 
                   {this.state.departs.map((depart) => (
                     <option value={depart.id} key={depart.id}>
@@ -298,7 +312,9 @@ class Registry extends React.Component {
                   ))}
                 </select>
               )}
-              {this.state.error && <p className='error'>{this.state.error.departErr}</p>}
+              {this.state.error && (
+                <p className="departs">{this.state.error.departErr}</p>
+              )}
             </div>
           </div>
         </div>
@@ -306,26 +322,34 @@ class Registry extends React.Component {
     }
 
     if (this.state.loggedIn === "0000") {
-      return <Redirect to='/Home' />;
+      return <Redirect to="/Home" />;
     } else {
       return (
-        <div className='container-fluid'>
-          <div className='row no-gutter'>
-            <div className='col-md-9 col-lg-7 '>
-              <div className='login d-flex align-items-center py-5'>
-                <div className='container'>
-                  <div className='row'>
-                    <div className='col-md-7 col-lg-7 mx-auto signup h-100'>
-                      <h3 className='login-heading mb-5'>Sign Up</h3>
-                      <form onSubmit={this.handleSubmit}>
+        <div className="container-fluid">
+          <div className="row no-gutter">
+            <div className="col-md-10 col-lg-8 ">
+              <div className="login d-flex align-items-center py-5">
+                <div className="container">
+                  <div className="row">
+                    <div className="col-md-9 col-lg-8 mx-auto signup h-100">
+                      <h3 className=" mb-5 signTitle">Sign Up</h3>
+                      <form className="col-md-8" onSubmit={this.handleSubmit}>
                         {Invaldedata}
+                        <div className="col-md-10 col-lg-12">
+                          <p className="account">Aready have an account ?</p>
+                          <p className="agree ">
+                            By creating an account, you agree to the
+                            <span className="terms">Terms and Conditions</span>
+                            of the company.
+                          </p>
 
-                        <button
-                          className='btn btn-lg col-sm-5 btn-outline-primary d-block text-uppercase font-weight-bold mb-2'
-                          type='submit'
-                        >
-                          Sign up
-                        </button>
+                          <button
+                            className="btn shadow-none submitBtn col-sm-5 btn-outline-primary d-block text-uppercase font-weight-bold mb-2"
+                            type="submit"
+                          >
+                            Sign up
+                          </button>
+                        </div>
                       </form>
                     </div>
                   </div>
@@ -333,7 +357,7 @@ class Registry extends React.Component {
               </div>
             </div>
 
-            <div className='img-fluid d-none d-md-flex col-md-5 col-lg-5 bg-image rounded'></div>
+            <div className="img-fluid d-none d-md-flex col-md-3 col-lg-4 bg-image "></div>
           </div>
         </div>
       );
