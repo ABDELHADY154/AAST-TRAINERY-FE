@@ -35,9 +35,12 @@ class Landing extends React.Component {
   render() {
     return (
       <div className="container-fluid">
-        <div className="p-5">
+        <div className="container">
           <div className="d-flex flex-row ">
-            <div id="DescCont" className="d-flex flex-column text-wrap bg-none">
+            <div
+              id="DescCont"
+              className="d-flex flex-column text-wrap bg-none me-5"
+            >
               <div className="fs-2" id="Title">
                 We Provide The Best Experience
               </div>
@@ -47,7 +50,10 @@ class Landing extends React.Component {
                 quod, tenetur aspernatur a cumque, non maxime sit nulla
                 excepturi pariatur inventore illum placeat.
               </div>
-              <div className="d-flex flex-row flex-wrap mt-5 justify-content-between">
+              <div
+                id="Num"
+                className="d-flex flex-row flex-wrap mt-5 justify-content-between"
+              >
                 <div className="col-12 col-md-4 d-flex justify-content-center text-center flex-column align-items-center">
                   <p className="Numbers">{this.state.opportunities}</p>
                   <div className="NumTitle">Opportunities</div>
@@ -127,7 +133,7 @@ class Landing extends React.Component {
           <div className="d-flex flex-row mt-3">
             <div
               id="DescCont"
-              className=" d-flex flex-column text-wrap bg-none"
+              className=" d-flex flex-column text-wrap bg-none me-5"
             >
               <div className="fs-2 " id="Title">
                 Why Join Us?
