@@ -102,7 +102,6 @@ class Login extends React.Component {
             />
             <label className='label'>Password</label>
           </div>
-         
         </div>
       );
     }
@@ -143,7 +142,7 @@ class Login extends React.Component {
                 </div>
               </div>
             </div>
-            <div className='col-8 col-md-8 col-xl-6 align-self-end bg-image rounded'></div>
+            <div className='img-fluid d-none d-md-flex col-md-5 col-lg-5 bg-image rounded'></div>
           </div>
         </div>
       );
