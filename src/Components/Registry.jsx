@@ -335,7 +335,9 @@ class Registry extends React.Component {
                           </a>
                           <p className='agree '>
                             By creating an account, you agree to the
-                            <span className='terms'>Terms and Conditions</span>
+                            <a href='#'>
+                              <span className='terms'> Terms and Conditions </span>
+                            </a>
                             of the company.
                           </p>
                           <button
