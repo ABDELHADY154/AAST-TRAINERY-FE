@@ -1,11 +1,27 @@
+@font-face {
+  font-family: SF light;
+  src: url("../Components/assests/Fonts/SF-Compact-Display-Light.otf");
+}
+@font-face {
+  font-family: SF med;
+  src: url("../Components/assests/Fonts/SF-Compact-Display-Medium.otf");
+}
+@font-face {
+  font-family: SF reg;
+  src: url("../Components/assests/Fonts/SF-Compact-Display-Regular.otf");
+}
+.container-fluid {
+  padding: 0;
+}
 .content {
   margin: 10vh 5vw;
 }
 .title {
   font-size: 7rem;
   color: #1e4274;
+  font-family: SF med;
 }
-.material-icons {
+.Warning {
   font-size: 7rem;
   color: #cd8930;
 }
@@ -18,6 +34,7 @@
   color: #1e4274;
   font-size: 1.2rem;
   min-width: 220px;
+  font-family: SF reg;
 }
 .link {
   color: #cd8930;
