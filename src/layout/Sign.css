@@ -8,7 +8,7 @@
   width: 45%;
   height: 93%;
   right: 0;
-  top: 75px;
+  /* top: 75px; */
   /* margin-top: -2px; */
   border-radius: 5px;
 }
@@ -86,24 +86,41 @@ input:valid ~ label {
   margin-bottom: 10%;
 }
 
-[type="radio"] {
-  /* border-radius: 80% !important;
-      /* width: 20%; */
-  margin: 0 5%;
-  padding-bottom: 50px;
-  height: 20px;
-  width: 20px;
-  background: red !important;
-  border-radius: -20px !important;
-  border: 1rem solid red;
+.raioLabel {
+  margin-left: 10px;
 }
-[type="radio"]:checked {
-  background-size: 100px 10px 10px 10px;
-  border-color: red;
-  color: red;
+input[type="radio"] {
+  -webkit-appearance: none;
+  width: 20px;
+  height: 20px;
+  border-radius: 15%;
+  outline: none;
+  padding-right: 5px;
+  border-bottom: none !important;
+  /* border: 3px solid red; */
+  /* background: green; */
+}
 
-  background-color: red;
-  background: red;
+input[type="radio"]:before {
+  content: "";
+  display: block;
+  width: 20px;
+  height: 20px;
+  padding-right: 5px;
+  border-radius: 15%;
+  border: 2px solid #1e4274;
+}
+
+input[type="radio"]:checked:before {
+  background: #cd8930;
+  /* background-image: url(../Components/assests/imgs/login.jpg); */
+  background-color: #fff;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  border: 3px solid #cd8930;
 }
 
 .account {
@@ -111,9 +128,6 @@ input:valid ~ label {
   margin-bottom: 0px;
   color: #cd8930;
   text-decoration: none;
-  /* float: right; */
-  /* display: flex;
-  align-items: flex-start; */
 }
 .terms {
   color: #cd8930;
@@ -134,7 +148,7 @@ input:valid ~ label {
 .submitBtn:hover {
   background-color: #1e4274;
   color: #fff;
-  border: none!;
+  border: none;
   /* box-shadow: none;
   outline: 0; */
 }
@@ -154,11 +168,21 @@ input:valid ~ label {
 }
 option {
   color: #1e4274;
+  border: none !important;
+  border-bottom: solid 1px #cd8930 !important;
+  border-radius: 0 !important;
+}
+select {
+  box-shadow: none !important;
+  border: none !important;
+  border-bottom: solid 1px #1e4274 !important;
+  border-radius: 0 !important;
 }
 select:focus {
   box-shadow: none !important;
-  border-color: #cd8930 !important;
-  /* background-color: #cd8930 !important; */
+  border: none !important;
+  border-bottom: solid 2px #cd8930 !important;
+  border-radius: 0 !important;
 }
 select option:checked {
   background: #1e4274 -webkit-linear-gradient(bottom, #cd8930 0%, #cd8930 100%);

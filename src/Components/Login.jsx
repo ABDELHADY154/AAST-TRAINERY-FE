@@ -118,22 +118,25 @@ class Login extends React.Component {
                       <h3 className=" mb-5 signTitle">Sign In </h3>
                       <form onSubmit={this.handleSubmit}>
                         {Invaldemail}
+                        <div className="col-md-10 col-lg-12 col-sm-12">
+                          <div className="">
+                            <a className="account" href="/Register">
+                              Dont' Have An Account ?
+                            </a>
 
-                        <a className="account" href="/Register">
-                          Dont' Have An Account ?
-                        </a>
-
-                        <div className="">
-                          <a className="account agree" href="#">
-                            Forgot password?
-                          </a>
+                            <div>
+                              <a className="account agree" href="#">
+                                Forgot password?
+                              </a>
+                            </div>
+                          </div>
+                          <button
+                            className="btn shadow-none submitBtn col-sm-5 col-md-6 btn-outline-primary d-block text-uppercase font-weight-bold mb-2"
+                            type="submit"
+                          >
+                            Sign in
+                          </button>
                         </div>
-                        <button
-                          className="btn shadow-none submitBtn col-sm-5 btn-outline-primary d-block text-uppercase font-weight-bold mb-2"
-                          type="submit"
-                        >
-                          Sign in
-                        </button>
                       </form>
                     </div>
                   </div>

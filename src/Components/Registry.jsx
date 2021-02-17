@@ -5,7 +5,8 @@ import React from "react";
 import { Loader2 } from "../loader";
 import { Redirect } from "react-router-dom";
 import "../layout/Sign.css";
-
+import { BsFillChatFill } from "react-icons/bs";
+import { BsCheck } from "react-icons/bs";
 class Registry extends React.Component {
   state = {
     error: "",
@@ -102,31 +103,33 @@ class Registry extends React.Component {
           </div>
           {/* </div> */}
 
-          <div className=" row form-label-group">
+          <div className=" row form-label-group ">
             <h2 className="genderLabel">Gender</h2>
-            <div class="col form-check form-check-inline">
+            <div class="col form-check form-check-inline d-flex">
               <input
                 class=""
                 type="radio"
+                className="radio"
                 name="inlineRadioOptions"
                 id="inlineRadio1"
                 value="male"
                 onChange={(e) => (this.gender = e.target.value)}
               />
-              <label class="form-check-label" for="inlineCheckbox3">
+              <label class="form-check-label raioLabel" for="inlineCheckbox3">
                 Male
               </label>
             </div>
-            <div class="col checkbox form-check-inline">
+            <div class="col checkbox form-check-inline d-flex">
               <input
                 class=""
                 type="radio"
+                className="radio"
                 name="inlineRadioOptions"
                 id="Gender"
                 value="female"
                 onChange={(e) => (this.gender = e.target.value)}
               />
-              <label class="form-check-label" for="inlineCheckbox3">
+              <label class="form-check-label raioLabel" for="inlineCheckbox3">
                 Female
               </label>
             </div>
@@ -228,28 +231,30 @@ class Registry extends React.Component {
 
           <div className="row form-label-group">
             <h2 className="genderLabel">Gender</h2>
-            <div class="col form-check form-check-inline">
+            <div class="col form-check form-check-inline d-flex">
               <input
                 type="radio"
                 name="inlineRadioOptions"
                 id="inlineRadio1"
                 value="male"
+                className="radio"
                 onChange={(e) => (this.gender = e.target.value)}
               />
-              <label class="form-check-label" for="inlineCheckbox3">
+              {/* <BsCheck color="cd8930" className="fs-3" /> */}
+              <label class="form-check-label raioLabel" for="inlineCheckbox3">
                 Male
               </label>
             </div>
-            <div class="col checkbox form-check-inline">
+            <div class="col checkbox form-check-inline d-flex">
               <input
-                class=""
+                className="radio"
                 type="radio"
                 name="inlineRadioOptions"
                 id="Gender"
                 value="female"
                 onChange={(e) => (this.gender = e.target.value)}
               />
-              <label class="form-check-label" for="inlineCheckbox3">
+              <label class="form-check-label raioLabel" for="inlineCheckbox3">
                 Female
               </label>
             </div>
@@ -298,7 +303,7 @@ class Registry extends React.Component {
                   id="departs"
                   onChange={(e) => (this.depart = e.target.value)}
                 >
-                  <option>Please Select Your Department</option>
+                  <option>Please Select Your Department </option>
 
                   {this.state.departs.map((depart) => (
                     <option value={depart.id} key={depart.id}>
@@ -330,18 +335,21 @@ class Registry extends React.Component {
                       <h3 className=" mb-5 signTitle">Sign Up</h3>
                       <form className="col-md-8" onSubmit={this.handleSubmit}>
                         {Invaldedata}
-                        <p className="account">Aready have an account ?</p>
-                        <p className="agree">
-                          By creating an account, you agree to the
-                          <span className="terms"> Terms and Conditions </span>
-                          of the company.
-                        </p>
-                        <button
-                          className="btn shadow-none submitBtn col-sm-5 btn-outline-primary d-block text-uppercase font-weight-bold mb-2"
-                          type="submit"
-                        >
-                          Sign up
-                        </button>
+                        <div className="col-md-10 col-lg-12">
+                          <p className="account">Aready have an account ?</p>
+                          <p className="agree ">
+                            By creating an account, you agree to the
+                            <span className="terms">Terms and Conditions</span>
+                            of the company.
+                          </p>
+
+                          <button
+                            className="btn shadow-none submitBtn col-sm-5 btn-outline-primary d-block text-uppercase font-weight-bold mb-2"
+                            type="submit"
+                          >
+                            Sign up
+                          </button>
+                        </div>
                       </form>
                     </div>
                   </div>
