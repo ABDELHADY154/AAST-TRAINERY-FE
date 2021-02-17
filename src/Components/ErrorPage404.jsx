@@ -2,12 +2,13 @@ import React from "react";
 import logo from "../Components/assests/imgs/logo.png";
 import error from "../Components/assests/imgs/error.png";
 import "../layout/ErrorPage.css";
+import { MdWarning } from "react-icons/md";
 
 class ErrorPage extends React.Component {
   render() {
     return (
       <div className="container-fluid">
-        <nav className="navbar ">
+        {/* <nav className="navbar ">
           <a className="navbar-brand" href="#">
             <img
               src={logo}
@@ -17,12 +18,12 @@ class ErrorPage extends React.Component {
               className=" d-inline-block align-top img-fluid"
             />
           </a>
-        </nav>
+        </nav> */}
         <div className="content d-flex flex-column flex-lg-row justify-content-Center">
           <div className="col-lg-6 col-12 errolCol">
             <div className="errorTitle">
               <h1 className="title">4</h1>
-              <span class="material-icons ">warning</span>
+              <MdWarning className="Warning" />
               <h1 className="title">4</h1>
             </div>
             <p className="text ">
