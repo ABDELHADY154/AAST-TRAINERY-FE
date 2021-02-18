@@ -116,15 +116,18 @@ input {
   color: #1e4274;
   margin-bottom: 50px;
 }
-input:focus,
+/* input:focus,
 input:valid {
   border-color: #cd8930;
-}
+  
+} */
 input:focus,
 input:valid {
   font-size: 14px;
   top: -24px;
   color: #cd8930;
+  box-shadow: none !important;
+  outline: 0 !important;
 }
 .depError {
   color: #f44336;
