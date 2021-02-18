@@ -121,7 +121,7 @@ class Forget extends React.Component {
                             <p className="account">Don’t have an account ?</p>
                           </a>
                           <button
-                            className="btn shadow-none submitBtn col-sm-5 col-5 col-md-4 col-xs-5 btn-outline-primary d-block text-uppercase font-weight-bold mb-2"
+                            className="btn shadow-none submitBtn col-sm-5 col-5 col-md-4 col-xs-5 btn-outline-primary d-block font-weight-bold mb-2"
                             type="submit"
                           >
                             Reset

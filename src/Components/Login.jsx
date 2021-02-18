@@ -89,7 +89,7 @@ class Login extends React.Component {
       );
     } else {
       var Invaldemail = (
-        <div className="">
+        <div>
           <div className="col-md-11 col-lg-12 form-label-group input-field field">
             <label className="label">Student Email</label>
             <input
@@ -119,11 +119,11 @@ class Login extends React.Component {
       return (
         <div className="container-fluid h-100">
           <div className="row no-gutter ">
-            <div className="col-md-9 col-lg-9 ">
-              <div className=" d-flex align-items-center p-3">
-                <div className="container ">
-                  <div className="row m-auto">
-                    <div className="col-md-7 col-lg-7 mx-auto  h-100 rounded ">
+            <div className="col-md-10 col-lg-8 ">
+              <div className=" d-flex align-items-center py-5">
+                <div className="container">
+                  <div className="row">
+                    <div className="col-md-9 col-lg-8 mx-auto signup h-100">
                       <h3 className=" mb-5 signTitle">Sign In </h3>
 
                       <form className="col-md-8" onSubmit={this.handleSubmit}>
