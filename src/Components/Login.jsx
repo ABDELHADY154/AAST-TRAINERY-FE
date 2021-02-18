@@ -34,7 +34,6 @@ class Login extends React.Component {
       })
       .catch((error) => {
         console.log(error.response.data.errors);
-
         if (error.response.data.errors) {
           this.setState({
             error: {
@@ -55,55 +54,50 @@ class Login extends React.Component {
   render() {
     // console.log(this.state.error);
 
-    if (this.state.error && this.state.error.emailErr) {
+    if (this.state.error) {
       Invaldemail = (
         <div>
-          <div className="col-md-11 col-lg-12 form-label-group input-field field">
-            <label className="label">Student Email</label>
+          <div className='col-md-11 col-lg-12 form-label-group input-field field'>
+            <label className='label'>Student Email</label>
             <input
-              type="email"
-              class="wrong"
+              type='email'
+              class='wrong'
               // required
               onChange={(e) => (this.Email = e.target.value)}
             />
             {/* <label title='Email' /> */}
-            {this.state.error && (
-              <p className="error">{this.state.error.emailErr}</p>
-            )}
+            {this.state.error && <p className='error'>{this.state.error.emailErr}</p>}
           </div>
 
-          <div className="col-md-11 col-lg-12 form-label-group input-field field">
-            <label className="label">Password</label>
+          <div className='col-md-11 col-lg-12 form-label-group input-field field'>
+            <label className='label'>Password</label>
             <input
-              type="password"
-              class="wrong"
+              type='password'
+              class='wrong'
               // required
               onChange={(e) => (this.Password = e.target.value)}
             />
-            {/* <label title='Password' /> */}
-            {this.state.error && (
-              <p className="error">{this.state.error.passwordErr}</p>
-            )}
+            {<p className='error'>{this.state.error.passwordErr}</p>}
           </div>
         </div>
       );
     } else {
       var Invaldemail = (
         <div>
-          <div className="col-md-11 col-lg-12 form-label-group input-field field">
-            <label className="label">Student Email</label>
+          <div className='col-md-11 col-lg-12 form-label-group input-field field'>
+            <label className='label'>Student Email</label>
             <input
-              type="email"
+              type='email'
               // required
               onChange={(e) => (this.Email = e.target.value)}
             />
             {/* <label title='Email' /> */}
           </div>
 
-          <div className="col-md-11 col-lg-12 form-label-group input-field field">
-            <label className="label">Password</label>
+          <div className='col-md-11 col-lg-12 form-label-group input-field field'>
+            <label className='label'>Password</label>
             <input
-              type="password"
+              type='password'
               // required
               onChange={(e) => (this.Password = e.target.value)}
             />
@@ -114,30 +108,30 @@ class Login extends React.Component {
     }
 
     if (this.state.loggedIn === true) {
-      return <Redirect to="/Home" />;
+      return <Redirect to='/Home' />;
     } else {
       return (
-        <div className="container-fluid h-100">
-          <div className="row no-gutter ">
-            <div className="col-md-10 col-lg-8 ">
-              <div className=" d-flex align-items-center py-5">
-                <div className="container">
-                  <div className="row">
-                    <div className="col-md-9 col-lg-8 mx-auto signup h-100">
-                      <h3 className=" mb-5 signTitle">Sign In </h3>
+        <div className='container-fluid h-100'>
+          <div className='row no-gutter '>
+            <div className='col-md-10 col-lg-8 '>
+              <div className=' d-flex align-items-center py-5'>
+                <div className='container'>
+                  <div className='row'>
+                    <div className='col-md-9 col-lg-8 mx-auto signup h-100'>
+                      <h3 className=' mb-5 signTitle'>Sign In </h3>
 
-                      <form className="col-md-8" onSubmit={this.handleSubmit}>
+                      <form className='col-md-8' onSubmit={this.handleSubmit}>
                         {Invaldemail}
-                        <div className="col-md-10 col-lg-12">
-                          <a href="/Register">
-                            <p className="account">Don’t have an account ?</p>
+                        <div className='col-md-10 col-lg-12'>
+                          <a href='/Register'>
+                            <p className='account'>Don’t have an account ?</p>
                           </a>
-                          <a href="/Forget">
-                            <p className="agree">Forgot Password ?</p>
+                          <a href='/Forget'>
+                            <p className='agree'>Forgot Password ?</p>
                           </a>
                           <button
-                            className="btn shadow-none submitBtn col-sm-5 btn-outline-primary d-block text-uppercase font-weight-bold mb-2"
-                            type="submit"
+                            className='btn shadow-none submitBtn col-sm-5 btn-outline-primary d-block text-uppercase font-weight-bold mb-2'
+                            type='submit'
                           >
                             Sign in
                           </button>
@@ -148,13 +142,8 @@ class Login extends React.Component {
                 </div>
               </div>
             </div>
-
-            <div className="img-fluid d-none d-md-flex col-md-3 col-lg-4 ">
-              <img
-                src={loginBG}
-                class="img-fluid bg-image-no-img h-100  "
-                width="100%"
-              />
+            <div className='img-fluid d-none d-md-flex col-md-3 col-lg-4 '>
+              <img src={loginBG} class='img-fluid bg-image-no-img h-100  ' width='100%' />
             </div>
           </div>
         </div>
