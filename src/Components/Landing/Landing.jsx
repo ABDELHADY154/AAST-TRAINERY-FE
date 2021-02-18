@@ -1,16 +1,19 @@
 import React from "react";
 import { axios } from "../../Api/axios";
 import { Redirect } from "react-router-dom";
-import Caro from "./Caro";
+// import Caro from "./Caro";
 import Footer from "../Footer";
-import img from "./bg (2).png";
+import img from "./bg2.png";
 import img1 from "./Rectangle1.png";
 import img2 from "./Rectangle2.png";
 import img3 from "./Rectangle3.png";
 import img4 from "./2.png";
 import google from "./google.png";
 import apple from "./apple.png";
-import { Loader } from "../../loader";
+import { DepLoader } from "../../loader";
+import "../../layout/Landing.css";
+import { BsCheck } from "react-icons/bs";
+
 import { FaCheck } from "react-icons/fa";
 import { Component } from "react";
 
@@ -30,155 +33,196 @@ class Landing extends React.Component {
     });
   }
   render() {
-    if (this.props.loggedIn === true) {
-      return <Redirect to='/Home' />;
-    } else {
-      return (
-        <div className='test'>
-          <Caro />
-          <div className='container-fluid'>
-            <div className=' d-flex row '>
-              <div className='m-auto p-5 col-xs-12 col-sm-12 col-md-7 col-lg-5 container w-100'>
-                <h1 className='header m-auto respo'>We Provide The Best Experience</h1>
-                <p className='pw'>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Consectetur
-                  dictumst nisi blandit ornare viverra eleifend Lorem ipsum dolor sit
-                  amet, consectetur adipiscing elit. Consectetur dictumst nisi blandit
-                  ornare viverra eleifend
-                </p>
-                <div className='row text-center infoApi col-7 mt-5 col-xs-12 col-sm-2 col-md-5'>
-                  {this.state.loading === false ? (
-                    <Loader />
-                  ) : (
-                    <div>
-                      <div className='mr-5 pr-5'>
-                        <p>{this.state.opportunities}</p>
-                        <p className='text-left'> Opportunity</p>
-                      </div>
-                      <div className='mr-5 pr-5'>
-                        <p>{this.state.students}</p>
-                        <p className='text-left'>Student</p>
-                      </div>
-                      <div className='mr-5  pr-5'>
-                        <p>{this.state.applied}</p>
-                        <p className='text-left'>Accpected</p>
-                      </div>
+    return (
+      <div className="container-fluid">
+        <div className="container">
+          <div className="d-flex flex-row ">
+            <div
+              id="DescCont"
+              className="d-flex flex-column text-wrap bg-none me-5"
+            >
+              <div className="fs-2" id="Title">
+                We Provide The Best Experience
+              </div>
+              <div className="fs-6 " id="DescProv">
+                Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+                Reiciendis numquam similique eum repellat nesciunt beatae error
+                quod, tenetur aspernatur a cumque, non maxime sit nulla
+                excepturi pariatur inventore illum placeat.
+              </div>
+              <div
+                id="Num"
+                className="d-flex flex-row flex-wrap mt-5 justify-content-between"
+              >
+                {this.state.loading === false ? (
+                  <div>
+                    <DepLoader />
+                    <DepLoader />
+                    <DepLoader />
+                  </div>
+                ) : (
+                  <>
+                    <div className="col-12 col-md-4 d-flex justify-content-center text-center flex-column align-items-center">
+                      <p className="Numbers">{this.state.opportunities}</p>
+                      <div className="NumTitle">Opportunities</div>
                     </div>
-                  )}
-                </div>
+                    <div className="col-12 col-md-4 d-flex justify-content-center text-center flex-column align-items-center">
+                      <p className="Numbers">{this.state.students}</p>
+                      <div className="NumTitle">Students</div>
+                    </div>
+                    <div className="col-12 col-md-4 d-flex justify-content-center text-center flex-column align-items-center">
+                      <p className="Numbers">{this.state.applied}</p>
+                      <div className="NumTitle">Accepted</div>
+                    </div>
+                  </>
+                )}
               </div>
-              <img
-                src={img}
-                className='rounded col-4 col-sm-4  mt-5 ml-auto justify-content-between sms p-0 w-100'
-                height='360'
-                width='606'
-              />
             </div>
-            <hr className='prim border' />
-            <div className='justify-content-between m-5 p-5 col-sm-12 col-md-12 container-fluid respo'>
-              <h1 className='header m-auto text-left respo'>Career Coaching Guidance</h1>
-              <p className='w-100 pw text-left'>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut dolor quis
-                morbi sagittis donec sed massa. Velit malesuada amet pretium turpis in
-                commodo aliquet pulvinar ultrices.Lorem ipsum dolor sit amet, consectetur
-                adipiscing elit. Ut dolor quis morbi sagittis donec sed massa. Lorem ipsum
-                dolor sit amet, consectetur adipiscing elit. Ut dolor quis morbi sagittis
-                donec sed massa. Velit malesuada amet pretium turpis in commodo aliquet
-                pulvinar ultrices.Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                Ut dolor quis morbi sagittis donec sed massa.
-              </p>
+            <div
+              id="Experienceimg"
+              className="d-flex flex-column d-none d-md-flex "
+            >
+              <img className="" src={img} />
             </div>
-            <div className='row m-auto d-flex justify-content-center'>
-              <div className=' mt-4'>
-                <div className='card m-2'>
-                  <img className='cardImg' src={img1} height='200' />
-                  <div className='carousel-caption2'>
-                    <h5 className='textt'>CV writing Coaching</h5>
-                  </div>
+          </div>
+          <div className="d-flex flex-row">
+            <div id="Career" className="fs-2">
+              Career Coaching Guidance
+            </div>
+          </div>
+          <div className="d-flex flex-row" id="CoachCont">
+            <div className="fs-6 " id="DescProv">
+              Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+              Reiciendis numquam similique eum repellat nesciunt beatae error
+              quod, tenetur aspernatur a cumque, non maxime sit nulla excepturi
+              pariatur inventore illum placeat. orem ipsum dolor sit amet
+              consectetur, adipisicing elit. Reiciendis numquam similique eum
+              repellat nesciunt beatae error quod, tenetur aspernatur a cumque,
+              non maxime sit nulla excepturi pariatur inventore illum placeat.
+            </div>
+          </div>
+          <div className="d-flex flex-row flex-wrap  " id="CoachCont">
+            <div className=" mt-3 col-md-4 col-12">
+              <div className="card m-md-5">
+                <img
+                  className="cardImg img-responsive"
+                  src={img1}
+                  height="200"
+                />
+                <div className="carousel-caption2">
+                  <h5 className="textt">CV writing Coaching</h5>
                 </div>
               </div>
-              <div className=' mt-4 '>
-                <div className=' card m-2'>
-                  <img className='cardImg' src={img2} height='200' />
-                  <div className='carousel-caption2'>
-                    <h5 className='textt'>Interview Coaching</h5>
-                  </div>
+            </div>
+            <div className=" mt-3  col-md-4 col-12">
+              <div className=" card m-md-5">
+                <img
+                  className="cardImg img-responsive"
+                  src={img3}
+                  height="200"
+                />
+                <div className="carousel-caption2">
+                  <h5 className="textt">Interview Coaching</h5>
                 </div>
               </div>
-              <div className=' mt-4'>
-                <div className=' card m-2'>
-                  <img className='cardImg' src={img3} height='200' />
-                  <div className='carousel-caption2'>
-                    <h5 className='textt '> Coaching Coaching Path</h5>
-                  </div>
+            </div>
+            <div className=" mt-3 col-md-4 col-12">
+              <div className=" card m-md-5">
+                <img
+                  className="cardImg img-responsive"
+                  src={img2}
+                  height="200"
+                />
+                <div className="carousel-caption2">
+                  <h5 className="textt "> Career Coaching Path</h5>
                 </div>
               </div>
             </div>
           </div>
-          <hr className='prim border' />
 
-          <div className=' d-flex row'>
-            <div className='row '>
-              <div className='justify-content-between m-5 p-5 container'>
-                <h1 className='header  respo mb-5'>Why Join Us ? </h1>
-                <p className='text pw'>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut dolor quis
-                  morbi sagittis donec sed massa.
-                </p>
-                <ul class='container column li '>
-                  <li class='flex-item   row'>
-                    <p className='col-xs-12 text respo'>
-                      <FaCheck className='seco mr-4' />
-                      Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                    </p>
-                  </li>
-                  <li class='flex-item  row'>
-                    <p className='col-xs-12 text'>
-                      <FaCheck className='seco mr-4' />
-                      Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                    </p>
-                  </li>
-                  <li class='flex-item   row'>
-                    <p className='col-xs-12 text d-inline w-100'>
-                      <FaCheck className='seco mr-4' />
-                      Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                    </p>
-                  </li>
-                  <li class='text-center row'>
-                    <p className='col-xs-12 text d-inline w-100'>
-                      Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                    </p>
-                    <div className='d-flex m-auto w-100 store row m-auto d-flex justify-content-center'>
-                      <img src={google} className='m-3 cardImg2' />
-                      <img src={apple} className='m-3 cardImg2' />
+          <div className="d-flex flex-row mt-3">
+            <div
+              id="DescCont"
+              className=" d-flex flex-column text-wrap bg-none me-5"
+            >
+              <div className="fs-2 " id="Title">
+                Why Join Us?
+              </div>
+              <div className="fs-6 " id="DescProv">
+                Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+                Reiciendis numquam similique eum repellat nesciunt beatae error
+                quod, tenetur aspernatur a cumque, non maxime sit nulla
+                excepturi pariatur inventore illum placeat.
+              </div>
+              <div>
+                <div id="checklist" className="d-flex flex-column mt-3 ">
+                  <div>
+                    <BsCheck color="cd8930" className="fs-3" />
+                    {"    "}
+                    <span>
+                      Lorem ipsum, dolor sit amet consectetur adipisicing elit.
+                    </span>
+                  </div>
+
+                  <div className="mt-3">
+                    <BsCheck color="cd8930" className="fs-3" />
+                    {"    "}
+                    <span>
+                      Lorem ipsum, dolor sit amet consectetur adipisicing elit.
+                    </span>
+                  </div>
+
+                  <div className="mt-3">
+                    <BsCheck color="cd8930" className="fs-3" />
+                    {"    "}
+                    <span>
+                      Lorem ipsum, dolor sit amet consectetur adipisicing elit.
+                    </span>
+                  </div>
+                  <div className="d-flex flex-column justify-content-center align-items-center w-100">
+                    <div className="mt-4">
+                      <span id="apps" className=" ">
+                        Download Trainery and Start Training
+                      </span>
                     </div>
-                  </li>
-                </ul>
+                    <div className="my-3 d-flex flex-row ">
+                      <a href="#">
+                        <img className="mx-1" src={google} height="40" />
+                      </a>
+                      <a href="#">
+                        <img className="mx-1" src={apple} height="40" />
+                      </a>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
-            <div className='col-sm-6 col-lg-4 d-flex justify-content-end ml-auto'>
-              <img
-                src={img4}
-                className='rounded mt-5 pw imgbook m-auto'
-                height='500'
-                width='750'
-              />
+            <div
+              id="Experienceimg"
+              className="d-flex flex-column d-none d-md-flex "
+            >
+              <img src={img4} />
             </div>
           </div>
-          <div className='justify-content-between m-5 p-5 col-sm-12 col-md-12 container-fluid respo'>
-            <h1 className='header-seco m-auto text-left respo seco'>
-              Over 1000+ Opportunity just for students
-            </h1>
-            <p className='w-100 pw text-left'>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Eros, laoreet elit
-              habitasse vitae ultrices feugiat. Quis semper tortor malesuada Eros, laoreet
-              elit habitasse vitae ultrices feugiat. Quis semper tortor malesuada
-            </p>
+
+          <div className="d-flex flex-row">
+            <div id="opportunities" className="fs-2">
+              Over 1000 Opportunities Just For Students
+            </div>
           </div>
-          <Footer />
+          <div className="d-flex flex-row" id="CoachCont">
+            <div className="fs-6 mb-1  " id="DescProv">
+              Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+              Reiciendis numquam similique eum repellat nesciunt beatae error
+              quod, tenetur aspernatur a cumque, non maxime sit nulla excepturi
+              pariatur inventore illum placeat.
+            </div>
+          </div>
         </div>
-      );
-    }
+        <Footer />
+      </div>
+    );
   }
 }
+// d
 export default Landing;
