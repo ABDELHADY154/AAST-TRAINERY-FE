@@ -267,7 +267,6 @@ class Registry extends React.Component {
 
           <div className="form-row">
             <div className="col-md-10 col-lg-12 form-label-group input-field">
-              {" "}
               <label className="label">Password</label>
               <input
                 type="password"
@@ -276,7 +275,6 @@ class Registry extends React.Component {
               />
             </div>
             <div className="col-md-10 col-lg-12 form-label-group input-field">
-              {" "}
               <label className="label">Confirm Password</label>
               <input
                 type="password"
@@ -289,7 +287,6 @@ class Registry extends React.Component {
 
           <div className="form-row">
             <div className="col-md-10 col-lg-12 form-label-group input-field">
-              {" "}
               <label className="label">Registration Numbe</label>
               <input
                 type="text"
