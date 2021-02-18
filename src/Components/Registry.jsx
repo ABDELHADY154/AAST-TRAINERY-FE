@@ -68,43 +68,48 @@ class Registry extends React.Component {
         });
       });
   };
+
+  componentDidMount = () => {
+    const token = sessionStorage.getItem("token");
+    const status = sessionStorage.getItem("status");
+    if (status && token) {
+      return this.setState({ loggedIn: true });
+    }
+  };
   render() {
     if (this.state.error) {
       Invaldedata = (
-        <div className="o-scroll">
+        <div className="">
           <div className="form-row">
             <h3 className="mb-5 signSubTitle">Personal Information</h3>
 
-            <div className=" col-md-10 col-lg-12 form-label-group input-field">
+            <div className="col-md-10 col-lg-12 form-label-group input-field">
+              <label className="label">Full Name</label>
               <input
                 type="name"
-                // required
+                // placeholder="Full Name"
                 onChange={(e) => (this.username = e.target.value)}
+                className="form-control wrong"
               />
-              <label className="label">Full Name</label>
               {this.state.error && (
                 <p className="error">{this.state.error.usernameErr}</p>
               )}
             </div>
           </div>
-          {/* <div className="form-row"> */}
-          <div className=" col-md-10 col-lg-12 form-label-group input-field">
+          <div className="col-md-10 col-lg-12 form-label-group input-field">
+            <label className="label">Student Email</label>
             <input
-              type="email"
-              // required
-              id="Email"
-              // placeholder="Enter Your Sudent Email"
+              // placeholder="Email"
+              className="form-control wrong"
               onChange={(e) => (this.Email = e.target.value)}
             />
-            <label className="label">Email</label>
             {this.state.error && (
               <p className="error">{this.state.error.emailErr}</p>
             )}
           </div>
-          {/* </div> */}
 
           <div className=" row form-label-group ">
-            <h2 className="genderLabel">Gender</h2>
+            <h2 className="genderLabel ">Gender</h2>
             <div class="col form-check form-check-inline d-flex">
               <input
                 class=""
@@ -140,21 +145,23 @@ class Registry extends React.Component {
 
           <div className="form-row">
             <div className=" col-md-10 col-lg-12 form-label-group input-field">
+              <label className="label">Password</label>
               <input
                 type="password"
-                // required
+                className="form-control wrong"
+                // placeholder="Password"
                 onChange={(e) => (this.Password = e.target.value)}
               />
-              <label className="label">Password</label>
               <p className="error"> {this.state.error.passwordConfErr} </p>
             </div>
             <div className="col-md-10 col-lg-12 form-label-group input-field">
+              <label className="label">Confirm Password</label>
               <input
                 type="password"
-                // required
+                className="form-control wrong"
+                // placeholder="Confirm Password"
                 onChange={(e) => (this.password_confirmation = e.target.value)}
               />
-              <label className="label"> Confirm Password</label>
               <p className="error"> {this.state.error.passwordConfErr} </p>
             </div>
           </div>
@@ -162,13 +169,13 @@ class Registry extends React.Component {
 
           <div className="form-row">
             <div className="col-md-10 col-lg-12 form-label-group input-field">
+              <label className="label">Registration Number</label>
               <input
                 type="text"
-                // required
+                className="form-control wrong"
+                // placeholder="Registration number"
                 onChange={(e) => (this.RegNum = e.target.value)}
               />
-              <label className="label">Registration number</label>
-
               {this.state.error && (
                 <p className="error"> {this.state.error.regnumErr} </p>
               )}
@@ -182,7 +189,7 @@ class Registry extends React.Component {
               ) : (
                 <select
                   type="text"
-                  className="form-control dep dropDown"
+                  className="form-control dep wrong "
                   id="departs"
                   onChange={(e) => (this.depart = e.target.value)}
                 >
@@ -207,25 +214,24 @@ class Registry extends React.Component {
         <div>
           <div className="form-row">
             <h3 className="mb-5 signSubTitle">Personal Information</h3>
-
             <div className="col-md-10 col-lg-12 form-label-group input-field">
+              <label className="label">Full Name</label>
               <input
                 type="name"
-                // required
+                // placeholder="Full Name"
                 onChange={(e) => (this.username = e.target.value)}
               />
-              <label className="label">Full Name</label>
             </div>
           </div>
           <div className="form-row">
             <div className="col-md-10 col-lg-12 form-label-group input-field">
+              <label className="label">Student Email</label>
               <input
                 type="email"
                 id="Email"
-                // required
+                // placeholder="Email"
                 onChange={(e) => (this.Email = e.target.value)}
               />
-              <label className="label">Email</label>
             </div>
           </div>
 
@@ -240,7 +246,6 @@ class Registry extends React.Component {
                 className="radio"
                 onChange={(e) => (this.gender = e.target.value)}
               />
-              {/* <BsCheck color="cd8930" className="fs-3" /> */}
               <label class="form-check-label raioLabel" for="inlineCheckbox3">
                 Male
               </label>
@@ -262,32 +267,32 @@ class Registry extends React.Component {
 
           <div className="form-row">
             <div className="col-md-10 col-lg-12 form-label-group input-field">
+              <label className="label">Password</label>
               <input
                 type="password"
-                // required
+                // placeholder="Password"
                 onChange={(e) => (this.Password = e.target.value)}
               />
-              <label className="label">Password</label>
             </div>
             <div className="col-md-10 col-lg-12 form-label-group input-field">
+              <label className="label">Confirm Password</label>
               <input
                 type="password"
-                // required
+                // placeholder="Confirm Password"
                 onChange={(e) => (this.password_confirmation = e.target.value)}
               />
-              <label className="label">Confirm Password</label>
             </div>
           </div>
           <h3 className="mb-5 signSubTitle">College Information</h3>
 
           <div className="form-row">
             <div className="col-md-10 col-lg-12 form-label-group input-field">
+              <label className="label">Registration Numbe</label>
               <input
                 type="text"
-                // required
+                // placeholder="Registration number"
                 onChange={(e) => (this.RegNum = e.target.value)}
               />
-              <label className="label">Registration number</label>
             </div>
           </div>
 
@@ -321,14 +326,14 @@ class Registry extends React.Component {
       );
     }
 
-    if (this.state.loggedIn === "0000") {
+    if (this.state.loggedIn === true) {
       return <Redirect to="/Home" />;
     } else {
       return (
         <div className="container-fluid">
           <div className="row no-gutter">
             <div className="col-md-10 col-lg-8 ">
-              <div className="login d-flex align-items-center py-5">
+              <div className=" d-flex align-items-center py-5">
                 <div className="container">
                   <div className="row">
                     <div className="col-md-9 col-lg-8 mx-auto signup h-100">
@@ -336,13 +341,19 @@ class Registry extends React.Component {
                       <form className="col-md-8" onSubmit={this.handleSubmit}>
                         {Invaldedata}
                         <div className="col-md-10 col-lg-12">
-                          <p className="account">Aready have an account ?</p>
+                          <a href="/Login">
+                            <p className="account">Aready have an account ?</p>
+                          </a>
                           <p className="agree ">
                             By creating an account, you agree to the
-                            <span className="terms">Terms and Conditions</span>
+                            <a href="#">
+                              <span className="terms">
+                                {"  "}
+                                Terms and Conditions{"  "}
+                              </span>
+                            </a>
                             of the company.
                           </p>
-
                           <button
                             className="btn shadow-none submitBtn col-sm-5 btn-outline-primary d-block text-uppercase font-weight-bold mb-2"
                             type="submit"

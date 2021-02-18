@@ -1,16 +1,40 @@
 .bg-image {
   overflow-y: hidden;
   overflow-x: hidden;
-  background-image: url(../Components/assests/imgs/login.jpg);
+  background-image: url(../Components/assests/imgs/signup.jpg);
   background-repeat: no-repeat;
   background-size: cover;
   position: absolute;
-  width: 45%;
-  height: 93%;
+  width: 35%;
+  height: 93.7%;
   right: 0;
-  top: 75px;
+  top: 84px;
   /* margin-top: -2px; */
   border-radius: 5px;
+}
+a {
+  text-decoration: none;
+}
+.bg-image-no-img {
+  overflow-y: hidden !important;
+  overflow-x: hidden !important;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: fixed;
+  width: 35%;
+  height: 88.1% !important;
+  right: 0;
+  top: 84px;
+  border-radius: 5px;
+}
+.wrong {
+  border-color: #dc3545;
+  padding-right: calc(1.5em + 0.75rem);
+  background: url("https://api.iconify.design/ion-md-warning.svg?color=red")
+    no-repeat center center / contain;
+  background-repeat: no-repeat;
+  background-position: right calc(0.375em + 0.1875rem) center;
+  background-size: calc(0.75em + 0.375rem) calc(0.75em + 0.375rem);
 }
 .signTitle {
   font-size: 30px;
@@ -24,12 +48,13 @@
   font-size: 14px;
   position: relative;
   color: #1e4274;
+  margin-bottom: 25px;
 }
 .form-check-label {
   color: #1e4274 !important;
   margin-bottom: 50px;
 }
-.label {
+/* .label {
   position: absolute;
   top: 0;
   left: 0;
@@ -37,11 +62,38 @@
   color: #1e4274 !important;
   transition: 0.2s all;
   cursor: text;
-}
-.input-field {
+} */
+/* mohanad */
+/* .label-before,
+.field input:focus + label::before,
+.field input:valid + label::before {
+  line-height: 15px;
+  font-size: 12px;
+  top: -20px;
+  left: 0;
+  background: #fff;
+  padding: 0 6px;
+} */
+/* .field {
   position: relative;
-}
-
+  margin-bottom: 20px;
+  margin-top: 10px;
+  display: inline-block;
+} */
+/* .field label::before {
+  content: attr(title);
+  position: absolute;
+  top: -10px;
+  left: 15px;
+  line-height: 30px;
+  font-size: 18px;
+  color: #777;
+  transition: 300ms all;
+} */
+/* .field input:valid + label::before {
+  content: attr(data-title);
+} */
+/* Basma */
 input {
   border: 0 !important;
   outline: 0 !important;
@@ -68,13 +120,12 @@ input:focus,
 input:valid {
   border-color: #cd8930;
 }
-input:focus ~ label,
-input:valid ~ label {
+input:focus,
+input:valid {
   font-size: 14px;
   top: -24px;
   color: #cd8930;
 }
-
 .depError {
   color: #f44336;
   font-size: 14px;

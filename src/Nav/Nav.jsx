@@ -36,7 +36,7 @@ class Nav extends React.Component {
       return (
         <div>
           <nav className='navbar navbar-expand-lg navbar-light bg-light  '>
-            <img className='navbar-brand img-rounded' src={logo}></img>
+            <img className='navbar-brand img-rounded' src={logo} width={170}></img>
             <button
               className='navbar-toggler'
               type='button'
