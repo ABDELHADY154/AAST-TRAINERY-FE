@@ -7,7 +7,6 @@ import {
   FaInstagram,
   FaLinkedinIn,
   FaYoutube,
-  FaChevronUp,
 } from "react-icons/fa";
 import { BsChevronUp } from "react-icons/bs";
 import ScrollTop from "react-scrolltop-button";
@@ -19,11 +18,11 @@ export default class Footer extends React.Component {
       <div className="Container flex-row">
         <footer className="footer-area footer--light m-auto prim">
           <div className="footer-big">
-            <div className="container">
+            <div className="container pt-4">
               <div className="row ml-4">
                 <div className="col-md-5 col-sm-4 ">
-                  <div className="footer-widget d-flex justify-content-center ">
-                    <div id="foot-column" className="mt-2 flex-column">
+                  <div className="footer-widget d-flex justify-content-center text-align-center ">
+                    <div className="mt-2 flex-column">
                       <img
                         id="footlogo"
                         // className="navbar-brand img-rounded m-auto "
@@ -41,10 +40,10 @@ export default class Footer extends React.Component {
                     </div>
                   </div>
                 </div>
-                <div className="col-md-2 col-sm-4  ">
-                  <div id="About" className="footer-widget d-flex ">
-                    <div id="foot-column" className="footer-menu flex-column ">
-                      <h4 className="footer-widget-title  ">About</h4>
+                <div className="col-md-2 col-12 ">
+                  <div className="footer-widget d-flex ">
+                    <div className="footer-menu flex-column justify-content-center text-center align-items-center ">
+                      <h4 className="footer-widget-title pt-3">About</h4>
                       <ul>
                         <li>
                           <a href="#">About Us</a>
@@ -53,7 +52,7 @@ export default class Footer extends React.Component {
                           <a href="#">Contact Us</a>
                         </li>
 
-                        <li>
+                        <li color="#ffffff" fill="#ffffff">
                           <a href="#">
                             <FaInstagram id="instagram" />
                           </a>
@@ -72,10 +71,10 @@ export default class Footer extends React.Component {
                   </div>
                 </div>
 
-                <div className="col-md-2 col-sm-4 mt-5">
+                <div className="col-md-2 col-12">
                   <div className="footer-widget d-flex">
-                    <div id="Account" className="footer-menu flex-column">
-                      <h4 className="footer-widget-title">Account</h4>
+                    <div className="footer-menu flex-column justify-content-center text-center align-items-center">
+                      <h4 className="footer-widget-title pt-3">Account</h4>
                       <ul>
                         <li>
                           <a href="#">Sign Up</a>
@@ -91,14 +90,14 @@ export default class Footer extends React.Component {
             </div>
           </div>
           <ScrollTop
-            text={<BsChevronUp fontSize="30px" />}
+            text={<BsChevronUp fontSize="30px" fill="#cd8930" />}
             style={{
               backgroundColor: "transparent",
               borderRadius: "5px",
               color: "#cd8930",
               borderColor: "#cd8930",
             }}
-            icon={<BsChevronUp />}
+            icon={<BsChevronUp fill="#cd8930" />}
           />
         </footer>
       </div>
