@@ -3,31 +3,31 @@
 import React from "react";
 import ContentLoader from "react-content-loader";
 
-export const Loader = (props) => (
+export const DepLoader = (props) => (
   <ContentLoader
     speed={1}
-    width={1000}
-    height={129}
-    viewBox="0 0 1000 129"
-    backgroundColor="#f3f3f3"
-    foregroundColor="#dedede"
+    width={150}
+    height={150}
+    viewBox="0 0 150 150"
+    backgroundColor="#fafafa"
+    foregroundColor="#e6e6e6"
     {...props}
   >
-    <rect x="6" y="7" rx="2" ry="2" width="120" height="50" />
-    <rect x="271" y="8" rx="2" ry="2" width="120" height="50" />
-    <rect x="138" y="7" rx="2" ry="2" width="120" height="50" />
+    <circle cx="109" cy="59" r="25" />
+    <rect x="67" y="106" rx="0" ry="0" width="85" height="20" />
   </ContentLoader>
 );
+
 export const Loader2 = (props) => (
   <ContentLoader
     speed={1}
     width={1000}
     height={129}
     viewBox="0 0 1000 129"
-    backgroundColor="#f3f3f3"
-    foregroundColor="#dedede"
+    backgroundColor="#fafafa"
+    foregroundColor="#e6e6e6"
     {...props}
   >
-    <rect x="7" y="4" rx="2" ry="2" width="230" height="21" />
+    <rect x="7" y="4" rx="2" ry="2" width="270" height="21" />
   </ContentLoader>
 );
