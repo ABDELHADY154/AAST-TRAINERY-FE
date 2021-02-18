@@ -20,6 +20,7 @@ class Registry extends React.Component {
         departs: dep.data.response.data,
         loading: true,
       });
+      console.log(dep);
     });
     const token = sessionStorage.getItem("token");
     const status = sessionStorage.getItem("status");
@@ -29,8 +30,7 @@ class Registry extends React.Component {
   }
   handleSubmit = async (e) => {
     e.preventDefault();
-    // e.target.reset();
-
+    e.target.reset();
     const data = {
       name: this.username,
       email: this.Email,
@@ -69,13 +69,6 @@ class Registry extends React.Component {
       });
   };
 
-  componentDidMount = () => {
-    const token = sessionStorage.getItem("token");
-    const status = sessionStorage.getItem("status");
-    if (status && token) {
-      return this.setState({ loggedIn: true });
-    }
-  };
   render() {
     if (this.state.error) {
       Invaldedata = (
