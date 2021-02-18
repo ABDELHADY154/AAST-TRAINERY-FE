@@ -6,6 +6,9 @@ import { axios } from "../Api/axios";
 import { Loader } from "../loader";
 import img from "../Components/assests/imgs/girl.png";
 import img2 from "../Components/assests/imgs/cib.png";
+import rec1 from "../Components/assests/imgs/rec1.png";
+import rec2 from "../Components/assests/imgs/rec2.png";
+import rec3 from "../Components/assests/imgs/rec3.png";
 import "../layout/Home.css";
 import { BsArrowUpRight } from "react-icons/bs";
 // import { ProgressBar } from "react-bootstrap";
@@ -322,6 +325,37 @@ class Home extends Component {
                     </div>
                   </div>
                 </div>
+              </div>
+            </div>
+            <div className="fs-3 mt-5" id="">
+              Check our career coaching services
+            </div>
+            <div className="d-flex flex-row flex-nowrap   justify-content-around">
+              <div className=" mt-3  col-md-3 col-12">
+                <img
+                  className="cardImg img-responsive "
+                  src={rec1}
+                  height="150"
+                />
+              </div>
+              <div className=" mt-3   col-md-4 col-12">
+                <img
+                  className="cardImg img-responsive "
+                  src={rec2}
+                  height="150"
+                />
+                <div className="carousel-caption">
+                  <h5 color="white" className=" fs-2">
+                    Interview Session
+                  </h5>
+                </div>
+              </div>
+              <div className=" mt-3  col-md-3 col-12">
+                <img
+                  className="cardImg img-responsive "
+                  src={rec3}
+                  height="150"
+                />
               </div>
             </div>
           </div>
