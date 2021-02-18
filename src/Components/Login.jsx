@@ -59,7 +59,7 @@ class Login extends React.Component {
       Invaldemail = (
         <div>
           <div className="col-md-11 col-lg-12 form-label-group input-field field">
-            <label className="label">Email</label>
+            <label className="label">Student Email</label>
             <input
               type="email"
               class="wrong"
@@ -91,7 +91,7 @@ class Login extends React.Component {
       var Invaldemail = (
         <div className="">
           <div className="col-md-11 col-lg-12 form-label-group input-field field">
-            <label className="label">Email</label>
+            <label className="label">Student Email</label>
             <input
               type="email"
               // required
@@ -118,13 +118,14 @@ class Login extends React.Component {
     } else {
       return (
         <div className="container-fluid h-100">
-          <div className="row no-gutter">
-            <div className="col-md-10 col-lg-8 ">
-              <div className="d-flex align-items-center py-2">
-                <div className="container my-5">
-                  <div className="row">
-                    <div className="col-md-9 col-lg-8 mx-auto  h-100">
-                      <h3 className=" mb-5 signTitle">Login</h3>
+          <div className="row no-gutter ">
+            <div className="col-md-9 col-lg-9 ">
+              <div className=" d-flex align-items-center p-3">
+                <div className="container ">
+                  <div className="row m-auto">
+                    <div className="col-md-7 col-lg-7 mx-auto  h-100 rounded ">
+                      <h3 className=" mb-5 signTitle">Sign In </h3>
+
                       <form className="col-md-8" onSubmit={this.handleSubmit}>
                         {Invaldemail}
                         <div className="col-md-10 col-lg-12">
@@ -135,7 +136,7 @@ class Login extends React.Component {
                             <p className="agree">Forgot Password ?</p>
                           </a>
                           <button
-                            className="btn shadow-none submitBtn col-sm-5 col-5 col-md-4 col-xs-5 btn-outline-primary d-block text-uppercase font-weight-bold mb-2"
+                            className="btn shadow-none submitBtn col-sm-5 btn-outline-primary d-block text-uppercase font-weight-bold mb-2"
                             type="submit"
                           >
                             Sign in
@@ -151,7 +152,7 @@ class Login extends React.Component {
             <div className="img-fluid d-none d-md-flex col-md-3 col-lg-4 ">
               <img
                 src={loginBG}
-                class="img-fluid bg-image-no-img h-100 "
+                class="img-fluid bg-image-no-img h-100  "
                 width="100%"
               />
             </div>
