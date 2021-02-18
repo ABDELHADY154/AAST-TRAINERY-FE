@@ -341,8 +341,8 @@ class Registry extends React.Component {
                             By creating an account, you agree to the
                             <a href="#">
                               <span className="terms">
-                                {"  "}
-                                Terms and Conditions{"  "}
+                               
+                                Terms and Conditions
                               </span>
                             </a>
                             of the company.

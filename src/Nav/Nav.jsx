@@ -5,6 +5,11 @@ import { Link } from "react-router-dom";
 import logo from "../Components/assests/icons/Main-Logo.png";
 import avatar from "../Components/Home";
 import { IoIosNotificationsOutline } from "react-icons/io";
+import { IoCheckmarkCircleOutline } from "react-icons/io5";
+
+import { BiErrorAlt } from "react-icons/bi";
+
+import { BsExclamationOctagon } from "react-icons/bs";
 
 import "../layout/Nav.css";
 import "../layout/Main.css";
@@ -90,34 +95,97 @@ class Nav extends React.Component {
                     <a className='nav-item item' href='#'>
                       <a
                         className='dropdown-toggle'
-                        id='dropdownMenuButton1'
+                        id='dropdownMenu2'
                         data-bs-toggle='dropdown'
+                        aria-expanded='false'
                       >
                         <IoIosNotificationsOutline
                           value={{
-                            color: "blue",
+                            color: "#007BC2",
                             className: "global-class-name",
                           }}
                           className='noti mt-2 d-inline-block'
                         />
                       </a>
-
-                      <ul className='dropdown-menu ' aria-labelledby='dropdownMenu2'>
-                        <li>
-                          <a className='dropdown-item' href='#'>
-                            Action
-                          </a>
-                        </li>
-                        <li>
-                          <a className='dropdown-item' href='#'>
-                            Another action
-                          </a>
-                        </li>
-                        <li>
-                          <a className='dropdown-item' href='#'>
-                            Something else here
-                          </a>
-                        </li>
+                      <ul
+                        className='dropdown-menu '
+                        lass='dropdown-menu'
+                        aria-labelledby='dropdownMenu2'
+                      >
+                        <p className='text-center  mb-2 Nottext'>Notications</p>
+                        <BsExclamationOctagon
+                          color='#007BC2'
+                          className='sssaa'
+                          animation='tada'
+                          size='15px'
+                          pull='left'
+                        />
+                        <div className='notice notice-info dropdown-item'>
+                          <div className='text'>
+                            <h5 className='nottext'>Review your finished session </h5>
+                            <h5 className='nottap'> Tap for more information</h5>
+                          </div>
+                        </div>
+                        <BiErrorAlt
+                          color='red'
+                          className='sssaa'
+                          animation='tada'
+                          size='15px'
+                          pull='left'
+                        />
+                        <div className='notice notice-danger dropdown-item'>
+                          <div className='text'>
+                            <h5 className='nottext'>
+                              Unfortunately, you were rejected in the applied internship
+                            </h5>
+                            <h5 className='nottap'> Tap for more information</h5>
+                          </div>
+                        </div>
+                        <IoCheckmarkCircleOutline
+                          color='green'
+                          className='sssaa'
+                          animation='tada'
+                          size='15px'
+                          pull='left'
+                        />
+                        <div className='notice notice-success dropdown-item'>
+                          <div className='text '>
+                            <h5 className='nottext pl-5'>
+                              Congratulations you got accepted in the applied internship{" "}
+                            </h5>
+                            <h5 className='nottap'> Tap for more information</h5>
+                          </div>
+                        </div>
+                        <IoCheckmarkCircleOutline
+                          color='green'
+                          className='sssaa'
+                          animation='tada'
+                          size='15px'
+                          pull='left'
+                        />
+                        <div className='notice notice-success dropdown-item'>
+                          <div className='text '>
+                            <h5 className='nottext pl-5'>
+                              Congratulations you got accepted in the applied internship{" "}
+                            </h5>
+                            <h5 className='nottap'> Tap for more information</h5>
+                          </div>
+                        </div>{" "}
+                        <IoCheckmarkCircleOutline
+                          color='green'
+                          className='sssaa'
+                          animation='tada'
+                          size='15px'
+                          pull='left'
+                        />
+                        <div className='notice notice-success dropdown-item'>
+                          <div className='text '>
+                            <h5 className='nottext pl-5'>
+                              Congratulations you got accepted in the applied internship{" "}
+                            </h5>
+                            <h5 className='nottap'> Tap for more information</h5>
+                          </div>
+                        </div>
                       </ul>
                     </a>
                     <a className='nav-item ' href='#'>
