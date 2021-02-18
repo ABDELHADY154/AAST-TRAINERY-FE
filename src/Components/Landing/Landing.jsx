@@ -10,7 +10,7 @@ import img3 from "./Rectangle3.png";
 import img4 from "./2.png";
 import google from "./google.png";
 import apple from "./apple.png";
-import { Loader } from "../../loader";
+import { DepLoader } from "../../loader";
 import "../../layout/Landing.css";
 import { BsCheck } from "react-icons/bs";
 
@@ -55,7 +55,11 @@ class Landing extends React.Component {
                 className="d-flex flex-row flex-wrap mt-5 justify-content-between"
               >
                 {this.state.loading === false ? (
-                  <Loader />
+                  <div>
+                    <DepLoader />
+                    <DepLoader />
+                    <DepLoader />
+                  </div>
                 ) : (
                   <>
                     <div className="col-12 col-md-4 d-flex justify-content-center text-center flex-column align-items-center">

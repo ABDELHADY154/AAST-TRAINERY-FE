@@ -46,11 +46,7 @@ class Home extends Component {
 
   render() {
     if (this.state.loading === false) {
-      return (
-        <div className="container text-center">
-          <Loader />
-        </div>
-      );
+      return <div className="container text-center">{/* <Loader /> */}</div>;
     } else {
       return (
         <div className="container-fluid ">
