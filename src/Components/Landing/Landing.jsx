@@ -39,7 +39,7 @@ class Landing extends React.Component {
           <div className="d-flex flex-row ">
             <div
               id="DescCont"
-              className="d-flex flex-column text-wrap bg-none me-5"
+              className="d-flex flex-column text-wrap bg-none "
             >
               <div className="fs-2" id="Title">
                 We Provide The Best Experience
@@ -80,7 +80,7 @@ class Landing extends React.Component {
             </div>
             <div
               id="Experienceimg"
-              className="d-flex flex-column d-none d-md-flex "
+              className="d-flex flex-column d-none d-md-flex ms-5 "
             >
               <img className="" src={img} />
             </div>
@@ -143,7 +143,7 @@ class Landing extends React.Component {
           <div className="d-flex flex-row mt-3">
             <div
               id="DescCont"
-              className=" d-flex flex-column text-wrap bg-none me-5"
+              className=" d-flex flex-column text-wrap bg-none "
             >
               <div className="fs-2 " id="Title">
                 Why Join Us?
@@ -199,7 +199,7 @@ class Landing extends React.Component {
             </div>
             <div
               id="Experienceimg"
-              className="d-flex flex-column d-none d-md-flex "
+              className="d-flex flex-column d-none d-md-flex ms-5 "
             >
               <img src={img4} />
             </div>

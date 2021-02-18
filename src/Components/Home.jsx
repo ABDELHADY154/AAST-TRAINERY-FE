@@ -64,13 +64,13 @@ class Home extends Component {
 
                 <div className="d-flex flex-row flex-wrap mt-5 justify-content-between">
                   <div className="col-12 col-md-12 d-flex ">
-                    <div className="col-6 col-md-6 d-flex">
+                    <div className="col-6 col-md-2 d-flex">
                       Steps to Success
                     </div>
 
                     <div class="progress col-6 col-md-6 d-flex">
                       <div
-                        class="progress-bar w-50"
+                        class="progress-bar bg-warning w-50"
                         role="progressbar"
                         aria-valuenow="50"
                         aria-valuemin="0"
