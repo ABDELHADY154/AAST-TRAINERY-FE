@@ -1,0 +1,102 @@
+/** @format */
+
+@import url(https://fonts.googleapis.com/css?family=Rubik:300,400,500,700);
+
+li {
+  list-style: none;
+}
+ul {
+  margin: 0;
+  padding: 0;
+}
+a {
+  text-decoration: none;
+}
+.Container {
+  display: flexbox;
+}
+.no-padding {
+  padding: 0 !important;
+}
+
+.footer--light {
+  background: #1e4274;
+}
+.footer-big .footer-menu ul li a,
+.footer-big p,
+.footer-big ul li {
+  color: #fff;
+}
+.footer-menu {
+  padding-left: 10%;
+}
+.footer-menu ul li a {
+  font-size: 15px;
+  line-height: 32px;
+  -webkit-transition: 0.3s;
+  -o-transition: 0.3s;
+  transition: 0.3s;
+}
+.footer-menu ul li a:hover {
+  color: #cd8930;
+}
+
+#Account {
+  margin-left: 10% !important;
+}
+.footer-widget-title {
+  color: #ffff;
+
+  font-size: 1.125em;
+}
+
+.widget-about img {
+  display: flex;
+}
+.widget-about p {
+  font-weight: 400;
+}
+.widget-about .contact-details {
+  margin: 30px 0 0 0;
+}
+.widget-about .contact-details li {
+  margin-bottom: 10px;
+}
+.widget-about .contact-details li:last-child {
+  margin-bottom: 0;
+}
+.widget-about .contact-details li span {
+  padding-right: 12px;
+}
+.widget-about .contact-details li a {
+  color: #5867dd;
+}
+@media (max-width: 991px) {
+  .footer-menu {
+    padding-left: 0;
+    margin: auto;
+  }
+  .footer-big {
+    padding: 0;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  #About {
+    margin-top: 2em !important;
+    text-align: center;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+  }
+  #Account {
+    margin-top: 2em !important;
+    text-align: center;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+  }
+  #instagram {
+    margin-right: 8px !important;
+  }
+}
