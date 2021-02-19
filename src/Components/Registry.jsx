@@ -317,7 +317,7 @@ class Registry extends React.Component {
     }
 
     if (this.state.loggedIn === true) {
-      return <Redirect to='/Home' />;
+      return <Redirect from='/Register' to='/Home' />;
     } else {
       return (
         <div className='container-fluid'>
@@ -337,9 +337,7 @@ class Registry extends React.Component {
                           <p className='agree '>
                             By creating an account, you agree to the
                             <Link to='#'>
-                              <span className='terms'>
-                                Terms and Conditions
-                              </span>
+                              <span className='terms'>Terms and Conditions</span>
                             </Link>
                             of the company.
                           </p>
