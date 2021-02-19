@@ -1,13 +1,16 @@
-/** @format */
-
 import React from "react";
 import { BrowserRouter, Redirect, Route, Switch } from "react-router-dom";
 import Registry from "./Components/Registry";
 import Home from "./Components/Home";
 import Login from "./Components/Login";
 import Nav from "./Nav/Nav";
-import Landing from "./Components/Landing";
+import Landing from "./Components/Landing/Landing";
 import Profile from "./Components/Profile";
+import Forget from "./Components/ForgetPassword";
+
+import ErrorPage from "./Components/ErrorPage404";
+import "./layout/Footer.css";
+
 // import Maintains from "./Components/Maintains";
 const CheckAuth = () => {
   const token = sessionStorage.getItem("token");
@@ -52,29 +55,27 @@ class App extends React.Component {
             <div className='auth-inner'>
               <Switch>
                 {/* <== Home for Guest */}
-                <Route exact path='/' component={Landing} />
+
+                <Route
+                  exact
+                  path='/'
+                  component={() => <Landing loggedIn={this.state.loggedIn} />}
+                />
                 {/* <Route exact path='/'>
                   <Redirect to='/Login' />
                 </Route> */}
-                <Route
-                  path='/Login'
-                  component={() => <Login setUser={this.setUser} />}
-                />
+                <Route path='/Login' component={() => <Login setUser={this.setUser} />} />
+                <Route path='/Register' component={Registry} />
+                <Route path='/Forget' component={Forget} />
 
+                {/* //component={() => <Login isLoggedin={this.isLoggedin} />} */}
                 {/* <== Home for Users */}
                 <AuthRoute exact path='/Home' component={Home} />
                 {/* <== Register Guests */}
 
-                <Route path='/Register' component={Registry} />
-                {/* //component={() => <Login isLoggedin={this.isLoggedin} />} */}
-
                 <AuthRoute exact path='/Profile' component={Profile} />
-                <Route
-                  path='/Landing'
-                  component={() => <Landing loggedIn={this.state.loggedIn} />}
-                />
 
-                {/* <Route exact path='*' component={Profile} /> */}
+                <Route exact path='*' component={ErrorPage} />
               </Switch>
             </div>
           </div>
