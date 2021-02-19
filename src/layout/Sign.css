@@ -6,9 +6,9 @@
   background-size: cover;
   position: absolute;
   width: 35%;
-  height: 93.7%;
+  height: 95.7%;
   right: 0;
-  top: 84px;
+  top: 73px;
   /* margin-top: -2px; */
   border-radius: 5px;
 }
@@ -22,9 +22,9 @@ a {
   background-size: cover;
   position: fixed;
   width: 35%;
-  height: 88.1% !important;
+  height: 89.6% !important;
   right: 0;
-  top: 84px;
+  top: 75px;
   border-radius: 5px;
 }
 .wrong {
