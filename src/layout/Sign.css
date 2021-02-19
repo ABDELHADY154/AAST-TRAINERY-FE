@@ -54,46 +54,9 @@ a {
   color: #1e4274 !important;
   margin-bottom: 50px;
 }
-/* .label {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  color: #1e4274 !important;
-  transition: 0.2s all;
-  cursor: text;
-} */
-/* mohanad */
-/* .label-before,
-.field input:focus + label::before,
-.field input:valid + label::before {
-  line-height: 15px;
-  font-size: 12px;
-  top: -20px;
-  left: 0;
-  background: #fff;
-  padding: 0 6px;
-} */
-/* .field {
-  position: relative;
-  margin-bottom: 20px;
-  margin-top: 10px;
-  display: inline-block;
-} */
-/* .field label::before {
-  content: attr(title);
-  position: absolute;
-  top: -10px;
-  left: 15px;
-  line-height: 30px;
-  font-size: 18px;
-  color: #777;
-  transition: 300ms all;
-} */
-/* .field input:valid + label::before {
-  content: attr(data-title);
-} */
-/* Basma */
+label.label {
+  color: #1e4274;
+}
 input {
   border: 0 !important;
   outline: 0 !important;
@@ -166,15 +129,15 @@ input[type="radio"]:before {
 }
 
 input[type="radio"]:checked:before {
-  background: #cd8930;
-  /* background-image: url(../Components/assests/imgs/login.jpg); */
+  background: #1e4274;
+  background-image: url(../Components/assests/imgs/done2.svg);
   background-color: #fff;
   background-repeat: no-repeat;
   background-size: cover;
   position: absolute;
   width: 20px;
   height: 20px;
-  border: 3px solid #cd8930;
+  border: 2px solid #1e4274;
 }
 
 .account {
