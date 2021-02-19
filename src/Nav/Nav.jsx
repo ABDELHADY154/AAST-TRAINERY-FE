@@ -145,7 +145,7 @@ class Nav extends React.Component {
                           <p className='text-center  mb-2 Nottext'>Notications</p>
                           <BsExclamationOctagon
                             color='#007BC2'
-                            className='sssaa'
+                            className='NotIcon'
                             animation='tada'
                             size='15px'
                             pull='left'
@@ -160,7 +160,7 @@ class Nav extends React.Component {
                           </div>
                           <BiErrorAlt
                             color='red'
-                            className='sssaa'
+                            className='NotIcon'
                             animation='tada'
                             size='15px'
                             pull='left'
@@ -175,7 +175,7 @@ class Nav extends React.Component {
                           </div>
                           <IoCheckmarkCircleOutline
                             color='green'
-                            className='sssaa'
+                            className='NotIcon'
                             animation='tada'
                             size='15px'
                             pull='left'
@@ -190,7 +190,7 @@ class Nav extends React.Component {
                           </div>
                           <IoCheckmarkCircleOutline
                             color='green'
-                            className='sssaa'
+                            className='NotIcon'
                             animation='tada'
                             size='15px'
                             pull='left'
@@ -205,7 +205,7 @@ class Nav extends React.Component {
                           </div>
                           <IoCheckmarkCircleOutline
                             color='green'
-                            className='sssaa'
+                            className='NotIcon'
                             animation='tada'
                             size='15px'
                             pull='left'
