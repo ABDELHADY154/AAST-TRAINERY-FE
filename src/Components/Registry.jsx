@@ -302,13 +302,12 @@ class Registry extends React.Component {
                 <Loader2 />
               ) : (
                 <select
-                  className="dep"
                   type="text"
-                  className="form-control dropDown"
+                  className="form-control dep wrong "
                   id="departs"
                   onChange={(e) => (this.depart = e.target.value)}
                 >
-                  <option>Please Select Your Department </option>
+                  <option>Please Select Your Department</option>
 
                   {this.state.departs.map((depart) => (
                     <option value={depart.id} key={depart.id}>
@@ -318,7 +317,7 @@ class Registry extends React.Component {
                 </select>
               )}
               {this.state.error && (
-                <p className="departs">{this.state.error.departErr}</p>
+                <p className="depError">{this.state.error.departErr}</p>
               )}
             </div>
           </div>
