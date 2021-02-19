@@ -20,11 +20,11 @@ export default class Footer extends React.Component {
       <div className="Container flex-row">
         <footer className="footer-area footer--light m-auto prim">
           <div className="footer-big">
-            <div className="container">
+            <div className="container pt-4">
               <div className="row ml-4">
                 <div className="col-md-5 col-sm-4 ">
-                  <div className="footer-widget d-flex justify-content-center ">
-                    <div id="foot-column" className="mt-2 flex-column">
+                  <div className="footer-widget d-flex justify-content-center text-align-center ">
+                    <div className="mt-2 flex-column">
                       <img
                         id="footlogo"
                         // className="navbar-brand img-rounded m-auto "
