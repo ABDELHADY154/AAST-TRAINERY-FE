@@ -23,13 +23,13 @@ class Home extends Component {
         .get("/W/get-profile")
         .then((res) => {
           if (res.status === 200) {
-            sessionStorage.setItem("avatar", res.data.response.data.image);
+            // sessionStorage.setItem("avatar", res.data.response.data.image);
             this.setState({
               user: res.data.response.data,
               loading: true,
               code: "200",
             });
-          }
+                      }
         })
         .catch((error) => {
           this.setState({

@@ -69,13 +69,6 @@ class Registry extends React.Component {
       });
   };
 
-  componentDidMount = () => {
-    const token = sessionStorage.getItem("token");
-    const status = sessionStorage.getItem("status");
-    if (status && token) {
-      return this.setState({ loggedIn: true });
-    }
-  };
   render() {
     if (this.state.error) {
       Invaldedata = (

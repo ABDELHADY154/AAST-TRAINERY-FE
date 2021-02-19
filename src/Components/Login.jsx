@@ -49,6 +49,7 @@ class Login extends React.Component {
     const status = sessionStorage.getItem("status");
     if (status && token) {
       return this.setState({ loggedIn: true });
+      
     }
   };
   render() {

@@ -1,6 +1,6 @@
-/* .navbar {
-  display: none;
-} */
+body {
+  overflow-x: hidden; 
+}
 .nav-item {
   padding-bottom: 0.5em;
 }
@@ -44,11 +44,7 @@
   vertical-align: 0.255em;
   border: 0 !important;
 }
-.dropstart .dropdown-menu {
-  /* top: 70% !important;
-  right: 100% !important;
-  left: 50%; */
-}
+
 .dropdown-item {
   display: block;
   width: 100%;
