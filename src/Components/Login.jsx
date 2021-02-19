@@ -2,8 +2,9 @@
 import React from "react";
 import { Redirect } from "react-router-dom";
 import { axios } from "../Api/axios";
+import loginBG from "../Components/assests/imgs/login.jpg";
 import "../layout/Sign.css";
-
+import { MdWarning } from "react-icons/md";
 class Login extends React.Component {
   constructor() {
     super();
@@ -32,15 +33,17 @@ class Login extends React.Component {
         });
       })
       .catch((error) => {
-        this.setState({
-          error: {
-            passwrodErr: error.response.data.errors.name,
-            emailErr: error.response.data.errors.email,
-          },
-        });
+        console.log(error.response.data.errors);
+        if (error.response.data.errors) {
+          this.setState({
+            error: {
+              emailErr: error.response.data.errors.email,
+              passwordErr: error.response.data.errors.password,
+            },
+          });
+        }
       });
   };
-
   componentDidMount = () => {
     const token = sessionStorage.getItem("token");
     const status = sessionStorage.getItem("status");
@@ -51,88 +54,84 @@ class Login extends React.Component {
   render() {
     // console.log(this.state.error);
 
-    if (this.state.error && this.state.error.emailErr) {
+    if (this.state.error) {
       Invaldemail = (
         <div>
-          <div className="invalid-feedback">
-            {this.state.error && (
-              <p className="error">{this.state.error.emailErr}</p>
-            )}
-          </div>
-          <div className="col-md-10 col-lg-12 form-label-group input-field">
+          <div className='col-md-11 col-lg-12 form-label-group input-field field'>
+            <label className='label'>Student Email</label>
             <input
-              type="text"
+              type='email'
+              class='wrong'
               // required
+              onChange={(e) => (this.Email = e.target.value)}
             />
-            <label className="label">Email</label>
+            {/* <label title='Email' /> */}
+            {this.state.error && <p className='error'>{this.state.error.emailErr}</p>}
           </div>
 
-          <div className="col-md-10 col-lg-12 form-label-group input-field">
+          <div className='col-md-11 col-lg-12 form-label-group input-field field'>
+            <label className='label'>Password</label>
             <input
-              type="password"
-              id="inputPassword"
+              type='password'
+              class='wrong'
               // required
               onChange={(e) => (this.Password = e.target.value)}
             />
-            <label className="label">Password</label>
+            {<p className='error'>{this.state.error.passwordErr}</p>}
           </div>
         </div>
       );
     } else {
       var Invaldemail = (
-        <div className="">
-          <div className="col-md-10 col-lg-12 form-label-group input-field">
+        <div>
+          <div className='col-md-11 col-lg-12 form-label-group input-field field'>
+            <label className='label'>Student Email</label>
             <input
-              type="email"
-              id="inputEmail"
+              type='email'
               // required
               onChange={(e) => (this.Email = e.target.value)}
-            ></input>
-            <label className="label">Email</label>
+            />
+            {/* <label title='Email' /> */}
           </div>
 
-          <div className="col-md-10 col-lg-12 form-label-group input-field">
+          <div className='col-md-11 col-lg-12 form-label-group input-field field'>
+            <label className='label'>Password</label>
             <input
-              type="password"
-              id="inputPassword"
+              type='password'
               // required
               onChange={(e) => (this.Password = e.target.value)}
             />
-            <label className="label">Password</label>
+            {/* <label title='Password' /> */}
           </div>
         </div>
       );
     }
 
     if (this.state.loggedIn === true) {
-      return <Redirect to="/Home" />;
+      return <Redirect to='/Home' />;
     } else {
       return (
-        <div className="container-fluid h-100 no-scroll">
-          <div className="row no-gutter ">
-            <div className="col-md-9 col-lg-7 ">
-              <div className=" d-flex align-items-center p-3">
-                <div className="container ">
-                  <div className="row m-auto">
-                    <div className="col-md-7 col-lg-7 mx-auto  h-100 rounded ">
-                      <h3 className=" mb-5 signTitle">Sign In </h3>
-                      <form onSubmit={this.handleSubmit}>
-                        {Invaldemail}
-                        <div className="col-md-10 col-lg-12 col-sm-12">
-                          <div className="">
-                            <a className="account" href="/Register">
-                              Dont' Have An Account ?
-                            </a>
+        <div className='container-fluid h-100'>
+          <div className='row no-gutter '>
+            <div className='col-md-10 col-lg-8 '>
+              <div className=' d-flex align-items-center py-5'>
+                <div className='container'>
+                  <div className='row'>
+                    <div className='col-md-9 col-lg-8 mx-auto signup h-100'>
+                      <h3 className=' mb-5 signTitle'>Sign In </h3>
 
-                            <div>
-                              <a className="account agree" href="#">
-                                Forgot password?
-                              </a>
-                            </div>
-                          </div>
+                      <form className='col-md-8' onSubmit={this.handleSubmit}>
+                        {Invaldemail}
+                        <div className='col-md-10 col-lg-12'>
+                          <a href='/Register'>
+                            <p className='account'>Don’t have an account ?</p>
+                          </a>
+                          <a href='/Forget'>
+                            <p className='agree'>Forgot Password ?</p>
+                          </a>
                           <button
-                            className="btn shadow-none submitBtn col-sm-5 col-md-6 btn-outline-primary d-block text-uppercase font-weight-bold mb-2"
-                            type="submit"
+                            className='btn shadow-none submitBtn col-sm-5 btn-outline-primary d-block text-uppercase font-weight-bold mb-2'
+                            type='submit'
                           >
                             Sign in
                           </button>
@@ -143,7 +142,9 @@ class Login extends React.Component {
                 </div>
               </div>
             </div>
-            <div className="img-fluid d-none d-md-flex col-md-3 col-lg-4 bg-image "></div>
+            <div className='img-fluid d-none d-md-flex col-md-3 col-lg-4 '>
+              <img src={loginBG} class='img-fluid bg-image-no-img h-100  ' width='100%' />
+            </div>
           </div>
         </div>
       );
