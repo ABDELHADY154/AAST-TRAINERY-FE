@@ -152,7 +152,9 @@ class Nav extends React.Component {
                           />
                           <div className='notice notice-info dropdown-item'>
                             <div className='text'>
-                              <h5 className='nottext'>Review your finished session </h5>
+                              <h5 className='nottext text-wrap'>
+                                Review your finished session{" "}
+                              </h5>
                               <h5 className='nottap'> Tap for more information</h5>
                             </div>
                           </div>
@@ -165,7 +167,7 @@ class Nav extends React.Component {
                           />
                           <div className='notice notice-danger dropdown-item'>
                             <div className='text'>
-                              <h5 className='nottext'>
+                              <h5 className='nottext  text-wrap'>
                                 Unfortunately, you were rejected in the applied internship
                               </h5>
                               <h5 className='nottap'> Tap for more information</h5>
@@ -180,7 +182,7 @@ class Nav extends React.Component {
                           />
                           <div className='notice notice-success dropdown-item'>
                             <div className='text '>
-                              <h5 className='nottext pl-5'>
+                              <h5 className='nottext pl-5 text-wrap'>
                                 Congratulations you got accepted in the applied internship{" "}
                               </h5>
                               <h5 className='nottap'> Tap for more information</h5>
@@ -195,7 +197,7 @@ class Nav extends React.Component {
                           />
                           <div className='notice notice-success dropdown-item'>
                             <div className='text '>
-                              <h5 className='nottext pl-5'>
+                              <h5 className='nottext pl-5 text-wrap'>
                                 Congratulations you got accepted in the applied internship
                               </h5>
                               <h5 className='nottap'> Tap for more information</h5>
@@ -210,7 +212,7 @@ class Nav extends React.Component {
                           />
                           <div className='notice notice-success dropdown-item'>
                             <div className='text '>
-                              <h5 className='nottext pl-5'>
+                              <h5 className='nottext pl-5 text-wrap'>
                                 Congratulations you got accepted in the applied internship{" "}
                               </h5>
                               <h5 className='nottap'> Tap for more information</h5>
@@ -267,22 +269,22 @@ class Nav extends React.Component {
                     <a className='nav-link disabled' href='#' aria-disabled='true' />
                   </li>
                 </ul>
-                <form className='d-flex '>
-                  <a
-                    className='btn btn-login btn-small btn-nav  submitBtn btn-lg  m-1'
-                    href='/Login'
+                <div className='d-flex justify-content-center'>
+                  <Link
+                    className='btn signIn  btn-nav col-xm-6  mx-1'
+                    to='/Login'
                     renderAs='button'
                   >
                     Sign In
-                  </a>
-                  <a
+                  </Link>
+                  <Link
                     renderAs='button'
-                    className='btn shadow-none submitBtn btn-lg btn-outline-primary  m-1 '
-                    href='/Register'
+                    className='btn btn-nav signUp col-xm-6  mx-1'
+                    to='/Register'
                   >
                     Sign Up
-                  </a>
-                </form>
+                  </Link>
+                </div>
               </div>
             </div>
           </nav>

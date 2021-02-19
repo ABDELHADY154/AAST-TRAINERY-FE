@@ -4,6 +4,7 @@ import { Redirect } from "react-router-dom";
 import { axios } from "../Api/axios";
 import "../layout/Sign.css";
 import loginBG from "../Components/assests/imgs/login.jpg";
+import { Link } from "react-router-dom";
 
 class Forget extends React.Component {
   constructor() {
@@ -115,9 +116,9 @@ class Forget extends React.Component {
                       <form className='col-md-8' onSubmit={this.handleSubmit}>
                         {Invaldemail}
                         <div className='col-md-10 col-lg-12'>
-                          <a href='/Register'>
+                          <Link to='/Register'>
                             <p className='account'>Don’t have an account ?</p>
-                          </a>
+                          </Link>
                           <button
                             className='btn shadow-none submitBtn col-sm-5 col-5 col-md-4 col-xs-5 btn-outline-primary d-block font-weight-bold mb-2'
                             type='submit'

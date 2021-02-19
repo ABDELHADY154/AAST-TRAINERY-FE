@@ -55,7 +55,6 @@ class App extends React.Component {
             <div className='auth-inner'>
               <Switch>
                 {/* <== Home for Guest */}
-
                 <Route
                   exact
                   path='/'

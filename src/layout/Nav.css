@@ -1,5 +1,23 @@
 body {
-  overflow-x: hidden; 
+  overflow-x: hidden; /* Hide horizontal scrollbar */
+}
+.signIn {
+  background-color: #cd8930;
+  color: #fff;
+}
+.signIn:hover {
+  background-color: #fff !important;
+  color: #1e4274 !important;
+  border: 1px solid #cd8930 !important;
+}
+.signUp:hover {
+  background-color: #1e4274;
+  color: #fff !important;
+  border: none;
+}
+.signUp {
+  color: #1e4274 !important;
+  border: 1px solid #1e4274 !important;
 }
 .nav-item {
   padding-bottom: 0.5em;
@@ -169,4 +187,73 @@ body {
   font-size: 12px;
   margin-left: 6%;
   color: #b1b0b0;
+}
+@media only screen and (max-width: 895px) {
+  .dropstart .dropdown-menu {
+    top: 100%;
+    left: -150%;
+  }
+  .dropdown-menu {
+    position: absolute;
+    top: 100%;
+    overflow: hidden; /* Hide scrollbars */
+
+    display: none;
+    min-width: 21em;
+    word-wrap: break-word;
+    padding: 0.5em 1em;
+    margin: 0;
+    font-size: 1em;
+    color: #212529;
+    text-align: left;
+    list-style: none;
+    background-color: #fff;
+    border: 2px solid rgba(0, 0, 0, 0.15);
+    border-radius: 0.25rem;
+  }
+  .nottext {
+    font-family: SF Compact Display;
+    font-size: 22px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 25px;
+    letter-spacing: 0em;
+    text-align: left;
+    color: #1e4274;
+  }
+  .nottap {
+    font-family: SF Compact Display;
+    font-style: normal;
+    font-weight: 300;
+    font-size: 20px;
+    margin-left: 6%;
+    color: #b1b0b0;
+  }
+  .notice {
+    padding: 5px;
+    background-color: #fafafa;
+    border-left: 5px solid #7f7f84;
+    padding-left: 4%;
+    font-family: SF Compact Display;
+    font-style: normal;
+    font-weight: 400;
+    font-family: SF Compact Display;
+    font-size: 14px;
+    line-height: 17px;
+    letter-spacing: 0em;
+    text-align: left;
+    box-shadow: 0 5px 8px -6px rgb(0 0 0 / 20%);
+  }
+
+  .dropdown-item {
+    display: block;
+    width: 100%;
+    padding: 0.5rem;
+    clear: both;
+    color: #212529;
+    text-align: inherit;
+    text-decoration: none;
+    white-space: nowrap;
+    background-color: transparent;
+  }
 }

@@ -1,6 +1,6 @@
 /** @format */
 import React from "react";
-import { Redirect } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
 import { axios } from "../Api/axios";
 import loginBG from "../Components/assests/imgs/login.jpg";
 import "../layout/Sign.css";
@@ -49,7 +49,6 @@ class Login extends React.Component {
     const status = sessionStorage.getItem("status");
     if (status && token) {
       return this.setState({ loggedIn: true });
-      
     }
   };
   render() {
@@ -124,12 +123,12 @@ class Login extends React.Component {
                       <form className='col-md-8' onSubmit={this.handleSubmit}>
                         {Invaldemail}
                         <div className='col-md-10 col-lg-12'>
-                          <a href='/Register'>
+                          <Link to='/Register'>
                             <p className='account'>Don’t have an account ?</p>
-                          </a>
-                          <a href='/Forget'>
+                          </Link>
+                          <Link to='/Forget'>
                             <p className='agree'>Forgot Password ?</p>
-                          </a>
+                          </Link>
                           <button
                             className='btn shadow-none submitBtn col-sm-5 btn-outline-primary d-block text-uppercase font-weight-bold mb-2'
                             type='submit'

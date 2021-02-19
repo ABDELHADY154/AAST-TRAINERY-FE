@@ -2,6 +2,8 @@
 
 import React, { Component } from "react";
 import logo from "../Components/assests/icons/White-Logo.png";
+import { Link } from "react-router-dom";
+
 import {
   FaFacebookF,
   FaInstagram,
@@ -16,55 +18,54 @@ import "../layout/Footer.css";
 export default class Footer extends React.Component {
   render() {
     return (
-      <div className="Container flex-row">
-        <footer className="footer-area footer--light m-auto prim">
-          <div className="footer-big">
-            <div className="container">
-              <div className="row ml-4">
-                <div className="col-md-5 col-sm-4 ">
-                  <div className="footer-widget d-flex justify-content-center ">
-                    <div id="foot-column" className="mt-2 flex-column">
+      <div className='Container flex-row'>
+        <footer className='footer-area footer--light m-auto prim'>
+          <div className='footer-big'>
+            <div className='container'>
+              <div className='row ml-4'>
+                <div className='col-md-5 col-sm-4 '>
+                  <div className='footer-widget d-flex justify-content-center '>
+                    <div id='foot-column' className='mt-2 flex-column'>
                       <img
-                        id="footlogo"
+                        id='footlogo'
                         // className="navbar-brand img-rounded m-auto "
                         src={logo}
-                        width="40%"
+                        width='40%'
                       ></img>
-                      <p className="mt-2 ">
+                      <p className='mt-2 '>
                         Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                        Consectetur dictumst nisi blandit ornare viverra
-                        eleifend
+                        Consectetur dictumst nisi blandit ornare viverra eleifend
                       </p>
-                      <p id="Allrights" className="mt-3">
+                      <p id='Allrights' className='mt-3'>
                         © 2020 AAST Trainery. All Rights Reserved.
                       </p>
                     </div>
                   </div>
                 </div>
-                <div className="col-md-2 col-sm-4  ">
-                  <div id="About" className="footer-widget d-flex ">
-                    <div id="foot-column" className="footer-menu flex-column ">
-                      <h4 className="footer-widget-title  ">About</h4>
+                <div className='col-md-2 col-sm-4  '>
+                  <div id='About' className='footer-widget d-flex '>
+                    <div id='foot-column' className='footer-menu flex-column '>
+                      <h4 className='footer-widget-title  '>About</h4>
                       <ul>
                         <li>
-                          <a href="#">About Us</a>
+                          <a href='#'>About Us</a>
                         </li>
                         <li>
-                          <a href="#">Contact Us</a>
+                          <a href='#'>Contact Us</a>
                         </li>
 
                         <li>
-                          <a href="#">
-                            <FaInstagram id="instagram" />
+                          <a href='#'>
+                            <FaInstagram id='instagram' />
                           </a>
-                          <a href="#">
-                            <FaFacebookF className="m-2" />
+                          <a href='#'>
+                            <FaFacebookF className='m-2' />
                           </a>
-                          <a href="#">
-                            <FaLinkedinIn className="m-2" />
+                          <a href='#'>
+                            <FaLinkedinIn className='m-2' />
                           </a>
-                          <a href="#">
-                            <FaYoutube className="m-2" />
+                          <a href='#'>
+                            <FaYoutube className='m-2' />
                           </a>
                         </li>
                       </ul>
@@ -72,16 +73,16 @@ export default class Footer extends React.Component {
                   </div>
                 </div>
 
-                <div className="col-md-2 col-sm-4 mt-5">
-                  <div className="footer-widget d-flex">
-                    <div id="Account" className="footer-menu flex-column">
-                      <h4 className="footer-widget-title">Account</h4>
+                <div className='col-md-2 col-sm-4 mt-5'>
+                  <div className='footer-widget d-flex'>
+                    <div id='Account' className='footer-menu flex-column'>
+                      <h4 className='footer-widget-title'>Account</h4>
                       <ul>
                         <li>
-                          <a href="#">Sign Up</a>
+                          <Link to='/Register'>Sign Up</Link>
                         </li>
                         <li>
-                          <a href="#">Sign In</a>
+                          <Link to='/Login'>Sign In</Link>
                         </li>
                       </ul>
                     </div>
@@ -91,7 +92,7 @@ export default class Footer extends React.Component {
             </div>
           </div>
           <ScrollTop
-            text={<BsChevronUp fontSize="30px" />}
+            text={<BsChevronUp fontSize='30px' />}
             style={{
               backgroundColor: "transparent",
               borderRadius: "5px",
