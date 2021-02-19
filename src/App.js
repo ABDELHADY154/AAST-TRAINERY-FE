@@ -1,6 +1,4 @@
 import React from "react";
-import { HashRouter as Router } from "react-router-dom";
-
 import { BrowserRouter, Redirect, Route, Switch } from "react-router-dom";
 import Registry from "./Components/Registry";
 import Home from "./Components/Home";
@@ -50,44 +48,42 @@ class App extends React.Component {
   render() {
     // console.log(this.state.loggedIn);
     return (
-      <Router>
-        <BrowserRouter>
-          <Nav loggedIn={this.state.loggedIn} setUser={this.setUser} />
-          <div className="app">
-            <div className="auth-wrapper">
-              <div className="auth-inner">
-                <Switch>
-                  {/* <== Home for Guest */}
+      <BrowserRouter>
+        <Nav loggedIn={this.state.loggedIn} setUser={this.setUser} />
+        <div className="app">
+          <div className="auth-wrapper">
+            <div className="auth-inner">
+              <Switch>
+                {/* <== Home for Guest */}
 
-                  <Route
-                    exact
-                    path="/"
-                    component={() => <Landing loggedIn={this.state.loggedIn} />}
-                  />
-                  {/* <Route exact path='/'>
+                <Route
+                  exact
+                  path="/"
+                  component={() => <Landing loggedIn={this.state.loggedIn} />}
+                />
+                {/* <Route exact path='/'>
                   <Redirect to='/Login' />
                 </Route> */}
-                  <Route
-                    path="/Login"
-                    component={() => <Login setUser={this.setUser} />}
-                  />
-                  <Route path="/Register" component={Registry} />
-                  <Route path="/Forget" component={Forget} />
+                <Route
+                  path="/Login"
+                  component={() => <Login setUser={this.setUser} />}
+                />
+                <Route path="/Register" component={Registry} />
+                <Route path="/Forget" component={Forget} />
 
-                  {/* //component={() => <Login isLoggedin={this.isLoggedin} />} */}
-                  {/* <== Home for Users */}
-                  <AuthRoute exact path="/Home" component={Home} />
-                  {/* <== Register Guests */}
+                {/* //component={() => <Login isLoggedin={this.isLoggedin} />} */}
+                {/* <== Home for Users */}
+                <AuthRoute exact path="/Home" component={Home} />
+                {/* <== Register Guests */}
 
-                  <AuthRoute exact path="/Profile" component={Profile} />
+                <AuthRoute exact path="/Profile" component={Profile} />
 
-                  <Route exact path="*" component={ErrorPage} />
-                </Switch>
-              </div>
+                <Route exact path="*" component={ErrorPage} />
+              </Switch>
             </div>
           </div>
-        </BrowserRouter>
-      </Router>
+        </div>
+      </BrowserRouter>
     );
   }
 }
