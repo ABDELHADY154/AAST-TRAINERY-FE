@@ -18,13 +18,7 @@ a {
 .no-padding {
   padding: 0 !important;
 }
-#foot-column {
-  margin-top: 10% !important;
-}
 
-.footer-big .footer-widget {
-  margin-bottom: 40px;
-}
 .footer--light {
   background: #1e4274;
 }
@@ -46,24 +40,18 @@ a {
 .footer-menu ul li a:hover {
   color: #cd8930;
 }
-#About {
-  margin-top: 21% !important;
-}
+
 #Account {
-  /* margin-top: 6em !important; */
   margin-left: 10% !important;
-  margin-top: 10.5% !important;
 }
 .footer-widget-title {
   color: #ffff;
 
-  /* margin-bottom: 10px; */
   font-size: 1.125em;
 }
 
 .widget-about img {
   display: flex;
-  /* margin-bottom: 30px; */
 }
 .widget-about p {
   font-weight: 400;
@@ -95,16 +83,20 @@ a {
 
 @media screen and (max-width: 600px) {
   #About {
-    margin-top: 0 !important;
-    margin-left: 30% !important;
+    margin-top: 2em !important;
     text-align: center;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
   }
   #Account {
-    margin-top: 0 !important;
-    margin-left: 42.5% !important;
+    margin-top: 2em !important;
     text-align: center;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
   }
-}
-#instagram {
-  margin-right: 8px !important;
+  #instagram {
+    margin-right: 8px !important;
+  }
 }

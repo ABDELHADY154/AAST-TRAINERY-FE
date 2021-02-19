@@ -39,45 +39,19 @@ export default class Footer extends React.Component {
                 </div>
                 <div className="col-md-2 col-12 ">
                   <div className="footer-widget d-flex ">
-                    <div id="About" className="footer-menu flex-column ">
-                      <h4 className="footer-widget-title pt-3">About</h4>
+                    <div id="About" className="footer-menu flex-column mt-3 ">
                       <ul>
                         <li>
-                          <a href="#">About Us</a>
+                          <a href="#">Explore</a>
                         </li>
                         <li>
-                          <a href="#">Contact Us</a>
+                          <a href="#">Career Coaching</a>
                         </li>
-
                         <li>
-                          <a href="#">
-                            <FaInstagram
-                              color="#ffffff"
-                              fill="#ffffff"
-                              id="instagram"
-                            />
-                          </a>
-                          <a href="#">
-                            <FaFacebookF
-                              color="#ffffff"
-                              fill="#ffffff"
-                              className="m-2"
-                            />
-                          </a>
-                          <a href="#">
-                            <FaLinkedinIn
-                              color="#ffffff"
-                              fill="#ffffff"
-                              className="m-2"
-                            />
-                          </a>
-                          <a href="#">
-                            <FaYoutube
-                              color="#ffffff"
-                              fill="#ffffff"
-                              className="m-2"
-                            />
-                          </a>
+                          <a href="#">Activity</a>
+                        </li>
+                        <li>
+                          <a href="#">Help Center</a>
                         </li>
                       </ul>
                     </div>
@@ -86,15 +60,22 @@ export default class Footer extends React.Component {
 
                 <div className="col-md-2 col-12">
                   <div className="footer-widget d-flex">
-                    <div id="About" className="footer-menu flex-column ">
-                      <h4 className="footer-widget-title pt-3">Account</h4>
+                    <div id="About" className="footer-menu flex-column mt-3 ">
                       <ul>
                         <li>
-                          <a href="#">Sign Up</a>
+                          <a href="#">Profile</a>
+                        </li>
+                        <li>
+                          <a href="#">About Us</a>
                         </li>
                         <li>
                           <a href="#" className="pb-4">
-                            Sign In
+                            Contact Us
+                          </a>
+                        </li>
+                        <li>
+                          <a href="#" className="pb-4">
+                            Terms & Conditions
                           </a>
                         </li>
                       </ul>
@@ -102,8 +83,43 @@ export default class Footer extends React.Component {
                   </div>
                 </div>
               </div>
-              <div id="About" className="d-flex flex-row ">
-                <p className="">© 2020 AAST Trainery. All Rights Reserved.</p>
+              <div id="About" className="d-flex flex-row flex-wrap ">
+                <p className=" col-md-10 col-12">
+                  © 2020 AAST Trainery. All Rights Reserved.
+                </p>
+
+                <div className="col-md-2 col-12 ">
+                  <li>
+                    <a href="#">
+                      <FaInstagram
+                        color="#ffffff"
+                        fill="#ffffff"
+                        id="instagram"
+                      />
+                    </a>
+                    <a href="#">
+                      <FaFacebookF
+                        color="#ffffff"
+                        fill="#ffffff"
+                        className="m-2"
+                      />
+                    </a>
+                    <a href="#">
+                      <FaLinkedinIn
+                        color="#ffffff"
+                        fill="#ffffff"
+                        className="m-2"
+                      />
+                    </a>
+                    <a href="#">
+                      <FaYoutube
+                        color="#ffffff"
+                        fill="#ffffff"
+                        className="m-2"
+                      />
+                    </a>
+                  </li>
+                </div>
               </div>
             </div>
           </div>

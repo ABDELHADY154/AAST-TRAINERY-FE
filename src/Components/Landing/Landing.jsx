@@ -13,6 +13,7 @@ import apple from "./apple.png";
 import { DepLoader } from "../../loader";
 import "../../layout/Landing.css";
 import { BsCheck } from "react-icons/bs";
+import CountUp from "react-countup";
 
 import { FaCheck } from "react-icons/fa";
 import { Component } from "react";
@@ -39,7 +40,7 @@ class Landing extends React.Component {
           <div className="d-flex flex-row ">
             <div
               id="DescCont"
-              className="d-flex flex-column text-wrap bg-none me-5"
+              className="d-flex flex-column text-wrap bg-none "
             >
               <div className="fs-2" id="Title">
                 We Provide The Best Experience
@@ -63,15 +64,30 @@ class Landing extends React.Component {
                 ) : (
                   <>
                     <div className="col-12 col-md-4 d-flex justify-content-center text-center flex-column align-items-center">
-                      <p className="Numbers">{this.state.opportunities}</p>
+                      <CountUp
+                        className="Numbers"
+                        start={0}
+                        end={this.state.opportunities}
+                      />
+
                       <div className="NumTitle">Opportunities</div>
                     </div>
                     <div className="col-12 col-md-4 d-flex justify-content-center text-center flex-column align-items-center">
-                      <p className="Numbers">{this.state.students}</p>
+                      <CountUp
+                        className="Numbers"
+                        start={0}
+                        end={this.state.students}
+                      />
+
                       <div className="NumTitle">Students</div>
                     </div>
                     <div className="col-12 col-md-4 d-flex justify-content-center text-center flex-column align-items-center">
-                      <p className="Numbers">{this.state.applied}</p>
+                      <CountUp
+                        className="Numbers"
+                        start={0}
+                        end={this.state.applied}
+                      />
+
                       <div className="NumTitle">Accepted</div>
                     </div>
                   </>
@@ -80,7 +96,7 @@ class Landing extends React.Component {
             </div>
             <div
               id="Experienceimg"
-              className="d-flex flex-column d-none d-md-flex "
+              className="d-flex flex-column d-none d-md-flex ms-5 "
             >
               <img className="" src={img} />
             </div>
@@ -143,7 +159,7 @@ class Landing extends React.Component {
           <div className="d-flex flex-row mt-3">
             <div
               id="DescCont"
-              className=" d-flex flex-column text-wrap bg-none me-5"
+              className=" d-flex flex-column text-wrap bg-none "
             >
               <div className="fs-2 " id="Title">
                 Why Join Us?
@@ -157,7 +173,7 @@ class Landing extends React.Component {
               <div>
                 <div id="checklist" className="d-flex flex-column mt-3 ">
                   <div>
-                    <BsCheck color="cd8930" className="fs-3" />
+                    <BsCheck color="#cd8930" fill="#cd8930" className="fs-3" />
                     {"    "}
                     <span>
                       Lorem ipsum, dolor sit amet consectetur adipisicing elit.
@@ -165,7 +181,7 @@ class Landing extends React.Component {
                   </div>
 
                   <div className="mt-3">
-                    <BsCheck color="cd8930" className="fs-3" />
+                    <BsCheck color="#cd8930" fill="#cd8930" className="fs-3" />
                     {"    "}
                     <span>
                       Lorem ipsum, dolor sit amet consectetur adipisicing elit.
@@ -173,7 +189,7 @@ class Landing extends React.Component {
                   </div>
 
                   <div className="mt-3">
-                    <BsCheck color="cd8930" className="fs-3" />
+                    <BsCheck ccolor="#cd8930" fill="#cd8930" className="fs-3" />
                     {"    "}
                     <span>
                       Lorem ipsum, dolor sit amet consectetur adipisicing elit.
@@ -199,7 +215,7 @@ class Landing extends React.Component {
             </div>
             <div
               id="Experienceimg"
-              className="d-flex flex-column d-none d-md-flex "
+              className="d-flex flex-column d-none d-md-flex ms-5 "
             >
               <img src={img4} />
             </div>
