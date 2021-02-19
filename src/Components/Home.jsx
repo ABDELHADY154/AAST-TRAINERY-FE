@@ -11,6 +11,7 @@ import rec2 from "../Components/assests/imgs/rec2.png";
 import rec3 from "../Components/assests/imgs/rec3.png";
 import "../layout/Home.css";
 import { BsArrowUpRight } from "react-icons/bs";
+import Footer2 from "../Components/Footer2";
 // import { ProgressBar } from "react-bootstrap";
 
 class Home extends Component {
@@ -330,7 +331,7 @@ class Home extends Component {
             <div className="fs-3 mt-5" id="">
               Check our career coaching services
             </div>
-            <div className="d-flex flex-row flex-nowrap   justify-content-around">
+            <div className="d-flex flex-row flex-wrap   justify-content-around">
               <div className=" mt-3  col-md-3 col-12">
                 <img
                   className="cardImg img-responsive "
@@ -344,11 +345,6 @@ class Home extends Component {
                   src={rec2}
                   height="150"
                 />
-                <div className="carousel-caption">
-                  <h5 color="white" className=" fs-2">
-                    Interview Session
-                  </h5>
-                </div>
               </div>
               <div className=" mt-3  col-md-3 col-12">
                 <img
@@ -359,6 +355,7 @@ class Home extends Component {
               </div>
             </div>
           </div>
+          <Footer2 />
         </div>
       );
     }

@@ -19,9 +19,6 @@ a {
   padding: 0 !important;
 }
 
-.footer-big .footer-widget {
-  margin-bottom: 40px;
-}
 .footer--light {
   background: #1e4274;
 }
@@ -86,14 +83,14 @@ a {
 
 @media screen and (max-width: 600px) {
   #About {
-    margin-top: 0 !important;
+    margin-top: 2em !important;
     text-align: center;
     justify-content: center;
     text-align: center;
     align-items: center;
   }
   #Account {
-    margin-top: 0 !important;
+    margin-top: 2em !important;
     text-align: center;
     justify-content: center;
     text-align: center;
