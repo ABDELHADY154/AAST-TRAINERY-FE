@@ -2,6 +2,8 @@
 
 import React, { Component } from "react";
 import logo from "../Components/assests/icons/White-Logo.png";
+import { Link } from "react-router-dom";
+
 import {
   FaFacebookF,
   FaInstagram,
@@ -90,12 +92,10 @@ export default class Footer extends React.Component {
                       <h4 className="footer-widget-title pt-3">Account</h4>
                       <ul>
                         <li>
-                          <a href="#">Sign Up</a>
+                          <Link to="/Register">Sign Up</Link>
                         </li>
                         <li>
-                          <a href="#" className="pb-4">
-                            Sign In
-                          </a>
+                          <Link to="/Login">Sign In</Link>
                         </li>
                       </ul>
                     </div>
