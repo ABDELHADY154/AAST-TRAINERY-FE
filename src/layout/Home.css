@@ -18,6 +18,27 @@
 .container-fluid {
   padding: 0;
 }
-.progress-bar {
-  width: 100% !important;
+#tags {
+  text-align: center;
+  justify-items: center;
+  border-radius: 20px !important;
+  color: #1e4274 !important;
+  height: 2em;
+  width: 6em;
+  background-color: #f2f2f2 !important;
+}
+#gold {
+  color: #cd8930 !important;
+  font-family: sf light;
+}
+* {
+  color: #1e4274;
+  font-family: sf reg;
+  margin-block-start: 0em;
+  margin-block-end: 0em;
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
+}
+#bold {
+  font-family: sf bold;
 }
