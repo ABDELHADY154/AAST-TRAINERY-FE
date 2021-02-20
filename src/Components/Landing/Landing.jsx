@@ -14,6 +14,7 @@ import { DepLoader } from "../../loader";
 import "../../layout/Landing.css";
 import { BsCheck } from "react-icons/bs";
 import CountUp from "react-countup";
+import { Carousel } from "./Carousel";
 
 import { FaCheck } from "react-icons/fa";
 import { Component } from "react";
@@ -36,6 +37,8 @@ class Landing extends React.Component {
   render() {
     return (
       <div className="container-fluid">
+        <Carousel />
+
         <div className="container">
           <div className="d-flex flex-row ">
             <div
