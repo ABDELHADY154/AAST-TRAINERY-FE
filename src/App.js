@@ -35,11 +35,13 @@ class App extends React.Component {
       token: sessionStorage.getItem("token"),
       loggedIn: false,
     };
-    // if (this.state.token && this.state.status) {
-    //   this.state = {
-    //     loggedIn: true,
-    //   };
-    // }
+  }
+  componentDidMount() {
+    if (this.state.token && this.state.status) {
+      this.state = {
+        loggedIn: true,
+      };
+    }
   }
 
   setUser = data => {
