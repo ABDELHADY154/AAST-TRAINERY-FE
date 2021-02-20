@@ -35,8 +35,6 @@ class App extends React.Component {
       token: sessionStorage.getItem("token"),
       loggedIn: false,
     };
-  }
-  componentDidMount() {
     if (this.state.token && this.state.status) {
       this.state = {
         loggedIn: true,
@@ -71,9 +69,12 @@ class App extends React.Component {
                 <Route path="/Register" component={Registry} />
                 <Route path="/Forget" component={Forget} />
 
-                <Route exact path="/Home" component={Home} />
+                {/* //component={() => <Login isLoggedin={this.isLoggedin} />} */}
+                {/* <== Home for Users */}
+                <AuthRoute exact path="/Home" component={Home} />
+                {/* <== Register Guests */}
 
-                <Route exact path="/Profile" component={Profile} />
+                <AuthRoute exact path="/Profile" component={Profile} />
 
                 <Route exact path="*" component={ErrorPage} />
               </Switch>
