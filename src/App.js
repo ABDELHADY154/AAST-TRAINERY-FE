@@ -23,7 +23,7 @@ const CheckAuth = () => {
 const AuthRoute = ({ component: Component, ...rest }) => (
   <Route
     {...rest}
-    render={() => (CheckAuth() ? <Component /> : <Redirect to='/Login' />)}
+    render={() => (CheckAuth() ? <Component /> : <Redirect to="/Login" />)}
   />
 );
 
@@ -42,7 +42,7 @@ class App extends React.Component {
     }
   }
 
-  setUser = (data) => {
+  setUser = data => {
     return this.setState({ loggedIn: data });
   };
   render() {
@@ -50,31 +50,33 @@ class App extends React.Component {
     return (
       <BrowserRouter>
         <Nav loggedIn={this.state.loggedIn} setUser={this.setUser} />
-        <div className='app'>
-          <div className='auth-wrapper'>
-            <div className='auth-inner'>
+        <div className="app">
+          <div className="auth-wrapper">
+            <div className="auth-inner">
               <Switch>
                 {/* <== Home for Guest */}
 
-                
                 <Route
                   exact
-                  path='/'
+                  path="/"
                   component={() => <Landing loggedIn={this.state.loggedIn} />}
                 />
-            
-                <Route path='/Login' component={() => <Login setUser={this.setUser} />} />
-                <Route path='/Register' component={Registry} />
-                <Route path='/Forget' component={Forget} />
+
+                <Route
+                  path="/Login"
+                  component={() => <Login setUser={this.setUser} />}
+                />
+                <Route path="/Register" component={Registry} />
+                <Route path="/Forget" component={Forget} />
 
                 {/* //component={() => <Login isLoggedin={this.isLoggedin} />} */}
                 {/* <== Home for Users */}
-                <AuthRoute exact path='/Home' component={Home} />
+                <AuthRoute exact path="/Home" component={Home} />
                 {/* <== Register Guests */}
 
-                <AuthRoute exact path='/Profile' component={Profile} />
+                <AuthRoute exact path="/Profile" component={Profile} />
 
-                <Route exact path='*' component={ErrorPage} />
+                <Route exact path="*" component={ErrorPage} />
               </Switch>
             </div>
           </div>
