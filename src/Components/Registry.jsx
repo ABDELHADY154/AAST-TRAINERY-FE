@@ -168,7 +168,7 @@ class Registry extends React.Component {
             <div className='col-md-10 col-lg-12 form-label-group input-field'>
               <label className='label'>Registration Number</label>
               <input
-                type='text'
+                type='number'
                 className='form-control wrong'
                 // placeholder="Registration number"
                 onChange={(e) => (this.RegNum = e.target.value)}
@@ -286,7 +286,7 @@ class Registry extends React.Component {
             <div className='col-md-10 col-lg-12 form-label-group input-field'>
               <label className='label'>Registration Number</label>
               <input
-                type='text'
+                type='number'
                 // placeholder="Registration number"
                 onChange={(e) => (this.RegNum = e.target.value)}
               />
@@ -343,7 +343,7 @@ class Registry extends React.Component {
                         </Link>
                         <p className='agree '>
                           By creating an account, you agree to the
-                          <Link to='#'>
+                          <Link to='/'>
                             <span className='terms'>Terms and Conditions</span>
                           </Link>
                           of the company.
