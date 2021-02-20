@@ -36,8 +36,6 @@ class Registry extends React.Component {
         loading: true,
       });
     });
-
-    // console.log(this.state);
   }
   handleSubmit = async (e) => {
     e.preventDefault();
