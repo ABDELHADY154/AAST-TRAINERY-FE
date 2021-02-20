@@ -1,20 +1,22 @@
 import React, { Component } from "react";
-
-import img from "./bg1.png";
+import "../../layout/carousel.css";
+import img1 from "./bg1.png";
+import img2 from "./bg12.png";
+import img3 from "./bg13.png";
 export class Carousel extends Component {
   render() {
     return (
       <div
         id="carouselExampleDark"
-        class="carousel carousel-dark slide"
+        className="carousel carousel-dark slide mb-5"
         data-bs-ride="carousel"
       >
-        <div class="carousel-indicators">
+        <div className="carousel-indicators ">
           <button
             type="button"
             data-bs-target="#carouselExampleDark"
             data-bs-slide-to="0"
-            class="active"
+            className="active "
             aria-current="true"
             aria-label="Slide 1"
           ></button>
@@ -31,67 +33,72 @@ export class Carousel extends Component {
             aria-label="Slide 3"
           ></button>
         </div>
-        <div class="carousel-inner">
-          <div class="carousel-item active">
-            <img src={img} class="d-block w-100" alt="..." />
-            <div class="carousel-caption d-none d-md-block text-start">
-              <h5>First slide label</h5>
-              <p>
+        <div className="carousel-inner">
+          <div className="carousel-item active ">
+            <img src={img1} className="d-block w-100 " alt="..." />
+            <div className="carousel-caption text-start caption ">
+              <h5 className="title ">First slide label</h5>
+              <p className="text lh-sm">
                 Some representative placeholder content for the first slide.
               </p>
-              <p>
-                <a class="btn btn-lg btn-primary" href="#">
-                  Sign up today
-                </a>
-              </p>
+
+              <button className="btn btn-md carouselBtn shadow-none " href="#">
+                Sign up today
+              </button>
             </div>
           </div>
-          <div class="carousel-item" data-bs-interval="10000">
-            <img src={img} class="d-block w-100" alt="..." />
-            <div class="carousel-caption d-none d-md-block text-start">
-              <h5>First slide label</h5>
-              <p>
+          <div className="carousel-item" data-bs-interval="10000">
+            <img
+              src={img2}
+              className="d-block w-100 bd-placeholder-img"
+              alt="..."
+            />
+            <div className="carousel-caption text-start">
+              <h5 className="title">secound slide label</h5>
+              <p className="text lh-sm">
                 Some representative placeholder content for the first slide.
               </p>
-              <p>
-                <a class="btn btn-lg btn-primary" href="#">
-                  Sign up today
-                </a>
-              </p>
+              <button className="btn btn-md carouselBtn shadow-none" href="#">
+                Sign up today
+              </button>
             </div>
           </div>
-          <div class="carousel-item " data-bs-interval="10000">
-            <img src={img} class="d-block w-100" alt="..." />
-            <div class="carousel-caption d-none d-md-block text-start">
-              <h5>First slide label</h5>
-              <p>
+          <div className="carousel-item " data-bs-interval="10000">
+            <img src={img3} className="d-block w-100" alt="..." />
+            <div className="carousel-caption  text-start">
+              <h5 className="title">therid slide label</h5>
+              <p className="text lh-sm">
                 Some representative placeholder content for the first slide.
               </p>
-              <p>
-                <a class="btn btn-lg btn-primary" href="#">
-                  Sign up today
-                </a>
-              </p>
+              <button className="btn btn-md carouselBtn shadow-none" href="#">
+                Sign up today
+              </button>
             </div>
           </div>
         </div>
         <button
-          class="carousel-control-prev"
+          className="carousel-control-prev"
           type="button"
           data-bs-target="#carouselExampleDark"
           data-bs-slide="prev"
         >
-          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-          <span class="visually-hidden">Previous</span>
+          <span
+            className="carousel-control-prev-icon"
+            aria-hidden="true"
+          ></span>
+          <span className="visually-hidden">Previous</span>
         </button>
         <button
-          class="carousel-control-next"
+          className="carousel-control-next"
           type="button"
           data-bs-target="#carouselExampleDark"
           data-bs-slide="next"
         >
-          <span class="carousel-control-next-icon" aria-hidden="true"></span>
-          <span class="visually-hidden">Next</span>
+          <span
+            className="carousel-control-next-icon"
+            aria-hidden="true"
+          ></span>
+          <span className="visually-hidden">Next</span>
         </button>
       </div>
       // <div
