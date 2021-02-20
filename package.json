@@ -1,8 +1,8 @@
 {
   "name": "AAST-TRAINERY",
   "version": "0.1.0",
-  "private": true,
   "homepage": "http://www.dev.aast-trainery.com/",
+  "private": true,
   "dependencies": {
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.3.2",

@@ -71,15 +71,9 @@ class App extends React.Component {
                 <Route path="/Register" component={Registry} />
                 <Route path="/Forget" component={Forget} />
 
-                {this.state.loggedIn == true ? (
-                  <>
-                    <Route exact path="/Home" component={Home} />
+                <Route exact path="/Home" component={Home} />
 
-                    <Route exact path="/Profile" component={Profile} />
-                  </>
-                ) : (
-                  ""
-                )}
+                <Route exact path="/Profile" component={Profile} />
 
                 <Route exact path="*" component={ErrorPage} />
               </Switch>
