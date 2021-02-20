@@ -5,34 +5,41 @@ import React from "react";
 import { Loader2 } from "../loader";
 import { Redirect } from "react-router-dom";
 import "../layout/Sign.css";
-import { BsFillChatFill } from "react-icons/bs";
-import { BsCheck } from "react-icons/bs";
+
 import { Link } from "react-router-dom";
 
 class Registry extends React.Component {
-  state = {
-    error: "",
-    departs: [],
-    loading: false,
-  };
+  constructor() {
+    super();
+    this.state = {
+      error: "",
+      departs: [],
+      loading: false,
+      loggedIn: false,
+    };
+    if (sessionStorage.getItem("token")) {
+      this.setState({ loggedIn: true });
+    }
+  }
 
-  async componentDidMount() {
-    await axios.get("/departments").then((dep) => {
-      this.setState({
-        departs: dep.data.response.data,
-        loading: true,
-      });
-    });
+  componentDidMount() {
     const token = sessionStorage.getItem("token");
     const status = sessionStorage.getItem("status");
     if (status && token) {
       return this.setState({ loggedIn: true });
     }
   }
+  async componentWillMount() {
+    await axios.get("/departments").then((dep) => {
+      this.setState({
+        departs: dep.data.response.data,
+        loading: true,
+      });
+    });
+  }
   handleSubmit = async (e) => {
     e.preventDefault();
     // e.target.reset();
-
     const data = {
       name: this.username,
       email: this.Email,
@@ -70,7 +77,6 @@ class Registry extends React.Component {
         });
       });
   };
-
   render() {
     if (this.state.error) {
       Invaldedata = (
@@ -315,51 +321,51 @@ class Registry extends React.Component {
         </div>
       );
     }
-
+    let redirect = null;
     if (this.state.loggedIn === true) {
-      return <Redirect from='/Register' to='/Home' />;
-    } else {
-      return (
-        <div className='container-fluid'>
-          <div className='row no-gutter'>
-            <div className='col-md-10 col-lg-8 '>
-              <div className=' d-flex align-items-center py-5'>
-                <div className='container'>
-                  <div className='row'>
-                    <div className='col-md-9 col-lg-8 mx-auto signup h-100'>
-                      <h3 className=' mb-5 signTitle'>Sign Up</h3>
-                      <form className='col-md-8' onSubmit={this.handleSubmit}>
-                        {Invaldedata}
-                        <div className='col-md-10 col-lg-12'>
-                          <Link to='/Login'>
-                            <p className='account'>Aready have an account ?</p>
+      redirect = <Redirect to='/Home' />;
+    }
+    return (
+      <div className='container-fluid'>
+        {redirect}
+        <div className='row no-gutter'>
+          <div className='col-md-10 col-lg-8 '>
+            <div className=' d-flex align-items-center py-5'>
+              <div className='container'>
+                <div className='row'>
+                  <div className='col-md-9 col-lg-8 mx-auto signup h-100'>
+                    <h3 className=' mb-5 signTitle'>Sign Up</h3>
+                    <form className='col-md-8' onSubmit={this.handleSubmit}>
+                      {Invaldedata}
+                      <div className='col-md-10 col-lg-12'>
+                        <Link to='/Login'>
+                          <p className='account'>Aready have an account ?</p>
+                        </Link>
+                        <p className='agree '>
+                          By creating an account, you agree to the
+                          <Link to='#'>
+                            <span className='terms'>Terms and Conditions</span>
                           </Link>
-                          <p className='agree '>
-                            By creating an account, you agree to the
-                            <Link to='#'>
-                              <span className='terms'>Terms and Conditions</span>
-                            </Link>
-                            of the company.
-                          </p>
-                          <button
-                            className='btn shadow-none submitBtn col-sm-5 btn-outline-primary d-block text-uppercase font-weight-bold mb-2'
-                            type='submit'
-                          >
-                            Sign up
-                          </button>
-                        </div>
-                      </form>
-                    </div>
+                          of the company.
+                        </p>
+                        <button
+                          className='btn shadow-none submitBtn col-sm-5 btn-outline-primary d-block text-uppercase font-weight-bold mb-2'
+                          type='submit'
+                        >
+                          Sign up
+                        </button>
+                      </div>
+                    </form>
                   </div>
                 </div>
               </div>
             </div>
-
-            <div className='img-fluid d-none d-md-flex col-md-3 col-lg-4 bg-image '></div>
           </div>
+
+          <div className='img-fluid d-none d-md-flex col-md-3 col-lg-4 bg-image '></div>
         </div>
-      );
-    }
+      </div>
+    );
   }
 }
 
