@@ -103,43 +103,42 @@ class Forget extends React.Component {
 
     if (this.state.loggedIn === true) {
       return <Redirect to='/Home' />;
-    } else {
-      return (
-        <div className='container-fluid h-100 '>
-          <div className='row no-gutter'>
-            <div className='col-md-10 col-lg-8 '>
-              <div className='d-flex align-items-center py-2'>
-                <div className='container my-5'>
-                  <div className='row'>
-                    <div className='col-md-9 col-lg-8 mx-auto  h-100'>
-                      <h3 className=' mb-5 signTitle'>Forget Password</h3>
-                      <form className='col-md-8' onSubmit={this.handleSubmit}>
-                        {Invaldemail}
-                        <div className='col-md-10 col-lg-12'>
-                          <Link to='/Register'>
-                            <p className='account'>Don’t have an account ?</p>
-                          </Link>
-                          <button
-                            className='btn shadow-none submitBtn col-sm-5 col-5 col-md-4 col-xs-5 btn-outline-primary d-block font-weight-bold mb-2'
-                            type='submit'
-                          >
-                            Reset
-                          </button>
-                        </div>
-                      </form>
-                    </div>
+    }
+    return (
+      <div className='container-fluid h-100 '>
+        <div className='row no-gutter'>
+          <div className='col-md-10 col-lg-8 '>
+            <div className='d-flex align-items-center py-2'>
+              <div className='container my-5'>
+                <div className='row'>
+                  <div className='col-md-9 col-lg-8 mx-auto  h-100'>
+                    <h3 className=' mb-5 signTitle'>Forget Password</h3>
+                    <form className='col-md-8' onSubmit={this.handleSubmit}>
+                      {Invaldemail}
+                      <div className='col-md-10 col-lg-12'>
+                        <Link to='/Register'>
+                          <p className='account'>Don’t have an account ?</p>
+                        </Link>
+                        <button
+                          className='btn shadow-none submitBtn col-sm-5 col-5 col-md-4 col-xs-5 btn-outline-primary d-block font-weight-bold mb-2'
+                          type='submit'
+                        >
+                          Reset
+                        </button>
+                      </div>
+                    </form>
                   </div>
                 </div>
               </div>
             </div>
+          </div>
 
-            <div className='img-fluid d-none d-md-flex col-md-3 col-lg-4 '>
-              <img src={loginBG} class='img-fluid bg-image-no-img h-100 ' width='100%' />
-            </div>
+          <div className='img-fluid d-none d-md-flex col-md-3 col-lg-4 '>
+            <img src={loginBG} class='img-fluid bg-image-no-img h-100 ' width='100%' />
           </div>
         </div>
-      );
-    }
+      </div>
+    );
   }
 }
 
