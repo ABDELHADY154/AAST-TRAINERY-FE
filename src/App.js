@@ -55,14 +55,14 @@ class App extends React.Component {
             <div className='auth-inner'>
               <Switch>
                 {/* <== Home for Guest */}
+
+                
                 <Route
                   exact
                   path='/'
                   component={() => <Landing loggedIn={this.state.loggedIn} />}
                 />
-                {/* <Route exact path='/'>
-                  <Redirect to='/Login' />
-                </Route> */}
+            
                 <Route path='/Login' component={() => <Login setUser={this.setUser} />} />
                 <Route path='/Register' component={Registry} />
                 <Route path='/Forget' component={Forget} />
