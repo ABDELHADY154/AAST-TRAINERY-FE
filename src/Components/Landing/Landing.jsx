@@ -240,5 +240,4 @@ class Landing extends React.Component {
     );
   }
 }
-// d
 export default Landing;
