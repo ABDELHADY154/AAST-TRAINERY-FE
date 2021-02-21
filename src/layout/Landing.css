@@ -83,3 +83,8 @@ span {
 .card {
   border: none !important;
 }
+#bd {
+  border-color: transparent !important;
+  border: none !important;
+  border-width: 0 !important;
+}

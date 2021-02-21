@@ -100,3 +100,29 @@ a {
     margin-right: 8px !important;
   }
 }
+
+/* media: hover{ */
+#ST:hover {
+  background-color: #cd8930 !important;
+  border-radius: 5px !important;
+  color: #ffffff !important;
+  border-color: transparent !important;
+}
+
+#st:hover {
+  /* padding: 0.8em; */
+  fill: #fff !important;
+}
+/* };
+ */
+@media screen and (max-width: 600px) {
+  #st {
+    fill: #fff !important;
+  }
+  #ST {
+    background-color: #cd8930 !important;
+    border-radius: 5px !important;
+    color: #ffffff !important;
+    border-color: transparent !important;
+  }
+}

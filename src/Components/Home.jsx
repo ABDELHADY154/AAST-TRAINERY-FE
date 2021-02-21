@@ -4,14 +4,16 @@ import React, { Component } from "react";
 import { resolve } from "../Api/Resolvers/resolver";
 import { axios } from "../Api/axios";
 import { Loader } from "../loader";
-import img from "../Components/assests/imgs/girl.png";
+import img from "../Components/assests/imgs/girlavi.png";
 import img2 from "../Components/assests/imgs/cib.png";
 import rec1 from "../Components/assests/imgs/rec1.png";
 import rec2 from "../Components/assests/imgs/rec2.png";
 import rec3 from "../Components/assests/imgs/rec3.png";
 import "../layout/Home.css";
-import { BsArrowUpRight } from "react-icons/bs";
+import { BsCheck, BsArrowUpRight } from "react-icons/bs";
 import Footer2 from "../Components/Footer2";
+import "react-step-progress-bar/styles.css";
+import { ProgressBar, Step } from "react-step-progress-bar";
 // import { ProgressBar } from "react-bootstrap";
 
 class Home extends Component {
@@ -37,7 +39,7 @@ class Home extends Component {
               loading: true,
               code: "200",
             });
-                      }
+          }
         })
         .catch((error) => {
           this.setState({
@@ -57,8 +59,8 @@ class Home extends Component {
       return <div className="container text-center">{/* <Loader /> */}</div>;
     } else {
       return (
-        <div className="container-fluid ">
-          <div className="p-5">
+        <div className="container-fluid mt-5 ">
+          <div className="container">
             <div className="d-flex flex-row ">
               <div id="" className="d-flex flex-column text-wrap bg-none">
                 <div className="fs-3" id="bold">
@@ -70,20 +72,230 @@ class Home extends Component {
                   successful experience:
                 </div>
 
-                <div className="d-flex flex-row flex-wrap mt-5 justify-content-between">
-                  <div className="col-12 col-md-10 d-flex ">
-                    <div className="col-8 col-md-4 d-flex fs-4 mt-1 me-1">
+                <div className="d-flex flex-row flex-wrap mt-5 ">
+                  <div id="small" className="col-12 col-md-10 d-flex ">
+                    <div className="col-8 col-md-3 d-flex fs-4  ">
                       Steps to Success
                     </div>
-
-                    <div class="progress col-4 col-md-6 d-flex me-5  mt-3">
-                      <div
-                        class="progress-bar bg-warning w-50"
-                        role="progressbar"
-                        aria-valuenow="50"
-                        aria-valuemin="0"
-                        aria-valuemax="100"
-                      ></div>
+                    <div className="d-flex flex-row d-md-none mt-3 ms-5">
+                      <div className="d-flex flex-column col-8 ms-5">
+                        <ProgressBar percent={100}>
+                          <Step>
+                            {({ accomplished }) => (
+                              <div
+                                className={`indexedStep ${
+                                  accomplished ? "accomplished" : null
+                                }`}
+                              >
+                                {accomplished ? (
+                                  <BsCheck color="#ffffff" fill="#ffffff" />
+                                ) : (
+                                  ""
+                                )}
+                              </div>
+                            )}
+                          </Step>
+                          <Step>
+                            {({ accomplished }) => (
+                              <div
+                                className={`indexedStep ${
+                                  accomplished ? "accomplished" : null
+                                }`}
+                              >
+                                {accomplished ? (
+                                  <BsCheck color="#ffffff" fill="#ffffff" />
+                                ) : (
+                                  ""
+                                )}
+                              </div>
+                            )}
+                          </Step>
+                          <Step>
+                            {({ accomplished }) => (
+                              <div
+                                className={`indexedStep ${
+                                  accomplished ? "accomplished" : null
+                                }`}
+                              >
+                                {accomplished ? (
+                                  <BsCheck color="#ffffff" fill="#ffffff" />
+                                ) : (
+                                  ""
+                                )}
+                              </div>
+                            )}
+                          </Step>
+                          <Step>
+                            {({ accomplished }) => (
+                              <div
+                                className={`indexedStep ${
+                                  accomplished ? "accomplished" : null
+                                }`}
+                              >
+                                {accomplished ? (
+                                  <BsCheck color="#ffffff" fill="#ffffff" />
+                                ) : (
+                                  ""
+                                )}
+                              </div>
+                            )}
+                          </Step>
+                          <Step>
+                            {({ accomplished }) => (
+                              <div
+                                className={`indexedStep ${
+                                  accomplished ? "accomplished" : null
+                                }`}
+                              >
+                                {accomplished ? (
+                                  <BsCheck color="#ffffff" fill="#ffffff" />
+                                ) : (
+                                  ""
+                                )}
+                              </div>
+                            )}
+                          </Step>
+                          <Step>
+                            {({ accomplished }) => (
+                              <div
+                                className={`indexedStep ${
+                                  accomplished ? "accomplished" : null
+                                }`}
+                              >
+                                {accomplished ? (
+                                  <BsCheck color="#ffffff" fill="#ffffff" />
+                                ) : (
+                                  ""
+                                )}
+                              </div>
+                            )}
+                          </Step>
+                          <Step>
+                            {({ accomplished }) => (
+                              <div
+                                className={`indexedStep ${
+                                  accomplished ? "accomplished" : null
+                                }`}
+                              >
+                                {accomplished ? (
+                                  <BsCheck color="#ffffff" fill="#ffffff" />
+                                ) : (
+                                  ""
+                                )}
+                              </div>
+                            )}
+                          </Step>
+                        </ProgressBar>
+                      </div>
+                    </div>
+                    <div id="big" className="d-flex flex-column  col-md-8 mt-3">
+                      <ProgressBar percent={20}>
+                        <Step>
+                          {({ accomplished }) => (
+                            <div
+                              className={`indexedStep ${
+                                accomplished ? "accomplished" : null
+                              }`}
+                            >
+                              {accomplished ? (
+                                <BsCheck color="#ffffff" fill="#ffffff" />
+                              ) : (
+                                ""
+                              )}
+                            </div>
+                          )}
+                        </Step>
+                        <Step>
+                          {({ accomplished }) => (
+                            <div
+                              className={`indexedStep ${
+                                accomplished ? "accomplished" : null
+                              }`}
+                            >
+                              {accomplished ? (
+                                <BsCheck color="#ffffff" fill="#ffffff" />
+                              ) : (
+                                ""
+                              )}
+                            </div>
+                          )}
+                        </Step>
+                        <Step>
+                          {({ accomplished }) => (
+                            <div
+                              className={`indexedStep ${
+                                accomplished ? "accomplished" : null
+                              }`}
+                            >
+                              {accomplished ? (
+                                <BsCheck color="#ffffff" fill="#ffffff" />
+                              ) : (
+                                ""
+                              )}
+                            </div>
+                          )}
+                        </Step>
+                        <Step>
+                          {({ accomplished }) => (
+                            <div
+                              className={`indexedStep ${
+                                accomplished ? "accomplished" : null
+                              }`}
+                            >
+                              {accomplished ? (
+                                <BsCheck color="#ffffff" fill="#ffffff" />
+                              ) : (
+                                ""
+                              )}
+                            </div>
+                          )}
+                        </Step>
+                        <Step>
+                          {({ accomplished }) => (
+                            <div
+                              className={`indexedStep ${
+                                accomplished ? "accomplished" : null
+                              }`}
+                            >
+                              {accomplished ? (
+                                <BsCheck color="#ffffff" fill="#ffffff" />
+                              ) : (
+                                ""
+                              )}
+                            </div>
+                          )}
+                        </Step>
+                        <Step>
+                          {({ accomplished }) => (
+                            <div
+                              className={`indexedStep ${
+                                accomplished ? "accomplished" : null
+                              }`}
+                            >
+                              {accomplished ? (
+                                <BsCheck color="#ffffff" fill="#ffffff" />
+                              ) : (
+                                ""
+                              )}
+                            </div>
+                          )}
+                        </Step>
+                        <Step>
+                          {({ accomplished }) => (
+                            <div
+                              className={`indexedStep ${
+                                accomplished ? "accomplished" : null
+                              }`}
+                            >
+                              {accomplished ? (
+                                <BsCheck color="#ffffff" fill="#ffffff" />
+                              ) : (
+                                ""
+                              )}
+                            </div>
+                          )}
+                        </Step>
+                      </ProgressBar>
                     </div>
                   </div>
                   <div className="col-12 col-md-6 d-flex mt-2 ">
@@ -134,45 +346,31 @@ class Home extends Component {
                           tempore culpa illum consequuntur quis nobis adipisci
                           et?
                         </p>
-                        <div className="d-flex flex-row ">
-                          <div className="d-flex flex-column">
-                            <a
-                              href="#"
-                              className=" me-3 d-flex flex-column "
-                              id="tags"
-                            >
+                        <div className="d-flex flex-row flex-wrap justify-content-start">
+                          <div className="d-flex flex-column col-6 col-md-2">
+                            <a href="#" className=" " id="tags">
                               Finance
                             </a>
                           </div>
-                          <div className="d-flex flex-column">
-                            <a
-                              href="#"
-                              className=" d-flex flex-column me-5 "
-                              id="tags"
-                            >
+                          <div className="d-flex flex-column col-6  col-md-2 mb-1">
+                            <a href="#" className="  " id="tags">
                               Banking
                             </a>
                           </div>
-                          <div className="d-flex flex-row">
-                            <p className="d-flex flex-column col-6 col-md-3 ">
-                              Deadline
+                          <div className="d-flex flex-column col-md-3  justify-space-between">
+                            <p>Deadline {"        "}11 Dec 2021</p>
+                          </div>
+                          <div className="  d-flex flex-row col-12 col-md-3  ">
+                            <BsArrowUpRight
+                              className="d-flex flex-column col-md-3"
+                              fill="#cd8930"
+                            />
+                            <p
+                              className="d-flex flex-column col-12 col-md-6 "
+                              id="gold"
+                            >
+                              Promoted
                             </p>
-                            <p className="d-flex flex-column col-6 col-md-6 me-4">
-                              11 Dec 2021
-                            </p>
-
-                            <div className=" ms-5 d-flex flex-row col-12 col-md-5 mt-1 ">
-                              <BsArrowUpRight
-                                className="d-flex flex-column  me-1"
-                                fill="#cd8930"
-                              />
-                              <div
-                                className="d-flex flex-column col-12 col-md-8 "
-                                id="gold"
-                              >
-                                Promoted
-                              </div>
-                            </div>
                           </div>
                         </div>
                       </div>
