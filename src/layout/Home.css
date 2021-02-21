@@ -23,8 +23,8 @@
   justify-items: center;
   border-radius: 20px !important;
   color: #1e4274 !important;
-  height: 2em;
-  width: 6em;
+  height: 1.6em;
+  width: 5em;
   background-color: #f2f2f2 !important;
 }
 #gold {
@@ -41,4 +41,42 @@
 }
 #bold {
   font-family: sf bold;
+}
+
+.indexedStep {
+  color: transparent;
+  width: 20px;
+  height: 20px;
+  background-color: #cd8930;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.indexedStep.accomplished {
+  background-color: #cd8930;
+}
+.RSPBprogression {
+  background-color: #cd8930 !important;
+}
+
+.indexedStep {
+  background-color: lightgrey;
+}
+@media screen and (max-width: 766px) {
+  #big {
+    display: none !important;
+  }
+  #small {
+    display: flex !important;
+    flex-direction: column !important;
+    width: 90%;
+    justify-content: center !important;
+    justify-self: center !important;
+    justify-items: center !important;
+    align-self: center !important;
+    align-content: center !important;
+    text-align: center !important;
+  }
 }
