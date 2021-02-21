@@ -467,9 +467,9 @@ class Home extends Component {
               <div className="card-body">
                 <div className="d-flex flex-row">
                   <img
-                    className="d-flex mt-0 col-md-1 col-2"
+                    className="d-flex mt-0 col-md-1 col-1"
                     id=""
-                    width="10em"
+                    width="0.5em"
                     src={img2}
                   />
                   <div className=" fs-5 mt-2 ms-2 col-md-10 col-8">
