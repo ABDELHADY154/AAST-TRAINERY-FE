@@ -124,14 +124,15 @@ export default class Footer extends React.Component {
             </div>
           </div>
           <ScrollTop
-            text={<BsChevronUp fontSize="30px" fill="#cd8930" />}
+            id="ST"
+            text={<BsChevronUp id="st" fontSize="30px" fill="#cd8930" />}
             style={{
               backgroundColor: "transparent",
               borderRadius: "5px",
-              color: "#cd8930",
+
               borderColor: "#cd8930",
             }}
-            icon={<BsChevronUp fill="#cd8930" />}
+            icon={<BsChevronUp id="st" fill="#cd8930" />}
           />
         </footer>
       </div>

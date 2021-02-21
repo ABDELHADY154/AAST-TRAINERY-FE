@@ -119,7 +119,7 @@ class Landing extends React.Component {
           </div>
           <div className="d-flex flex-row flex-wrap  " id="CoachCont">
             <div className=" mt-3 col-md-4 col-12">
-              <div className="card m-md-5">
+              <div className="card m-md-5" id="bd">
                 <img
                   className="cardImg img-responsive"
                   src={img1}
@@ -131,7 +131,7 @@ class Landing extends React.Component {
               </div>
             </div>
             <div className=" mt-3  col-md-4 col-12">
-              <div className=" card m-md-5">
+              <div id="bd" className=" card m-md-5">
                 <img
                   className="cardImg img-responsive"
                   src={img3}
@@ -143,7 +143,7 @@ class Landing extends React.Component {
               </div>
             </div>
             <div className=" mt-3 col-md-4 col-12">
-              <div className=" card m-md-5">
+              <div id="bd" className=" card m-md-5">
                 <img
                   className="cardImg img-responsive"
                   src={img2}
