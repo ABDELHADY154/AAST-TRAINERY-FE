@@ -1,7 +1,7 @@
-.bg-image {
+/* .bg-image {
   overflow-y: hidden;
   overflow-x: hidden;
-  background-image: url(../Components/assests/imgs/signup.jpg);
+  background-image: url(../Components/assests/imgs/login.jpg);
   background-repeat: no-repeat;
   background-size: cover;
   position: absolute;
@@ -9,9 +9,8 @@
   height: 95.7%;
   right: 0;
   top: 73px;
-  /* margin-top: -2px; */
   border-radius: 5px;
-}
+} */
 a {
   text-decoration: none;
 }
@@ -158,22 +157,17 @@ input[type="radio"]:checked:before {
 .submitBtn {
   color: #1e4274;
   float: right;
-  border-color: #1e4274;
-  /* box-shadow: none;
-  outline: 0; */
+  /* border-color: #1e4274; */
+  border: 1px solid #1e4274 !important;
 }
 .submitBtn:hover {
   background-color: #1e4274;
   color: #fff;
-  border: none;
-  /* box-shadow: none;
-  outline: 0; */
+  border: 1px solid #fff !important;
 }
 .submitBtn:active {
   background-color: #445772;
-  border: none;
-  /* box-shadow: none;
-  outline: 0; */
+  border: 1px solid #1e4274 !important;
 }
 .dropDown {
   margin-bottom: 10px;
@@ -183,19 +177,37 @@ input[type="radio"]:checked:before {
   box-shadow: none;
   /* outline-color: #fae49a !important; */
 }
+.dep {
+  color: #1e4274;
+}
+select.dep option:hover {
+  background-color: #1e4274 !important;
+}
 option {
   color: #1e4274;
   border: none !important;
   border-bottom: solid 1px #cd8930 !important;
   border-radius: 0 !important;
+  /* margin-right: -10px !important; */
 }
 select {
+  background: url("https://api.iconify.design/mdi:chevron-down.svg?color=%231e4274")
+    no-repeat center center / contain;
+  background-position: right calc(0.375em + 0.1875rem) center;
+  background-size: calc(0.9em + 0.675rem) calc(0.9em + 0.675rem);
+  padding-right: calc(1.5em + 0.75rem);
+
   box-shadow: none !important;
   border: none !important;
   border-bottom: solid 1px #1e4274 !important;
   border-radius: 0 !important;
 }
 select:focus {
+  background: url("https://api.iconify.design/mdi:chevron-up.svg?color=%23cd8930")
+    no-repeat center center / contain;
+  background-position: right calc(0.375em + 0.1875rem) center;
+  background-size: calc(0.9em + 0.675rem) calc(0.9em + 0.675rem);
+  padding-right: calc(1.5em + 0.75rem);
   box-shadow: none !important;
   border: none !important;
   border-bottom: solid 2px #cd8930 !important;
