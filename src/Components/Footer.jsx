@@ -108,6 +108,7 @@ export default class Footer extends React.Component {
             </div>
           </div>
           <ScrollTop
+            className="scrollTop"
             text={<BsChevronUp fontSize="30px" fill="#cd8930" />}
             style={{
               backgroundColor: "transparent",
