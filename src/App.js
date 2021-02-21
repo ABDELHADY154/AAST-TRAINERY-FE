@@ -23,7 +23,7 @@ const CheckAuth = () => {
 const AuthRoute = ({ component: Component, ...rest }) => (
   <Route
     {...rest}
-    render={() => (CheckAuth() ? <Component /> : <Redirect to='/Login' />)}
+    render={() => (CheckAuth() ? <Component /> : <Redirect to="/Login" />)}
   />
 );
 
@@ -42,35 +42,35 @@ class App extends React.Component {
     }
   }
 
-  setUser = (data) => {
+  setUser = data => {
     return this.setState({ loggedIn: data });
   };
   render() {
     return (
       <BrowserRouter>
         <Nav loggedIn={this.state.loggedIn} setUser={this.setUser} />
-        <div className='app'>
-          <div className='auth-wrapper'>
-            <div className='auth-inner'>
+        <div className="app">
+          <div className="auth-wrapper">
+            <div className="auth-inner">
               <Switch>
                 {/* <== Home for Guest */}
 
                 <Route
                   exact
-                  path='/'
+                  path="/"
                   component={() => <Landing loggedIn={this.state.loggedIn} />}
                 />
 
                 <Route
                   exact
-                  path='/Login'
+                  path="/Login"
                   component={() => <Login setUser={this.setUser} />}
                 />
-                <Route exact path='/Register' component={Registry} />
-                <Route exact path='/Forget' component={Forget} />
-                <AuthRoute exact path='/Home' component={Home} />
-                <AuthRoute exact path='/Profile' component={Profile} />
-                <Route exact path='*' component={ErrorPage} />
+                <Route exact path="/Register" component={Registry} />
+                <Route exact path="/Forget" component={Forget} />
+                <AuthRoute exact path="/Home" component={Home} />
+                <AuthRoute exact path="/Profile" component={Profile} />
+                <Route exact path="*" component={ErrorPage} />
               </Switch>
             </div>
           </div>
