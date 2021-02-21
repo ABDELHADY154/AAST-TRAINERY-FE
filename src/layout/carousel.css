@@ -25,33 +25,38 @@
   background-color: #f8f8f8;
   border: none;
 }
-
-.carousel-indicators button.active {
-  background-color: #cd8930 !important;
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
-}
 .carousel-indicators button {
   background-color: #fff !important;
-  width: 10px !important;
-  height: 10px !important;
-  border-radius: 50% !important;
+  width: 15px !important;
+  height: 15px !important;
+  border-radius: 100% !important;
+  border: 2px solid #cd8930 !important;
+}
+.carousel-indicators button.active {
+  background-color: #cd8930 !important;
+  width: 15px !important;
+  height: 15px !important;
+  border-radius: 100% !important;
 }
 
-.carousel-item {
+.img1 {
+  background-image: url("../Components/Landing/bg1.png") !important;
   height: 34rem;
   width: 100%;
   background-size: cover;
   background-repeat: no-repeat;
 }
-
-.img1 {
-  background-image: url("../Components/Landing/bg1.png") !important;
-}
 .img2 {
   background-image: url("../Components/Landing/bg12.png") !important;
+  height: 34rem;
+  width: 100%;
+  background-size: cover;
+  background-repeat: no-repeat;
 }
 .img3 {
   background-image: url("../Components/Landing/bg13.png") !important;
+  height: 34rem;
+  width: 100%;
+  background-size: cover;
+  background-repeat: no-repeat;
 }
