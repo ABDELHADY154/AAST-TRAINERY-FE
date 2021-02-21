@@ -46,7 +46,6 @@ class App extends React.Component {
     return this.setState({ loggedIn: data });
   };
   render() {
-    return <ErrorPage />;
     return (
       <BrowserRouter>
         <Nav loggedIn={this.state.loggedIn} setUser={this.setUser} />
