@@ -80,3 +80,8 @@ span {
   font-size: 1.3em !important;
   margin-top: 3em !important;
 }
+#bd {
+  border-color: transparent !important;
+  border: none !important;
+  border-width: 0 !important;
+}
