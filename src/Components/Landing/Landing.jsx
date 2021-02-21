@@ -24,7 +24,13 @@ class Landing extends React.Component {
   state = {
     loading: false,
   };
-
+  componentWillMount() {
+    const token = sessionStorage.getItem("token");
+    const status = sessionStorage.getItem("status");
+    if (status && token) {
+      return this.setState({ loggedIn: true });
+    }
+  }
   async componentDidMount() {
     await axios.get("/W/landingCount").then((data) => {
       this.setState({
@@ -35,7 +41,11 @@ class Landing extends React.Component {
       });
     });
   }
+
   render() {
+    if (this.state.loggedIn === true) {
+      return <Redirect to="/Home" />;
+    }
     return (
       <div className="container-fluid">
         <Carousel />
