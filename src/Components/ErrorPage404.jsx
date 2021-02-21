@@ -8,22 +8,22 @@ class ErrorPage extends React.Component {
   render() {
     return (
       <div className="container-fluid">
-        {/* <nav className="navbar ">
+        <nav className="navbar ">
           <a className="navbar-brand" href="#">
             <img
               src={logo}
               alt=""
               width="200"
               height="38"
-              className=" d-inline-block align-top img-fluid"
+              className=" d-inline-block align-top img-fluid logo"
             />
           </a>
-        </nav> */}
+        </nav>
         <div className="content d-flex flex-column flex-lg-row justify-content-Center">
           <div className="col-lg-6 col-12 errolCol">
-            <div className="errorTitle">
+            <div className="d-flex justify-content-center align-items-center">
               <h1 className="title">4</h1>
-              <MdWarning className="Warning" />
+              <MdWarning className="Warning mb-2" />
               <h1 className="title">4</h1>
             </div>
             <p className="text ">
