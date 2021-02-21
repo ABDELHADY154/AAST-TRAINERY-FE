@@ -8,7 +8,7 @@ export class Carousel extends Component {
     return (
       <div
         id="carouselExampleDark"
-        className="carousel carousel-dark slide mb-5"
+        className="carousel  slide mb-5"
         data-bs-ride="carousel"
       >
         <div className="carousel-indicators ">
@@ -34,12 +34,13 @@ export class Carousel extends Component {
           ></button>
         </div>
         <div className="carousel-inner">
-          <div className="carousel-item active ">
-            <img src={img1} className="d-block w-100 " alt="..." />
+          <div className="carousel-item active img1">
             <div className="carousel-caption text-start caption ">
-              <h5 className="title ">First slide label</h5>
+              <h5 className="title ">Your Career is Our Business</h5>
               <p className="text lh-sm">
-                Some representative placeholder content for the first slide.
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut
+                dolor quis morbi sagittis donec sed massa. Velit malesuada amet
+                pretium turpis in commodo aliquet pulvinar ultrices.
               </p>
 
               <button className="btn btn-md carouselBtn shadow-none " href="#">
@@ -47,28 +48,46 @@ export class Carousel extends Component {
               </button>
             </div>
           </div>
-          <div className="carousel-item" data-bs-interval="10000">
-            <img
-              src={img2}
-              className="d-block w-100 bd-placeholder-img"
-              alt="..."
-            />
-            <div className="carousel-caption text-start">
-              <h5 className="title">secound slide label</h5>
+
+          <div className="carousel-item img2" data-bs-interval="10000">
+            {/* <picture>
+              <source
+                srcset="https://dummyimage.com/2000x500/007aeb/4196e5"
+                media="(min-width: 1400px)"
+              />
+              <source
+                srcset="https://dummyimage.com/1400x500/#007aeb/4196e5"
+                media="(min-width: 769px)"
+              />
+              <source
+                srcset="https://dummyimage.com/800x500/007aeb/4196e5"
+                media="(min-width: 577px)"
+              />
+              <img
+                srcset="https://dummyimage.com/600x500/007aeb/4196e5"
+                alt="responsive image"
+                class="d-block img-fluid"
+              />
+            </picture> */}
+            <div className="carousel-caption text-start caption">
+              <h5 className="title">Start Your Non-Experience Caree</h5>
               <p className="text lh-sm">
-                Some representative placeholder content for the first slide.
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut
+                dolor quis morbi sagittis donec sed massa. Velit malesuada amet
+                pretium turpis in commodo aliquet pulvinar ultrices.
               </p>
               <button className="btn btn-md carouselBtn shadow-none" href="#">
                 Sign up today
               </button>
             </div>
           </div>
-          <div className="carousel-item " data-bs-interval="10000">
-            <img src={img3} className="d-block w-100" alt="..." />
-            <div className="carousel-caption  text-start">
-              <h5 className="title">therid slide label</h5>
+          <div className="carousel-item img3" data-bs-interval="10000">
+            <div className="carousel-caption  text-start caption">
+              <h5 className="title">Start Your Career Coaching Session</h5>
               <p className="text lh-sm">
-                Some representative placeholder content for the first slide.
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut
+                dolor quis morbi sagittis donec sed massa. Velit malesuada amet
+                pretium turpis in commodo aliquet pulvinar ultrices.{" "}
               </p>
               <button className="btn btn-md carouselBtn shadow-none" href="#">
                 Sign up today
@@ -101,99 +120,6 @@ export class Carousel extends Component {
           <span className="visually-hidden">Next</span>
         </button>
       </div>
-      // <div
-      //   id="carouselExampleCaptions"
-      //   classNameName="carousel slide"
-      //   data-bs-ride="carousel"
-      // >
-      //   <div className="carousel-indicators">
-      //     <button
-      //       type="button"
-      //       data-bs-target="#carouselExampleCaptions"
-      //       data-bs-slide-to="0"
-      //       className="active"
-      //       aria-current="true"
-      //       aria-label="Slide 1"
-      //     ></button>
-      //     <button
-      //       type="button"
-      //       data-bs-target="#carouselExampleCaptions"
-      //       data-bs-slide-to="1"
-      //       aria-label="Slide 2"
-      //     ></button>
-      //     <button
-      //       type="button"
-      //       data-bs-target="#carouselExampleCaptions"
-      //       data-bs-slide-to="2"
-      //       aria-label="Slide 3"
-      //     ></button>
-      //   </div>
-      //   <div className="carousel-inner">
-      //     <div className="carousel-item active">
-      //       <img
-      //         src="https://images.unsplash.com/photo-1613710145386-39d0e3d4753a?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=675&q=80"
-      //         // url={img}
-      //         className="d-block w-100"
-      //       />
-      //       <div className="carousel-caption d-none d-md-block">
-      //         <h5>First slide label</h5>
-      //         <p>
-      //           Some representative placeholder content for the first slide.
-      //         </p>
-      //       </div>
-      //     </div>
-      //     <div className="carousel-item">
-      //       <img
-      //         src="https://images.unsplash.com/photo-1613710145386-39d0e3d4753a?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=675&q=80"
-      //         // url={img}
-      //         className="d-block w-100"
-      //       />
-      //       <div className="carousel-caption d-none d-md-block">
-      //         <h5>Second slide label</h5>
-      //         <p>
-      //           Some representative placeholder content for the second slide.
-      //         </p>
-      //       </div>
-      //     </div>
-      //     <div className="carousel-item">
-      //       <img
-      //         src="https://images.unsplash.com/photo-1613710145386-39d0e3d4753a?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=675&q=80"
-      //         // url={img}
-      //         className="d-block w-100"
-      //       />
-      //       <div className="carousel-caption d-none d-md-block">
-      //         <h5>Third slide label</h5>
-      //         <p>
-      //           Some representative placeholder content for the third slide.
-      //         </p>
-      //       </div>
-      //     </div>
-      //   </div>
-      //   <button
-      //     className="carousel-control-prev"
-      //     type="button"
-      //     data-bs-target="#carouselExampleCaptions"
-      //     data-bs-slide="prev"
-      //   >
-      //     <span
-      //       className="carousel-control-prev-icon"
-      //       aria-hidden="true"
-      //     ></span>
-      //     <span className="visually-hidden">Previous</span>
-      //   </button>
-      //   <button
-      //     className="carousel-control-next"
-      //     type="button"
-      //     data-bs-target="#carouselExampleCaptions"
-      //     data-bs-slide="next"
-      //   >
-      //     <span
-      //       className="carousel-control-next-icon"
-      //       aria-hidden="true"
-      //     ></span>
-      //     <span className="visually-hidden">Next</span>
-      //   </button>
-      // </div>
     );
   }
 }
