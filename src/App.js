@@ -42,10 +42,11 @@ class App extends React.Component {
     }
   }
 
-  setUser = data => {
+  setUser = (data) => {
     return this.setState({ loggedIn: data });
   };
   render() {
+    return <ErrorPage />;
     // console.log(this.state.loggedIn);
     return (
       <BrowserRouter>
