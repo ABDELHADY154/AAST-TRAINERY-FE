@@ -46,7 +46,6 @@ class App extends React.Component {
     return this.setState({ loggedIn: data });
   };
   render() {
-    return <ErrorPage />;
     // console.log(this.state.loggedIn);
     return (
       <BrowserRouter>
