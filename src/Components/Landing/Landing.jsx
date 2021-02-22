@@ -15,7 +15,7 @@ import "../../layout/Landing.css";
 import { BsCheck } from "react-icons/bs";
 import CountUp from "react-countup";
 import { Carousel } from "./Carousel";
-import CarouselLogos from "./CarouselLogos";
+import { CarouselLogos } from "./CarouselLogos";
 
 import { FaCheck } from "react-icons/fa";
 import { Component } from "react";
@@ -249,7 +249,7 @@ class Landing extends React.Component {
             </div>
           </div>
         </div>
-        {/* <CarouselLogos /> */}
+        <CarouselLogos />
         <Footer />
       </div>
     );

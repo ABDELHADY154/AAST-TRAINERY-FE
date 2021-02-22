@@ -180,7 +180,6 @@ input[type="radio"]:checked:before {
   border-color: #1e4274;
   color: #1e4274;
   box-shadow: none;
-  /* outline-color: #fae49a !important; */
 }
 .dep {
   color: #1e4274;
@@ -193,7 +192,6 @@ option {
   border: none !important;
   border-bottom: solid 1px #cd8930 !important;
   border-radius: 0 !important;
-  /* margin-right: -10px !important; */
 }
 select {
   background: url("https://api.iconify.design/mdi:chevron-down.svg?color=%231e4274")
@@ -223,10 +221,6 @@ select option:checked {
   color: #fff;
 }
 
-/* select option:active {
-  background: #cd3030 -webkit-linear-gradient(bottom, #cd8930 0%, #cd8930 100%) !important;
-  color: rgb(81, 201, 87) !important;
-} */
 @media (max-width: 768px) {
   .bg-image {
     display: none;
