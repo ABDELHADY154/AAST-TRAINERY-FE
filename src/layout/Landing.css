@@ -80,6 +80,9 @@ span {
   font-size: 1.3em !important;
   margin-top: 3em !important;
 }
+.card {
+  border: none !important;
+}
 #bd {
   border-color: transparent !important;
   border: none !important;

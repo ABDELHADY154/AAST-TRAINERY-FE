@@ -12,8 +12,8 @@ import rec3 from "../Components/assests/imgs/rec3.png";
 import "../layout/Home.css";
 import { BsCheck, BsArrowUpRight } from "react-icons/bs";
 import Footer2 from "../Components/Footer2";
-import "react-step-progress-bar/styles.css";
-import { ProgressBar, Step } from "react-step-progress-bar";
+// import "react-step-progress-bar/styles.css";
+// import { ProgressBar, Step } from "react-step-progress-bar";
 // import { ProgressBar } from "react-bootstrap";
 
 class Home extends Component {
@@ -73,7 +73,7 @@ class Home extends Component {
                 </div>
 
                 <div className="d-flex flex-row flex-wrap mt-5 ">
-                  <div id="small" className="col-12 col-md-10 d-flex ">
+                  {/* <div id="small" className="col-12 col-md-10 d-flex ">
                     <div className="col-8 col-md-3 d-flex fs-4  ">
                       Steps to Success
                     </div>
@@ -297,7 +297,7 @@ class Home extends Component {
                         </Step>
                       </ProgressBar>
                     </div>
-                  </div>
+                  </div> */}
                   <div className="col-12 col-md-6 d-flex mt-2 ">
                     Complete Your General Information
                   </div>
