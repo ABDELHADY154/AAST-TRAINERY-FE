@@ -79,4 +79,7 @@
     align-content: center !important;
     text-align: center !important;
   }
+  #deadline {
+    margin-top: 1em;
+  }
 }
