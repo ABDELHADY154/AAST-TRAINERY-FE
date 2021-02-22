@@ -189,7 +189,7 @@ class Home extends Component {
                       </div>
                     </div>
                     <div id="big" className="d-flex flex-column  col-md-8 mt-3">
-                      <ProgressBar percent={20}>
+                      <ProgressBar percent={50}>
                         <Step>
                           {({ accomplished }) => (
                             <div
@@ -323,7 +323,7 @@ class Home extends Component {
                             width="60em"
                             src={img2}
                           />
-                          <div className=" fs-5 mt-2 ms-2 col-md-10 col-8">
+                          <div className=" fs-5 mt-2 ms-2 p-0 my-0 col-md-10 col-8">
                             UI/UX Designer
                           </div>
                           <div
@@ -333,7 +333,10 @@ class Home extends Component {
                             Paid
                           </div>
                         </div>
-                        <div className="d-flex flex-row ms-5">
+                        <div
+                          className="d-flex flex-row  ms-5 mt-0"
+                          // style="lineHeight:-20"
+                        >
                           <div className="d-flex ms-3 flex-column">CIB</div>
                           <div id="gold" className="d-flex ms-2 flex-column">
                             Finance
@@ -346,18 +349,22 @@ class Home extends Component {
                           tempore culpa illum consequuntur quis nobis adipisci
                           et?
                         </p>
-                        <div className="d-flex flex-row flex-wrap justify-content-start">
-                          <div className="d-flex flex-column col-6 col-md-2">
+                        <div className="d-flex flex-row flex-wrap ">
+                          <div className="d-flex flex-column col-4 col-md-2 ">
                             <a href="#" className=" " id="tags">
                               Finance
                             </a>
                           </div>
-                          <div className="d-flex flex-column col-6  col-md-2 mb-1">
+                          <div className="d-flex flex-column col-4  col-md-2 mb-1">
                             <a href="#" className="  " id="tags">
                               Banking
                             </a>
                           </div>
-                          <div className="d-flex flex-column col-md-3  justify-space-between">
+
+                          <div
+                            id="deadline"
+                            className="d-flex flex-column col-md-3  justify-space-between"
+                          >
                             <p>Deadline {"        "}11 Dec 2021</p>
                           </div>
                           <div className="  d-flex flex-row col-12 col-md-3  ">
