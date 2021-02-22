@@ -14,6 +14,8 @@ import { DepLoader } from "../../loader";
 import "../../layout/Landing.css";
 import { BsCheck } from "react-icons/bs";
 import CountUp from "react-countup";
+import { Carousel } from "./Carousel";
+import CarouselLogos from "./CarouselLogos";
 
 import { FaCheck } from "react-icons/fa";
 import { Component } from "react";
@@ -22,7 +24,13 @@ class Landing extends React.Component {
   state = {
     loading: false,
   };
-
+  componentWillMount() {
+    const token = sessionStorage.getItem("token");
+    const status = sessionStorage.getItem("status");
+    if (status && token) {
+      return this.setState({ loggedIn: true });
+    }
+  }
   async componentDidMount() {
     await axios.get("/W/landingCount").then((data) => {
       this.setState({
@@ -33,9 +41,15 @@ class Landing extends React.Component {
       });
     });
   }
+
   render() {
+    if (this.state.loggedIn === true) {
+      return <Redirect to="/Home" />;
+    }
     return (
       <div className="container-fluid">
+        <Carousel />
+
         <div className="container">
           <div className="d-flex flex-row ">
             <div
@@ -235,6 +249,7 @@ class Landing extends React.Component {
             </div>
           </div>
         </div>
+        {/* <CarouselLogos /> */}
         <Footer />
       </div>
     );

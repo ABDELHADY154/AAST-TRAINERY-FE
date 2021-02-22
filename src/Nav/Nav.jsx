@@ -33,46 +33,27 @@ class Nav extends React.Component {
     this.props.setUser(false);
   };
 
-  // async componentDidMount() {
-  //   const token = sessionStorage.getItem("token");
-  //   const status = sessionStorage.getItem("status");
-  //   const avatar = await sessionStorage.getItem("avatar");
-  //   if (status && token && avatar) {
-  //     return this.setState({ loggedIn: true, loading: true });
-  //   }
-  // }
-
-  async componentDidMount() {
-    await resolve(
-      axios.get("/W/studentImg").then((res) => {
-        if (res.status === 200) {
-          this.setState({
-            user: res.data.response.data,
-            avatar: res.data.response.data.image,
-          });
-        }
-      })
-    );
+  componentWillMount() {
+    const token = sessionStorage.getItem("token");
+    const status = sessionStorage.getItem("status");
+    if (status && token) {
+      return this.setState({ loggedIn: true });
+    }
   }
-  //   return this.setState({ loggedIn: true, loading: true });
-  // }
-  // const token = sessionStorage.getItem("token");
-  // const status = sessionStorage.getItem("status");
-  // if (status && token) {
-  //   return this.setState({ loggedIn: true, loading: true });
-  // }
-  // console.log(res.data.response.data.image)
-
-  // .catch((error) => {
-  //   this.setState({
-  //     error: {
-  //       usernameErr: error.response.status,
-  //     },
-  //   });
-  //   if (this.state.error.usernameErr === 401) {
-  //     window.location.reload();
-  //   }
-  // })
+  async componentDidMount() {
+    if (this.state.loggedIn) {
+      await resolve(
+        axios.get("/W/studentImg").then((res) => {
+          if (res.status === 200) {
+            this.setState({
+              user: res.data.response.data,
+              avatar: res.data.response.data.image,
+            });
+          }
+        })
+      );
+    }
+  }
 
   render() {
     if (this.props.loggedIn === true) {
@@ -80,8 +61,8 @@ class Nav extends React.Component {
         <div>
           <nav className='navbar navbar-expand-lg navbar-light bg-light'>
             <div className='container-fluid'>
-              <a className='navbar-brand mx-5' href='#'>
-                <img className='navbar-brand ml-5' src={logo} width='170' alt=''></img>
+              <a className='navbar-brand mx-2' href='/'>
+                <img className='navbar-brand' src={logo} width='170' alt=''></img>
               </a>
               <button
                 className='navbar-toggler'
@@ -247,9 +228,9 @@ class Nav extends React.Component {
         <div>
           <nav className='navbar navbar-expand-lg navbar-light bg-light'>
             <div className='container-fluid'>
-              <a className='navbar-brand mx-5' href='#'>
-                <img className='navbar-brand ml-5' src={logo} width='170' alt=''></img>
-              </a>
+              <Link className='navbar-brand mx-2' to='/'>
+                <img className='navbar-brand ' src={logo} width='170' alt=''></img>
+              </Link>
               <button
                 className='navbar-toggler'
                 type='button'

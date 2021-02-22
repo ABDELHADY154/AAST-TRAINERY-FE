@@ -42,11 +42,10 @@ class App extends React.Component {
     }
   }
 
-  setUser = data => {
+  setUser = (data) => {
     return this.setState({ loggedIn: data });
   };
   render() {
-    // console.log(this.state.loggedIn);
     return (
       <BrowserRouter>
         <Nav loggedIn={this.state.loggedIn} setUser={this.setUser} />
@@ -63,19 +62,14 @@ class App extends React.Component {
                 />
 
                 <Route
+                  exact
                   path="/Login"
                   component={() => <Login setUser={this.setUser} />}
                 />
-                <Route path="/Register" component={Registry} />
-                <Route path="/Forget" component={Forget} />
-
-                {/* //component={() => <Login isLoggedin={this.isLoggedin} />} */}
-                {/* <== Home for Users */}
+                <Route exact path="/Register" component={Registry} />
+                <Route exact path="/Forget" component={Forget} />
                 <AuthRoute exact path="/Home" component={Home} />
-                {/* <== Register Guests */}
-
                 <AuthRoute exact path="/Profile" component={Profile} />
-
                 <Route exact path="*" component={ErrorPage} />
               </Switch>
             </div>
