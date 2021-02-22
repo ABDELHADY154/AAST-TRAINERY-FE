@@ -31,14 +31,14 @@ class Registry extends React.Component {
     }
   }
   async componentWillMount() {
-    await axios.get("/departments").then(dep => {
+    await axios.get("/departments").then((dep) => {
       this.setState({
         departs: dep.data.response.data,
         loading: true,
       });
     });
   }
-  handleSubmit = async e => {
+  handleSubmit = async (e) => {
     e.preventDefault();
     // e.target.reset();
     const data = {
@@ -53,7 +53,7 @@ class Registry extends React.Component {
     console.log(data);
     await axios
       .post("/register", data)
-      .then(response => {
+      .then((response) => {
         sessionStorage.setItem("token", response.data.response.data.token);
         sessionStorage.setItem("status", response.statusText);
         this.setState({
@@ -63,7 +63,7 @@ class Registry extends React.Component {
         });
         console.log(response);
       })
-      .catch(error => {
+      .catch((error) => {
         console.log(error);
         this.setState({
           error: {
@@ -90,7 +90,7 @@ class Registry extends React.Component {
               <input
                 type="name"
                 // placeholder="Full Name"
-                onChange={e => (this.username = e.target.value)}
+                onChange={(e) => (this.username = e.target.value)}
                 className="form-control wrong"
               />
               {this.state.error && (
@@ -103,7 +103,7 @@ class Registry extends React.Component {
             <input
               // placeholder="Email"
               className="form-control wrong"
-              onChange={e => (this.Email = e.target.value)}
+              onChange={(e) => (this.Email = e.target.value)}
             />
             {this.state.error && (
               <p className="error">{this.state.error.emailErr}</p>
@@ -112,37 +112,39 @@ class Registry extends React.Component {
 
           <div className=" row form-label-group ">
             <h2 className="genderLabel ">Gender</h2>
-            <div class="col form-check form-check-inline d-flex">
-              <input
-                class=""
-                type="radio"
-                className="radio"
-                name="inlineRadioOptions"
-                id="inlineRadio1"
-                value="male"
-                onChange={e => (this.gender = e.target.value)}
-              />
-              <label class="form-check-label raioLabel" for="inlineCheckbox3">
-                Male
-              </label>
+            <div className="row ">
+              <div class="col-3 male form-check form-check-inline d-flex">
+                <input
+                  class=""
+                  type="radio"
+                  className="radio"
+                  name="inlineRadioOptions"
+                  id="inlineRadio1"
+                  value="male"
+                  onChange={(e) => (this.gender = e.target.value)}
+                />
+                <label class="form-check-label raioLabel" for="inlineCheckbox3">
+                  Male
+                </label>
+              </div>
+              <div class="col-3 female checkbox form-check-inline d-flex">
+                <input
+                  class=""
+                  type="radio"
+                  className="radio"
+                  name="inlineRadioOptions"
+                  id="Gender"
+                  value="female"
+                  onChange={(e) => (this.gender = e.target.value)}
+                />
+                <label class="form-check-label raioLabel" for="inlineCheckbox3">
+                  Female
+                </label>
+              </div>
+              {this.state.error && (
+                <p className="error">{this.state.error.genderErr}</p>
+              )}
             </div>
-            <div class="col checkbox form-check-inline d-flex">
-              <input
-                class=""
-                type="radio"
-                className="radio"
-                name="inlineRadioOptions"
-                id="Gender"
-                value="female"
-                onChange={e => (this.gender = e.target.value)}
-              />
-              <label class="form-check-label raioLabel" for="inlineCheckbox3">
-                Female
-              </label>
-            </div>
-            {this.state.error && (
-              <p className="error">{this.state.error.genderErr}</p>
-            )}
           </div>
 
           <div className="form-row">
@@ -152,7 +154,7 @@ class Registry extends React.Component {
                 type="password"
                 className="form-control wrong"
                 // placeholder="Password"
-                onChange={e => (this.Password = e.target.value)}
+                onChange={(e) => (this.Password = e.target.value)}
               />
               <p className="error"> {this.state.error.passwordConfErr} </p>
             </div>
@@ -162,7 +164,7 @@ class Registry extends React.Component {
                 type="password"
                 className="form-control wrong"
                 // placeholder="Confirm Password"
-                onChange={e => (this.password_confirmation = e.target.value)}
+                onChange={(e) => (this.password_confirmation = e.target.value)}
               />
               <p className="error"> {this.state.error.passwordConfErr} </p>
             </div>
@@ -176,7 +178,7 @@ class Registry extends React.Component {
                 type="text"
                 className="form-control wrong"
                 // placeholder="Registration number"
-                onChange={e => (this.RegNum = e.target.value)}
+                onChange={(e) => (this.RegNum = e.target.value)}
               />
               {this.state.error && (
                 <p className="error"> {this.state.error.regnumErr} </p>
@@ -193,11 +195,11 @@ class Registry extends React.Component {
                   type="text"
                   className="form-control dep wrong "
                   id="departs"
-                  onChange={e => (this.depart = e.target.value)}
+                  onChange={(e) => (this.depart = e.target.value)}
                 >
                   <option>Please Select Your Department</option>
 
-                  {this.state.departs.map(depart => (
+                  {this.state.departs.map((depart) => (
                     <option value={depart.id} key={depart.id}>
                       {depart.dep_name}
                     </option>
@@ -221,7 +223,7 @@ class Registry extends React.Component {
               <input
                 type="name"
                 // placeholder="Full Name"
-                onChange={e => (this.username = e.target.value)}
+                onChange={(e) => (this.username = e.target.value)}
               />
             </div>
           </div>
@@ -232,38 +234,40 @@ class Registry extends React.Component {
                 type="email"
                 id="Email"
                 // placeholder="Email"
-                onChange={e => (this.Email = e.target.value)}
+                onChange={(e) => (this.Email = e.target.value)}
               />
             </div>
           </div>
 
-          <div className="row form-label-group">
+          <div className="row  form-label-group">
             <h2 className="genderLabel">Gender</h2>
-            <div class="col form-check form-check-inline d-flex">
-              <input
-                type="radio"
-                name="inlineRadioOptions"
-                id="inlineRadio1"
-                value="male"
-                className="radio"
-                onChange={e => (this.gender = e.target.value)}
-              />
-              <label class="form-check-label raioLabel" for="inlineCheckbox3">
-                Male
-              </label>
-            </div>
-            <div class="col checkbox form-check-inline d-flex">
-              <input
-                className="radio"
-                type="radio"
-                name="inlineRadioOptions"
-                id="Gender"
-                value="female"
-                onChange={e => (this.gender = e.target.value)}
-              />
-              <label class="form-check-label raioLabel" for="inlineCheckbox3">
-                Female
-              </label>
+            <div className="row ">
+              <div class="col-3 male form-check form-check-inline d-flex">
+                <input
+                  type="radio"
+                  name="inlineRadioOptions"
+                  id="inlineRadio1"
+                  value="male"
+                  className="radio"
+                  onChange={(e) => (this.gender = e.target.value)}
+                />
+                <label class="form-check-label raioLabel" for="inlineCheckbox3">
+                  Male
+                </label>
+              </div>
+              <div class="col-2  checkbox form-check-inline d-flex">
+                <input
+                  className="radio"
+                  type="radio"
+                  name="inlineRadioOptions"
+                  id="Gender"
+                  value="female"
+                  onChange={(e) => (this.gender = e.target.value)}
+                />
+                <label class="form-check-label raioLabel" for="inlineCheckbox3">
+                  Female
+                </label>
+              </div>
             </div>
           </div>
 
@@ -273,7 +277,7 @@ class Registry extends React.Component {
               <input
                 type="password"
                 // placeholder="Password"
-                onChange={e => (this.Password = e.target.value)}
+                onChange={(e) => (this.Password = e.target.value)}
               />
             </div>
             <div className="col-md-10 col-lg-12 form-label-group input-field">
@@ -281,7 +285,7 @@ class Registry extends React.Component {
               <input
                 type="password"
                 // placeholder="Confirm Password"
-                onChange={e => (this.password_confirmation = e.target.value)}
+                onChange={(e) => (this.password_confirmation = e.target.value)}
               />
             </div>
           </div>
@@ -293,7 +297,7 @@ class Registry extends React.Component {
               <input
                 type="number"
                 // placeholder="Registration number"
-                onChange={e => (this.RegNum = e.target.value)}
+                onChange={(e) => (this.RegNum = e.target.value)}
               />
             </div>
           </div>
@@ -307,11 +311,11 @@ class Registry extends React.Component {
                   type="text"
                   className="form-control dep  "
                   id="departs"
-                  onChange={e => (this.depart = e.target.value)}
+                  onChange={(e) => (this.depart = e.target.value)}
                 >
                   <option>Please Select Your Department</option>
 
-                  {this.state.departs.map(depart => (
+                  {this.state.departs.map((depart) => (
                     <option value={depart.id} key={depart.id}>
                       {depart.dep_name}
                     </option>
@@ -334,13 +338,16 @@ class Registry extends React.Component {
       <div className="container-fluid">
         {redirect}
         <div className="row no-gutter">
-          <div className="col-md-10 col-lg-8 ">
+          <div className="col-md-11 col-lg-9 ">
             <div className=" d-flex align-items-center py-5">
               <div className="container">
                 <div className="row">
-                  <div className="col-md-9 col-lg-8 mx-auto signup h-100">
-                    <h3 className=" mb-5 signTitle">Sign Up</h3>
-                    <form className="col-md-8" onSubmit={this.handleSubmit}>
+                  <div className="col-md-11 col-lg-9 mx-auto signup h-100">
+                    <h3 className="mb-5 signTitle">Sign Up</h3>
+                    <form
+                      className="col-md-8 col-lg-10"
+                      onSubmit={this.handleSubmit}
+                    >
                       {Invaldedata}
                       <div className="col-md-10 col-lg-12">
                         <Link to="/Login">
@@ -349,12 +356,14 @@ class Registry extends React.Component {
                         <p className="agree ">
                           By creating an account, you agree to the
                           <Link to="/">
-                            <span className="terms">Terms and Conditions</span>
+                            <span className="terms">
+                              {"  "} Terms and Conditions{"  "}
+                            </span>
                           </Link>
                           of the company.
                         </p>
                         <button
-                          className="btn shadow-none submitBtn col-sm-5 btn-outline-primary d-block text-uppercase font-weight-bold mb-2"
+                          className="btn shadow-none submitBtn col-sm-3 col-md-4 col-lg-3 btn-outline-primary d-block text-uppercase font-weight-bold mb-2"
                           type="submit"
                         >
                           Sign up
