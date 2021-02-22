@@ -22,9 +22,9 @@ class ErrorPage extends React.Component {
         <div className="content d-flex flex-column flex-lg-row justify-content-Center">
           <div className="col-lg-6 col-12 errolCol">
             <div className="d-flex justify-content-center align-items-center">
-              <h1 className="title">4</h1>
+              <h1 className="Four">4</h1>
               <MdWarning className="Warning mb-2" />
-              <h1 className="title">4</h1>
+              <h1 className="Four">4</h1>
             </div>
             <p className="text ">
               We’re not quite sure what went wrong. You can

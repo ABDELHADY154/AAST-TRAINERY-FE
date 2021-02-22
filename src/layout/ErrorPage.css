@@ -1,12 +1,30 @@
+@font-face {
+  font-family: SF reg;
+
+  src: url("../Components/assests/Fonts/SF-Compact-Display-Regular.otf");
+}
+@font-face {
+  font-family: SF bold;
+  src: url("../Components/assests/Fonts/SF-Compact-Display-Bold.otf");
+}
+@font-face {
+  font-family: SF light;
+  src: url("../Components/assests/Fonts/SF-Compact-Display-Light.otf");
+}
+@font-face {
+  font-family: SF med;
+  src: url("../Components/assests/Fonts/SF-Compact-Display-Medium.otf");
+}
 .logo {
   margin-left: 4.5rem;
 }
 .content {
   margin: 10vh 5vw;
 }
-.title {
-  font-size: 7rem;
-  color: #1e4274;
+.Four {
+  font-size: 7rem !important;
+  color: #1e4274 !important;
+  font-family: SF med;
 }
 .Warning {
   font-size: 7rem;
@@ -16,9 +34,10 @@
 }
 
 .text {
-  color: #1e4274;
+  color: #1e4274 !important;
   font-size: 1.2rem;
   min-width: 220px;
+  font-family: SF reg;
 }
 .link {
   color: #cd8930;
