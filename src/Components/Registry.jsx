@@ -22,8 +22,8 @@ class Registry extends React.Component {
       password: "",
       confirmPassword: "",
       gender: "",
-      reg_no: 0,
-      department_id: 0,
+      reg_no: "",
+      department_id: "",
     };
     if (sessionStorage.getItem("token")) {
       this.setState({ loggedIn: true });
@@ -72,21 +72,21 @@ class Registry extends React.Component {
         console.log(error);
         this.setState({
           error: {
-            fullName: error.response.data.errors.name[0],
-            emailErr: error.response.data.errors.email[0],
-            regnumErr: error.response.data.errors.reg_no[0],
-            departErr: error.response.data.errors.department_id[0],
+            fullName: error.response.data.errors.name,
+            emailErr: error.response.data.errors.email,
+            regnumErr: error.response.data.errors.reg_no,
+            departErr: error.response.data.errors.department_id,
             passwordErr:
-              error.response.data.errors.password[0] !==
+              error.response.data.errors.password !==
               "The password confirmation does not match."
-                ? error.response.data.errors.password[0]
+                ? error.response.data.errors.password
                 : null,
             passwordConfErr:
-              error.response.data.errors.password[0] ==
+              error.response.data.errors.password ==
               "The password confirmation does not match."
-                ? error.response.data.errors.password[0]
+                ? error.response.data.errors.password
                 : null,
-            genderErr: error.response.data.errors.gender[0],
+            genderErr: error.response.data.errors.gender,
           },
         });
       });
