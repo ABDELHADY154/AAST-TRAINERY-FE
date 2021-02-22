@@ -36,8 +36,8 @@ export class Carousel extends Component {
         <div className="carousel-inner">
           <div className="carousel-item active img1">
             <div className="carousel-caption text-start caption ">
-              <h5 className="title ">Your Career is Our Business</h5>
-              <p className="text lh-sm">
+              <h5 className="titleCarousel ">Your Career is Our Business</h5>
+              <p className="textCarousel lh-sm">
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut
                 dolor quis morbi sagittis donec sed massa. Velit malesuada amet
                 pretium turpis in commodo aliquet pulvinar ultrices.
@@ -70,8 +70,8 @@ export class Carousel extends Component {
               />
             </picture> */}
             <div className="carousel-caption text-start caption">
-              <h5 className="title">Start Your Non-Experience Caree</h5>
-              <p className="text lh-sm">
+              <h5 className="titleCarousel">Start Your Non-Experience Caree</h5>
+              <p className="textCarousel lh-sm">
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut
                 dolor quis morbi sagittis donec sed massa. Velit malesuada amet
                 pretium turpis in commodo aliquet pulvinar ultrices.
@@ -83,8 +83,10 @@ export class Carousel extends Component {
           </div>
           <div className="carousel-item img3" data-bs-interval="10000">
             <div className="carousel-caption  text-start caption">
-              <h5 className="title">Start Your Career Coaching Session</h5>
-              <p className="text lh-sm">
+              <h5 className="titleCarousel">
+                Start Your Career Coaching Session
+              </h5>
+              <p className="textCarousel lh-sm">
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut
                 dolor quis morbi sagittis donec sed massa. Velit malesuada amet
                 pretium turpis in commodo aliquet pulvinar ultrices.{" "}
