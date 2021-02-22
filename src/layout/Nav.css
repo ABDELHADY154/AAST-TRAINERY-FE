@@ -1,6 +1,10 @@
 body {
   overflow-x: hidden; /* Hide horizontal scrollbar */
 }
+.navBg {
+  background-color: #fff !important;
+}
+
 .signIn {
   background-color: #cd8930;
   color: #fff;

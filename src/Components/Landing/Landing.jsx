@@ -249,7 +249,15 @@ class Landing extends React.Component {
             </div>
           </div>
         </div>
-        {/* <CarouselLogos /> */}
+        <div className="row">
+          <CarouselLogos />
+          <button
+          // className="carousel-control-prev"
+          >
+            <span className="">Previous</span>
+          </button>
+        </div>
+
         <Footer />
       </div>
     );
