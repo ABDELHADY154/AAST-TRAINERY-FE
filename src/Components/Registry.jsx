@@ -343,7 +343,7 @@ class Registry extends React.Component {
               <div className="container">
                 <div className="row">
                   <div className="col-md-11 col-lg-9 mx-auto signup h-100">
-                    <h3 className=" mb-5 signTitle">Sign Up</h3>
+                    <h3 className="mb-5 signTitle">Sign Up</h3>
                     <form
                       className="col-md-8 col-lg-10"
                       onSubmit={this.handleSubmit}

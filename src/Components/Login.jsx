@@ -121,8 +121,10 @@ class Login extends React.Component {
                   <div className="row">
                     <div className="col-md-11 col-lg-9 mx-auto signup h-100">
                       <h3 className=" mb-5 signTitle">Sign In </h3>
-
-                      <form className="col-md-8" onSubmit={this.handleSubmit}>
+                      <form
+                        className="col-md-8 col-lg-10"
+                        onSubmit={this.handleSubmit}
+                      >
                         {Invaldemail}
                         <div className="col-md-10 col-lg-12">
                           <Link to="/Register">
