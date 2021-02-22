@@ -5,6 +5,7 @@ import { resolve } from "../Api/Resolvers/resolver";
 import { axios } from "../Api/axios";
 import { Loader } from "../loader";
 import img from "../Components/assests/imgs/girlavi.png";
+import MaleAvatar from "../Components/assests/imgs/boyavi.png";
 import img2 from "../Components/assests/imgs/cib.png";
 import rec1 from "../Components/assests/imgs/rec1.png";
 import rec2 from "../Components/assests/imgs/rec2.png";
@@ -14,7 +15,6 @@ import { BsCheck, BsArrowUpRight } from "react-icons/bs";
 import Footer2 from "../Components/Footer2";
 import "react-step-progress-bar/styles.css";
 import { ProgressBar, Step } from "react-step-progress-bar";
-// import { ProgressBar } from "react-bootstrap";
 
 class Home extends Component {
   constructor() {
@@ -31,17 +31,18 @@ class Home extends Component {
     await resolve(
       axios
         .get("/W/get-profile")
-        .then((res) => {
+        .then(res => {
           if (res.status === 200) {
             // sessionStorage.setItem("avatar", res.data.response.data.image);
             this.setState({
               user: res.data.response.data,
               loading: true,
+              // gender: ,
               code: "200",
             });
           }
         })
-        .catch((error) => {
+        .catch(error => {
           this.setState({
             error: {
               usernameErr: error.response.status,
@@ -50,11 +51,12 @@ class Home extends Component {
           if (this.state.error.usernameErr === 401) {
             window.location.reload();
           }
-        })
+        }),
     );
   }
 
   render() {
+    // console.log(this.state.user.gender);
     if (this.state.loading === false) {
       return <div className="container text-center">{/* <Loader /> */}</div>;
     } else {
@@ -189,7 +191,7 @@ class Home extends Component {
                       </div>
                     </div>
                     <div id="big" className="d-flex flex-column  col-md-8 mt-3">
-                      <ProgressBar percent={50}>
+                      <ProgressBar percent={20}>
                         <Step>
                           {({ accomplished }) => (
                             <div
@@ -304,7 +306,11 @@ class Home extends Component {
                 </div>
               </div>
               <div className="d-flex flex-column d-none d-md-flex col-md-2 ">
-                <img id="girl" className="" src={img} />
+                {this.state.user.gender == "female" ? (
+                  <img id="girl" className="" src={img} />
+                ) : (
+                  <img id="girl" className="" src={MaleAvatar} />
+                )}
               </div>
             </div>
             <div className="card mt-2 mt-5 w-70 mb-2 ">
@@ -323,7 +329,7 @@ class Home extends Component {
                             width="60em"
                             src={img2}
                           />
-                          <div className=" fs-5 mt-2 ms-2 p-0 my-0 col-md-10 col-8">
+                          <div className=" fs-5 mt-2 ms-2 col-md-10 col-8">
                             UI/UX Designer
                           </div>
                           <div
@@ -333,7 +339,7 @@ class Home extends Component {
                             Paid
                           </div>
                         </div>
-                        <div className="d-flex flex-row  ms-5 mt-0">
+                        <div className="d-flex flex-row ms-5">
                           <div className="d-flex ms-3 flex-column">CIB</div>
                           <div id="gold" className="d-flex ms-2 flex-column">
                             Finance
@@ -346,22 +352,18 @@ class Home extends Component {
                           tempore culpa illum consequuntur quis nobis adipisci
                           et?
                         </p>
-                        <div className="d-flex flex-row flex-wrap ">
-                          <div className="d-flex flex-column col-4 col-md-2 ">
+                        <div className="d-flex flex-row flex-wrap justify-content-start">
+                          <div className="d-flex flex-column col-6 col-md-2">
                             <a href="#" className=" " id="tags">
                               Finance
                             </a>
                           </div>
-                          <div className="d-flex flex-column col-4  col-md-2 mb-1">
+                          <div className="d-flex flex-column col-6  col-md-2 mb-1">
                             <a href="#" className="  " id="tags">
                               Banking
                             </a>
                           </div>
-
-                          <div
-                            id="deadline"
-                            className="d-flex flex-column col-md-3  justify-space-between"
-                          >
+                          <div className="d-flex flex-column col-md-3  justify-space-between">
                             <p>Deadline {"        "}11 Dec 2021</p>
                           </div>
                           <div className="  d-flex flex-row col-12 col-md-3  ">
@@ -471,9 +473,9 @@ class Home extends Component {
               <div className="card-body">
                 <div className="d-flex flex-row">
                   <img
-                    className="d-flex mt-0 col-md-1 col-1"
+                    className="d-flex mt-0 col-md-1 col-2"
                     id=""
-                    width="0.5em"
+                    width="10em"
                     src={img2}
                   />
                   <div className=" fs-5 mt-2 ms-2 col-md-10 col-8">
