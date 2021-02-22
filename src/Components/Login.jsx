@@ -11,20 +11,22 @@ class Login extends React.Component {
     this.state = {
       token: sessionStorage.getItem("token"),
       status: sessionStorage.getItem("status"),
-      error: "",
+      email: "",
+      error: {},
+      password: "",
     };
   }
 
-  handleSubmit = async (e) => {
+  handleSubmit = async e => {
     e.preventDefault();
     e.target.reset();
     const data = {
-      email: this.Email,
-      password: this.Password,
+      email: this.state.email,
+      password: this.state.password,
     };
     return await axios
       .post("/login", data)
-      .then((response) => {
+      .then(response => {
         sessionStorage.setItem("token", response.data.response.data.token);
         sessionStorage.setItem("status", response.statusText);
         this.props.setUser(true);
@@ -32,7 +34,7 @@ class Login extends React.Component {
           loggedIn: true,
         });
       })
-      .catch((error) => {
+      .catch(error => {
         console.log(error.response.data.errors);
         if (error.response.data.errors) {
           this.setState({
@@ -52,63 +54,6 @@ class Login extends React.Component {
     }
   };
   render() {
-    // console.log(this.state.error);
-
-    if (this.state.error) {
-      Invaldemail = (
-        <div>
-          <div className="col-md-11 col-lg-12 form-label-group input-field field">
-            <label className="label">Student Email</label>
-            <input
-              type="email"
-              class="wrong"
-              // required
-              onChange={(e) => (this.Email = e.target.value)}
-            />
-            {/* <label title='Email' /> */}
-            {this.state.error && (
-              <p className="error">{this.state.error.emailErr}</p>
-            )}
-          </div>
-
-          <div className="col-md-11 col-lg-12 form-label-group input-field field">
-            <label className="label">Password</label>
-            <input
-              type="password"
-              class="wrong"
-              // required
-              onChange={(e) => (this.Password = e.target.value)}
-            />
-            {<p className="error">{this.state.error.passwordErr}</p>}
-          </div>
-        </div>
-      );
-    } else {
-      var Invaldemail = (
-        <div>
-          <div className="col-md-11 col-lg-12 form-label-group input-field field">
-            <label className="label">Student Email</label>
-            <input
-              type="email"
-              // required
-              onChange={(e) => (this.Email = e.target.value)}
-            />
-            {/* <label title='Email' /> */}
-          </div>
-
-          <div className="col-md-11 col-lg-12 form-label-group input-field field">
-            <label className="label">Password</label>
-            <input
-              type="password"
-              // required
-              onChange={(e) => (this.Password = e.target.value)}
-            />
-            {/* <label title='Password' /> */}
-          </div>
-        </div>
-      );
-    }
-
     if (this.state.loggedIn === true) {
       return <Redirect to="/Home" />;
     } else {
@@ -125,7 +70,43 @@ class Login extends React.Component {
                         className="col-md-8 col-lg-10"
                         onSubmit={this.handleSubmit}
                       >
-                        {Invaldemail}
+                        <div>
+                          <div className="col-md-11 col-lg-12 form-label-group input-field field">
+                            <label className="label">Student Email</label>
+                            <input
+                              type="email"
+                              className={
+                                this.state.error.emailErr ? "wrong" : ""
+                              }
+                              onChange={e =>
+                                this.setState({ email: e.target.value })
+                              }
+                            />
+                            {this.state.error.emailErr && (
+                              <p className="error">
+                                {this.state.error.emailErr}
+                              </p>
+                            )}
+                          </div>
+
+                          <div className="col-md-11 col-lg-12 form-label-group input-field field">
+                            <label className="label">Password</label>
+                            <input
+                              type="password"
+                              onChange={e =>
+                                this.setState({ password: e.target.value })
+                              }
+                              className={
+                                this.state.error.passwordErr ? "wrong" : ""
+                              }
+                            />
+                            {this.state.error.passwordErr && (
+                              <p className="error">
+                                {this.state.error.passwordErr}
+                              </p>
+                            )}
+                          </div>
+                        </div>
                         <div className="col-md-10 col-lg-12">
                           <Link to="/Register">
                             <p className="account">Don’t have an account ?</p>

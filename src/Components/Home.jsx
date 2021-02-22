@@ -5,6 +5,7 @@ import { resolve } from "../Api/Resolvers/resolver";
 import { axios } from "../Api/axios";
 import { Loader } from "../loader";
 import img from "../Components/assests/imgs/girlavi.png";
+import MaleAvatar from "../Components/assests/imgs/boyavi.png";
 import img2 from "../Components/assests/imgs/cib.png";
 import rec1 from "../Components/assests/imgs/rec1.png";
 import rec2 from "../Components/assests/imgs/rec2.png";
@@ -12,9 +13,8 @@ import rec3 from "../Components/assests/imgs/rec3.png";
 import "../layout/Home.css";
 import { BsCheck, BsArrowUpRight } from "react-icons/bs";
 import Footer2 from "../Components/Footer2";
-// import "react-step-progress-bar/styles.css";
-// import { ProgressBar, Step } from "react-step-progress-bar";
-// import { ProgressBar } from "react-bootstrap";
+import "react-step-progress-bar/styles.css";
+import { ProgressBar, Step } from "react-step-progress-bar";
 
 class Home extends Component {
   constructor() {
@@ -31,17 +31,18 @@ class Home extends Component {
     await resolve(
       axios
         .get("/W/get-profile")
-        .then((res) => {
+        .then(res => {
           if (res.status === 200) {
             // sessionStorage.setItem("avatar", res.data.response.data.image);
             this.setState({
               user: res.data.response.data,
               loading: true,
+              // gender: ,
               code: "200",
             });
           }
         })
-        .catch((error) => {
+        .catch(error => {
           this.setState({
             error: {
               usernameErr: error.response.status,
@@ -50,11 +51,12 @@ class Home extends Component {
           if (this.state.error.usernameErr === 401) {
             window.location.reload();
           }
-        })
+        }),
     );
   }
 
   render() {
+    // console.log(this.state.user.gender);
     if (this.state.loading === false) {
       return <div className="container text-center">{/* <Loader /> */}</div>;
     } else {
@@ -73,7 +75,7 @@ class Home extends Component {
                 </div>
 
                 <div className="d-flex flex-row flex-wrap mt-5 ">
-                  {/* <div id="small" className="col-12 col-md-10 d-flex ">
+                  <div id="small" className="col-12 col-md-10 d-flex ">
                     <div className="col-8 col-md-3 d-flex fs-4  ">
                       Steps to Success
                     </div>
@@ -297,14 +299,18 @@ class Home extends Component {
                         </Step>
                       </ProgressBar>
                     </div>
-                  </div> */}
+                  </div>
                   <div className="col-12 col-md-6 d-flex mt-2 ">
                     Complete Your General Information
                   </div>
                 </div>
               </div>
               <div className="d-flex flex-column d-none d-md-flex col-md-2 ">
-                <img id="girl" className="" src={img} />
+                {this.state.user.gender == "female" ? (
+                  <img id="girl" className="" src={img} />
+                ) : (
+                  <img id="girl" className="" src={MaleAvatar} />
+                )}
               </div>
             </div>
             <div className="card mt-2 mt-5 w-70 mb-2 ">

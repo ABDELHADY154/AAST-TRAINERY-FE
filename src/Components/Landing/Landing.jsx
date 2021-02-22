@@ -249,7 +249,7 @@ class Landing extends React.Component {
             </div>
           </div>
         </div>
-        <CarouselLogos />
+        {/* <CarouselLogos /> */}
         <Footer />
       </div>
     );

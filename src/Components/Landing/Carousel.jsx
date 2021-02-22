@@ -70,7 +70,9 @@ export class Carousel extends Component {
               />
             </picture> */}
             <div className="carousel-caption text-start caption">
-              <h5 className="titleCarousel">Start Your Non-Experience Caree</h5>
+              <h5 className="titleCarousel">
+                Start Your Non-Experience Career
+              </h5>
               <p className="textCarousel lh-sm">
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut
                 dolor quis morbi sagittis donec sed massa. Velit malesuada amet

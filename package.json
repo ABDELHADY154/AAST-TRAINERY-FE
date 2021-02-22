@@ -18,7 +18,8 @@
     "react-icons": "^4.1.0",
     "react-router-dom": "^5.2.0",
     "react-scripts": "^3.4.4",
-    "react-scrolltop-button": "^0.1.6"
+    "react-scrolltop-button": "^0.1.6",
+    "react-step-progress-bar": "^1.0.3"
   },
   "scripts": {
     "start": "react-scripts start",
