@@ -31,7 +31,7 @@ class Home extends Component {
     await resolve(
       axios
         .get("/W/get-profile")
-        .then(res => {
+        .then((res) => {
           if (res.status === 200) {
             // sessionStorage.setItem("avatar", res.data.response.data.image);
             this.setState({
@@ -42,7 +42,7 @@ class Home extends Component {
             });
           }
         })
-        .catch(error => {
+        .catch((error) => {
           this.setState({
             error: {
               usernameErr: error.response.status,
@@ -51,7 +51,7 @@ class Home extends Component {
           if (this.state.error.usernameErr === 401) {
             window.location.reload();
           }
-        }),
+        })
     );
   }
 
@@ -191,7 +191,7 @@ class Home extends Component {
                       </div>
                     </div>
                     <div id="big" className="d-flex flex-column  col-md-8 mt-3">
-                      <ProgressBar percent={20}>
+                      <ProgressBar percent={50}>
                         <Step>
                           {({ accomplished }) => (
                             <div
@@ -339,44 +339,43 @@ class Home extends Component {
                             Paid
                           </div>
                         </div>
-                        <div className="d-flex flex-row ms-5">
+                        <div id="job" className="d-flex flex-row ms-5 ">
                           <div className="d-flex ms-3 flex-column">CIB</div>
                           <div id="gold" className="d-flex ms-2 flex-column">
                             Finance
                           </div>
                         </div>
-                        <p className="card-text">
+                        <p className="card-text mt-2">
                           Lorem ipsum dolor sit amet consectetur adipisicing
                           elit. Ipsam repudiandae aut possimus. Repellendus at
                           nostrum iste doloremque. Ea omnis ipsam, eum nam
                           tempore culpa illum consequuntur quis nobis adipisci
                           et?
                         </p>
-                        <div className="d-flex flex-row flex-wrap justify-content-start">
-                          <div className="d-flex flex-column col-6 col-md-2">
+                        <div className="d-flex flex-row flex-wrap ">
+                          <div className="d-flex flex-column col-4 col-md-2">
                             <a href="#" className=" " id="tags">
                               Finance
                             </a>
                           </div>
-                          <div className="d-flex flex-column col-6  col-md-2 mb-1">
+                          <div className="d-flex flex-column col-4  col-md-2 mb-1">
                             <a href="#" className="  " id="tags">
                               Banking
                             </a>
                           </div>
-                          <div className="d-flex flex-column col-md-3  justify-space-between">
+                          <div
+                            id="drop"
+                            className="d-flex flex-column col-md-4  
+                             justify-space-between"
+                          >
                             <p>Deadline {"        "}11 Dec 2021</p>
                           </div>
-                          <div className="  d-flex flex-row col-12 col-md-3  ">
-                            <BsArrowUpRight
-                              className="d-flex flex-column col-md-3"
-                              fill="#cd8930"
-                            />
-                            <p
-                              className="d-flex flex-column col-12 col-md-6 "
-                              id="gold"
-                            >
-                              Promoted
-                            </p>
+                          <div
+                            id="promoted"
+                            className="  d-flex flex-row col-12 col-md-2  "
+                          >
+                            <BsArrowUpRight className="me-3" fill="#cd8930" />
+                            <p id="gold">Promoted</p>
                           </div>
                         </div>
                       </div>
@@ -403,58 +402,43 @@ class Home extends Component {
                             Paid
                           </div>
                         </div>
-                        <div className="d-flex flex-row ms-5">
+                        <div id="job" className="d-flex flex-row ms-5 ">
                           <div className="d-flex ms-3 flex-column">CIB</div>
                           <div id="gold" className="d-flex ms-2 flex-column">
                             Finance
                           </div>
                         </div>
-                        <p className="card-text">
+                        <p className="card-text mt-2">
                           Lorem ipsum dolor sit amet consectetur adipisicing
                           elit. Ipsam repudiandae aut possimus. Repellendus at
                           nostrum iste doloremque. Ea omnis ipsam, eum nam
                           tempore culpa illum consequuntur quis nobis adipisci
                           et?
                         </p>
-                        <div className="d-flex flex-row ">
-                          <div className="d-flex flex-column">
-                            <a
-                              href="#"
-                              className=" me-3 d-flex flex-column "
-                              id="tags"
-                            >
+                        <div className="d-flex flex-row flex-wrap ">
+                          <div className="d-flex flex-column col-4 col-md-2">
+                            <a href="#" className=" " id="tags">
                               Finance
                             </a>
                           </div>
-                          <div className="d-flex flex-column">
-                            <a
-                              href="#"
-                              className=" d-flex flex-column me-5 "
-                              id="tags"
-                            >
+                          <div className="d-flex flex-column col-4  col-md-2 mb-1">
+                            <a href="#" className="  " id="tags">
                               Banking
                             </a>
                           </div>
-                          <div className="d-flex flex-row">
-                            <p className="d-flex flex-column col-6 col-md-3 ">
-                              Deadline
-                            </p>
-                            <p className="d-flex flex-column col-6 col-md-6 me-4">
-                              11 Dec 2021
-                            </p>
-
-                            <div className=" ms-5 d-flex flex-row col-12 col-md-5 mt-1 ">
-                              <BsArrowUpRight
-                                className="d-flex flex-column  me-1"
-                                fill="#cd8930"
-                              />
-                              <div
-                                className="d-flex flex-column col-12 col-md-8 "
-                                id="gold"
-                              >
-                                Promoted
-                              </div>
-                            </div>
+                          <div
+                            id="drop"
+                            className="d-flex flex-column col-md-4  
+                             justify-space-between"
+                          >
+                            <p>Deadline {"        "}11 Dec 2021</p>
+                          </div>
+                          <div
+                            id="promoted"
+                            className="  d-flex flex-row col-12 col-md-2  "
+                          >
+                            <BsArrowUpRight className="me-3" fill="#cd8930" />
+                            <p id="gold">Promoted</p>
                           </div>
                         </div>
                       </div>
@@ -470,72 +454,67 @@ class Home extends Component {
               Explore reccomended opportunities
             </div>
             <div className="card mt-4">
-              <div className="card-body">
-                <div className="d-flex flex-row">
-                  <img
-                    className="d-flex mt-0 col-md-1 col-2"
-                    id=""
-                    width="10em"
-                    src={img2}
-                  />
-                  <div className=" fs-5 mt-2 ms-2 col-md-10 col-8">
-                    UI/UX Designer
-                  </div>
-                  <div id="gold" className=" fs-6 mt-2 ms-2 col-2 col-md-1">
-                    Paid
-                  </div>
-                </div>
-                <div className="d-flex flex-row ms-5">
-                  <div className="d-flex ms-3 flex-column">CIB</div>
-                  <div id="gold" className="d-flex ms-2 flex-column">
-                    Finance
-                  </div>
-                </div>
-                <p className="card-text">
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsam
-                  repudiandae aut possimus. Repellendus at nostrum iste
-                  doloremque. Ea omnis ipsam, eum nam tempore culpa illum
-                  consequuntur quis nobis adipisci et?
-                </p>
-                <div className="d-flex flex-row ">
-                  <div className="d-flex flex-column">
-                    <a href="#" className=" me-3 d-flex flex-column " id="tags">
-                      Finance
-                    </a>
-                  </div>
-                  <div className="d-flex flex-column">
-                    <a href="#" className=" d-flex flex-column me-5 " id="tags">
-                      Banking
-                    </a>
-                  </div>
+              <div className="card">
+                <div className="card-body">
                   <div className="d-flex flex-row">
-                    <p className="d-flex flex-column col-6 col-md-3 ">
-                      Deadline
-                    </p>
-                    <p className="d-flex flex-column col-6 col-md-6 me-4">
-                      11 Dec 2021
-                    </p>
-
-                    <div className=" ms-5 d-flex flex-row col-12 col-md-5 mt-1 ">
-                      <BsArrowUpRight
-                        className="d-flex flex-column  me-1"
-                        fill="#cd8930"
-                      />
-                      <div
-                        className="d-flex flex-column col-12 col-md-8 "
-                        id="gold"
-                      >
-                        Promoted
-                      </div>
+                    <img
+                      className="d-flex mt-0 col-md-1 col-2"
+                      id=""
+                      width="60em"
+                      src={img2}
+                    />
+                    <div className=" fs-5 mt-2 ms-2 col-md-10 col-8">
+                      UI/UX Designer
+                    </div>
+                    <div id="gold" className=" fs-6 mt-2 ms-2 col-2 col-md-1">
+                      Paid
+                    </div>
+                  </div>
+                  <div id="job" className="d-flex flex-row ms-5 ">
+                    <div className="d-flex ms-3 flex-column">CIB</div>
+                    <div id="gold" className="d-flex ms-2 flex-column">
+                      Finance
+                    </div>
+                  </div>
+                  <p className="card-text mt-2">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                    Ipsam repudiandae aut possimus. Repellendus at nostrum iste
+                    doloremque. Ea omnis ipsam, eum nam tempore culpa illum
+                    consequuntur quis nobis adipisci et?
+                  </p>
+                  <div className="d-flex flex-row flex-wrap ">
+                    <div className="d-flex flex-column col-4 col-md-2">
+                      <a href="#" className=" " id="tags">
+                        Finance
+                      </a>
+                    </div>
+                    <div className="d-flex flex-column col-4  col-md-2 mb-1">
+                      <a href="#" className="  " id="tags">
+                        Banking
+                      </a>
+                    </div>
+                    <div
+                      id="drop"
+                      className="d-flex flex-column col-md-4  
+                             justify-space-between"
+                    >
+                      <p>Deadline {"        "}11 Dec 2021</p>
+                    </div>
+                    <div
+                      id="promoted"
+                      className="  d-flex flex-row col-12 col-md-2  "
+                    >
+                      <BsArrowUpRight className="me-3" fill="#cd8930" />
+                      <p id="gold">Promoted</p>
                     </div>
                   </div>
                 </div>
-              </div>
+              </div>{" "}
             </div>
             <div className="fs-3 mt-5" id="">
               Check our career coaching services
             </div>
-            <div className="d-flex flex-row flex-wrap   justify-content-around">
+            <div className="d-flex flex-row flex-wrap px-0 mx-0">
               <div className=" mt-3  col-md-3 col-12">
                 <img
                   className="cardImg img-responsive "
@@ -543,13 +522,18 @@ class Home extends Component {
                   height="150"
                 />
               </div>
+              <div className="col-1"></div>
               <div className=" mt-3   col-md-4 col-12">
                 <img
                   className="cardImg img-responsive "
                   src={rec2}
                   height="150"
                 />
+                <div className="carousel-caption2">
+                  <h5 className="fs-3 "> Career Coaching Path</h5>
+                </div>
               </div>
+              <div className="col-1"></div>
               <div className=" mt-3  col-md-3 col-12">
                 <img
                   className="cardImg img-responsive "

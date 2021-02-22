@@ -53,7 +53,9 @@
   justify-content: center;
   align-items: center;
 }
-
+.RSPBprogressBar {
+  background-color: rgba(205, 137, 48, 0.5) !important;
+}
 .indexedStep.accomplished {
   background-color: #cd8930;
 }
@@ -62,7 +64,14 @@
 }
 
 .indexedStep {
-  background-color: lightgrey;
+  background-color: white;
+  border: solid 2px rgba(205, 137, 48, 0.5) !important;
+}
+#promoted {
+  margin-left: 6em !important;
+}
+#job {
+  margin-top: -0.7em !important;
 }
 @media screen and (max-width: 766px) {
   #big {
@@ -81,5 +90,12 @@
   }
   #deadline {
     margin-top: 1em;
+  }
+  #drop {
+    margin-top: 0.5em !important;
+  }
+  #promoted {
+    margin-left: 0em !important;
+    margin-top: -0.5em !important;
   }
 }
