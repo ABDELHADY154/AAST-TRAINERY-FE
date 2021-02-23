@@ -1,5 +1,3 @@
-/** @format */
-
 import React, { Component } from "react";
 import { resolve } from "../Api/Resolvers/resolver";
 import { axios } from "../Api/axios";
