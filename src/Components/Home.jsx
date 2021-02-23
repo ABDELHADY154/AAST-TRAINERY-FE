@@ -626,32 +626,27 @@ class Home extends Component {
               <div id="widths" className=" mt-3 containerrr  col-md-3 col-12 ">
                 <img id="imagehover" src={rec1} />
                 <div class="overlay">
-                  <div
-                    id="carousel-caption2"
-                    class="texttt fs-3 col-12 col-md-12 mt-n5"
-                  >
+                  <a href="#" class="texttt fs-3 col-12 col-md-12 ">
                     CV Review
-                  </div>
+                  </a>
                 </div>
               </div>
               {/* <div className="col-1 d-flex"></div> */}
-              <div id="widths" className=" mt-3   col-md-3 col-12 ">
-                <img className="cardImg img-responsive " src={rec2} />
-                <div
-                  id="carousel-caption2"
-                  className=" fs-3 col-12 col-md-12 mt-n5 "
-                >
-                  Career Coaching Path
+              <div id="widths" className=" mt-3 containerrr  col-md-3 col-12 ">
+                <img id="imagehover" src={rec2} />
+                <div class="overlay">
+                  <a href="#" class="texttt fs-3 col-12 col-md-12 ">
+                    Career Coaching Path
+                  </a>
                 </div>
               </div>
               {/* <div className="col-1 d-flex"></div> */}
-              <div id="widths" className=" mt-3  col-md-3 col-12 text-center">
-                <img className="cardImg img-responsive " src={rec3} />
-                <div
-                  id="carousel-captions"
-                  className=" fs-3 col-md-12 d-flex col-12  text-center"
-                >
-                  Interview Preperation
+              <div id="widths" className=" mt-3 containerrr  col-md-3 col-12 ">
+                <img id="imagehover" src={rec3} />
+                <div class="overlay">
+                  <a href="#" class="texttt fs-3 col-12 col-md-12 ">
+                    Interview Preperation
+                  </a>
                 </div>
               </div>
             </div>
