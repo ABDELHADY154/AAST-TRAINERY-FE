@@ -183,15 +183,20 @@
   transform: translate(-50%, -50%);
   text-align: center;
 }
-a {
+
+#linksss:link {
   text-decoration: none !important;
+  color: #ffffff !important;
 }
-a:active {
+#linksss:visited {
   text-decoration: none !important;
+  color: #ffffff !important;
 }
-a:visited {
+#linksss:active {
   text-decoration: none !important;
+  color: #ffffff !important;
 }
-a:link {
+#linksss:hover {
   text-decoration: none !important;
+  color: #ffffff !important;
 }
