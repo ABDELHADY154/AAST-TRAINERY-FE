@@ -18,9 +18,6 @@
 .container-fluid {
   padding: 0;
 }
-/* .container {
-  padding: 0;
-} */
 #Experienceimg {
   width: 40% !important;
 }
@@ -80,8 +77,33 @@ span {
   font-size: 1.3em !important;
   margin-top: 3em !important;
 }
+#cardss {
+  border: none !important;
+}
 #bd {
   border-color: transparent !important;
   border: none !important;
   border-width: 0 !important;
+}
+.contactBtn {
+  background-color: transparent;
+  color: #cd8930;
+  font-family: SF light;
+  border: 1px solid #cd8930;
+  border-radius: 5px;
+
+  /* width: 152px; */
+}
+.contactBtnW {
+  margin-left: 5.5rem;
+}
+@media (max-width: 800px) {
+  .contactBtn {
+    margin-left: 1rem !important;
+  }
+}
+@media (max-width: 500px) {
+  .carouselRow {
+    margin-left: -1rem !important;
+  }
 }

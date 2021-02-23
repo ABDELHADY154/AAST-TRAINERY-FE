@@ -1,13 +1,39 @@
 body {
   overflow-x: hidden; /* Hide horizontal scrollbar */
 }
+.navBg {
+  background-color: #fff !important;
+}
+.navBottom {
+  margin-bottom: 5em !important;
+}
+.navbar-toggler {
+  background-color: #fff !important;
+  border: 1px solid #1e4274 !important;
+}
+.navbar-toggler-icon {
+  background: url("https://api.iconify.design/bytesize:menu.svg?color=%231e4274")
+    no-repeat center center / contain;
+}
+
+.navbar-toggler:active {
+  background-color: #fff !important;
+  border: 1px solid #1e4274 !important;
+}
+@media (max-width: 768px) {
+  .navbar-toggler {
+    margin-right: 0.4rem;
+  }
+}
+
 .signIn {
   background-color: #cd8930;
   color: #fff;
+  width: 150px;
 }
 .signIn:hover {
   background-color: #fff !important;
-  color: #1e4274 !important;
+  color: #cd8930 !important;
   border: 1px solid #cd8930 !important;
 }
 .signUp:hover {
@@ -18,6 +44,7 @@ body {
 .signUp {
   color: #1e4274 !important;
   border: 1px solid #1e4274 !important;
+  width: 150px;
 }
 .nav-item {
   padding-bottom: 0.5em;

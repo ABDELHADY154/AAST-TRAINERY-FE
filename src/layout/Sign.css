@@ -62,6 +62,10 @@ input {
   background: transparent;
   border-radius: 0 !important;
   border-bottom: 1px solid #1e4274 !important;
+  width: 100%;
+  box-shadow: none;
+  color: #1e4274;
+  margin-bottom: 50px;
 }
 input:focus {
   border: 0 !important;
@@ -69,15 +73,7 @@ input:focus {
   background: transparent;
   border-bottom: 2px solid #cd8930 !important;
 }
-input {
-  width: 100%;
-  border: 0;
-  outline: 0;
-  border-bottom: 4px solid #1e4274;
-  box-shadow: none;
-  color: #1e4274;
-  margin-bottom: 50px;
-}
+
 /* input:focus,
 input:valid {
   border-color: #cd8930;
@@ -98,12 +94,12 @@ input:valid {
 .error {
   color: #f44336;
   font-size: 14px;
-  margin-top: -10%;
-  margin-bottom: 10%;
+  margin-top: -7%;
+  margin-bottom: 5%;
 }
 
 .raioLabel {
-  margin-left: 10px;
+  margin-left: 10px !important;
 }
 input[type="radio"] {
   -webkit-appearance: none;
@@ -130,13 +126,19 @@ input[type="radio"]:before {
 input[type="radio"]:checked:before {
   background: #1e4274;
   background-image: url(../Components/assests/imgs/done2.svg);
-  background-color: #fff;
+  background-color: #1e4274;
   background-repeat: no-repeat;
   background-size: cover;
   position: absolute;
   width: 20px;
   height: 20px;
   border: 2px solid #1e4274;
+}
+/* .male {
+  margin-left: -9px !important;
+} */
+.female:before {
+  padding-right: 5px !important;
 }
 
 .account {
@@ -175,20 +177,25 @@ input[type="radio"]:checked:before {
   border-color: #1e4274;
   color: #1e4274;
   box-shadow: none;
-  /* outline-color: #fae49a !important; */
 }
 .dep {
   color: #1e4274;
+  margin-bottom: 50px;
+  padding-left: 0 !important;
+}
+select option {
+  margin: -1rem !important;
+  padding: -1rem !important;
 }
 select.dep option:hover {
   background-color: #1e4274 !important;
 }
+
 option {
   color: #1e4274;
   border: none !important;
   border-bottom: solid 1px #cd8930 !important;
   border-radius: 0 !important;
-  /* margin-right: -10px !important; */
 }
 select {
   background: url("https://api.iconify.design/mdi:chevron-down.svg?color=%231e4274")
@@ -212,18 +219,31 @@ select:focus {
   border: none !important;
   border-bottom: solid 2px #cd8930 !important;
   border-radius: 0 !important;
+  color: #1e4274;
 }
 select option:checked {
   background: #1e4274 -webkit-linear-gradient(bottom, #cd8930 0%, #cd8930 100%);
   color: #fff;
 }
 
+
 /* select option:active {
   background: #cd3030 -webkit-linear-gradient(bottom, #cd8930 0%, #cd8930 100%) !important;
   color: rgb(81, 201, 87) !important;
 } */
-@media (max-width: 768px) {
-  .bg-image {
+@media (max-width: 700px) {
+  .bg-image-no-img {
+
     display: none;
   }
+}
+
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+/* Firefox */
+input[type="number"] {
+  -moz-appearance: textfield;
 }
