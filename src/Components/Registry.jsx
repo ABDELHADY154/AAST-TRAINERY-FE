@@ -97,8 +97,8 @@ class Registry extends React.Component {
       return <Redirect to="/Home" />;
     }
     return (
-      <div className="container-fluid">
-        <div className="row no-gutter">
+      <div className="container-fluid ">
+        <div className="row no-gutter ">
           <div className="col-md-11 col-lg-9 ">
             <div className=" d-flex align-items-center py-5">
               <div className="container">

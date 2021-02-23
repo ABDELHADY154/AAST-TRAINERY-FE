@@ -9,7 +9,7 @@ body {
   border: 1px solid #1e4274 !important;
 }
 .navbar-toggler-icon {
-  background: url("https://api.iconify.design/codicon:menu.svg?color=%231e4274")
+  background: url("https://api.iconify.design/bytesize:menu.svg?color=%231e4274")
     no-repeat center center / contain;
 }
 
@@ -19,7 +19,7 @@ body {
 }
 @media (max-width: 768px) {
   .navbar-toggler {
-    margin-right: 3rem;
+    margin-right: 0.4rem;
   }
 }
 
@@ -30,7 +30,7 @@ body {
 }
 .signIn:hover {
   background-color: #fff !important;
-  color: #1e4274 !important;
+  color: #cd8930 !important;
   border: 1px solid #cd8930 !important;
 }
 .signUp:hover {
