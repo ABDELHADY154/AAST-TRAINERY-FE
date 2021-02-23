@@ -89,7 +89,7 @@ class Forget extends React.Component {
               </div>
             </div>
           ) : (
-            <div className="col-md-10 col-lg-12 form-label-group input-field field">
+            <div className="col-md-10 col-lg-11 form-label-group input-field field">
               <label className="label">Student Email</label>
               <input
                 type="email"
@@ -120,7 +120,7 @@ class Forget extends React.Component {
                       onSubmit={this.handleSubmit}
                     >
                       {Invaldemail}
-                      <div className="col-md-10 col-lg-12">
+                      <div className="col-md-10 col-lg-11">
                         <Link to="/Register">
                           <p className="account">Don’t have an account ?</p>
                         </Link>

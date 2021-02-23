@@ -232,8 +232,8 @@ select option:checked {
   background: #cd3030 -webkit-linear-gradient(bottom, #cd8930 0%, #cd8930 100%) !important;
   color: rgb(81, 201, 87) !important;
 } */
-@media (max-width: 768px) {
-  .bg-image {
+@media (max-width: 700px) {
+  .bg-image-no-img {
     display: none;
   }
 }
