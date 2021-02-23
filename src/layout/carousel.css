@@ -117,9 +117,9 @@
   margin-right: 44px;
 }
 .LogoCarousel {
-  margin-bottom: 4rem;
+  margin-bottom: 2rem;
   margin-top: 2rem;
-  width: 90%;
+  /* width: 90%; */
 }
 .flickity-page-dots {
   /* bottom: 0px; */
@@ -133,6 +133,11 @@
 }
 .flickity-page-dots .dot.is-selected {
   background: #cd8930;
+}
+@media (max-width: 768px) {
+  .flickity-page-dots {
+    width: 15rem;
+  }
 }
 /* .carousel-indicators button {
   background-color: #fff !important;

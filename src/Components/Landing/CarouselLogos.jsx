@@ -43,7 +43,7 @@ export class CarouselLogos extends Component {
     };
     return (
       <div
-        class="carousel LogoCarousel  "
+        class="carousel LogoCarousel col-4 ms-3 col-sm-12"
         data-flickity='{ "freeScroll": true, "prevNextButtons": false, "groupCells": true, "asNavFor": ".carousel-main"}'
       >
         <div class="carousel-cell logo1 size-180">

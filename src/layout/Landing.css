@@ -88,3 +88,20 @@ span {
   border: none !important;
   border-width: 0 !important;
 }
+.contactBtn {
+  background-color: transparent;
+  color: #cd8930;
+  font-family: SF light;
+  border: 1px solid #cd8930;
+  border-radius: 3px;
+
+  /* width: 152px; */
+}
+.contactBtnW {
+  margin-left: 4rem;
+}
+@media (max-width: 700px) {
+  .contactBtn {
+    margin-left: 1rem !important;
+  }
+}

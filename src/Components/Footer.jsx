@@ -113,7 +113,6 @@ export default class Footer extends React.Component {
             style={{
               backgroundColor: "transparent",
               borderRadius: "5px",
-              color: "#cd8930",
               borderColor: "#cd8930",
             }}
             icon={<BsChevronUp id="st" fill="#cd8930" />}

@@ -105,7 +105,7 @@ a {
 #ST:hover {
   background-color: #cd8930 !important;
   border-radius: 5px !important;
-  color: #ffffff !important;
+  color: #fff !important;
   border-color: transparent !important;
 }
 
@@ -113,8 +113,7 @@ a {
   /* padding: 0.8em; */
   fill: #fff !important;
 }
-/* };
- */
+
 @media screen and (max-width: 600px) {
   #st {
     fill: #fff !important;

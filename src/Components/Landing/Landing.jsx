@@ -249,13 +249,12 @@ class Landing extends React.Component {
             </div>
           </div>
         </div>
-        <div className="row">
-          <CarouselLogos />
-          <button
-          // className="carousel-control-prev"
-          >
-            <span className="">Previous</span>
-          </button>
+        <div className="row container-fluid ms-4 mb-4 carouselRow">
+          <CarouselLogos className="col-4 col-lg-5 col-sm-12 mb-1" />
+          <div className="col-5 col-lg-5 "></div>
+          <div className="d-flex align-items-center  mb-1 col-lg-2 col-2 contactBtnW ">
+            <button className="contactBtn ps-3 pe-3">Contact</button>
+          </div>
         </div>
 
         <Footer />
