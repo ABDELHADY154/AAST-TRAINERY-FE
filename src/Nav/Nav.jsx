@@ -58,7 +58,7 @@ class Nav extends React.Component {
       return (
         <div className="navBottom">
           <nav class="navbar navbar-expand-lg navBg fixed-top">
-            <div className="container-fluid">
+            <div className="container">
               <a className="navbar-brand mx-2" href="/">
                 <img
                   className="navbar-brand"
