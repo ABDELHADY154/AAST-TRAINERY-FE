@@ -255,8 +255,8 @@ class Nav extends React.Component {
       );
     } else {
       return (
-        <div className="mb-5">
-          <nav className=" navbar navbar-expand-lg navBg fixed-top">
+        <div>
+          <nav className=" navbar navBg fixed-top">
             <div className="container">
               <Link className="navbar-brand mx-2" to="/">
                 <img

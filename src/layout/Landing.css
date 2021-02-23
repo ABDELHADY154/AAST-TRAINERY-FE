@@ -98,10 +98,15 @@ span {
   /* width: 152px; */
 }
 .contactBtnW {
-  margin-left: 4rem;
+  margin-left: 5.5rem;
 }
-@media (max-width: 700px) {
+@media (max-width: 800px) {
   .contactBtn {
     margin-left: 1rem !important;
+  }
+}
+@media (max-width: 500px) {
+  .carouselRow {
+    margin-left: -1rem !important;
   }
 }

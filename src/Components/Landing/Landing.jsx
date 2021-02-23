@@ -249,10 +249,10 @@ class Landing extends React.Component {
             </div>
           </div>
         </div>
-        <div className="row container-fluid ms-4 mb-4 carouselRow">
-          <CarouselLogos className="col-4 col-lg-5 col-sm-12 mb-1" />
-          <div className="col-5 col-lg-5 "></div>
-          <div className="d-flex align-items-center  mb-1 col-lg-2 col-2 contactBtnW ">
+        <div className="row container ms-5 ms-4 mb-4 carouselRow">
+          <CarouselLogos className="col-lg-5 col-sm-7 col-6 " />
+          <div className="col-3 col-lg-6 col-sm-1 "></div>
+          <div className="d-flex align-items-center  mb-1 col-lg-1 col-1 contactBtnW ">
             <button className="contactBtn ps-3 pe-3">Contact</button>
           </div>
         </div>

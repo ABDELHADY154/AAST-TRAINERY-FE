@@ -139,6 +139,11 @@
     width: 15rem;
   }
 }
+/* @media (max-width: 1200px) {
+  .LogoCarousel {
+    margin-right: 2rem !important;
+  }
+} */
 /* .carousel-indicators button {
   background-color: #fff !important;
   width: 10px !important;
