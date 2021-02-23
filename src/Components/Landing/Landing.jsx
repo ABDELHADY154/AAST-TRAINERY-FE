@@ -253,7 +253,7 @@ class Landing extends React.Component {
           <CarouselLogos className="col-lg-5 col-sm-7 col-6 " />
           <div className="col-3 col-lg-6 col-sm-1 "></div>
           <div className="d-flex align-items-center  mb-1 col-lg-1 col-1 contactBtnW ">
-            <button className="contactBtn ps-3 pe-3">Contact</button>
+            <button className="contactBtn py-1 px-4">Contact</button>
           </div>
         </div>
 

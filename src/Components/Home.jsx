@@ -13,6 +13,7 @@ import { BsCheck, BsArrowUpRight } from "react-icons/bs";
 import Footer2 from "../Components/Footer2";
 import "react-step-progress-bar/styles.css";
 import { ProgressBar, Step } from "react-step-progress-bar";
+import { BsBookmark } from "react-icons/bs";
 
 class Home extends Component {
   constructor() {
@@ -54,7 +55,7 @@ class Home extends Component {
   }
 
   render() {
-    // console.log(this.state.user.gender);
+    console.log(this.state.user);
     if (this.state.loading === false) {
       return <div className="container text-center">{/* <Loader /> */}</div>;
     } else {
@@ -79,7 +80,7 @@ class Home extends Component {
                     </div>
                     <div className="d-flex flex-row d-md-none mt-3 ms-5">
                       <div className="d-flex flex-column col-8 ms-5">
-                        <ProgressBar percent={100}>
+                        <ProgressBar percent={this.state.user.profile_score}>
                           <Step>
                             {({ accomplished }) => (
                               <div
@@ -189,7 +190,7 @@ class Home extends Component {
                       </div>
                     </div>
                     <div id="big" className="d-flex flex-column  col-md-8 mt-3">
-                      <ProgressBar percent={50}>
+                      <ProgressBar percent={this.state.user.profile_score}>
                         <Step>
                           {({ accomplished }) => (
                             <div
@@ -372,7 +373,7 @@ class Home extends Component {
                             id="promoted"
                             className="  d-flex flex-row col-12 col-md-2  "
                           >
-                            <BsArrowUpRight className="me-3" fill="#cd8930" />
+                            <BsArrowUpRight className="me-2" fill="#cd8930" />
                             <p id="gold">Promoted</p>
                           </div>
                         </div>
@@ -435,7 +436,7 @@ class Home extends Component {
                             id="promoted"
                             className="  d-flex flex-row col-12 col-md-2  "
                           >
-                            <BsArrowUpRight className="me-3" fill="#cd8930" />
+                            <BsArrowUpRight className="me-2" fill="#cd8930" />
                             <p id="gold">Promoted</p>
                           </div>
                         </div>
@@ -448,96 +449,210 @@ class Home extends Component {
                 See all activities
               </a>
             </div>
-            <div className="fs-3 mt-5" id="">
+            <div className="fs-3 mt-5 mb-3" id="">
               Explore reccomended opportunities
             </div>
-            <div className="card mt-4">
-              <div className="card">
-                <div className="card-body">
-                  <div className="d-flex flex-row">
-                    <img
-                      className="d-flex mt-0 col-md-1 col-2"
-                      id=""
-                      width="60em"
-                      src={img2}
-                    />
-                    <div className=" fs-5 mt-2 ms-2 col-md-10 col-8">
-                      UI/UX Designer
+            {/* BIG CARD WITH ADVISOR */}
+
+            <div className="row mb-4">
+              <div className="col-md-12">
+                <div className="card">
+                  <div className="card-body">
+                    <div className="d-flex flex-row">
+                      <img
+                        className=" mt-0 d-flex flex-column col-md-4 col-2 me-3"
+                        id="imgicon"
+                        src={img2}
+                      />
+                      <p id="" className="card-title fs-5 mt-2">
+                        Dr. Rehab ElBadrawy
+                      </p>
                     </div>
-                    <div id="gold" className=" fs-6 mt-2 ms-2 col-2 col-md-1">
-                      Paid
+                    <hr />
+                    <div className="d-flex flex-row">
+                      <img
+                        className=" mt-0 d-flex flex-column col-md-4 col-2 me-1"
+                        id="imgicon"
+                        src={img2}
+                      />
+                      <div className=" fs-5 mt-2 ms-2 col-md-11 col-8">
+                        UI/UX Designer
+                      </div>
+                      <div id="gold" className=" fs-6 mt-2 ms-2 col-2 col-md-1">
+                        Paid
+                      </div>
                     </div>
-                  </div>
-                  <div id="job" className="d-flex flex-row ms-5 ">
-                    <div className="d-flex ms-3 flex-column">CIB</div>
-                    <div id="gold" className="d-flex ms-2 flex-column">
-                      Finance
-                    </div>
-                  </div>
-                  <p className="card-text mt-2">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    Ipsam repudiandae aut possimus. Repellendus at nostrum iste
-                    doloremque. Ea omnis ipsam, eum nam tempore culpa illum
-                    consequuntur quis nobis adipisci et?
-                  </p>
-                  <div className="d-flex flex-row flex-wrap ">
-                    <div className="d-flex flex-column col-4 col-md-2">
-                      <a href="#" className=" " id="tags">
+                    <div id="job" className="d-flex flex-row ms-5 ">
+                      <div className="d-flex ms-3 flex-column">CIB</div>
+                      <div id="gold" className="d-flex ms-2 flex-column">
                         Finance
-                      </a>
+                      </div>
                     </div>
-                    <div className="d-flex flex-column col-4  col-md-2 mb-1">
-                      <a href="#" className="  " id="tags">
-                        Banking
-                      </a>
-                    </div>
-                    <div
-                      id="drop"
-                      className="d-flex flex-column col-md-4  
+                    <p className="card-text mt-2">
+                      Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                      Ipsam repudiandae aut possimus. Repellendus at nostrum
+                      iste doloremque. Ea omnis ipsam, eum nam tempore culpa
+                      illum consequuntur quis nobis adipisci et?
+                    </p>
+                    <div className="d-flex flex-row flex-wrap ">
+                      <div className="d-flex flex-column col-4 col-md-1">
+                        <a href="#" className=" " id="tags">
+                          Finance
+                        </a>
+                      </div>
+                      <div className="d-flex flex-column col-4  col-md-1 mb-1">
+                        <a href="#" className="  " id="tags">
+                          Banking
+                        </a>
+                      </div>
+                      <div
+                        id="drop"
+                        className="d-flex flex-column col-md-2  
                              justify-space-between"
-                    >
-                      <p>Deadline {"        "}11 Dec 2021</p>
-                    </div>
-                    <div
-                      id="promoted"
-                      className="  d-flex flex-row col-12 col-md-2  "
-                    >
-                      <BsArrowUpRight className="me-3" fill="#cd8930" />
-                      <p id="gold">Promoted</p>
+                      >
+                        <p>Deadline {"        "}11 Dec 2021</p>
+                      </div>
+                      <div className="  d-flex flex-row col-12 col-md-6  ">
+                        <BsArrowUpRight
+                          className="me-2"
+                          color="#cd8930"
+                          fill="#cd8930"
+                        />
+                        <p id="gold">Promoted</p>
+                      </div>
+                      <div className="  d-flex flex-row col-12 col-md-2  ">
+                        <div className="col-md-4"></div>
+                        <BsBookmark
+                          id="BsBookmark"
+                          color="#1e4274"
+                          className="fs-2 align-self-center col-md-2 col-4"
+                          path="0px"
+                        />
+                        <button className="applyBtn px-1 py-0 col-md-6 col-8">
+                          Apply
+                        </button>
+                      </div>
                     </div>
                   </div>
                 </div>
-              </div>{" "}
+              </div>
+            </div>
+            {/* BIG CARD */}
+
+            <div className="row">
+              <div className="col-md-12">
+                <div className="card">
+                  <div className="card-body">
+                    <div className="d-flex flex-row">
+                      <img
+                        className=" mt-0 d-flex flex-column col-md-4 col-2 me-1"
+                        id="imgicon"
+                        src={img2}
+                      />
+                      <div className=" fs-5 mt-2 ms-2 col-md-11 col-8">
+                        UI/UX Designer
+                      </div>
+                      <div id="gold" className=" fs-6 mt-2 ms-2 col-2 col-md-1">
+                        Paid
+                      </div>
+                    </div>
+                    <div id="job" className="d-flex flex-row ms-5 ">
+                      <div className="d-flex ms-3 flex-column">CIB</div>
+                      <div id="gold" className="d-flex ms-2 flex-column">
+                        Finance
+                      </div>
+                    </div>
+                    <p className="card-text mt-2">
+                      Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                      Ipsam repudiandae aut possimus. Repellendus at nostrum
+                      iste doloremque. Ea omnis ipsam, eum nam tempore culpa
+                      illum consequuntur quis nobis adipisci et?
+                    </p>
+                    <div className="d-flex flex-row flex-wrap ">
+                      <div className="d-flex flex-column col-4 col-md-1">
+                        <a href="#" className=" " id="tags">
+                          Finance
+                        </a>
+                      </div>
+                      <div className="d-flex flex-column col-4  col-md-1 mb-1">
+                        <a href="#" className="  " id="tags">
+                          Banking
+                        </a>
+                      </div>
+                      <div
+                        id="drop"
+                        className="d-flex flex-column col-md-2  
+                             justify-space-between"
+                      >
+                        <p>Deadline {"        "}11 Dec 2021</p>
+                      </div>
+                      <div className="  d-flex flex-row col-12 col-md-6  ">
+                        <BsArrowUpRight
+                          className="me-2"
+                          color="#cd8930"
+                          fill="#cd8930"
+                        />
+                        <p id="gold">Promoted</p>
+                      </div>
+                      <div className="  d-flex flex-row col-12 col-md-2  ">
+                        <div className="col-md-4"></div>
+                        <BsBookmark
+                          color="#1e4274"
+                          className="fs-2 align-self-center col-md-2 col-4"
+                        />
+                        <button className="applyBtn px-1 py-0 col-md-6 col-8">
+                          Apply
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div className="flex-row d-flex mt-3">
+              <div className="d-flex flex-column col-md-11"></div>
+              <a
+                href="#"
+                id="exploreall"
+                className="d-flex flex-column col-md-1 fs-5"
+              >
+                Explore All
+              </a>
             </div>
             <div className="fs-3 mt-5" id="">
               Check our career coaching services
             </div>
-            <div className="d-flex flex-row flex-wrap px-0 mx-0">
-              <div className=" mt-3  col-md-3 col-12">
-                <img
-                  className="cardImg img-responsive "
-                  src={rec1}
-                  height="150"
-                />
-              </div>
-              <div className="col-1"></div>
-              <div className=" mt-3   col-md-4 col-12">
-                <img
-                  className="cardImg img-responsive "
-                  src={rec2}
-                  height="150"
-                />
-                <div className="carousel-caption2">
-                  <h5 className="fs-3 "> Career Coaching Path</h5>
+            <div className="d-flex flex-row flex-wrap text-wrap text-center justify-content-center">
+              <div id="widths" className=" mt-3 containerrr  col-md-3 col-12 ">
+                <img id="imagehover" src={rec1} />
+                <div class="overlay">
+                  <div
+                    id="carousel-caption2"
+                    class="texttt fs-3 col-12 col-md-12 mt-n5"
+                  >
+                    CV Review
+                  </div>
                 </div>
               </div>
-              <div className="col-1"></div>
-              <div className=" mt-3  col-md-3 col-12">
-                <img
-                  className="cardImg img-responsive "
-                  src={rec3}
-                  height="150"
-                />
+              {/* <div className="col-1 d-flex"></div> */}
+              <div id="widths" className=" mt-3   col-md-3 col-12 ">
+                <img className="cardImg img-responsive " src={rec2} />
+                <div
+                  id="carousel-caption2"
+                  className=" fs-3 col-12 col-md-12 mt-n5 "
+                >
+                  Career Coaching Path
+                </div>
+              </div>
+              {/* <div className="col-1 d-flex"></div> */}
+              <div id="widths" className=" mt-3  col-md-3 col-12 text-center">
+                <img className="cardImg img-responsive " src={rec3} />
+                <div
+                  id="carousel-captions"
+                  className=" fs-3 col-md-12 d-flex col-12  text-center"
+                >
+                  Interview Preperation
+                </div>
               </div>
             </div>
           </div>
