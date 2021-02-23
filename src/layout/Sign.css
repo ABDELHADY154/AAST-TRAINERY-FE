@@ -62,6 +62,10 @@ input {
   background: transparent;
   border-radius: 0 !important;
   border-bottom: 1px solid #1e4274 !important;
+  width: 100%;
+  box-shadow: none;
+  color: #1e4274;
+  margin-bottom: 50px;
 }
 input:focus {
   border: 0 !important;
@@ -69,15 +73,7 @@ input:focus {
   background: transparent;
   border-bottom: 2px solid #cd8930 !important;
 }
-input {
-  width: 100%;
-  border: 0;
-  outline: 0;
-  border-bottom: 4px solid #1e4274;
-  box-shadow: none;
-  color: #1e4274;
-  margin-bottom: 50px;
-}
+
 /* input:focus,
 input:valid {
   border-color: #cd8930;
@@ -103,7 +99,7 @@ input:valid {
 }
 
 .raioLabel {
-  margin-left: 10px;
+  margin-left: 10px !important;
 }
 input[type="radio"] {
   -webkit-appearance: none;
@@ -138,12 +134,13 @@ input[type="radio"]:checked:before {
   height: 20px;
   border: 2px solid #1e4274;
 }
-.male {
+/* .male {
   margin-left: -9px !important;
-}
-/* .female {
-  margin-left: 15% !important;
 } */
+.female:before {
+  padding-right: 5px !important;
+}
+
 .account {
   margin-top: 40px;
   margin-bottom: 0px;
@@ -183,10 +180,17 @@ input[type="radio"]:checked:before {
 }
 .dep {
   color: #1e4274;
+  margin-bottom: 50px;
+  padding-left: 0 !important;
+}
+select option {
+  margin: -1rem !important;
+  padding: -1rem !important;
 }
 select.dep option:hover {
   background-color: #1e4274 !important;
 }
+
 option {
   color: #1e4274;
   border: none !important;
@@ -215,14 +219,21 @@ select:focus {
   border: none !important;
   border-bottom: solid 2px #cd8930 !important;
   border-radius: 0 !important;
+  color: #1e4274;
 }
 select option:checked {
   background: #1e4274 -webkit-linear-gradient(bottom, #cd8930 0%, #cd8930 100%);
   color: #fff;
 }
 
-@media (max-width: 768px) {
-  .bg-image {
+
+/* select option:active {
+  background: #cd3030 -webkit-linear-gradient(bottom, #cd8930 0%, #cd8930 100%) !important;
+  color: rgb(81, 201, 87) !important;
+} */
+@media (max-width: 700px) {
+  .bg-image-no-img {
+
     display: none;
   }
 }

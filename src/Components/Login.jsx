@@ -17,7 +17,7 @@ class Login extends React.Component {
     };
   }
 
-  handleSubmit = async e => {
+  handleSubmit = async (e) => {
     e.preventDefault();
     e.target.reset();
     const data = {
@@ -26,7 +26,7 @@ class Login extends React.Component {
     };
     return await axios
       .post("/login", data)
-      .then(response => {
+      .then((response) => {
         sessionStorage.setItem("token", response.data.response.data.token);
         sessionStorage.setItem("status", response.statusText);
         this.props.setUser(true);
@@ -34,7 +34,7 @@ class Login extends React.Component {
           loggedIn: true,
         });
       })
-      .catch(error => {
+      .catch((error) => {
         console.log(error.response.data.errors);
         if (error.response.data.errors) {
           this.setState({
@@ -71,14 +71,14 @@ class Login extends React.Component {
                         onSubmit={this.handleSubmit}
                       >
                         <div>
-                          <div className="col-md-11 col-lg-12 form-label-group input-field field">
+                          <div className="col-md-11 col-lg-11 form-label-group input-field field">
                             <label className="label">Student Email</label>
                             <input
                               type="email"
                               className={
                                 this.state.error.emailErr ? "wrong" : ""
                               }
-                              onChange={e =>
+                              onChange={(e) =>
                                 this.setState({ email: e.target.value })
                               }
                             />
@@ -89,11 +89,11 @@ class Login extends React.Component {
                             )}
                           </div>
 
-                          <div className="col-md-11 col-lg-12 form-label-group input-field field">
+                          <div className="col-md-11 col-lg-11 form-label-group input-field field">
                             <label className="label">Password</label>
                             <input
                               type="password"
-                              onChange={e =>
+                              onChange={(e) =>
                                 this.setState({ password: e.target.value })
                               }
                               className={
@@ -107,7 +107,7 @@ class Login extends React.Component {
                             )}
                           </div>
                         </div>
-                        <div className="col-md-10 col-lg-12">
+                        <div className="col-md-10 col-lg-11">
                           <Link to="/Register">
                             <p className="account">Don’t have an account ?</p>
                           </Link>
