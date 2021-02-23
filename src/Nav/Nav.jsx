@@ -41,14 +41,14 @@ class Nav extends React.Component {
   async componentDidMount() {
     if (this.state.loggedIn) {
       await resolve(
-        axios.get("/W/studentImg").then((res) => {
+        axios.get("/W/studentImg").then(res => {
           if (res.status === 200) {
             this.setState({
               user: res.data.response.data,
               avatar: res.data.response.data.image,
             });
           }
-        })
+        }),
       );
     }
   }
@@ -56,7 +56,7 @@ class Nav extends React.Component {
   render() {
     if (this.props.loggedIn === true) {
       return (
-        <div className="mb-5">
+        <div className="navBottom">
           <nav class="navbar navbar-expand-lg navBg fixed-top">
             <div className="container-fluid">
               <a className="navbar-brand mx-2" href="/">
@@ -253,7 +253,7 @@ class Nav extends React.Component {
       );
     } else {
       return (
-        <div className="mb-5 ">
+        <div className="mb-5">
           <nav class="navbar navbar-expand-lg navBg fixed-top">
             <div className="container">
               <Link className="navbar-brand mx-2" to="/">

@@ -4,6 +4,9 @@ body {
 .navBg {
   background-color: #fff !important;
 }
+.navBottom {
+  margin-bottom: 5em !important;
+}
 .navbar-toggler {
   background-color: #fff !important;
   border: 1px solid #1e4274 !important;
