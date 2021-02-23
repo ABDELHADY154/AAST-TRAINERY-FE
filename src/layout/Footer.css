@@ -105,7 +105,7 @@ a {
 #ST:hover {
   background-color: #cd8930 !important;
   border-radius: 5px !important;
-  color: #ffffff !important;
+  color: #fff !important;
   border-color: transparent !important;
 }
 
@@ -113,8 +113,7 @@ a {
   /* padding: 0.8em; */
   fill: #fff !important;
 }
-/* };
- */
+
 @media screen and (max-width: 600px) {
   #st {
     fill: #fff !important;
@@ -124,5 +123,16 @@ a {
     border-radius: 5px !important;
     color: #ffffff !important;
     border-color: transparent !important;
+    margin-left: -3rem !important;
+  }
+}
+/* @media screen and (max-width: 600px) {
+  #ST {
+    margin-right: 0rem !important;
+  }
+} */
+@media (max-width: 768px) {
+  #ST {
+    margin-right: 1.5rem;
   }
 }

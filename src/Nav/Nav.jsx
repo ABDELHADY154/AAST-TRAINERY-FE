@@ -1,5 +1,3 @@
-/** @format */
-
 import React from "react";
 import { Link } from "react-router-dom";
 import logo from "../Components/assests/icons/Main-Logo.png";
@@ -43,14 +41,14 @@ class Nav extends React.Component {
   async componentDidMount() {
     if (this.state.loggedIn) {
       await resolve(
-        axios.get("/W/studentImg").then((res) => {
+        axios.get("/W/studentImg").then(res => {
           if (res.status === 200) {
             this.setState({
               user: res.data.response.data,
               avatar: res.data.response.data.image,
             });
           }
-        })
+        }),
       );
     }
   }
@@ -59,157 +57,189 @@ class Nav extends React.Component {
     if (this.props.loggedIn === true) {
       return (
         <div>
-          <nav className='navbar navbar-expand-lg navbar-light bg-light'>
-            <div className='container-fluid'>
-              <a className='navbar-brand mx-2' href='/'>
-                <img className='navbar-brand' src={logo} width='170' alt=''></img>
+
+          <nav className="navbar navbar-expand-lg navbar-light bg-light ">
+
+            <div className="container-fluid">
+              <a className="navbar-brand mx-2" href="/">
+                <img
+                  className="navbar-brand"
+                  src={logo}
+                  width="170"
+                  alt=""
+                ></img>
               </a>
               <button
-                className='navbar-toggler'
-                type='button'
-                data-bs-toggle='collapse'
-                data-bs-target='#navbarScroll'
-                aria-controls='navbarScroll'
-                aria-expanded='false'
-                aria-label='Toggle navigation'
+                className="navbar-toggler"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#navbarScroll"
+                aria-controls="navbarScroll"
+                aria-expanded="false"
+                aria-label="Toggle navigation"
               >
-                <span className='navbar-toggler-icon'></span>
+                <span className="navbar-toggler-icon"></span>
               </button>
-              <div className='collapse navbar-collapse ' id='navbarScroll'>
-                <ul className='navbar-nav mt-1'>
-                  <li className='nav-item '>
-                    <Link className='nav-link item ' to='/Home'>
+              <div className="collapse navbar-collapse " id="navbarScroll">
+                <ul className="navbar-nav mt-1">
+                  <li className="nav-item ">
+                    <Link className="nav-link item " to="/Home">
                       Explore
-                      <span className='sr-only' />
+                      <span className="sr-only" />
                     </Link>
                   </li>
-                  <li className='nav-item '>
+                  <li className="nav-item ">
                     <Link
-                      className='nav-link item'
-                      to='#'
+                      className="nav-link item"
+                      to="#"
                       // onClick={this.handleLogout}
                     >
                       Career Coaching
                     </Link>
                   </li>
                 </ul>
-                <ul className='navbar-nav me-auto my-2'>
-                  <li className='nav-item'></li>
+                <ul className="navbar-nav me-auto my-2">
+                  <li className="nav-item"></li>
 
-                  <li className='nav-item'>
-                    <a className='nav-link disabled' href='#' aria-disabled='true'></a>
+                  <li className="nav-item">
+                    <a
+                      className="nav-link disabled"
+                      href="#"
+                      aria-disabled="true"
+                    ></a>
                   </li>
                 </ul>
-                <div className='d-flex justify-content-center'>
-                  <ul className='nav my-1 mx-3 col-auto dropstart '>
+                <div className="d-flex justify-content-center">
+                  <ul className="nav my-1 mx-3 col-auto dropstart ">
                     <div>
-                      <a className='nav-item item' href='#'>
+                      <a className="nav-item item" href="#">
                         <a
-                          className='dropdown-toggle'
-                          id='dropdownMenu2'
-                          data-bs-toggle='dropdown'
-                          aria-expanded='false'
+                          className="dropdown-toggle"
+                          id="dropdownMenu2"
+                          data-bs-toggle="dropdown"
+                          aria-expanded="false"
                         >
                           <IoIosNotificationsOutline
                             value={{
                               color: "#007BC2",
                               className: "global-class-name",
                             }}
-                            className='noti mt-2 d-inline-block'
+                            className="noti mt-2 d-inline-block"
                           />
                         </a>
                         <ul
-                          className='dropdown-menu '
-                          lass='dropdown-menu'
-                          aria-labelledby='dropdownMenu2'
+                          className="dropdown-menu "
+                          lass="dropdown-menu"
+                          aria-labelledby="dropdownMenu2"
                         >
-                          <p className='text-center  mb-2 Nottext'>Notications</p>
+                          <p className="text-center  mb-2 Nottext">
+                            Notications
+                          </p>
                           <BsExclamationOctagon
-                            color='#007BC2'
-                            className='NotIcon'
-                            animation='tada'
-                            size='15px'
-                            pull='left'
+                            color="#007BC2"
+                            className="NotIcon"
+                            animation="tada"
+                            size="15px"
+                            pull="left"
                           />
-                          <div className='notice notice-info dropdown-item'>
-                            <div className='text'>
-                              <h5 className='nottext text-wrap'>
+                          <div className="notice notice-info dropdown-item">
+                            <div className="text">
+                              <h5 className="nottext text-wrap">
                                 Review your finished session{" "}
                               </h5>
-                              <h5 className='nottap'> Tap for more information</h5>
+                              <h5 className="nottap">
+                                {" "}
+                                Tap for more information
+                              </h5>
                             </div>
                           </div>
                           <BiErrorAlt
-                            color='red'
-                            className='NotIcon'
-                            animation='tada'
-                            size='15px'
-                            pull='left'
+                            color="red"
+                            className="NotIcon"
+                            animation="tada"
+                            size="15px"
+                            pull="left"
                           />
-                          <div className='notice notice-danger dropdown-item'>
-                            <div className='text'>
-                              <h5 className='nottext  text-wrap'>
-                                Unfortunately, you were rejected in the applied internship
+                          <div className="notice notice-danger dropdown-item">
+                            <div className="text">
+                              <h5 className="nottext  text-wrap">
+                                Unfortunately, you were rejected in the applied
+                                internship
                               </h5>
-                              <h5 className='nottap'> Tap for more information</h5>
+                              <h5 className="nottap">
+                                {" "}
+                                Tap for more information
+                              </h5>
                             </div>
                           </div>
                           <IoCheckmarkCircleOutline
-                            color='green'
-                            className='NotIcon'
-                            animation='tada'
-                            size='15px'
-                            pull='left'
+                            color="green"
+                            className="NotIcon"
+                            animation="tada"
+                            size="15px"
+                            pull="left"
                           />
-                          <div className='notice notice-success dropdown-item'>
-                            <div className='text '>
-                              <h5 className='nottext pl-5 text-wrap'>
-                                Congratulations you got accepted in the applied internship{" "}
+                          <div className="notice notice-success dropdown-item">
+                            <div className="text ">
+                              <h5 className="nottext pl-5 text-wrap">
+                                Congratulations you got accepted in the applied
+                                internship{" "}
                               </h5>
-                              <h5 className='nottap'> Tap for more information</h5>
+                              <h5 className="nottap">
+                                {" "}
+                                Tap for more information
+                              </h5>
                             </div>
                           </div>
                           <IoCheckmarkCircleOutline
-                            color='green'
-                            className='NotIcon'
-                            animation='tada'
-                            size='15px'
-                            pull='left'
+                            color="green"
+                            className="NotIcon"
+                            animation="tada"
+                            size="15px"
+                            pull="left"
                           />
-                          <div className='notice notice-success dropdown-item'>
-                            <div className='text '>
-                              <h5 className='nottext pl-5 text-wrap'>
-                                Congratulations you got accepted in the applied internship
+                          <div className="notice notice-success dropdown-item">
+                            <div className="text ">
+                              <h5 className="nottext pl-5 text-wrap">
+                                Congratulations you got accepted in the applied
+                                internship
                               </h5>
-                              <h5 className='nottap'> Tap for more information</h5>
+                              <h5 className="nottap">
+                                {" "}
+                                Tap for more information
+                              </h5>
                             </div>
                           </div>
                           <IoCheckmarkCircleOutline
-                            color='green'
-                            className='NotIcon'
-                            animation='tada'
-                            size='15px'
-                            pull='left'
+                            color="green"
+                            className="NotIcon"
+                            animation="tada"
+                            size="15px"
+                            pull="left"
                           />
-                          <div className='notice notice-success dropdown-item'>
-                            <div className='text '>
-                              <h5 className='nottext pl-5 text-wrap'>
-                                Congratulations you got accepted in the applied internship{" "}
+                          <div className="notice notice-success dropdown-item">
+                            <div className="text ">
+                              <h5 className="nottext pl-5 text-wrap">
+                                Congratulations you got accepted in the applied
+                                internship{" "}
                               </h5>
-                              <h5 className='nottap'> Tap for more information</h5>
+                              <h5 className="nottap">
+                                {" "}
+                                Tap for more information
+                              </h5>
                             </div>
                           </div>
                         </ul>
                       </a>
-                      <a className='nav-item ' href='#'>
+                      <a className="nav-item " href="#">
                         {this.state.avatar ? (
                           <img
                             src={this.state.avatar}
-                            alt='Avatar'
-                            width='40'
-                            height='40'
-                            className='avatar'
-                            role='menuitem'
+                            alt="Avatar"
+                            width="40"
+                            height="40"
+                            className="avatar"
+                            role="menuitem"
                           />
                         ) : (
                           <AvatarLoader />
@@ -226,42 +256,53 @@ class Nav extends React.Component {
     } else {
       return (
         <div>
-          <nav className='navbar navbar-expand-lg navbar-light bg-light'>
-            <div className='container-fluid'>
-              <Link className='navbar-brand mx-2' to='/'>
-                <img className='navbar-brand ' src={logo} width='170' alt=''></img>
+
+          <nav className=" navbar navBg fixed-top">
+            <div className="container">
+
+              <Link className="navbar-brand mx-2" to="/">
+                <img
+                  className="navbar-brand "
+                  src={logo}
+                  width="170"
+                  alt=""
+                ></img>
               </Link>
               <button
-                className='navbar-toggler'
-                type='button'
-                data-bs-toggle='collapse'
-                data-bs-target='#navbarScroll'
-                aria-controls='navbarScroll'
-                aria-expanded='false'
-                aria-label='Toggle navigation'
+                className="navbar-toggler"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#navbarScroll"
+                aria-controls="navbarScroll"
+                aria-expanded="false"
+                aria-label="Toggle navigation"
               >
-                <span className='navbar-toggler-icon'></span>
+                <span className="navbar-toggler-icon"></span>
               </button>
-              <div className='collapse navbar-collapse' id='navbarScroll'>
-                <ul className='navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll'>
-                  <li className='nav-item'></li>
+              <div className="collapse navbar-collapse" id="navbarScroll">
+                <ul className="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll">
+                  <li className="nav-item"></li>
 
-                  <li className='nav-item'>
-                    <a className='nav-link disabled' href='#' aria-disabled='true' />
+                  <li className="nav-item">
+                    <a
+                      className="nav-link disabled"
+                      href="#"
+                      aria-disabled="true"
+                    />
                   </li>
                 </ul>
-                <div className='d-flex justify-content-center'>
+                <div className="d-flex justify-content-center">
                   <Link
-                    className='btn signIn  btn-nav col-xm-6  mx-1'
-                    to='/Login'
-                    renderAs='button'
+                    className="btn signIn  btn-nav col-xm-6  mx-1"
+                    to="/Login"
+                    renderAs="button"
                   >
                     Sign In
                   </Link>
                   <Link
-                    renderAs='button'
-                    className='btn btn-nav signUp col-xm-6  mx-1'
-                    to='/Register'
+                    renderAs="button"
+                    className="btn btn-nav signUp col-xm-6  mx-1"
+                    to="/Register"
                   >
                     Sign Up
                   </Link>
