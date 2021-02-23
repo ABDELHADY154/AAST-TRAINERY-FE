@@ -57,7 +57,9 @@ class Nav extends React.Component {
     if (this.props.loggedIn === true) {
       return (
         <div>
-          <nav className="navbar navbar-expand-lg navbar-light bg-light">
+
+          <nav className="navbar navbar-expand-lg navbar-light bg-light ">
+
             <div className="container-fluid">
               <a className="navbar-brand mx-2" href="/">
                 <img
@@ -254,8 +256,10 @@ class Nav extends React.Component {
     } else {
       return (
         <div>
-          <nav className="navbar navbar-expand-lg navbar-light bg-light">
-            <div className="container-fluid">
+
+          <nav className=" navbar navBg fixed-top">
+            <div className="container">
+
               <Link className="navbar-brand mx-2" to="/">
                 <img
                   className="navbar-brand "

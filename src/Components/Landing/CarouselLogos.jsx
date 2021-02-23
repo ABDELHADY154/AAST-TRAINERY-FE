@@ -1,8 +1,10 @@
 import React, { Component } from "react";
 import "../../layout/carousel.css";
 
-import img from "./bg1.png";
-export default class CarouselLogos extends Component {
+import logo1 from "./logo1.png";
+import logo2 from "./logo2.png";
+import logo3 from "./logo3.png";
+export class CarouselLogos extends Component {
   render() {
     var settings = {
       dots: true,
@@ -40,15 +42,33 @@ export default class CarouselLogos extends Component {
       ],
     };
     return (
-      <div class="carousel" data-flickity>
-        <div class="carousel-cell">
-          <img src={img} className="img-responsive" />
-        </div>{" "}
-        <div class="carousel-cell">
-          <img src={img} className="img-responsive" />
-        </div>{" "}
-        <div class="carousel-cell">
-          <img src={img} className="img-responsive" />
+      <div
+        class="carousel LogoCarousel col-lg-4 col-6 ms-3 col-sm-7 "
+        data-flickity='{ "freeScroll": true, "prevNextButtons": false, "groupCells": true, "asNavFor": ".carousel-main"}'
+      >
+        <div class="carousel-cell logo1 size-180">
+          <img src={logo1} className="img-responsive" />
+        </div>
+        <div class="carousel-cell logo1 size-180">
+          <img src={logo1} className="img-responsive" />
+        </div>
+        <div class="carousel-cell logo1 size-180">
+          <img src={logo1} className="img-responsive" />
+        </div>
+        <div class="carousel-cell logo1 size-180">
+          <img src={logo1} className="img-responsive" />
+        </div>
+        <div class="carousel-cell logo1 size-180">
+          <img src={logo1} className="img-responsive" />
+        </div>
+        <div class="carousel-cell logo1 size-180">
+          <img src={logo1} className="img-responsive" />
+        </div>
+        <div class="carousel-cell logo1 size-180">
+          <img src={logo1} className="img-responsive" />
+        </div>
+        <div class="carousel-cell logo1 size-180">
+          <img src={logo1} className="img-responsive" />
         </div>
       </div>
     );
