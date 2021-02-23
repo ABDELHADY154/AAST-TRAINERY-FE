@@ -31,7 +31,7 @@ class Registry extends React.Component {
   }
 
   async componentDidMount() {
-    await axios.get("/departments").then(dep => {
+    await axios.get("/departments").then((dep) => {
       this.setState({
         departs: dep.data.response.data,
         loading: true,
@@ -44,7 +44,7 @@ class Registry extends React.Component {
     }
   }
 
-  handleSubmit = async e => {
+  handleSubmit = async (e) => {
     e.preventDefault();
     const data = {
       name: this.state.name,
@@ -58,7 +58,7 @@ class Registry extends React.Component {
     console.log(data);
     await axios
       .post("/register", data)
-      .then(response => {
+      .then((response) => {
         sessionStorage.setItem("token", response.data.response.data.token);
         sessionStorage.setItem("status", response.statusText);
         this.setState({
@@ -68,7 +68,7 @@ class Registry extends React.Component {
         });
         console.log(response);
       })
-      .catch(error => {
+      .catch((error) => {
         console.log(error);
         this.setState({
           error: {
@@ -114,14 +114,14 @@ class Registry extends React.Component {
                           <h3 className="mb-5 signSubTitle">
                             Personal Information
                           </h3>
-                          <div className="col-md-10 col-lg-12 form-label-group input-field">
+                          <div className="col-md-10 col-lg-11 form-label-group input-field">
                             <label className="label">Full Name</label>
                             <input
                               type="name"
                               className={
                                 this.state.error.fullName ? "wrong" : ""
                               }
-                              onChange={e =>
+                              onChange={(e) =>
                                 this.setState({ name: e.target.value })
                               }
                             />
@@ -133,7 +133,7 @@ class Registry extends React.Component {
                           </div>
                         </div>
                         <div className="form-row">
-                          <div className="col-md-10 col-lg-12 form-label-group input-field">
+                          <div className="col-md-10 col-lg-11 form-label-group input-field">
                             <label className="label">Student Email</label>
                             <input
                               type="email"
@@ -141,7 +141,7 @@ class Registry extends React.Component {
                               className={
                                 this.state.error.emailErr ? "wrong" : ""
                               }
-                              onChange={e =>
+                              onChange={(e) =>
                                 this.setState({ email: e.target.value })
                               }
                             />
@@ -163,7 +163,7 @@ class Registry extends React.Component {
                                 id="inlineRadio1"
                                 value="male"
                                 className="radio"
-                                onChange={e =>
+                                onChange={(e) =>
                                   this.setState({ gender: e.target.value })
                                 }
                               />
@@ -181,12 +181,12 @@ class Registry extends React.Component {
                                 name="inlineRadioOptions"
                                 id="Gender"
                                 value="female"
-                                onChange={e =>
+                                onChange={(e) =>
                                   this.setState({ gender: e.target.value })
                                 }
                               />
                               <label
-                                class="form-check-label raioLabel"
+                                class="form-check-label raioLabel "
                                 for="inlineCheckbox3"
                               >
                                 Female
@@ -201,14 +201,14 @@ class Registry extends React.Component {
                         </div>
 
                         <div className="form-row">
-                          <div className="col-md-10 col-lg-12 form-label-group input-field">
+                          <div className="col-md-10 col-lg-11 form-label-group input-field">
                             <label className="label">Password</label>
                             <input
                               type="password"
                               className={
                                 this.state.error.passwordErr ? "wrong" : ""
                               }
-                              onChange={e =>
+                              onChange={(e) =>
                                 this.setState({ password: e.target.value })
                               }
                             />
@@ -218,14 +218,14 @@ class Registry extends React.Component {
                                 : ""}
                             </p>
                           </div>
-                          <div className="col-md-10 col-lg-12 form-label-group input-field">
+                          <div className="col-md-10 col-lg-11 form-label-group input-field">
                             <label className="label">Confirm Password</label>
                             <input
                               type="password"
                               className={
                                 this.state.error.passwordConfErr ? "wrong" : ""
                               }
-                              onChange={e =>
+                              onChange={(e) =>
                                 this.setState({
                                   confirmPassword: e.target.value,
                                 })
@@ -242,7 +242,7 @@ class Registry extends React.Component {
                           College Information
                         </h3>
                         <div className="form-row">
-                          <div className="col-md-10 col-lg-12 form-group col-12">
+                          <div className="col-md-10 col-lg-11 form-group col-12">
                             {this.state.loading === false ? (
                               <Loader2 />
                             ) : (
@@ -250,7 +250,7 @@ class Registry extends React.Component {
                                 type="text"
                                 className="form-control dep  "
                                 id="departs"
-                                onChange={e =>
+                                onChange={(e) =>
                                   this.setState({
                                     department_id: e.target.value,
                                   })
@@ -258,7 +258,7 @@ class Registry extends React.Component {
                               >
                                 <option>Please Select Your Department</option>
 
-                                {this.state.departs.map(depart => (
+                                {this.state.departs.map((depart) => (
                                   <option value={depart.id} key={depart.id}>
                                     {depart.dep_name}
                                   </option>
@@ -273,7 +273,7 @@ class Registry extends React.Component {
                           </div>
                         </div>
                         <div className="form-row">
-                          <div className="col-md-10 col-lg-12 form-label-group input-field">
+                          <div className="col-md-10 col-lg-11 form-label-group input-field">
                             <label className="label">Registration Number</label>
                             <input
                               type="number"
@@ -281,7 +281,7 @@ class Registry extends React.Component {
                                 this.state.error.regnumErr ? "wrong" : ""
                               }
                               // placeholder="Registration number"
-                              onChange={e =>
+                              onChange={(e) =>
                                 this.setState({ reg_no: e.target.value })
                               }
                             />
@@ -293,7 +293,7 @@ class Registry extends React.Component {
                           </div>
                         </div>
                       </div>
-                      <div className="col-md-10 col-lg-12">
+                      <div className="col-md-10 col-lg-11">
                         <Link to="/Login">
                           <p className="account">Aready have an account ?</p>
                         </Link>
