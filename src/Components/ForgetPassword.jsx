@@ -33,14 +33,12 @@ class Forget extends React.Component {
       .catch((error) => {
         // console.log(error.response.status);
         if (error.response.status === 422) {
-          console.log(error.response.data.message);
           this.setState({
             error: {
               emailErr: error.response.data.message,
             },
           });
         } else if (error.response.status === 404) {
-          console.log(error.response.data.errors.message);
           this.setState({
             error: {
               emailErr: error.response.data.errors.message,
