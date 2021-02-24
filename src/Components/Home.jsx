@@ -14,6 +14,7 @@ import Footer2 from "../Components/Footer2";
 import "react-step-progress-bar/styles.css";
 import { ProgressBar, Step } from "react-step-progress-bar";
 import { BsBookmark } from "react-icons/bs";
+import { IoClose } from "react-icons/io5";
 
 class Home extends Component {
   constructor() {
@@ -61,6 +62,26 @@ class Home extends Component {
     } else {
       return (
         <div className="container-fluid mt-5 ">
+          <div id="alerting" className="d-flex flex-row flex-wrap py-2 px-5">
+            <div
+              id="alertingtitle"
+              className="d-flex flex-column col-md-5 col-12 ms-3 "
+            >
+              Here to help, Update your profile information to get the best
+              match opportunities.
+            </div>
+            <div className="d-flex flex-column col-md-1 col-12 ps-3">
+              <a id="redlink" href="#">
+                Update Now
+              </a>
+            </div>
+            <div className="d-flex flex-column col-md-4"></div>
+            <div className="d-flex flex-column col-md-1 ps-2">
+              <button id="closed">
+                <IoClose fill="red" color="red" />
+              </button>
+            </div>
+          </div>
           <div className="container">
             <div className="d-flex flex-row ">
               <div id="" className="d-flex flex-column text-wrap bg-none">
@@ -357,8 +378,8 @@ class Home extends Component {
                               Finance
                             </a>
                           </div>
-                          <div className="d-flex flex-column col-4  col-md-2 mb-1">
-                            <a href="#" className="  " id="tags">
+                          <div className="d-flex flex-column col-4 me-3 col-md-2 mb-1">
+                            <a href="#" className="" id="tags">
                               Banking
                             </a>
                           </div>
@@ -420,7 +441,7 @@ class Home extends Component {
                               Finance
                             </a>
                           </div>
-                          <div className="d-flex flex-column col-4  col-md-2 mb-1">
+                          <div className="d-flex flex-column col-4 me-3 col-md-2 mb-1">
                             <a href="#" className="  " id="tags">
                               Banking
                             </a>

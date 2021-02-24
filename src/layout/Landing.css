@@ -33,7 +33,7 @@
 }
 
 .Numbers {
-  font-family: SF bold;
+  font-family: SF bold !important;
   font-size: 2em !important;
   color: #cd8930 !important;
   margin: 0;
@@ -94,16 +94,19 @@ span {
 
   /* width: 152px; */
 }
-.contactBtnW {
+/* .contactBtnW {
   margin-left: 5.5rem;
-}
-@media (max-width: 800px) {
+} */
+/* @media (max-width: 800px) {
   .contactBtn {
     margin-left: 1rem !important;
   }
-}
+} */
 @media (max-width: 500px) {
   .carouselRow {
-    margin-left: -1rem !important;
+    margin-left: -3rem !important;
+  }
+  .contactBtn {
+    margin-left: 8rem !important;
   }
 }
