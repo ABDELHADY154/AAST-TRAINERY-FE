@@ -24,6 +24,7 @@ class Home extends Component {
       loading: false,
       token: sessionStorage.getItem("token"),
       avatar: "",
+      alert: true,
     };
   }
 
@@ -61,32 +62,47 @@ class Home extends Component {
 
   render() {
     if (this.state.user.profile_updated === false) {
-      var Alert = (
-        <div id="alerting" className="d-flex flex-row flex-wrap py-2 px-5">
+      var Alert =
+        this.state.alert == true ? (
           <div
-            id="alertingtitle"
-            className="d-flex flex-column col-md-5 col-12 ms-3 "
+            id="alerting"
+            className="d-flex flex-row  flex-wrap py-2 px-5 mb-3 "
           >
-            Here to help, Update your profile information to get the best match
-            opportunities.
+            <div
+              id="alertingtitle"
+              className="d-flex flex-column col-md-5 col-12 mt-2"
+            >
+              Here to help, Update your profile information to get the best
+              match opportunities.
+            </div>
+            <div className="d-flex flex-column col-md-1 col-12 ps-3 mt-2">
+              <a id="redlink" href="#">
+                Update Now
+              </a>
+            </div>
+            <div className="d-flex flex-column col-md-3"></div>
+            <div className="d-flex flex-column col-md-2 ps-2">
+              <button
+                onClick={() => {
+                  this.setState({ alert: false });
+                }}
+                id="closed"
+                className="btn"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#alerting"
+                aria-expanded="true"
+                aria-controls="alerting"
+              >
+                <IoClose fill="red" color="red" />
+              </button>
+            </div>
           </div>
-          <div className="d-flex flex-column col-md-1 col-12 ps-3">
-            <a id="redlink" href="#">
-              Update Now
-            </a>
-          </div>
-          <div className="d-flex flex-column col-md-4"></div>
-          <div className="d-flex flex-column col-md-1 ps-2">
-            <button id="closed">
-              <IoClose fill="red" color="red" />
-            </button>
-          </div>
-        </div>
-      );
+        ) : (
+          ""
+        );
     }
-    // if (this.state.loading === false) {
-    //   return <div className='container text-center'>{/* <Loader /> */}</div>;
-    // } else {
+
     return (
       <div className="container-fluid mt-5 ">
         {Alert}
@@ -334,10 +350,19 @@ class Home extends Component {
               </div>
             </div>
             <div className="d-flex flex-column d-none d-md-flex col-md-2 ">
-              {this.state.user.gender == "female" ? (
+              {/* {this.state.user.gender == "female" ? (
                 <img id="girl" className="" src={img} />
               ) : (
                 <img id="girl" className="" src={MaleAvatar} />
+              )} */}
+              {this.state.user.gender ? (
+                <img
+                  id="girl"
+                  className=""
+                  src={this.state.user.gender == "female" ? img : MaleAvatar}
+                />
+              ) : (
+                ""
               )}
             </div>
           </div>

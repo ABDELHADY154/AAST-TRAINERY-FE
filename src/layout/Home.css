@@ -238,8 +238,9 @@
 }
 #closed {
   color: red;
-  width: 2em !important;
+  font-size: 1.2em !important;
   border: none !important;
   background-color: transparent !important;
   outline: none !important;
+  box-shadow: none !important;
 }
