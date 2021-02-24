@@ -62,10 +62,10 @@ class Home extends Component {
     } else {
       return (
         <div className="container-fluid mt-5 ">
-          <div id="alerting" className="d-flex flex-row flex-wrap py-2 px-5">
+          <div id="alerting" className="  d-flex flex-row flex-wrap py-2 px-5">
             <div
               id="alertingtitle"
-              className="d-flex flex-column col-md-5 col-12 ms-3 "
+              className="d-flex flex-column col-md-5 col-12  "
             >
               Here to help, Update your profile information to get the best
               match opportunities.
@@ -471,7 +471,7 @@ class Home extends Component {
               </a>
             </div>
             <div className="fs-3 mt-5 mb-3" id="">
-              Explore reccomended opportunities
+              Explore recomended opportunities
             </div>
             {/* BIG CARD WITH ADVISOR */}
 

@@ -124,9 +124,12 @@
   }
   #alerting {
     padding-left: 0em !important;
+    margin-left: 0em !important;
   }
+
   #alertingtitle {
     padding-left: 0em !important;
+    margin-left: 1em !important;
   }
 }
 
@@ -210,9 +213,9 @@
 #alerting {
   background-color: #fee0e0;
 }
-/* #alertingtitle {
-  padding-left: 1em !important;
-} */
+#alertingtitle {
+  margin-left: 4em;
+}
 #redlink {
   text-decoration: none;
   color: red !important;
