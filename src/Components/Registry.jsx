@@ -55,7 +55,6 @@ class Registry extends React.Component {
       reg_no: this.state.reg_no,
       department_id: this.state.department_id,
     };
-    console.log(data);
     await axios
       .post("/register", data)
       .then((response) => {
@@ -66,10 +65,8 @@ class Registry extends React.Component {
           status: sessionStorage.getItem("status"),
           loggedIn: true,
         });
-        console.log(response);
       })
       .catch((error) => {
-        console.log(error);
         this.setState({
           error: {
             fullName: error.response.data.errors.name,
