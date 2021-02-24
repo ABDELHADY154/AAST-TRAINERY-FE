@@ -41,14 +41,14 @@ class Nav extends React.Component {
   async componentDidMount() {
     if (this.state.loggedIn) {
       await resolve(
-        axios.get("/W/studentImg").then(res => {
+        axios.get("/W/studentImg").then((res) => {
           if (res.status === 200) {
             this.setState({
               user: res.data.response.data,
               avatar: res.data.response.data.image,
             });
           }
-        }),
+        })
       );
     }
   }
@@ -265,6 +265,7 @@ class Nav extends React.Component {
                 ></img>
               </Link>
               <button
+                id="hamburgermenu"
                 className="navbar-toggler"
                 type="button"
                 data-bs-toggle="collapse"

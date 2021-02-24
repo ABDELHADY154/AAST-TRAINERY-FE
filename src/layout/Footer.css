@@ -109,7 +109,7 @@ a {
   border-color: transparent !important;
 }
 
-#st:hover {
+#ST:hover #st {
   /* padding: 0.8em; */
   fill: #fff !important;
 }
@@ -123,16 +123,10 @@ a {
     border-radius: 5px !important;
     color: #ffffff !important;
     border-color: transparent !important;
-    margin-left: -3rem !important;
   }
 }
-/* @media screen and (max-width: 600px) {
+@media screen and (max-width: 768px) {
   #ST {
-    margin-right: 0rem !important;
-  }
-} */
-@media (max-width: 768px) {
-  #ST {
-    margin-right: 1.5rem;
+    margin-right: 1rem !important;
   }
 }
