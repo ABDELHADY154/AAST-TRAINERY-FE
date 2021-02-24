@@ -14,6 +14,8 @@ import { DepLoader } from "../../loader";
 import "../../layout/Landing.css";
 import { BsCheck } from "react-icons/bs";
 import CountUp from "react-countup";
+import Ticker from "../Counter.jsx";
+
 import { Carousel } from "./Carousel";
 import { CarouselLogos } from "./CarouselLogos";
 
@@ -78,7 +80,7 @@ class Landing extends React.Component {
                 ) : (
                   <>
                     <div className="col-12 col-md-4 d-flex justify-content-center text-center flex-column align-items-center">
-                      <CountUp
+                      <Ticker
                         className="Numbers"
                         start={0}
                         end={this.state.opportunities}
@@ -87,7 +89,7 @@ class Landing extends React.Component {
                       <div className="NumTitle">Opportunities</div>
                     </div>
                     <div className="col-12 col-md-4 d-flex justify-content-center text-center flex-column align-items-center">
-                      <CountUp
+                      <Ticker
                         className="Numbers"
                         start={0}
                         end={this.state.students}
@@ -96,7 +98,7 @@ class Landing extends React.Component {
                       <div className="NumTitle">Students</div>
                     </div>
                     <div className="col-12 col-md-4 d-flex justify-content-center text-center flex-column align-items-center">
-                      <CountUp
+                      <Ticker
                         className="Numbers"
                         start={0}
                         end={this.state.applied}
@@ -249,10 +251,10 @@ class Landing extends React.Component {
             </div>
           </div>
         </div>
-        <div className="row container ms-5 ms-4 mb-4 carouselRow">
-          <CarouselLogos className="col-lg-5 col-sm-7 col-6 " />
-          <div className="col-3 col-lg-6 col-sm-1 "></div>
-          <div className="d-flex align-items-center  mb-1 col-lg-1 col-1 contactBtnW ">
+        <div className="row container ms-5 mb-4 carouselRow flex-wrap ">
+          <CarouselLogos className="d-flex col-md-10  col-10 " />
+          <div className="col-md-6"></div>
+          <div className="d-flex flex-column  align-items-center  mt-5 col-md-1 col-2 contactBtnW ">
             <button className="contactBtn py-1 px-4">Contact</button>
           </div>
         </div>

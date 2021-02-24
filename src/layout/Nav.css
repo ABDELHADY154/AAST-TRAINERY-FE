@@ -3,26 +3,38 @@ body {
 }
 .navBg {
   background-color: #fff !important;
+  border: none !important;
 }
 .navBottom {
   margin-bottom: 5em !important;
 }
 .navbar-toggler {
   background-color: #fff !important;
-  border: 1px solid #1e4274 !important;
+  border: none !important;
+  outline: none !important;
 }
 .navbar-toggler-icon {
   background: url("https://api.iconify.design/bytesize:menu.svg?color=%231e4274")
     no-repeat center center / contain;
+  border: none !important;
+  outline: none !important;
 }
 
 .navbar-toggler:active {
   background-color: #fff !important;
-  border: 1px solid #1e4274 !important;
+  border: none !important;
 }
+.navbar-toggler:visited {
+  background-color: #fff !important;
+  border: none !important;
+  outline: none !important;
+}
+
 @media (max-width: 768px) {
   .navbar-toggler {
     margin-right: 0.4rem;
+    border: none !important;
+    outline: none !important;
   }
 }
 
@@ -132,7 +144,9 @@ body {
 
   color: #1e4274;
 }
-
+.navbar-toggler:focus {
+  box-shadow: none !important;
+}
 .notice {
   padding: 5px;
   background-color: #fafafa;
@@ -146,9 +160,6 @@ body {
   line-height: 17px;
   letter-spacing: 0em;
   text-align: left;
-  -webkit-box-shadow: 0 5px 8px -6px rgba(0, 0, 0, 0.2);
-  -moz-box-shadow: 0 5px 8px -6px rgba(0, 0, 0, 0.2);
-  box-shadow: 0 5px 8px -6px rgba(0, 0, 0, 0.2);
 }
 .notice-sm {
   padding: 10px;
@@ -262,21 +273,6 @@ body {
     margin-left: 6%;
     color: #b1b0b0;
   }
-  .notice {
-    /* padding: 5px;
-    background-color: #fafafa;
-    border-left: 3px solid ;
-    padding-left: 4%;
-    font-family: SF Compact Display;
-    font-style: normal;
-    font-weight: 400;
-    font-family: SF Compact Display;
-    font-size: 14px;
-    line-height: 17px;
-    letter-spacing: 0em;
-    text-align: left;
-    box-shadow: 0 5px 8px -6px rgb(0 0 0 / 20%); */
-  }
 
   .dropdown-menu {
     position: absolute;
@@ -295,4 +291,8 @@ body {
     /* border: 2px solid rgba(0, 0, 0, 0.15); */
     /* border-radius: 0.25rem; */
   }
+}
+#hamburgermenu {
+  border: none !important;
+  outline: none !important;
 }
