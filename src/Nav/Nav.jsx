@@ -6,9 +6,17 @@ import { IoIosNotificationsOutline } from "react-icons/io";
 import { IoCheckmarkCircleOutline } from "react-icons/io5";
 import { resolve } from "../Api/Resolvers/resolver";
 import { axios } from "../Api/axios";
-import { BiErrorAlt } from "react-icons/bi";
+import { RiEdit2Fill } from "react-icons/ri";
+import {
+  MdInfoOutline,
+  MdFlashOn,
+  MdAssignment,
+  MdSettings,
+  MdPermPhoneMsg,
+} from "react-icons/md";
+import { FiAlertOctagon, FiCheckCircle, FiLogOut } from "react-icons/fi";
 
-import { BsExclamationOctagon } from "react-icons/bs";
+import { BsXOctagon } from "react-icons/bs";
 
 import "../layout/Nav.css";
 import "../layout/Main.css";
@@ -107,10 +115,11 @@ class Nav extends React.Component {
                     ></a>
                   </li>
                 </ul>
-                <div className="d-flex justify-content-center">
-                  <ul className="nav my-1 mx-3 col-auto dropstart ">
+                {/* notification */}
+                <div className="d-flex justify-content-center ">
+                  <ul className="nav my-1 mx-3 col-auto  dropstart ">
                     <div>
-                      <a className="nav-item item" href="#">
+                      <a className="nav-item item col-6 " href="#">
                         <a
                           className="dropdown-toggle"
                           id="dropdownMenu2"
@@ -126,123 +135,309 @@ class Nav extends React.Component {
                           />
                         </a>
                         <ul
-                          className="dropdown-menu "
+                          className="dropdown-menu notificationMenu col-sm-6 col-md-6"
                           lass="dropdown-menu"
                           aria-labelledby="dropdownMenu2"
                         >
-                          <p className="text-center  mb-2 Nottext">
+                          <p className="text-center  mb-2 notificationTitle">
                             Notications
                           </p>
-                          <BsExclamationOctagon
-                            color="#007BC2"
-                            className="NotIcon"
-                            animation="tada"
-                            size="15px"
-                            pull="left"
-                          />
-                          <div className="notice notice-info dropdown-item">
-                            <div className="text">
-                              <h5 className="nottext text-wrap">
-                                Review your finished session{" "}
-                              </h5>
-                              <h5 className="nottap">
-                                {" "}
-                                Tap for more information
-                              </h5>
+                          {/* Notication 1 */}
+                          <div class="alert itemAlert " role="alert">
+                            <div className=" row NoticationContent ">
+                              <div className="row col-2 notificationStyle d-flex align-items-center">
+                                <div
+                                  class="alertLine"
+                                  style={{
+                                    backgroundColor: "#f44336",
+                                  }}
+                                >
+                                  <FiAlertOctagon
+                                    color="#F44336"
+                                    className="notificationIcon me-1 ms-2 d-flex align-items-center"
+                                    animation="tada"
+                                    size="18px"
+                                    pull="left"
+                                  />
+                                </div>
+                              </div>
+
+                              <div className="notificationText col-10 ">
+                                <h4 className="  ">
+                                  Unfortunately, you were rejected in the
+                                  applied internship
+                                </h4>
+                                <h5 className="">Tap for more information</h5>
+                              </div>
                             </div>
                           </div>
-                          <BiErrorAlt
-                            color="red"
-                            className="NotIcon"
-                            animation="tada"
-                            size="15px"
-                            pull="left"
-                          />
-                          <div className="notice notice-danger dropdown-item">
-                            <div className="text">
-                              <h5 className="nottext  text-wrap">
-                                Unfortunately, you were rejected in the applied
-                                internship
-                              </h5>
-                              <h5 className="nottap">
-                                {" "}
-                                Tap for more information
-                              </h5>
+                          {/* Notication 2 */}
+                          <div class="alert itemAlert " role="alert">
+                            <div className=" row NoticationContent ">
+                              <div className="row col-2 notificationStyle d-flex align-items-center">
+                                <div
+                                  class="alertLine "
+                                  style={{
+                                    backgroundColor: "#007BC2",
+                                  }}
+                                >
+                                  <MdInfoOutline
+                                    color="red"
+                                    className="notificationIcon me-1 ms-2 d-flex align-items-center"
+                                    animation="tada"
+                                    size="18px"
+                                    pull="left"
+                                  />
+                                </div>
+                              </div>
+
+                              <div className="notificationText col-10 mt-2">
+                                <h4 className="  ">
+                                  Review your finished session
+                                </h4>
+                                <h5 className="">Tap for more information</h5>
+                              </div>
                             </div>
                           </div>
-                          <IoCheckmarkCircleOutline
-                            color="green"
-                            className="NotIcon"
-                            animation="tada"
-                            size="15px"
-                            pull="left"
-                          />
-                          <div className="notice notice-success dropdown-item">
-                            <div className="text ">
-                              <h5 className="nottext pl-5 text-wrap">
-                                Congratulations you got accepted in the applied
-                                internship{" "}
-                              </h5>
-                              <h5 className="nottap">
-                                {" "}
-                                Tap for more information
-                              </h5>
+                          {/* Notication 3 */}
+                          <div class="alert itemAlert " role="alert">
+                            <div className=" row NoticationContent ">
+                              <div className="row col-2 notificationStyle d-flex align-items-center">
+                                <div
+                                  class="alertLine "
+                                  style={{
+                                    backgroundColor: "#007BC2",
+                                  }}
+                                >
+                                  <MdInfoOutline
+                                    color="red"
+                                    className="notificationIcon me-1 ms-2 d-flex align-items-center"
+                                    animation="tada"
+                                    size="18px"
+                                    pull="left"
+                                  />
+                                </div>
+                              </div>
+
+                              <div className="notificationText col-10 ">
+                                <h4 className="  ">
+                                  You have a recomendation to apply for an
+                                  internship
+                                </h4>
+                                <h5 className="">Tap for more information</h5>
+                              </div>
                             </div>
                           </div>
-                          <IoCheckmarkCircleOutline
-                            color="green"
-                            className="NotIcon"
-                            animation="tada"
-                            size="15px"
-                            pull="left"
-                          />
-                          <div className="notice notice-success dropdown-item">
-                            <div className="text ">
-                              <h5 className="nottext pl-5 text-wrap">
-                                Congratulations you got accepted in the applied
-                                internship
-                              </h5>
-                              <h5 className="nottap">
-                                {" "}
-                                Tap for more information
-                              </h5>
+                          {/* Notication 4 */}
+                          <div class="alert itemAlert " role="alert">
+                            <div className=" row NoticationContent ">
+                              <div className="row col-2 notificationStyle d-flex align-items-center">
+                                <div
+                                  class="alertLine "
+                                  style={{
+                                    backgroundColor: "#4CAF50",
+                                  }}
+                                >
+                                  <FiCheckCircle
+                                    color="green"
+                                    className="notificationIcon me-1 ms-2 d-flex align-items-center"
+                                    animation="tada"
+                                    size="18px"
+                                    pull="left"
+                                  />
+                                </div>
+                              </div>
+
+                              <div className="notificationText col-10 ">
+                                <h4 className="  ">
+                                  Congratulations you got accepted in the
+                                  applied internship
+                                </h4>
+                                <h5 className="">Tap for more information</h5>
+                              </div>
                             </div>
                           </div>
-                          <IoCheckmarkCircleOutline
-                            color="green"
-                            className="NotIcon"
-                            animation="tada"
-                            size="15px"
-                            pull="left"
-                          />
-                          <div className="notice notice-success dropdown-item">
-                            <div className="text ">
-                              <h5 className="nottext pl-5 text-wrap">
-                                Congratulations you got accepted in the applied
-                                internship{" "}
-                              </h5>
-                              <h5 className="nottap">
-                                {" "}
-                                Tap for more information
-                              </h5>
+                          {/* Notication 5 */}
+                          <div class="alert itemAlert " role="alert">
+                            <div className=" row NoticationContent ">
+                              <div className="row col-2 notificationStyle d-flex align-items-center">
+                                <div
+                                  class="alertLine "
+                                  style={{
+                                    backgroundColor: "#4CAF50",
+                                  }}
+                                >
+                                  <FiCheckCircle
+                                    color="green"
+                                    className="notificationIcon me-1 ms-2 d-flex align-items-center"
+                                    animation="tada"
+                                    size="18px"
+                                    pull="left"
+                                  />
+                                </div>
+                              </div>
+
+                              <div className="notificationText col-10 ">
+                                <h4 className="  ">
+                                  Your session has been booked successfully
+                                </h4>
+                                <h5 className="">Tap for more information</h5>
+                              </div>
                             </div>
                           </div>
                         </ul>
                       </a>
-                      <a className="nav-item " href="#">
-                        {this.state.avatar ? (
-                          <img
-                            src={this.state.avatar}
-                            alt="Avatar"
-                            width="40"
-                            height="40"
-                            className="avatar"
-                            role="menuitem"
-                          />
-                        ) : (
-                          <AvatarLoader />
-                        )}
-                      </a>
+                      {/* profile */}
+                      <div class="btn-group ">
+                        <a
+                          type="button"
+                          class=" dropdown-toggle"
+                          data-bs-toggle="dropdown"
+                          aria-expanded="false"
+                        >
+                          {this.state.avatar ? (
+                            <img
+                              src={this.state.avatar}
+                              alt="Avatar"
+                              width="40"
+                              height="40"
+                              className="avatar"
+                              role="menuitem"
+                            />
+                          ) : (
+                            <AvatarLoader />
+                          )}
+                        </a>
+                        <ul class="dropdown-menu profileMenu ">
+                          <li className="row profileHeader d-flex justify-content-center">
+                            <a
+                              class="dropdown-item"
+                              href="#"
+                              style={{
+                                fontSize: 18,
+                                fontFamily: "SF med",
+                                color: " #1e4274",
+                              }}
+                            >
+                              {this.state.avatar ? (
+                                <img
+                                  src={this.state.avatar}
+                                  alt="Avatar"
+                                  width="40"
+                                  height="40"
+                                  className="avatar me-2"
+                                  role="menuitem"
+                                />
+                              ) : (
+                                <AvatarLoader />
+                              )}
+                              Full Name
+                              <br />
+                              <span
+                                className="text-muted "
+                                style={{
+                                  fontSize: 14,
+                                  fontFamily: "SF light",
+                                  marginLeft: 50,
+                                  // marginTop: -40,
+                                }}
+                              >
+                                View Profile
+                              </span>
+                            </a>
+                          </li>
+                          <li>
+                            <a class="row " href="#">
+                              <RiEdit2Fill
+                                color="red"
+                                className="col-3 mt-1 ms-2"
+                                animation="tada"
+                                size="18px"
+                                pull="left"
+                              />
+                              <p className="col-7">Edit Profile</p>
+                            </a>
+                          </li>
+                          <li>
+                            <a class="row " href="#">
+                              <MdFlashOn
+                                color="red"
+                                className="col-3 mt-1 ms-2"
+                                animation="tada"
+                                size="18px"
+                                pull="left"
+                              />
+                              <p className="col-7">Activity</p>
+                            </a>
+                          </li>
+                          <li>
+                            <a class="row " href="#">
+                              <MdAssignment
+                                color="red"
+                                className="col-3 mt-1 ms-2"
+                                animation="tada"
+                                size="18px"
+                                pull="left"
+                              />
+                              <p className="col-7">Portfolio</p>
+                            </a>
+                          </li>
+                          <li>
+                            <hr class="dropdown-divider" />
+                          </li>
+                          <li>
+                            <a class="row " href="#">
+                              <MdInfoOutline
+                                color="red"
+                                className="col-3 mt-1 ms-2"
+                                animation="tada"
+                                size="18px"
+                                pull="left"
+                              />
+                              <p className="col-7">About Us</p>
+                            </a>
+                          </li>
+                          <li>
+                            <a class="row " href="#">
+                              <MdSettings
+                                color="red"
+                                className="col-3 mt-1 ms-2"
+                                animation="tada"
+                                size="18px"
+                                pull="left"
+                              />
+                              <p className="col-9">Account setting</p>
+                            </a>
+                          </li>
+                          <li>
+                            <a class="row " href="#">
+                              <MdPermPhoneMsg
+                                color="red"
+                                className="col-3 mt-1 ms-2"
+                                animation="tada"
+                                size="18px"
+                                pull="left"
+                              />
+                              <p className="col-7">Contact Us</p>
+                            </a>
+                          </li>
+                          <li>
+                            <hr class="dropdown-divider" />
+                          </li>
+                          <li>
+                            <a class="row " href="#">
+                              <FiLogOut
+                                color="red"
+                                className="col-3 mt-1 ms-2"
+                                animation="tada"
+                                size="18px"
+                                pull="left"
+                              />
+                              <p className="col-7">Log Out</p>
+                            </a>
+                          </li>
+                        </ul>
+                      </div>
                     </div>
                   </ul>
                 </div>
