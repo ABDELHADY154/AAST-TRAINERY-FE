@@ -6,9 +6,15 @@ import { IoIosNotificationsOutline } from "react-icons/io";
 import { IoCheckmarkCircleOutline } from "react-icons/io5";
 import { resolve } from "../Api/Resolvers/resolver";
 import { axios } from "../Api/axios";
-import { BiErrorAlt } from "react-icons/bi";
-import { MdInfoOutline } from "react-icons/md";
-import { FiAlertOctagon, FiCheckCircle } from "react-icons/fi";
+import { RiEdit2Fill } from "react-icons/ri";
+import {
+  MdInfoOutline,
+  MdFlashOn,
+  MdAssignment,
+  MdSettings,
+  MdPermPhoneMsg,
+} from "react-icons/md";
+import { FiAlertOctagon, FiCheckCircle, FiLogOut } from "react-icons/fi";
 
 import { BsXOctagon } from "react-icons/bs";
 
@@ -278,91 +284,160 @@ class Nav extends React.Component {
                                 <h5 className="">Tap for more information</h5>
                               </div>
                             </div>
-                            {/* </div> */}
                           </div>
                         </ul>
                       </a>
-
-                      <a className="nav-item " href="#">
-                        {this.state.avatar ? (
-                          <img
-                            src={this.state.avatar}
-                            alt="Avatar"
-                            width="40"
-                            height="40"
-                            className="avatar"
-                            role="menuitem"
-                          />
-                        ) : (
-                          <AvatarLoader />
-                        )}
-                        <ul
-                          className="dropdown-menu notificationMenu col-sm-6 col-md-6"
-                          lass="dropdown-menu"
-                          aria-labelledby="dropdownMenu2"
+                      {/* profile */}
+                      <div class="btn-group ">
+                        <a
+                          type="button"
+                          class=" dropdown-toggle"
+                          data-bs-toggle="dropdown"
+                          aria-expanded="false"
                         >
-                          <p className="text-center  mb-2 notificationTitle">
-                            Notications
-                          </p>
-                          {/* Notication 1 */}
-                          <div class="alert itemAlert " role="alert">
-                            <div className=" row NoticationContent ">
-                              <div className="row col-2 notificationStyle d-flex align-items-center">
-                                <div
-                                  class="alertLine"
-                                  style={{
-                                    backgroundColor: "#f44336",
-                                  }}
-                                >
-                                  <FiAlertOctagon
-                                    color="#F44336"
-                                    className="notificationIcon me-1 ms-2 d-flex align-items-center"
-                                    animation="tada"
-                                    size="18px"
-                                    pull="left"
-                                  />
-                                </div>
-                              </div>
-
-                              <div className="notificationText col-10 ">
-                                <h4 className="  ">
-                                  Unfortunately, you were rejected in the
-                                  applied internship
-                                </h4>
-                                <h5 className="">Tap for more information</h5>
-                              </div>
-                            </div>
-                          </div>
-                          {/* Notication 2 */}
-                          <div class="alert itemAlert " role="alert">
-                            <div className=" row NoticationContent ">
-                              <div className="row col-2 notificationStyle d-flex align-items-center">
-                                <div
-                                  class="alertLine "
-                                  style={{
-                                    backgroundColor: "#007BC2",
-                                  }}
-                                >
-                                  <MdInfoOutline
-                                    color="red"
-                                    className="notificationIcon me-1 ms-2 d-flex align-items-center"
-                                    animation="tada"
-                                    size="18px"
-                                    pull="left"
-                                  />
-                                </div>
-                              </div>
-
-                              <div className="notificationText col-10 mt-2">
-                                <h4 className="  ">
-                                  Review your finished session
-                                </h4>
-                                <h5 className="">Tap for more information</h5>
-                              </div>
-                            </div>
-                          </div>
+                          {this.state.avatar ? (
+                            <img
+                              src={this.state.avatar}
+                              alt="Avatar"
+                              width="40"
+                              height="40"
+                              className="avatar"
+                              role="menuitem"
+                            />
+                          ) : (
+                            <AvatarLoader />
+                          )}
+                        </a>
+                        <ul class="dropdown-menu profileMenu ">
+                          <li className="row profileHeader d-flex justify-content-center">
+                            <a
+                              class="dropdown-item"
+                              href="#"
+                              style={{
+                                fontSize: 18,
+                                fontFamily: "SF med",
+                                color: " #1e4274",
+                              }}
+                            >
+                              {this.state.avatar ? (
+                                <img
+                                  src={this.state.avatar}
+                                  alt="Avatar"
+                                  width="40"
+                                  height="40"
+                                  className="avatar me-2"
+                                  role="menuitem"
+                                />
+                              ) : (
+                                <AvatarLoader />
+                              )}
+                              Full Name
+                              <br />
+                              <span
+                                className="text-muted "
+                                style={{
+                                  fontSize: 14,
+                                  fontFamily: "SF light",
+                                  marginLeft: 50,
+                                  // marginTop: -40,
+                                }}
+                              >
+                                View Profile
+                              </span>
+                            </a>
+                          </li>
+                          <li>
+                            <a class="row " href="#">
+                              <RiEdit2Fill
+                                color="red"
+                                className="col-3 mt-1 ms-2"
+                                animation="tada"
+                                size="18px"
+                                pull="left"
+                              />
+                              <p className="col-7">Edit Profile</p>
+                            </a>
+                          </li>
+                          <li>
+                            <a class="row " href="#">
+                              <MdFlashOn
+                                color="red"
+                                className="col-3 mt-1 ms-2"
+                                animation="tada"
+                                size="18px"
+                                pull="left"
+                              />
+                              <p className="col-7">Activity</p>
+                            </a>
+                          </li>
+                          <li>
+                            <a class="row " href="#">
+                              <MdAssignment
+                                color="red"
+                                className="col-3 mt-1 ms-2"
+                                animation="tada"
+                                size="18px"
+                                pull="left"
+                              />
+                              <p className="col-7">Portfolio</p>
+                            </a>
+                          </li>
+                          <li>
+                            <hr class="dropdown-divider" />
+                          </li>
+                          <li>
+                            <a class="row " href="#">
+                              <MdInfoOutline
+                                color="red"
+                                className="col-3 mt-1 ms-2"
+                                animation="tada"
+                                size="18px"
+                                pull="left"
+                              />
+                              <p className="col-7">About Us</p>
+                            </a>
+                          </li>
+                          <li>
+                            <a class="row " href="#">
+                              <MdSettings
+                                color="red"
+                                className="col-3 mt-1 ms-2"
+                                animation="tada"
+                                size="18px"
+                                pull="left"
+                              />
+                              <p className="col-9">Account setting</p>
+                            </a>
+                          </li>
+                          <li>
+                            <a class="row " href="#">
+                              <MdPermPhoneMsg
+                                color="red"
+                                className="col-3 mt-1 ms-2"
+                                animation="tada"
+                                size="18px"
+                                pull="left"
+                              />
+                              <p className="col-7">Contact Us</p>
+                            </a>
+                          </li>
+                          <li>
+                            <hr class="dropdown-divider" />
+                          </li>
+                          <li>
+                            <a class="row " href="#">
+                              <FiLogOut
+                                color="red"
+                                className="col-3 mt-1 ms-2"
+                                animation="tada"
+                                size="18px"
+                                pull="left"
+                              />
+                              <p className="col-7">Log Out</p>
+                            </a>
+                          </li>
                         </ul>
-                      </a>
+                      </div>
                     </div>
                   </ul>
                 </div>

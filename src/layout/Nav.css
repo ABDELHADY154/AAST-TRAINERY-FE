@@ -233,3 +233,37 @@ BsXOctagon svg {
 /* .notificationStyle {
   margin-left: 1em;
 } */
+.profileMenu {
+  font-family: sf reg;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 16px;
+  line-height: 28px;
+  color: #1e4274 !important;
+  width: 13em;
+  height: auto !important;
+  background-color: #fff;
+  border: 1px solid #f2f2f2;
+  /* margin-left: 0.7em !important; */
+}
+.profileMenu p {
+  font-family: sf reg;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 16px;
+  line-height: 28px;
+  color: #1e4274 !important;
+  margin-left: -1em !important;
+  margin-bottom: 0.5em !important;
+}
+.profileHeader {
+  /* width: 10em; */
+  padding: 0 !important;
+  margin: 0 !important;
+}
+.text-muted span {
+  font-size: 14 !important;
+  font-family: SF light !important;
+  margin-left: 50 !important;
+  margin-top: -40 !important;
+}
