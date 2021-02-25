@@ -110,3 +110,12 @@ span {
     margin-left: 8rem !important;
   }
 }
+/* @media (max-width: 2560) {
+  .carouselRow {
+    margin-left: -23rem !important;
+    padding-left: -23rem !important;
+  }
+  .contactBtn {
+    margin-left: 8rem !important;
+  }
+} */

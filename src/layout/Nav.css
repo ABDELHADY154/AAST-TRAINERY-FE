@@ -187,11 +187,11 @@ body {
   border-radius: 8;
   height: 70px !important;
   margin-bottom: 0.5em !important;
-  box-shadow: 2px 2px 20px 0px rgba(0, 0, 0, 0.05);
-  -webkit-box-shadow: 2px 2px 20px 0px rgba(0, 0, 0, 0.05);
-  -moz-box-shadow: 2px 2px 20px 0px rgba(0, 0, 0, 0.05);
-
-  /* height: 4.5em; */
+}
+.itemAlert:hover {
+  box-shadow: 3px 3px 30px 0px rgba(0, 0, 0, 0.05);
+  -webkit-box-shadow: 3px 3px 30px 0px rgba(0, 0, 0, 0.05);
+  -moz-box-shadow: 3px 3px 30px 0px rgba(0, 0, 0, 0.05);
 }
 .notificationText {
   padding-left: 0 !important;
@@ -260,10 +260,26 @@ BsXOctagon svg {
   /* width: 10em; */
   padding: 0 !important;
   margin: 0 !important;
+  margin-top: 0.5em !important;
 }
 .text-muted span {
   font-size: 14 !important;
   font-family: SF light !important;
   margin-left: 50 !important;
   margin-top: -40 !important;
+}
+.profileHr {
+  background-color: #e0e0e0;
+  width: 160px;
+  margin-left: 1.5em;
+  padding-top: -0.5em !important;
+}
+.profileHeader a:hover {
+  background-color: #f7f7f7;
+}
+.profileMenu li {
+  padding-top: 0.5em !important;
+}
+.profileMenu li:hover {
+  background-color: #f7f7f7;
 }
