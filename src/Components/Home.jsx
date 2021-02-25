@@ -81,7 +81,7 @@ class Home extends Component {
               </a>
             </div>
             <div className="d-flex flex-column col-md-3"></div>
-            <div className="d-flex flex-column col-md-2 ps-1">
+            <div className="d-flex flex-column col-md-2 ">
               <button
                 onClick={() => {
                   this.setState({ alert: false });
@@ -499,7 +499,7 @@ class Home extends Component {
               </div>
             </div>
             <hr className="breakliner mb-3" />
-            <a href="#" id="gold" className="align-self-center pb-1 ">
+            <a href="#" id="gold" className="align-self-center pb-2 ">
               See all activities
             </a>
           </div>
