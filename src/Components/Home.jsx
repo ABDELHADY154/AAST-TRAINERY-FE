@@ -81,7 +81,7 @@ class Home extends Component {
               </a>
             </div>
             <div className="d-flex flex-column col-md-3"></div>
-            <div className="d-flex flex-column col-md-2 ps-2">
+            <div className="d-flex flex-column col-md-2 ps-1">
               <button
                 onClick={() => {
                   this.setState({ alert: false });
@@ -125,7 +125,13 @@ class Home extends Component {
                   </div>
                   <div className="d-flex flex-row d-md-none mt-3 ms-5">
                     <div className="d-flex flex-column col-8 ms-5">
-                      <ProgressBar percent={this.state.user.profile_score}>
+                      <ProgressBar
+                        percent={
+                          this.state.user.profile_score
+                            ? this.state.user.profile_score
+                            : 0
+                        }
+                      >
                         <Step>
                           {({ accomplished }) => (
                             <div
@@ -350,11 +356,6 @@ class Home extends Component {
               </div>
             </div>
             <div className="d-flex flex-column d-none d-md-flex col-md-2 ">
-              {/* {this.state.user.gender == "female" ? (
-                <img id="girl" className="" src={img} />
-              ) : (
-                <img id="girl" className="" src={MaleAvatar} />
-              )} */}
               {this.state.user.gender ? (
                 <img
                   id="girl"
@@ -368,7 +369,7 @@ class Home extends Component {
           </div>
           <div className="card mt-2 mt-5 w-70 mb-2 ">
             <div className="card-body">
-              <h5 id="" className="card-title fs-3">
+              <h5 id="" className="card-title fs-3 my-3">
                 Your Activities
               </h5>
               <div className="row">
@@ -497,6 +498,7 @@ class Home extends Component {
                 </div>
               </div>
             </div>
+            <hr className="breakliner mb-3" />
             <a href="#" id="gold" className="align-self-center pb-1 ">
               See all activities
             </a>

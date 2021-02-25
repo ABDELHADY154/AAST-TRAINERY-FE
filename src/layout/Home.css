@@ -67,8 +67,8 @@
   background-color: white;
   border: solid 2px rgba(205, 137, 48, 0.5) !important;
 }
-#promoted {
-  margin-left: 6em !important;
+.breakliner {
+  color: grey;
 }
 #job {
   margin-top: -0.7em !important;

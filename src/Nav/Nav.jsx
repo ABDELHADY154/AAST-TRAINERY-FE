@@ -129,7 +129,7 @@ class Nav extends React.Component {
                           <IoIosNotificationsOutline
                             value={{
                               color: "#007BC2",
-                              className: "global-class-name",
+                              className: "global-class-name mt-0",
                             }}
                             className="noti mt-2 d-inline-block"
                           />
