@@ -177,7 +177,7 @@ class Registry extends React.Component {
                                 type="radio"
                                 name="inlineRadioOptions"
                                 id="Gender"
-                                value=""
+                                value="female"
                                 onChange={(e) =>
                                   this.setState({ gender: e.target.value })
                                 }
