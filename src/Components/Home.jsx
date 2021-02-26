@@ -376,20 +376,16 @@ class Home extends Component {
                 <div className="col-sm-6">
                   <div className="card">
                     <div className="card-body">
-                      <div className="d-flex flex-row">
+                      <div className="d-flex flex-row ">
                         <img
-                          className="d-flex mt-0 col-md-1 col-2"
-                          id=""
-                          width="60em"
+                          className=" mt-0 d-flex flex-column  col-2 "
+                          id="imgicon"
                           src={img2}
                         />
-                        <div className=" fs-5 mt-2 ms-2 col-md-10 col-8">
+                        <div className=" fs-5 mt-2 ms-2 col-md-10 col-8 ">
                           UI/UX Designer
                         </div>
-                        <div
-                          id="gold"
-                          className=" fs-6 mt-2 ms-2 col-2 col-md-1"
-                        >
+                        <div id="gold" className=" fs-6 mt-2  col-2 col-md-2">
                           Paid
                         </div>
                       </div>
@@ -411,14 +407,14 @@ class Home extends Component {
                             Finance
                           </a>
                         </div>
-                        <div className="d-flex flex-column col-4 me-3 col-md-2 mb-1">
+                        <div className="d-flex flex-column col-4 me-3 col-md-2  mb-1">
                           <a href="#" className="" id="tags">
                             Banking
                           </a>
                         </div>
                         <div
                           id="drop"
-                          className="d-flex flex-column col-md-4  
+                          className="d-flex flex-column me-4  col-md-5  
                              justify-space-between"
                         >
                           <p>Deadline {"        "}11 Dec 2021</p>
@@ -438,20 +434,16 @@ class Home extends Component {
                 <div className="col-sm-6">
                   <div className="card">
                     <div className="card-body">
-                      <div className="d-flex flex-row">
+                      <div className="d-flex flex-row ">
                         <img
-                          className="d-flex mt-0 col-md-1 col-2"
-                          id=""
-                          width="60em"
+                          className=" mt-0 d-flex flex-column  col-2 "
+                          id="imgicon"
                           src={img2}
                         />
-                        <div className=" fs-5 mt-2 ms-2 col-md-10 col-8">
+                        <div className=" fs-5 mt-2 ms-2 col-md-10 col-8 ">
                           UI/UX Designer
                         </div>
-                        <div
-                          id="gold"
-                          className=" fs-6 mt-2 ms-2 col-2 col-md-1"
-                        >
+                        <div id="gold" className=" fs-6 mt-2  col-2 col-md-2">
                           Paid
                         </div>
                       </div>
@@ -473,14 +465,14 @@ class Home extends Component {
                             Finance
                           </a>
                         </div>
-                        <div className="d-flex flex-column col-4 me-3 col-md-2 mb-1">
-                          <a href="#" className="  " id="tags">
+                        <div className="d-flex flex-column col-4 me-3 col-md-2  mb-1">
+                          <a href="#" className="" id="tags">
                             Banking
                           </a>
                         </div>
                         <div
                           id="drop"
-                          className="d-flex flex-column col-md-4  
+                          className="d-flex flex-column me-4  col-md-5  
                              justify-space-between"
                         >
                           <p>Deadline {"        "}11 Dec 2021</p>
@@ -504,7 +496,7 @@ class Home extends Component {
             </a>
           </div>
           <div className="fs-3 mt-5 mb-3" id="">
-            Explore reccomended opportunities
+            Explore recommended opportunities
           </div>
           {/* BIG CARD WITH ADVISOR */}
 
@@ -512,7 +504,8 @@ class Home extends Component {
             <div className="col-md-12">
               <div className="card">
                 <div className="card-body">
-                  <div className="d-flex flex-row">
+                  <div className="d-flex flex-row flex-wrap">
+                    {" "}
                     <img
                       className=" mt-0 d-flex flex-column col-md-4 col-2 me-3"
                       id="imgicon"
