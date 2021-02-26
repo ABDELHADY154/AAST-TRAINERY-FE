@@ -140,6 +140,17 @@ input[type="radio"]:checked:before {
 .female:before {
   padding-right: 5px !important;
 }
+@media (max-width: 768px) {
+  .female {
+    margin-right: 20px !important;
+  }
+}
+
+@media (max-width: 700px) {
+  .bg-image-no-img {
+    display: none;
+  }
+}
 
 .account {
   margin-top: 40px;
@@ -226,14 +237,12 @@ select option:checked {
   color: #fff;
 }
 
-
 /* select option:active {
   background: #cd3030 -webkit-linear-gradient(bottom, #cd8930 0%, #cd8930 100%) !important;
   color: rgb(81, 201, 87) !important;
 } */
 @media (max-width: 700px) {
   .bg-image-no-img {
-
     display: none;
   }
 }

@@ -31,6 +31,11 @@
   color: #cd8930 !important;
   font-family: sf light;
 }
+#goldtab {
+  color: #cd8930 !important;
+  font-family: sf light;
+  margin-left: 6em;
+}
 * {
   color: #1e4274;
   font-family: sf reg;
@@ -67,8 +72,8 @@
   background-color: white;
   border: solid 2px rgba(205, 137, 48, 0.5) !important;
 }
-#promoted {
-  margin-left: 6em !important;
+.breakliner {
+  color: #e0e0e0;
 }
 #job {
   margin-top: -0.7em !important;
@@ -146,14 +151,30 @@
   font-family: SF light;
   border: 1px solid #1e4274;
   border-radius: 5px !important;
+  height: 30px;
+}
+.applyBtn:hover {
+  background-color: #1e4274 !important;
+  color: #fff;
 }
 
 #exploreall {
-  border-bottom: 1px solid rgba(205, 137, 48, 1);
+  /* border-bottom: 1px solid rgba(205, 137, 48, 1); */
   width: 4.6em !important;
   text-decoration: none !important;
   color: #1e4274;
 }
+#exploreall:after {
+  display: block;
+  content: "";
+  transform: scaleX(0.5);
+  border-bottom: 2px solid rgba(205, 137, 48, 1);
+  transition: transform 250ms ease-in-out;
+}
+#exploreall:hover:after {
+  transform: scaleX(1);
+}
+
 .containerrr {
   position: relative;
   width: 50%;
@@ -243,4 +264,18 @@
   background-color: transparent !important;
   outline: none !important;
   box-shadow: none !important;
+}
+@media (min-width: 576px) and (max-width: 1199px) {
+  #tabcard {
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: center;
+    align-items: center;
+  }
+  #goldtab {
+    margin-left: 0em !important;
+  }
+  #tabcontainer {
+    width: 100% !important ;
+  }
 }

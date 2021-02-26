@@ -3,8 +3,10 @@ import { Link } from "react-router-dom";
 import logo from "../Components/assests/icons/Main-Logo.png";
 import { AvatarLoader } from "../loader";
 import { IoIosNotificationsOutline } from "react-icons/io";
-import { IoCheckmarkCircleOutline } from "react-icons/io5";
 import { resolve } from "../Api/Resolvers/resolver";
+import { AiOutlineCheckCircle, AiOutlineWarning } from "react-icons/ai";
+import { IoWarningOutline } from "react-icons/io5";
+
 import { axios } from "../Api/axios";
 import { RiEdit2Fill } from "react-icons/ri";
 import {
@@ -14,9 +16,7 @@ import {
   MdSettings,
   MdPermPhoneMsg,
 } from "react-icons/md";
-import { FiAlertOctagon, FiCheckCircle, FiLogOut } from "react-icons/fi";
-
-import { BsXOctagon } from "react-icons/bs";
+import { FiLogOut } from "react-icons/fi";
 
 import "../layout/Nav.css";
 import "../layout/Main.css";
@@ -89,14 +89,14 @@ class Nav extends React.Component {
               <div className="collapse navbar-collapse " id="navbarScroll">
                 <ul className="navbar-nav mt-1">
                   <li className="nav-item ">
-                    <Link className="nav-link item " to="/Home">
+                    <Link className="nav-link item navPage" to="/Home">
                       Explore
                       <span className="sr-only" />
                     </Link>
                   </li>
                   <li className="nav-item ">
                     <Link
-                      className="nav-link item"
+                      className="nav-link item navPage"
                       to="#"
                       // onClick={this.handleLogout}
                     >
@@ -129,7 +129,7 @@ class Nav extends React.Component {
                           <IoIosNotificationsOutline
                             value={{
                               color: "#007BC2",
-                              className: "global-class-name",
+                              className: "global-class-name mt-0",
                             }}
                             className="noti mt-2 d-inline-block"
                           />
@@ -152,8 +152,9 @@ class Nav extends React.Component {
                                     backgroundColor: "#f44336",
                                   }}
                                 >
-                                  <FiAlertOctagon
-                                    color="#F44336"
+                                  <AiOutlineWarning
+                                    style={{ fill: "red" }}
+                                    // color="#F44336"
                                     className="notificationIcon me-1 ms-2 d-flex align-items-center"
                                     animation="tada"
                                     size="18px"
@@ -182,7 +183,7 @@ class Nav extends React.Component {
                                   }}
                                 >
                                   <MdInfoOutline
-                                    color="red"
+                                    style={{ fill: "#007BC2" }} // color="red"
                                     className="notificationIcon me-1 ms-2 d-flex align-items-center"
                                     animation="tada"
                                     size="18px"
@@ -210,7 +211,8 @@ class Nav extends React.Component {
                                   }}
                                 >
                                   <MdInfoOutline
-                                    color="red"
+                                    style={{ fill: "#007BC2" }}
+                                    // color="red"
                                     className="notificationIcon me-1 ms-2 d-flex align-items-center"
                                     animation="tada"
                                     size="18px"
@@ -238,8 +240,9 @@ class Nav extends React.Component {
                                     backgroundColor: "#4CAF50",
                                   }}
                                 >
-                                  <FiCheckCircle
-                                    color="green"
+                                  <AiOutlineCheckCircle
+                                    style={{ fill: "#4CAF50" }}
+                                    // color="green"
                                     className="notificationIcon me-1 ms-2 d-flex align-items-center"
                                     animation="tada"
                                     size="18px"
@@ -267,8 +270,9 @@ class Nav extends React.Component {
                                     backgroundColor: "#4CAF50",
                                   }}
                                 >
-                                  <FiCheckCircle
-                                    color="green"
+                                  <AiOutlineCheckCircle
+                                    style={{ fill: "#4CAF50" }}
+                                    // color="green"
                                     className="notificationIcon me-1 ms-2 d-flex align-items-center"
                                     animation="tada"
                                     size="18px"
@@ -382,9 +386,9 @@ class Nav extends React.Component {
                               <p className="col-7">Portfolio</p>
                             </a>
                           </li>
-                          <li>
-                            <hr class="dropdown-divider" />
-                          </li>
+
+                          <hr class="dropdown-divider profileHr" />
+
                           <li>
                             <a class="row " href="#">
                               <MdInfoOutline
@@ -421,9 +425,9 @@ class Nav extends React.Component {
                               <p className="col-7">Contact Us</p>
                             </a>
                           </li>
-                          <li>
-                            <hr class="dropdown-divider" />
-                          </li>
+
+                          <hr class="dropdown-divider profileHr" />
+
                           <li>
                             <a class="row " href="#">
                               <FiLogOut

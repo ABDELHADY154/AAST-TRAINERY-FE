@@ -91,22 +91,26 @@ span {
   font-family: SF light;
   border: 1px solid #cd8930;
   border-radius: 5px;
-
-  /* width: 152px; */
 }
-/* .contactBtnW {
-  margin-left: 5.5rem;
-} */
-/* @media (max-width: 800px) {
-  .contactBtn {
-    margin-left: 1rem !important;
-  }
-} */
+.contactBtn:hover {
+  background-color: #cd8930;
+  color: #fff;
+}
+
 @media (max-width: 500px) {
   .carouselRow {
-    margin-left: -3rem !important;
+    margin-left: -1rem !important;
   }
   .contactBtn {
     margin-left: 8rem !important;
   }
 }
+/* @media (max-width: 2560) {
+  .carouselRow {
+    margin-left: -23rem !important;
+    padding-left: -23rem !important;
+  }
+  .contactBtn {
+    margin-left: 8rem !important;
+  }
+} */

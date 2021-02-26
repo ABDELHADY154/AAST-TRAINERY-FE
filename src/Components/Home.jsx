@@ -81,7 +81,7 @@ class Home extends Component {
               </a>
             </div>
             <div className="d-flex flex-column col-md-3"></div>
-            <div className="d-flex flex-column col-md-2 ps-2">
+            <div className="d-flex flex-column col-md-2 ">
               <button
                 onClick={() => {
                   this.setState({ alert: false });
@@ -125,7 +125,13 @@ class Home extends Component {
                   </div>
                   <div className="d-flex flex-row d-md-none mt-3 ms-5">
                     <div className="d-flex flex-column col-8 ms-5">
-                      <ProgressBar percent={this.state.user.profile_score}>
+                      <ProgressBar
+                        percent={
+                          this.state.user.profile_score
+                            ? this.state.user.profile_score
+                            : 0
+                        }
+                      >
                         <Step>
                           {({ accomplished }) => (
                             <div
@@ -350,11 +356,6 @@ class Home extends Component {
               </div>
             </div>
             <div className="d-flex flex-column d-none d-md-flex col-md-2 ">
-              {/* {this.state.user.gender == "female" ? (
-                <img id="girl" className="" src={img} />
-              ) : (
-                <img id="girl" className="" src={MaleAvatar} />
-              )} */}
               {this.state.user.gender ? (
                 <img
                   id="girl"
@@ -368,27 +369,23 @@ class Home extends Component {
           </div>
           <div className="card mt-2 mt-5 w-70 mb-2 ">
             <div className="card-body">
-              <h5 id="" className="card-title fs-3">
+              <h5 id="tabtitle" className="card-title fs-3 my-3">
                 Your Activities
               </h5>
-              <div className="row">
-                <div className="col-sm-6">
+              <div id="tabcard" className="row">
+                <div className="col-md-6" id="tabcontainer">
                   <div className="card">
                     <div className="card-body">
-                      <div className="d-flex flex-row">
+                      <div className="d-flex flex-row ">
                         <img
-                          className="d-flex mt-0 col-md-1 col-2"
-                          id=""
-                          width="60em"
+                          className=" mt-0 d-flex flex-column  col-2 "
+                          id="imgicon"
                           src={img2}
                         />
-                        <div className=" fs-5 mt-2 ms-2 col-md-10 col-8">
+                        <div className=" fs-5 mt-2 ms-2 col-md-10 col-8 ">
                           UI/UX Designer
                         </div>
-                        <div
-                          id="gold"
-                          className=" fs-6 mt-2 ms-2 col-2 col-md-1"
-                        >
+                        <div id="gold" className=" fs-6 mt-2  col-2 col-md-2">
                           Paid
                         </div>
                       </div>
@@ -410,14 +407,14 @@ class Home extends Component {
                             Finance
                           </a>
                         </div>
-                        <div className="d-flex flex-column col-4 me-3 col-md-2 mb-1">
+                        <div className="d-flex flex-column col-4 me-3 col-md-2  mb-1">
                           <a href="#" className="" id="tags">
                             Banking
                           </a>
                         </div>
                         <div
                           id="drop"
-                          className="d-flex flex-column col-md-4  
+                          className="d-flex flex-column me-4  col-md-5  
                              justify-space-between"
                         >
                           <p>Deadline {"        "}11 Dec 2021</p>
@@ -434,23 +431,19 @@ class Home extends Component {
                   </div>
                 </div>
 
-                <div className="col-sm-6">
+                <div className="col-md-6" id="tabcontainer">
                   <div className="card">
                     <div className="card-body">
-                      <div className="d-flex flex-row">
+                      <div className="d-flex flex-row ">
                         <img
-                          className="d-flex mt-0 col-md-1 col-2"
-                          id=""
-                          width="60em"
+                          className=" mt-0 d-flex flex-column  col-2 "
+                          id="imgicon"
                           src={img2}
                         />
-                        <div className=" fs-5 mt-2 ms-2 col-md-10 col-8">
+                        <div className=" fs-5 mt-2 ms-2 col-md-10 col-8 ">
                           UI/UX Designer
                         </div>
-                        <div
-                          id="gold"
-                          className=" fs-6 mt-2 ms-2 col-2 col-md-1"
-                        >
+                        <div id="gold" className=" fs-6 mt-2  col-2 col-md-2">
                           Paid
                         </div>
                       </div>
@@ -472,14 +465,14 @@ class Home extends Component {
                             Finance
                           </a>
                         </div>
-                        <div className="d-flex flex-column col-4 me-3 col-md-2 mb-1">
-                          <a href="#" className="  " id="tags">
+                        <div className="d-flex flex-column col-4 me-3 col-md-2  mb-1">
+                          <a href="#" className="" id="tags">
                             Banking
                           </a>
                         </div>
                         <div
                           id="drop"
-                          className="d-flex flex-column col-md-4  
+                          className="d-flex flex-column me-4  col-md-5  
                              justify-space-between"
                         >
                           <p>Deadline {"        "}11 Dec 2021</p>
@@ -497,12 +490,13 @@ class Home extends Component {
                 </div>
               </div>
             </div>
-            <a href="#" id="gold" className="align-self-center pb-1 ">
+            <hr className="breakliner mb-3" />
+            <a href="#" id="gold" className="align-self-center pb-2 ">
               See all activities
             </a>
           </div>
           <div className="fs-3 mt-5 mb-3" id="">
-            Explore reccomended opportunities
+            Explore recommended opportunities
           </div>
           {/* BIG CARD WITH ADVISOR */}
 
@@ -510,7 +504,8 @@ class Home extends Component {
             <div className="col-md-12">
               <div className="card">
                 <div className="card-body">
-                  <div className="d-flex flex-row">
+                  <div className="d-flex flex-row flex-wrap">
+                    {" "}
                     <img
                       className=" mt-0 d-flex flex-column col-md-4 col-2 me-3"
                       id="imgicon"
@@ -523,14 +518,14 @@ class Home extends Component {
                   <hr />
                   <div className="d-flex flex-row">
                     <img
-                      className=" mt-0 d-flex flex-column col-md-4 col-2 me-1"
+                      className=" mt-0 d-flex flex-column col-md-1 col-2 me-1"
                       id="imgicon"
                       src={img2}
                     />
-                    <div className=" fs-5 mt-2 ms-2 col-md-11 col-8">
+                    <div className=" fs-5 mt-2 ms-2 col-md-10 col-8">
                       UI/UX Designer
                     </div>
-                    <div id="gold" className=" fs-6 mt-2 ms-2 col-2 col-md-1">
+                    <div id="goldtab" className=" fs-6 mt-2  col-2 col-md-1">
                       Paid
                     </div>
                   </div>
@@ -577,7 +572,7 @@ class Home extends Component {
                       <BsBookmark
                         id="BsBookmark"
                         color="#1e4274"
-                        className="fs-2 align-self-center col-md-2 col-4"
+                        className="fs-2 align-self-center mb-4 col-md-2 col-4"
                         path="0px"
                       />
                       <button className="applyBtn px-1 py-0 col-md-6 col-8">
@@ -597,20 +592,20 @@ class Home extends Component {
                 <div className="card-body">
                   <div className="d-flex flex-row">
                     <img
-                      className=" mt-0 d-flex flex-column col-md-4 col-2 me-1"
+                      className=" mt-0 d-flex flex-column col-md-1 col-2 me-1"
                       id="imgicon"
                       src={img2}
                     />
-                    <div className=" fs-5 mt-2 ms-2 col-md-11 col-8">
+                    <div className=" fs-5 mt-2 ms-2 col-md-10 col-8">
                       UI/UX Designer
                     </div>
-                    <div id="gold" className=" fs-6 mt-2 ms-2 col-2 col-md-1">
+                    <div id="goldtab" className=" fs-6 mt-2 col-2 col-md-1">
                       Paid
                     </div>
                   </div>
                   <div id="job" className="d-flex flex-row ms-5 ">
                     <div className="d-flex ms-3 flex-column">CIB</div>
-                    <div id="gold" className="d-flex ms-2 flex-column">
+                    <div id="gold" className="  d-flex ms-2 flex-column">
                       Finance
                     </div>
                   </div>
@@ -638,7 +633,7 @@ class Home extends Component {
                     >
                       <p>Deadline {"        "}11 Dec 2021</p>
                     </div>
-                    <div className="  d-flex flex-row col-12 col-md-6  ">
+                    <div className=" mb-4 d-flex flex-row col-12 col-md-6  ">
                       <BsArrowUpRight
                         className="me-2"
                         color="#cd8930"
@@ -649,8 +644,10 @@ class Home extends Component {
                     <div className="  d-flex flex-row col-12 col-md-2  ">
                       <div className="col-md-4"></div>
                       <BsBookmark
+                        id="BsBookmark"
                         color="#1e4274"
-                        className="fs-2 align-self-center col-md-2 col-4"
+                        className="fs-2 align-self-center mb-5 col-md-2 col-4"
+                        path="0px"
                       />
                       <button className="applyBtn px-1 py-0 col-md-6 col-8">
                         Apply
@@ -666,7 +663,7 @@ class Home extends Component {
             <a
               href="#"
               id="exploreall"
-              className="d-flex flex-column col-md-1 fs-5"
+              className="d-flex flex-column col-md-1 fs-5 "
             >
               Explore All
             </a>

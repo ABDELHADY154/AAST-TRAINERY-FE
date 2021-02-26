@@ -153,7 +153,7 @@ class Registry extends React.Component {
                         <div className="row  form-label-group">
                           <h2 className="genderLabel">Gender</h2>
                           <div className="row ">
-                            <div class="col-3 male form-check form-check-inline d-flex">
+                            <div class="col-4 col-lg-5 col-md-4 col-sm-4 col-xs-3 male form-check form-check-inline d-flex">
                               <input
                                 type="radio"
                                 name="inlineRadioOptions"
@@ -171,7 +171,7 @@ class Registry extends React.Component {
                                 Male
                               </label>
                             </div>
-                            <div class="col-2  checkbox form-check-inline d-flex">
+                            <div class=" female col-4 col-lg-5 col-md-4 col-sm-5 col-xs-3 checkbox form-check-inline d-flex">
                               <input
                                 className="radio"
                                 type="radio"

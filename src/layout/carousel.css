@@ -119,6 +119,7 @@
 .LogoCarousel {
   margin-bottom: 2rem;
   margin-top: 2rem;
+
   /* width: 90%; */
 }
 .flickity-page-dots {
@@ -139,9 +140,12 @@
     width: 15rem;
   }
 }
-/* @media (max-width: 1200px) {
+/* @media (max-width: 1440) {
   .LogoCarousel {
-    margin-right: 2rem !important;
+    margin-top: 40rem !important;
+    margin-right: 20rem !important;
+    padding-right: 20rem !important;
+    background-color: aquamarine !important;
   }
 } */
 /* .carousel-indicators button {
