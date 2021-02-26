@@ -260,3 +260,16 @@
   outline: none !important;
   box-shadow: none !important;
 }
+@media (min-width: 576px) and (max-width: 1199px) {
+  #tabcard {
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: center;
+    align-items: center;
+  }
+  #tabtitle {
+  }
+  #tabcontainer {
+    width: 100% !important ;
+  }
+}

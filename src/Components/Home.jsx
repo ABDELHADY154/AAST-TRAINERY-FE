@@ -369,11 +369,11 @@ class Home extends Component {
           </div>
           <div className="card mt-2 mt-5 w-70 mb-2 ">
             <div className="card-body">
-              <h5 id="" className="card-title fs-3 my-3">
+              <h5 id="tabtitle" className="card-title fs-3 my-3">
                 Your Activities
               </h5>
-              <div className="row">
-                <div className="col-sm-6">
+              <div id="tabcard" className="row">
+                <div className="col-md-6" id="tabcontainer">
                   <div className="card">
                     <div className="card-body">
                       <div className="d-flex flex-row ">
@@ -431,7 +431,7 @@ class Home extends Component {
                   </div>
                 </div>
 
-                <div className="col-sm-6">
+                <div className="col-md-6" id="tabcontainer">
                   <div className="card">
                     <div className="card-body">
                       <div className="d-flex flex-row ">
