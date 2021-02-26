@@ -32,7 +32,7 @@ class Home extends Component {
     await resolve(
       axios
         .get("/W/get-profile")
-        .then((res) => {
+        .then(res => {
           if (res.status === 200) {
             // sessionStorage.setItem("avatar", res.data.response.data.image);
             this.setState({
@@ -42,7 +42,7 @@ class Home extends Component {
             });
           }
         })
-        .catch((error) => {
+        .catch(error => {
           this.setState({
             error: {
               usernameErr: error.response.status,
@@ -51,7 +51,7 @@ class Home extends Component {
           if (this.state.error.usernameErr === 401) {
             window.location.reload();
           }
-        })
+        }),
     );
   }
 
@@ -241,7 +241,13 @@ class Home extends Component {
                     </div>
                   </div>
                   <div id="big" className="d-flex flex-column  col-md-8 mt-3">
-                    <ProgressBar percent={this.state.user.profile_score}>
+                    <ProgressBar
+                      percent={
+                        this.state.user.profile_score
+                          ? this.state.user.profile_score
+                          : 0
+                      }
+                    >
                       <Step>
                         {({ accomplished }) => (
                           <div
