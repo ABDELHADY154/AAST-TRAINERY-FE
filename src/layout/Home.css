@@ -136,6 +136,9 @@
     padding-left: 0em !important;
     margin-left: 1em !important;
   }
+  #goldtab {
+    margin-left: 0em !important;
+  }
 }
 
 #imgicon {
