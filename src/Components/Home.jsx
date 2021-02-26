@@ -518,14 +518,14 @@ class Home extends Component {
                   <hr />
                   <div className="d-flex flex-row">
                     <img
-                      className=" mt-0 d-flex flex-column col-md-4 col-2 me-1"
+                      className=" mt-0 d-flex flex-column col-md-1 col-2 me-1"
                       id="imgicon"
                       src={img2}
                     />
-                    <div className=" fs-5 mt-2 ms-2 col-md-11 col-8">
+                    <div className=" fs-5 mt-2 ms-2 col-md-10 col-8">
                       UI/UX Designer
                     </div>
-                    <div id="gold" className=" fs-6 mt-2 ms-2 col-2 col-md-1">
+                    <div id="goldtab" className=" fs-6 mt-2  col-2 col-md-1">
                       Paid
                     </div>
                   </div>
@@ -592,20 +592,20 @@ class Home extends Component {
                 <div className="card-body">
                   <div className="d-flex flex-row">
                     <img
-                      className=" mt-0 d-flex flex-column col-md-4 col-2 me-1"
+                      className=" mt-0 d-flex flex-column col-md-1 col-2 me-1"
                       id="imgicon"
                       src={img2}
                     />
-                    <div className=" fs-5 mt-2 ms-2 col-md-11 col-8">
+                    <div className=" fs-5 mt-2 ms-2 col-md-10 col-8">
                       UI/UX Designer
                     </div>
-                    <div id="gold" className=" fs-6 mt-2 ms-2 col-2 col-md-1">
+                    <div id="goldtab" className=" fs-6 mt-2 col-2 col-md-1">
                       Paid
                     </div>
                   </div>
                   <div id="job" className="d-flex flex-row ms-5 ">
                     <div className="d-flex ms-3 flex-column">CIB</div>
-                    <div id="gold" className="d-flex ms-2 flex-column">
+                    <div id="gold" className="  d-flex ms-2 flex-column">
                       Finance
                     </div>
                   </div>

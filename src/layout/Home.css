@@ -31,6 +31,11 @@
   color: #cd8930 !important;
   font-family: sf light;
 }
+#goldtab {
+  color: #cd8930 !important;
+  font-family: sf light;
+  margin-left: 6em;
+}
 * {
   color: #1e4274;
   font-family: sf reg;
@@ -267,7 +272,8 @@
     justify-content: center;
     align-items: center;
   }
-  #tabtitle {
+  #goldtab {
+    margin-left: 0em !important;
   }
   #tabcontainer {
     width: 100% !important ;
