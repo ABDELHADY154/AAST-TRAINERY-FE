@@ -64,38 +64,36 @@ class Home extends Component {
     if (this.state.user.profile_updated === false) {
       var Alert =
         this.state.alert == true ? (
-          <div
-            id="alerting"
-            className="d-flex flex-row  flex-wrap py-2 px-5 mb-3 "
-          >
-            <div
-              id="alertingtitle"
-              className="d-flex flex-column col-md-5 col-12 mt-2"
-            >
-              Here to help, Update your profile information to get the best
-              match opportunities.
-            </div>
-            <div className="d-flex flex-column col-md-1 col-12 ps-3 mt-2">
-              <a id="redlink" href="#">
-                Update Now
-              </a>
-            </div>
-            <div className="d-flex flex-column col-md-3"></div>
-            <div className="d-flex flex-column col-md-2 ">
-              <button
-                onClick={() => {
-                  this.setState({ alert: false });
-                }}
-                id="closed"
-                className="btn"
-                type="button"
-                data-bs-toggle="collapse"
-                data-bs-target="#alerting"
-                aria-expanded="true"
-                aria-controls="alerting"
+          <div id="alerting" className="d-flex flex-row  flex-wrap py-2  mb-3 ">
+            <div className="container d-flex flex-row  flex-wrap ">
+              <div
+                id="alertingtitle"
+                className="d-flex flex-column col-md-6 col-12 mt-2"
               >
-                <IoClose fill="red" color="red" />
-              </button>
+                Here to help, Update your profile information to get the best
+                match opportunities.
+              </div>
+              <div className="d-flex flex-column col-md-4 col-12  mt-2">
+                <a id="redlink" href="#">
+                  Update Now
+                </a>
+              </div>
+              <div className="d-flex flex-column col-md-2">
+                <button
+                  onClick={() => {
+                    this.setState({ alert: false });
+                  }}
+                  id="closed"
+                  className="btn p-0"
+                  type="button"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#alerting"
+                  aria-expanded="true"
+                  aria-controls="alerting"
+                >
+                  <IoClose fill="red" color="red" />
+                </button>
+              </div>
             </div>
           </div>
         ) : (
