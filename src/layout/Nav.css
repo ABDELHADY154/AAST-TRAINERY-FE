@@ -283,3 +283,34 @@ BsXOctagon svg {
 .profileMenu li:hover {
   background-color: #f7f7f7;
 }
+/* .navPage:hover {
+  border-bottom: 1px solid #1e4274 !important;
+} */
+.navPage {
+  display: inline-block;
+  margin: 0;
+}
+.navPage:after {
+  display: block;
+  content: "";
+  border-bottom: solid 3px #1e4274;
+  transform: scaleX(0);
+  transition: transform 250ms ease-in-out;
+}
+.navPage:hover:after {
+  transform: scaleX(1);
+}
+.navPage:active {
+  color: #cd8930 !important;
+}
+.navPage:active:after {
+  color: #cd8930 !important;
+  border-bottom: solid 3px #cd8930;
+}
+.navPage:focus {
+  color: #cd8930 !important;
+}
+.navPage:focus:after {
+  color: #cd8930 !important;
+  border-bottom: solid 3px #cd8930;
+}

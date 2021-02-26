@@ -52,7 +52,6 @@ class Landing extends React.Component {
     return (
       <div className="container-fluid">
         <Carousel />
-
         <div className="container">
           <div className="d-flex flex-row ">
             <div
@@ -252,14 +251,15 @@ class Landing extends React.Component {
             </div>
           </div>
         </div>
-        <div className="row container ms-5 mb-4 carouselRow flex-wrap ">
-          <CarouselLogos className=" col-md-10 col-10  " />
-          <div className="col-md-6"></div>
-          <div className="d-flex flex-column  align-items-center  mt-5 col-md-1 col-2 contactBtnW ">
-            <button className="contactBtn py-1 px-4">Contact</button>
+        <div className="container">
+          <div className="row   me-5  mb-4 carouselRow flex-wrap ">
+            <CarouselLogos className=" col-md-10 col-10  " />
+            <div className="col-md-6"></div>
+            <div className="d-flex flex-column  align-items-center  mt-5 col-md-1 col-2 contactBtnW ">
+              <button className="contactBtn py-1 px-4">Contact</button>
+            </div>
           </div>
         </div>
-
         <Footer />
       </div>
     );

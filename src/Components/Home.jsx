@@ -579,7 +579,7 @@ class Home extends Component {
                       <BsBookmark
                         id="BsBookmark"
                         color="#1e4274"
-                        className="fs-2 align-self-center col-md-2 col-4"
+                        className="fs-2 align-self-center mb-4 col-md-2 col-4"
                         path="0px"
                       />
                       <button className="applyBtn px-1 py-0 col-md-6 col-8">
@@ -640,7 +640,7 @@ class Home extends Component {
                     >
                       <p>Deadline {"        "}11 Dec 2021</p>
                     </div>
-                    <div className="  d-flex flex-row col-12 col-md-6  ">
+                    <div className=" mb-4 d-flex flex-row col-12 col-md-6  ">
                       <BsArrowUpRight
                         className="me-2"
                         color="#cd8930"
@@ -651,8 +651,10 @@ class Home extends Component {
                     <div className="  d-flex flex-row col-12 col-md-2  ">
                       <div className="col-md-4"></div>
                       <BsBookmark
+                        id="BsBookmark"
                         color="#1e4274"
-                        className="fs-2 align-self-center col-md-2 col-4"
+                        className="fs-2 align-self-center mb-5 col-md-2 col-4"
+                        path="0px"
                       />
                       <button className="applyBtn px-1 py-0 col-md-6 col-8">
                         Apply

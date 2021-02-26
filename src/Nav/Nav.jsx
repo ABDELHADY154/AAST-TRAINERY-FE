@@ -89,14 +89,14 @@ class Nav extends React.Component {
               <div className="collapse navbar-collapse " id="navbarScroll">
                 <ul className="navbar-nav mt-1">
                   <li className="nav-item ">
-                    <Link className="nav-link item " to="/Home">
+                    <Link className="nav-link item navPage" to="/Home">
                       Explore
                       <span className="sr-only" />
                     </Link>
                   </li>
                   <li className="nav-item ">
                     <Link
-                      className="nav-link item"
+                      className="nav-link item navPage"
                       to="#"
                       // onClick={this.handleLogout}
                     >

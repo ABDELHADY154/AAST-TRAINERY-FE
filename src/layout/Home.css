@@ -146,6 +146,11 @@
   font-family: SF light;
   border: 1px solid #1e4274;
   border-radius: 5px !important;
+  height: 30px;
+}
+.applyBtn:hover {
+  background-color: #1e4274 !important;
+  color: #fff;
 }
 
 #exploreall {
