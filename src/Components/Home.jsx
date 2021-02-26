@@ -670,7 +670,7 @@ class Home extends Component {
             <a
               href="#"
               id="exploreall"
-              className="d-flex flex-column col-md-1 fs-5"
+              className="d-flex flex-column col-md-1 fs-5 "
             >
               Explore All
             </a>

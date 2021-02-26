@@ -154,11 +154,22 @@
 }
 
 #exploreall {
-  border-bottom: 1px solid rgba(205, 137, 48, 1);
+  /* border-bottom: 1px solid rgba(205, 137, 48, 1); */
   width: 4.6em !important;
   text-decoration: none !important;
   color: #1e4274;
 }
+#exploreall:after {
+  display: block;
+  content: "";
+  transform: scaleX(0.5);
+  border-bottom: 2px solid rgba(205, 137, 48, 1);
+  transition: transform 250ms ease-in-out;
+}
+#exploreall:hover:after {
+  transform: scaleX(1);
+}
+
 .containerrr {
   position: relative;
   width: 50%;
