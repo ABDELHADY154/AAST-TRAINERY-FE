@@ -25,7 +25,6 @@ export default class Footer extends React.Component {
                     <div className="mt-2 flex-column">
                       <img
                         id="footlogo"
-                        // className="navbar-brand img-rounded m-auto "
                         src={logo}
                         width="40%"
                       ></img>
