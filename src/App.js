@@ -12,7 +12,6 @@ import Forget from "./Components/ForgetPassword";
 import ErrorPage from "./Components/ErrorPage404";
 import "./layout/Footer.css";
 
-// import Maintains from "./Components/Maintains";
 const CheckAuth = () => {
   const token = sessionStorage.getItem("token");
   const status = sessionStorage.getItem("status");
@@ -24,7 +23,7 @@ const CheckAuth = () => {
 const AuthRoute = ({ component: Component, ...rest }) => (
   <Route
     {...rest}
-    render={() => (CheckAuth() ? <Component /> : <Redirect to='/Login' />)}
+    render={() => (CheckAuth() ? <Component /> : <Redirect to="/Login" />)}
   />
 );
 
@@ -43,48 +42,51 @@ class App extends React.Component {
     }
   }
 
-  setUser = (data) => {
+  setUser = data => {
     // this.forceUpdate();
     return this.setState({ loggedIn: data });
   };
 
   render() {
-    console.log(this.state.loggedIn);
     return (
       <BrowserRouter>
-        {this.state.loggedIn == true ? <AuthNav setUser={this.setUser} /> : <Nav />}
-        <div className='app'>
-          <div className='auth-wrapper'>
-            <div className='auth-inner'>
+        {this.state.loggedIn == true ? (
+          <AuthNav setUser={this.setUser} />
+        ) : (
+          <Nav />
+        )}
+        <div className="app">
+          <div className="auth-wrapper">
+            <div className="auth-inner">
               <Switch>
                 {/* <== Home for Guest */}
 
                 <Route
                   exact
-                  path='/'
+                  path="/"
                   component={() => <Landing loggedIn={this.state.loggedIn} />}
                 />
 
                 <Route
                   exact
-                  path='/Login'
+                  path="/Login"
                   component={() => <Login setUser={this.setUser} />}
                 />
                 <Route
                   exact
-                  path='/Register'
+                  path="/Register"
                   component={() => <Registry setUser={this.setUser} />}
                 />
-                <Route exact path='/Forget' component={Forget} />
+                <Route exact path="/Forget" component={Forget} />
                 <AuthRoute
                   exact
-                  path='/Home'
+                  path="/Home"
                   component={() => {
                     return <Home setUser={this.setUser} />;
                   }}
                 />
-                <AuthRoute exact path='/Profile' component={Profile} />
-                <Route exact path='*' component={ErrorPage} />
+                <AuthRoute exact path="/Profile" component={Profile} />
+                <Route exact path="*" component={ErrorPage} />
               </Switch>
             </div>
           </div>
