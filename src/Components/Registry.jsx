@@ -10,8 +10,8 @@ import loginBG from "../Components/assests/imgs/login.jpg";
 import { Link } from "react-router-dom";
 
 class Registry extends React.Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       error: {},
       departs: [],
@@ -31,17 +31,17 @@ class Registry extends React.Component {
   }
 
   async componentDidMount() {
+    const token = sessionStorage.getItem("token");
+    const status = sessionStorage.getItem("status");
+    if (status && token) {
+      return this.setState({ loggedIn: true });
+    }
     await axios.get("/departments").then((dep) => {
       this.setState({
         departs: dep.data.response.data,
         loading: true,
       });
     });
-    const token = sessionStorage.getItem("token");
-    const status = sessionStorage.getItem("status");
-    if (status && token) {
-      return this.setState({ loggedIn: true });
-    }
   }
 
   handleSubmit = async (e) => {
@@ -65,6 +65,7 @@ class Registry extends React.Component {
           status: sessionStorage.getItem("status"),
           loggedIn: true,
         });
+        this.props.setUser(true);
       })
       .catch((error) => {
         this.setState({
@@ -91,162 +92,137 @@ class Registry extends React.Component {
   render() {
     let redirect = null;
     if (this.state.loggedIn === true) {
-      return <Redirect to="/Home" />;
+      return <Redirect push to='/Home' />;
     }
     return (
-      <div className="container-fluid ">
-        <div className="row no-gutter ">
-          <div className="col-md-11 col-lg-9 ">
-            <div className=" d-flex align-items-center py-5">
-              <div className="container">
-                <div className="row">
-                  <div className="col-md-11 col-lg-9 mx-auto signup h-100">
-                    <h3 className="mb-5 signTitle">Sign Up</h3>
-                    <form
-                      className="col-md-8 col-lg-10"
-                      onSubmit={this.handleSubmit}
-                    >
+      <div className='container-fluid '>
+        <div className='row no-gutter '>
+          <div className='col-md-11 col-lg-9 '>
+            <div className=' d-flex align-items-center py-5'>
+              <div className='container'>
+                <div className='row'>
+                  <div className='col-md-11 col-lg-9 mx-auto signup h-100'>
+                    <h3 className='mb-5 signTitle'>Sign Up</h3>
+                    <form className='col-md-8 col-lg-10' onSubmit={this.handleSubmit}>
                       <div>
-                        <div className="form-row">
-                          <h3 className="mb-5 signSubTitle">
-                            Personal Information
-                          </h3>
-                          <div className="col-md-10 col-lg-11 form-label-group input-field">
-                            <label className="label">Full Name</label>
+                        <div className='form-row'>
+                          <h3 className='mb-5 signSubTitle'>Personal Information</h3>
+                          <div className='col-md-10 col-lg-11 form-label-group input-field'>
+                            <label className='label'>Full Name</label>
                             <input
-                              type="name"
-                              className={
-                                this.state.error.fullName ? "wrong" : ""
-                              }
-                              onChange={(e) =>
-                                this.setState({ name: e.target.value })
-                              }
+                              type='name'
+                              className={this.state.error.fullName ? "wrong" : ""}
+                              onChange={(e) => this.setState({ name: e.target.value })}
                             />
-                            <p className="error">
-                              {this.state.error.fullName
-                                ? this.state.error.fullName
-                                : ""}
+                            <p className='error'>
+                              {this.state.error.fullName ? this.state.error.fullName : ""}
                             </p>
                           </div>
                         </div>
-                        <div className="form-row">
-                          <div className="col-md-10 col-lg-11 form-label-group input-field">
-                            <label className="label">Student Email</label>
+                        <div className='form-row'>
+                          <div className='col-md-10 col-lg-11 form-label-group input-field'>
+                            <label className='label'>Student Email</label>
                             <input
-                              type="email"
-                              id="Email"
-                              className={
-                                this.state.error.emailErr ? "wrong" : ""
-                              }
-                              onChange={(e) =>
-                                this.setState({ email: e.target.value })
-                              }
+                              type='email'
+                              id='Email'
+                              className={this.state.error.emailErr ? "wrong" : ""}
+                              onChange={(e) => this.setState({ email: e.target.value })}
                             />
-                            <p className="error">
-                              {this.state.error.emailErr
-                                ? this.state.error.emailErr
-                                : ""}
+                            <p className='error'>
+                              {this.state.error.emailErr ? this.state.error.emailErr : ""}
                             </p>
                           </div>
                         </div>
 
-                        <div className="row  form-label-group">
-                          <h2 className="genderLabel">Gender</h2>
-                          <div className="row ">
-                            <div class="col-4 col-lg-5 col-md-4 col-sm-4 col-xs-3 male form-check form-check-inline d-flex">
+                        <div className='row  form-label-group'>
+                          <h2 className='genderLabel'>Gender</h2>
+                          <div className='row '>
+                            <div class='col-4 col-lg-5 col-md-4 col-sm-4 col-xs-3 male form-check form-check-inline d-flex'>
                               <input
-                                type="radio"
-                                name="inlineRadioOptions"
-                                id="inlineRadio1"
-                                value="male"
-                                className="radio"
+                                type='radio'
+                                name='inlineRadioOptions'
+                                id='inlineRadio1'
+                                value='male'
+                                className='radio'
                                 onChange={(e) =>
                                   this.setState({ gender: e.target.value })
                                 }
                               />
                               <label
-                                class="form-check-label raioLabel"
-                                for="inlineCheckbox3"
+                                class='form-check-label raioLabel'
+                                for='inlineCheckbox3'
                               >
                                 Male
                               </label>
                             </div>
-                            <div class=" female col-4 col-lg-5 col-md-4 col-sm-5 col-xs-3 checkbox form-check-inline d-flex">
+                            <div class=' female col-4 col-lg-5 col-md-4 col-sm-5 col-xs-3 checkbox form-check-inline d-flex'>
                               <input
-                                className="radio"
-                                type="radio"
-                                name="inlineRadioOptions"
-                                id="Gender"
-                                value="female"
+                                className='radio'
+                                type='radio'
+                                name='inlineRadioOptions'
+                                id='Gender'
+                                value='female'
                                 onChange={(e) =>
                                   this.setState({ gender: e.target.value })
                                 }
                               />
                               <label
-                                class="form-check-label raioLabel "
-                                for="inlineCheckbox3"
+                                class='form-check-label raioLabel '
+                                for='inlineCheckbox3'
                               >
                                 Female
                               </label>
                             </div>
                           </div>
-                          <p className="error">
-                            {this.state.error.genderErr
-                              ? this.state.error.genderErr
-                              : ""}
+                          <p className='error'>
+                            {this.state.error.genderErr ? this.state.error.genderErr : ""}
                           </p>
                         </div>
 
-                        <div className="form-row">
-                          <div className="col-md-10 col-lg-11 form-label-group input-field">
-                            <label className="label">Password</label>
+                        <div className='form-row'>
+                          <div className='col-md-10 col-lg-11 form-label-group input-field'>
+                            <label className='label'>Password</label>
                             <input
-                              type="password"
-                              className={
-                                this.state.error.passwordErr ? "wrong" : ""
-                              }
+                              type='password'
+                              className={this.state.error.passwordErr ? "wrong" : ""}
                               onChange={(e) =>
                                 this.setState({ password: e.target.value })
                               }
                             />
-                            <p className="error">
+                            <p className='error'>
                               {this.state.error.passwordErr
                                 ? this.state.error.passwordErr
                                 : ""}
                             </p>
                           </div>
-                          <div className="col-md-10 col-lg-11 form-label-group input-field">
-                            <label className="label">Confirm Password</label>
+                          <div className='col-md-10 col-lg-11 form-label-group input-field'>
+                            <label className='label'>Confirm Password</label>
                             <input
-                              type="password"
-                              className={
-                                this.state.error.passwordConfErr ? "wrong" : ""
-                              }
+                              type='password'
+                              className={this.state.error.passwordConfErr ? "wrong" : ""}
                               onChange={(e) =>
                                 this.setState({
                                   confirmPassword: e.target.value,
                                 })
                               }
                             />
-                            <p className="error">
+                            <p className='error'>
                               {this.state.error.passwordConfErr
                                 ? this.state.error.passwordConfErr
                                 : ""}
                             </p>
                           </div>
                         </div>
-                        <h3 className="mb-4 signSubTitle">
-                          College Information
-                        </h3>
-                        <div className="form-row">
-                          <div className="col-md-10 col-lg-11 form-group col-12">
+                        <h3 className='mb-4 signSubTitle'>College Information</h3>
+                        <div className='form-row'>
+                          <div className='col-md-10 col-lg-11 form-group col-12'>
                             {this.state.loading === false ? (
                               <Loader2 />
                             ) : (
                               <select
-                                type="text"
-                                className="form-control dep  "
-                                id="departs"
+                                type='text'
+                                className='form-control dep  '
+                                id='departs'
                                 onChange={(e) =>
                                   this.setState({
                                     department_id: e.target.value,
@@ -263,26 +239,20 @@ class Registry extends React.Component {
                               </select>
                             )}
                             {this.state.error && (
-                              <p className="depError">
-                                {this.state.error.departErr}
-                              </p>
+                              <p className='depError'>{this.state.error.departErr}</p>
                             )}
                           </div>
                         </div>
-                        <div className="form-row">
-                          <div className="col-md-10 col-lg-11 form-label-group input-field">
-                            <label className="label">Registration Number</label>
+                        <div className='form-row'>
+                          <div className='col-md-10 col-lg-11 form-label-group input-field'>
+                            <label className='label'>Registration Number</label>
                             <input
-                              type="number"
-                              className={
-                                this.state.error.regnumErr ? "wrong" : ""
-                              }
+                              type='number'
+                              className={this.state.error.regnumErr ? "wrong" : ""}
                               // placeholder="Registration number"
-                              onChange={(e) =>
-                                this.setState({ reg_no: e.target.value })
-                              }
+                              onChange={(e) => this.setState({ reg_no: e.target.value })}
                             />
-                            <p className="error">
+                            <p className='error'>
                               {this.state.error.regnumErr
                                 ? this.state.error.regnumErr
                                 : ""}
@@ -290,22 +260,22 @@ class Registry extends React.Component {
                           </div>
                         </div>
                       </div>
-                      <div className="col-md-10 col-lg-11">
-                        <Link to="/Login">
-                          <p className="account">Aready have an account ?</p>
+                      <div className='col-md-10 col-lg-11'>
+                        <Link to='/Login'>
+                          <p className='account'>Aready have an account ?</p>
                         </Link>
-                        <p className="agree ">
+                        <p className='agree '>
                           By creating an account, you agree to the
-                          <Link to="/">
-                            <span className="terms">
+                          <Link to='/'>
+                            <span className='terms'>
                               {"  "} Terms and Conditions{"  "}
                             </span>
                           </Link>
                           of the company.
                         </p>
                         <button
-                          className="btn shadow-none submitBtn col-sm-3 col-md-4 col-lg-3 btn-outline-primary d-block text-uppercase font-weight-bold mb-2"
-                          type="submit"
+                          className='btn shadow-none submitBtn col-sm-3 col-md-4 col-lg-3 btn-outline-primary d-block text-uppercase font-weight-bold mb-2'
+                          type='submit'
                         >
                           Sign up
                         </button>
@@ -316,12 +286,8 @@ class Registry extends React.Component {
               </div>
             </div>
           </div>
-          <div className="img-fluid d-none d-md-flex col-md-3 col-lg-4 ">
-            <img
-              src={loginBG}
-              class="img-fluid bg-image-no-img h-100  "
-              width="100%"
-            />
+          <div className='img-fluid d-none d-md-flex col-md-3 col-lg-4 '>
+            <img src={loginBG} class='img-fluid bg-image-no-img h-100  ' width='100%' />
           </div>
 
           {/* <div className="img-fluid sticky-xl-top d-none d-md-flex col-md-3 col-lg-4 bg-image "></div> */}
