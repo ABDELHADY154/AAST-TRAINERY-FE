@@ -15,6 +15,7 @@ import "react-step-progress-bar/styles.css";
 import { ProgressBar, Step } from "react-step-progress-bar";
 import { BsBookmark } from "react-icons/bs";
 import { IoClose } from "react-icons/io5";
+import { Redirect } from "react-router-dom";
 
 class Home extends Component {
   constructor() {
@@ -25,16 +26,18 @@ class Home extends Component {
       token: sessionStorage.getItem("token"),
       avatar: "",
       alert: true,
+      validToken: true,
     };
   }
 
   async componentDidMount() {
+    axios.defaults.headers.common["Authorization"] =
+      "Bearer " + sessionStorage.getItem("token");
     await resolve(
       axios
         .get("/W/get-profile")
         .then(res => {
           if (res.status === 200) {
-            // sessionStorage.setItem("avatar", res.data.response.data.image);
             this.setState({
               user: res.data.response.data,
               loading: true,
@@ -43,24 +46,19 @@ class Home extends Component {
           }
         })
         .catch(error => {
-          this.setState({
-            error: {
-              usernameErr: error.response.status,
-            },
-          });
-          if (this.state.error.usernameErr === 401) {
-            window.location.reload();
+          if (error.response.data.status === 401) {
+            sessionStorage.clear("token");
+            sessionStorage.clear("status");
+            this.setState({ validToken: false });
           }
         }),
     );
   }
 
-  // handleRemove(){
-  //   var alert = document.getElementsBy("navBottom")[0].remove(alert);
-
-  // }
-
   render() {
+    if (this.state.validToken == false) {
+      return <Redirect push to="/login" />;
+    }
     if (this.state.user.profile_updated === false) {
       var Alert =
         this.state.alert == true ? (

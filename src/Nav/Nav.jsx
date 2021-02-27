@@ -28,6 +28,7 @@ class Nav extends React.Component {
       token: sessionStorage.getItem("token"),
       status: sessionStorage.getItem("status"),
       loading: false,
+      isLoggedIn: false,
       // number: 0,
     };
     if (this.state.token) {
@@ -47,16 +48,16 @@ class Nav extends React.Component {
     }
   }
   async componentDidMount() {
-    if (this.state.loggedIn) {
+    if (this.props.loggedIn == true) {
       await resolve(
-        axios.get("/W/studentImg").then((res) => {
+        axios.get("/W/studentImg").then(res => {
           if (res.status === 200) {
             this.setState({
               user: res.data.response.data,
               avatar: res.data.response.data.image,
             });
           }
-        })
+        }),
       );
     }
   }
