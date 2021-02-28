@@ -70,21 +70,21 @@
   }
 }
 .img1 {
-  background-image: url("../Components/Landing/bg1.png") !important;
+  background-image: url("../Components/Landing/Assets/bg1.png") !important;
   height: 34rem;
   width: 100%;
   background-size: cover;
   background-repeat: no-repeat;
 }
 .img2 {
-  background-image: url("../Components/Landing/bg12.png") !important;
+  background-image: url("../Components/Landing/Assets/bg12.png") !important;
   height: 34rem;
   width: 100%;
   background-size: cover;
   background-repeat: no-repeat;
 }
 .img3 {
-  background-image: url("../Components/Landing/bg13.png") !important;
+  background-image: url("../Components/Landing/Assets/bg13.png") !important;
   height: 34rem;
   width: 100%;
   background-size: cover;
@@ -106,7 +106,7 @@
 }
 
 .logo1 {
-  background-image: url("../Components/Landing/logo1.png") !important;
+  background-image: url("../Components/Landing/Assets/logo1.png") !important;
   width: 90px !important;
   height: 50px !important;
   background-size: cover;

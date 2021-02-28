@@ -1,15 +1,14 @@
 import React from "react";
 import { BrowserRouter, Redirect, Route, Switch } from "react-router-dom";
-import Registry from "./Components/Registry";
-import Home from "./Components/Home";
-import Login from "./Components/Login";
-import Nav from "./Nav/Nav";
-import AuthNav from "./Nav/AuthNav";
+import Registry from "./Components/Auth/Registry";
+import Home from "./Components/Home/Home";
+import Login from "./Components/Auth/Login";
+import Nav from "./Components/Common/Nav";
+import AuthNav from "./Components/Common/AuthNav";
 import Landing from "./Components/Landing/Landing";
-import Profile from "./Components/Profile";
-import Forget from "./Components/ForgetPassword";
-
-import ErrorPage from "./Components/ErrorPage404";
+import Profile from "./Components/Profile/Profile";
+import Forget from "./Components/Auth/ForgetPassword";
+import ErrorPage from "./Components/Auth/ErrorPage404";
 import "./layout/Footer.css";
 
 const CheckAuth = () => {

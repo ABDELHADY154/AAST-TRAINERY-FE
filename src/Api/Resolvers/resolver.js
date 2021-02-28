@@ -1,5 +1,3 @@
-/** @format */
-
 export async function resolve(promise) {
   const resolved = {
     data: null,
