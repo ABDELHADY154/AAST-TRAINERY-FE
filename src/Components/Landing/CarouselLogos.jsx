@@ -1,9 +1,9 @@
 import React, { Component } from "react";
 import "../../layout/carousel.css";
 
-import logo1 from "./logo1.png";
-import logo2 from "./logo2.png";
-import logo3 from "./logo3.png";
+import logo1 from "./Assets/logo1.png";
+import logo2 from "./Assets/logo2.png";
+import logo3 from "./Assets/logo3.png";
 export class CarouselLogos extends Component {
   render() {
     var settings = {

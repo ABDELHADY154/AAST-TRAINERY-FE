@@ -1,21 +1,20 @@
 import React from "react";
 import { axios } from "../../Api/axios";
 import { Redirect } from "react-router-dom";
-// import Caro from "./Caro";
-import Footer from "../Footer";
-import img from "./bg2.png";
-import img1 from "./Rectangle1.png";
-import img2 from "./Rectangle2.png";
-import img3 from "./Rectangle3.png";
-import img4 from "./2.png";
-import google from "./google.png";
-import apple from "./apple.png";
+import Footer from "../Common/Footer";
+import img from "./Assets/bg2.png";
+import img1 from "./Assets/Rectangle1.png";
+import img2 from "./Assets/Rectangle2.png";
+import img3 from "./Assets/Rectangle3.png";
+import img4 from "./Assets/2.png";
+import google from "./Assets/google.png";
+import apple from "./Assets/apple.png";
 import { DepLoader } from "../../loader";
 import "../../layout/Landing.css";
 import "../../layout/carousel.css";
 import { BsCheck } from "react-icons/bs";
 import CountUp from "react-countup";
-import Ticker from "../Counter.jsx";
+import Ticker from "./Counter.jsx";
 
 import { Carousel } from "./Carousel";
 import { CarouselLogos } from "./CarouselLogos";
@@ -35,7 +34,7 @@ class Landing extends React.Component {
     }
   }
   async componentDidMount() {
-    await axios.get("/W/landingCount").then((data) => {
+    await axios.get("/W/landingCount").then(data => {
       this.setState({
         loading: true,
         students: data.data.response.data.students,

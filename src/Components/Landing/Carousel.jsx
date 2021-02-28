@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import "../../layout/carousel.css";
-import img1 from "./bg1.png";
-import img2 from "./bg12.png";
-import img3 from "./bg13.png";
+import img1 from "./Assets/bg1.png";
+import img2 from "./Assets/bg12.png";
+import img3 from "./Assets/bg13.png";
 export class Carousel extends Component {
   render() {
     return (
