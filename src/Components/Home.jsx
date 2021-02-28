@@ -68,12 +68,12 @@ class Home extends Component {
             <div className="container d-flex flex-row  flex-wrap ">
               <div
                 id="alertingtitle"
-                className="d-flex flex-column col-md-6 col-12 mt-2"
+                className="d-flex flex-column col-md-6 col-12 mt-1"
               >
                 Here to help, Update your profile information to get the best
                 matching opportunities.
               </div>
-              <div className="d-flex flex-column col-md-4 col-12  mt-2">
+              <div className="d-flex flex-column col-md-4 col-12  mt-1">
                 <a id="redlink" href="#">
                   Update Now
                 </a>
