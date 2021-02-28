@@ -32,7 +32,7 @@ class Home extends Component {
     await resolve(
       axios
         .get("/W/get-profile")
-        .then(res => {
+        .then((res) => {
           if (res.status === 200) {
             // sessionStorage.setItem("avatar", res.data.response.data.image);
             this.setState({
@@ -42,7 +42,7 @@ class Home extends Component {
             });
           }
         })
-        .catch(error => {
+        .catch((error) => {
           this.setState({
             error: {
               usernameErr: error.response.status,
@@ -51,7 +51,7 @@ class Home extends Component {
           if (this.state.error.usernameErr === 401) {
             window.location.reload();
           }
-        }),
+        })
     );
   }
 
@@ -71,7 +71,7 @@ class Home extends Component {
                 className="d-flex flex-column col-md-6 col-12 mt-2"
               >
                 Here to help, Update your profile information to get the best
-                match opportunities.
+                matching opportunities.
               </div>
               <div className="d-flex flex-column col-md-4 col-12  mt-2">
                 <a id="redlink" href="#">
