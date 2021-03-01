@@ -15,6 +15,24 @@
   font-family: SF med;
   src: url("../Components/assests/Fonts/SF-Compact-Display-Medium.otf");
 }
+/* Scrollbars */
+::-webkit-scrollbar {
+  width: 5px;
+  height: 10px;
+}
+::-webkit-scrollbar-track {
+  background: #cccccc;
+  height: 10px;
+}
+::-webkit-scrollbar-thumb {
+  background: #1e4274;
+  height: 10px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #cd8930;
+  height: 10px;
+}
+
 .container-fluid {
   padding: 0;
 }
