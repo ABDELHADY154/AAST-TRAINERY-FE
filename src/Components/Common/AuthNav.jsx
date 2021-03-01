@@ -26,8 +26,11 @@ class AuthNav extends React.Component {
       status: sessionStorage.getItem("status"),
       loading: false,
       isLoggedIn: false,
+      fullname: "",
+
       // number: 0,
     };
+
     if (this.state.token) {
       this.setState({ loading: true });
     }
@@ -44,21 +47,22 @@ class AuthNav extends React.Component {
     await resolve(
       axios
         .get("/W/studentImg")
-        .then(res => {
+        .then((res) => {
           if (res.status === 200) {
             this.setState({
               user: res.data.response.data,
               avatar: res.data.response.data.image,
+              fullname: res.data.response.data.fullName,
             });
           }
         })
-        .catch(error => {
+        .catch((error) => {
           if (error.response.data.status === 401) {
             sessionStorage.clear("token");
             sessionStorage.clear("status");
             this.setState({ validToken: false });
           }
-        }),
+        })
     );
 
     let token = sessionStorage.getItem("token");
@@ -317,7 +321,7 @@ class AuthNav extends React.Component {
                         <li className="row profileHeader d-flex justify-content-center">
                           <a
                             class="dropdown-item"
-                            href="#"
+                            href="/Profile"
                             style={{
                               fontSize: 18,
                               fontFamily: "SF med",
@@ -336,7 +340,7 @@ class AuthNav extends React.Component {
                             ) : (
                               <AvatarLoader />
                             )}
-                            Full Name
+                            {this.state.fullname}
                             <br />
                             <span
                               className="text-muted "

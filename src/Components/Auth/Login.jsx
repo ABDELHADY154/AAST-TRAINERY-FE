@@ -17,7 +17,7 @@ class Login extends React.Component {
     };
   }
 
-  handleSubmit = async e => {
+  handleSubmit = async (e) => {
     e.preventDefault();
     e.target.reset();
     const data = {
@@ -26,7 +26,7 @@ class Login extends React.Component {
     };
     return await axios
       .post("/login", data)
-      .then(response => {
+      .then((response) => {
         sessionStorage.setItem("token", response.data.response.data.token);
         sessionStorage.setItem("status", response.statusText);
         this.props.setUser(true);
@@ -34,7 +34,7 @@ class Login extends React.Component {
           loggedIn: true,
         });
       })
-      .catch(error => {
+      .catch((error) => {
         if (error.response.data.errors) {
           this.setState({
             error: {
@@ -77,7 +77,7 @@ class Login extends React.Component {
                               className={
                                 this.state.error.emailErr ? "wrong" : ""
                               }
-                              onChange={e =>
+                              onChange={(e) =>
                                 this.setState({ email: e.target.value })
                               }
                             />
@@ -92,7 +92,7 @@ class Login extends React.Component {
                             <label className="label">Password</label>
                             <input
                               type="password"
-                              onChange={e =>
+                              onChange={(e) =>
                                 this.setState({ password: e.target.value })
                               }
                               className={
