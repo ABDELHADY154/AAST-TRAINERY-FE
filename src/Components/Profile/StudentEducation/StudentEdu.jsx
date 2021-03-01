@@ -29,7 +29,7 @@ export default class StudentEdu extends Component {
         </div>
         <div className="d-flex flex-row fs-6 ">
           <div className=" d-flex flex-row col-12 col-md-12">
-            {this.props.city}, {this.props.country}
+            {this.props.city}, {this.props.country}.
           </div>
         </div>
         <div className="d-flex flex-row fs-6 ">

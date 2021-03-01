@@ -38,7 +38,7 @@ class Profile extends Component {
   async componentDidMount() {
     await axios
       .get("/W/student/get-profile")
-      .then(res => {
+      .then((res) => {
         this.setState({
           name: res.data.response.data.name,
           image: res.data.response.data.image,
@@ -63,7 +63,7 @@ class Profile extends Component {
         });
         console.log(res.data.response.data.educations);
       })
-      .catch(err => {
+      .catch((err) => {
         console.log(err);
       });
   }
@@ -78,13 +78,26 @@ class Profile extends Component {
               src={this.state.image}
             ></img>
             <div className="d-flex flex-column col-7 col-md-4 mt-1 me-5">
-              <div className="d-flex flex-row flex-wrap">{this.state.name}</div>
-              <div className="d-flex flex-row flex-wrap">
+              <div
+                className="d-flex flex-row flex-wrap fs-4"
+                style={{ textTransform: "capitalize" }}
+              >
+                {this.state.name}
+              </div>
+              <div
+                className="d-flex flex-row flex-wrap"
+                style={{ textTransform: "capitalize" }}
+              >
                 {this.state.university}
               </div>
-              <div className="d-flex flex-row flex-wrap ">
-                {this.state.department}{" "}
-                <span className="ms-2">{this.state.gpa}</span>
+              <div
+                className="d-flex flex-row flex-wrap "
+                style={{ textTransform: "capitalize" }}
+              >
+                {this.state.department}
+                <span id="gpa" className=" ms-2">
+                  {this.state.gpa}
+                </span>
               </div>
               <div className="d-flex flex-row flex-wrap">
                 {this.state.start_year} - {this.state.end_year}
@@ -160,7 +173,7 @@ class Profile extends Component {
                   style={{ textTransform: "capitalize" }}
                 >
                   Address: {"  "}
-                  {this.state.city}, {this.state.country}
+                  {this.state.city}, {this.state.country}.
                 </div>
               </div>
               <div className="d-flex flex-column col-12 col-md-5 me-5"></div>
@@ -207,7 +220,7 @@ class Profile extends Component {
                   +
                 </Link>
               </div>
-              {this.state.educations.map(item => {
+              {this.state.educations.map((item) => {
                 return (
                   <StudentEducation
                     key={item.id}
@@ -220,91 +233,6 @@ class Profile extends Component {
                   />
                 );
               })}
-
-              {/* <div
-                id="lightfont"
-                className="d-flex flex-row  fs-5 "
-                style={{ textTransform: "capitalize" }}
-              >
-                <div className=" d-flex flex-row col-10 col-md-11">
-                  Sidi Gaber Language School (SLS)
-                </div>
-                <div
-                  id="hiddenhover"
-                  className=" d-flex flex-row col-2 col-md-1 p-0 ms-3"
-                >
-                  <Link
-                    renderAs="button"
-
-                    // to="/Register"
-                  >
-                    <BiPencil fill="#cd8930" color="#cd8930" className="" />
-                  </Link>
-                </div>
-              </div>
-              <div className="d-flex flex-row fs-6 ">
-                <div className=" d-flex flex-row col-12 col-md-12">
-                  Alexandria Governorate, Egypt
-                </div>
-              </div>
-              <div className="d-flex flex-row fs-6 ">
-                <div className=" d-flex flex-row col-12 col-md-12">
-                  Sep 2007 to Jun 2017 · 12 Years
-                </div>
-              </div>
-              <div className="d-flex flex-row fs-6 mt-2 ">
-                <Link
-                  id="goldcredentials"
-                  renderAs="button"
-                  className="  mb-1   d-flex flex-row col-12 col-md-3"
-                  // to="/Register"
-                >
-                  See credentials
-                </Link>
-              </div>
-              <hr /> */}
-              {/* <div
-                id="lightfont"
-                className="d-flex flex-row  fs-5 "
-                style={{ textTransform: "capitalize" }}
-              >
-                <div className=" d-flex flex-row col-10 col-md-11">
-                  Sidi Gaber Language School (SLS)
-                </div>
-                <div
-                  id="hiddenhover"
-                  className=" d-flex flex-row col-2 col-md-1 p-0 ms-3"
-                >
-                  <Link
-                    renderAs="button"
-
-                    // to="/Register"
-                  >
-                    <BiPencil fill="#cd8930" color="#cd8930" className="" />
-                  </Link>
-                </div>
-              </div>
-              <div className="d-flex flex-row fs-6 ">
-                <div className=" d-flex flex-row col-12 col-md-12">
-                  Alexandria Governorate, Egypt
-                </div>
-              </div>
-              <div className="d-flex flex-row fs-6 ">
-                <div className=" d-flex flex-row col-12 col-md-12">
-                  Sep 2007 to Jun 2017 · 12 Years
-                </div>
-              </div>
-              <div className="d-flex flex-row fs-6 mt-2 ">
-                <Link
-                  id="goldcredentials"
-                  renderAs="button"
-                  className="  mb-1   d-flex flex-row col-12 col-md-3"
-                  // to="/Register"
-                >
-                  See credentials
-                </Link>
-              </div>
-              <hr /> */}
             </div>
           </div>
         </div>

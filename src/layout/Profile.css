@@ -59,6 +59,9 @@
   .orangetitle2 {
     margin-top: 1.5em;
   }
+  #gpa {
+    margin-left: 0 !important;
+  }
 }
 @media screen and (max-width: 347px) {
   #topbtns {
