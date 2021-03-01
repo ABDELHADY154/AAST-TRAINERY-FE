@@ -47,7 +47,7 @@ class AuthNav extends React.Component {
     await resolve(
       axios
         .get("/W/studentImg")
-        .then((res) => {
+        .then(res => {
           if (res.status === 200) {
             this.setState({
               user: res.data.response.data,
@@ -56,13 +56,13 @@ class AuthNav extends React.Component {
             });
           }
         })
-        .catch((error) => {
+        .catch(error => {
           if (error.response.data.status === 401) {
             sessionStorage.clear("token");
             sessionStorage.clear("status");
             this.setState({ validToken: false });
           }
-        })
+        }),
     );
 
     let token = sessionStorage.getItem("token");
@@ -320,7 +320,7 @@ class AuthNav extends React.Component {
                       <ul class="dropdown-menu profileMenu ">
                         <li className="row profileHeader d-flex justify-content-center">
                           <a
-                            class="dropdown-item"
+                            class="dropdown-item text-wrap"
                             href="/Profile"
                             style={{
                               fontSize: 18,

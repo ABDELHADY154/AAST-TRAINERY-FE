@@ -7,6 +7,7 @@ import { Link } from "react-router-dom";
 import { MdSettingsPhone } from "react-icons/md";
 import { HiOutlineMail } from "react-icons/hi";
 import { BiPencil } from "react-icons/bi";
+import StudentEducation from "./StudentEducation/StudentEdu";
 
 // import { Redirect } from "react-router-dom";
 import { axios } from "../../Api/axios";
@@ -24,7 +25,7 @@ class Profile extends Component {
     reg_no: 0,
     gender: "",
     period: 0,
-    gpa: 0,
+    gpa: null,
     nationality: "",
     country: "",
     city: "",
@@ -32,11 +33,12 @@ class Profile extends Component {
     profile_score: 0,
     university: "",
     phone_number: "",
+    educations: [],
   };
   async componentDidMount() {
     await axios
       .get("/W/student/get-profile")
-      .then((res) => {
+      .then(res => {
         this.setState({
           name: res.data.response.data.name,
           image: res.data.response.data.image,
@@ -57,10 +59,11 @@ class Profile extends Component {
           profile_score: res.data.response.data.profile_score,
           university: res.data.response.data.university,
           phone_number: res.data.response.data.phone_number,
+          educations: res.data.response.data.educations,
         });
-        // console.log(res.data.response.data);
+        console.log(res.data.response.data.educations);
       })
-      .catch((err) => {
+      .catch(err => {
         console.log(err);
       });
   }
@@ -72,7 +75,7 @@ class Profile extends Component {
             <img
               className="d-flex flex-column col-2 col-md-1 me-4"
               id="profilepp"
-              src={profileimg}
+              src={this.state.image}
             ></img>
             <div className="d-flex flex-column col-7 col-md-4 mt-1 me-5">
               <div className="d-flex flex-row flex-wrap">{this.state.name}</div>
@@ -80,7 +83,8 @@ class Profile extends Component {
                 {this.state.university}
               </div>
               <div className="d-flex flex-row flex-wrap ">
-                {this.state.department} <span className="ms-2">3.9</span>
+                {this.state.department}{" "}
+                <span className="ms-2">{this.state.gpa}</span>
               </div>
               <div className="d-flex flex-row flex-wrap">
                 {this.state.start_year} - {this.state.end_year}
@@ -203,7 +207,21 @@ class Profile extends Component {
                   +
                 </Link>
               </div>
-              <div
+              {this.state.educations.map(item => {
+                return (
+                  <StudentEducation
+                    key={item.id}
+                    schoolName={item.school_name}
+                    city={item.city}
+                    country={item.country}
+                    fromDate={item.from}
+                    toDate={item.to}
+                    cred={item.credential_url}
+                  />
+                );
+              })}
+
+              {/* <div
                 id="lightfont"
                 className="d-flex flex-row  fs-5 "
                 style={{ textTransform: "capitalize" }}
@@ -244,14 +262,14 @@ class Profile extends Component {
                   See credentials
                 </Link>
               </div>
-              <hr />
-              <div
+              <hr /> */}
+              {/* <div
                 id="lightfont"
                 className="d-flex flex-row  fs-5 "
                 style={{ textTransform: "capitalize" }}
               >
                 <div className=" d-flex flex-row col-10 col-md-11">
-                  Arab Academy For Science And Technology{" "}
+                  Sidi Gaber Language School (SLS)
                 </div>
                 <div
                   id="hiddenhover"
@@ -259,7 +277,7 @@ class Profile extends Component {
                 >
                   <Link
                     renderAs="button"
-                    className=" shadow-none "
+
                     // to="/Register"
                   >
                     <BiPencil fill="#cd8930" color="#cd8930" className="" />
@@ -273,19 +291,20 @@ class Profile extends Component {
               </div>
               <div className="d-flex flex-row fs-6 ">
                 <div className=" d-flex flex-row col-12 col-md-12">
-                  Sep 2017 to Jun 2021 · 4 Years{" "}
+                  Sep 2007 to Jun 2017 · 12 Years
                 </div>
               </div>
               <div className="d-flex flex-row fs-6 mt-2 ">
                 <Link
                   id="goldcredentials"
                   renderAs="button"
-                  className=" shadow-none mb-1   d-flex flex-row col-12 col-md-12"
+                  className="  mb-1   d-flex flex-row col-12 col-md-3"
                   // to="/Register"
                 >
                   See credentials
                 </Link>
               </div>
+              <hr /> */}
             </div>
           </div>
         </div>
