@@ -27,6 +27,9 @@
 body {
   overflow-x: hidden; /* Hide horizontal scrollbar */
 }
+.avatar {
+  border-radius: 100px !important;
+}
 .navBg {
   background-color: #fff !important;
   border: none !important;
