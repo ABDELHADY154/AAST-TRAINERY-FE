@@ -44,7 +44,7 @@ class AuthNav extends React.Component {
     await resolve(
       axios
         .get("/W/studentImg")
-        .then(res => {
+        .then((res) => {
           if (res.status === 200) {
             this.setState({
               user: res.data.response.data,
@@ -52,13 +52,13 @@ class AuthNav extends React.Component {
             });
           }
         })
-        .catch(error => {
+        .catch((error) => {
           if (error.response.data.status === 401) {
             sessionStorage.clear("token");
             sessionStorage.clear("status");
             this.setState({ validToken: false });
           }
-        }),
+        })
     );
 
     let token = sessionStorage.getItem("token");
@@ -352,7 +352,12 @@ class AuthNav extends React.Component {
                           </a>
                         </li>
                         <li>
-                          <a class="row " href="#">
+                          <Link
+                            class="row "
+                            // href="/GenaeralInfo"
+                            to="/GeneralInfo"
+                            renderAs="button"
+                          >
                             <RiEdit2Fill
                               color="red"
                               className="col-3 mt-1 ms-2"
@@ -361,7 +366,7 @@ class AuthNav extends React.Component {
                               pull="left"
                             />
                             <p className="col-7">Edit Profile</p>
-                          </a>
+                          </Link>
                         </li>
                         <li>
                           <a class="row " href="#">

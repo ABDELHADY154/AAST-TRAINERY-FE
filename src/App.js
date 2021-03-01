@@ -9,6 +9,10 @@ import Landing from "./Components/Landing/Landing";
 import Profile from "./Components/Profile/Profile";
 import Forget from "./Components/Auth/ForgetPassword";
 import ErrorPage from "./Components/Auth/ErrorPage404";
+import GeneralInfo from "./EditProfile/GeneralInfo";
+// import Skills from "./EditProfile/Skills";
+// import Education from "./EditProfile/Education";
+
 import "./layout/Footer.css";
 
 const CheckAuth = () => {
@@ -41,7 +45,7 @@ class App extends React.Component {
     }
   }
 
-  setUser = data => {
+  setUser = (data) => {
     // this.forceUpdate();
     return this.setState({ loggedIn: data });
   };
@@ -85,6 +89,11 @@ class App extends React.Component {
                   }}
                 />
                 <AuthRoute exact path="/Profile" component={Profile} />
+
+                <Route exact path="/GeneralInfo" component={GeneralInfo} />
+                {/* <Route exact path="/Skills" component={Skills} />
+                <Route exact path="/Education" component={Education} /> */}
+
                 <Route exact path="*" component={ErrorPage} />
               </Switch>
             </div>
