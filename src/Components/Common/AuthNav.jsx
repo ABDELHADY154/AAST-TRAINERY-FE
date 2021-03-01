@@ -73,7 +73,7 @@ class AuthNav extends React.Component {
       <div className="navBottom">
         <nav class="navbar navbar-expand-lg navBg fixed-top">
           <div className="container">
-            <Link className="navbar-brand mx-2" href="/">
+            <Link className="navbar-brand mx-2" renderAs="button" to="/Home">
               <img className="navbar-brand" src={logo} width="170" alt=""></img>
             </Link>
             <button
