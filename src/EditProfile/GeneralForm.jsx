@@ -23,7 +23,7 @@ class GeneralForm extends Component {
             Gender
           </label>
           <div className="row ">
-            <div class="male col-4 col-lg-3 col-md-4 col-sm-4 col-xs-3  form-check form-check-inline d-flex">
+            <div class="male col-4 col-lg-3 col-md-4 col-sm-4 col-xs-3 form-check form-check-inline d-flex">
               <input
                 type="radio"
                 name="inlineRadioOptions"
