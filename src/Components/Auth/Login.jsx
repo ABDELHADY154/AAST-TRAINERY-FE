@@ -75,7 +75,9 @@ class Login extends React.Component {
                             <input
                               type="email"
                               className={
-                                this.state.error.emailErr ? "wrong" : ""
+                                this.state.error.emailErr
+                                  ? "wrong signInput"
+                                  : "signInput"
                               }
                               onChange={(e) =>
                                 this.setState({ email: e.target.value })
@@ -96,7 +98,9 @@ class Login extends React.Component {
                                 this.setState({ password: e.target.value })
                               }
                               className={
-                                this.state.error.passwordErr ? "wrong" : ""
+                                this.state.error.passwordErr
+                                  ? "wrong signInput "
+                                  : " signInput"
                               }
                             />
                             {this.state.error.passwordErr && (

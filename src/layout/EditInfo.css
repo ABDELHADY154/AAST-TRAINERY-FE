@@ -1,0 +1,92 @@
+/* ...........Basma........... */
+.editTitle {
+  font-size: 35px !important;
+  font-family: SF med !important;
+}
+.categoryTitle {
+  font-size: 25px !important;
+  font-family: SF bold !important;
+  color: #cd8930;
+  width: 1.5em !important;
+  padding-bottom: 4px !important;
+  border-bottom: 3px solid rgba(205, 137, 48, 1);
+}
+.infoTabsUl {
+  border: none !important;
+  margin-left: -1.5em !important;
+}
+.tabBtn {
+  /* padding: 0 !important;
+  margin: 1em !important; */
+  margin-bottom: 1em !important;
+  border: none !important;
+}
+.tabBtn:hover {
+  color: #1e4274 !important;
+  border: none !important;
+}
+.tabBtn:after {
+  display: block;
+  content: "";
+  /* transform: scaleX(1); */
+  transform: scale(1, 1);
+  border: none !important;
+  transition: transform 300ms ease-in-out;
+}
+.tabBtn:hover:after {
+  /* transform: scaleX(0); */
+  transform: scale(0.5, 1);
+  border-bottom: 2px solid #1e4274 !important;
+}
+.tabBtn.active {
+  color: #cd8930 !important;
+  border: none !important;
+}
+.tabBtn.active:after {
+  display: block;
+  content: "";
+  /* transform: scaleX(1); */
+  transform: scale(1, 1);
+  border: none !important;
+  transition: transform 300ms ease-in-out;
+  border-bottom: 2px solid #cd8930 !important;
+}
+
+@media (max-width: 768px) {
+  .editTitle {
+    font-size: 25px !important;
+  }
+  .categoryTitle {
+    font-size: 15px !important;
+  }
+  .infoTabsUl {
+    overflow-x: auto;
+    overflow-y: hidden;
+    flex-wrap: nowrap;
+    /* overflow: auto; */
+    white-space: nowrap;
+  }
+  .infoTabsUl::-webkit-scrollbar {
+    /* width: 2px !important; */
+    height: 2px !important;
+  }
+  .infoTabs {
+    margin-bottom: -1rem !important;
+    display: inline-block;
+    white-space: nowrap;
+  }
+  .tabBtn:hover {
+    color: #cd8930 !important;
+  }
+  .tabBtn:hover:after {
+    color: #cd8930 !important;
+    border-bottom: none !important;
+  }
+  .tabBtn.active:after {
+    border-bottom: none !important;
+  }
+}
+
+/* ...........Mohannad........... */
+
+/* ...........Mostafa........... */

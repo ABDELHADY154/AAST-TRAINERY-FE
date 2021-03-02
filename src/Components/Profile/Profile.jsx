@@ -1,5 +1,3 @@
-/** @format */
-
 import React, { Component } from "react";
 import profileimg from "../../Components/assests/imgs/pp.jpg";
 import "../../layout/Profile.css";
