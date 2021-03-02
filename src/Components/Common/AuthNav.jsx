@@ -94,14 +94,14 @@ class AuthNav extends React.Component {
             <div className="collapse navbar-collapse " id="navbarScroll">
               <ul className="navbar-nav mt-1">
                 <li className="nav-item ">
-                  <Link className="nav-link item navPage" to="/Home">
+                  <Link className="nav-link item navPage mt-2" to="/Home">
                     Explore
                     <span className="sr-only" />
                   </Link>
                 </li>
                 <li className="nav-item ">
                   <Link
-                    className="nav-link item navPage"
+                    className="nav-link item navPage mt-2"
                     to="#"
                     // onClick={this.handleLogout}
                   >

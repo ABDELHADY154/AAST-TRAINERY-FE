@@ -23,7 +23,7 @@ export default class StudentEdu extends Component {
 
               // to="/Register"
             >
-              <BiPencil fill="#cd8930" color="#cd8930" className="" />
+              <BiPencil fill="#cd8930" color="#cd8930" />
             </Link>
           </div>
         </div>

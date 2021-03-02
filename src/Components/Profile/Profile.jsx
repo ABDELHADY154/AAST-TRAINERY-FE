@@ -59,7 +59,7 @@ class Profile extends Component {
           phone_number: res.data.response.data.phone_number,
           educations: res.data.response.data.educations,
         });
-        console.log(res.data.response.data.educations);
+        console.log(res.data.response.data);
       })
       .catch((err) => {
         console.log(err);
@@ -210,6 +210,36 @@ class Profile extends Component {
             <div className="card-body">
               <div className="d-flex flex-row titlecard fs-4 mb-2">
                 Education
+                <Link
+                  renderAs="button"
+                  className="  ms-3 plus"
+                  // to="/Register"
+                >
+                  +
+                </Link>
+              </div>
+              {this.state.educations.map((item) => {
+                return (
+                  <StudentEducation
+                    key={item.id}
+                    schoolName={item.school_name}
+                    city={item.city}
+                    country={item.country}
+                    fromDate={item.from}
+                    toDate={item.to}
+                    cred={item.credential_url}
+                  />
+                );
+              })}
+            </div>
+          </div>
+        </div>
+
+        <div className="container">
+          <div id="education" className="card mt-5">
+            <div className="card-body">
+              <div className="d-flex flex-row titlecard fs-4 mb-2">
+                Work Experience
                 <Link
                   renderAs="button"
                   className="  ms-3 plus"

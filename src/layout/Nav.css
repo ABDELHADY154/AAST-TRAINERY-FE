@@ -317,3 +317,7 @@ BsXOctagon svg {
   color: #cd8930 !important;
   border-bottom: solid 3px #cd8930;
 }
+.noti:hover {
+  color: #cd8930 !important;
+  fill: #cd8930 !important;
+}
