@@ -7,7 +7,17 @@ class GeneralForm extends Component {
   render() {
     return (
       <div className="container text-center">
-        <h1>General </h1>
+        <div class="col-12">
+          <label for="inputFullname" class="form-label">
+            Fullname
+          </label>
+          <input
+            type="text"
+            class="form-control"
+            id="inputFullname"
+            placeholder="Fullname"
+          />
+        </div>
       </div>
     );
   }
