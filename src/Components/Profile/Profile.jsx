@@ -8,6 +8,7 @@ import { BiPencil } from "react-icons/bi";
 import StudentEducation from "./StudentEducation/StudentEdu";
 import StudentWorkExp from "./StudentWorkExp/StudentWorkExp";
 import StudentCourses from "./StudentCourses/StudentCourses";
+import Footer2 from "../Common/Footer2";
 
 // import { Redirect } from "react-router-dom";
 import { axios } from "../../Api/axios";
@@ -299,6 +300,7 @@ class Profile extends Component {
             </div>
           </div>
         </div>
+        <Footer2 />
       </div>
     );
   }
