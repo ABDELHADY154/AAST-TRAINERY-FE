@@ -9,13 +9,13 @@ class GeneralForm extends Component {
       <div className="container text-center">
         <div class="col-12">
           <label for="inputFullname" class="form-label">
-            Fullname
+            Full Name
           </label>
           <input
             type="text"
-            class="form-control"
+            className="form-control editInput"
             id="inputFullname"
-            placeholder="Fullname"
+            placeholder="Full Name"
           />
         </div>
       </div>
