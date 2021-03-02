@@ -2,8 +2,13 @@ import React, { Component } from "react";
 // import { Redirect } from "react-router-dom";
 import { Link } from "react-router-dom";
 // import { axios } from "../Api/axios";
-import Skills from "./Skills";
-import Education from "./Education";
+import SkillsForm from "./SkillsForm";
+import EducationForm from "./EducationForm";
+import ExperianceForm from "./ExperianceForm";
+import CoursesForm from "./CoursesForm";
+import AccountsForm from "./AccountsForm";
+import GeneralForm from "./GeneralForm";
+
 class GeneralInfo extends Component {
   render() {
     return (
@@ -75,26 +80,13 @@ class GeneralInfo extends Component {
               data-bs-target="#Skills"
               type="button"
               role="tab"
-              aria-controls="Skills"
+              aria-controls="conSkillstact"
               aria-selected="false"
             >
               Skills
             </button>
           </li>
-          <li class="nav-item" role="presentation">
-            <button
-              class="nav-link"
-              id="Language-tab"
-              data-bs-toggle="tab"
-              data-bs-target="#Language"
-              type="button"
-              role="tab"
-              aria-controls="Language"
-              aria-selected="false"
-            >
-              Language
-            </button>
-          </li>
+
           <li class="nav-item" role="presentation">
             <button
               class="nav-link"
@@ -117,16 +109,23 @@ class GeneralInfo extends Component {
             role="tabpanel"
             aria-labelledby="General-tab"
           >
-            General
+            <GeneralForm />
           </div>
-
           <div
-            class="tab-pane fade "
+            class="tab-pane fade"
             id="Education"
             role="tabpanel"
             aria-labelledby="Education-tab"
           >
-            <Education />
+            <EducationForm />
+          </div>
+          <div
+            class="tab-pane fade"
+            id="Experiance"
+            role="tabpanel"
+            aria-labelledby="Experiance-tab"
+          >
+            <ExperianceForm />
           </div>
           <div
             class="tab-pane fade"
@@ -134,32 +133,24 @@ class GeneralInfo extends Component {
             role="tabpanel"
             aria-labelledby="Courses-tab"
           >
-            Courses
+            <CoursesForm />
           </div>
           <div
-            class="tab-pane fade show active"
+            class="tab-pane fade"
             id="Skills"
             role="tabpanel"
             aria-labelledby="Skills-tab"
           >
-            Skills
+            <SkillsForm />
           </div>
 
-          <div
-            class="tab-pane fade "
-            id="Language"
-            role="tabpanel"
-            aria-labelledby="Language-tab"
-          >
-            Language
-          </div>
           <div
             class="tab-pane fade"
             id="Accounts"
             role="tabpanel"
             aria-labelledby="Accounts-tab"
           >
-            Accounts
+            <AccountsForm />
           </div>
         </div>
       </div>
