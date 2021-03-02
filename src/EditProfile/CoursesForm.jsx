@@ -1,14 +1,15 @@
 import React, { Component } from "react";
 // import { Redirect } from "react-router-dom";
 // import { axios } from "../Api/axios";
+// import { Link } from "react-router-dom";
 
-class Profile extends Component {
+class CoursesForm extends Component {
   render() {
     return (
       <div className="container text-center">
-        <h1>404 page is not found </h1>
+        <h1>Courses </h1>
       </div>
     );
   }
 }
-export default Profile;
+export default CoursesForm;

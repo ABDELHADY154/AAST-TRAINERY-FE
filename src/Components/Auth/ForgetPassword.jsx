@@ -17,7 +17,7 @@ class Forget extends React.Component {
     };
   }
 
-  handleSubmit = async e => {
+  handleSubmit = async (e) => {
     e.preventDefault();
     e.target.reset(e);
     const data = {
@@ -25,12 +25,12 @@ class Forget extends React.Component {
     };
     return await axios
       .post("/forgot", data)
-      .then(response => {
+      .then((response) => {
         this.setState({
           forgot: true,
         });
       })
-      .catch(error => {
+      .catch((error) => {
         this.setState({
           error: {
             emailErr: error.response.data.errors.email,
@@ -76,9 +76,11 @@ class Forget extends React.Component {
                             <input
                               type="text"
                               className={
-                                this.state.error.emailErr ? "wrong" : ""
+                                this.state.error.emailErr
+                                  ? "wrong signInput"
+                                  : "signInput"
                               }
-                              onChange={e => (this.Email = e.target.value)}
+                              onChange={(e) => (this.Email = e.target.value)}
                             />
                             {this.state.error && (
                               <p className="error">
