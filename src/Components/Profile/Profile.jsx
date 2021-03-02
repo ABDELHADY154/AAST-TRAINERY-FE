@@ -6,6 +6,8 @@ import { MdSettingsPhone } from "react-icons/md";
 import { HiOutlineMail } from "react-icons/hi";
 import { BiPencil } from "react-icons/bi";
 import StudentEducation from "./StudentEducation/StudentEdu";
+import StudentWorkExp from "./StudentWorkExp/StudentWorkExp";
+import StudentCourses from "./StudentCourses/StudentCourses";
 
 // import { Redirect } from "react-router-dom";
 import { axios } from "../../Api/axios";
@@ -32,6 +34,8 @@ class Profile extends Component {
     university: "",
     phone_number: "",
     educations: [],
+    workExperience: [],
+    courses: [],
   };
   async componentDidMount() {
     await axios
@@ -58,6 +62,8 @@ class Profile extends Component {
           university: res.data.response.data.university,
           phone_number: res.data.response.data.phone_number,
           educations: res.data.response.data.educations,
+          // workExperience: res.data.response.data.workExperience,
+          // courses: res.data.response.data.courses,
         });
         console.log(res.data.response.data);
       })
@@ -248,16 +254,45 @@ class Profile extends Component {
                   +
                 </Link>
               </div>
-              {this.state.educations.map((item) => {
+              {this.state.workExperience.map((item) => {
                 return (
-                  <StudentEducation
+                  <StudentWorkExp
                     key={item.id}
-                    schoolName={item.school_name}
-                    city={item.city}
-                    country={item.country}
-                    fromDate={item.from}
-                    toDate={item.to}
-                    cred={item.credential_url}
+                    posistionTitle={item.posistionTitle}
+                    worktag={item.worktag}
+                    companyName={item.companyName}
+                    city={item.workCity}
+                    country={item.workCountry}
+                    fromDate={item.fromWork}
+                    toDate={item.toWork}
+                    cred={item.workCredential_url}
+                  />
+                );
+              })}
+            </div>
+          </div>
+        </div>
+
+        <div className="container">
+          <div id="education" className="card mt-5">
+            <div className="card-body">
+              <div className="d-flex flex-row titlecard fs-4 mb-2">
+                Courses
+                <Link
+                  renderAs="button"
+                  className="  ms-3 plus"
+                  // to="/Register"
+                >
+                  +
+                </Link>
+              </div>
+              {this.state.courses.map((item) => {
+                return (
+                  <StudentCourses
+                    key={item.id}
+                    courseProviderName={item.school_name}
+                    courseName={item.courseName}
+                    Coursecred={item.courseCredential_url}
                   />
                 );
               })}

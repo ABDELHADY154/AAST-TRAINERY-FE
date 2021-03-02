@@ -12,7 +12,7 @@ export default class StudentEdu extends Component {
           style={{ textTransform: "capitalize" }}
         >
           <div className=" d-flex flex-row col-10 col-md-11 me-1">
-            {this.props.schoolName}
+            {this.props.courseProviderName}
           </div>
           <div
             id="hiddenhover"
@@ -29,20 +29,17 @@ export default class StudentEdu extends Component {
         </div>
         <div className="d-flex flex-row fs-6 ">
           <div className=" d-flex flex-row col-12 col-md-12">
-            {this.props.city}, {this.props.country}.
+            {this.props.courseName}.
           </div>
         </div>
         <div className="d-flex flex-row fs-6 ">
-          <div className=" d-flex flex-row col-12 col-md-12">
-            {this.props.fromDate} to {this.props.toDate} ·
-            {/* {diffDays} Years */}
-          </div>
+          <div className=" d-flex flex-row col-12 col-md-12"></div>
         </div>
         <div className="d-flex flex-row fs-6 mt-2 ">
           <a
             id="goldcredentials"
             renderAs="button"
-            href={this.props.cred}
+            href={this.props.courseCredential_url}
             className="  mb-1   d-flex flex-row col-12 col-md-3"
             // to="/Register"
           >

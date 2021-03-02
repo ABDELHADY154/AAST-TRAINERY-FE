@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import "../../../layout/Profile.css";
 import { BiPencil } from "react-icons/bi";
-export default class StudentEdu extends Component {
+export default class StudentWorkExp extends Component {
   render() {
     return (
       <>
@@ -11,9 +11,19 @@ export default class StudentEdu extends Component {
           className="d-flex flex-row  fs-5 "
           style={{ textTransform: "capitalize" }}
         >
-          <div className=" d-flex flex-row col-10 col-md-11 me-1">
-            {this.props.schoolName}
+          <div className=" d-flex flex-row flex-wrap col-4 col-md-5 me-1">
+            {this.props.posistionTitle} at {this.props.companyName}
           </div>
+          <div
+            id="worktag"
+            className=" d-flex flex-row flex-wrap col-3 col-md-1  fs-6 plus"
+          >
+            {this.props.worktag}
+          </div>
+          <div
+            id="worktag"
+            className=" d-flex flex-row flex-wrap col-3 col-md-5 "
+          ></div>
           <div
             id="hiddenhover"
             className=" d-flex flex-row col-2 col-md-1 p-0 ms-3"
@@ -29,12 +39,12 @@ export default class StudentEdu extends Component {
         </div>
         <div className="d-flex flex-row fs-6 ">
           <div className=" d-flex flex-row col-12 col-md-12">
-            {this.props.city}, {this.props.country}.
+            {this.props.workCity}, {this.props.workCountry}.
           </div>
         </div>
         <div className="d-flex flex-row fs-6 ">
           <div className=" d-flex flex-row col-12 col-md-12">
-            {this.props.fromDate} to {this.props.toDate} ·
+            {this.props.fromWork} to {this.props.toWork} ·
             {/* {diffDays} Years */}
           </div>
         </div>
@@ -42,7 +52,7 @@ export default class StudentEdu extends Component {
           <a
             id="goldcredentials"
             renderAs="button"
-            href={this.props.cred}
+            href={this.props.workCredential_url}
             className="  mb-1   d-flex flex-row col-12 col-md-3"
             // to="/Register"
           >
