@@ -8,17 +8,19 @@ import ExperianceForm from "./ExperianceForm";
 import CoursesForm from "./CoursesForm";
 import AccountsForm from "./AccountsForm";
 import GeneralForm from "./GeneralForm";
-
+import "../layout/EditInfo.css";
 class GeneralInfo extends Component {
   render() {
     return (
       <div className="container text-center">
-        <h1>Edit Profile</h1>
-
-        <ul class="nav nav-tabs" id="myTab" role="tablist">
-          <li class="nav-item" role="presentation">
+        <h1 className="editTitle">Edit Profile</h1>
+        <h3 className="categoryTitle d-flex justify-content-start mb-3">
+          Categories
+        </h3>
+        <ul className="nav nav-tabs infoTabsUl" id="myTab" role="tablist">
+          <li className="nav-item infoTabs" role="presentation">
             <button
-              class="nav-link active"
+              className="nav-link active tabBtn "
               id="General-tab"
               data-bs-toggle="tab"
               data-bs-target="#General"
@@ -30,9 +32,9 @@ class GeneralInfo extends Component {
               General
             </button>
           </li>
-          <li class="nav-item" role="presentation">
+          <li className="nav-item infoTabs" role="presentation">
             <button
-              class="nav-link"
+              className="nav-link tabBtn"
               id="Education-tab"
               data-bs-toggle="tab"
               data-bs-target="#Education"
@@ -44,9 +46,9 @@ class GeneralInfo extends Component {
               Education
             </button>
           </li>
-          <li class="nav-item" role="presentation">
+          <li class="nav-item infoTabs" role="presentation">
             <button
-              class="nav-link"
+              className="nav-link tabBtn"
               id="Experiance-tab"
               data-bs-toggle="tab"
               data-bs-target="#Experiance"
@@ -58,9 +60,9 @@ class GeneralInfo extends Component {
               Experiance
             </button>
           </li>
-          <li class="nav-item" role="presentation">
+          <li className="nav-item infoTabs" role="presentation">
             <button
-              class="nav-link"
+              className="nav-link tabBtn"
               id="Courses-tab"
               data-bs-toggle="tab"
               data-bs-target="#Courses"
@@ -72,9 +74,9 @@ class GeneralInfo extends Component {
               Courses
             </button>
           </li>
-          <li class="nav-item" role="presentation">
+          <li className="nav-item infoTabs" role="presentation">
             <button
-              class="nav-link"
+              className="nav-link tabBtn"
               id="Skills-tab"
               data-bs-toggle="tab"
               data-bs-target="#Skills"
@@ -87,9 +89,9 @@ class GeneralInfo extends Component {
             </button>
           </li>
 
-          <li class="nav-item" role="presentation">
+          <li class="nav-item infoTabs" role="presentation">
             <button
-              class="nav-link"
+              className="nav-link tabBtn"
               id="Accounts-tab"
               data-bs-toggle="tab"
               data-bs-target="#Accounts"
@@ -102,9 +104,9 @@ class GeneralInfo extends Component {
             </button>
           </li>
         </ul>
-        <div class="tab-content" id="myTabContent">
+        <div className="tab-content" id="myTabContent">
           <div
-            class="tab-pane fade show active"
+            className="tab-pane fade show active mt-3"
             id="General"
             role="tabpanel"
             aria-labelledby="General-tab"
@@ -112,7 +114,7 @@ class GeneralInfo extends Component {
             <GeneralForm />
           </div>
           <div
-            class="tab-pane fade"
+            className="tab-pane fade mt-3"
             id="Education"
             role="tabpanel"
             aria-labelledby="Education-tab"
@@ -120,7 +122,7 @@ class GeneralInfo extends Component {
             <EducationForm />
           </div>
           <div
-            class="tab-pane fade"
+            className="tab-pane fade mt-3 "
             id="Experiance"
             role="tabpanel"
             aria-labelledby="Experiance-tab"
@@ -128,7 +130,7 @@ class GeneralInfo extends Component {
             <ExperianceForm />
           </div>
           <div
-            class="tab-pane fade"
+            className="tab-pane fade mt-3"
             id="Courses"
             role="tabpanel"
             aria-labelledby="Courses-tab"
@@ -136,7 +138,7 @@ class GeneralInfo extends Component {
             <CoursesForm />
           </div>
           <div
-            class="tab-pane fade"
+            className="tab-pane fade mt-3"
             id="Skills"
             role="tabpanel"
             aria-labelledby="Skills-tab"
@@ -145,7 +147,7 @@ class GeneralInfo extends Component {
           </div>
 
           <div
-            class="tab-pane fade"
+            className="tab-pane fade mt-3"
             id="Accounts"
             role="tabpanel"
             aria-labelledby="Accounts-tab"
