@@ -76,15 +76,12 @@ button.active:after {
     display: inline-block;
     white-space: nowrap;
   }
-  .tabBtn:hover:after {
-    color: #cd8930 !important;
-    border-bottom: 2px solid #cd8930 !important;
-  }
   .tabBtn:hover {
     color: #cd8930 !important;
   }
-  button.active {
+  .tabBtn:hover:after {
     color: #cd8930 !important;
+    border-bottom: none !important;
   }
 }
 
