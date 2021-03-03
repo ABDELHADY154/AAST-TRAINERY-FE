@@ -1,19 +1,33 @@
 import React, { Component } from "react";
 // import { Redirect } from "react-router-dom";
-// import { axios } from "../Api/axios";
+import { axios } from "../Api/axios";
 // import { Link } from "react-router-dom";
 
 class GeneralForm extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      file: null,
+      image: "",
     };
+
     this.handleChange = this.handleChange.bind(this);
+  }
+  async componentDidMount() {
+    await axios
+      .get("/W/student/get-profile")
+      .then((res) => {
+        this.setState({
+          image: res.data.response.data.image,
+        });
+        console.log(res.data.response.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   }
   handleChange(event) {
     this.setState({
-      file: URL.createObjectURL(event.target.files[0]),
+      image: URL.createObjectURL(event.target.files[0]),
     });
   }
 
@@ -21,10 +35,10 @@ class GeneralForm extends Component {
     return (
       <form class="row g-3 mb-3">
         <div class="col-11 mb-4">
-          <div className="row imgCol">
-            <img src={this.state.file} className="col-2 profieImg" />
-            <div className="col-10">
-              <label class="form-label fs-5" for="customFile">
+          <div className="row ">
+            <img src={this.state.image} className="col-2 profieImg" />
+            <div className="col-10 ">
+              <label class="form-label fs-5 mt-2" for="customFile">
                 Profile Photo
               </label>
               <p className="fw-light">
