@@ -2,14 +2,66 @@ import React, { Component } from "react";
 // import { Redirect } from "react-router-dom";
 // import { axios } from "../Api/axios";
 // import { Link } from "react-router-dom";
+import ImageUploader from "react-images-upload";
 
 class GeneralForm extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      file: null,
+    };
+    this.handleChange = this.handleChange.bind(this);
+  }
+  handleChange(event) {
+    this.setState({
+      file: URL.createObjectURL(event.target.files[0]),
+    });
+  }
+  // handleImg = (e) => {
+  //   function readURL(input) {
+  //     if (input.files && input.files[0]) {
+  //       var reader = new FileReader();
+  //       reader.onload = function (e) {
+  //         "#imagePreview".css(
+  //           "background-image",
+  //           "url(" + e.target.result + ")"
+  //         );
+  //         var path = e.target.result;
+  //         "#imagePreview".hide();
+  //         "#imagePreview".fadeIn(650);
+
+  //         sessionStorage.setItem("IMG1", path);
+  //       };
+  //       reader.readAsDataURL(input.files[0]);
+  //     }
+  //   }
+  //   "#imageUpload".change(function () {
+  //     readURL(this);
+  //   });
+  // };
+
   render() {
     return (
       <form class="row g-3 mb-3">
+        <ImageUploader
+          className="imageUploader"
+          withIcon={true}
+          buttonText="Choose images"
+          onChange={this.onDrop}
+          imgExtension={[".jpg", ".gif", ".png", ".gif"]}
+          maxFileSize={5242880}
+          singleImage={true}
+        />
+        <label class="form-label" for="customFile">
+          Default file input example
+        </label>
+        <div>
+          <input type="file" onChange={this.handleChange} />
+          <img src={this.state.file} />
+        </div>
         <div class="col-12">
-          <label for="inputfullname" class="form-label editLabel ">
-            Full Name
+          <label for="inputfullname" class="form-label editLabel">
+            Full Name<span className="text-danger ms-2">*</span>
           </label>
           <input
             type="text"
@@ -20,7 +72,7 @@ class GeneralForm extends Component {
         </div>
         <div class="col-md-6">
           <label for="inputEmail4" className="form-label editLabel">
-            Gender
+            Gender<span className="text-danger ms-2">*</span>
           </label>
           <div className="row ">
             <div class="male col-4 col-lg-3 col-md-4 col-sm-4 col-xs-3 form-check form-check-inline d-flex">
@@ -57,7 +109,7 @@ class GeneralForm extends Component {
         </div>
         <div className="col-md-6 halfEdit">
           <label for="inputDOB" className="form-label editLabel ">
-            Date of birth
+            Date of birth<span className="text-danger ms-2">*</span>
           </label>
           <input
             type="date"
@@ -67,7 +119,7 @@ class GeneralForm extends Component {
         </div>
         <div className="col-12">
           <label for="inputNationaity" class="form-label editLabel ">
-            Nationaity
+            Nationaity<span className="text-danger ms-2">*</span>
           </label>
           <input
             type="text"
@@ -78,7 +130,7 @@ class GeneralForm extends Component {
         </div>
         <div className="col-md-6">
           <label for="inputCountry" className="form-label editLabel">
-            Country
+            Country<span className="text-danger ms-2">*</span>
           </label>
           <select
             id="inputCountry"
@@ -90,7 +142,7 @@ class GeneralForm extends Component {
         </div>
         <div className="col-md-6 halfEdit">
           <label for="inputCity" className="form-label editLabel">
-            City
+            City<span className="text-danger ms-2">*</span>
           </label>
           <select id="inputCity" className="form-select editInput halfInput ">
             <option selected>Choose your City...</option>
@@ -99,7 +151,7 @@ class GeneralForm extends Component {
         </div>
         <div className="col-12">
           <label for="inputPhone" class="form-label editLabel">
-            Phone Number
+            Phone Number<span className="text-danger ms-2">*</span>
           </label>
           <input
             type="number"
@@ -110,7 +162,7 @@ class GeneralForm extends Component {
         </div>
         <div className="col-md-6 ">
           <label for="inputuni" className="form-label editLabel">
-            University / Institution
+            University / Institution<span className="text-danger ms-2">*</span>
           </label>
           <select id="inputuni" className="form-select editInput halfInput ">
             <option selected>Choose your University / Institution ...</option>
@@ -120,6 +172,7 @@ class GeneralForm extends Component {
         <div className="col-md-6 halfEdit">
           <label for="inputDep" className="form-label editLabel">
             Field of study / Department
+            <span className="text-danger ms-2">*</span>
           </label>
           <select id="inputDep" className="form-select editInput  halfInput ">
             <option selected>Choose your Field of study / Department...</option>
@@ -128,7 +181,7 @@ class GeneralForm extends Component {
         </div>
         <div className="col-12">
           <label for="inputRegNum" class="form-label editLabel">
-            Registration Number
+            Registration Number<span className="text-danger ms-2">*</span>
           </label>
           <input
             type="number"
@@ -139,16 +192,17 @@ class GeneralForm extends Component {
         </div>
         <div class="col-md-6">
           <label for="inputTerm" className="form-label editLabel">
-            Term
+            Term<span className="text-danger ms-2">*</span>
           </label>
           <select id="inputTerm" className="form-select editInput halfInput">
             <option selected>Choose your Term ...</option>
+            <span className="text-danger ms-2">*</span>
             <option>...</option>
           </select>
         </div>
         <div class="col-md-6 halfEdit">
           <label for="inputGPA" className="form-label editLabel">
-            Grade / GPA
+            Grade / GPA<span className="text-danger ms-2">*</span>
           </label>
           <select id="inputGPA" className="form-select editInput halfInput">
             <option selected>Choose your Grade / GPA...</option>
@@ -157,7 +211,7 @@ class GeneralForm extends Component {
         </div>
         <div class="col-md-6">
           <label for="bdaymonth" className="form-label editLabel">
-            Start Year
+            Start Year<span className="text-danger ms-2">*</span>
           </label>
           <input
             type="month"
@@ -167,7 +221,7 @@ class GeneralForm extends Component {
         </div>
         <div class="col-md-6 halfEdit">
           <label for="bdaymonth" className="form-label editLabel">
-            Expected end Year
+            Expected end Year<span className="text-danger ms-2">*</span>
           </label>
           <input
             type="month"
