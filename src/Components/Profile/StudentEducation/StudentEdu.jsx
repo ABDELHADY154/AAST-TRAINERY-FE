@@ -24,6 +24,7 @@ export default class StudentEdu extends Component {
               to={{
                 pathname: `/Profile/Education/${id}`,
               }}
+              id={id}
             >
               <BiPencil fill='#cd8930' color='#cd8930' />
             </Link>

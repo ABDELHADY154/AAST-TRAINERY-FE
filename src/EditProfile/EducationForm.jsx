@@ -2,7 +2,8 @@ import React, { Component, useState } from "react";
 import { axios } from "../Api/axios";
 // import { Redirect } from "react-router-dom";
 // import { axios } from "../Api/axios";
-// import { Link } from "react-router-dom";
+import { Route } from "react-router-dom";
+
 import {
   CountryDropdown,
   RegionDropdown,
@@ -64,7 +65,8 @@ class EducationForm extends Component {
   };
   render() {
     const { country, region } = this.state;
-    console.log(this.state);
+    // let { id } = useParams();
+    console.log(Route.perams);
     return (
       <div className='container '>
         <h1 className='editTitle text-center'>Edit Profile</h1>
