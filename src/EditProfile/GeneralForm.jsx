@@ -31,6 +31,7 @@ class GeneralForm extends Component {
                 You can upload a .jpg, .png, or .gif photo with max size of
                 10MB.
               </p>
+
               <input
                 type="file"
                 className="imgUploadBtn shadow-none hidden"
