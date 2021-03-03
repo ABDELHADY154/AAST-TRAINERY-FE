@@ -1,3 +1,4 @@
+/** @format */
 /*         Utiles          */
 .prim {
   color: #1e4274;
@@ -54,9 +55,9 @@ body {
   margin: auto !important;
   display: block;
 }
-.justify-content-end img {
-  background-image: url("/src/Components/Landing/Assets/bg2.png");
-}
+/* .justify-content-end img {
+  background-image: url("/src/Components/Landing/bg2.png");
+} */
 .infoApi {
   font-family: SF Compact Display;
   font-style: normal;
@@ -120,10 +121,7 @@ body {
   .imgbook {
     display: none !important;
   }
-  .sssss {
-    width: 25%;
-    background-image: url("/src/Components/Landing/Assets/bg2.png");
-  }
+
   .header {
     font-family: SF Compact Display;
     font-style: normal;
