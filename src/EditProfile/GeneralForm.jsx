@@ -1,19 +1,33 @@
 import React, { Component } from "react";
 // import { Redirect } from "react-router-dom";
-// import { axios } from "../Api/axios";
+import { axios } from "../Api/axios";
 // import { Link } from "react-router-dom";
 
 class GeneralForm extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      file: null,
+      image: "",
     };
+
     this.handleChange = this.handleChange.bind(this);
+  }
+  async componentDidMount() {
+    await axios
+      .get("/W/student/get-profile")
+      .then((res) => {
+        this.setState({
+          image: res.data.response.data.image,
+        });
+        console.log(res.data.response.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   }
   handleChange(event) {
     this.setState({
-      file: URL.createObjectURL(event.target.files[0]),
+      image: URL.createObjectURL(event.target.files[0]),
     });
   }
 
@@ -21,19 +35,20 @@ class GeneralForm extends Component {
     return (
       <form class="row g-3 mb-3">
         <div class="col-11 mb-4">
-          <div className="row imgCol">
-            <img src={this.state.file} className="col-2 profieImg" />
-            <div className="col-10">
-              <label class="form-label" for="customFile">
+          <div className="row ">
+            <img src={this.state.image} className="col-2 profieImg" />
+            <div className="col-10 ">
+              <label class="form-label fs-5 mt-2" for="customFile">
                 Profile Photo
               </label>
-              <p>
+              <p className="fw-light">
                 You can upload a .jpg, .png, or .gif photo with max size of
                 10MB.
               </p>
+
               <input
                 type="file"
-                className="imgUpload shadow-none "
+                className="imgUploadBtn shadow-none hidden"
                 accept="image/x-png,image/gif,image/jpeg"
                 onChange={this.handleChange}
               />
@@ -42,7 +57,8 @@ class GeneralForm extends Component {
         </div>
         <div class="col-lg-10 col-11 col-md-10 col-sm-12 col-xs-12">
           <label for="inputfullname" class="form-label editLabel">
-            Full Name<span className="text-danger ms-2">*</span>
+            Full Name
+            <span className="text-danger ms-2">*</span>
           </label>
           <input
             type="text"
