@@ -36,7 +36,10 @@ class GeneralForm extends Component {
       <form class="row g-3 mb-3">
         <div class="col-11 mb-4">
           <div className="row ">
-            <img src={this.state.image} className="col-2 profieImg" />
+            <img
+              src={this.state.image}
+              className="col-2 profieImg rounded-circle"
+            />
             <div className="col-10 ">
               <label class="form-label fs-5 mt-2 imgLabel" for="customFile">
                 Profile Photo
