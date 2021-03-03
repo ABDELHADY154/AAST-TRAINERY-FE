@@ -233,6 +233,9 @@ textarea {
 /* .imgUploadBtn::-webkit-file-upload-button {
   visibility: hidden;
 } */
+/* .imgUploadBtn {
+  visibility: hidden;
+} */
 .imgUploadBtn::before {
   content: "Upload";
   display: inline-block;

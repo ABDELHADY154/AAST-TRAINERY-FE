@@ -38,7 +38,7 @@ class GeneralForm extends Component {
           <div className="row ">
             <img src={this.state.image} className="col-2 profieImg" />
             <div className="col-10 ">
-              <label class="form-label fs-5 mt-2" for="customFile">
+              <label class="form-label fs-5 mt-2 imgLabel" for="customFile">
                 Profile Photo
               </label>
               <p className="fw-light">
@@ -48,7 +48,7 @@ class GeneralForm extends Component {
 
               <input
                 type="file"
-                className="imgUploadBtn shadow-none hidden"
+                className="imgUploadBtn"
                 accept="image/x-png,image/gif,image/jpeg"
                 onChange={this.handleChange}
               />
