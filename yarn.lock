@@ -8740,6 +8740,11 @@ react-content-loader@^5.1.4:
   resolved "https://registry.npmjs.org/react-content-loader/-/react-content-loader-5.1.4.tgz"
   integrity sha512-hTq7pZi2GKCK6a9d3u6XStozm0QGCEjw8cSqQReiWnh2up6IwCha5R5TF0o6SY5qUDpByloEZEZtnFxpJyENFw==
 
+react-country-region-selector@^3.0.2:
+  version "3.0.2"
+  resolved "https://registry.yarnpkg.com/react-country-region-selector/-/react-country-region-selector-3.0.2.tgz#979c07e574e26d0c089f450e28c2cfdd0735ee9e"
+  integrity sha512-0U36SdE4F01Q3/uGDOHVFqhIrNR34v2cKnptUOflV5H51cwNxDLLASkB+PNDPd8emBP2i83e7HZdocWdjvIC/g==
+
 react-countup@^4.3.3:
   version "4.3.3"
   resolved "https://registry.npmjs.org/react-countup/-/react-countup-4.3.3.tgz"
