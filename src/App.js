@@ -10,6 +10,9 @@ import Profile from "./Components/Profile/Profile";
 import Forget from "./Components/Auth/ForgetPassword";
 import ErrorPage from "./Components/Auth/ErrorPage404";
 import GeneralInfo from "./EditProfile/GeneralInfo";
+import EducationForm from "./EditProfile/EducationForm";
+import GeneralForm from "./EditProfile/GeneralForm";
+
 // import Skills from "./EditProfile/Skills";
 // import Education from "./EditProfile/Education";
 
@@ -26,7 +29,7 @@ const CheckAuth = () => {
 const AuthRoute = ({ component: Component, ...rest }) => (
   <Route
     {...rest}
-    render={() => (CheckAuth() ? <Component /> : <Redirect to="/Login" />)}
+    render={() => (CheckAuth() ? <Component /> : <Redirect to='/Login' />)}
   />
 );
 
@@ -53,48 +56,47 @@ class App extends React.Component {
   render() {
     return (
       <BrowserRouter>
-        {this.state.loggedIn == true ? (
-          <AuthNav setUser={this.setUser} />
-        ) : (
-          <Nav />
-        )}
-        <div className="app">
-          <div className="auth-wrapper">
-            <div className="auth-inner">
+        {this.state.loggedIn == true ? <AuthNav setUser={this.setUser} /> : <Nav />}
+        <div className='app'>
+          <div className='auth-wrapper'>
+            <div className='auth-inner'>
               <Switch>
                 {/* <== Home for Guest */}
 
                 <Route
                   exact
-                  path="/"
+                  path='/'
                   component={() => <Landing loggedIn={this.state.loggedIn} />}
                 />
 
                 <Route
                   exact
-                  path="/Login"
+                  path='/Login'
                   component={() => <Login setUser={this.setUser} />}
                 />
                 <Route
                   exact
-                  path="/Register"
+                  path='/Register'
                   component={() => <Registry setUser={this.setUser} />}
                 />
-                <Route exact path="/Forget" component={Forget} />
+                <Route exact path='/Forget' component={Forget} />
                 <AuthRoute
                   exact
-                  path="/Home"
+                  path='/Home'
                   component={() => {
                     return <Home setUser={this.setUser} />;
                   }}
                 />
-                <AuthRoute exact path="/Profile" component={Profile} />
+                <AuthRoute exact path='/Profile' component={Profile} />
+                <AuthRoute exact path='/Profile/General' component={GeneralForm} />
+                {/* <Route exact path="/Skills" component={Skills} /> */}
+                <AuthRoute exact path='/Profile/Education' component={EducationForm} />
+                <AuthRoute exact path='/Profile/Experiance' component={EducationForm} />
+                <AuthRoute exact path='/Profile/Courses' component={EducationForm} />
+                <AuthRoute exact path='/Profile/Skills' component={EducationForm} />
+                <AuthRoute exact path='/Profile/Accounts' component={EducationForm} />
 
-                <AuthRoute exact path="/GeneralInfo" component={GeneralInfo} />
-                {/* <Route exact path="/Skills" component={Skills} />
-                <Route exact path="/Education" component={Education} /> */}
-
-                <Route exact path="*" component={ErrorPage} />
+                <Route exact path='*' component={ErrorPage} />
               </Switch>
             </div>
           </div>

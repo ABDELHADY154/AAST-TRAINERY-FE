@@ -72,6 +72,10 @@ class Profile extends Component {
         console.log(err);
       });
   }
+  handleClick(e) {
+    e.preventDefault();
+    console.log(e);
+  }
   render() {
     return (
       <div className='container-fluid '>
@@ -206,14 +210,9 @@ class Profile extends Component {
                 <Link
                   renderAs='button'
                   className='ms-3 plus'
-                  to={{
-                    pathname: "/GeneralInfo/${this.state.id}",
-                    search: "?sort=name",
-                    hash: "#the-hash",
-                    id: "Education-tab",
-
-                    state: { fromDashboard: true, id: "Education-tab" },
-                  }}
+                  // onClick={(e) => this.handleClick(e)}
+                  to='/GeneralInfo/'
+                  // onclick="openCity(event, 'Tokyo')"
                 >
                   +
                 </Link>

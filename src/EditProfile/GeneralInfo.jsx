@@ -12,9 +12,6 @@ import "../layout/EditInfo.css";
 import Footer from "../Components/Common/Footer2";
 class GeneralInfo extends Component {
   render() {
-    console.log(this.props);
-    console.log(this.state);
-
     return (
       <div>
         <div className='container '>
@@ -91,23 +88,13 @@ class GeneralInfo extends Component {
                 Skills
               </button>
             </li>
-
             <li class='nav-item infoTabs' role='presentation'>
-              <button
-                className='nav-link tabBtn'
-                id='Accounts-tab'
-                data-bs-toggle='tab'
-                data-bs-target='#Accounts'
-                type='button'
-                role='tab'
-                aria-controls='Accounts'
-                aria-selected='false'
-              >
+              <a className='nav-link tabBtn' id='Accounts-tab' href='/home'>
                 Accounts
-              </button>
+              </a>
             </li>
           </ul>
-          <div className='tab-content' id='myTabContent'>
+          {/* <div className='tab-content' id='myTabContent'>
             <div
               className='tab-pane fade show active mt-3'
               id='General'
@@ -124,40 +111,7 @@ class GeneralInfo extends Component {
             >
               <EducationForm />
             </div>
-            <div
-              className='tab-pane fade mt-3 '
-              id='Experiance'
-              role='tabpanel'
-              aria-labelledby='Experiance-tab'
-            >
-              <ExperianceForm />
-            </div>
-            <div
-              className='tab-pane fade mt-3'
-              id='Courses'
-              role='tabpanel'
-              aria-labelledby='Courses-tab'
-            >
-              <CoursesForm />
-            </div>
-            <div
-              className='tab-pane fade mt-3'
-              id='Skills'
-              role='tabpanel'
-              aria-labelledby='Skills-tab'
-            >
-              <SkillsForm />
-            </div>
-
-            <div
-              className='tab-pane fade mt-3'
-              id='Accounts'
-              role='tabpanel'
-              aria-labelledby='Accounts-tab'
-            >
-              <AccountsForm />
-            </div>
-          </div>
+          </div>*/}
         </div>
         <Footer />
       </div>

@@ -6,7 +6,7 @@ import React, { Component } from "react";
 class ExperianceForm extends Component {
   render() {
     return (
-      <div className="container text-center">
+      <div className='container text-center'>
         <h1>Experiance </h1>
       </div>
     );
