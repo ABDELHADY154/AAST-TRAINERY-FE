@@ -99,12 +99,12 @@
   outline: 0 !important;
 }
 .editInput[type="date"]::-webkit-calendar-picker-indicator {
-  background: url("https://api.iconify.design/uil:calender.svg?color=%231e4274")
-    no-repeat center center / contain;
+  background: url("https://api.iconify.design/uil:calender.svg?color=%231e4274") no-repeat
+    center center / contain;
 }
 .editInput[type="month"]::-webkit-calendar-picker-indicator {
-  background: url("https://api.iconify.design/uil:calender.svg?color=%231e4274")
-    no-repeat center center / contain;
+  background: url("https://api.iconify.design/uil:calender.svg?color=%231e4274") no-repeat
+    center center / contain;
 }
 .editLabel {
   font-size: 1.1rem !important;
@@ -228,5 +228,20 @@ textarea {
   border-radius: 150px;
 }
 /* ...........Mohannad........... */
+.red {
+  color: red;
+  font-size: 20px;
+}
+
+.halfInput {
+  width: 65%;
+  padding-bottom: 15px;
+}
+
+@media (max-width: 768px) {
+  .fullwidth {
+    width: 100% !important;
+  }
+}
 
 /* ...........Mostafa........... */
