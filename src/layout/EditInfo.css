@@ -110,17 +110,9 @@
   font-size: 1.1rem !important;
   font-family: SF light !important;
 }
-.longInput {
-  width: 953px;
-}
-.halfInput {
-  width: 466px;
-}
-.halfEdit {
-  margin-left: -10.5rem !important;
-}
+
 .hrSkills {
-  width: 953px;
+  /* width: 953px; */
   color: #e0e0e0;
   margin-bottom: 0 !important;
 }
@@ -141,8 +133,6 @@
   outline: none;
   padding-right: 5px;
   border-bottom: none !important;
-  /* border: 3px solid red; */
-  /* background: green; */
 }
 
 .editInput[type="radio"]:before {
@@ -233,6 +223,9 @@ textarea {
   width: 10em;
   height: 200px;
   border-radius: 50px;
+}
+.profieImg {
+  border-radius: 150px;
 }
 /* ...........Mohannad........... */
 
