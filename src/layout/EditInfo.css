@@ -225,7 +225,13 @@ textarea {
   border-radius: 50px;
 }
 .profieImg {
-  border-radius: 150px;
+  border-radius: 50%;
+  width: 9em;
+  height: 7.5em;
+}
+.imgUploadBtn[type="file"] {
+  background-color: Transparent !important;
+  border-color: #1e4274 !important;
 }
 /* ...........Mohannad........... */
 

@@ -24,16 +24,16 @@ class GeneralForm extends Component {
           <div className="row imgCol">
             <img src={this.state.file} className="col-2 profieImg" />
             <div className="col-10">
-              <label class="form-label" for="customFile">
+              <label class="form-label fs-5" for="customFile">
                 Profile Photo
               </label>
-              <p>
+              <p className="fw-light">
                 You can upload a .jpg, .png, or .gif photo with max size of
                 10MB.
               </p>
               <input
                 type="file"
-                className="imgUpload shadow-none "
+                className="imgUploadBtn shadow-none hidden"
                 accept="image/x-png,image/gif,image/jpeg"
                 onChange={this.handleChange}
               />
@@ -42,7 +42,8 @@ class GeneralForm extends Component {
         </div>
         <div class="col-lg-10 col-11 col-md-10 col-sm-12 col-xs-12">
           <label for="inputfullname" class="form-label editLabel">
-            Full Name<span className="text-danger ms-2">*</span>
+            Full Name
+            <span className="text-danger ms-2">*</span>
           </label>
           <input
             type="text"
