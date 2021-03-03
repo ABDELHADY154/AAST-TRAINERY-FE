@@ -86,7 +86,147 @@
     border-bottom: none !important;
   }
 }
+/* General Form */
+.editInput {
+  background-color: #fafafa;
+  border: none !important;
+  box-shadow: none;
+}
+.editInput:focus {
+  border: 1px solid #e0e0e0 !important;
+  outline: 0 !important;
+  box-shadow: none !important;
+  outline: 0 !important;
+}
+.editInput[type="date"]::-webkit-calendar-picker-indicator {
+  background: url("https://api.iconify.design/uil:calender.svg?color=%231e4274")
+    no-repeat center center / contain;
+}
+.editInput[type="month"]::-webkit-calendar-picker-indicator {
+  background: url("https://api.iconify.design/uil:calender.svg?color=%231e4274")
+    no-repeat center center / contain;
+}
+.editLabel {
+  font-size: 1.1rem !important;
+  font-family: SF light !important;
+}
 
+.hrSkills {
+  /* width: 953px; */
+  color: #e0e0e0;
+  margin-bottom: 0 !important;
+}
+.editInput[type="number"]::-webkit-outer-spin-button,
+.editInput[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+/* Firefox */
+.editInput[type="number"] {
+  -moz-appearance: textfield;
+}
+.editInput[type="radio"] {
+  -webkit-appearance: none;
+  width: 20px;
+  height: 20px;
+  border-radius: 15%;
+  outline: none;
+  padding-right: 5px;
+  border-bottom: none !important;
+}
+
+.editInput[type="radio"]:before {
+  content: "";
+  display: block;
+  width: 20px;
+  height: 20px;
+  padding-right: 5px;
+  border-radius: 15%;
+  border: 2px solid #1e4274;
+}
+
+.editInput[type="radio"]:checked:before {
+  background: #1e4274;
+  background-image: url(../Components/assests/imgs/done2.svg);
+  background-color: #1e4274;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  border: 2px solid #1e4274;
+}
+.raioLabelEdit {
+  margin-left: 10px !important;
+  margin-bottom: 0px !important;
+  padding-bottom: 0px !important;
+}
+::placeholder {
+  color: rgba(30, 66, 116, 0.7) !important;
+  opacity: 1; /* Firefox */
+}
+:-ms-input-placeholder {
+  /* Internet Explorer 10-11 */
+  color: rgba(30, 66, 116, 0.7) !important;
+}
+::-ms-input-placeholder {
+  /* Microsoft Edge */
+  color: rgba(30, 66, 116, 0.7) !important;
+}
+input,
+select,
+textarea {
+  color: rgba(30, 66, 116, 1) !important;
+}
+
+.cancelBtn {
+  width: 141px;
+  height: 41px;
+  border: 1px solid #1e4274 !important;
+  background-color: transparent !important;
+  color: #1e4274;
+}
+.cancelBtn:hover {
+  border: 1px solid #1e4274 !important;
+  background-color: #1e4274 !important;
+  color: #fff;
+}
+.doneBtn,
+.updateBtn {
+  width: 141px;
+  height: 41px;
+  border: 1px slid #1e4274 !important;
+  background-color: #1e4274 !important;
+  color: #fff;
+}
+.doneBtn:hover,
+.updateBtn:hover {
+  border: 1px solid #1e4274 !important;
+  background-color: transparent !important;
+  color: #1e4274;
+}
+.deleteBtn {
+  width: 141px;
+  height: 41px;
+  border: 1px solid #f44336 !important;
+  background-color: transparent !important;
+  color: #f44336;
+}
+.deleteBtn:hover {
+  width: 141px;
+  height: 41px;
+  border: 1px solid #f44336 !important;
+  background-color: #f44336 !important;
+  color: #fff;
+}
+.imageUploader {
+  width: 10em;
+  height: 200px;
+  border-radius: 50px;
+}
+.profieImg {
+  border-radius: 150px;
+}
 /* ...........Mohannad........... */
 
 /* ...........Mostafa........... */

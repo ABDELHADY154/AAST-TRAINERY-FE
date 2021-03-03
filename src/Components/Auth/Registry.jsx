@@ -254,7 +254,7 @@ class Registry extends React.Component {
                             ) : (
                               <select
                                 type="text"
-                                className="form-control dep  "
+                                className="form-control dep signSelect "
                                 id="departs"
                                 onChange={(e) =>
                                   this.setState({

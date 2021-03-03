@@ -49,7 +49,7 @@ a {
   color: #1e4274;
   margin-bottom: 25px;
 }
-.form-check-label {
+.raioLabel {
   color: #1e4274 !important;
   margin-bottom: 50px;
 }
@@ -208,7 +208,7 @@ option {
   border-bottom: solid 1px #cd8930 !important;
   border-radius: 0 !important;
 }
-select {
+.signSelect {
   background: url("https://api.iconify.design/mdi:chevron-down.svg?color=%231e4274")
     no-repeat center center / contain;
   background-position: right calc(0.375em + 0.1875rem) center;
@@ -220,7 +220,7 @@ select {
   border-bottom: solid 1px #1e4274 !important;
   border-radius: 0 !important;
 }
-select:focus {
+.signSelect:focus {
   background: url("https://api.iconify.design/mdi:chevron-up.svg?color=%23cd8930")
     no-repeat center center / contain;
   background-position: right calc(0.375em + 0.1875rem) center;
@@ -232,7 +232,7 @@ select:focus {
   border-radius: 0 !important;
   color: #1e4274;
 }
-select option:checked {
+.signSelect option:checked {
   background: #1e4274 -webkit-linear-gradient(bottom, #cd8930 0%, #cd8930 100%);
   color: #fff;
 }
@@ -247,12 +247,12 @@ select option:checked {
   }
 }
 
-input[type="number"]::-webkit-outer-spin-button,
-input[type="number"]::-webkit-inner-spin-button {
+.signInput[type="number"]::-webkit-outer-spin-button,
+.signInput[type="number"]::-webkit-inner-spin-button {
   -webkit-appearance: none;
   margin: 0;
 }
 /* Firefox */
-input[type="number"] {
+.signInput[type="number"] {
   -moz-appearance: textfield;
 }
