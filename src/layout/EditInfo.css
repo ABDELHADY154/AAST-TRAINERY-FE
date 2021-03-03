@@ -225,14 +225,17 @@ textarea {
   border-radius: 50px;
 }
 .profieImg {
-  border-radius: 50%;
-  width: 9em;
-  height: 7.5em;
+  /* border-radius: 50%; */
+  width: 160px;
+  height: 150px;
 }
 
-.imgUploadBtn::-webkit-file-upload-button {
+/* .imgUploadBtn::-webkit-file-upload-button {
   visibility: hidden;
-}
+} */
+/* .imgUploadBtn {
+  visibility: hidden;
+} */
 .imgUploadBtn::before {
   content: "Upload";
   display: inline-block;
