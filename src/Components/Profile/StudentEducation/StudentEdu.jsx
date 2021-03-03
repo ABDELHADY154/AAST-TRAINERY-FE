@@ -8,6 +8,7 @@ export default class StudentEdu extends Component {
   }
 
   render() {
+    let id = this.props.id;
     return (
       <>
         <div
@@ -21,8 +22,7 @@ export default class StudentEdu extends Component {
           <div id='hiddenhover' className=' d-flex flex-row col-2 col-md-1 p-0 ms-3'>
             <Link
               to={{
-                pathname: `/Profile/Education/${storyID}`,
-                props: { fromDashboard: this.props.id },
+                pathname: `/Profile/Education/${id}`,
               }}
             >
               <BiPencil fill='#cd8930' color='#cd8930' />
