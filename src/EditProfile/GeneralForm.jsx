@@ -2,7 +2,6 @@ import React, { Component } from "react";
 // import { Redirect } from "react-router-dom";
 // import { axios } from "../Api/axios";
 // import { Link } from "react-router-dom";
-import ImageUploader from "react-images-upload";
 
 class GeneralForm extends Component {
   constructor(props) {
@@ -17,41 +16,10 @@ class GeneralForm extends Component {
       file: URL.createObjectURL(event.target.files[0]),
     });
   }
-  // handleImg = (e) => {
-  //   function readURL(input) {
-  //     if (input.files && input.files[0]) {
-  //       var reader = new FileReader();
-  //       reader.onload = function (e) {
-  //         "#imagePreview".css(
-  //           "background-image",
-  //           "url(" + e.target.result + ")"
-  //         );
-  //         var path = e.target.result;
-  //         "#imagePreview".hide();
-  //         "#imagePreview".fadeIn(650);
-
-  //         sessionStorage.setItem("IMG1", path);
-  //       };
-  //       reader.readAsDataURL(input.files[0]);
-  //     }
-  //   }
-  //   "#imageUpload".change(function () {
-  //     readURL(this);
-  //   });
-  // };
 
   render() {
     return (
       <form class="row g-3 mb-3">
-        <ImageUploader
-          className="imageUploader"
-          withIcon={true}
-          buttonText="Choose images"
-          onChange={this.onDrop}
-          imgExtension={[".jpg", ".gif", ".png", ".gif"]}
-          maxFileSize={5242880}
-          singleImage={true}
-        />
         <label class="form-label" for="customFile">
           Default file input example
         </label>
