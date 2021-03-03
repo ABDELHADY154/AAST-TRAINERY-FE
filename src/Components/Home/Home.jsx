@@ -31,7 +31,7 @@ class Home extends Component {
   async componentDidMount() {
     await resolve(
       axios
-        .get("/W/get-profile")
+        .get("/W/student/get-profile")
         .then(res => {
           if (res.status === 200) {
             // sessionStorage.setItem("avatar", res.data.response.data.image);

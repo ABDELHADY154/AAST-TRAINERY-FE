@@ -26,8 +26,11 @@ class AuthNav extends React.Component {
       status: sessionStorage.getItem("status"),
       loading: false,
       isLoggedIn: false,
+      fullname: "",
+
       // number: 0,
     };
+
     if (this.state.token) {
       this.setState({ loading: true });
     }
@@ -49,6 +52,7 @@ class AuthNav extends React.Component {
             this.setState({
               user: res.data.response.data,
               avatar: res.data.response.data.image,
+              fullname: res.data.response.data.fullName,
             });
           }
         })
@@ -90,14 +94,14 @@ class AuthNav extends React.Component {
             <div className="collapse navbar-collapse " id="navbarScroll">
               <ul className="navbar-nav mt-1">
                 <li className="nav-item ">
-                  <Link className="nav-link item navPage" to="/Home">
+                  <Link className="nav-link item navPage mt-2" to="/Home">
                     Explore
                     <span className="sr-only" />
                   </Link>
                 </li>
                 <li className="nav-item ">
                   <Link
-                    className="nav-link item navPage"
+                    className="nav-link item navPage mt-2"
                     to="#"
                     // onClick={this.handleLogout}
                   >
@@ -316,8 +320,8 @@ class AuthNav extends React.Component {
                       <ul class="dropdown-menu profileMenu ">
                         <li className="row profileHeader d-flex justify-content-center">
                           <a
-                            class="dropdown-item"
-                            href="#"
+                            class="dropdown-item text-wrap"
+                            href="/Profile"
                             style={{
                               fontSize: 18,
                               fontFamily: "SF med",
@@ -336,7 +340,7 @@ class AuthNav extends React.Component {
                             ) : (
                               <AvatarLoader />
                             )}
-                            Full Name
+                            {this.state.fullname}
                             <br />
                             <span
                               className="text-muted "
