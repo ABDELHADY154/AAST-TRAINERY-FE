@@ -9,9 +9,14 @@ import Landing from "./Components/Landing/Landing";
 import Profile from "./Components/Profile/Profile";
 import Forget from "./Components/Auth/ForgetPassword";
 import ErrorPage from "./Components/Auth/ErrorPage404";
-import GeneralInfo from "./EditProfile/GeneralInfo";
+
 import EducationForm from "./EditProfile/EducationForm";
+import AccountsForm from "./EditProfile/AccountsForm";
+import CoursesForm from "./EditProfile/CoursesForm";
+import ExperianceForm from "./EditProfile/ExperianceForm";
 import GeneralForm from "./EditProfile/GeneralForm";
+import SkillsForm from "./EditProfile/SkillsForm";
+import GeneralInfo from "./EditProfile/GeneralInfo";
 
 // import Skills from "./EditProfile/Skills";
 // import Education from "./EditProfile/Education";
@@ -88,13 +93,21 @@ class App extends React.Component {
                   }}
                 />
                 <AuthRoute exact path='/Profile' component={Profile} />
+                <AuthRoute exact path='/GeneralInfo' component={GeneralInfo} />
+
                 <AuthRoute exact path='/Profile/General' component={GeneralForm} />
-                {/* <Route exact path="/Skills" component={Skills} /> */}
+
                 <AuthRoute exact path='/Profile/Education' component={EducationForm} />
-                <AuthRoute exact path='/Profile/Experiance' component={EducationForm} />
-                <AuthRoute exact path='/Profile/Courses' component={EducationForm} />
-                <AuthRoute exact path='/Profile/Skills' component={EducationForm} />
-                <AuthRoute exact path='/Profile/Accounts' component={EducationForm} />
+                <AuthRoute
+                  exact
+                  path='/Profile/Education/:id'
+                  component={EducationForm}
+                />
+
+                <AuthRoute exact path='/Profile/Experiance' component={ExperianceForm} />
+                <AuthRoute exact path='/Profile/Courses' component={CoursesForm} />
+                <AuthRoute exact path='/Profile/Skills' component={SkillsForm} />
+                <AuthRoute exact path='/Profile/Accounts' component={AccountsForm} />
 
                 <Route exact path='*' component={ErrorPage} />
               </Switch>

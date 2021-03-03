@@ -2,6 +2,7 @@ import React, { Component } from "react";
 // import { Redirect } from "react-router-dom";
 // import { axios } from "../Api/axios";
 // import { Link } from "react-router-dom";
+import "../layout/EditInfo.css";
 
 class GeneralForm extends Component {
   constructor(props) {
@@ -22,10 +23,10 @@ class GeneralForm extends Component {
       <div className='container '>
         <h1 className='editTitle text-center'>Edit Profile</h1>
         <h3 className='categoryTitle d-flex justify-content-start mb-3'>Categories</h3>
-        <ul className='nav nav-tabs infoTabsUl' id='myTab' role='tablist'>
+        <ul className='nav  infoTabsUl nav-tabs' id='myTab' role='tablist'>
           <li className='nav-item infoTabs' role='presentation'>
             <a
-              className='nav-link  tabBtn active '
+              className='nav-link  tabBtn  active'
               id='General-tab'
               href='/Profile/General'
             >
@@ -33,25 +34,31 @@ class GeneralForm extends Component {
             </a>
           </li>
           <li className='nav-item infoTabs' role='presentation'>
-            <a className='nav-link tabBtn ' id='Education-tab' href='/Profile/Education'>
+            <a
+              className='nav-link  tabBtn  '
+              id='Education-tab'
+              href='/Profile/Education'
+            >
               Education
             </a>
           </li>
           <li class='nav-item infoTabs' role='presentation'>
-            <a className='nav-link tabBtn' id='Experiance-tab'>
+            <a className='nav-link tabBtn' id='Experiance-tab' href='/Profile/Experiance'>
               Experiance
             </a>
           </li>
           <li className='nav-item infoTabs' role='presentation'>
-            <a className='nav-link tabBtn' id='Courses-tab'>
+            <a className='nav-link tabBtn' id='Courses-tab' href='/Profile/Courses'>
               Courses
             </a>
           </li>
           <li className='nav-item infoTabs' role='presentation'>
-            <a className='nav-link tabBtn'>Skills</a>
+            <a className='nav-link tabBtn' id='Skills-tab' href='/Profile/Skills'>
+              Skills
+            </a>
           </li>
           <li class='nav-item infoTabs' role='presentation'>
-            <a className='nav-link tabBtn' id='Accounts-tab' href='/home'>
+            <a className='nav-link tabBtn' id='Accounts-tab' href='/Profile/Accounts'>
               Accounts
             </a>
           </li>

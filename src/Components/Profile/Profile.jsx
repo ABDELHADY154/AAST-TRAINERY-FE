@@ -43,6 +43,7 @@ class Profile extends Component {
       .get("/W/student/get-profile")
       .then((res) => {
         this.setState({
+          id: res.data.response.data.name.id,
           name: res.data.response.data.name,
           image: res.data.response.data.image,
           email: res.data.response.data.email,
@@ -66,16 +67,12 @@ class Profile extends Component {
           // workExperience: res.data.response.data.workExperience,
           // courses: res.data.response.data.courses,
         });
-        // console.log(res.data.response.data);
       })
       .catch((err) => {
         console.log(err);
       });
   }
-  handleClick(e) {
-    e.preventDefault();
-    console.log(e);
-  }
+
   render() {
     return (
       <div className='container-fluid '>
@@ -211,7 +208,7 @@ class Profile extends Component {
                   renderAs='button'
                   className='ms-3 plus'
                   // onClick={(e) => this.handleClick(e)}
-                  to='/GeneralInfo/'
+                  to='Profile/Education'
                   // onclick="openCity(event, 'Tokyo')"
                 >
                   +
@@ -220,6 +217,7 @@ class Profile extends Component {
               {this.state.educations.map((item) => {
                 return (
                   <StudentEducation
+                    id={item.id}
                     key={item.id}
                     schoolName={item.school_name}
                     city={item.city}

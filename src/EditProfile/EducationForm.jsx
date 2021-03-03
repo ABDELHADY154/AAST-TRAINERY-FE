@@ -64,66 +64,43 @@ class EducationForm extends Component {
   };
   render() {
     const { country, region } = this.state;
-
+    console.log(this.state);
     return (
       <div className='container '>
         <h1 className='editTitle text-center'>Edit Profile</h1>
         <h3 className='categoryTitle d-flex justify-content-start mb-3'>Categories</h3>
-        <ul className='nav nav-tabs infoTabsUl' id='myTab' role='tablist'>
+        <ul className='nav  infoTabsUl nav-tabs' id='myTab' role='tablist'>
           <li className='nav-item infoTabs' role='presentation'>
             <a className='nav-link  tabBtn ' id='General-tab' href='/Profile/General'>
               General
             </a>
           </li>
           <li className='nav-item infoTabs' role='presentation'>
-            <a className='nav-link tabBtn active' id='Education-tab'>
+            <a
+              className='nav-link active tabBtn  '
+              id='Education-tab'
+              href='/Profile/Education'
+            >
               Education
             </a>
           </li>
           <li class='nav-item infoTabs' role='presentation'>
-            <a
-              className='nav-link tabBtn'
-              id='Experiance-tab'
-              data-bs-toggle='tab'
-              data-bs-target='#Experiance'
-              type='a'
-              role='tab'
-              aria-controls='Experiance'
-              aria-selected='false'
-            >
+            <a className='nav-link tabBtn' id='Experiance-tab' href='/Profile/Experiance'>
               Experiance
             </a>
           </li>
           <li className='nav-item infoTabs' role='presentation'>
-            <a
-              className='nav-link tabBtn'
-              id='Courses-tab'
-              data-bs-toggle='tab'
-              data-bs-target='#Courses'
-              type='a'
-              role='tab'
-              aria-controls='Courses'
-              aria-selected='false'
-            >
+            <a className='nav-link tabBtn' id='Courses-tab' href='/Profile/Courses'>
               Courses
             </a>
           </li>
           <li className='nav-item infoTabs' role='presentation'>
-            <a
-              className='nav-link tabBtn'
-              id='Skills-tab'
-              data-bs-toggle='tab'
-              data-bs-target='#Skills'
-              type='a'
-              role='tab'
-              aria-controls='conSkillstact'
-              aria-selected='false'
-            >
+            <a className='nav-link tabBtn' id='Skills-tab' href='/Profile/Skills'>
               Skills
             </a>
           </li>
           <li class='nav-item infoTabs' role='presentation'>
-            <a className='nav-link tabBtn' id='Accounts-tab' href='/home'>
+            <a className='nav-link tabBtn' id='Accounts-tab' href='/Profile/Accounts'>
               Accounts
             </a>
           </li>

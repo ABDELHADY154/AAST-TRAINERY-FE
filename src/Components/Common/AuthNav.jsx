@@ -348,7 +348,7 @@ class AuthNav extends React.Component {
                           <Link
                             class='row '
                             // href="/GenaeralInfo"
-                            to='/GeneralInfo'
+                            to='/Profile/General'
                             renderAs='button'
                           >
                             <RiEdit2Fill
