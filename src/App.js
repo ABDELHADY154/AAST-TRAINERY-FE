@@ -90,7 +90,7 @@ class App extends React.Component {
                 />
                 <AuthRoute exact path="/Profile" component={Profile} />
 
-                <Route exact path="/GeneralInfo" component={GeneralInfo} />
+                <AuthRoute exact path="/GeneralInfo" component={GeneralInfo} />
                 {/* <Route exact path="/Skills" component={Skills} />
                 <Route exact path="/Education" component={Education} /> */}
 
