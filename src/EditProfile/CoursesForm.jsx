@@ -6,8 +6,8 @@ import React, { Component } from "react";
 class CoursesForm extends Component {
   render() {
     return (
-      <div className="container text-center">
-        <h1>Courses </h1>
+      <div className="container">
+        <h1>mesa </h1>
       </div>
     );
   }
