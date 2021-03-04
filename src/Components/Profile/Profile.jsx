@@ -45,6 +45,7 @@ class Profile extends Component {
       .get("/W/student/get-profile")
       .then((res) => {
         this.setState({
+          id: res.data.response.data.name.id,
           name: res.data.response.data.name,
           image: res.data.response.data.image,
           email: res.data.response.data.email,
@@ -69,12 +70,12 @@ class Profile extends Component {
           // courses: res.data.response.data.courses,
           // studentAccount: res.data.response.data.studentAccount,
         });
-        // console.log(res.data.response.data);
       })
       .catch((err) => {
         console.log(err);
       });
   }
+
   render() {
     return (
       <div className='container-fluid '>
@@ -209,14 +210,9 @@ class Profile extends Component {
                 <Link
                   renderAs='button'
                   className='ms-3 plus'
-                  to={{
-                    pathname: "/GeneralInfo/${this.state.id}",
-                    search: "?sort=name",
-                    hash: "#the-hash",
-                    id: "Education-tab",
-
-                    state: { fromDashboard: true, id: "Education-tab" },
-                  }}
+                  // onClick={(e) => this.handleClick(e)}
+                  to='Profile/Education'
+                  // onclick="openCity(event, 'Tokyo')"
                 >
                   +
                 </Link>
@@ -224,6 +220,7 @@ class Profile extends Component {
               {this.state.educations.map((item) => {
                 return (
                   <StudentEducation
+                    id={item.id}
                     key={item.id}
                     schoolName={item.school_name}
                     city={item.city}
