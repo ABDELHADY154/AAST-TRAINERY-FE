@@ -225,7 +225,33 @@ textarea {
   border-radius: 50px;
 }
 .profieImg {
-  border-radius: 150px;
+  /* border-radius: 50%; */
+  width: 160px;
+  height: 150px;
+}
+
+/* .imgUploadBtn::-webkit-file-upload-button {
+  visibility: hidden;
+} */
+/* .imgUploadBtn {
+  visibility: hidden;
+} */
+.imgUploadBtn::before {
+  content: "Upload";
+  display: inline-block;
+  border: 1px solid #1e4274;
+  border-radius: 3px;
+  padding: 5px 8px;
+  outline: none;
+  -webkit-user-select: none;
+  cursor: pointer;
+}
+.imgUploadBtn:hover::before {
+  background: #1e4274;
+  color: #fff;
+}
+.imgUploadBtn:active::before {
+  border: none !important;
 }
 /* ...........Mohannad........... */
 .red {
