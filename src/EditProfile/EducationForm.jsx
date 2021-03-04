@@ -1,6 +1,6 @@
 import React, { Component, useState } from "react";
 import { axios } from "../Api/axios";
-// import { Redirect } from "react-router-dom";
+import { Redirect } from "react-router-dom";
 // import { axios } from "../Api/axios";
 
 import {
@@ -29,11 +29,55 @@ export default class EducationForm extends Component {
       startDate,
     });
   };
+  handleDelete = async (e) => {
+    await axios
+      .delete(`/W/student/profile/education/${this.props.match.params.id}`)
+      .then((response) => {
+        this.setState({
+          loggedIn: false,
+        });
+      })
+      .catch((error) => {
+        if (error.response) {
+          this.setState({
+            loggedIn: false,
+            error: true,
+          });
+        }
+        window.location.reload();
+      });
+  };
+  componentDidMount = async () => {
+    if (this.props.match.params.id) {
+      await axios
+        .get(`/W/student/profile/education/${this.props.match.params.id}`)
+        .then((res) => {
+          console.log(res);
+          this.setState({
+            id: res.data.response.data.id,
+            SchoolName: res.data.response.data.school_name,
+            region: res.data.response.data.city,
+            country: res.data.response.data.country,
+            From: res.data.response.data.from,
+            To: res.data.response.data.to,
+            cred_url: res.data.response.data.credential_url,
+          });
+        })
+        .catch((error) => {
+          if (error.response.data.status === 401) {
+            sessionStorage.clear("token");
+            sessionStorage.clear("status");
+            this.setState({ loggedIn: false });
+            window.location.reload();
+          }
+        });
+    }
+  };
 
-  componentDidMount() {}
   handleSubmit = async (e) => {
     e.preventDefault();
     const data = {
+      id: this.state.id,
       school_name: this.state.SchoolName,
       city: this.state.region,
       country: this.state.country,
@@ -41,32 +85,66 @@ export default class EducationForm extends Component {
       to: this.state.To,
       cred_url: this.state.SchoolUrl,
     };
-    return await axios
-      .post("/W/student/profile/education", data)
-      .then((response) => {
-        // sessionStorage.setItem("token", response.data.response.data.token);
-        // sessionStorage.setItem("status", response.statusText);
-        // // this.props.setUser(true);
-        // this.setState({
-        //   loggedIn: true,
-        // });
-        console.log(response);
-      })
-      .catch((error) => {
-        if (error.response.data.errors) {
+    if (this.props.match.params.id) {
+      return await axios
+        .post(`/W/student/profile/education/${this.props.match.params.id}`, data)
+        .then((response) => {
+          this.setState({
+            loggedIn: false,
+          });
+        })
+        .catch((error) => {
+          if (error.response.data.status === 401) {
+            sessionStorage.clear("token");
+            sessionStorage.clear("status");
+            this.setState({ loggedIn: false });
+            window.location.reload();
+          }
           this.setState({
             error: {
-              emailErr: error.response.data.errors.email,
-              passwordErr: error.response.data.errors.password,
+              schoolNameErr: error.response.data.errors.school_name,
+              countryErr: error.response.data.errors.country,
+              cityErr: error.response.data.errors.city,
+              fromErr: error.response.data.errors.from,
+              toErr: error.response.data.errors.to,
             },
           });
-        }
-      });
+        });
+    } else {
+      return await axios
+        .post("/W/student/profile/education", data)
+        .then((response) => {
+          this.setState({
+            loggedIn: false,
+          });
+          // console.log(response);
+        })
+        .catch((error) => {
+          if (error.response.data.status === 401) {
+            sessionStorage.clear("token");
+            sessionStorage.clear("status");
+            this.setState({ loggedIn: false });
+            window.location.reload();
+          }
+          this.setState({
+            error: {
+              schoolNameErr: error.response.data.errors.school_name,
+              countryErr: error.response.data.errors.country,
+              cityErr: error.response.data.errors.city,
+              fromErr: error.response.data.errors.from,
+              toErr: error.response.data.errors.to,
+            },
+          });
+          console.log(this.state.error);
+        });
+    }
   };
   render() {
     const { country, region } = this.state;
-    // let { id } = useParams();
-    console.log(this.props.match.params.id);
+    if (this.state.loggedIn === false) {
+      return <Redirect to='/Profile' />;
+    }
+    // console.log(this.state);
     return (
       <div className='container '>
         <h1 className='editTitle text-center'>Edit Profile</h1>
@@ -115,10 +193,15 @@ export default class EducationForm extends Component {
               </label>
               <input
                 type='text'
-                className='form-control editInput halfInput fullwidth'
+                className={
+                  this.state.error && this.state.error.schoolNameErr
+                    ? "form-control editInput halfInput fullwidth wrong "
+                    : "form-control editInput halfInput fullwidth"
+                }
                 id='fullname'
                 placeholder='Please enter your full name'
                 onChange={(e) => this.setState({ SchoolName: e.target.value })}
+                value={this.state.SchoolName ? this.state.SchoolName : ""}
               />
             </div>
             <div className='col-12 col-md-6   fullwidth'>
@@ -126,12 +209,15 @@ export default class EducationForm extends Component {
                 Country
               </label>
               <CountryDropdown
-                value={country}
+                value={this.state.country ? this.state.country : country}
                 onChange={(val) => this.selectCountry(val)}
-                className='form-select editInput halfInput fullwidth'
+                className={
+                  this.state.error && this.state.error.countryErr
+                    ? "form-select editInput halfInput fullwidth wrong "
+                    : "form-select editInput halfInput fullwidth"
+                }
                 id='validationServer04'
                 aria-describedby='validationServer04Feedback'
-                required
               />
             </div>
             <div className='col-12 col-md-6   fullwidth '>
@@ -143,6 +229,11 @@ export default class EducationForm extends Component {
                 value={region}
                 onChange={(val) => this.selectRegion(val)}
                 className=' form-select editInput halfInput fullwidth '
+                className={
+                  this.state.error && this.state.error.cityErr
+                    ? "form-select editInput halfInput fullwidth wrong "
+                    : "form-select editInput halfInput fullwidth"
+                }
                 id='validationServer04'
                 aria-describedby='validationServer04Feedback'
                 // value={(e) => this.setState({ City: e.target.value })}
@@ -155,8 +246,13 @@ export default class EducationForm extends Component {
               <input
                 type='date'
                 id='bdaymonth'
-                className='form-control editInput halfInput fullwidth'
+                className={
+                  this.state.error && this.state.error.fromErr
+                    ? "form-select editInput halfInput fullwidth wrong "
+                    : "form-select editInput halfInput fullwidth"
+                }
                 onChange={(e) => this.setState({ From: e.target.value })}
+                value={this.state.From ? this.state.From : ""}
               />
             </div>
             <div class='col-12 col-md-6  fullwidth'>
@@ -166,8 +262,13 @@ export default class EducationForm extends Component {
               <input
                 type='date'
                 id='bdaymonth'
-                className=' form-control editInput halfInput fullwidth'
+                className={
+                  this.state.error && this.state.error.toErr
+                    ? "form-select editInput halfInput fullwidth wrong "
+                    : "form-control editInput halfInput fullwidth"
+                }
                 onChange={(e) => this.setState({ To: e.target.value })}
+                value={this.state.To ? this.state.To : ""}
               />
             </div>
             <div class='col-12 col-md-6  fullwidth '>
@@ -178,8 +279,8 @@ export default class EducationForm extends Component {
                 type='text'
                 className='form-control editInput halfInput fullwidth'
                 id='fullname'
-                placeholder='Please enter your full name'
                 onChange={(e) => this.setState({ SchoolUrl: e.target.value })}
+                placeholder={this.state.cred_url}
               />
             </div>
             <div class='col-12 col-md-6  fullwidth '>
@@ -194,23 +295,36 @@ export default class EducationForm extends Component {
                 onChange={(e) => this.setState({ password: e.target.value })}
               />
             </div>
-            <span className='red py-3'>Please fill all the required info *</span>
-            <div class='col-12 d-flex justify-content-end'>
-              <button type='submit' class='btn me-2 my-2 cancelBtn shadow-none'>
-                Cancel
-              </button>
-              <button type='submit' class='btn doneBtn shadow-none my-2 '>
-                Add
-              </button>
-            </div>
-            <div class='col-12 d-flex justify-content-end'>
-              <button type='submit' class='btn deleteBtn me-2 my-2  shadow-none '>
-                Delete
-              </button>
-              <button type='submit' class='btn updateBtn shadow-none my-2 '>
-                Update
-              </button>
-            </div>
+
+            {this.state.error ? (
+              <span className='red py-3'>Please fill all the info *</span>
+            ) : (
+              <span className='red py-3'></span>
+            )}
+            {this.props.match.params.id ? (
+              <div class='col-12 d-flex justify-content-end'>
+                <button
+                  // type={this.handleDelete}
+                  class='btn deleteBtn me-2 my-2  shadow-none  '
+                  onClick={() => this.handleDelete()}
+                  value='deleted'
+                >
+                  Delete
+                </button>
+                <button type='submit' class='btn updateBtn shadow-none my-2 '>
+                  Update
+                </button>
+              </div>
+            ) : (
+              <div class='col-12 d-flex justify-content-end'>
+                <button type='submit' class='btn me-2 my-2 cancelBtn shadow-none'>
+                  Cancel
+                </button>
+                <button type='submit' class='btn doneBtn shadow-none my-2 '>
+                  Add
+                </button>
+              </div>
+            )}
           </div>
         </form>
       </div>
