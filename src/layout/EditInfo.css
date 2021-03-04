@@ -15,7 +15,10 @@
   border: none !important;
   margin-left: -1.5em !important;
 }
+
 .tabBtn {
+  color: #1e4274 !important;
+
   /* padding: 0 !important;
   margin: 1em !important; */
   margin-bottom: 1em !important;
@@ -233,7 +236,7 @@ textarea {
 .imgUploadBtn::-webkit-file-upload-button {
   visibility: hidden;
 }
-/* .imgUploadBtn {
+/* .imgUploadBtn::after {
   visibility: hidden;
 } */
 .imgUploadBtn::before {

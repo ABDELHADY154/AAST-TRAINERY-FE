@@ -1,22 +1,43 @@
 import React, { Component } from "react";
 // import { Redirect } from "react-router-dom";
-// import { axios } from "../Api/axios";
+import { axios } from "../Api/axios";
 // import { Link } from "react-router-dom";
 import "../layout/EditInfo.css";
+// import ImageUploader from "react-images-upload";
 
 class GeneralForm extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      file: null,
+      image: "",
+      // pictures: [],
     };
+    // this.onDrop = this.onDrop.bind(this);
     this.handleChange = this.handleChange.bind(this);
+  }
+  async componentDidMount() {
+    await axios
+      .get("/W/student/get-profile")
+      .then((res) => {
+        this.setState({
+          image: res.data.response.data.image,
+        });
+        console.log(res.data.response.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   }
   handleChange(event) {
     this.setState({
-      file: URL.createObjectURL(event.target.files[0]),
+      image: URL.createObjectURL(event.target.files[0]),
     });
   }
+  // onDrop(picture) {
+  //   this.setState({
+  //     pictures: this.state.pictures.concat(picture),
+  //   });
+  // }
 
   render() {
     return (
@@ -82,20 +103,35 @@ class GeneralForm extends Component {
           </li>
         </ul>
         <form class="row g-3 mb-3">
-          <div class="col-11 mb-4">
-            <div className="row imgCol">
-              <img src={this.state.file} className="col-2 profieImg" />
-              <div className="col-10">
-                <label class="form-label" for="customFile">
+          {/* <div class="col-lg-10 col-11 col-md-10 col-sm-12 col-xs-12">
+            <ImageUploader
+              withPreview={true}
+              withIcon={true}
+              buttonText="Choose images"
+              onChange={this.onDrop}
+              imgExtension={[".jpg", ".gif", ".png", ".gif"]}
+              maxFileSize={5242880}
+              singleImage={true}
+            />
+          </div> */}
+          <div class="col-11 mb-4 mt-4">
+            <div className="row ">
+              <img
+                src={this.state.image}
+                className="col-3 profieImg rounded-circle"
+              />
+              <div className="col-10 ">
+                <label class="form-label fs-5 mt-2 imgLabel" for="customFile">
                   Profile Photo
                 </label>
-                <p>
+                <p className="fw-light">
                   You can upload a .jpg, .png, or .gif photo with max size of
                   10MB.
                 </p>
+
                 <input
                   type="file"
-                  className="imgUpload shadow-none "
+                  className="imgUploadBtn"
                   accept="image/x-png,image/gif,image/jpeg"
                   onChange={this.handleChange}
                 />
