@@ -24,24 +24,26 @@ class Login extends React.Component {
       email: this.state.email,
       password: this.state.password,
     };
-    return await axios.post("/login", data).then((response) => {
-      sessionStorage.setItem("token", response.data.response.data.token);
-      sessionStorage.setItem("status", response.statusText);
-      // this.props.setUser(true);
-      this.setState({
-        loggedIn: true,
+    return await axios
+      .post("/login", data)
+      .then((response) => {
+        sessionStorage.setItem("token", response.data.response.data.token);
+        sessionStorage.setItem("status", response.statusText);
+        // this.props.setUser(true);
+        this.setState({
+          loggedIn: true,
+        });
+      })
+      .catch((error) => {
+        if (error.response.data.errors) {
+          this.setState({
+            error: {
+              emailErr: error.response.data.errors.email,
+              passwordErr: error.response.data.errors.password,
+            },
+          });
+        }
       });
-    });
-    // .catch((error) => {
-    //   if (error.response.data.errors) {
-    //     this.setState({
-    //       error: {
-    //         emailErr: error.response.data.errors.email,
-    //         passwordErr: error.response.data.errors.password,
-    //       },
-    //     });
-    //   }
-    // });
   };
   componentDidMount = () => {
     const token = sessionStorage.getItem("token");
