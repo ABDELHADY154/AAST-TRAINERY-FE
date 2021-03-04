@@ -8,7 +8,7 @@ class Nav extends React.Component {
   render() {
     return (
       <div className="mb-5">
-        <nav class="navbar navbar-expand-lg navBg fixed-top">
+        <nav className="navbar navbar-expand-lg navBg fixed-top">
           <div className="container">
             <Link className="navbar-brand mx-2" to="/">
               <img
