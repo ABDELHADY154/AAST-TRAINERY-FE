@@ -42,7 +42,6 @@ class App extends React.Component {
   }
 
   setUser = (data) => {
-    // this.forceUpdate();
     return this.setState({ loggedIn: data });
   };
 
