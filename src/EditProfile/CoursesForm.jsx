@@ -169,13 +169,20 @@ class CoursesForm extends Component {
                 onChange={(e) => this.setState({ CourseUrl: e.target.value })}
               />
             </div>
-            <div class="col-12 col-md-6  fullwidth ">
-              <input
-                type="file"
-                id="files"
-                className="hidden form-control editInput halfInput uploadBtn fullwidth"
-              />
-              <label for="files">upload</label>
+            <div className="col-12 col-md-6  fullwidth ">
+              <label
+                htmlFor="files"
+                className="form-control editInput halfInput fullwidth uploadBtn"
+              >
+                Upload
+                <input
+                  hidden
+                  type="file"
+                  id="files"
+                  accept="image/png"
+                  onChange={(e) => this.setState({ password: e.target.value })}
+                />
+              </label>
             </div>
             <span className="red py-3">
               Please fill all the required info *
