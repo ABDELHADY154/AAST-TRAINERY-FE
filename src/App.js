@@ -9,26 +9,22 @@ import Landing from "./Components/Landing/Landing";
 import Profile from "./Components/Profile/Profile";
 import Forget from "./Components/Auth/ForgetPassword";
 import ErrorPage from "./Components/Auth/ErrorPage404";
+
+import EducationForm from "./EditProfile/EducationForm";
+import AccountsForm from "./EditProfile/AccountsForm";
+import CoursesForm from "./EditProfile/CoursesForm";
+import ExperianceForm from "./EditProfile/ExperianceForm";
+import GeneralForm from "./EditProfile/GeneralForm";
+import SkillsForm from "./EditProfile/SkillsForm";
 import GeneralInfo from "./EditProfile/GeneralInfo";
+import { AuthRoute } from "./Components/Auth/AuthRoute";
+
 // import Skills from "./EditProfile/Skills";
 // import Education from "./EditProfile/Education";
 
 import "./layout/Footer.css";
 
-const CheckAuth = () => {
-  const token = sessionStorage.getItem("token");
-  const status = sessionStorage.getItem("status");
-  if (!token && !status) {
-    return false;
-  }
-  return true;
-};
-const AuthRoute = ({ component: Component, ...rest }) => (
-  <Route
-    {...rest}
-    render={() => (CheckAuth() ? <Component /> : <Redirect to="/Login" />)}
-  />
-);
+
 
 class App extends React.Component {
   constructor() {
@@ -53,48 +49,55 @@ class App extends React.Component {
   render() {
     return (
       <BrowserRouter>
-        {this.state.loggedIn == true ? (
-          <AuthNav setUser={this.setUser} />
-        ) : (
-          <Nav />
-        )}
-        <div className="app">
-          <div className="auth-wrapper">
-            <div className="auth-inner">
+        {this.state.loggedIn == true ? <AuthNav setUser={this.setUser} /> : <Nav />}
+        <div className='app'>
+          <div className='auth-wrapper'>
+            <div className='auth-inner'>
               <Switch>
                 {/* <== Home for Guest */}
 
                 <Route
                   exact
-                  path="/"
+                  path='/'
                   component={() => <Landing loggedIn={this.state.loggedIn} />}
                 />
 
                 <Route
                   exact
-                  path="/Login"
+                  path='/Login'
                   component={() => <Login setUser={this.setUser} />}
                 />
                 <Route
                   exact
-                  path="/Register"
+                  path='/Register'
                   component={() => <Registry setUser={this.setUser} />}
                 />
-                <Route exact path="/Forget" component={Forget} />
+                <Route exact path='/Forget' component={Forget} />
                 <AuthRoute
                   exact
-                  path="/Home"
+                  path='/Home'
                   component={() => {
                     return <Home setUser={this.setUser} />;
                   }}
                 />
-                <AuthRoute exact path="/Profile" component={Profile} />
+                <AuthRoute exact path='/Profile' component={Profile} />
+                <AuthRoute exact path='/GeneralInfo' component={GeneralInfo} />
 
-                <AuthRoute exact path="/GeneralInfo" component={GeneralInfo} />
-                {/* <Route exact path="/Skills" component={Skills} />
-                <Route exact path="/Education" component={Education} /> */}
+                <AuthRoute exact path='/Profile/General' component={GeneralForm} />
 
-                <Route exact path="*" component={ErrorPage} />
+                <AuthRoute exact path='/Profile/Education' component={EducationForm} />
+                <AuthRoute
+                  exact
+                  path='/Profile/Education/:id'
+                  component={EducationForm}
+                />
+
+                <AuthRoute exact path='/Profile/Experiance' component={ExperianceForm} />
+                <AuthRoute exact path='/Profile/Courses' component={CoursesForm} />
+                <AuthRoute exact path='/Profile/Skills' component={SkillsForm} />
+                <AuthRoute exact path='/Profile/Accounts' component={AccountsForm} />
+
+                <Route exact path='*' component={ErrorPage} />
               </Switch>
             </div>
           </div>
