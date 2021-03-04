@@ -35,7 +35,7 @@ class GeneralForm extends Component {
     return (
       <form class="row g-3 mb-3">
         <div class="col-11 mb-4">
-          <div className="row ">
+          {/* <div className="row ">
             <img
               src={this.state.image}
               className="col-2 profieImg rounded-circle"
@@ -56,7 +56,7 @@ class GeneralForm extends Component {
                 onChange={this.handleChange}
               />
             </div>
-          </div>
+          </div> */}
         </div>
         <div class="col-lg-10 col-11 col-md-10 col-sm-12 col-xs-12">
           <label for="inputfullname" class="form-label editLabel">

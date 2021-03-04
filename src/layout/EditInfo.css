@@ -99,12 +99,12 @@
   outline: 0 !important;
 }
 .editInput[type="date"]::-webkit-calendar-picker-indicator {
-  background: url("https://api.iconify.design/uil:calender.svg?color=%231e4274") no-repeat
-    center center / contain;
+  background: url("https://api.iconify.design/uil:calender.svg?color=%231e4274")
+    no-repeat center center / contain;
 }
 .editInput[type="month"]::-webkit-calendar-picker-indicator {
-  background: url("https://api.iconify.design/uil:calender.svg?color=%231e4274") no-repeat
-    center center / contain;
+  background: url("https://api.iconify.design/uil:calender.svg?color=%231e4274")
+    no-repeat center center / contain;
 }
 .editLabel {
   font-size: 1.1rem !important;
@@ -227,12 +227,12 @@ textarea {
 .profieImg {
   /* border-radius: 50%; */
   width: 160px;
-  height: 150px;
+  height: 140px;
 }
 
-/* .imgUploadBtn::-webkit-file-upload-button {
+.imgUploadBtn::-webkit-file-upload-button {
   visibility: hidden;
-} */
+}
 /* .imgUploadBtn {
   visibility: hidden;
 } */
