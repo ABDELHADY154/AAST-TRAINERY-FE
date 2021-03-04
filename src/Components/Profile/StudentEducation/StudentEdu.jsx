@@ -3,7 +3,12 @@ import { Link } from "react-router-dom";
 import "../../../layout/Profile.css";
 import { BiPencil } from "react-icons/bi";
 export default class StudentEdu extends Component {
+  constructor(props) {
+    super(props);
+  }
+
   render() {
+    let id = this.props.id;
     return (
       <>
         <div
@@ -18,11 +23,7 @@ export default class StudentEdu extends Component {
             id="hiddenhover"
             className=" d-flex flex-row col-2 col-md-1 p-0 ms-3"
           >
-            <Link
-              renderAs="button"
-
-              // to="/Register"
-            >
+            <Link to={`/Profile/Education/${id}`}>
               <BiPencil fill="#cd8930" color="#cd8930" />
             </Link>
           </div>
