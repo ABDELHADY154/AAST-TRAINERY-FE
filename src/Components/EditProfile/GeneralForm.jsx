@@ -8,7 +8,6 @@ import {
   RegionDropdown,
   CountryRegionData,
 } from "react-country-region-selector";
-import ReactFlagsSelect from "react-flags-select";
 import Footer2 from "../Common/Footer2";
 
 class GeneralForm extends Component {
@@ -52,7 +51,6 @@ class GeneralForm extends Component {
 
     return (
       <div>
-        {" "}
         <div className="container ">
           <h1 className="editTitle text-center">Edit Profile</h1>
           <h3 className="categoryTitle d-flex justify-content-start mb-3">
@@ -204,7 +202,6 @@ class GeneralForm extends Component {
               <label for="inputNationaity" className="form-label editLabel ">
                 Nationaity<span className="text-danger ms-2">*</span>
               </label>
-              <FlagsSelect />
               <input
                 type="text"
                 className="form-control editInput  "
@@ -363,12 +360,3 @@ class GeneralForm extends Component {
   }
 }
 export default GeneralForm;
-function FlagsSelect() {
-  const [selected, setSelected] = useState("");
-  return (
-    <ReactFlagsSelect
-      selected={selected}
-      onSelect={(code) => setSelected(code)}
-    />
-  );
-}
