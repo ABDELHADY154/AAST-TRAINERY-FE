@@ -3,10 +3,7 @@ import { axios } from "../Api/axios";
 import { Redirect } from "react-router-dom";
 // import { axios } from "../Api/axios";
 
-import {
-  CountryDropdown,
-  RegionDropdown,
-} from "react-country-region-selector";
+import { CountryDropdown, RegionDropdown } from "react-country-region-selector";
 
 export default class EducationForm extends Component {
   constructor(props) {
@@ -141,7 +138,7 @@ export default class EducationForm extends Component {
   render() {
     const { country, region } = this.state;
     if (this.state.loggedIn === false) {
-      return <Redirect to='/Profile' />;
+      return <Redirect push to='/Login' />;
     }
     // console.log(this.state);
     return (
