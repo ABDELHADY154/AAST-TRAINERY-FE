@@ -6,7 +6,6 @@ import { Redirect } from "react-router-dom";
 import {
   CountryDropdown,
   RegionDropdown,
-  CountryRegionData,
 } from "react-country-region-selector";
 
 export default class EducationForm extends Component {

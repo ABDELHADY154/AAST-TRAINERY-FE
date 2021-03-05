@@ -24,8 +24,6 @@ import { AuthRoute } from "./Components/Auth/AuthRoute";
 
 import "./layout/Footer.css";
 
-
-
 class App extends React.Component {
   constructor() {
     super();
@@ -92,6 +90,12 @@ class App extends React.Component {
                 />
 
                 <AuthRoute exact path='/Profile/Experiance' component={ExperianceForm} />
+                <AuthRoute
+                  exact
+                  path='/Profile/Experiance/:id'
+                  component={ExperianceForm}
+                />
+
                 <AuthRoute exact path='/Profile/Courses' component={CoursesForm} />
                 <AuthRoute exact path='/Profile/Skills' component={SkillsForm} />
                 <AuthRoute exact path='/Profile/Accounts' component={AccountsForm} />
