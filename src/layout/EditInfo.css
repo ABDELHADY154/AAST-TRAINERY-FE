@@ -101,6 +101,7 @@
   box-shadow: none !important;
   outline: 0 !important;
 }
+
 .editInput[type="date"]::-webkit-calendar-picker-indicator {
   background: url("https://api.iconify.design/uil:calender.svg?color=%231e4274")
     no-repeat center center / contain;
@@ -228,17 +229,19 @@ textarea {
   border-radius: 50px;
 }
 .profieImg {
-  /* border-radius: 50%; */
   width: 160px;
   height: 140px;
+  object-fit: cover !important;
 }
 
 .imgUploadBtn::-webkit-file-upload-button {
   visibility: hidden;
 }
-/* .imgUploadBtn::after {
-  visibility: hidden;
-} */
+.imgUploadBtn::after {
+  background-color: #f44336;
+  color: red;
+  width: 20px;
+}
 .imgUploadBtn::before {
   content: "Upload";
   display: inline-block;
@@ -255,6 +258,15 @@ textarea {
 }
 .imgUploadBtn:active::before {
   border: none !important;
+}
+.imgUploadBtn::before:active {
+  border: none !important;
+}
+ReactStars:active {
+  border: none !important;
+}
+
+FlagsSelect {
 }
 /* ...........Mohannad........... */
 .red {
