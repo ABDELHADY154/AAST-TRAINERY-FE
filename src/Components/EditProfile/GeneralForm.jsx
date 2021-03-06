@@ -15,8 +15,24 @@ class GeneralForm extends Component {
     super(props);
     this.state = {
       image: "",
+      imageURL: "",
+      name: "",
+      phoneNumber: 0,
+      university: "",
+      city: "",
+      regNo: 0,
+      gender: "",
+      depId: 0,
+      country: "",
+      nationality: "",
+      dob: "",
+      startYear: "",
+      endYear: "",
+      period: 0,
+      gpa: 0,
+      dep: [],
     };
-    this.state = { country: "", region: "" };
+    // this.state = { country: "", region: "" };
 
     this.handleChange = this.handleChange.bind(this);
   }
@@ -25,30 +41,72 @@ class GeneralForm extends Component {
   }
 
   selectRegion(val) {
-    this.setState({ region: val });
+    this.setState({ city: val });
   }
   async componentDidMount() {
     await axios
-      .get("/W/student/profile/general")
-      .then((res) => {
-        this.setState({
-          image: res.data.response.data.image,
-        });
-        console.log(res.data.response.data);
+      .get("/departments")
+      .then((basma) => {
+        // console.log(basma.data.response.data);
+        this.setState({ dep: basma.data.response.data });
+      })
+      .catch((fathy) => {
+        console.log(fathy);
+      });
+    // await axios
+    //   .get("/W/student/profile/general")
+    //   .then((res) => {
+    //     this.setState({
+    //       image: res.data.response.data.image,
+    //     });
+    //     console.log(res.data.response.data);
+    //   })
+    //   .catch((err) => {
+    //     console.log(err);
+    //   });
+  }
+  handleChange(event) {
+    // console.log(event.target.value);
+    var filename = event.target.value.replace(/^.*[\\\/]/, "");
+
+    this.setState({
+      image: URL.createObjectURL(event.target.files[0]),
+      imageURL: filename,
+    });
+    // console.log(this.state.imageURL);
+  }
+
+  handleSubmit = async (e) => {
+    e.preventDefault();
+    const data = {
+      name: this.state.name,
+      phone_number: this.state.phoneNumber,
+      university: this.state.university,
+      city: this.state.city,
+      reg_no: this.state.regNo,
+      gender: this.state.gender,
+      country: this.state.country,
+      department_id: this.state.depId,
+      nationality: this.state.nationality,
+      date_of_birth: this.state.dob,
+      start_year: 2000,
+      end_year: 4000,
+      gpa: this.state.gpa,
+      period: this.state.period,
+      // image: this.state.imageURL,
+    };
+    await axios
+      .post("/W/student/profile/general", data)
+      .then((e) => {
+        console.log(e);
       })
       .catch((err) => {
         console.log(err);
       });
-  }
-  handleChange(event) {
-    this.setState({
-      image: URL.createObjectURL(event.target.files[0]),
-    });
-  }
-
+  };
   render() {
-    const { country, region } = this.state;
-
+    const city = this.state.city;
+    console.log(this.state.imageURL);
     return (
       <div>
         <div className="container ">
@@ -112,7 +170,7 @@ class GeneralForm extends Component {
               </a>
             </li>
           </ul>
-          <form className="row g-3 mb-3">
+          <form className="row g-3 mb-3" onSubmit={this.handleSubmit}>
             <div className="col-11 mb-4 mt-4">
               <div className="row ">
                 <img
@@ -135,7 +193,9 @@ class GeneralForm extends Component {
                     type="file"
                     className="imgUploadBtn"
                     accept="image/x-png,image/gif,image/jpeg"
-                    onChange={this.handleChange}
+                    onChange={(e) =>
+                      this.setState({ imageURL: e.target.files[0] })
+                    }
                   />
                 </div>
               </div>
@@ -149,6 +209,9 @@ class GeneralForm extends Component {
                 className="form-control editInput "
                 id="fullname"
                 placeholder="Please enter your full name"
+                onChange={(e) => {
+                  this.setState({ name: e.target.value });
+                }}
               />
             </div>
             <div className="col-lg-5 col-11 col-md-5 col-sm-12 col-xs-12">
@@ -163,6 +226,9 @@ class GeneralForm extends Component {
                     id="inlineRadio1"
                     value="male"
                     className="radio editInput "
+                    onChange={(e) => {
+                      this.setState({ gender: e.target.value });
+                    }}
                   />
                   <label
                     className="form-check-label raioLabelEdit"
@@ -178,6 +244,9 @@ class GeneralForm extends Component {
                     name="inlineRadioOptions"
                     id="Gender"
                     value="female"
+                    onChange={(e) => {
+                      this.setState({ gender: e.target.value });
+                    }}
                   />
                   <label
                     className="form-check-label raioLabelEdit "
@@ -196,6 +265,9 @@ class GeneralForm extends Component {
                 type="date"
                 className="form-control editInput  "
                 id="DOB"
+                onChange={(e) => {
+                  this.setState({ dob: e.target.value });
+                }}
               />
             </div>
             <div className="ol-lg-10 col-11 col-md-10 col-sm-12 col-xs-12">
@@ -207,6 +279,9 @@ class GeneralForm extends Component {
                 className="form-control editInput  "
                 id="nationaity"
                 placeholder="Please enter your Nationaity"
+                onChange={(e) => {
+                  this.setState({ nationality: e.target.value });
+                }}
               />
             </div>
             <div className="col-lg-5 col-11 col-md-5 col-sm-12 col-xs-12">
@@ -214,7 +289,9 @@ class GeneralForm extends Component {
                 Country<span className="text-danger ms-2">*</span>
               </label>
               <CountryDropdown
-                value={this.state.country ? this.state.country : country}
+                value={
+                  this.state.country ? this.state.country : this.state.country
+                }
                 onChange={(val) => this.selectCountry(val)}
                 className={
                   this.state.error && this.state.error.countryErr
@@ -230,8 +307,8 @@ class GeneralForm extends Component {
                 City<span className="text-danger ms-2">*</span>
               </label>
               <RegionDropdown
-                country={country}
-                value={region}
+                country={this.state.country}
+                value={city}
                 onChange={(val) => this.selectRegion(val)}
                 className={
                   this.state.error && this.state.error.cityErr
@@ -252,6 +329,9 @@ class GeneralForm extends Component {
                 className="form-control editInput "
                 id="phone"
                 placeholder="Please enter your Phone Number"
+                onChange={(e) => {
+                  this.setState({ phoneNumber: e.target.value });
+                }}
               />
             </div>
             <div className="col-lg-5 col-11 col-md-5 col-sm-12 col-xs-12 ">
@@ -259,11 +339,18 @@ class GeneralForm extends Component {
                 University / Institution
                 <span className="text-danger ms-2">*</span>
               </label>
-              <select id="inputuni" className="form-select editInput  ">
+              <select
+                id="inputuni"
+                className="form-select editInput  "
+                onChange={(e) => {
+                  this.setState({ university: e.target.value });
+                }}
+              >
                 <option selected>
                   Choose your University / Institution ...
                 </option>
-                <option>...</option>
+                <option value="AAST CMT">AAST CMT</option>
+                <option value="AAST clc">AAST clc</option>
               </select>
             </div>
             <div className="col-lg-5 col-11 col-md-5 col-sm-12 col-xs-12 ">
@@ -271,11 +358,25 @@ class GeneralForm extends Component {
                 Field of study / Department
                 <span className="text-danger ms-2">*</span>
               </label>
-              <select id="inputDep" className="form-select editInput   ">
+              <select
+                id="inputDep"
+                className="form-select editInput   "
+                onChange={(e) => {
+                  this.setState({ depId: e.target.value });
+                }}
+              >
                 <option selected>
                   Choose your Field of study / Department...
                 </option>
-                <option>...</option>
+                {this.state.dep
+                  ? this.state.dep.map((jaki) => {
+                      return (
+                        <option key={jaki.id} value={jaki.id}>
+                          {jaki.dep_name}
+                        </option>
+                      );
+                    })
+                  : ""}
               </select>
             </div>
             <div className="col-lg-10 col-11 col-md-10 col-sm-12 col-xs-12">
@@ -287,26 +388,48 @@ class GeneralForm extends Component {
                 className="form-control editInput "
                 id="RegNum"
                 placeholder="Please enter your Registration Number"
+                onChange={(e) => {
+                  this.setState({ regNo: e.target.value });
+                }}
               />
             </div>
             <div className="col-lg-5 col-11 col-md-5 col-sm-12 col-xs-12">
               <label for="inputTerm" className="form-label editLabel">
                 Term<span className="text-danger ms-2">*</span>
               </label>
-              <select id="inputTerm" className="form-select editInput ">
+              <select
+                id="inputTerm"
+                className="form-select editInput "
+                onChange={(e) => {
+                  this.setState({ period: e.target.value });
+                }}
+              >
                 <option selected>Choose your Term ...</option>
                 <span className="text-danger ms-2">*</span>
-                <option>...</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
               </select>
             </div>
             <div className="col-lg-5 col-11 col-md-5 col-sm-12 col-xs-12 ">
               <label for="inputGPA" className="form-label editLabel">
                 Grade / GPA<span className="text-danger ms-2">*</span>
               </label>
-              <select id="inputGPA" className="form-select editInput ">
+              <input
+                id="inputGPA"
+                className="form-select editInput"
+                type="number"
+                name=""
+                onChange={(e) => {
+                  this.setState({ gpa: e.target.value });
+                }}
+              />
+              {/* <select id="inputGPA" className="form-select editInput ">
                 <option selected>Choose your Grade / GPA...</option>
-                <option>...</option>
-              </select>
+                <option></option>
+              </select> */}
             </div>
             <div className="col-lg-5 col-11 col-md-5 col-sm-12 col-xs-12">
               <label for="bdaymonth" className="form-label editLabel">
@@ -316,6 +439,9 @@ class GeneralForm extends Component {
                 type="month"
                 id="bdaymonth"
                 className="form-control editInput "
+                onChange={(e) => {
+                  this.setState({ startYear: e.target.value });
+                }}
               />
             </div>
             <div className="col-lg-5 col-11 col-md-5 col-sm-12 col-xs-12 ">
@@ -326,6 +452,9 @@ class GeneralForm extends Component {
                 type="month"
                 id="bdaymonth"
                 className="form-control editInput  "
+                onChange={(e) => {
+                  this.setState({ endYear: e.target.value });
+                }}
               />
             </div>
             <div className="col-lg-10 col-11 col-md-10 col-sm-12 col-xs-12 d-flex justify-content-end mt-5">

@@ -82,7 +82,7 @@ class App extends React.Component {
                   }}
                 />
                 <AuthRoute exact path="/Profile" component={Profile} />
-                <AuthRoute exact path="/GeneralInfo" component={GeneralInfo} />
+                {/* <AuthRoute exact path="/GeneralInfo" component={GeneralInfo} /> */}
 
                 <AuthRoute
                   exact
