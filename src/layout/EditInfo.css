@@ -285,12 +285,26 @@ FlagsSelect {
   }
 }
 
-/* ...........Mostafa........... */
+/* ...........Fathy........... */
 .uploadBtn {
   margin-top: 2.5em !important;
-  background: url("https://api.iconify.design/feather:upload.svg?color=%231e4274&width=24&height=24")
-    no-repeat right !important;
   background-color: #fafafa !important;
   content: "upload" !important;
   color: #1e4274 !important;
+}
+.icon {
+  width: 24px;
+  height: 24px;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  fill: none;
+  margin-left: auto !important;
+}
+
+@media (max-width: 768px) {
+  .uploadBtn {
+    margin-top: 1rem !important;
+  }
 }
