@@ -86,14 +86,12 @@ class GeneralForm extends Component {
       });
   }
   handleChange(event) {
-    // console.log(event.target.value);
     var filename = event.target.value.replace(/^.*[\\\/]/, "");
 
     this.setState({
       image: URL.createObjectURL(event.target.files[0]),
       imageURL: filename,
     });
-    // console.log(this.state.imageURL);
   }
 
   handleSubmit = async e => {
