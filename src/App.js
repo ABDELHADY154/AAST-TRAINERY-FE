@@ -89,7 +89,6 @@ class App extends React.Component {
                   path="/Profile/General"
                   component={GeneralForm}
                 />
-
                 <AuthRoute
                   exact
                   path="/Profile/Education"
@@ -100,7 +99,6 @@ class App extends React.Component {
                   path="/Profile/Education/:id"
                   component={EducationForm}
                 />
-
                 <AuthRoute
                   exact
                   path="/Profile/Experiance"
