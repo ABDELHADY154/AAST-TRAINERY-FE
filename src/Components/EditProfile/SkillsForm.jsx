@@ -12,15 +12,22 @@ import { axios } from "../../Api/axios";
 // import { Link } from "react-router-dom";
 
 class Skills extends Component {
+  state = {
+    tags: [],
+  };
   handleSubmit = async (e) => {
     e.preventDefault();
+  };
+
+  tagsHandler = (e) => {
+    this.setState({ tags: e });
   };
 
   render() {
     const ratingChanged = (newRating) => {
       console.log(newRating);
     };
-
+    console.log(this.state.tags);
     return (
       <div>
         {" "}
@@ -146,7 +153,7 @@ class Skills extends Component {
                 id="RegNum"
                 placeholder="Please enter your Intrests"
               /> */}
-                <ReactTag className="editLabel" />
+                <ReactTag className="editLabel" tags={this.tagsHandler} />
               </div>
 
               <div className="col-lg-10 col-11 col-md-10 col-sm-12 col-xs-12 d-flex justify-content-end ">
@@ -227,19 +234,23 @@ class Skills extends Component {
 }
 export default Skills;
 
-function ReactTag() {
-  const [tags, setTags] = React.useState(["Add Intrests"]);
-  // useEffect(() => console.log(tags), [tags]);
-  // const newTags = (event) => setTags(event.target.value);
+class ReactTag extends Component {
+  state = {
+    tags: [],
+  };
+  setTags = (e) => {
+    this.setState({ tags: e });
+    this.props.tags(e);
+  };
 
-  return (
-    <ReactTagInput
-      tags={tags}
-      editable={true}
-      removeOnBackspace={true}
-      // onChange={newTags}
-      // onChange={(newTags) => setTags(newTags)}
-      onChange={(newTags) => setTags(newTags)}
-    />
-  );
+  render() {
+    return (
+      <ReactTagInput
+        tags={this.state.tags}
+        editable={true}
+        removeOnBackspace={true}
+        onChange={(newTags) => this.setTags(newTags)}
+      />
+    );
+  }
 }
