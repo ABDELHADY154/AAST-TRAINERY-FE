@@ -12,11 +12,46 @@ import { axios } from "../../Api/axios";
 // import { Link } from "react-router-dom";
 
 class Skills extends Component {
-  state = {
-    tags: [],
-  };
+  constructor(props) {
+    super(props);
+    this.state = {
+      skillId: 0,
+      skill: "",
+      yearsExp: 0,
+      tags: [],
+    };
+  }
+
+  async componentDidMount() {
+    await axios
+      .get("/W/student/profile/skill")
+      .then((res) => {
+        this.setState({
+          skill_name: res.data.response.data.skill_name,
+          skillId: res.data.response.data.id,
+          yearsExp: res.data.response.data.years_of_exp,
+        });
+        console.log(res.data.response.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }
   handleSubmit = async (e) => {
     e.preventDefault();
+    const data = {
+      skill_name: this.state.skill,
+      id: this.state.skillId,
+      years_of_exp: this.state.yearsExp,
+    };
+    await axios
+      .post("/W/student/profile/skill", data)
+      .then((e) => {
+        console.log(e);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   };
 
   tagsHandler = (e) => {
@@ -28,9 +63,9 @@ class Skills extends Component {
       console.log(newRating);
     };
     console.log(this.state.tags);
+    // console.log(this.state.data);
     return (
       <div>
-        {" "}
         <div className="container ">
           <h1 className="editTitle text-center">Edit Profile</h1>
           <h3 className="categoryTitle d-flex justify-content-start mb-3">
@@ -103,21 +138,18 @@ class Skills extends Component {
                   className="form-control editInput "
                   id="fullname"
                   placeholder="Please enter your Skills "
+                  onChange={(e) => this.setState({ skill: e.target.value })}
+                  value={this.state.skill}
                 />
               </div>
               <div className="col-lg-10 col-11 col-md-10 col-sm-12 col-xs-12 ">
-                <select id="inputSkillYears" className="form-select editInput ">
-                  <option selected>Years of Experience ...</option>
-                  <option>...</option>
-                </select>
-                <label for="inputLevel" className="form-label editLabel mt-2">
-                  Level
-                </label>
-                <ReactStars
-                  count={5}
-                  onChange={ratingChanged}
-                  size={28}
-                  activeColor="#F2A23A"
+                <input
+                  type="text"
+                  className="form-control editInput "
+                  id="inputSkillYears"
+                  placeholder="Please enter your years of Experience"
+                  onChange={(e) => this.setState({ yearsExp: e.target.value })}
+                  value={this.state.yearsExp}
                 />
               </div>
 
@@ -132,14 +164,14 @@ class Skills extends Component {
                   Add
                 </button>
               </div>
-              <div class="col-lg-10 col-11 col-md-10 col-sm-12 col-xs-12 d-flex justify-content-end">
+              {/* <div class="col-lg-10 col-11 col-md-10 col-sm-12 col-xs-12 d-flex justify-content-end">
                 <button type="submit" class="btn deleteBtn me-2 shadow-none ">
                   Delete
                 </button>
                 <button type="submit" class="btn updateBtn shadow-none">
                   Update
                 </button>
-              </div>
+              </div> */}
             </form>
             <form className="row g-3 mb-3" onSubmit={this.handleSubmit}>
               <hr className="hrSkills ms-2 col-lg-10 col-11 col-md-10 col-sm-12 col-xs-12" />

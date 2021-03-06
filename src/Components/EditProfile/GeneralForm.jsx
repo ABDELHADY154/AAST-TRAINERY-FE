@@ -53,17 +53,32 @@ class GeneralForm extends Component {
       .catch((fathy) => {
         console.log(fathy);
       });
-    // await axios
-    //   .get("/W/student/profile/general")
-    //   .then((res) => {
-    //     this.setState({
-    //       image: res.data.response.data.image,
-    //     });
-    //     console.log(res.data.response.data);
-    //   })
-    //   .catch((err) => {
-    //     console.log(err);
-    //   });
+    await axios
+      .get("/W/student/profile/general")
+      .then((res) => {
+        this.setState({
+          image: res.data.response.data.image,
+          name: res.data.response.data.fullName,
+          phoneNumber: res.data.response.data.phoneNumber,
+          university: res.data.response.data.university,
+          city: res.data.response.data.city,
+          regNo: res.data.response.data.regNumber,
+          gender: res.data.response.data.gender,
+          depId: res.data.response.data.department,
+          country: res.data.response.data.country,
+          nationality: res.data.response.data.nationality,
+          dob: res.data.response.data.dob,
+          startYear: res.data.response.data.startYear,
+          endYear: res.data.response.data.endYear,
+          period: res.data.response.data.period,
+          gpa: res.data.response.data.GPA,
+          // dep: res.data.response.data.department,
+        });
+        console.log(res.data.response.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   }
   handleChange(event) {
     // console.log(event.target.value);
@@ -89,8 +104,8 @@ class GeneralForm extends Component {
       department_id: this.state.depId,
       nationality: this.state.nationality,
       date_of_birth: this.state.dob,
-      start_year: 2000,
-      end_year: 4000,
+      start_year: this.state.startYear,
+      end_year: this.state.endYear,
       gpa: this.state.gpa,
       period: this.state.period,
       // image: this.state.imageURL,
@@ -106,7 +121,7 @@ class GeneralForm extends Component {
   };
   render() {
     const city = this.state.city;
-    console.log(this.state.imageURL);
+    // console.log(this.state.name);
     return (
       <div>
         <div className="container ">
@@ -176,6 +191,7 @@ class GeneralForm extends Component {
                 <img
                   src={this.state.image}
                   className="col-3 profieImg rounded-circle"
+                  // value={this.state.image}
                 />
                 <div className="col-10 ">
                   <label
@@ -212,6 +228,7 @@ class GeneralForm extends Component {
                 onChange={(e) => {
                   this.setState({ name: e.target.value });
                 }}
+                value={this.state.name}
               />
             </div>
             <div className="col-lg-5 col-11 col-md-5 col-sm-12 col-xs-12">
@@ -229,6 +246,7 @@ class GeneralForm extends Component {
                     onChange={(e) => {
                       this.setState({ gender: e.target.value });
                     }}
+                    value={this.state.gender}
                   />
                   <label
                     className="form-check-label raioLabelEdit"
@@ -247,6 +265,7 @@ class GeneralForm extends Component {
                     onChange={(e) => {
                       this.setState({ gender: e.target.value });
                     }}
+                    value={this.state.gender}
                   />
                   <label
                     className="form-check-label raioLabelEdit "
@@ -268,6 +287,7 @@ class GeneralForm extends Component {
                 onChange={(e) => {
                   this.setState({ dob: e.target.value });
                 }}
+                value={this.state.dob}
               />
             </div>
             <div className="ol-lg-10 col-11 col-md-10 col-sm-12 col-xs-12">
@@ -282,6 +302,7 @@ class GeneralForm extends Component {
                 onChange={(e) => {
                   this.setState({ nationality: e.target.value });
                 }}
+                value={this.state.nationality}
               />
             </div>
             <div className="col-lg-5 col-11 col-md-5 col-sm-12 col-xs-12">
@@ -332,6 +353,7 @@ class GeneralForm extends Component {
                 onChange={(e) => {
                   this.setState({ phoneNumber: e.target.value });
                 }}
+                value={this.state.phoneNumber}
               />
             </div>
             <div className="col-lg-5 col-11 col-md-5 col-sm-12 col-xs-12 ">
@@ -345,6 +367,7 @@ class GeneralForm extends Component {
                 onChange={(e) => {
                   this.setState({ university: e.target.value });
                 }}
+                value={this.state.university}
               >
                 <option selected>
                   Choose your University / Institution ...
@@ -364,6 +387,7 @@ class GeneralForm extends Component {
                 onChange={(e) => {
                   this.setState({ depId: e.target.value });
                 }}
+                value={this.state.department}
               >
                 <option selected>
                   Choose your Field of study / Department...
@@ -391,6 +415,7 @@ class GeneralForm extends Component {
                 onChange={(e) => {
                   this.setState({ regNo: e.target.value });
                 }}
+                value={this.state.regNo}
               />
             </div>
             <div className="col-lg-5 col-11 col-md-5 col-sm-12 col-xs-12">
@@ -403,6 +428,7 @@ class GeneralForm extends Component {
                 onChange={(e) => {
                   this.setState({ period: e.target.value });
                 }}
+                value={this.state.period}
               >
                 <option selected>Choose your Term ...</option>
                 <span className="text-danger ms-2">*</span>
@@ -421,10 +447,12 @@ class GeneralForm extends Component {
                 id="inputGPA"
                 className="form-select editInput"
                 type="number"
+                step=".01"
                 name=""
                 onChange={(e) => {
                   this.setState({ gpa: e.target.value });
                 }}
+                value={this.state.gpa}
               />
               {/* <select id="inputGPA" className="form-select editInput ">
                 <option selected>Choose your Grade / GPA...</option>
@@ -435,13 +463,15 @@ class GeneralForm extends Component {
               <label for="bdaymonth" className="form-label editLabel">
                 Start Year<span className="text-danger ms-2">*</span>
               </label>
+
               <input
-                type="month"
+                // type="month"
                 id="bdaymonth"
                 className="form-control editInput "
                 onChange={(e) => {
                   this.setState({ startYear: e.target.value });
                 }}
+                value={this.state.startYear}
               />
             </div>
             <div className="col-lg-5 col-11 col-md-5 col-sm-12 col-xs-12 ">
@@ -449,12 +479,13 @@ class GeneralForm extends Component {
                 Expected end Year<span className="text-danger ms-2">*</span>
               </label>
               <input
-                type="month"
+                // type="month"
                 id="bdaymonth"
                 className="form-control editInput  "
                 onChange={(e) => {
                   this.setState({ endYear: e.target.value });
                 }}
+                value={this.state.endYear}
               />
             </div>
             <div className="col-lg-10 col-11 col-md-10 col-sm-12 col-xs-12 d-flex justify-content-end mt-5">
