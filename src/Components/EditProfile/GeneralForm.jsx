@@ -1,7 +1,7 @@
 import React, { Component, useState } from "react";
 import { Redirect } from "react-router-dom";
 import { axios } from "../../Api/axios";
-// import { Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import "../../layout/EditInfo.css";
 import {
   CountryDropdown,
@@ -9,7 +9,6 @@ import {
   CountryRegionData,
 } from "react-country-region-selector";
 import Footer2 from "../Common/Footer2";
-import EditNav from "./EditNav";
 
 class GeneralForm extends Component {
   constructor(props) {
@@ -17,6 +16,7 @@ class GeneralForm extends Component {
     this.state = {
       image: "",
       imageURL: "",
+      department: "",
       name: "",
       phoneNumber: 0,
       university: "",
@@ -32,8 +32,8 @@ class GeneralForm extends Component {
       period: 0,
       gpa: 0,
       dep: [],
+      periodNumArr: [3, 4, 5, 6, 7, 8],
     };
-    // this.state = { country: "", region: "" };
 
     this.handleChange = this.handleChange.bind(this);
   }
@@ -47,24 +47,55 @@ class GeneralForm extends Component {
   async componentDidMount() {
     await axios
       .get("/departments")
-      .then((basma) => {
-        // console.log(basma.data.response.data);
-        this.setState({ dep: basma.data.response.data });
+      .then((res) => {
+        this.setState({ dep: res.data.response.data });
       })
-      .catch((fathy) => {
-        console.log(fathy);
+      .catch((err) => {
+        console.log(err);
+      });
+    await axios
+      .get("/W/student/profile/general")
+      .then((res) => {
+        this.setState({
+          image: res.data.response.data.image,
+          name: res.data.response.data.fullName,
+          phoneNumber: res.data.response.data.phoneNumber,
+          university: res.data.response.data.university,
+          city: res.data.response.data.city,
+          regNo: res.data.response.data.regNumber,
+          gender: res.data.response.data.gender,
+          department: res.data.response.data.department,
+          country: res.data.response.data.country,
+          nationality: res.data.response.data.nationality,
+          dob: res.data.response.data.dob,
+          startYear: res.data.response.data.startYear,
+          endYear: res.data.response.data.endYear,
+          period: res.data.response.data.period,
+          gpa: res.data.response.data.GPA,
+        });
+        console.log(res.data.response.data);
+        this.state.dep.forEach((element) => {
+          if (element.dep_name == this.state.department) {
+            this.setState({ depId: element.id });
+          }
+        });
+      })
+      .catch((error) => {
+        if (error.response.data.status === 401) {
+          sessionStorage.clear("token");
+          sessionStorage.clear("status");
+          this.setState({ loggedIn: false });
+          window.location.reload();
+        }
       });
   }
   handleChange(event) {
-    // console.log(event.target.value);
     var filename = event.target.value.replace(/^.*[\\\/]/, "");
 
     this.setState({
       image: URL.createObjectURL(event.target.files[0]),
-
       imageURL: filename,
     });
-    console.log(this.state.image);
   }
 
   handleSubmit = async (e) => {
@@ -80,153 +111,341 @@ class GeneralForm extends Component {
       department_id: this.state.depId,
       nationality: this.state.nationality,
       date_of_birth: this.state.dob,
-      start_year: 2000,
-      end_year: 4000,
+      start_year: this.state.startYear,
+      end_year: this.state.endYear,
       gpa: this.state.gpa,
       period: this.state.period,
       // image: this.state.imageURL,
     };
     await axios
       .post("/W/student/profile/general", data)
-      .then((e) => {
-        console.log(e);
+      .then((res) => {
+        this.setState({
+          loggedIn: false,
+        });
       })
-      .catch((err) => {
-        console.log(err);
+      .catch((error) => {
+        if (error.response.data.status === 401) {
+          sessionStorage.clear("token");
+          sessionStorage.clear("status");
+          this.setState({ loggedIn: false });
+          window.location.reload();
+        }
+        this.setState({
+          error: {
+            nameErr: error.response.data.errors.name,
+            phoneErr: error.response.data.errors.phone_number,
+            universityErr: error.response.data.errors.university,
+            cityErr: error.response.data.errors.city,
+            regNoErr: error.response.data.errors.reg_no,
+            genderErr: error.response.data.errors.gender,
+            countryErr: error.response.data.errors.country,
+            depErr: error.response.data.errors.department_id,
+            nationalityErr: error.response.data.errors.nationality,
+            dobErr: error.response.data.errors.date_of_birth,
+            gpaErr: error.response.data.errors.gpa,
+            periodErr: error.response.data.errors.period,
+            startyearErr: error.response.data.errors.start_year,
+            endyearErr: error.response.data.errors.end_year,
+          },
+        });
       });
   };
-  setactive(val) {
-    this.setState({ General: val });
-  }
   render() {
     const city = this.state.city;
-    console.log(this.state.imageURL);
+    if (this.state.loggedIn === false) {
+      return <Redirect to="/Profile" />;
+    }
     return (
       <div>
-        <div className='container '>
-          <EditNav setactive={"General"} />
-
-          <form className='row g-3 mb-3' onSubmit={this.handleSubmit}>
-            <div className='col-11 mb-4 mt-4'>
-              <div className='row '>
-                <img src={this.state.image} className='col-3 profieImg rounded-circle' />
-                <div className='col-10 '>
-                  <label className='form-label fs-5 mt-2 imgLabel' for='customFile'>
+        <div className="container ">
+          <h1 className="editTitle text-center">Edit Profile</h1>
+          <h3 className="categoryTitle d-flex justify-content-start mb-3">
+            Categories
+          </h3>
+          <ul className="nav  infoTabsUl nav-tabs" id="myTab" role="tablist">
+            <li className="nav-item infoTabs" role="presentation">
+              <a
+                className="nav-link  tabBtn  active"
+                id="General-tab"
+                href="/Profile/General"
+              >
+                General
+              </a>
+            </li>
+            <li className="nav-item infoTabs" role="presentation">
+              <a
+                className="nav-link  tabBtn  "
+                id="Education-tab"
+                href="/Profile/Education"
+              >
+                Education
+              </a>
+            </li>
+            <li class="nav-item infoTabs" role="presentation">
+              <a
+                className="nav-link tabBtn"
+                id="Experiance-tab"
+                href="/Profile/Experiance"
+              >
+                Experiance
+              </a>
+            </li>
+            <li className="nav-item infoTabs" role="presentation">
+              <a
+                className="nav-link tabBtn"
+                id="Courses-tab"
+                href="/Profile/Courses"
+              >
+                Courses
+              </a>
+            </li>
+            <li className="nav-item infoTabs" role="presentation">
+              <a
+                className="nav-link tabBtn"
+                id="Skills-tab"
+                href="/Profile/Skills"
+              >
+                Skills
+              </a>
+            </li>
+            <li className="nav-item infoTabs" role="presentation">
+              <a
+                className="nav-link tabBtn"
+                id="Accounts-tab"
+                href="/Profile/Accounts"
+              >
+                Accounts
+              </a>
+            </li>
+          </ul>
+          <form className="row g-3 mb-3" onSubmit={this.handleSubmit}>
+            <div className="col-11 mb-4 mt-4">
+              <div className="row ">
+                <img
+                  src={this.state.image}
+                  className="col-3 profieImg rounded-circle"
+                />
+                <div className="col-10 ">
+                  <label
+                    className="form-label fs-5 mt-2 imgLabel"
+                    for="customFile"
+                  >
                     Profile Photo
                   </label>
-                  <p className='fw-light'>
-                    You can upload a .jpg, .png, or .gif photo with max size of 10MB.
+                  <p className="fw-light">
+                    You can upload a .jpg, .png, or .gif photo with max size of
+                    10MB.
                   </p>
 
-                  <input
-                    type='file'
-                    className='imgUploadBtn'
-                    accept='image/x-png,image/gif,image/jpeg'
-                    onChange={(e) => this.setState({ imageURL: e.target.files[0] })}
-                  />
+                  <div className="UploadBtnDiv">
+                    <button className="UploadBtn">Upload</button>
+                    <input
+                      type="file"
+                      className="imgUploadBtn"
+                      accept="image/x-png,image/gif,image/jpeg"
+                      onChange={(e) =>
+                        this.setState({ imageURL: e.target.files[0] })
+                      }
+                    />
+                  </div>
                 </div>
               </div>
             </div>
-            <div className='col-lg-10 col-11 col-md-10 col-sm-12 col-xs-12'>
-              <label for='inputfullname' className='form-label editLabel'>
-                Full Name<span className='text-danger ms-2'>*</span>
+            <div className="col-lg-10 col-11 col-md-10 col-sm-12 col-xs-12">
+              <label for="inputfullname" className="form-label editLabel">
+                Full Name<span className="text-danger ms-2">*</span>
               </label>
               <input
-                type='text'
-                className='form-control editInput '
-                id='fullname'
-                placeholder='Please enter your full name'
+                type="text"
+                className={
+                  this.state.error && this.state.error.nameErr
+                    ? "form-control editInput wrong"
+                    : "form-control editInput "
+                }
+                id="fullname"
+                placeholder="Please enter your full name"
                 onChange={(e) => {
                   this.setState({ name: e.target.value });
                 }}
+                value={this.state.name}
               />
+              {this.state.error && this.state.error.nameErr ? (
+                <p className="editerror">{this.state.error.nameErr}</p>
+              ) : (
+                ""
+              )}
             </div>
-            <div className='col-lg-5 col-11 col-md-5 col-sm-12 col-xs-12'>
-              <label for='inputEmail4' className='form-label editLabel'>
-                Gender<span className='text-danger ms-2'>*</span>
+            <div className="col-lg-5 col-11 col-md-5 col-sm-12 col-xs-12">
+              <label for="inputEmail4" className="form-label editLabel">
+                Gender<span className="text-danger ms-2">*</span>
               </label>
-              <div className='row '>
-                <div className='male col-4 col-lg-3 col-md-4 col-sm-4 col-xs-3 form-check form-check-inline d-flex'>
-                  <input
-                    type='radio'
-                    name='inlineRadioOptions'
-                    id='inlineRadio1'
-                    value='male'
-                    className='radio editInput '
-                    onChange={(e) => {
-                      this.setState({ gender: e.target.value });
-                    }}
-                  />
-                  <label className='form-check-label raioLabelEdit' for='inlineCheckbox3'>
-                    Male
-                  </label>
-                </div>
-                <div className=' female col-4 col-lg-3 col-md-4 col-sm-5 col-xs-3 checkbox form-check-inline d-flex'>
-                  <input
-                    className='radio editInput'
-                    type='radio'
-                    name='inlineRadioOptions'
-                    id='Gender'
-                    value='female'
-                    onChange={(e) => {
-                      this.setState({ gender: e.target.value });
-                    }}
-                  />
+              <div className="row ">
+                <div className="male col-4 col-lg-3 col-md-4 col-sm-4 col-xs-3 form-check form-check-inline d-flex">
+                  {this.state.gender == "male" ? (
+                    <input
+                      type="radio"
+                      name="inlineRadioOptions"
+                      id="inlineRadio1"
+                      value="male"
+                      className={
+                        this.state.error && this.state.error.genderErr
+                          ? "radio editInput wrong"
+                          : "radio editInput "
+                      }
+                      onChange={(e) => {
+                        this.setState({ gender: e.target.value });
+                      }}
+                      checked
+                    />
+                  ) : (
+                    <input
+                      type="radio"
+                      name="inlineRadioOptions"
+                      id="inlineRadio1"
+                      value="male"
+                      className={
+                        this.state.error && this.state.error.genderErr
+                          ? "radio editInput wrong"
+                          : "radio editInput "
+                      }
+                      onChange={(e) => {
+                        this.setState({ gender: e.target.value });
+                      }}
+                    />
+                  )}
                   <label
-                    className='form-check-label raioLabelEdit '
-                    for='inlineCheckbox3'
+                    className="form-check-label raioLabelEdit"
+                    for="inlineCheckbox3"
+                  >
+                    Male
+                  </label>{" "}
+                  {this.state.error && this.state.error.genderErr ? (
+                    <p className="editerror">{this.state.error.genderErr}</p>
+                  ) : (
+                    ""
+                  )}
+                </div>
+                <div className=" female col-4 col-lg-3 col-md-4 col-sm-5 col-xs-3 checkbox form-check-inline d-flex">
+                  {this.state.gender == "female" ? (
+                    <input
+                      className={
+                        this.state.error && this.state.error.genderErr
+                          ? "radio editInput wrong"
+                          : "radio editInput "
+                      }
+                      type="radio"
+                      name="inlineRadioOptions"
+                      id="Gender"
+                      value="female"
+                      onChange={(e) => {
+                        this.setState({ gender: e.target.value });
+                      }}
+                      checked
+                    />
+                  ) : (
+                    <input
+                      className={
+                        this.state.error && this.state.error.genderErr
+                          ? "radio editInput wrong"
+                          : "radio editInput "
+                      }
+                      type="radio"
+                      name="inlineRadioOptions"
+                      id="Gender"
+                      value="female"
+                      onChange={(e) => {
+                        this.setState({ gender: e.target.value });
+                      }}
+                    />
+                  )}
+                  <label
+                    className="form-check-label raioLabelEdit "
+                    for="inlineCheckbox3"
                   >
                     Female
-                  </label>
+                  </label>{" "}
+                  {this.state.error && this.state.error.genderErr ? (
+                    <p className="editerror">{this.state.error.genderErr}</p>
+                  ) : (
+                    ""
+                  )}
                 </div>
               </div>
             </div>
-            <div className='col-lg-5 col-11 col-md-5 col-sm-12 col-xs-12 '>
-              <label for='inputDOB' className='form-label editLabel '>
-                Date of birth<span className='text-danger ms-2'>*</span>
+            <div className="col-lg-5 col-11 col-md-5 col-sm-12 col-xs-12 ">
+              <label for="inputDOB" className="form-label editLabel ">
+                Date of birth<span className="text-danger ms-2">*</span>
               </label>
               <input
-                type='date'
-                className='form-control editInput  '
-                id='DOB'
+                type="date"
+                className={
+                  this.state.error && this.state.error.dobErr
+                    ? "form-control editInput wrong"
+                    : "form-control editInput "
+                }
+                id="DOB"
                 onChange={(e) => {
                   this.setState({ dob: e.target.value });
                 }}
+                value={this.state.dob}
               />
+              {this.state.error && this.state.error.dobErr ? (
+                <p className="editerror">{this.state.error.dobErr}</p>
+              ) : (
+                ""
+              )}
             </div>
-            <div className='ol-lg-10 col-11 col-md-10 col-sm-12 col-xs-12'>
-              <label for='inputNationaity' className='form-label editLabel '>
-                Nationaity<span className='text-danger ms-2'>*</span>
+            <div className="ol-lg-10 col-11 col-md-10 col-sm-12 col-xs-12">
+              <label for="inputNationaity" className="form-label editLabel ">
+                Nationaity<span className="text-danger ms-2">*</span>
               </label>
               <input
-                type='text'
-                className='form-control editInput  '
-                id='nationaity'
-                placeholder='Please enter your Nationaity'
+                type="text"
+                className={
+                  this.state.error && this.state.error.nationalityErr
+                    ? "form-control editInput wrong"
+                    : "form-control editInput "
+                }
+                id="nationaity"
+                placeholder="Please enter your Nationaity"
                 onChange={(e) => {
                   this.setState({ nationality: e.target.value });
                 }}
+                value={this.state.nationality}
               />
+              {this.state.error && this.state.error.nationalityErr ? (
+                <p className="editerror">{this.state.error.nationalityErr}</p>
+              ) : (
+                ""
+              )}
             </div>
-            <div className='col-lg-5 col-11 col-md-5 col-sm-12 col-xs-12'>
-              <label for='inputCountry' className='form-label editLabel'>
-                Country<span className='text-danger ms-2'>*</span>
+            <div className="col-lg-5 col-11 col-md-5 col-sm-12 col-xs-12">
+              <label for="inputCountry" className="form-label editLabel">
+                Country<span className="text-danger ms-2">*</span>
               </label>
               <CountryDropdown
-                value={this.state.country ? this.state.country : this.state.country}
+                value={
+                  this.state.country ? this.state.country : this.state.country
+                }
                 onChange={(val) => this.selectCountry(val)}
                 className={
                   this.state.error && this.state.error.countryErr
-                    ? "wrong form-select editInput col-lg-5 col-11 col-md-5 col-sm-12 col-xs-12"
-                    : " form-select editInput col-lg-5 col-11 col-md-5 col-sm-12 col-xs-12"
+                    ? "wrong form-select signSelect editInput col-lg-5 col-11 col-md-5 col-sm-12 col-xs-12"
+                    : " form-select signSelect editInput col-lg-5 col-11 col-md-5 col-sm-12 col-xs-12"
                 }
-                id='validationServer04'
-                aria-describedby='validationServer04Feedback'
+                id="validationServer04"
+                aria-describedby="validationServer04Feedback"
               />
+              {this.state.error && this.state.error.countryErr ? (
+                <p className="editerror">{this.state.error.countryErr}</p>
+              ) : (
+                ""
+              )}
             </div>
-            <div className='col-lg-5 col-11 col-md-5 col-sm-12 col-xs-12 '>
-              <label for='inputCity' className='form-label editLabel'>
-                City<span className='text-danger ms-2'>*</span>
+            <div className="col-lg-5 col-11 col-md-5 col-sm-12 col-xs-12 ">
+              <label for="inputCity" className="form-label editLabel">
+                City<span className="text-danger ms-2">*</span>
               </label>
               <RegionDropdown
                 country={this.state.country}
@@ -234,171 +453,252 @@ class GeneralForm extends Component {
                 onChange={(val) => this.selectRegion(val)}
                 className={
                   this.state.error && this.state.error.cityErr
-                    ? "wrong form-select editInput col-lg-5 col-11 col-md-5 col-sm-12 col-xs-12"
-                    : " form-select editInput col-lg-5 col-11 col-md-5 col-sm-12 col-xs-12"
+                    ? "wrong form-select signSelect editInput col-lg-5 col-11 col-md-5 col-sm-12 col-xs-12"
+                    : " form-select signSelect editInput col-lg-5 col-11 col-md-5 col-sm-12 col-xs-12"
                 }
-                id='validationServer04'
-                aria-describedby='validationServer04Feedback'
-                // value={(e) => this.setState({ City: e.target.value })}
+                id="validationServer04"
+                aria-describedby="validationServer04Feedback"
               />
+              {this.state.error && this.state.error.cityErr ? (
+                <p className="editerror">{this.state.error.cityErr}</p>
+              ) : (
+                ""
+              )}
             </div>
-            <div className='col-lg-10 col-11 col-md-10 col-sm-12 col-xs-12'>
-              <label for='inputPhone' className='form-label editLabel'>
-                Phone Number<span className='text-danger ms-2'>*</span>
+            <div className="col-lg-10 col-11 col-md-10 col-sm-12 col-xs-12">
+              <label for="inputPhone" className="form-label editLabel">
+                Phone Number<span className="text-danger ms-2">*</span>
               </label>
               <input
-                type='number'
-                className='form-control editInput '
-                id='phone'
-                placeholder='Please enter your Phone Number'
+                type="number"
+                className={
+                  this.state.error && this.state.error.phoneErr
+                    ? "form-control editInput wrong"
+                    : "form-control editInput "
+                }
+                id="phone"
+                placeholder="Please enter your Phone Number"
                 onChange={(e) => {
                   this.setState({ phoneNumber: e.target.value });
                 }}
-              />
+                value={this.state.phoneNumber}
+              />{" "}
+              {this.state.error && this.state.error.phoneErr ? (
+                <p className="editerror">{this.state.error.phoneErr}</p>
+              ) : (
+                ""
+              )}
             </div>
-            <div className='col-lg-5 col-11 col-md-5 col-sm-12 col-xs-12 '>
-              <label for='inputuni' className='form-label editLabel'>
+            <div className="col-lg-5 col-11 col-md-5 col-sm-12 col-xs-12 ">
+              <label for="inputuni" className="form-label editLabel">
                 University / Institution
-                <span className='text-danger ms-2'>*</span>
+                <span className="text-danger ms-2">*</span>
               </label>
               <select
-                id='inputuni'
-                className='form-select editInput  '
+                id="inputuni"
+                className={
+                  this.state.error && this.state.error.universityErr
+                    ? "form-control editInput signSelect wrong"
+                    : "form-control editInput signSelect"
+                }
                 onChange={(e) => {
                   this.setState({ university: e.target.value });
                 }}
               >
-                <option selected>Choose your University / Institution ...</option>
-                <option value='AAST CMT'>AAST CMT</option>
-                <option value='AAST clc'>AAST clc</option>
+                <option selected>
+                  Choose your University / Institution ...
+                </option>
+                <option value="AAST CMT">AAST CMT</option>
+                <option value="AAST clc">AAST clc</option>
               </select>
+              {this.state.error && this.state.error.universityErr ? (
+                <p className="editerror">{this.state.error.universityErr}</p>
+              ) : (
+                ""
+              )}
             </div>
-            <div className='col-lg-5 col-11 col-md-5 col-sm-12 col-xs-12 '>
-              <label for='inputDep' className='form-label editLabel'>
+            <div className="col-lg-5 col-11 col-md-5 col-sm-12 col-xs-12 ">
+              <label for="inputDep" className="form-label editLabel">
                 Field of study / Department
-                <span className='text-danger ms-2'>*</span>
+                <span className="text-danger ms-2">*</span>
               </label>
               <select
-                id='inputDep'
-                className='form-select editInput   '
+                id="inputDep"
+                className={
+                  this.state.error && this.state.error.depErr
+                    ? "form-control editInput signSelect wrong"
+                    : "form-control editInput signSelect"
+                }
                 onChange={(e) => {
                   this.setState({ depId: e.target.value });
                 }}
               >
-                <option selected>Choose your Field of study / Department...</option>
+                <option>Choose your Field of study / Department...</option>
                 {this.state.dep
-                  ? this.state.dep.map((jaki) => {
-                      return (
-                        <option key={jaki.id} value={jaki.id}>
-                          {jaki.dep_name}
+                  ? this.state.dep.map((item) => {
+                      return this.state.department === item.dep_name ? (
+                        <option value={item.id} key={item.id} selected>
+                          {item.dep_name}
+                        </option>
+                      ) : (
+                        <option key={item.id} value={item.id}>
+                          {item.dep_name}
                         </option>
                       );
                     })
                   : ""}
               </select>
+              {this.state.error && this.state.error.depErr ? (
+                <p className="editerror">{this.state.error.depErr}</p>
+              ) : (
+                ""
+              )}
             </div>
-            <div className='col-lg-10 col-11 col-md-10 col-sm-12 col-xs-12'>
-              <label for='inputRegNum' className='form-label editLabel'>
-                Registration Number<span className='text-danger ms-2'>*</span>
+            <div className="col-lg-10 col-11 col-md-10 col-sm-12 col-xs-12">
+              <label for="inputRegNum" className="form-label editLabel">
+                Registration Number<span className="text-danger ms-2">*</span>
               </label>
               <input
-                type='number'
-                className='form-control editInput '
-                id='RegNum'
-                placeholder='Please enter your Registration Number'
+                type="number"
+                className={
+                  this.state.error && this.state.error.regNoErr
+                    ? "form-control editInput wrong"
+                    : "form-control editInput "
+                }
+                id="RegNum"
+                placeholder="Please enter your Registration Number"
                 onChange={(e) => {
                   this.setState({ regNo: e.target.value });
                 }}
+                value={this.state.regNo}
               />
+              {this.state.error && this.state.error.regNoErr ? (
+                <p className="editerror">{this.state.error.regNoErr}</p>
+              ) : (
+                ""
+              )}
             </div>
-            <div className='col-lg-5 col-11 col-md-5 col-sm-12 col-xs-12'>
-              <label for='inputTerm' className='form-label editLabel'>
-                Term<span className='text-danger ms-2'>*</span>
+            <div className="col-lg-5 col-11 col-md-5 col-sm-12 col-xs-12">
+              <label for="inputTerm" className="form-label editLabel">
+                Term<span className="text-danger ms-2">*</span>
               </label>
               <select
-                id='inputTerm'
-                className='form-select editInput '
+                id="inputTerm"
+                className={
+                  this.state.error && this.state.error.periodErr
+                    ? "form-control editInput signSelect wrong "
+                    : "form-control editInput signSelect"
+                }
                 onChange={(e) => {
                   this.setState({ period: e.target.value });
                 }}
+                value={this.state.period}
               >
-                <option selected>Choose your Term ...</option>
-                <span className='text-danger ms-2'>*</span>
-                <option value='4'>4</option>
-                <option value='5'>5</option>
-                <option value='6'>6</option>
-                <option value='7'>7</option>
-                <option value='8'>8</option>
-              </select>
+                <option>Choose your Term ...</option>
+                <span className="text-danger ms-2">*</span>
+
+                {this.state.periodNumArr.map((num) => {
+                  // console.log(num);
+                  return this.state.period == num ? (
+                    <option value={num} key={num} selected>
+                      {num}
+                    </option>
+                  ) : (
+                    <option value={num} key={num}>
+                      {num}
+                    </option>
+                  );
+                })}
+              </select>{" "}
+              {this.state.error && this.state.error.periodErr ? (
+                <p className="editerror">{this.state.error.periodErr}</p>
+              ) : (
+                ""
+              )}
             </div>
-            <div className='col-lg-5 col-11 col-md-5 col-sm-12 col-xs-12 '>
-              <label for='inputGPA' className='form-label editLabel'>
-                Grade / GPA<span className='text-danger ms-2'>*</span>
+            <div className="col-lg-5 col-11 col-md-5 col-sm-12 col-xs-12 ">
+              <label for="inputGPA" className="form-label editLabel">
+                Grade / GPA<span className="text-danger ms-2">*</span>
               </label>
               <input
-                id='inputGPA'
-                className='form-select editInput'
-                type='number'
-                name=''
+                id="inputGPA"
+                className={
+                  this.state.error && this.state.error.gpaErr
+                    ? "form-control editInput wrong"
+                    : "form-control editInput "
+                }
+                type="number"
+                step=".01"
+                name=""
                 onChange={(e) => {
                   this.setState({ gpa: e.target.value });
                 }}
+                value={this.state.gpa}
               />
+              {this.state.error && this.state.error.gpaErr ? (
+                <p className="editerror">{this.state.error.gpaErr}</p>
+              ) : (
+                ""
+              )}
               {/* <select id="inputGPA" className="form-select editInput ">
                 <option selected>Choose your Grade / GPA...</option>
                 <option></option>
               </select> */}
             </div>
-            <div className='col-lg-5 col-11 col-md-5 col-sm-12 col-xs-12'>
-              <label for='bdaymonth' className='form-label editLabel'>
-                Start Year<span className='text-danger ms-2'>*</span>
+            <div className="col-lg-5 col-11 col-md-5 col-sm-12 col-xs-12">
+              <label for="bdaymonth" className="form-label editLabel">
+                Start Year<span className="text-danger ms-2">*</span>
               </label>
               <input
-                type='month'
-                id='bdaymonth'
-                className='form-control editInput '
+                // type="month"
+                id="bdaymonth"
+                className={
+                  this.state.error && this.state.error.startyearErr
+                    ? "form-control editInput wrong"
+                    : "form-control editInput "
+                }
                 onChange={(e) => {
                   this.setState({ startYear: e.target.value });
                 }}
-              />
+                value={this.state.startYear}
+              />{" "}
+              {this.state.error && this.state.error.startyearErr ? (
+                <p className="editerror">{this.state.error.startyearErr}</p>
+              ) : (
+                ""
+              )}
             </div>
-            <div className='col-lg-5 col-11 col-md-5 col-sm-12 col-xs-12 '>
-              <label for='bdaymonth' className='form-label editLabel'>
-                Expected end Year<span className='text-danger ms-2'>*</span>
+            <div className="col-lg-5 col-11 col-md-5 col-sm-12 col-xs-12 ">
+              <label for="bdaymonth" className="form-label editLabel">
+                Expected end Year<span className="text-danger ms-2">*</span>
               </label>
               <input
-                type='month'
-                id='bdaymonth'
-                className='form-control editInput  '
+                // type="month"
+                id="bdaymonth"
+                className={
+                  this.state.error && this.state.error.endyearErr
+                    ? "form-control editInput wrong"
+                    : "form-control editInput "
+                }
                 onChange={(e) => {
                   this.setState({ endYear: e.target.value });
                 }}
+                value={this.state.endYear}
               />
+              {this.state.error && this.state.error.endyearErr ? (
+                <p className="editerror">{this.state.error.endyearErr}</p>
+              ) : (
+                ""
+              )}
             </div>
-            <div className='col-lg-10 col-11 col-md-10 col-sm-12 col-xs-12 d-flex justify-content-end mt-5'>
-              <button type='submit' className='btn me-2 cancelBtn shadow-none'>
+            <div className="col-lg-10 col-11 col-md-10 col-sm-12 col-xs-12 d-flex justify-content-end mt-5">
+              <button type="cancel" className="btn me-2 cancelBtn shadow-none">
                 Cancel
               </button>
-              <button type='submit' className='btn updateBtn shadow-none'>
+              <button type="submit" className="btn updateBtn shadow-none">
                 Update
               </button>
             </div>
-            {/* <div class="col-lg-10 col-11 col-md-10 col-sm-12 col-xs-12 d-flex justify-content-end mt-5">
-            <button type="submit" class="btn me-2 cancelBtn shadow-none">
-              Cancel
-            </button>
-            <button type="submit" class="btn doneBtn shadow-none">
-              Add
-            </button>
-          </div>
-          <div class="col-lg-10 col-11 col-md-10 col-sm-12 col-xs-12 d-flex justify-content-end">
-            <button type="submit" class="btn deleteBtn me-2 shadow-none ">
-              Delete
-            </button>
-            <button type="submit" class="btn updateBtn shadow-none">
-              Update
-            </button>
-          </div> */}
           </form>
         </div>
         <Footer2 />
