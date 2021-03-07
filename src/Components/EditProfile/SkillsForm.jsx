@@ -18,7 +18,12 @@ class Skills extends Component {
       skillId: 0,
       skill: "",
       yearsExp: 0,
+      Language: "",
+      LanguageId: 0,
+      LanguageLevel: 0,
       tags: [],
+      interest: "",
+      interestId: 0,
     };
   }
 
@@ -27,11 +32,24 @@ class Skills extends Component {
       .get("/W/student/profile/skill")
       .then((res) => {
         this.setState({
-          skill_name: res.data.response.data.skill_name,
+          skill: res.data.response.data.skill_name,
           skillId: res.data.response.data.id,
           yearsExp: res.data.response.data.years_of_exp,
         });
-        console.log(res.data.response.data);
+        // console.log(res.data.response.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+    await axios
+      .post("/W/student/profile/language")
+      .then((res) => {
+        this.setState({
+          LanguageId: res.data.response.data.id,
+          language: res.data.response.data.language,
+          LanguageLevel: res.data.response.data.level,
+        });
+        // console.log(res.data.response.data);
       })
       .catch((err) => {
         console.log(err);
@@ -46,23 +64,56 @@ class Skills extends Component {
     };
     await axios
       .post("/W/student/profile/skill", data)
-      .then((e) => {
-        console.log(e);
+      .then((res) => {
+        console.log(res.data.response.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+  handleSubmitLanguage = async (e) => {
+    e.preventDefault();
+    const data = {
+      id: this.state.LanguageId,
+      language: this.state.language,
+      level: this.state.LanguageLevel,
+    };
+    await axios
+      .post("/W/student/profile/language", data)
+      .then((res) => {
+        console.log(res.data.response.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+  handleSubmiInterest = async (e) => {
+    e.preventDefault();
+    const data = {
+      // id: this.state.interestId,
+      interest: this.state.interest,
+    };
+    await axios
+      .post("/W/student/profile/interest", data)
+      .then((res) => {
+        console.log(res.data.response.data);
       })
       .catch((err) => {
         console.log(err);
       });
   };
 
-  tagsHandler = (e) => {
-    this.setState({ tags: e });
-  };
-
+  // tagsHandler = (e) => {
+  //   this.setState({ tags: e });
+  // };
+  // ratingChanged = (e) => {
+  //   this.setState({ LanguageLevel: e.target.count });
+  //   console.log(e);
+  // };
   render() {
-    const ratingChanged = (newRating) => {
-      console.log(newRating);
-    };
-    console.log(this.state.tags);
+    // const ratingChanged = (newRating) => {
+    //   console.log(newRating);
+    // };
     // console.log(this.state.data);
     return (
       <div>
@@ -173,7 +224,7 @@ class Skills extends Component {
                 </button>
               </div> */}
             </form>
-            <form className="row g-3 mb-3" onSubmit={this.handleSubmit}>
+            <form className="row g-3 mb-3" onSubmit={this.handleSubmiInterest}>
               <hr className="hrSkills ms-2 col-lg-10 col-11 col-md-10 col-sm-12 col-xs-12" />
               <div className="col-lg-10 col-11 col-md-10 col-sm-12 col-xs-12">
                 <label for="inputRegNum" className="form-label editLabel">
@@ -185,7 +236,14 @@ class Skills extends Component {
                 id="RegNum"
                 placeholder="Please enter your Intrests"
               /> */}
-                <ReactTag className="editLabel" tags={this.tagsHandler} />
+                <ReactTag
+                  className="editLabel"
+                  tags={(e) => this.setState({ interest: e })}
+                  onChange={(e) => {
+                    this.setState({ interests: e.target.value });
+                    // console.log(this.state.interest);
+                  }}
+                />
               </div>
 
               <div className="col-lg-10 col-11 col-md-10 col-sm-12 col-xs-12 d-flex justify-content-end ">
@@ -195,46 +253,63 @@ class Skills extends Component {
                 >
                   Cancel
                 </button>
-                <button type="submit" className="btn doneBtn shadow-none">
+                <button className="btn doneBtn shadow-none" type="submit">
                   Add
                 </button>
               </div>
-              <div class="col-lg-10 col-11 col-md-10 col-sm-12 col-xs-12 d-flex justify-content-end">
+              {/* <div class="col-lg-10 col-11 col-md-10 col-sm-12 col-xs-12 d-flex justify-content-end">
                 <button type="submit" class="btn deleteBtn me-2 shadow-none ">
                   Delete
                 </button>
                 <button type="submit" class="btn updateBtn shadow-none">
                   Update
                 </button>
-              </div>
+              </div> */}
             </form>
-            <form className="row g-3 mb-3" onSubmit={this.handleSubmit}>
+            <form className="row g-3 mb-3" onSubmit={this.handleSubmitLanguage}>
               <hr className="hrSkills ms-2 col-lg-10 col-11 col-md-10 col-sm-12 col-xs-12" />
 
               <div className="col-lg-10 col-11 col-md-10 col-sm-12 col-xs-12">
                 <label for="inputSkill" className="form-label editLabel ">
                   Language
                 </label>
-
-                <select id="inputSkillYears" className="form-select editInput ">
+                <input
+                  type="text"
+                  className="form-control editInput "
+                  id="fullname"
+                  placeholder="Please enter your Skills "
+                  onChange={(e) => this.setState({ language: e.target.value })}
+                  value={this.state.language}
+                />
+                {/* <select id="inputSkillYears" className="form-select editInput "
+                onChange={(e)=>{
+                  this.setState({language:e.target.value});
+                }}>
                   <option selected>Language ...</option>
-                  <option>...</option>
-                </select>
+                  <option>Arabic</option>
+                  <option>English</option>
+                  <option>French</option>
+                </select> */}
                 <label for="inputRegNum" className="form-label editLabel mt-3">
                   Level
                 </label>
-                <ReactStars
+                {/* <ReactStars
                   count={5}
                   value={4}
                   edit={false}
                   size={28}
                   activeColor="#F2A23A"
-                />
+                /> */}
                 <ReactStars
                   count={5}
-                  onChange={ratingChanged}
+                  value={1}
+                  onChange={(value) => {
+                    this.setState({ LanguageLevel: value.target });
+                    console.log(value);
+                  }}
                   size={28}
                   activeColor="#F2A23A"
+                  edit={true}
                 />
               </div>
               <div class="col-lg-10 col-11 col-md-10 col-sm-12 col-xs-12 d-flex justify-content-end ">
@@ -248,14 +323,14 @@ class Skills extends Component {
                   Add
                 </button>
               </div>
-              <div class="col-lg-10 col-11 col-md-10 col-sm-12 col-xs-12 d-flex justify-content-end">
+              {/* <div class="col-lg-10 col-11 col-md-10 col-sm-12 col-xs-12 d-flex justify-content-end">
                 <button type="submit" class="btn deleteBtn me-2 shadow-none ">
                   Delete
                 </button>
                 <button type="submit" class="btn updateBtn shadow-none">
                   Update
                 </button>
-              </div>
+              </div> */}
             </form>
           </div>
         </div>
