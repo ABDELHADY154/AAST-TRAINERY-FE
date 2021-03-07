@@ -1,7 +1,7 @@
 import React, { Component, useState } from "react";
 import { Redirect } from "react-router-dom";
 import { axios } from "../../Api/axios";
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 import "../../layout/EditInfo.css";
 import {
   CountryDropdown,
@@ -16,7 +16,6 @@ class GeneralForm extends Component {
     this.state = {
       image: "",
       imageURL: "",
-      department: "",
       name: "",
       phoneNumber: 0,
       university: "",
@@ -32,8 +31,8 @@ class GeneralForm extends Component {
       period: 0,
       gpa: 0,
       dep: [],
-      periodNumArr: [3, 4, 5, 6, 7, 8],
     };
+    // this.state = { country: "", region: "" };
 
     this.handleChange = this.handleChange.bind(this);
   }
@@ -47,55 +46,34 @@ class GeneralForm extends Component {
   async componentDidMount() {
     await axios
       .get("/departments")
-      .then((res) => {
-        this.setState({ dep: res.data.response.data });
+      .then((basma) => {
+        // console.log(basma.data.response.data);
+        this.setState({ dep: basma.data.response.data });
       })
-      .catch((err) => {
-        console.log(err);
+      .catch((fathy) => {
+        console.log(fathy);
       });
-    await axios
-      .get("/W/student/profile/general")
-      .then((res) => {
-        this.setState({
-          image: res.data.response.data.image,
-          name: res.data.response.data.fullName,
-          phoneNumber: res.data.response.data.phoneNumber,
-          university: res.data.response.data.university,
-          city: res.data.response.data.city,
-          regNo: res.data.response.data.regNumber,
-          gender: res.data.response.data.gender,
-          department: res.data.response.data.department,
-          country: res.data.response.data.country,
-          nationality: res.data.response.data.nationality,
-          dob: res.data.response.data.dob,
-          startYear: res.data.response.data.startYear,
-          endYear: res.data.response.data.endYear,
-          period: res.data.response.data.period,
-          gpa: res.data.response.data.GPA,
-        });
-        console.log(res.data.response.data);
-        this.state.dep.forEach((element) => {
-          if (element.dep_name == this.state.department) {
-            this.setState({ depId: element.id });
-          }
-        });
-      })
-      .catch((error) => {
-        if (error.response.data.status === 401) {
-          sessionStorage.clear("token");
-          sessionStorage.clear("status");
-          this.setState({ loggedIn: false });
-          window.location.reload();
-        }
-      });
+    // await axios
+    //   .get("/W/student/profile/general")
+    //   .then((res) => {
+    //     this.setState({
+    //       image: res.data.response.data.image,
+    //     });
+    //     console.log(res.data.response.data);
+    //   })
+    //   .catch((err) => {
+    //     console.log(err);
+    //   });
   }
   handleChange(event) {
+    // console.log(event.target.value);
     var filename = event.target.value.replace(/^.*[\\\/]/, "");
 
     this.setState({
       image: URL.createObjectURL(event.target.files[0]),
       imageURL: filename,
     });
+    // console.log(this.state.imageURL);
   }
 
   handleSubmit = async (e) => {
@@ -111,51 +89,24 @@ class GeneralForm extends Component {
       department_id: this.state.depId,
       nationality: this.state.nationality,
       date_of_birth: this.state.dob,
-      start_year: this.state.startYear,
-      end_year: this.state.endYear,
+      start_year: 2000,
+      end_year: 4000,
       gpa: this.state.gpa,
       period: this.state.period,
       // image: this.state.imageURL,
     };
     await axios
       .post("/W/student/profile/general", data)
-      .then((res) => {
-        this.setState({
-          loggedIn: false,
-        });
+      .then((e) => {
+        console.log(e);
       })
-      .catch((error) => {
-        if (error.response.data.status === 401) {
-          sessionStorage.clear("token");
-          sessionStorage.clear("status");
-          this.setState({ loggedIn: false });
-          window.location.reload();
-        }
-        this.setState({
-          error: {
-            nameErr: error.response.data.errors.name,
-            phoneErr: error.response.data.errors.phone_number,
-            universityErr: error.response.data.errors.university,
-            cityErr: error.response.data.errors.city,
-            regNoErr: error.response.data.errors.reg_no,
-            genderErr: error.response.data.errors.gender,
-            countryErr: error.response.data.errors.country,
-            depErr: error.response.data.errors.department_id,
-            nationalityErr: error.response.data.errors.nationality,
-            dobErr: error.response.data.errors.date_of_birth,
-            gpaErr: error.response.data.errors.gpa,
-            periodErr: error.response.data.errors.period,
-            startyearErr: error.response.data.errors.start_year,
-            endyearErr: error.response.data.errors.end_year,
-          },
-        });
+      .catch((err) => {
+        console.log(err);
       });
   };
   render() {
     const city = this.state.city;
-    if (this.state.loggedIn === false) {
-      return <Redirect to="/Profile" />;
-    }
+    console.log(this.state.imageURL);
     return (
       <div>
         <div className="container ">
@@ -238,17 +189,14 @@ class GeneralForm extends Component {
                     10MB.
                   </p>
 
-                  <div className="UploadBtnDiv">
-                    <button className="UploadBtn">Upload</button>
-                    <input
-                      type="file"
-                      className="imgUploadBtn"
-                      accept="image/x-png,image/gif,image/jpeg"
-                      onChange={(e) =>
-                        this.setState({ imageURL: e.target.files[0] })
-                      }
-                    />
-                  </div>
+                  <input
+                    type="file"
+                    className="imgUploadBtn"
+                    accept="image/x-png,image/gif,image/jpeg"
+                    onChange={(e) =>
+                      this.setState({ imageURL: e.target.files[0] })
+                    }
+                  />
                 </div>
               </div>
             </div>
@@ -258,23 +206,13 @@ class GeneralForm extends Component {
               </label>
               <input
                 type="text"
-                className={
-                  this.state.error && this.state.error.nameErr
-                    ? "form-control editInput wrong"
-                    : "form-control editInput "
-                }
+                className="form-control editInput "
                 id="fullname"
                 placeholder="Please enter your full name"
                 onChange={(e) => {
                   this.setState({ name: e.target.value });
                 }}
-                value={this.state.name}
               />
-              {this.state.error && this.state.error.nameErr ? (
-                <p className="editerror">{this.state.error.nameErr}</p>
-              ) : (
-                ""
-              )}
             </div>
             <div className="col-lg-5 col-11 col-md-5 col-sm-12 col-xs-12">
               <label for="inputEmail4" className="form-label editLabel">
@@ -282,38 +220,16 @@ class GeneralForm extends Component {
               </label>
               <div className="row ">
                 <div className="male col-4 col-lg-3 col-md-4 col-sm-4 col-xs-3 form-check form-check-inline d-flex">
-                  {this.state.gender == "male" ? (
-                    <input
-                      type="radio"
-                      name="inlineRadioOptions"
-                      id="inlineRadio1"
-                      value="male"
-                      className={
-                        this.state.error && this.state.error.genderErr
-                          ? "radio editInput wrong"
-                          : "radio editInput "
-                      }
-                      onChange={(e) => {
-                        this.setState({ gender: e.target.value });
-                      }}
-                      checked
-                    />
-                  ) : (
-                    <input
-                      type="radio"
-                      name="inlineRadioOptions"
-                      id="inlineRadio1"
-                      value="male"
-                      className={
-                        this.state.error && this.state.error.genderErr
-                          ? "radio editInput wrong"
-                          : "radio editInput "
-                      }
-                      onChange={(e) => {
-                        this.setState({ gender: e.target.value });
-                      }}
-                    />
-                  )}
+                  <input
+                    type="radio"
+                    name="inlineRadioOptions"
+                    id="inlineRadio1"
+                    value="male"
+                    className="radio editInput "
+                    onChange={(e) => {
+                      this.setState({ gender: e.target.value });
+                    }}
+                  />
                   <label
                     className="form-check-label raioLabelEdit"
                     for="inlineCheckbox3"
@@ -325,51 +241,25 @@ class GeneralForm extends Component {
                   ) : (
                     ""
                   )}
+
                 </div>
                 <div className=" female col-4 col-lg-3 col-md-4 col-sm-5 col-xs-3 checkbox form-check-inline d-flex">
-                  {this.state.gender == "female" ? (
-                    <input
-                      className={
-                        this.state.error && this.state.error.genderErr
-                          ? "radio editInput wrong"
-                          : "radio editInput "
-                      }
-                      type="radio"
-                      name="inlineRadioOptions"
-                      id="Gender"
-                      value="female"
-                      onChange={(e) => {
-                        this.setState({ gender: e.target.value });
-                      }}
-                      checked
-                    />
-                  ) : (
-                    <input
-                      className={
-                        this.state.error && this.state.error.genderErr
-                          ? "radio editInput wrong"
-                          : "radio editInput "
-                      }
-                      type="radio"
-                      name="inlineRadioOptions"
-                      id="Gender"
-                      value="female"
-                      onChange={(e) => {
-                        this.setState({ gender: e.target.value });
-                      }}
-                    />
-                  )}
+                  <input
+                    className="radio editInput"
+                    type="radio"
+                    name="inlineRadioOptions"
+                    id="Gender"
+                    value="female"
+                    onChange={(e) => {
+                      this.setState({ gender: e.target.value });
+                    }}
+                  />
                   <label
                     className="form-check-label raioLabelEdit "
                     for="inlineCheckbox3"
                   >
                     Female
-                  </label>{" "}
-                  {this.state.error && this.state.error.genderErr ? (
-                    <p className="editerror">{this.state.error.genderErr}</p>
-                  ) : (
-                    ""
-                  )}
+                  </label>
                 </div>
               </div>
             </div>
@@ -379,22 +269,12 @@ class GeneralForm extends Component {
               </label>
               <input
                 type="date"
-                className={
-                  this.state.error && this.state.error.dobErr
-                    ? "form-control editInput wrong"
-                    : "form-control editInput "
-                }
+                className="form-control editInput  "
                 id="DOB"
                 onChange={(e) => {
                   this.setState({ dob: e.target.value });
                 }}
-                value={this.state.dob}
               />
-              {this.state.error && this.state.error.dobErr ? (
-                <p className="editerror">{this.state.error.dobErr}</p>
-              ) : (
-                ""
-              )}
             </div>
             <div className="ol-lg-10 col-11 col-md-10 col-sm-12 col-xs-12">
               <label for="inputNationaity" className="form-label editLabel ">
@@ -402,23 +282,13 @@ class GeneralForm extends Component {
               </label>
               <input
                 type="text"
-                className={
-                  this.state.error && this.state.error.nationalityErr
-                    ? "form-control editInput wrong"
-                    : "form-control editInput "
-                }
+                className="form-control editInput  "
                 id="nationaity"
                 placeholder="Please enter your Nationaity"
                 onChange={(e) => {
                   this.setState({ nationality: e.target.value });
                 }}
-                value={this.state.nationality}
               />
-              {this.state.error && this.state.error.nationalityErr ? (
-                <p className="editerror">{this.state.error.nationalityErr}</p>
-              ) : (
-                ""
-              )}
             </div>
             <div className="col-lg-5 col-11 col-md-5 col-sm-12 col-xs-12">
               <label for="inputCountry" className="form-label editLabel">
@@ -431,17 +301,12 @@ class GeneralForm extends Component {
                 onChange={(val) => this.selectCountry(val)}
                 className={
                   this.state.error && this.state.error.countryErr
-                    ? "wrong form-select signSelect editInput col-lg-5 col-11 col-md-5 col-sm-12 col-xs-12"
-                    : " form-select signSelect editInput col-lg-5 col-11 col-md-5 col-sm-12 col-xs-12"
+                    ? "wrong form-select editInput col-lg-5 col-11 col-md-5 col-sm-12 col-xs-12"
+                    : " form-select editInput col-lg-5 col-11 col-md-5 col-sm-12 col-xs-12"
                 }
                 id="validationServer04"
                 aria-describedby="validationServer04Feedback"
               />
-              {this.state.error && this.state.error.countryErr ? (
-                <p className="editerror">{this.state.error.countryErr}</p>
-              ) : (
-                ""
-              )}
             </div>
             <div className="col-lg-5 col-11 col-md-5 col-sm-12 col-xs-12 ">
               <label for="inputCity" className="form-label editLabel">
@@ -453,17 +318,13 @@ class GeneralForm extends Component {
                 onChange={(val) => this.selectRegion(val)}
                 className={
                   this.state.error && this.state.error.cityErr
-                    ? "wrong form-select signSelect editInput col-lg-5 col-11 col-md-5 col-sm-12 col-xs-12"
-                    : " form-select signSelect editInput col-lg-5 col-11 col-md-5 col-sm-12 col-xs-12"
+                    ? "wrong form-select editInput col-lg-5 col-11 col-md-5 col-sm-12 col-xs-12"
+                    : " form-select editInput col-lg-5 col-11 col-md-5 col-sm-12 col-xs-12"
                 }
                 id="validationServer04"
                 aria-describedby="validationServer04Feedback"
+                // value={(e) => this.setState({ City: e.target.value })}
               />
-              {this.state.error && this.state.error.cityErr ? (
-                <p className="editerror">{this.state.error.cityErr}</p>
-              ) : (
-                ""
-              )}
             </div>
             <div className="col-lg-10 col-11 col-md-10 col-sm-12 col-xs-12">
               <label for="inputPhone" className="form-label editLabel">
@@ -471,23 +332,13 @@ class GeneralForm extends Component {
               </label>
               <input
                 type="number"
-                className={
-                  this.state.error && this.state.error.phoneErr
-                    ? "form-control editInput wrong"
-                    : "form-control editInput "
-                }
+                className="form-control editInput "
                 id="phone"
                 placeholder="Please enter your Phone Number"
                 onChange={(e) => {
                   this.setState({ phoneNumber: e.target.value });
                 }}
-                value={this.state.phoneNumber}
-              />{" "}
-              {this.state.error && this.state.error.phoneErr ? (
-                <p className="editerror">{this.state.error.phoneErr}</p>
-              ) : (
-                ""
-              )}
+              />
             </div>
             <div className="col-lg-5 col-11 col-md-5 col-sm-12 col-xs-12 ">
               <label for="inputuni" className="form-label editLabel">
@@ -496,11 +347,7 @@ class GeneralForm extends Component {
               </label>
               <select
                 id="inputuni"
-                className={
-                  this.state.error && this.state.error.universityErr
-                    ? "form-control editInput signSelect wrong"
-                    : "form-control editInput signSelect"
-                }
+                className="form-select editInput  "
                 onChange={(e) => {
                   this.setState({ university: e.target.value });
                 }}
@@ -511,11 +358,6 @@ class GeneralForm extends Component {
                 <option value="AAST CMT">AAST CMT</option>
                 <option value="AAST clc">AAST clc</option>
               </select>
-              {this.state.error && this.state.error.universityErr ? (
-                <p className="editerror">{this.state.error.universityErr}</p>
-              ) : (
-                ""
-              )}
             </div>
             <div className="col-lg-5 col-11 col-md-5 col-sm-12 col-xs-12 ">
               <label for="inputDep" className="form-label editLabel">
@@ -524,35 +366,24 @@ class GeneralForm extends Component {
               </label>
               <select
                 id="inputDep"
-                className={
-                  this.state.error && this.state.error.depErr
-                    ? "form-control editInput signSelect wrong"
-                    : "form-control editInput signSelect"
-                }
+                className="form-select editInput   "
                 onChange={(e) => {
                   this.setState({ depId: e.target.value });
                 }}
               >
-                <option>Choose your Field of study / Department...</option>
+                <option selected>
+                  Choose your Field of study / Department...
+                </option>
                 {this.state.dep
-                  ? this.state.dep.map((item) => {
-                      return this.state.department === item.dep_name ? (
-                        <option value={item.id} key={item.id} selected>
-                          {item.dep_name}
-                        </option>
-                      ) : (
-                        <option key={item.id} value={item.id}>
-                          {item.dep_name}
+                  ? this.state.dep.map((jaki) => {
+                      return (
+                        <option key={jaki.id} value={jaki.id}>
+                          {jaki.dep_name}
                         </option>
                       );
                     })
                   : ""}
               </select>
-              {this.state.error && this.state.error.depErr ? (
-                <p className="editerror">{this.state.error.depErr}</p>
-              ) : (
-                ""
-              )}
             </div>
             <div className="col-lg-10 col-11 col-md-10 col-sm-12 col-xs-12">
               <label for="inputRegNum" className="form-label editLabel">
@@ -560,23 +391,13 @@ class GeneralForm extends Component {
               </label>
               <input
                 type="number"
-                className={
-                  this.state.error && this.state.error.regNoErr
-                    ? "form-control editInput wrong"
-                    : "form-control editInput "
-                }
+                className="form-control editInput "
                 id="RegNum"
                 placeholder="Please enter your Registration Number"
                 onChange={(e) => {
                   this.setState({ regNo: e.target.value });
                 }}
-                value={this.state.regNo}
               />
-              {this.state.error && this.state.error.regNoErr ? (
-                <p className="editerror">{this.state.error.regNoErr}</p>
-              ) : (
-                ""
-              )}
             </div>
             <div className="col-lg-5 col-11 col-md-5 col-sm-12 col-xs-12">
               <label for="inputTerm" className="form-label editLabel">
@@ -584,18 +405,14 @@ class GeneralForm extends Component {
               </label>
               <select
                 id="inputTerm"
-                className={
-                  this.state.error && this.state.error.periodErr
-                    ? "form-control editInput signSelect wrong "
-                    : "form-control editInput signSelect"
-                }
+                className="form-select editInput "
                 onChange={(e) => {
                   this.setState({ period: e.target.value });
                 }}
-                value={this.state.period}
               >
-                <option>Choose your Term ...</option>
+                <option selected>Choose your Term ...</option>
                 <span className="text-danger ms-2">*</span>
+
 
                 {this.state.periodNumArr.map((num) => {
                   // console.log(num);
@@ -615,6 +432,7 @@ class GeneralForm extends Component {
               ) : (
                 ""
               )}
+
             </div>
             <div className="col-lg-5 col-11 col-md-5 col-sm-12 col-xs-12 ">
               <label for="inputGPA" className="form-label editLabel">
@@ -622,24 +440,13 @@ class GeneralForm extends Component {
               </label>
               <input
                 id="inputGPA"
-                className={
-                  this.state.error && this.state.error.gpaErr
-                    ? "form-control editInput wrong"
-                    : "form-control editInput "
-                }
+                className="form-select editInput"
                 type="number"
-                step=".01"
                 name=""
                 onChange={(e) => {
                   this.setState({ gpa: e.target.value });
                 }}
-                value={this.state.gpa}
               />
-              {this.state.error && this.state.error.gpaErr ? (
-                <p className="editerror">{this.state.error.gpaErr}</p>
-              ) : (
-                ""
-              )}
               {/* <select id="inputGPA" className="form-select editInput ">
                 <option selected>Choose your Grade / GPA...</option>
                 <option></option>
@@ -650,55 +457,51 @@ class GeneralForm extends Component {
                 Start Year<span className="text-danger ms-2">*</span>
               </label>
               <input
-                // type="month"
+                type="month"
                 id="bdaymonth"
-                className={
-                  this.state.error && this.state.error.startyearErr
-                    ? "form-control editInput wrong"
-                    : "form-control editInput "
-                }
+                className="form-control editInput "
                 onChange={(e) => {
                   this.setState({ startYear: e.target.value });
                 }}
-                value={this.state.startYear}
-              />{" "}
-              {this.state.error && this.state.error.startyearErr ? (
-                <p className="editerror">{this.state.error.startyearErr}</p>
-              ) : (
-                ""
-              )}
+              />
             </div>
             <div className="col-lg-5 col-11 col-md-5 col-sm-12 col-xs-12 ">
               <label for="bdaymonth" className="form-label editLabel">
                 Expected end Year<span className="text-danger ms-2">*</span>
               </label>
               <input
-                // type="month"
+                type="month"
                 id="bdaymonth"
-                className={
-                  this.state.error && this.state.error.endyearErr
-                    ? "form-control editInput wrong"
-                    : "form-control editInput "
-                }
+                className="form-control editInput  "
                 onChange={(e) => {
                   this.setState({ endYear: e.target.value });
                 }}
-                value={this.state.endYear}
               />
-              {this.state.error && this.state.error.endyearErr ? (
-                <p className="editerror">{this.state.error.endyearErr}</p>
-              ) : (
-                ""
-              )}
             </div>
             <div className="col-lg-10 col-11 col-md-10 col-sm-12 col-xs-12 d-flex justify-content-end mt-5">
-              <button type="cancel" className="btn me-2 cancelBtn shadow-none">
+              <button type="submit" className="btn me-2 cancelBtn shadow-none">
                 Cancel
               </button>
               <button type="submit" className="btn updateBtn shadow-none">
                 Update
               </button>
             </div>
+            {/* <div class="col-lg-10 col-11 col-md-10 col-sm-12 col-xs-12 d-flex justify-content-end mt-5">
+            <button type="submit" class="btn me-2 cancelBtn shadow-none">
+              Cancel
+            </button>
+            <button type="submit" class="btn doneBtn shadow-none">
+              Add
+            </button>
+          </div>
+          <div class="col-lg-10 col-11 col-md-10 col-sm-12 col-xs-12 d-flex justify-content-end">
+            <button type="submit" class="btn deleteBtn me-2 shadow-none ">
+              Delete
+            </button>
+            <button type="submit" class="btn updateBtn shadow-none">
+              Update
+            </button>
+          </div> */}
           </form>
         </div>
         <Footer2 />

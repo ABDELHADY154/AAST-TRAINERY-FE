@@ -8,6 +8,9 @@ import { BiPencil } from "react-icons/bi";
 import StudentEducation from "./StudentEducation/StudentEdu";
 import StudentWorkExp from "./StudentWorkExp/StudentWorkExp";
 import StudentCourses from "./StudentCourses/StudentCourses";
+import StudentSkill from "./StudentSkill/StudentSkill";
+import Studentinterest from "./StudentSkill/StudentInterest";
+
 import studentAccount from "./StudentAccount/StudentAccount";
 import Footer2 from "../Common/Footer2";
 
@@ -36,9 +39,11 @@ class Profile extends Component {
     university: "",
     phone_number: "",
     educations: [],
-    workExperience: [],
+    work_experience: [],
     courses: [],
-    studentAccount: [],
+    skills: [],
+    interests: [],
+    // studentAccount: [],
   };
   async componentDidMount() {
     await axios
@@ -66,8 +71,11 @@ class Profile extends Component {
           university: res.data.response.data.university,
           phone_number: res.data.response.data.phone_number,
           educations: res.data.response.data.educations,
-          // workExperience: res.data.response.data.workExperience,
-          // courses: res.data.response.data.courses,
+          work_experience: res.data.response.data.work_experience,
+          courses: res.data.response.data.courses,
+          skills: res.data.response.data.skills,
+          interests: res.data.response.data.interests,
+
           // studentAccount: res.data.response.data.studentAccount,
         });
       })
@@ -248,7 +256,6 @@ class Profile extends Component {
             </div>
           </div>
         </div>
-
         <div className="container">
           <div id="education" className="card mt-5">
             <div className="card-body">
@@ -257,30 +264,31 @@ class Profile extends Component {
                 <Link
                   renderAs="button"
                   className="  ms-3 plus"
+                  // to="Profile/e"
                   // to="/Register"
                 >
                   +
                 </Link>
               </div>
-              {this.state.workExperience.map((item) => {
+              {this.state.work_experience.map((item) => {
                 return (
                   <StudentWorkExp
                     key={item.id}
-                    posistionTitle={item.posistionTitle}
-                    worktag={item.worktag}
-                    companyName={item.companyName}
-                    city={item.workCity}
-                    country={item.workCountry}
-                    fromDate={item.fromWork}
-                    toDate={item.toWork}
-                    cred={item.workCredential_url}
+                    id={item.id}
+                    job_title={item.job_title}
+                    experience_type={item.experience_type}
+                    company_name={item.company_name}
+                    city={item.city}
+                    country={item.country}
+                    from={item.from}
+                    to={item.to}
+                    cred={item.cred}
                   />
                 );
               })}
             </div>
           </div>
         </div>
-
         <div className="container">
           <div id="education" className="card mt-5">
             <div className="card-body">
@@ -298,16 +306,74 @@ class Profile extends Component {
                 return (
                   <StudentCourses
                     key={item.id}
-                    courseProviderName={item.school_name}
-                    courseName={item.courseName}
-                    Coursecred={item.courseCredential_url}
+                    id={item.id}
+                    course_name={item.course_name}
+                    course_provider={item.course_provider}
+                    cred={item.cred}
+                    cred_url={item.cred_url}
                   />
                 );
               })}
             </div>
           </div>
         </div>
-        <div className='container'>
+        <div className="container">
+          <div id="education" className="card mt-5">
+            <div className="card-body">
+              <div className="d-flex flex-row titlecard fs-4 mb-2">
+                Skills
+                <Link
+                  renderAs="button"
+                  className="  ms-3 plus"
+                  // to="/Register"
+                >
+                  +
+                </Link>
+              </div>
+              <div className=" d-flex flex-row flex-wrap col-2 mb-2 col-md-12 me-1 fs-5">
+                Tools and Fields of Expertise
+              </div>
+
+              {this.state.skills.map((item) => {
+                return (
+                  <StudentSkill
+                    key={item.id}
+                    id={item.id}
+                    skill_name={item.skill_name}
+                    years_of_exp={item.years_of_exp}
+                  />
+                );
+              })}
+              <hr />
+              <div className=" d-flex flex-row flex-wrap col-12 col-md-12 me-1">
+                <div className="d-flex flex-column col-6 col-md-10 fs-5 ">
+                  Interests
+                  <div
+                    id="hiddenhover"
+                    className="d-flex flex-column col-2 col-md-2 p-0"
+                  >
+                    <Link
+                      renderAs="button"
+
+                      // to="/Register"
+                    >
+                      <BiPencil fill="#cd8930" color="#cd8930" />
+                    </Link>
+                  </div>
+                </div>
+              </div>
+
+              {this.state.interests.map((i) => {
+                return (
+                  <Studentinterest key={i.id} id={i.id} interest={i.interest} />
+                );
+              })}
+
+              <hr />
+            </div>
+          </div>
+        </div>
+        {/*<div className='container'>
           <div id='education' className='card mt-5'>
             <div className='card-body'>
               <div className='d-flex flex-row titlecard fs-4 mb-2'>
@@ -333,6 +399,32 @@ class Profile extends Component {
             </div>
           </div>
         </div>
+        <div className="container">
+          <div id="education" className="card mt-5">
+            <div className="card-body">
+              <div className="d-flex flex-row titlecard fs-4 mb-2">
+                Reviews
+                <Link
+                  renderAs="button"
+                  className="  ms-3 plus"
+                  // to="/Register"
+                >
+                  +
+                </Link>
+              </div>
+              {this.state.courses.map((item) => {
+                return (
+                  <studentAccount
+                    key={item.id}
+                    courseProviderName={item.school_name}
+                    courseName={item.courseName}
+                    Coursecred={item.courseCredential_url}
+                  />
+                );
+              })}
+            </div>
+          </div>
+        </div> */}
         <Footer2 />
       </div>
     );
