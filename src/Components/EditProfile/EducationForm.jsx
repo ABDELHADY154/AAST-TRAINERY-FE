@@ -142,7 +142,6 @@ export default class EducationForm extends Component {
               toErr: error.response.data.errors.to,
             },
           });
-          console.log(this.state.error);
         });
     }
   };
@@ -250,7 +249,7 @@ export default class EducationForm extends Component {
                   className={
                     this.state.error && this.state.error.toErr
                       ? "form-control editInput wrong "
-                      : "form-control editInput"
+                      : "form-control editInput "
                   }
                   onChange={(e) => this.setState({ To: e.target.value })}
                   value={this.state.To ? this.state.To : ""}
