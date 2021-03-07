@@ -7,7 +7,10 @@ export default class StudentWorkExp extends Component {
   constructor(props) {
     super(props);
   }
+
   render() {
+    let id = this.props.id;
+
     return (
       <>
         <div
@@ -20,6 +23,13 @@ export default class StudentWorkExp extends Component {
               {this.props.interest}
             </div>
           </div>
+          <Link
+            renderAs="button"
+            to={`/Profile/Skills/${id}`}
+            // to="/Register"
+          >
+            <BiPencil fill="#cd8930" color="#cd8930" />
+          </Link>
           {/* <div
             id=""
             className=" d-flex flex-row flex-wrap col-0 col-md-0  fs-6 "

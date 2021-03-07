@@ -33,7 +33,7 @@ export default class StudentWorkExp extends Component {
           >
             <Link
               renderAs="button"
-
+              to={`/Profile/Skills/${id}`}
               // to="/Register"
             >
               <BiPencil fill="#cd8930" color="#cd8930" />
