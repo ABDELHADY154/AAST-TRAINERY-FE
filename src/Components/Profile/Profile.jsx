@@ -11,6 +11,7 @@ import StudentCourses from "./StudentCourses/StudentCourses";
 import StudentSkill from "./StudentSkill/StudentSkill";
 import Studentinterest from "./StudentSkill/StudentInterest";
 import StudentLanguage from "./StudentSkill/StudentLanguage";
+import studentReviews from "./StudentReviews/StudentReviews";
 
 import studentAccount from "./StudentAccount/StudentAccount";
 import Footer2 from "../Common/Footer2";
@@ -45,6 +46,7 @@ class Profile extends Component {
     skills: [],
     interests: [],
     languages: [],
+    reviews: [],
     // studentAccount: [],
   };
   async componentDidMount() {
@@ -78,7 +80,7 @@ class Profile extends Component {
           skills: res.data.response.data.skills,
           interests: res.data.response.data.interests,
           languages: res.data.response.data.languages,
-
+          reviews: res.data.response.data.reviews,
           // studentAccount: res.data.response.data.studentAccount,
         });
       })
@@ -337,7 +339,7 @@ class Profile extends Component {
                 </div>
                 <div
                   id="hiddenhover"
-                  className="d-flex  flex-column col-md-2  pencilforskills"
+                  className="d-flex  flex-column col-md-1  pencilforskills"
                 >
                   <Link to={`/Profile/Skills`}>
                     <BiPencil fill="#cd8930" color="#cd8930" />
@@ -360,19 +362,9 @@ class Profile extends Component {
               })}
               <hr />
               <div className=" d-flex flex-row flex-wrap col-12 col-md-12 ">
-                {/* <div className="d-flex flex-column col-6 col-md-12 fs-5 "> */}
                 <div className="d-flex flex-column col-6 col-md-10 fs-5 ">
                   Interests
                 </div>
-                {/* <div
-                  id="hiddenhover"
-                  className="d-flex justify-content-end align-items-end flex-column col-md-2  "
-                >
-                  <Link to={`/Profile/Skills`}>
-                    <BiPencil fill="#cd8930" color="#cd8930" />
-                  </Link>
-                </div> */}
-                {/* </div> */}
               </div>
 
               {this.state.interests.map((i) => {
@@ -389,15 +381,7 @@ class Profile extends Component {
                 style={{ textTransform: "capitalize" }}
               >
                 <div className=" flex-row col-6 col-md-9 fs-5 ">
-                  Languages{" "}
-                  {/* <div
-                    id="hiddenhover"
-                    className="d-flex justify-content-end align-items-end   "
-                  >
-                    <Link to={`/Profile/Education/${id}`}>
-                      <BiPencil fill="#cd8930" color="#cd8930" />
-                    </Link>
-                  </div> */}
+                  Languages
                   {this.state.languages.map((i) => {
                     return (
                       <StudentLanguage
@@ -438,33 +422,26 @@ class Profile extends Component {
               })}
             </div>
           </div>
-        </div>
+        </div>*/}
         <div className="container">
           <div id="education" className="card mt-5">
             <div className="card-body">
-              <div className="d-flex flex-row titlecard fs-4 mb-2">
-                Reviews
-                <Link
-                  renderAs="button"
-                  className="  ms-3 plus"
-                  // to="/Register"
-                >
-                  +
-                </Link>
+              <div className="d-flex flex-row titlecard fs-4 mb-2">Reviews</div>
+              <div className="carousel" data-flickity='{ "autoPlay": true }'>
+                {/* {this.state.reviews.map((item) => {
+                  return (
+                    <studentReviews
+                    // key={item.id}
+                    // courseProviderName={item.school_name}
+                    // courseName={item.courseName}
+                    // Coursecred={item.courseCredential_url}
+                    />
+                  );
+                })} */}
               </div>
-              {this.state.courses.map((item) => {
-                return (
-                  <studentAccount
-                    key={item.id}
-                    courseProviderName={item.school_name}
-                    courseName={item.courseName}
-                    Coursecred={item.courseCredential_url}
-                  />
-                );
-              })}
             </div>
           </div>
-        </div> */}
+        </div>
         <Footer2 />
       </div>
     );
