@@ -274,6 +274,7 @@ class Profile extends Component {
                 return (
                   <StudentWorkExp
                     key={item.id}
+                    id={item.id}
                     job_title={item.job_title}
                     experience_type={item.experience_type}
                     company_name={item.company_name}
@@ -305,6 +306,7 @@ class Profile extends Component {
                 return (
                   <StudentCourses
                     key={item.id}
+                    id={item.id}
                     course_name={item.course_name}
                     course_provider={item.course_provider}
                     cred={item.cred}
@@ -336,6 +338,7 @@ class Profile extends Component {
                 return (
                   <StudentSkill
                     key={item.id}
+                    id={item.id}
                     skill_name={item.skill_name}
                     years_of_exp={item.years_of_exp}
                   />
@@ -361,7 +364,9 @@ class Profile extends Component {
               </div>
 
               {this.state.interests.map((i) => {
-                return <Studentinterest key={i.id} interest={i.interest} />;
+                return (
+                  <Studentinterest key={i.id} id={i.id} interest={i.interest} />
+                );
               })}
 
               <hr />
