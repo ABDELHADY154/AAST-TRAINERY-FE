@@ -3,11 +3,7 @@ import { Link } from "react-router-dom";
 import "../../../layout/Profile.css";
 import { BiPencil } from "react-icons/bi";
 export default class StudentWorkExp extends Component {
-  constructor(props) {
-    super(props);
-  }
   render() {
-    let id = this.props.id;
     return (
       <>
         <div
@@ -16,13 +12,13 @@ export default class StudentWorkExp extends Component {
           style={{ textTransform: "capitalize" }}
         >
           <div className=" d-flex flex-row flex-wrap col-4 col-md-5 me-1">
-            {this.props.job_title} at {this.props.company_name}
+            {this.props.posistionTitle} at {this.props.companyName}
           </div>
           <div
             id="worktag"
             className=" d-flex flex-row flex-wrap col-3 col-md-1  fs-6 plus"
           >
-            {this.props.experience_type}
+            {this.props.worktag}
           </div>
           <div
             id="worktag"
@@ -43,19 +39,20 @@ export default class StudentWorkExp extends Component {
         </div>
         <div className="d-flex flex-row fs-6 ">
           <div className=" d-flex flex-row col-12 col-md-12">
-            {this.props.city}, {this.props.country}.
+            {this.props.workCity}, {this.props.workCountry}.
           </div>
         </div>
         <div className="d-flex flex-row fs-6 ">
           <div className=" d-flex flex-row col-12 col-md-12">
-            {this.props.from} to {this.props.to} ·{/* {diffDays} Years */}
+            {this.props.fromWork} to {this.props.toWork} ·
+            {/* {diffDays} Years */}
           </div>
         </div>
         <div className="d-flex flex-row fs-6 mt-2 ">
           <a
             id="goldcredentials"
             renderAs="button"
-            href={this.props.cred}
+            href={this.props.workCredential_url}
             className="  mb-1   d-flex flex-row col-12 col-md-3"
             // to="/Register"
           >
