@@ -119,7 +119,7 @@ class Skills extends Component {
                 </label>
                 <ReactStars
                   count={5}
-                  onChange={ratingChanged}
+                  // onChange={ratingChanged}
                   size={28}
                   activeColor="#F2A23A"
                 />
@@ -142,8 +142,7 @@ class Skills extends Component {
                 <button type="submit" class="btn updateBtn shadow-none">
                   Update
                 </button>
-              </div>{" "}
-              */}
+              </div>
             </form>
             <form className="row g-3 mb-3" onSubmit={this.handleSubmit}>
               <hr className="hrSkills ms-2 col-lg-10 col-11 col-md-10 col-sm-12 col-xs-12" />
