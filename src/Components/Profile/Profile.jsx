@@ -10,6 +10,7 @@ import StudentWorkExp from "./StudentWorkExp/StudentWorkExp";
 import StudentCourses from "./StudentCourses/StudentCourses";
 import StudentSkill from "./StudentSkill/StudentSkill";
 import Studentinterest from "./StudentSkill/StudentInterest";
+import StudentLanguage from "./StudentSkill/StudentLanguage";
 
 import studentAccount from "./StudentAccount/StudentAccount";
 import Footer2 from "../Common/Footer2";
@@ -43,6 +44,7 @@ class Profile extends Component {
     courses: [],
     skills: [],
     interests: [],
+    languages: [],
     // studentAccount: [],
   };
   async componentDidMount() {
@@ -75,6 +77,7 @@ class Profile extends Component {
           courses: res.data.response.data.courses,
           skills: res.data.response.data.skills,
           interests: res.data.response.data.interests,
+          languages: res.data.response.data.languages,
 
           // studentAccount: res.data.response.data.studentAccount,
         });
@@ -85,6 +88,7 @@ class Profile extends Component {
   }
 
   render() {
+    let id = this.props.id;
     return (
       <div className="container-fluid ">
         <div className="container  ">
@@ -264,7 +268,7 @@ class Profile extends Component {
                 <Link
                   renderAs="button"
                   className="  ms-3 plus"
-                  // to="Profile/e"
+                  to="Profile/Experiance"
                   // to="/Register"
                 >
                   +
@@ -297,7 +301,7 @@ class Profile extends Component {
                 <Link
                   renderAs="button"
                   className="  ms-3 plus"
-                  // to="/Register"
+                  to="Profile/Courses"
                 >
                   +
                 </Link>
@@ -325,7 +329,7 @@ class Profile extends Component {
                 <Link
                   renderAs="button"
                   className="  ms-3 plus"
-                  // to="/Register"
+                  to="Profile/Skills"
                 >
                   +
                 </Link>
@@ -345,22 +349,20 @@ class Profile extends Component {
                 );
               })}
               <hr />
-              <div className=" d-flex flex-row flex-wrap col-12 col-md-12 me-1">
+              <div className=" d-flex flex-row flex-wrap col-12 col-md-12 ">
+                {/* <div className="d-flex flex-column col-6 col-md-12 fs-5 "> */}
                 <div className="d-flex flex-column col-6 col-md-10 fs-5 ">
                   Interests
-                  <div
-                    id="hiddenhover"
-                    className="d-flex flex-column col-2 col-md-2 p-0"
-                  >
-                    <Link
-                      renderAs="button"
-
-                      // to="/Register"
-                    >
-                      <BiPencil fill="#cd8930" color="#cd8930" />
-                    </Link>
-                  </div>
                 </div>
+                {/* <div
+                  id="hiddenhover"
+                  className="d-flex justify-content-end align-items-end flex-column col-md-2  "
+                >
+                  <Link to={`/Profile/Skills`}>
+                    <BiPencil fill="#cd8930" color="#cd8930" />
+                  </Link>
+                </div> */}
+                {/* </div> */}
               </div>
 
               {this.state.interests.map((i) => {
@@ -370,6 +372,34 @@ class Profile extends Component {
               })}
 
               <hr />
+
+              <div
+                id="lightfont"
+                className="flex-row  fs-5 "
+                style={{ textTransform: "capitalize" }}
+              >
+                <div className=" flex-row col-6 col-md-9 fs-5 ">
+                  Languages{" "}
+                  {/* <div
+                    id="hiddenhover"
+                    className="d-flex justify-content-end align-items-end   "
+                  >
+                    <Link to={`/Profile/Education/${id}`}>
+                      <BiPencil fill="#cd8930" color="#cd8930" />
+                    </Link>
+                  </div> */}
+                  {this.state.languages.map((i) => {
+                    return (
+                      <StudentLanguage
+                        key={i.id}
+                        id={i.id}
+                        language={i.language}
+                        level={i.level}
+                      />
+                    );
+                  })}
+                </div>
+              </div>
             </div>
           </div>
         </div>
