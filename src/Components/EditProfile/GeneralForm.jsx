@@ -114,6 +114,7 @@ class GeneralForm extends Component {
       period: this.state.period,
       // image: this.state.imageURL,
     };
+
     // console.log(data);
     await axios
       .post("/W/student/profile/general", data)
@@ -527,21 +528,21 @@ class GeneralForm extends Component {
               <input
                 // type="month"
                 id="bdaymonth"
-                className={
-                  this.state.error.endyearErr
-                    ? "form-control editInput wrong"
-                    : "form-control editInput "
-                }
+                // className={
+                //   this.state.error.endyearErr
+                //     ? "form-control editInput wrong"
+                //     : "form-control editInput "
+                // }
                 onChange={(e) => {
                   this.setState({ endYear: e.target.value });
                 }}
                 value={this.state.endYear}
               />
-              <p className="error">
+              {/* <p className="error">
                 {this.state.error.endyearErr
                   ? this.state.error.endyearErr
                   : " "}
-              </p>
+              </p> */}
             </div>
             <div className="col-lg-10 col-11 col-md-10 col-sm-12 col-xs-12 d-flex justify-content-end mt-5">
               <button type="submit" className="btn me-2 cancelBtn shadow-none">
