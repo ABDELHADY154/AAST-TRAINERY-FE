@@ -325,14 +325,24 @@ class Profile extends Component {
           <div id="education" className="card mt-5">
             <div className="card-body">
               <div className="d-flex flex-row titlecard fs-4 mb-2">
-                Skills
-                <Link
-                  renderAs="button"
-                  className="  ms-3 plus"
-                  to="Profile/Skills"
+                <div className="d-flex  flex-row col-md-10 col-10 me-3 ">
+                  Skills
+                  <Link
+                    renderAs="button"
+                    className="  ms-3 plus"
+                    to="Profile/Skills"
+                  >
+                    +
+                  </Link>
+                </div>
+                <div
+                  id="hiddenhover"
+                  className="d-flex  flex-column col-md-2  pencilforskills"
                 >
-                  +
-                </Link>
+                  <Link to={`/Profile/Skills`}>
+                    <BiPencil fill="#cd8930" color="#cd8930" />
+                  </Link>
+                </div>
               </div>
               <div className=" d-flex flex-row flex-wrap col-2 mb-2 col-md-12 me-1 fs-5">
                 Tools and Fields of Expertise
