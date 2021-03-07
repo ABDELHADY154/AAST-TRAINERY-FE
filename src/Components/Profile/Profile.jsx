@@ -343,7 +343,21 @@ class Profile extends Component {
               })}
               <hr />
               <div className=" d-flex flex-row flex-wrap col-12 col-md-12 me-1">
-                Interests
+                <div className="d-flex flex-column col-6 col-md-10 fs-5 ">
+                  Interests
+                  <div
+                    id="hiddenhover"
+                    className="d-flex flex-column col-2 col-md-2 p-0"
+                  >
+                    <Link
+                      renderAs="button"
+
+                      // to="/Register"
+                    >
+                      <BiPencil fill="#cd8930" color="#cd8930" />
+                    </Link>
+                  </div>
+                </div>
               </div>
 
               {this.state.interests.map((i) => {
