@@ -11,52 +11,42 @@ export default class StudentWorkExp extends Component {
     return (
       <>
         <div
-          id="lightfont"
-          className="d-flex flex-row  fs-5 "
+          id='lightfont'
+          className='d-flex flex-row  fs-5 '
           style={{ textTransform: "capitalize" }}
         >
-          <div className=" d-flex flex-row flex-wrap col-4 col-md-5 me-1">
+          <div className=' d-flex flex-row flex-wrap col-4 col-md-5 me-1'>
             {this.props.job_title} at {this.props.company_name}
           </div>
           <div
-            id="worktag"
-            className=" d-flex flex-row flex-wrap col-3 col-md-1  fs-6 plus"
+            id='worktag'
+            className=' d-flex flex-row flex-wrap col-3 col-md-1  fs-6 plus'
           >
             {this.props.experience_type}
           </div>
-          <div
-            id="worktag"
-            className=" d-flex flex-row flex-wrap col-3 col-md-5 "
-          ></div>
-          <div
-            id="hiddenhover"
-            className=" d-flex flex-row col-2 col-md-1 p-0 ms-3"
-          >
-            <Link
-              renderAs="button"
-
-              // to="/Register"
-            >
-              <BiPencil fill="#cd8930" color="#cd8930" />
+          <div id='worktag' className=' d-flex flex-row flex-wrap col-3 col-md-5 '></div>
+          <div id='hiddenhover' className=' d-flex flex-row col-2 col-md-1 p-0 ms-3'>
+            <Link to={`/Profile/Experiance/${id}`}>
+              <BiPencil fill='#cd8930' color='#cd8930' />
             </Link>
           </div>
         </div>
-        <div className="d-flex flex-row fs-6 ">
-          <div className=" d-flex flex-row col-12 col-md-12">
+        <div className='d-flex flex-row fs-6 '>
+          <div className=' d-flex flex-row col-12 col-md-12'>
             {this.props.city}, {this.props.country}.
           </div>
         </div>
-        <div className="d-flex flex-row fs-6 ">
-          <div className=" d-flex flex-row col-12 col-md-12">
+        <div className='d-flex flex-row fs-6 '>
+          <div className=' d-flex flex-row col-12 col-md-12'>
             {this.props.from} to {this.props.to} ·{/* {diffDays} Years */}
           </div>
         </div>
-        <div className="d-flex flex-row fs-6 mt-2 ">
+        <div className='d-flex flex-row fs-6 mt-2 '>
           <a
-            id="goldcredentials"
-            renderAs="button"
+            id='goldcredentials'
+            renderAs='button'
             href={this.props.cred}
-            className="  mb-1   d-flex flex-row col-12 col-md-3"
+            className='  mb-1   d-flex flex-row col-12 col-md-3'
             // to="/Register"
           >
             See credentials
