@@ -121,6 +121,7 @@ class ExperianceForm extends Component {
             this.setState({ loggedIn: false });
             window.location.reload();
           }
+          console.log(error);
           this.setState({
             error: {
               ExperienceTypeErr: error.response.data.errors.experience_type,
@@ -138,6 +139,24 @@ class ExperianceForm extends Component {
         });
     }
   };
+  handleDelete = async (e) => {
+    await axios
+      .delete(`/W/student/profile/experience/${this.props.match.params.id}`)
+      .then((response) => {
+        this.setState({
+          done: true,
+        });
+      })
+      .catch((error) => {
+        if (error.response) {
+          this.setState({
+            loggedIn: false,
+            // error: true,
+          });
+        }
+        window.location.reload();
+      });
+  };
   render() {
     const { country, region } = this.state;
     if (this.state.loggedIn === false) {
@@ -152,7 +171,7 @@ class ExperianceForm extends Component {
           <EditNav setactive={"experience"} />
           <form class='g-3 mb-3 text-left ' onSubmit={this.handleSubmit}>
             <div className=' row'>
-              <div class='col-12 fullwidth'>
+              <div class='col-lg-10 col-11 col-md-10 col-sm-12 col-xs-12'>
                 <label for='inputfullname' class='form-label editLabel '>
                   Experience Type
                   <span className='red'>*</span>
@@ -161,8 +180,8 @@ class ExperianceForm extends Component {
                   type='text'
                   className={
                     this.state.error && this.state.error.ExperienceTypeErr
-                      ? "form-control editInput halfInput fullwidth wrong "
-                      : "form-control editInput halfInput fullwidth"
+                      ? "form-control editInput wrong "
+                      : "form-control editInput"
                   }
                   id='fullname'
                   placeholder='Internship'
@@ -176,7 +195,7 @@ class ExperianceForm extends Component {
                 </p>
               </div>
 
-              <div class='col-12 fullwidth'>
+              <div class='col-lg-10 col-11 col-md-10 col-sm-12 col-xs-12'>
                 <label for='inputfullname' class='form-label editLabel '>
                   Job Title <span className='red'>*</span>
                 </label>
@@ -184,8 +203,8 @@ class ExperianceForm extends Component {
                   type='text'
                   className={
                     this.state.error && this.state.error.JobTitlErr
-                      ? "form-control editInput halfInput fullwidth wrong "
-                      : "form-control editInput halfInput fullwidth"
+                      ? "form-control editInput wrong "
+                      : "form-control editInput"
                   }
                   id='fullname'
                   placeholder='Web Developer'
@@ -196,7 +215,7 @@ class ExperianceForm extends Component {
                   {this.state.error.JobTitlErr ? this.state.error.JobTitlErr : ""}
                 </p>
               </div>
-              <div class='col-12 fullwidth'>
+              <div class='col-lg-10 col-11 col-md-10 col-sm-12 col-xs-12'>
                 <label for='inputfullname' class='form-label editLabel '>
                   Company / Organization Name
                   <span className='red'>*</span>
@@ -205,8 +224,8 @@ class ExperianceForm extends Component {
                   type='text'
                   className={
                     this.state.error && this.state.error.CompanyNameErr
-                      ? "form-control editInput halfInput fullwidth wrong "
-                      : "form-control editInput halfInput fullwidth"
+                      ? "form-control editInput wrong "
+                      : "form-control editInput"
                   }
                   id='fullname'
                   placeholder='Qowwa Technologies'
@@ -217,7 +236,7 @@ class ExperianceForm extends Component {
                   {this.state.error ? this.state.error.CompanyNameErr : ""}
                 </p>
               </div>
-              <div class='col-12 fullwidth'>
+              <div class='col-lg-10 col-11 col-md-10 col-sm-12 col-xs-12'>
                 <label for='inputfullname' class='form-label editLabel '>
                   Company Website
                   <span className='red'>*</span>
@@ -225,9 +244,9 @@ class ExperianceForm extends Component {
                 <input
                   type='text'
                   className={
-                    this.state.error && this.state.error.Cred_URLErr
-                      ? "form-control editInput halfInput fullwidth wrong "
-                      : "form-control editInput halfInput fullwidth"
+                    this.state.error && this.state.error.CompanyWebsiteErr
+                      ? "form-control editInput wrong "
+                      : "form-control editInput"
                   }
                   id='fullname'
                   placeholder='Http://www.Example.com'
@@ -235,10 +254,10 @@ class ExperianceForm extends Component {
                   value={this.state.CompanyWebsite ? this.state.CompanyWebsite : ""}
                 />
                 <p className='red'>
-                  {this.state.error ? this.state.error.Cred_URLErr : ""}
+                  {this.state.error ? this.state.error.CompanyWebsiteErr : ""}
                 </p>
               </div>
-              <div className='col-12 col-md-6   fullwidth'>
+              <div className='col-lg-5 col-11 col-md-5 col-sm-12 col-xs-12'>
                 <label for='inputCountry' className='form-label editLabel'>
                   Country
                 </label>
@@ -247,8 +266,8 @@ class ExperianceForm extends Component {
                   onChange={(val) => this.selectCountry(val)}
                   className={
                     this.state.error && this.state.error.countryErr
-                      ? "form-select editInput halfInput fullwidth wrong "
-                      : "form-select editInput halfInput fullwidth"
+                      ? "form-control editInput wrong "
+                      : "form-control editInput"
                   }
                   id='validationServer04'
                   aria-describedby='validationServer04Feedback'
@@ -257,7 +276,7 @@ class ExperianceForm extends Component {
                   {this.state.error ? this.state.error.countryErr : ""}
                 </p>
               </div>
-              <div className='col-12 col-md-6   fullwidth '>
+              <div className='col-lg-5 col-11 col-md-5 col-sm-12 col-xs-12 '>
                 <label for='inputCity' className='form-label editLabel'>
                   City
                 </label>
@@ -265,11 +284,10 @@ class ExperianceForm extends Component {
                   country={country}
                   value={region}
                   onChange={(val) => this.selectRegion(val)}
-                  className=' form-select editInput halfInput fullwidth '
                   className={
                     this.state.error && this.state.error.cityErr
-                      ? "form-select editInput halfInput fullwidth wrong "
-                      : "form-select editInput halfInput fullwidth"
+                      ? "form-control editInput wrong "
+                      : "form-control editInput"
                   }
                   id='validationServer04'
                   aria-describedby='validationServer04Feedback'
@@ -277,7 +295,7 @@ class ExperianceForm extends Component {
                 />
                 <p className='red'>{this.state.error ? this.state.error.cityErr : ""}</p>
               </div>
-              <div className='col-12 col-md-6 fullwidth '>
+              <div className='col-lg-5 col-11 col-md-5 col-sm-12 col-xs-12 '>
                 <label for='bdaymonth' className='form-label editLabel '>
                   From
                 </label>
@@ -286,15 +304,15 @@ class ExperianceForm extends Component {
                   id='bdaymonth'
                   className={
                     this.state.error && this.state.error.FromErr
-                      ? "form-select editInput halfInput fullwidth wrong "
-                      : "form-select editInput halfInput fullwidth"
+                      ? "form-control editInput wrong "
+                      : "form-control editInput"
                   }
                   onChange={(e) => this.setState({ From: e.target.value })}
                   value={this.state.From ? this.state.From : ""}
                 />
                 <p className='red'>{this.state.error ? this.state.error.FromErr : ""}</p>
               </div>
-              <div class='col-12 col-md-6  fullwidth'>
+              <div class='col-lg-5 col-11 col-md-5 col-sm-12 col-xs-12'>
                 <label for='bdaymonth' className='form-label editLabel '>
                   To <span className='red'>*</span>
                 </label>
@@ -303,44 +321,39 @@ class ExperianceForm extends Component {
                   id='bdaymonth'
                   className={
                     this.state.error && this.state.error.ToErr
-                      ? "form-select editInput halfInput fullwidth wrong "
-                      : "form-control editInput halfInput fullwidth"
+                      ? "form-control editInput wrong "
+                      : "form-control editInput"
                   }
                   onChange={(e) => this.setState({ To: e.target.value })}
                   value={this.state.To ? this.state.To : ""}
                 />
                 <p className='red'>{this.state.error ? this.state.error.ToErr : ""}</p>
               </div>
-              <div class='col-12 col-md-6  fullwidth '>
+              <div class='col-lg-5 col-11 col-md-5 col-sm-12 col-xs-12 '>
                 <label for='inputTerm' className='form-label editLabel'>
                   Credential URL <span className='red'>*</span>
                 </label>
                 <input
                   type='text'
-                  className='form-control editInput halfInput fullwidth'
+                  className='form-control editInput'
                   id='fullname'
                   onChange={(e) => this.setState({ Cred_URL: e.target.value })}
                   placeholder={this.state.Cred_URL}
                 />
               </div>
-              <div class='col-12 col-md-6  fullwidth '>
+              <div class='col-lg-5 col-11 col-md-5 col-sm-12 col-xs-12 '>
                 <label for='inputGPA' className='form-label editLabel'>
                   uplaod{" "}
                 </label>
                 <input
                   type='text'
-                  className='form-control editInput halfInput fullwidth'
+                  className='form-control editInput'
                   id='fullname'
                   placeholder='Please enter your full name'
                   onChange={(e) => this.setState({ password: e.target.value })}
                 />
               </div>
 
-              {this.state.error ? (
-                <span className='red py-3'>Please fill all the info *</span>
-              ) : (
-                <span className='red py-3'></span>
-              )}
               {this.props.match.params.id ? (
                 <div class='col-12 d-flex justify-content-end'>
                   <button

@@ -31,21 +31,25 @@ export default class EducationForm extends Component {
     });
   };
   handleDelete = async (e) => {
-    await axios
-      .delete(`/W/student/profile/education/${this.props.match.params.id}`)
-      .then((response) => {
-        this.setState({
-          loggedIn: true,
-        });
-      })
-      .catch((error) => {
-        if (error.response) {
+    if (this.props.match.params.id) {
+      await axios
+        .delete(`/W/student/profile/education/${this.props.match.params.id}`)
+        .then((response) => {
           this.setState({
-            loggedIn: false,
-            error: true,
+            loggedIn: true,
           });
-        }
-        window.location.reload();
+        })
+        .catch((error) => {
+          if (error.response) {
+            this.setState({
+              done: true,
+            });
+          }
+          window.location.reload();
+        });
+    } else
+      this.setState({
+        loggedIn: false,
       });
   };
   componentDidMount = async () => {
@@ -91,7 +95,7 @@ export default class EducationForm extends Component {
         .post(`/W/student/profile/education/${this.props.match.params.id}`, data)
         .then((response) => {
           this.setState({
-            loggedIn: true,
+            done: true,
           });
         })
         .catch((error) => {
@@ -101,6 +105,7 @@ export default class EducationForm extends Component {
             this.setState({ loggedIn: false });
             window.location.reload();
           }
+
           this.setState({
             error: {
               schoolNameErr: error.response.data.errors.school_name,
@@ -116,7 +121,7 @@ export default class EducationForm extends Component {
         .post("/W/student/profile/education", data)
         .then((response) => {
           this.setState({
-            loggedIn: false,
+            done: true,
           });
           // console.log(response);
         })
@@ -127,6 +132,7 @@ export default class EducationForm extends Component {
             this.setState({ loggedIn: false });
             window.location.reload();
           }
+
           this.setState({
             error: {
               schoolNameErr: error.response.data.errors.school_name,
@@ -148,6 +154,9 @@ export default class EducationForm extends Component {
     if (this.state.loggedIn === false) {
       return <Redirect to='/Profile' />;
     }
+    if (this.state.done === true) {
+      return <Redirect to='/Profile' />;
+    }
     // console.log(this.state);
     return (
       <div>
@@ -156,7 +165,7 @@ export default class EducationForm extends Component {
 
           <form class='g-3 mb-3 text-left ' onSubmit={this.handleSubmit}>
             <div className=' row'>
-              <div class='col-12 fullwidth'>
+              <div class='col-lg-10 col-11 col-md-10 col-sm-12 col-xs-12 '>
                 <label for='inputfullname' class='form-label editLabel '>
                   School Name <span className='red'>*</span>
                 </label>
@@ -164,21 +173,19 @@ export default class EducationForm extends Component {
                   type='text'
                   className={
                     this.state.error && this.state.error.schoolNameErr
-                      ? "form-control editInput halfInput fullwidth wrong "
-                      : "form-control editInput halfInput fullwidth"
+                      ? "form-control editInput wrong "
+                      : "form-control editInput"
                   }
                   id='fullname'
                   placeholder='Please enter your full name'
                   onChange={(e) => this.setState({ SchoolName: e.target.value })}
                   value={this.state.SchoolName ? this.state.SchoolName : ""}
                 />
-                {this.state.error && this.state.error.msgErr ? (
-                  <p>{this.state.error.msgErr}</p>
-                ) : (
-                  ""
-                )}
+                <p className='red'>
+                  {this.state.error ? this.state.error.schoolNameErr : ""}
+                </p>
               </div>
-              <div className='col-12 col-md-6   fullwidth'>
+              <div className='col-lg-5 col-11 col-md-5 col-sm-12 col-xs-12'>
                 <label for='inputCountry' className='form-label editLabel'>
                   Country
                 </label>
@@ -187,14 +194,17 @@ export default class EducationForm extends Component {
                   onChange={(val) => this.selectCountry(val)}
                   className={
                     this.state.error && this.state.error.countryErr
-                      ? "form-select editInput halfInput fullwidth wrong "
-                      : "form-select editInput halfInput fullwidth"
+                      ? "form-control editInput wrong "
+                      : "form-control editInput"
                   }
                   id='validationServer04'
                   aria-describedby='validationServer04Feedback'
                 />
+                <p className='red'>
+                  {this.state.error ? this.state.error.countryErr : ""}
+                </p>
               </div>
-              <div className='col-12 col-md-6   fullwidth '>
+              <div className='col-lg-5 col-11 col-md-5 col-sm-12 col-xs-12 '>
                 <label for='inputCity' className='form-label editLabel'>
                   City
                 </label>
@@ -202,18 +212,18 @@ export default class EducationForm extends Component {
                   country={country}
                   value={region}
                   onChange={(val) => this.selectRegion(val)}
-                  className=' form-select editInput halfInput fullwidth '
                   className={
                     this.state.error && this.state.error.cityErr
-                      ? "form-select editInput halfInput fullwidth wrong "
-                      : "form-select editInput halfInput fullwidth"
+                      ? "form-control editInput wrong "
+                      : "form-control editInput"
                   }
                   id='validationServer04'
                   aria-describedby='validationServer04Feedback'
                   // value={(e) => this.setState({ City: e.target.value })}
                 />
+                <p className='red'>{this.state.error ? this.state.error.cityErr : ""}</p>
               </div>
-              <div className='col-12 col-md-6 fullwidth '>
+              <div className='col-lg-5 col-11 col-md-5 col-sm-12 col-xs-12 '>
                 <label for='bdaymonth' className='form-label editLabel '>
                   From
                 </label>
@@ -222,14 +232,15 @@ export default class EducationForm extends Component {
                   id='bdaymonth'
                   className={
                     this.state.error && this.state.error.fromErr
-                      ? "form-select editInput halfInput fullwidth wrong "
-                      : "form-select editInput halfInput fullwidth"
+                      ? "form-control editInput wrong "
+                      : "form-control editInput"
                   }
                   onChange={(e) => this.setState({ From: e.target.value })}
                   value={this.state.From ? this.state.From : ""}
                 />
+                {this.state.error ? this.state.error.fromErr : ""}
               </div>
-              <div class='col-12 col-md-6  fullwidth'>
+              <div class='col-lg-5 col-11 col-md-5 col-sm-12 col-xs-12'>
                 <label for='bdaymonth' className='form-label editLabel '>
                   To <span className='red'>*</span>
                 </label>
@@ -238,32 +249,33 @@ export default class EducationForm extends Component {
                   id='bdaymonth'
                   className={
                     this.state.error && this.state.error.toErr
-                      ? "form-select editInput halfInput fullwidth wrong "
-                      : "form-control editInput halfInput fullwidth"
+                      ? "form-control editInput wrong "
+                      : "form-control editInput"
                   }
                   onChange={(e) => this.setState({ To: e.target.value })}
                   value={this.state.To ? this.state.To : ""}
                 />
+                <p className='red'>{this.state.error ? this.state.error.toErr : ""}</p>
               </div>
-              <div class='col-12 col-md-6  fullwidth '>
+              <div class='col-lg-5 col-11 col-md-5 col-sm-12 col-xs-12 '>
                 <label for='inputTerm' className='form-label editLabel'>
                   Credential URL <span className='red'>*</span>
                 </label>
                 <input
                   type='text'
-                  className='form-control editInput halfInput fullwidth'
+                  className='form-control editInput'
                   id='fullname'
                   onChange={(e) => this.setState({ SchoolUrl: e.target.value })}
                   placeholder={this.state.cred_url}
                 />
               </div>
-              <div class='col-12 col-md-6  fullwidth '>
+              <div class='col-lg-5 col-11 col-md-5 col-sm-12 col-xs-12 '>
                 <label for='inputGPA' className='form-label editLabel'>
                   Grade / GPA
                 </label>
                 <input
                   type='text'
-                  className='form-control editInput halfInput fullwidth'
+                  className='form-control editInput'
                   id='fullname'
                   placeholder='Please enter your full name'
                   onChange={(e) => this.setState({ password: e.target.value })}
