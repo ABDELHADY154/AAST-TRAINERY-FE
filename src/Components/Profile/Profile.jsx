@@ -8,6 +8,9 @@ import { BiPencil } from "react-icons/bi";
 import StudentEducation from "./StudentEducation/StudentEdu";
 import StudentWorkExp from "./StudentWorkExp/StudentWorkExp";
 import StudentCourses from "./StudentCourses/StudentCourses";
+import StudentSkill from "./StudentSkill/StudentSkill";
+import Studentinterest from "./StudentSkill/StudentInterest";
+
 import studentAccount from "./StudentAccount/StudentAccount";
 import Footer2 from "../Common/Footer2";
 
@@ -38,6 +41,8 @@ class Profile extends Component {
     educations: [],
     work_experience: [],
     courses: [],
+    skills: [],
+    interests: [],
     // studentAccount: [],
   };
   async componentDidMount() {
@@ -68,6 +73,9 @@ class Profile extends Component {
           educations: res.data.response.data.educations,
           work_experience: res.data.response.data.work_experience,
           courses: res.data.response.data.courses,
+          skills: res.data.response.data.skills,
+          interests: res.data.response.data.interests,
+
           // studentAccount: res.data.response.data.studentAccount,
         });
       })
@@ -307,7 +315,7 @@ class Profile extends Component {
             </div>
           </div>
         </div>
-        {/* <div className="container">
+        <div className="container">
           <div id="education" className="card mt-5">
             <div className="card-body">
               <div className="d-flex flex-row titlecard fs-4 mb-2">
@@ -320,20 +328,45 @@ class Profile extends Component {
                   +
                 </Link>
               </div>
-              {this.state.courses.map((item) => {
+              <div className=" d-flex flex-row flex-wrap col-2 mb-2 col-md-12 me-1 fs-5">
+                Tools and Fields of Expertise
+              </div>
+
+              {this.state.skills.map((item) => {
                 return (
-                  <studentAccount
+                  <StudentSkill
                     key={item.id}
-                    courseProviderName={item.school_name}
-                    courseName={item.courseName}
-                    Coursecred={item.courseCredential_url}
+                    skill_name={item.skill_name}
+                    years_of_exp={item.years_of_exp}
                   />
                 );
               })}
+              <hr />
+              <div className=" d-flex flex-row flex-wrap col-12 col-md-12 me-1">
+                Interests
+              </div>
+              <div className=" d-flex flex-row flex-wrap col-10 col-md-9 me-1 mt-2 ">
+                {this.state.interests.map((i) => {
+                  return <Studentinterest key={i.id} interest={i.interest} />;
+                })}
+              </div>
+              <div
+                id="hiddenhover"
+                className=" d-flex flex-row col-2 col-md-1 p-0 ms-3"
+              >
+                <Link
+                  renderAs="button"
+
+                  // to="/Register"
+                >
+                  <BiPencil fill="#cd8930" color="#cd8930" />
+                </Link>
+              </div>
+              <hr />
             </div>
           </div>
         </div>
-        <div className='container'>
+        {/*<div className='container'>
           <div id='education' className='card mt-5'>
             <div className='card-body'>
               <div className='d-flex flex-row titlecard fs-4 mb-2'>

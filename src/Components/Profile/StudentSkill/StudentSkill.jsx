@@ -5,7 +5,11 @@ import { BiPencil } from "react-icons/bi";
 import ReactStars from "react-rating-stars-component";
 
 export default class StudentWorkExp extends Component {
+  constructor(props) {
+    super(props);
+  }
   render() {
+    let id = this.props.id;
     return (
       <>
         <div
@@ -13,26 +17,15 @@ export default class StudentWorkExp extends Component {
           className="d-flex flex-row  fs-5 "
           style={{ textTransform: "capitalize" }}
         >
-          <div className=" d-flex flex-row flex-wrap col-4 col-md-5 me-1">
-            {this.props.posistionTitle} at {this.props.companyName}
+          <div className=" d-flex flex-row flex-wrap col-4 col-md-3 me-1  fs-6">
+            {this.props.skill_name}
           </div>
           <div
-            id="worktag"
-            className=" d-flex flex-row flex-wrap col-3 col-md-1  fs-6 plus"
-          >
-            {this.props.worktag}
-          </div>
-          <div
-            id="worktag"
-            className=" d-flex flex-row flex-wrap col-3 col-md-5 "
-          >
-            <ReactStars
-              count={5}
-              value={4}
-              edit={false}
-              size={28}
-              activeColor="#F2A23A"
-            />
+            id=""
+            className=" d-flex flex-row flex-wrap col-0 col-md-0  fs-6 "
+          ></div>
+          <div id="" className=" d-flex flex-row  col-6 col-md-8 fs-6">
+            Years Of Experience: {this.props.years_of_exp}
           </div>
           <div
             id="hiddenhover"
@@ -47,29 +40,6 @@ export default class StudentWorkExp extends Component {
             </Link>
           </div>
         </div>
-        <div className="d-flex flex-row fs-6 ">
-          <div className=" d-flex flex-row col-12 col-md-12">
-            {this.props.workCity}, {this.props.workCountry}.
-          </div>
-        </div>
-        <div className="d-flex flex-row fs-6 ">
-          <div className=" d-flex flex-row col-12 col-md-12">
-            {this.props.fromWork} to {this.props.toWork} ·
-            {/* {diffDays} Years */}
-          </div>
-        </div>
-        <div className="d-flex flex-row fs-6 mt-2 ">
-          <a
-            id="goldcredentials"
-            renderAs="button"
-            href={this.props.workCredential_url}
-            className="  mb-1   d-flex flex-row col-12 col-md-3"
-            // to="/Register"
-          >
-            See credentials
-          </a>
-        </div>
-        <hr />
       </>
     );
   }
