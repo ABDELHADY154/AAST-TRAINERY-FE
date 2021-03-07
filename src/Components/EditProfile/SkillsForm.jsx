@@ -172,9 +172,6 @@ class Skills extends Component {
                 <input
                   type="number"
                   id="quantity"
-                  name="quantity"
-                  min="1"
-                  max="2"
                   className="form-control editInput "
                   placeholder="Please enter your years of Experience"
                   onChange={(e) => this.setState({ yearsExp: e.target.value })}

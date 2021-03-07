@@ -238,8 +238,8 @@ class GeneralForm extends Component {
                     10MB.
                   </p>
 
-                  <div>
-                    <button className="">Upload Image</button>
+                  <div className="UploadBtnDiv">
+                    <button className="UploadBtn">Upload</button>
                     <input
                       type="file"
                       className="imgUploadBtn"
