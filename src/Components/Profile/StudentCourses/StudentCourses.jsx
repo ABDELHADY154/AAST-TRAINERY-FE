@@ -24,7 +24,6 @@ export default class StudentEdu extends Component {
           >
             <Link
               renderAs="button"
-
               // to="/Register"
             >
               <BiPencil fill="#cd8930" color="#cd8930" />
