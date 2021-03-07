@@ -75,7 +75,7 @@ class GeneralForm extends Component {
           period: res.data.response.data.period,
           gpa: res.data.response.data.GPA,
         });
-        console.log(res.data);
+        console.log(res.data.response.data);
         this.state.dep.forEach((element) => {
           if (element.dep_name == this.state.department) {
             this.setState({ depId: element.id });
@@ -114,22 +114,26 @@ class GeneralForm extends Component {
       period: this.state.period,
       // image: this.state.imageURL,
     };
-
     // console.log(data);
     await axios
       .post("/W/student/profile/general", data)
       .then((res) => {
-        // sessionStorage.setItem("token", res.data.response.data.token);
-        // sessionStorage.setItem("status", res.statusText);
-        // console.log(e);
-        // this.setState({
-        //   token: sessionStorage.getItem("token"),
-        //   status: sessionStorage.getItem("status"),
-        //   loggedIn: true,
-        // });
-        // this.props.setUser(true);
+        this.setState({
+          loggedIn: false,
+        });
       })
       .catch((error) => {
+        if (error.response.data.status === 422) {
+          sessionStorage.clear("token");
+          sessionStorage.clear("status");
+          this.setState({ loggedIn: false });
+          window.location.reload();
+        }
+        this.setState({
+          error: {
+            endyearErr: error.response.data.errors.end_year,
+          },
+        });
         console.log(error.response.data.errors);
       });
   };
@@ -538,11 +542,11 @@ class GeneralForm extends Component {
                 }}
                 value={this.state.endYear}
               />
-              {/* <p className="error">
-                {this.state.error.endyearErr
+              <p className="error">
+                {/* {this.state.error.endyearErr
                   ? this.state.error.endyearErr
-                  : " "}
-              </p> */}
+                  : " "} */}
+              </p>
             </div>
             <div className="col-lg-10 col-11 col-md-10 col-sm-12 col-xs-12 d-flex justify-content-end mt-5">
               <button type="submit" className="btn me-2 cancelBtn shadow-none">
