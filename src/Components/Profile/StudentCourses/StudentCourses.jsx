@@ -3,7 +3,11 @@ import { Link } from "react-router-dom";
 import "../../../layout/Profile.css";
 import { BiPencil } from "react-icons/bi";
 export default class StudentEdu extends Component {
+  constructor(props) {
+    super(props);
+  }
   render() {
+    let id = this.props.id;
     return (
       <>
         <div
@@ -12,7 +16,7 @@ export default class StudentEdu extends Component {
           style={{ textTransform: "capitalize" }}
         >
           <div className=" d-flex flex-row col-10 col-md-11 me-1">
-            {this.props.courseProviderName}
+            {this.props.course_provider}
           </div>
           <div
             id="hiddenhover"
@@ -28,7 +32,7 @@ export default class StudentEdu extends Component {
         </div>
         <div className="d-flex flex-row fs-6 ">
           <div className=" d-flex flex-row col-12 col-md-12">
-            {this.props.courseName}.
+            {this.props.course_name}.
           </div>
         </div>
         <div className="d-flex flex-row fs-6 ">
@@ -38,7 +42,7 @@ export default class StudentEdu extends Component {
           <a
             id="goldcredentials"
             renderAs="button"
-            href={this.props.courseCredential_url}
+            href={this.props.cred_url}
             className="  mb-1   d-flex flex-row col-12 col-md-3"
             // to="/Register"
           >
