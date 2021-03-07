@@ -141,21 +141,6 @@ class Skills extends Component {
         window.location.reload();
       });
   };
-  // handleSubmitLanguage = async (e) => {
-  //   e.preventDefault();
-  //   const data = {
-  //     language: this.state.language,
-  //     level: this.state.LanguageLevel,
-  //   };
-  //   await axios
-  //     .post("/W/student/profile/language", data)
-  //     .then((res) => {
-  //       console.log(res.data.response.data);
-  //     })
-  //     .catch((err) => {
-  //       console.log(err.response.data.errors.language);
-  //     });
-  // };
   handleSubmitLanguage = async (e) => {
     e.preventDefault();
     const data = {
