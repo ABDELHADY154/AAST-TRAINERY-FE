@@ -5,88 +5,55 @@ import { axios } from "../../Api/axios";
 import "../../layout/EditInfo.css";
 import Footer2 from "../Common/Footer2";
 import { FiUpload } from "react-icons/fi";
-import { Redirect } from "react-router-dom";
 
 class CoursesForm extends Component {
-  state = {
-    startDate: new Date(),
+  constructor(props) {
+    super(props);
+    this.state = {
+      courseName: "",
+      courseProvider: "",
+      fromDate: "",
+      toDate: "",
+      CourseUrl: "",
+      image: "",
+    };
+  }
+  async componentDidMount() {
+    await axios
+      .get("/W/student/profile/course")
+      .then((cList) => {
+        console.log(cList.data.response.data);
+        this.setState({
+          courses: cList.data.response.data,
+        });
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }
+
+  handleSubmit = async (e) => {
+    e.preventDefault();
+    const data = {
+      course_name: this.state.courseName,
+      course_provider: this.state.courseProvider,
+      from: this.state.fromDate,
+      to: this.state.toDate,
+      cred_url: this.state.CourseUrl,
+
+      cred: this.state.image,
+    };
+    await axios
+      .post("/W/student/profile/course", data)
+      .then((e) => {
+        console.log(e);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   };
-
-  // componentDidMount = async () => {
-  //   if (this.props.match.params.id) {
-  //     await axios
-  //       .get(`/W/student/profile/education/${this.props.match.params.id}`)
-  //       .then((res) => {
-  //         console.log(res);
-  //         this.setState({
-  //           id: this.state.id,
-  //           course_name: this.state.CourseName,
-  //           course_provider: this.state.CourseProv,
-  //           from: this.state.From,
-  //           to: this.state.To,
-  //           cred_url: this.state.CourseUrl,
-  //         });
-  //       })
-  //       .catch((error) => {
-  //         if (error.response.data.status === 401) {
-  //           sessionStorage.clear("token");
-  //           sessionStorage.clear("status");
-  //           this.setState({ loggedIn: false });
-  //           window.location.reload();
-  //         }
-  //       });
-  //   }
-  // };
-  // handleChange = (startDate) => {
-  //   this.setState({
-  //     startDate,
-  //   });
-  // };
-
-  // handleSubmit = async (e) => {
-  //   e.preventDefault();
-  //   const data = {
-  //     id: this.state.id,
-  //     course_name: this.state.CourseName,
-  //     course_provider: this.state.CourseProv,
-  //     from: this.state.From,
-  //     to: this.state.To,
-  //     cred_url: this.state.CourseUrl,
-  //   };
-  //   if (this.props.match.params.id) {
-  //     return await axios
-  //       .post("/W/student/profile/education", data)
-  //       .then((response) => {
-  //         this.setState({
-  //           loggedIn: false,
-  //         });
-  //         // console.log(response);
-  //       })
-  //       .catch((error) => {
-  //         if (error.response.data.status === 401) {
-  //           sessionStorage.clear("token");
-  //           sessionStorage.clear("status");
-  //           this.setState({ loggedIn: false });
-  //           window.location.reload();
-  //         }
-  //         this.setState({
-  //           error: {
-  //             schoolNameErr: error.response.data.errors.school_name,
-  //             countryErr: error.response.data.errors.country,
-  //             cityErr: error.response.data.errors.city,
-  //             fromErr: error.response.data.errors.from,
-  //             toErr: error.response.data.errors.to,
-  //           },
-  //         });
-  //         console.log(this.state.error);
-  //       });
-  //   }
-  // };
-
   render() {
-    if (this.state.loggedIn === false) {
-      return <Redirect to="/Profile" />;
-    }
+    console.log(this.state.image);
     return (
       <div>
         {" "}
@@ -163,7 +130,7 @@ class CoursesForm extends Component {
                   id="fullname"
                   placeholder="Graphic Design Mastery: The FULL Branding & Design Process"
                   onChange={(e) =>
-                    this.setState({ CourseName: e.target.value })
+                    this.setState({ courseName: e.target.value })
                   }
                 />
               </div>
@@ -177,7 +144,7 @@ class CoursesForm extends Component {
                   id="fullname"
                   placeholder="IT"
                   onChange={(e) =>
-                    this.setState({ CourseProv: e.target.value })
+                    this.setState({ courseProvider: e.target.value })
                   }
                 />
               </div>
@@ -190,7 +157,7 @@ class CoursesForm extends Component {
                   type="date"
                   id="bdaymonth"
                   className="form-control editInput halfInput fullwidth"
-                  onChange={(e) => this.setState({ From: e.target.value })}
+                  onChange={(e) => this.setState({ fromDate: e.target.value })}
                 />
               </div>
               <div class="col-12 col-md-6  fullwidth">
@@ -201,7 +168,7 @@ class CoursesForm extends Component {
                   type="date"
                   id="bdaymonth"
                   className=" form-control editInput halfInput fullwidth"
-                  onChange={(e) => this.setState({ To: e.target.value })}
+                  onChange={(e) => this.setState({ toDate: e.target.value })}
                 />
               </div>
               <div class="col-12 col-md-6  fullwidth ">
@@ -212,7 +179,7 @@ class CoursesForm extends Component {
                   type="text"
                   className="form-control editInput halfInput fullwidth"
                   id="fullname"
-                  placeholder="Please enter your full name"
+                  placeholder="Course URL Here!"
                   onChange={(e) => this.setState({ CourseUrl: e.target.value })}
                 />
               </div>
@@ -227,9 +194,10 @@ class CoursesForm extends Component {
                     hidden
                     type="file"
                     id="files"
-                    accept="image/png"
+                    accept="application/msword, application/vnd.ms-excel, application/vnd.ms-powerpoint,
+                    text/plain, application/pdf, image/*"
                     onChange={(e) =>
-                      this.setState({ password: e.target.value })
+                      this.setState({ image: e.target.files[0] })
                     }
                   />
                 </label>
