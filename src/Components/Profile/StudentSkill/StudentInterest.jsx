@@ -20,11 +20,11 @@ export default class StudentWorkExp extends Component {
               {this.props.interest}
             </div>
           </div>
-          <div
+          {/* <div
             id=""
             className=" d-flex flex-row flex-wrap col-0 col-md-0  fs-6 "
           ></div>
-          <div id="" className=" d-flex flex-row  col-6 col-md-8 "></div>
+          <div id="" className=" d-flex flex-row  col-6 col-md-8 "></div> */}
           <div
             id="hiddenhover"
             className=" d-flex flex-row col-2 col-md-1 p-0 ms-3"
