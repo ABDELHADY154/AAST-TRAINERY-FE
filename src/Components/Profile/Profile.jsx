@@ -307,14 +307,14 @@ class Profile extends Component {
             </div>
           </div>
         </div>
-        <div className="container">
-          <div id="education" className="card mt-5">
-            <div className="card-body">
-              <div className="d-flex flex-row titlecard fs-4 mb-2">
+        <div className='container'>
+          <div id='education' className='card mt-5'>
+            <div className='card-body'>
+              <div className='d-flex flex-row titlecard fs-4 mb-2'>
                 Accounts
                 <Link
-                  renderAs="button"
-                  className="  ms-3 plus"
+                  renderAs='button'
+                  className='  ms-3 plus'
                   // to="/Register"
                 >
                   +

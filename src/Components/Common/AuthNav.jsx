@@ -39,6 +39,7 @@ class AuthNav extends React.Component {
     sessionStorage.clear("token");
     sessionStorage.clear("status");
     this.props.setUser(false);
+    this.props.setUser(false);
   };
   async componentDidMount() {
     axios.defaults.headers.common["Authorization"] =

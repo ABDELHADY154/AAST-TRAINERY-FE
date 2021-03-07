@@ -29,7 +29,7 @@ class Login extends React.Component {
       .then((response) => {
         sessionStorage.setItem("token", response.data.response.data.token);
         sessionStorage.setItem("status", response.statusText);
-        // this.props.setUser(true);
+        this.props.setUser(true);
         this.setState({
           loggedIn: true,
         });
