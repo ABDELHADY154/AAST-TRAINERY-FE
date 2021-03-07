@@ -345,23 +345,11 @@ class Profile extends Component {
               <div className=" d-flex flex-row flex-wrap col-12 col-md-12 me-1">
                 Interests
               </div>
-              <div className=" d-flex flex-row flex-wrap col-10 col-md-9 me-1 mt-2 ">
-                {this.state.interests.map((i) => {
-                  return <Studentinterest key={i.id} interest={i.interest} />;
-                })}
-              </div>
-              <div
-                id="hiddenhover"
-                className=" d-flex flex-row col-2 col-md-1 p-0 ms-3"
-              >
-                <Link
-                  renderAs="button"
 
-                  // to="/Register"
-                >
-                  <BiPencil fill="#cd8930" color="#cd8930" />
-                </Link>
-              </div>
+              {this.state.interests.map((i) => {
+                return <Studentinterest key={i.id} interest={i.interest} />;
+              })}
+
               <hr />
             </div>
           </div>
