@@ -141,19 +141,91 @@ class Skills extends Component {
         window.location.reload();
       });
   };
+  // handleSubmitLanguage = async (e) => {
+  //   e.preventDefault();
+  //   const data = {
+  //     language: this.state.language,
+  //     level: this.state.LanguageLevel,
+  //   };
+  //   await axios
+  //     .post("/W/student/profile/language", data)
+  //     .then((res) => {
+  //       console.log(res.data.response.data);
+  //     })
+  //     .catch((err) => {
+  //       console.log(err.response.data.errors.language);
+  //     });
+  // };
   handleSubmitLanguage = async (e) => {
     e.preventDefault();
     const data = {
       language: this.state.language,
       level: this.state.LanguageLevel,
     };
+    if (this.props.match.params.id) {
+      return await axios
+        .put(`/W/student/profile/language/${this.props.match.params.id}`, data)
+        .then((response) => {
+          this.setState({
+            loggedIn: true,
+          });
+          // console.log(this.response.data);
+        })
+        .catch((error) => {
+          if (error.response.data.status === 401) {
+            sessionStorage.clear("token");
+            sessionStorage.clear("status");
+            this.setState({ loggedIn: false });
+            window.location.reload();
+          }
+          this.setState({
+            error: {
+              languageErr: error.response.data.errors.language,
+              LanguageLevelErr: error.response.data.errors.level,
+            },
+          });
+        });
+    } else {
+      return await axios
+        .put("/W/student/profile/language", data)
+        .then((response) => {
+          this.setState({
+            loggedIn: true,
+          });
+        })
+        .catch((error) => {
+          if (error.response.data.status === 401) {
+            sessionStorage.clear("token");
+            sessionStorage.clear("status");
+            this.setState({ loggedIn: false });
+            window.location.reload();
+          }
+          this.setState({
+            error: {
+              languageErr: error.response.data.errors.language,
+              LanguageLevelErr: error.response.data.errors.level,
+            },
+          });
+          // console.log(this.state.error);
+        });
+    }
+  };
+  handleDeleteLanguage = async (e) => {
     await axios
-      .post("/W/student/profile/language", data)
-      .then((res) => {
-        console.log(res.data.response.data);
+      .delete(`/W/student/profile/language/${this.props.match.params.id}`)
+      .then((response) => {
+        this.setState({
+          loggedIn: true,
+        });
       })
-      .catch((err) => {
-        console.log(err.response.data.errors.language);
+      .catch((error) => {
+        if (error.response) {
+          this.setState({
+            loggedIn: false,
+            error: true,
+          });
+        }
+        window.location.reload();
       });
   };
   handleSubmiInterest = async (e) => {
@@ -173,7 +245,24 @@ class Skills extends Component {
         console.log(err.response.data.errors.interests);
       });
   };
-
+  handleDeleteInterest = async (e) => {
+    await axios
+      .delete(`/W/student/profile/interest/${this.props.match.params.id}`)
+      .then((response) => {
+        this.setState({
+          loggedIn: true,
+        });
+      })
+      .catch((error) => {
+        if (error.response) {
+          this.setState({
+            loggedIn: false,
+            error: true,
+          });
+        }
+        window.location.reload();
+      });
+  };
   render() {
     if (this.state.loggedIn === true) {
       return <Redirect to="/Profile" />;
@@ -317,40 +406,38 @@ class Skills extends Component {
                 <label for="inputRegNum" className="form-label editLabel">
                   Intrests
                 </label>
-                {/* <input
-                type="number"
-                className="form-control editInput "
-                id="RegNum"
-                placeholder="Please enter your Intrests"
-              /> */}
                 <ReactTag
                   className="editLabel"
                   tags={(e) => this.setState({ interests: e })}
-                  // onChange={e => {
-                  //   this.setState({ interests: e.target.value });
-                  // }}
                 />
               </div>
 
-              <div className="col-lg-10 col-11 col-md-10 col-sm-12 col-xs-12 d-flex justify-content-end ">
-                <button
-                  type="submit"
-                  className="btn me-2 cancelBtn shadow-none"
-                >
-                  Cancel
-                </button>
-                <button className="btn doneBtn shadow-none" type="submit">
-                  Add
-                </button>
-              </div>
-              {/* <div class="col-lg-10 col-11 col-md-10 col-sm-12 col-xs-12 d-flex justify-content-end">
-                <button type="submit" class="btn deleteBtn me-2 shadow-none ">
-                  Delete
-                </button>
-                <button type="submit" class="btn updateBtn shadow-none">
-                  Update
-                </button>
-              </div> */}
+              {this.props.match.params.id ? (
+                <div class="col-lg-10 col-11 col-md-10 col-sm-12 col-xs-12 d-flex justify-content-end">
+                  <button
+                    // onClick={() => this.handleDeleteInterest()}
+                    type="submit"
+                    class="btn deleteBtn me-2 shadow-none "
+                  >
+                    Delete
+                  </button>
+                  <button type="submit" class="btn updateBtn shadow-none">
+                    Update
+                  </button>
+                </div>
+              ) : (
+                <div className="col-lg-10 col-11 col-md-10 col-sm-12 col-xs-12 d-flex justify-content-end ">
+                  <button
+                    type="submit"
+                    className="btn me-2 cancelBtn shadow-none"
+                  >
+                    Cancel
+                  </button>
+                  <button type="submit" className="btn doneBtn shadow-none">
+                    Add
+                  </button>
+                </div>
+              )}
             </form>
             <form className="row g-3 mb-3" onSubmit={this.handleSubmitLanguage}>
               <hr className="hrSkills ms-2 col-lg-10 col-11 col-md-10 col-sm-12 col-xs-12" />
@@ -361,12 +448,23 @@ class Skills extends Component {
                 </label>
                 <input
                   type="text"
-                  className="form-control editInput "
+                  className={
+                    this.state.error && this.state.error.languageErr
+                      ? "form-control editInput wrong"
+                      : "form-control editInput "
+                  }
                   id="language"
                   placeholder="Please enter your Skills "
                   onChange={(e) => this.setState({ language: e.target.value })}
                   value={this.state.language}
-                />
+                />{" "}
+                {this.state.error && this.state.error.LanguageLevelErr ? (
+                  <p className="editerror">
+                    {this.state.error.LanguageLevelErr}
+                  </p>
+                ) : (
+                  ""
+                )}
                 {/* <select id="inputSkillYears" className="form-select editInput "
                 onChange={(e)=>{
                   this.setState({language:e.target.value});
@@ -389,34 +487,53 @@ class Skills extends Component {
                 <ReactStars
                   count={5}
                   value={1}
+                  className={
+                    this.state.error && this.state.error.LanguageLevelErr
+                      ? "wrong"
+                      : " "
+                  }
                   onChange={(newValue) => {
                     this.setState({ LanguageLevel: `${newValue}` });
-                    console.log(` ${newValue}`);
+                    console.log(`${newValue}`);
                   }}
                   size={28}
                   activeColor="#F2A23A"
                   edit={true}
                 />
+                {this.state.error && this.state.error.LanguageLevelErr ? (
+                  <p className="editerror">
+                    {this.state.error.LanguageLevelErr}
+                  </p>
+                ) : (
+                  ""
+                )}
               </div>
-              <div class="col-lg-10 col-11 col-md-10 col-sm-12 col-xs-12 d-flex justify-content-end ">
-                <button
-                  type="submit"
-                  className="btn me-2 cancelBtn shadow-none"
-                >
-                  Cancel
-                </button>
-                <button type="submit" className="btn doneBtn shadow-none">
-                  Add
-                </button>
-              </div>
-              {/* <div class="col-lg-10 col-11 col-md-10 col-sm-12 col-xs-12 d-flex justify-content-end">
-                <button type="submit" class="btn deleteBtn me-2 shadow-none ">
-                  Delete
-                </button>
-                <button type="submit" class="btn updateBtn shadow-none">
-                  Update
-                </button>
-              </div> */}
+              {this.props.match.params.id ? (
+                <div class="col-lg-10 col-11 col-md-10 col-sm-12 col-xs-12 d-flex justify-content-end">
+                  <button
+                    onClick={() => this.handleDeleteLanguage()}
+                    type="submit"
+                    class="btn deleteBtn me-2 shadow-none "
+                  >
+                    Delete
+                  </button>
+                  <button type="submit" class="btn updateBtn shadow-none">
+                    Update
+                  </button>
+                </div>
+              ) : (
+                <div className="col-lg-10 col-11 col-md-10 col-sm-12 col-xs-12 d-flex justify-content-end ">
+                  <button
+                    type="submit"
+                    className="btn me-2 cancelBtn shadow-none"
+                  >
+                    Cancel
+                  </button>
+                  <button type="submit" className="btn doneBtn shadow-none">
+                    Add
+                  </button>
+                </div>
+              )}
             </form>
           </div>
         </div>

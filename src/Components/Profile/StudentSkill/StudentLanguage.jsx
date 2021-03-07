@@ -6,6 +6,8 @@ import ReactStars from "react-rating-stars-component";
 
 export default class StudentWorkExp extends Component {
   render() {
+    let id = this.props.id;
+
     return (
       <>
         <div
@@ -40,7 +42,7 @@ export default class StudentWorkExp extends Component {
           >
             <Link
               renderAs="button"
-
+              to={`/Profile/Skills/${id}`}
               // to="/Register"
             >
               <BiPencil fill="#cd8930" color="#cd8930" />
