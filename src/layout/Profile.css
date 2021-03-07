@@ -149,14 +149,13 @@
 }
 
 #hiddenhover {
-  overflow: hidden;
+  opacity: 40%;
   width: 100%;
   height: 0;
-  transition: 0.1s ease;
 }
 
-#education:hover #hiddenhover {
-  height: 100%;
+#lightfont:hover #hiddenhover {
+  opacity: 100%;
 }
 #education:hover .titlecard {
   color: #cd8930;
