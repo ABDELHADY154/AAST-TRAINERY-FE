@@ -265,6 +265,31 @@ textarea {
 ReactStars:active {
   border: none !important;
 }
+.editerror {
+  color: #f44336;
+  font-size: 14px;
+  /* margin-top: -7%; */
+  /* margin-bottom: 5%; */
+}
+.UploadBtnDiv {
+  position: relative;
+  overflow: hidden;
+  display: inline-block;
+}
+.UploadBtnDiv input[type="file"] {
+  font-size: 100px;
+  position: absolute;
+  left: 0;
+  top: 0;
+  opacity: 0;
+}
+.UploadBtn {
+  border: 2px solid #1e4274;
+  color: #1e4274;
+  background-color: white;
+  padding: 0.4em 2.5em;
+  border-radius: 6px;
+}
 
 /* ...........Mohannad........... */
 .red {

@@ -236,6 +236,12 @@ class GeneralForm extends Component {
                   >
                     Male
                   </label>
+                  {this.state.error && this.state.error.genderErr ? (
+                    <p className="editerror">{this.state.error.genderErr}</p>
+                  ) : (
+                    ""
+                  )}
+
                 </div>
                 <div className=" female col-4 col-lg-3 col-md-4 col-sm-5 col-xs-3 checkbox form-check-inline d-flex">
                   <input
@@ -406,12 +412,27 @@ class GeneralForm extends Component {
               >
                 <option selected>Choose your Term ...</option>
                 <span className="text-danger ms-2">*</span>
-                <option value="4">4</option>
-                <option value="5">5</option>
-                <option value="6">6</option>
-                <option value="7">7</option>
-                <option value="8">8</option>
+
+
+                {this.state.periodNumArr.map((num) => {
+                  // console.log(num);
+                  return this.state.period == num ? (
+                    <option value={num} key={num} selected>
+                      {num}
+                    </option>
+                  ) : (
+                    <option value={num} key={num}>
+                      {num}
+                    </option>
+                  );
+                })}
               </select>
+              {this.state.error && this.state.error.periodErr ? (
+                <p className="editerror">{this.state.error.periodErr}</p>
+              ) : (
+                ""
+              )}
+
             </div>
             <div className="col-lg-5 col-11 col-md-5 col-sm-12 col-xs-12 ">
               <label for="inputGPA" className="form-label editLabel">
