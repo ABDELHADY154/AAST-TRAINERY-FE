@@ -22,15 +22,15 @@ class Skills extends Component {
       LanguageId: 0,
       LanguageLevel: 0,
       tags: [],
-      interest: "",
       interestId: 0,
+      interests: [],
     };
   }
 
   async componentDidMount() {
     await axios
       .get("/W/student/profile/skill")
-      .then((res) => {
+      .then(res => {
         this.setState({
           skill: res.data.response.data.skill_name,
           skillId: res.data.response.data.id,
@@ -38,24 +38,24 @@ class Skills extends Component {
         });
         // console.log(res.data.response.data);
       })
-      .catch((err) => {
+      .catch(err => {
         console.log(err);
       });
-    await axios
-      .post("/W/student/profile/language")
-      .then((res) => {
-        this.setState({
-          LanguageId: res.data.response.data.id,
-          language: res.data.response.data.language,
-          LanguageLevel: res.data.response.data.level,
-        });
-        // console.log(res.data.response.data);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+    // await axios
+    //   .post("/W/student/profile/language")
+    //   .then(res => {
+    //     this.setState({
+    //       LanguageId: res.data.response.data.id,
+    //       language: res.data.response.data.language,
+    //       LanguageLevel: res.data.response.data.level,
+    //     });
+    //     // console.log(res.data.response.data);
+    //   })
+    //   .catch(err => {
+    //     console.log(err);
+    //   });
   }
-  handleSubmit = async (e) => {
+  handleSubmit = async e => {
     e.preventDefault();
     const data = {
       skill_name: this.state.skill,
@@ -64,14 +64,14 @@ class Skills extends Component {
     };
     await axios
       .post("/W/student/profile/skill", data)
-      .then((res) => {
+      .then(res => {
         console.log(res.data.response.data);
       })
-      .catch((err) => {
+      .catch(err => {
         console.log(err);
       });
   };
-  handleSubmitLanguage = async (e) => {
+  handleSubmitLanguage = async e => {
     e.preventDefault();
     const data = {
       id: this.state.LanguageId,
@@ -80,26 +80,28 @@ class Skills extends Component {
     };
     await axios
       .post("/W/student/profile/language", data)
-      .then((res) => {
+      .then(res => {
         console.log(res.data.response.data);
       })
-      .catch((err) => {
+      .catch(err => {
         console.log(err);
       });
   };
-  handleSubmiInterest = async (e) => {
+  handleSubmiInterest = async e => {
     e.preventDefault();
     const data = {
-      // id: this.state.interestId,
-      interest: this.state.interest,
+      interests: [],
     };
+    this.state.interests.forEach(element => {
+      data.interests.push({ interest: element });
+    });
     await axios
       .post("/W/student/profile/interest", data)
-      .then((res) => {
-        console.log(res.data.response.data);
+      .then(res => {
+        console.log(res.data.response);
       })
-      .catch((err) => {
-        console.log(err);
+      .catch(err => {
+        console.log(err.response.data.errors.interests);
       });
   };
 
@@ -114,7 +116,6 @@ class Skills extends Component {
     // const ratingChanged = (newRating) => {
     //   console.log(newRating);
     // };
-    // console.log(this.state.data);
     return (
       <div>
         <div className="container ">
@@ -189,7 +190,7 @@ class Skills extends Component {
                   className="form-control editInput "
                   id="fullname"
                   placeholder="Please enter your Skills "
-                  onChange={(e) => this.setState({ skill: e.target.value })}
+                  onChange={e => this.setState({ skill: e.target.value })}
                   value={this.state.skill}
                 />
               </div>
@@ -199,7 +200,7 @@ class Skills extends Component {
                   className="form-control editInput "
                   id="inputSkillYears"
                   placeholder="Please enter your years of Experience"
-                  onChange={(e) => this.setState({ yearsExp: e.target.value })}
+                  onChange={e => this.setState({ yearsExp: e.target.value })}
                   value={this.state.yearsExp}
                 />
               </div>
@@ -238,11 +239,10 @@ class Skills extends Component {
               /> */}
                 <ReactTag
                   className="editLabel"
-                  tags={(e) => this.setState({ interest: e })}
-                  onChange={(e) => {
-                    this.setState({ interests: e.target.value });
-                    // console.log(this.state.interest);
-                  }}
+                  tags={e => this.setState({ interests: e })}
+                  // onChange={e => {
+                  //   this.setState({ interests: e.target.value });
+                  // }}
                 />
               </div>
 
@@ -278,7 +278,7 @@ class Skills extends Component {
                   className="form-control editInput "
                   id="fullname"
                   placeholder="Please enter your Skills "
-                  onChange={(e) => this.setState({ language: e.target.value })}
+                  onChange={e => this.setState({ language: e.target.value })}
                   value={this.state.language}
                 />
                 {/* <select id="inputSkillYears" className="form-select editInput "
@@ -303,7 +303,7 @@ class Skills extends Component {
                 <ReactStars
                   count={5}
                   value={1}
-                  onChange={(value) => {
+                  onChange={value => {
                     this.setState({ LanguageLevel: value.target });
                     console.log(value);
                   }}
@@ -345,7 +345,7 @@ class ReactTag extends Component {
   state = {
     tags: [],
   };
-  setTags = (e) => {
+  setTags = e => {
     this.setState({ tags: e });
     this.props.tags(e);
   };
@@ -356,7 +356,7 @@ class ReactTag extends Component {
         tags={this.state.tags}
         editable={true}
         removeOnBackspace={true}
-        onChange={(newTags) => this.setTags(newTags)}
+        onChange={newTags => this.setTags(newTags)}
       />
     );
   }
