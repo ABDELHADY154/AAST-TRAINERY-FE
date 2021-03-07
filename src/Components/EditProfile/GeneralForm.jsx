@@ -9,6 +9,7 @@ import {
   CountryRegionData,
 } from "react-country-region-selector";
 import Footer2 from "../Common/Footer2";
+import EditNav from "./EditNav";
 
 class GeneralForm extends Component {
   constructor(props) {
@@ -94,8 +95,10 @@ class GeneralForm extends Component {
 
     this.setState({
       image: URL.createObjectURL(event.target.files[0]),
+
       imageURL: filename,
     });
+    console.log(this.state.image);
   }
 
   handleSubmit = async (e) => {
@@ -151,6 +154,9 @@ class GeneralForm extends Component {
         });
       });
   };
+  setactive(val) {
+    this.setState({ General: val });
+  }
   render() {
     const city = this.state.city;
     if (this.state.loggedIn === false) {
@@ -159,66 +165,8 @@ class GeneralForm extends Component {
     return (
       <div>
         <div className="container ">
-          <h1 className="editTitle text-center">Edit Profile</h1>
-          <h3 className="categoryTitle d-flex justify-content-start mb-3">
-            Categories
-          </h3>
-          <ul className="nav  infoTabsUl nav-tabs" id="myTab" role="tablist">
-            <li className="nav-item infoTabs" role="presentation">
-              <a
-                className="nav-link  tabBtn  active"
-                id="General-tab"
-                href="/Profile/General"
-              >
-                General
-              </a>
-            </li>
-            <li className="nav-item infoTabs" role="presentation">
-              <a
-                className="nav-link  tabBtn  "
-                id="Education-tab"
-                href="/Profile/Education"
-              >
-                Education
-              </a>
-            </li>
-            <li class="nav-item infoTabs" role="presentation">
-              <a
-                className="nav-link tabBtn"
-                id="Experiance-tab"
-                href="/Profile/Experiance"
-              >
-                Experiance
-              </a>
-            </li>
-            <li className="nav-item infoTabs" role="presentation">
-              <a
-                className="nav-link tabBtn"
-                id="Courses-tab"
-                href="/Profile/Courses"
-              >
-                Courses
-              </a>
-            </li>
-            <li className="nav-item infoTabs" role="presentation">
-              <a
-                className="nav-link tabBtn"
-                id="Skills-tab"
-                href="/Profile/Skills"
-              >
-                Skills
-              </a>
-            </li>
-            <li className="nav-item infoTabs" role="presentation">
-              <a
-                className="nav-link tabBtn"
-                id="Accounts-tab"
-                href="/Profile/Accounts"
-              >
-                Accounts
-              </a>
-            </li>
-          </ul>
+          <EditNav setactive={"General"} />
+
           <form className="row g-3 mb-3" onSubmit={this.handleSubmit}>
             <div className="col-11 mb-4 mt-4">
               <div className="row ">

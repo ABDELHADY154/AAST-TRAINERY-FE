@@ -6,6 +6,8 @@ import "@pathofdev/react-tag-input/build/index.css";
 import ReactDOM from "react-dom";
 import "../../layout/EditInfo.css";
 import Footer2 from "../Common/Footer2";
+import EditNav from "./EditNav";
+
 // import { Redirect } from "react-router-dom";
 import { axios } from "../../Api/axios";
 // import { Link } from "react-router-dom";
@@ -93,70 +95,11 @@ class Skills extends Component {
     return (
       <div>
         <div className="container ">
-          <h1 className="editTitle text-center">Edit Profile</h1>
-          <h3 className="categoryTitle d-flex justify-content-start mb-3">
-            Categories
-          </h3>
-          <ul className="nav  infoTabsUl nav-tabs" id="myTab" role="tablist">
-            <li className="nav-item infoTabs" role="presentation">
-              <a
-                className="nav-link  tabBtn  "
-                id="General-tab"
-                href="/Profile/General"
-              >
-                General
-              </a>
-            </li>
-            <li className="nav-item infoTabs" role="presentation">
-              <a
-                className="nav-link  tabBtn  "
-                id="Education-tab"
-                href="/Profile/Education"
-              >
-                Education
-              </a>
-            </li>
-            <li class="nav-item infoTabs" role="presentation">
-              <a
-                className="nav-link tabBtn "
-                id="Experiance-tab"
-                href="/Profile/Experiance"
-              >
-                Experiance
-              </a>
-            </li>
-            <li className="nav-item infoTabs" role="presentation">
-              <a
-                className="nav-link tabBtn "
-                id="Courses-tab"
-                href="/Profile/Courses"
-              >
-                Courses
-              </a>
-            </li>
-            <li className="nav-item infoTabs" role="presentation">
-              <a
-                className="nav-link tabBtn active"
-                id="Skills-tab"
-                href="/Profile/Skills"
-              >
-                Skills
-              </a>
-            </li>
-            <li class="nav-item infoTabs" role="presentation">
-              <a
-                className="nav-link tabBtn"
-                id="Accounts-tab"
-                href="/Profile/Accounts"
-              >
-                Accounts
-              </a>
-            </li>
-          </ul>
+          <EditNav setactive={"Skills"} />
           <div>
             <form className="row g-3 mb-3" onSubmit={this.handleSubmit}>
               <div className="col-lg-10 col-11 col-md-10 col-sm-12 col-xs-12">
-                <label for="quantity" className="form-label editLabel ">
+                <label for="inputSkill" className="form-label editLabel ">
                   Skills
                 </label>
                 <input
@@ -164,24 +107,23 @@ class Skills extends Component {
                   className="form-control editInput "
                   id="fullname"
                   placeholder="Please enter your Skills "
-                  onChange={(e) => this.setState({ skill: e.target.value })}
-                  value={this.state.skill}
                 />
               </div>
               <div className="col-lg-10 col-11 col-md-10 col-sm-12 col-xs-12 ">
-                <input
-                  type="number"
-                  id="quantity"
-                  name="quantity"
-                  min="1"
-                  max="2"
-                  className="form-control editInput "
-                  placeholder="Please enter your years of Experience"
-                  onChange={(e) => this.setState({ yearsExp: e.target.value })}
-                  value={this.state.yearsExp}
+                <select id="inputSkillYears" className="form-select editInput ">
+                  <option selected>Years of Experience ...</option>
+                  <option>...</option>
+                </select>
+                <label for="inputLevel" className="form-label editLabel mt-2">
+                  Level
+                </label>
+                <ReactStars
+                  count={5}
+                  onChange={ratingChanged}
+                  size={28}
+                  activeColor="#F2A23A"
                 />
               </div>
-
               <div className="col-lg-10 col-11 col-md-10 col-sm-12 col-xs-12 d-flex justify-content-end ">
                 <button
                   type="submit"
@@ -193,16 +135,17 @@ class Skills extends Component {
                   Add
                 </button>
               </div>
-              {/* <div class="col-lg-10 col-11 col-md-10 col-sm-12 col-xs-12 d-flex justify-content-end">
+              <div class="col-lg-10 col-11 col-md-10 col-sm-12 col-xs-12 d-flex justify-content-end">
                 <button type="submit" class="btn deleteBtn me-2 shadow-none ">
                   Delete
                 </button>
                 <button type="submit" class="btn updateBtn shadow-none">
                   Update
                 </button>
-              </div> */}
+              </div>{" "}
+              */}
             </form>
-            <form className="row g-3 mb-3" onSubmit={this.handleSubmiInterest}>
+            <form className="row g-3 mb-3" onSubmit={this.handleSubmit}>
               <hr className="hrSkills ms-2 col-lg-10 col-11 col-md-10 col-sm-12 col-xs-12" />
               <div className="col-lg-10 col-11 col-md-10 col-sm-12 col-xs-12">
                 <label for="inputRegNum" className="form-label editLabel">
@@ -230,20 +173,20 @@ class Skills extends Component {
                 >
                   Cancel
                 </button>
-                <button className="btn doneBtn shadow-none" type="submit">
+                <button type="submit" className="btn doneBtn shadow-none">
                   Add
                 </button>
               </div>
-              {/* <div class="col-lg-10 col-11 col-md-10 col-sm-12 col-xs-12 d-flex justify-content-end">
+              <div class="col-lg-10 col-11 col-md-10 col-sm-12 col-xs-12 d-flex justify-content-end">
                 <button type="submit" class="btn deleteBtn me-2 shadow-none ">
                   Delete
                 </button>
                 <button type="submit" class="btn updateBtn shadow-none">
                   Update
                 </button>
-              </div> */}
+              </div>
             </form>
-            <form className="row g-3 mb-3" onSubmit={this.handleSubmitLanguage}>
+            <form className="row g-3 mb-3" onSubmit={this.handleSubmit}>
               <hr className="hrSkills ms-2 col-lg-10 col-11 col-md-10 col-sm-12 col-xs-12" />
 
               <div className="col-lg-10 col-11 col-md-10 col-sm-12 col-xs-12">
@@ -304,7 +247,7 @@ class Skills extends Component {
                 <button type="submit" class="btn deleteBtn me-2 shadow-none ">
                   Delete
                 </button>
-                <button type="submit" class="btn updateBtn shadow-none">
+                <button type='submit' class='btn updateBtn shadow-none'>
                   Update
                 </button>
               </div> */}
