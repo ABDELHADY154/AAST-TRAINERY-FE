@@ -319,7 +319,7 @@ class GeneralForm extends Component {
                     for="inlineCheckbox3"
                   >
                     Male
-                  </label>{" "}
+                  </label>
                   {this.state.error && this.state.error.genderErr ? (
                     <p className="editerror">{this.state.error.genderErr}</p>
                   ) : (
@@ -609,7 +609,7 @@ class GeneralForm extends Component {
                     </option>
                   );
                 })}
-              </select>{" "}
+              </select>
               {this.state.error && this.state.error.periodErr ? (
                 <p className="editerror">{this.state.error.periodErr}</p>
               ) : (

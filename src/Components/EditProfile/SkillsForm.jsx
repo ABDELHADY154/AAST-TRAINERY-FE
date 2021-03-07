@@ -190,14 +190,14 @@ class Skills extends Component {
                   Add
                 </button>
               </div>
-              {/* <div class="col-lg-10 col-11 col-md-10 col-sm-12 col-xs-12 d-flex justify-content-end">
+              <div class="col-lg-10 col-11 col-md-10 col-sm-12 col-xs-12 d-flex justify-content-end">
                 <button type="submit" class="btn deleteBtn me-2 shadow-none ">
                   Delete
                 </button>
                 <button type="submit" class="btn updateBtn shadow-none">
                   Update
                 </button>
-              </div> */}
+              </div>
             </form>
             <form className="row g-3 mb-3" onSubmit={this.handleSubmiInterest}>
               <hr className="hrSkills ms-2 col-lg-10 col-11 col-md-10 col-sm-12 col-xs-12" />
@@ -231,14 +231,14 @@ class Skills extends Component {
                   Add
                 </button>
               </div>
-              {/* <div class="col-lg-10 col-11 col-md-10 col-sm-12 col-xs-12 d-flex justify-content-end">
+              <div class="col-lg-10 col-11 col-md-10 col-sm-12 col-xs-12 d-flex justify-content-end">
                 <button type="submit" class="btn deleteBtn me-2 shadow-none ">
                   Delete
                 </button>
                 <button type="submit" class="btn updateBtn shadow-none">
                   Update
                 </button>
-              </div> */}
+              </div>
             </form>
             <form className="row g-3 mb-3" onSubmit={this.handleSubmitLanguage}>
               <hr className="hrSkills ms-2 col-lg-10 col-11 col-md-10 col-sm-12 col-xs-12" />
@@ -297,14 +297,14 @@ class Skills extends Component {
                   Add
                 </button>
               </div>
-              {/* <div class="col-lg-10 col-11 col-md-10 col-sm-12 col-xs-12 d-flex justify-content-end">
+              <div class="col-lg-10 col-11 col-md-10 col-sm-12 col-xs-12 d-flex justify-content-end">
                 <button type="submit" class="btn deleteBtn me-2 shadow-none ">
                   Delete
                 </button>
                 <button type="submit" class="btn updateBtn shadow-none">
                   Update
                 </button>
-              </div> */}
+              </div>
             </form>
           </div>
         </div>
