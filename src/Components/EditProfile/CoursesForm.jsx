@@ -15,7 +15,7 @@ class CoursesForm extends Component {
       fromDate: "",
       toDate: "",
       CourseUrl: "",
-      image: "",
+      // image: "",
     };
   }
   async componentDidMount() {
@@ -41,7 +41,7 @@ class CoursesForm extends Component {
       to: this.state.toDate,
       cred_url: this.state.CourseUrl,
 
-      cred: this.state.image,
+      // cred: this.state.image,
     };
     await axios
       .post("/W/student/profile/course", data)
@@ -53,7 +53,7 @@ class CoursesForm extends Component {
       });
   };
   render() {
-    console.log(this.state.image);
+    // console.log(this.state.image);
     return (
       <div>
         {" "}
@@ -196,9 +196,9 @@ class CoursesForm extends Component {
                     id="files"
                     accept="application/msword, application/vnd.ms-excel, application/vnd.ms-powerpoint,
                     text/plain, application/pdf, image/*"
-                    onChange={(e) =>
-                      this.setState({ image: e.target.files[0] })
-                    }
+                    // onChange={(e) =>
+                    //   this.setState({ image: e.target.files[0] })
+                    // }
                   />
                 </label>
               </div>
