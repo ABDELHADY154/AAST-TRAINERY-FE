@@ -90,6 +90,8 @@ class App extends React.Component {
                   component={GeneralForm}
                 />
 
+                <AuthRoute exact path="/Profile/nav" component={EditNav} />
+
                 <AuthRoute
                   exact
                   path="/Profile/Education"
@@ -104,6 +106,12 @@ class App extends React.Component {
                 <AuthRoute
                   exact
                   path="/Profile/Experiance"
+                  component={ExperianceForm}
+                />
+                <AuthRoute
+                  exact
+                  path="/Profile/Experiance/:id"
+
                   component={ExperianceForm}
                 />
                 <AuthRoute
@@ -126,6 +134,23 @@ class App extends React.Component {
                   path="/Profile/Accounts"
                   component={AccountsForm}
                 />
+
+                <AuthRoute
+                  exact
+                  path="/Profile/Courses"
+                  component={CoursesForm}
+                />
+                <AuthRoute
+                  exact
+                  path="/Profile/Skills"
+                  component={SkillsForm}
+                />
+                <AuthRoute
+                  exact
+                  path="/Profile/Accounts"
+                  component={AccountsForm}
+                />
+
 
                 <Route exact path="*" component={ErrorPage} />
               </Switch>
