@@ -8,7 +8,7 @@ import { BiPencil } from "react-icons/bi";
 import StudentEducation from "./StudentEducation/StudentEdu";
 import StudentWorkExp from "./StudentWorkExp/StudentWorkExp";
 import StudentCourses from "./StudentCourses/StudentCourses";
-import StudentSkill from "./StudentSkill/StudentSkill";
+import StudentSkill from "./StudentSkill/StudentInterest";
 import Studentinterest from "./StudentSkill/StudentInterest";
 import StudentLanguage from "./StudentSkill/StudentLanguage";
 import studentReviews from "./StudentReviews/StudentReviews";
