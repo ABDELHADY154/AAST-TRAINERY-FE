@@ -45,6 +45,9 @@
     margin-top: 0em !important;
     margin-top: 0em !important;
   }
+  .pencilforskills {
+    margin-left: 8%;
+  }
   .bluebtn {
     width: 7em !important;
   }
@@ -65,14 +68,20 @@
   .bluebtn {
     margin-left: 0.3em !important;
   }
+  /* .pencilforskills {
+    margin-left: 0em;
+  } */
 }
+
 @media screen and (max-width: 1025px) {
   #hiddenhover {
     overflow: visible !important;
     display: flex !important;
     flex-flow: row !important;
   }
-
+  /* .pencilforskills {
+    margin-left: 8%;
+  } */
   .titlecard {
     color: #cd8930;
   }
@@ -178,4 +187,38 @@
   justify-self: center;
   background-color: lightgrey;
   border-radius: 5px;
+}
+/* .pencilforskills {
+  margin-left: 5.4em;
+  font-size: 0.8em !important;
+} */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: sans-serif;
+}
+
+.carousel {
+  background: #eee;
+}
+
+.carousel-cell {
+  width: 66%;
+  height: 200px;
+  margin-right: 10px;
+  background: #8c8;
+  border-radius: 5px;
+  counter-increment: gallery-cell;
+}
+
+/* cell number */
+.carousel-cell:before {
+  display: block;
+  text-align: center;
+  content: counter(gallery-cell);
+  line-height: 200px;
+  font-size: 80px;
+  color: white;
 }

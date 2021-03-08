@@ -19,7 +19,7 @@ export default class StudentWorkExp extends Component {
           style={{ textTransform: "capitalize" }}
         >
           <div className=" d-flex flex-row flex-wrap col-10 col-md-10 me-1 mt-2 ">
-            <div className="d-flex flex-column col-5 col-md-2 fs-6 plus ">
+            <div className="d-flex flex-row col-5 col-md-2 fs-6 plus ">
               {this.props.interest}
             </div>
           </div>
