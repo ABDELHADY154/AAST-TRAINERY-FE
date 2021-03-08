@@ -27,16 +27,14 @@ export default class StudentWorkExp extends Component {
           <div id="" className=" d-flex flex-row  col-6 col-md-8 fs-6">
             Years Of Experience: {this.props.years_of_exp}
           </div>
-          {/* <div
+          <div
             id="hiddenhover"
             className=" d-flex flex-row col-2 col-md-1 p-0 ms-3"
           >
             <Link renderAs="button" to={`/Profile/Skills/${id}`}>
-              {" "}
-
               <BiPencil fill="#cd8930" color="#cd8930" />
             </Link>
-          </div> */}
+          </div>
         </div>
       </>
     );
