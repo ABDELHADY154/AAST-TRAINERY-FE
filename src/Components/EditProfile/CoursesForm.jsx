@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-// import { Redirect } from "react-router-dom";
+import { Redirect } from "react-router-dom";
 import { axios } from "../../Api/axios";
 // import { Link } from "react-router-dom";
 import "../../layout/EditInfo.css";
@@ -22,10 +22,11 @@ class CoursesForm extends Component {
     await axios
       .get("/W/student/profile/course")
       .then((cList) => {
-        console.log(cList.data.response.data);
+        // console.log(cList.data.response.data);
         this.setState({
           courses: cList.data.response.data,
         });
+        console.log(cList);
       })
       .catch((err) => {
         console.log(err);
@@ -47,12 +48,36 @@ class CoursesForm extends Component {
       .post("/W/student/profile/course", data)
       .then((e) => {
         console.log(e);
+        this.setState({
+          done: true,
+        });
       })
-      .catch((err) => {
-        console.log(err);
+      .catch((error) => {
+        if (error.response.data.status === 401) {
+          sessionStorage.clear("token");
+          sessionStorage.clear("status");
+          this.setState({ loggedIn: false });
+          window.location.reload();
+        }
+        this.setState({
+          error: {
+            courseNameErr: error.response.data.errors.course_name,
+            courseProviderErr: error.response.data.errors.course_provider,
+            fromDateErr: error.response.data.errors.from,
+            toDateErr: error.response.data.errors.to,
+            CourseUrlErr: error.response.data.errors.cred_url,
+          },
+        });
+        console.log(error.response.data.id);
       });
   };
   render() {
+    if (this.state.loggedIn === false) {
+      return <Redirect to="/Profile" />;
+    }
+    if (this.state.done === true) {
+      return <Redirect to="/Profile" />;
+    }
     // console.log(this.state.image);
     return (
       <div>
@@ -120,19 +145,26 @@ class CoursesForm extends Component {
           </ul>
           <form class="g-3 mb-3 text-left " onSubmit={this.handleSubmit}>
             <div className=" row">
-              <div class="col-12 fullwidth">
+              <div className="col-12 fullwidth">
                 <label for="inputfullname" class="form-label editLabel ">
                   Course Name <span className="red">*</span>
                 </label>
                 <input
                   type="text"
-                  className="form-control editInput halfInput fullwidth"
+                  className={
+                    this.state.error && this.state.error.courseNameErr
+                      ? "form-control editInput  halfInput fullwidth wrong "
+                      : "form-control editInput  halfInput fullwidth"
+                  }
                   id="fullname"
                   placeholder="Graphic Design Mastery: The FULL Branding & Design Process"
                   onChange={(e) =>
                     this.setState({ courseName: e.target.value })
                   }
                 />
+                <p className="red">
+                  {this.state.error ? this.state.error.courseNameErr : ""}
+                </p>
               </div>
               <div class="col-12 fullwidth">
                 <label for="inputfullname" class="form-label editLabel ">
@@ -140,13 +172,20 @@ class CoursesForm extends Component {
                 </label>
                 <input
                   type="text"
-                  className="form-control editInput halfInput fullwidth"
+                  className={
+                    this.state.error && this.state.error.courseProviderErr
+                      ? "form-control editInput  halfInput fullwidth wrong "
+                      : "form-control editInput  halfInput fullwidth"
+                  }
                   id="fullname"
                   placeholder="IT"
                   onChange={(e) =>
                     this.setState({ courseProvider: e.target.value })
                   }
                 />
+                <p className="red">
+                  {this.state.error ? this.state.error.courseProviderErr : ""}
+                </p>
               </div>
 
               <div className="col-12 col-md-6 fullwidth ">
@@ -156,9 +195,16 @@ class CoursesForm extends Component {
                 <input
                   type="date"
                   id="bdaymonth"
-                  className="form-control editInput halfInput fullwidth"
+                  className={
+                    this.state.error && this.state.error.fromDateErr
+                      ? "form-control editInput  halfInput fullwidth wrong "
+                      : "form-control editInput  halfInput fullwidth"
+                  }
                   onChange={(e) => this.setState({ fromDate: e.target.value })}
                 />
+                <p className="red">
+                  {this.state.error ? this.state.error.fromDateErr : ""}
+                </p>
               </div>
               <div class="col-12 col-md-6  fullwidth">
                 <label for="bdaymonth" className="form-label editLabel ">
@@ -167,9 +213,16 @@ class CoursesForm extends Component {
                 <input
                   type="date"
                   id="bdaymonth"
-                  className=" form-control editInput halfInput fullwidth"
+                  className={
+                    this.state.error && this.state.error.toDateErr
+                      ? "form-control editInput  halfInput fullwidth wrong "
+                      : "form-control editInput  halfInput fullwidth"
+                  }
                   onChange={(e) => this.setState({ toDate: e.target.value })}
                 />
+                <p className="red">
+                  {this.state.error ? this.state.error.toDateErr : ""}
+                </p>
               </div>
               <div class="col-12 col-md-6  fullwidth ">
                 <label for="inputTerm" className="form-label editLabel">
@@ -202,9 +255,11 @@ class CoursesForm extends Component {
                   />
                 </label>
               </div>
-              <span className="red py-3">
-                Please fill all the required info *
-              </span>
+              {this.state.error ? (
+                <span className="red py-3">Please fill all the info *</span>
+              ) : (
+                <span className="red py-3"></span>
+              )}
               <div class="col-12 d-flex justify-content-end">
                 <button
                   type="submit"
