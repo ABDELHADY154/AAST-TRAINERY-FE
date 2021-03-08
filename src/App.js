@@ -16,13 +16,13 @@ import CoursesForm from "./Components/EditProfile/CoursesForm";
 import ExperianceForm from "./Components/EditProfile/ExperianceForm";
 import GeneralForm from "./Components/EditProfile/GeneralForm";
 import SkillsForm from "./Components/EditProfile/SkillsForm";
+import GeneralInfo from "./Components/EditProfile/GeneralInfo";
 import { AuthRoute } from "./Components/Auth/AuthRoute";
 
 // import Skills from "./EditProfile/Skills";
 // import Education from "./EditProfile/Education";
 
 import "./layout/Footer.css";
-import EditNav from "./Components/EditProfile/EditNav";
 
 class App extends React.Component {
   constructor() {
@@ -89,7 +89,9 @@ class App extends React.Component {
                   path="/Profile/General"
                   component={GeneralForm}
                 />
+
                 <AuthRoute exact path="/Profile/nav" component={EditNav} />
+
                 <AuthRoute
                   exact
                   path="/Profile/Education"
@@ -109,7 +111,28 @@ class App extends React.Component {
                 <AuthRoute
                   exact
                   path="/Profile/Experiance/:id"
+
                   component={ExperianceForm}
+                />
+                <AuthRoute
+                  exact
+                  path="/Profile/Courses"
+                  component={CoursesForm}
+                />
+                <AuthRoute
+                  exact
+                  path="/Profile/Skills"
+                  component={SkillsForm}
+                />
+                <AuthRoute
+                  exact
+                  path="/Profile/Skills/:id"
+                  component={SkillsForm}
+                />
+                <AuthRoute
+                  exact
+                  path="/Profile/Accounts"
+                  component={AccountsForm}
                 />
 
                 <AuthRoute
@@ -127,6 +150,7 @@ class App extends React.Component {
                   path="/Profile/Accounts"
                   component={AccountsForm}
                 />
+
 
                 <Route exact path="*" component={ErrorPage} />
               </Switch>

@@ -13,13 +13,13 @@ export default class StudentEdu extends Component {
       <>
         <div
           id='lightfont'
-          className='d-flex flex-row  fs-5'
+          className='flex-row  fs-5 '
           style={{ textTransform: "capitalize" }}
         >
           <div className=' d-flex flex-row col-10 col-md-11 me-1'>
             {this.props.schoolName}
           </div>
-          <div id='hiddenhover' className=' d-flex flex-row col-2 col-md-1 p-0 ms-3'>
+          <div id='hiddenhover' className='d-flex justify-content-end align-items-end   '>
             <Link to={`/Profile/Education/${id}`}>
               <BiPencil fill='#cd8930' color='#cd8930' />
             </Link>

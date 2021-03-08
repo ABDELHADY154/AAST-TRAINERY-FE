@@ -8,8 +8,15 @@ import { BiPencil } from "react-icons/bi";
 import StudentEducation from "./StudentEducation/StudentEdu";
 import StudentWorkExp from "./StudentWorkExp/StudentWorkExp";
 import StudentCourses from "./StudentCourses/StudentCourses";
+import StudentSkill from "./StudentSkill/StudentSkill";
+import Studentinterest from "./StudentSkill/StudentInterest";
+import StudentLanguage from "./StudentSkill/StudentLanguage";
+import studentReviews from "./StudentReviews/StudentReviews";
+
 import studentAccount from "./StudentAccount/StudentAccount";
 import Footer2 from "../Common/Footer2";
+import img2 from "../../Components/assests/imgs/cib.png";
+import "../../layout/Home.css";
 
 // import { Redirect } from "react-router-dom";
 import { axios } from "../../Api/axios";
@@ -36,9 +43,13 @@ class Profile extends Component {
     university: "",
     phone_number: "",
     educations: [],
-    workExperience: [],
+    work_experience: [],
     courses: [],
-    studentAccount: [],
+    skills: [],
+    interests: [],
+    languages: [],
+    reviews: [],
+    // studentAccount: [],
   };
   async componentDidMount() {
     await axios
@@ -66,8 +77,12 @@ class Profile extends Component {
           university: res.data.response.data.university,
           phone_number: res.data.response.data.phone_number,
           educations: res.data.response.data.educations,
-          // workExperience: res.data.response.data.workExperience,
-          // courses: res.data.response.data.courses,
+          work_experience: res.data.response.data.work_experience,
+          courses: res.data.response.data.courses,
+          skills: res.data.response.data.skills,
+          interests: res.data.response.data.interests,
+          languages: res.data.response.data.languages,
+          reviews: res.data.response.data.reviews,
           // studentAccount: res.data.response.data.studentAccount,
         });
       })
@@ -77,6 +92,7 @@ class Profile extends Component {
   }
 
   render() {
+    let id = this.props.id;
     return (
       <div className="container-fluid ">
         <div className="container  ">
@@ -248,7 +264,6 @@ class Profile extends Component {
             </div>
           </div>
         </div>
-
         <div className="container">
           <div id="education" className="card mt-5">
             <div className="card-body">
@@ -257,30 +272,31 @@ class Profile extends Component {
                 <Link
                   renderAs="button"
                   className="  ms-3 plus"
+                  to="Profile/Experiance"
                   // to="/Register"
                 >
                   +
                 </Link>
               </div>
-              {this.state.workExperience.map((item) => {
+              {this.state.work_experience.map((item) => {
                 return (
                   <StudentWorkExp
                     key={item.id}
-                    posistionTitle={item.posistionTitle}
-                    worktag={item.worktag}
-                    companyName={item.companyName}
-                    city={item.workCity}
-                    country={item.workCountry}
-                    fromDate={item.fromWork}
-                    toDate={item.toWork}
-                    cred={item.workCredential_url}
+                    id={item.id}
+                    job_title={item.job_title}
+                    experience_type={item.experience_type}
+                    company_name={item.company_name}
+                    city={item.city}
+                    country={item.country}
+                    from={item.from}
+                    to={item.to}
+                    cred={item.cred}
                   />
                 );
               })}
             </div>
           </div>
         </div>
-
         <div className="container">
           <div id="education" className="card mt-5">
             <div className="card-body">
@@ -289,7 +305,7 @@ class Profile extends Component {
                 <Link
                   renderAs="button"
                   className="  ms-3 plus"
-                  // to="/Register"
+                  to="Profile/Courses"
                 >
                   +
                 </Link>
@@ -298,16 +314,92 @@ class Profile extends Component {
                 return (
                   <StudentCourses
                     key={item.id}
-                    courseProviderName={item.school_name}
-                    courseName={item.courseName}
-                    Coursecred={item.courseCredential_url}
+                    id={item.id}
+                    course_name={item.course_name}
+                    course_provider={item.course_provider}
+                    cred={item.cred}
+                    cred_url={item.cred_url}
                   />
                 );
               })}
             </div>
           </div>
         </div>
-        <div className='container'>
+        <div className="container">
+          <div id="education" className="card mt-5">
+            <div className="card-body">
+              <div className="d-flex flex-row titlecard fs-4 mb-2">
+                <div className="d-flex  flex-row col-md-10 col-10 me-3 ">
+                  Skills
+                  <Link
+                    renderAs="button"
+                    className="  ms-3 plus"
+                    to="Profile/Skills"
+                  >
+                    +
+                  </Link>
+                </div>
+                <div
+                  id="hiddenhover"
+                  className="d-flex  flex-column col-md-1  pencilforskills"
+                >
+                  <Link to={`/Profile/Skills`}>
+                    <BiPencil fill="#cd8930" color="#cd8930" />
+                  </Link>
+                </div>
+              </div>
+              <div className=" d-flex flex-row flex-wrap col-2 mb-2 col-md-12 me-1 fs-5">
+                Tools and Fields of Expertise
+              </div>
+
+              {this.state.skills.map((item) => {
+                return (
+                  <StudentSkill
+                    key={item.id}
+                    id={item.id}
+                    skill_name={item.skill_name}
+                    years_of_exp={item.years_of_exp}
+                  />
+                );
+              })}
+              <hr />
+              <div className=" d-flex flex-row flex-wrap col-12 col-md-12 ">
+                <div className="d-flex flex-column col-6 col-md-10 fs-5 ">
+                  Interests
+                </div>
+              </div>
+
+              {this.state.interests.map((i) => {
+                return (
+                  <Studentinterest key={i.id} id={i.id} interest={i.interest} />
+                );
+              })}
+
+              <hr />
+
+              <div
+                id="lightfont"
+                className="flex-row  fs-5 "
+                style={{ textTransform: "capitalize" }}
+              >
+                <div className=" flex-row col-6 col-md-9 fs-5 ">
+                  Languages
+                  {this.state.languages.map((i) => {
+                    return (
+                      <StudentLanguage
+                        key={i.id}
+                        id={i.id}
+                        language={i.language}
+                        level={i.level}
+                      />
+                    );
+                  })}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        {/*<div className='container'>
           <div id='education' className='card mt-5'>
             <div className='card-body'>
               <div className='d-flex flex-row titlecard fs-4 mb-2'>
@@ -332,6 +424,51 @@ class Profile extends Component {
               })}
             </div>
           </div>
+        </div>*/}
+        <div className="container">
+          <div id="education" className="card mt-5">
+            <div className="card-body">
+              <div className="d-flex flex-row titlecard fs-4 mb-2">Reviews</div>
+              <div
+                id="carouselExampleControls"
+                className="carousel slide"
+                data-bs-ride="carousel"
+              >
+                <div className="carousel-inner ">
+                  <div className="carousel-item active">
+                    <div className="flex-row d-flex ">
+                      <div className="col-md-12">
+                        <div className="card">
+                          <div className="card-body">
+                            <div className="d-flex flex-row">
+                              <img
+                                className=" mt-0 d-flex flex-column col-md-1 col-2 me-1"
+                                // id="imgicon"
+                                src={img2}
+                              />
+                              <div className=" fs-5 mt-2 ms-2 col-md-10 col-8">
+                                UI/UX Designer
+                              </div>
+                            </div>
+                            <div id="job" className="d-flex flex-row ms-5 ">
+                              <div className="d-flex ms-3 flex-column">CIB</div>
+                            </div>
+                            <p className="card-text mt-2">
+                              Lorem ipsum dolor sit amet consectetur adipisicing
+                              elit. Ipsam repudiandae aut possimus. Repellendus
+                              at nostrum iste doloremque. Ea omnis ipsam, eum
+                              nam tempore culpa illum consequuntur quis nobis
+                              adipisci et?
+                            </p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
         <Footer2 />
       </div>
@@ -339,3 +476,15 @@ class Profile extends Component {
   }
 }
 export default Profile;
+{
+  /* {this.state.reviews.map((item) => {
+                  return (
+                    <studentReviews
+                    // key={item.id}
+                    // courseProviderName={item.school_name}
+                    // courseName={item.courseName}
+                    // Coursecred={item.courseCredential_url}
+                    />
+                  );
+                })} */
+}
