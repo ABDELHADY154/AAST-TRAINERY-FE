@@ -39,68 +39,96 @@ class App extends React.Component {
     }
   }
 
-  setUser = (data) => {
+  setUser = data => {
     return this.setState({ loggedIn: data });
   };
 
   render() {
     return (
       <BrowserRouter>
-        {this.state.loggedIn == true ? <AuthNav setUser={this.setUser} /> : <Nav />}
-        <div className='app'>
-          <div className='auth-wrapper'>
-            <div className='auth-inner'>
+        {this.state.loggedIn == true ? (
+          <AuthNav setUser={this.setUser} />
+        ) : (
+          <Nav />
+        )}
+        <div className="app">
+          <div className="auth-wrapper">
+            <div className="auth-inner">
               <Switch>
                 {/* <== Home for Guest */}
 
                 <Route
                   exact
-                  path='/'
+                  path="/"
                   component={() => <Landing loggedIn={this.state.loggedIn} />}
                 />
 
                 <Route
                   exact
-                  path='/Login'
+                  path="/Login"
                   component={() => <Login setUser={this.setUser} />}
                 />
                 <Route
                   exact
-                  path='/Register'
+                  path="/Register"
                   component={() => <Registry setUser={this.setUser} />}
                 />
-                <Route exact path='/Forget' component={Forget} />
+                <Route exact path="/Forget" component={Forget} />
                 <AuthRoute
                   exact
-                  path='/Home'
+                  path="/Home"
                   component={() => {
                     return <Home setUser={this.setUser} />;
                   }}
                 />
-                <AuthRoute exact path='/Profile' component={Profile} />
+                <AuthRoute exact path="/Profile" component={Profile} />
                 {/* <AuthRoute exact path="/GeneralInfo" component={GeneralInfo} /> */}
 
-                <AuthRoute exact path='/Profile/General' component={GeneralForm} />
-                <AuthRoute exact path='/Profile/nav' component={EditNav} />
-                <AuthRoute exact path='/Profile/Education' component={EducationForm} />
                 <AuthRoute
                   exact
-                  path='/Profile/Education/:id'
+                  path="/Profile/General"
+                  component={GeneralForm}
+                />
+                <AuthRoute exact path="/Profile/nav" component={EditNav} />
+                <AuthRoute
+                  exact
+                  path="/Profile/Education"
+                  component={EducationForm}
+                />
+                <AuthRoute
+                  exact
+                  path="/Profile/Education/:id"
                   component={EducationForm}
                 />
 
-                <AuthRoute exact path='/Profile/Experiance' component={ExperianceForm} />
                 <AuthRoute
                   exact
-                  path='/Profile/Experiance/:id'
+                  path="/Profile/Experiance"
+                  component={ExperianceForm}
+                />
+                <AuthRoute
+                  exact
+                  path="/Profile/Experiance/:id"
                   component={ExperianceForm}
                 />
 
-                <AuthRoute exact path='/Profile/Courses' component={CoursesForm} />
-                <AuthRoute exact path='/Profile/Skills' component={SkillsForm} />
-                <AuthRoute exact path='/Profile/Accounts' component={AccountsForm} />
+                <AuthRoute
+                  exact
+                  path="/Profile/Courses"
+                  component={CoursesForm}
+                />
+                <AuthRoute
+                  exact
+                  path="/Profile/Skills"
+                  component={SkillsForm}
+                />
+                <AuthRoute
+                  exact
+                  path="/Profile/Accounts"
+                  component={AccountsForm}
+                />
 
-                <Route exact path='*' component={ErrorPage} />
+                <Route exact path="*" component={ErrorPage} />
               </Switch>
             </div>
           </div>
