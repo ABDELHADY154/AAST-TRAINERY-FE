@@ -13,10 +13,9 @@ import ErrorPage from "./Components/Auth/ErrorPage404";
 import EducationForm from "./Components/EditProfile/EducationForm";
 import AccountsForm from "./Components/EditProfile/AccountsForm";
 import CoursesForm from "./Components/EditProfile/CoursesForm";
-import ExperianceForm from "./Components/EditProfile/ExperianceForm";
+import ExperienceForm from "./Components/EditProfile/ExperienceForm";
 import GeneralForm from "./Components/EditProfile/GeneralForm";
 import SkillsForm from "./Components/EditProfile/SkillsForm";
-import GeneralInfo from "./Components/EditProfile/GeneralInfo";
 import { AuthRoute } from "./Components/Auth/AuthRoute";
 
 // import Skills from "./EditProfile/Skills";
@@ -46,96 +45,62 @@ class App extends React.Component {
   render() {
     return (
       <BrowserRouter>
-        {this.state.loggedIn == true ? (
-          <AuthNav setUser={this.setUser} />
-        ) : (
-          <Nav />
-        )}
-        <div className="app">
-          <div className="auth-wrapper">
-            <div className="auth-inner">
+        {this.state.loggedIn == true ? <AuthNav setUser={this.setUser} /> : <Nav />}
+        <div className='app'>
+          <div className='auth-wrapper'>
+            <div className='auth-inner'>
               <Switch>
                 {/* <== Home for Guest */}
 
                 <Route
                   exact
-                  path="/"
+                  path='/'
                   component={() => <Landing loggedIn={this.state.loggedIn} />}
                 />
 
                 <Route
                   exact
-                  path="/Login"
+                  path='/Login'
                   component={() => <Login setUser={this.setUser} />}
                 />
                 <Route
                   exact
-                  path="/Register"
+                  path='/Register'
                   component={() => <Registry setUser={this.setUser} />}
                 />
-                <Route exact path="/Forget" component={Forget} />
+                <Route exact path='/Forget' component={Forget} />
                 <AuthRoute
                   exact
-                  path="/Home"
+                  path='/Home'
                   component={() => {
                     return <Home setUser={this.setUser} />;
                   }}
                 />
-                <AuthRoute exact path="/Profile" component={Profile} />
+                <AuthRoute exact path='/Profile' component={Profile} />
                 {/* <AuthRoute exact path="/GeneralInfo" component={GeneralInfo} /> */}
 
-<<<<<<< HEAD
                 <AuthRoute exact path='/Profile/General' component={GeneralForm} />
 
                 <AuthRoute exact path='/Profile/Education' component={EducationForm} />
-=======
->>>>>>> parent of 6fe2cf8 (Merge pull request #73 from ABDELHADY154/Feature-StudentExperienceInfo_mohanad-magdy)
                 <AuthRoute
                   exact
-                  path="/Profile/General"
-                  component={GeneralForm}
-                />
-
-                <AuthRoute
-                  exact
-                  path="/Profile/Education"
-                  component={EducationForm}
-                />
-                <AuthRoute
-                  exact
-                  path="/Profile/Education/:id"
+                  path='/Profile/Education/:id'
                   component={EducationForm}
                 />
 
+                <AuthRoute exact path='/Profile/Experiance' component={ExperienceForm} />
                 <AuthRoute
                   exact
-                  path="/Profile/Experiance"
-                  component={ExperianceForm}
+                  path='/Profile/Experiance/:id'
+                  component={ExperienceForm}
                 />
-<<<<<<< HEAD
+
                 <AuthRoute exact path='/Profile/Courses' component={CoursesForm} />
                 <AuthRoute exact path='/Profile/Skills' component={SkillsForm} />
                 <AuthRoute exact path='/Profile/Skills/:id' component={SkillsForm} />
                 <AuthRoute exact path='/Profile/Accounts' component={AccountsForm} />
-=======
-                <AuthRoute
-                  exact
-                  path="/Profile/Courses"
-                  component={CoursesForm}
-                />
-                <AuthRoute
-                  exact
-                  path="/Profile/Skills"
-                  component={SkillsForm}
-                />
-                <AuthRoute
-                  exact
-                  path="/Profile/Accounts"
-                  component={AccountsForm}
-                />
->>>>>>> parent of 6fe2cf8 (Merge pull request #73 from ABDELHADY154/Feature-StudentExperienceInfo_mohanad-magdy)
 
-                <Route exact path="*" component={ErrorPage} />
+                <Route exact path='*' component={ErrorPage} />
               </Switch>
             </div>
           </div>

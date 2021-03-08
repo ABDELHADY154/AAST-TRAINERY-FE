@@ -103,12 +103,12 @@
 }
 
 .editInput[type="date"]::-webkit-calendar-picker-indicator {
-  background: url("https://api.iconify.design/uil:calender.svg?color=%231e4274")
-    no-repeat center center / contain;
+  background: url("https://api.iconify.design/uil:calender.svg?color=%231e4274") no-repeat
+    center center / contain;
 }
 .editInput[type="month"]::-webkit-calendar-picker-indicator {
-  background: url("https://api.iconify.design/uil:calender.svg?color=%231e4274")
-    no-repeat center center / contain;
+  background: url("https://api.iconify.design/uil:calender.svg?color=%231e4274") no-repeat
+    center center / contain;
 }
 .editLabel {
   font-size: 1.1rem !important;
@@ -290,21 +290,14 @@ ReactStars:active {
   background-color: white;
   padding: 0.4em 2.5em;
   border-radius: 6px;
-<<<<<<< HEAD
-=======
-  /* font-size: 20px; */
-  /* font-weight: bold; */
->>>>>>> parent of 6fe2cf8 (Merge pull request #73 from ABDELHADY154/Feature-StudentExperienceInfo_mohanad-magdy)
 }
 
 /* ...........Mohannad........... */
 .red {
   color: red;
-  font-size: 20px;
-<<<<<<< HEAD
-=======
+  font-size: 14px;
+
   margin-top: 1em !important;
->>>>>>> parent of 6fe2cf8 (Merge pull request #73 from ABDELHADY154/Feature-StudentExperienceInfo_mohanad-magdy)
 }
 
 .halfInput {
