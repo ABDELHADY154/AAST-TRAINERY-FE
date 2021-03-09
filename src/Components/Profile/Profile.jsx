@@ -339,6 +339,7 @@ class Profile extends Component {
                     +
                   </Link>
                 </div>
+
               </div>
               <div className=" d-flex flex-row flex-wrap col-12 mb-2 col-md-12 me-1 fs-5">
                 Tools and Fields of Expertise

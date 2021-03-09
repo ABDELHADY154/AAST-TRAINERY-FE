@@ -13,10 +13,9 @@ import ErrorPage from "./Components/Auth/ErrorPage404";
 import EducationForm from "./Components/EditProfile/EducationForm";
 import AccountsForm from "./Components/EditProfile/AccountsForm";
 import CoursesForm from "./Components/EditProfile/CoursesForm";
-import ExperianceForm from "./Components/EditProfile/ExperianceForm";
+import ExperienceForm from "./Components/EditProfile/ExperienceForm";
 import GeneralForm from "./Components/EditProfile/GeneralForm";
 import SkillsForm from "./Components/EditProfile/SkillsForm";
-import GeneralInfo from "./Components/EditProfile/GeneralInfo";
 import { AuthRoute } from "./Components/Auth/AuthRoute";
 
 // import Skills from "./EditProfile/Skills";
@@ -39,7 +38,7 @@ class App extends React.Component {
     }
   }
 
-  setUser = (data) => {
+  setUser = data => {
     return this.setState({ loggedIn: data });
   };
 
@@ -104,7 +103,12 @@ class App extends React.Component {
                 <AuthRoute
                   exact
                   path="/Profile/Experiance"
-                  component={ExperianceForm}
+                  component={ExperienceForm}
+                />
+                <AuthRoute
+                  exact
+                  path="/Profile/Experiance/:id"
+                  component={ExperienceForm}
                 />
                 <AuthRoute
                   exact
@@ -126,6 +130,27 @@ class App extends React.Component {
                   path="/Profile/Skills/Language/:id"
                   component={SkillsForm}
                 /> */}
+                <AuthRoute
+                  exact
+                  path="/Profile/Accounts"
+                  component={AccountsForm}
+                />
+                <AuthRoute
+                  exact
+                  path="/Profile/Accounts/:id"
+                  component={AccountsForm}
+                />
+
+                <AuthRoute
+                  exact
+                  path="/Profile/Courses"
+                  component={CoursesForm}
+                />
+                <AuthRoute
+                  exact
+                  path="/Profile/Skills"
+                  component={SkillsForm}
+                />
                 <AuthRoute
                   exact
                   path="/Profile/Accounts"
