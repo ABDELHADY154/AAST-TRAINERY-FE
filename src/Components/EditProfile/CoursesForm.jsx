@@ -143,134 +143,114 @@ class CoursesForm extends Component {
   render() {
     console.log(this.state.error);
     if (this.state.loggedIn === false) {
-      return <Redirect to="/Profile" />;
+      return <Redirect to='/Profile' />;
     }
     if (this.state.done === true) {
-      return <Redirect to="/Profile" />;
+      return <Redirect to='/Profile' />;
     }
     // console.log(this.state.image);
 
     return (
       <div>
         {" "}
-        <div className="container ">
-          <h1 className="editTitle text-center">Edit Profile</h1>
-          <h3 className="categoryTitle d-flex justify-content-start mb-3">
-            Categories
-          </h3>
-          <ul className="nav  infoTabsUl nav-tabs" id="myTab" role="tablist">
-            <li className="nav-item infoTabs" role="presentation">
-              <a
-                className="nav-link  tabBtn  "
-                id="General-tab"
-                href="/Profile/General"
-              >
+        <div className='container '>
+          <h1 className='editTitle text-center'>Edit Profile</h1>
+          <h3 className='categoryTitle d-flex justify-content-start mb-3'>Categories</h3>
+          <ul className='nav  infoTabsUl nav-tabs' id='myTab' role='tablist'>
+            <li className='nav-item infoTabs' role='presentation'>
+              <a className='nav-link  tabBtn  ' id='General-tab' href='/Profile/General'>
                 General
               </a>
             </li>
-            <li className="nav-item infoTabs" role="presentation">
+            <li className='nav-item infoTabs' role='presentation'>
               <a
-                className="nav-link  tabBtn  "
-                id="Education-tab"
-                href="/Profile/Education"
+                className='nav-link  tabBtn  '
+                id='Education-tab'
+                href='/Profile/Education'
               >
                 Education
               </a>
             </li>
-            <li class="nav-item infoTabs" role="presentation">
+            <li class='nav-item infoTabs' role='presentation'>
               <a
-                className="nav-link tabBtn "
-                id="Experiance-tab"
-                href="/Profile/Experiance"
+                className='nav-link tabBtn '
+                id='Experiance-tab'
+                href='/Profile/Experiance'
               >
                 Experiance
               </a>
             </li>
-            <li className="nav-item infoTabs" role="presentation">
+            <li className='nav-item infoTabs' role='presentation'>
               <a
-                className="nav-link tabBtn active"
-                id="Courses-tab"
-                href="/Profile/Courses"
+                className='nav-link tabBtn active'
+                id='Courses-tab'
+                href='/Profile/Courses'
               >
                 Courses
               </a>
             </li>
-            <li className="nav-item infoTabs" role="presentation">
-              <a
-                className="nav-link tabBtn"
-                id="Skills-tab"
-                href="/Profile/Skills"
-              >
+            <li className='nav-item infoTabs' role='presentation'>
+              <a className='nav-link tabBtn' id='Skills-tab' href='/Profile/Skills'>
                 Skills
               </a>
             </li>
-            <li class="nav-item infoTabs" role="presentation">
-              <a
-                className="nav-link tabBtn"
-                id="Accounts-tab"
-                href="/Profile/Accounts"
-              >
+            <li class='nav-item infoTabs' role='presentation'>
+              <a className='nav-link tabBtn' id='Accounts-tab' href='/Profile/Accounts'>
                 Accounts
               </a>
             </li>
           </ul>
-          <form class="g-3 mb-3 text-left " onSubmit={this.handleSubmit}>
-            <div className=" row ">
-              <div className="col-12 fullwidth">
-                <label for="inputfullname" class="form-label editLabel ">
-                  Course Name <span className="red">*</span>
+          <form class='g-3 mb-3 text-left ' onSubmit={this.handleSubmit}>
+            <div className=' row '>
+              <div className='col-12 fullwidth'>
+                <label for='inputfullname' class='form-label editLabel '>
+                  Course Name <span className='red'>*</span>
                 </label>
                 <input
                   value={this.state.courseName ? this.state.courseName : ""}
-                  type="text"
+                  type='text'
                   className={
                     this.state.error && this.state.error.courseNameErr
                       ? "form-control editInput  halfInput fullwidth wrong "
                       : "form-control editInput  halfInput fullwidth"
                   }
-                  id="fullname"
-                  placeholder="Graphic Design Mastery: The FULL Branding & Design Process"
-                  onChange={(e) =>
-                    this.setState({ courseName: e.target.value })
-                  }
+                  id='fullname'
+                  placeholder='Graphic Design Mastery: The FULL Branding & Design Process'
+                  onChange={(e) => this.setState({ courseName: e.target.value })}
                 />
-                <p className="red">
+                <p className='red'>
                   {this.state.error ? this.state.error.courseNameErr : ""}
                 </p>
               </div>
-              <div class="col-12 fullwidth">
-                <label for="inputfullname" class="form-label editLabel ">
-                  Course Title / Provider <span className="red">*</span>
+              <div class='col-12 fullwidth'>
+                <label for='inputfullname' class='form-label editLabel '>
+                  Course Title / Provider <span className='red'>*</span>
                 </label>
                 <input
-                  value={
-                    this.state.courseProvider ? this.state.courseProvider : ""
-                  }
-                  type="text"
+                  value={this.state.courseProvider ? this.state.courseProvider : ""}
+                  type='text'
                   className={
                     this.state.error && this.state.error.courseProviderErr
                       ? "form-control editInput  halfInput fullwidth wrong "
                       : "form-control editInput  halfInput fullwidth"
                   }
-                  id="fullname"
-                  placeholder="IT"
-                  onChange={(e) =>
-                    this.setState({ courseProvider: e.target.value })
-                  }
+                  id='fullname'
+                  placeholder='IT'
+                  onChange={(e) => this.setState({ courseProvider: e.target.value })}
                 />
-                <p className="red">
+                <p className='red'>
                   {this.state.error ? this.state.error.courseProviderErr : ""}
                 </p>
               </div>
 
-              <div className="col-12 col-md-6 fullwidth ">
-                <label for="bdaymonth" className="form-label editLabel ">
-                  From <span className="red">*</span>
+              <div className='col-12 col-md-6 fullwidth '>
+                <label for='bdaymonth' className='form-label editLabel '>
+                  From <span className='red'>*</span>
                 </label>
                 <input
                   value={this.state.fromDate ? this.state.fromDate : ""}
-                  type="date"
-                  id="bdaymonth"
+                  type='date'
+                  id='bdaymonth'
                   className={
                     this.state.error && this.state.error.fromDateErr
                       ? "form-control editInput  halfInput fullwidth wrong "
@@ -278,17 +258,17 @@ class CoursesForm extends Component {
                   }
                   onChange={(e) => this.setState({ fromDate: e.target.value })}
                 />
-                <p className="red">
+                <p className='red'>
                   {this.state.error ? this.state.error.fromDateErr : ""}
                 </p>
               </div>
-              <div className="col-12 col-md-6  fullwidth ">
-                <label for="bdaymonth" className="form-label editLabel ">
-                  To <span className="red">*</span>
+              <div className='col-12 col-md-6  fullwidth '>
+                <label for='bdaymonth' className='form-label editLabel '>
+                  To <span className='red'>*</span>
                 </label>
                 <input
-                  type="date"
-                  id="bdaymonth"
+                  type='date'
+                  id='bdaymonth'
                   className={
                     this.state.error && this.state.error.toDateErr
                       ? "form-control editInput  halfInput fullwidth wrong "
@@ -296,19 +276,19 @@ class CoursesForm extends Component {
                   }
                   onChange={(e) => this.setState({ toDate: e.target.value })}
                 />
-                <p className="red">
+                <p className='red'>
                   {this.state.error ? this.state.error.toDateErr : ""}
                 </p>
               </div>
-              <div class="col-12 col-md-6  fullwidth ">
-                <label for="inputTerm" className="form-label editLabel">
+              <div class='col-12 col-md-6  fullwidth '>
+                <label for='inputTerm' className='form-label editLabel'>
                   Credential URL
                 </label>
                 <input
                   // value={this.state.CourseUrl ? this.state.CourseUrl : ""}
-                  type="text"
-                  id="fullname"
-                  placeholder="Course URL Here!"
+                  type='text'
+                  id='fullname'
+                  placeholder='Course URL Here!'
                   className={
                     this.state.error && this.state.error.CourseUrlErr
                       ? "form-control editInput  halfInput fullwidth wrong "
@@ -316,23 +296,23 @@ class CoursesForm extends Component {
                   }
                   onChange={(e) => this.setState({ CourseUrl: e.target.value })}
                 />
-                <p className="red">
+                <p className='red'>
                   {this.state.error ? this.state.error.CourseUrlErr : ""}
                 </p>
               </div>
-              <div className="col-12 col-md-6  fullwidth ">
+              <div className='col-12 col-md-6  fullwidth '>
                 <label
-                  htmlFor="files"
-                  className="form-control editInput halfInput fullwidth uploadBtn d-flex"
+                  htmlFor='files'
+                  className='form-control editInput halfInput fullwidth uploadBtn d-flex'
                 >
                   Upload
-                  <FiUpload className="icon justify-content-end align-items-end " />
+                  <FiUpload className='uploadfileIcon justify-content-end align-items-end ' />
                   <input
                     hidden
-                    type="file"
-                    id="files"
-                    accept="application/msword, application/vnd.ms-excel, application/vnd.ms-powerpoint,
-                    text/plain, application/pdf, image/*"
+                    type='file'
+                    id='files'
+                    accept='application/msword, application/vnd.ms-excel, application/vnd.ms-powerpoint,
+                    text/plain, application/pdf, image/*'
                     // onChange={(e) =>
                     //   this.setState({ image: e.target.files[0] })
                     // }
@@ -340,36 +320,33 @@ class CoursesForm extends Component {
                 </label>
               </div>
               {this.state.error ? (
-                <span className="red py-3">Please fill all the info *</span>
+                <span className='red py-3'>Please fill all the info *</span>
               ) : (
-                <span className="red py-3"></span>
+                <span className='red py-3'></span>
               )}
               {this.props.match.params.id ? (
-                <div class="col-12 d-flex justify-content-end">
+                <div class='col-12 d-flex justify-content-end'>
                   <button
-                    class="btn deleteBtn me-2 my-2  shadow-none "
+                    class='btn deleteBtn me-2 my-2  shadow-none '
                     onClick={() => this.handleDelete()}
                   >
                     Delete
                   </button>
                   <button
                     onClick={this.handleSubmit}
-                    class="btn updateBtn shadow-none my-2 "
+                    class='btn updateBtn shadow-none my-2 '
                   >
                     Update
                   </button>
                 </div>
               ) : (
-                <div class="col-12 d-flex justify-content-end">
-                  <a href="/Profile">
-                    <button
-                      type="button"
-                      class="btn me-2 my-2 cancelBtn shadow-none"
-                    >
+                <div class='col-12 d-flex justify-content-end'>
+                  <a href='/Profile'>
+                    <button type='button' class='btn me-2 my-2 cancelBtn shadow-none'>
                       Cancel
                     </button>
                   </a>
-                  <button type="submit" class="btn doneBtn shadow-none my-2 ">
+                  <button type='submit' class='btn doneBtn shadow-none my-2 '>
                     Add
                   </button>
                 </div>

@@ -318,7 +318,7 @@ ReactStars:active {
   content: "upload" !important;
   color: #1e4274 !important;
 }
-.icon {
+.uploadfileIcon {
   width: 24px;
   height: 24px;
   stroke: currentColor;
