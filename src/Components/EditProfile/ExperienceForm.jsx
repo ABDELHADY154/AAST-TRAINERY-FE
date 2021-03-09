@@ -1,19 +1,17 @@
-import React, { Component, useState } from "react";
-// import { axios } from "../../Api/axios";
-import { Redirect } from "react-router-dom";
+import React, { Component } from "react";
+// import { Redirect } from "react-router-dom";
 import { axios } from "../../Api/axios";
-import "../../layout/EditInfo.css";
-import Footer2 from "../Common/Footer2";
-import {
-  CountryDropdown,
-  RegionDropdown,
-  CountryRegionData,
-} from "react-country-region-selector";
+// import { Link } from "react-router-dom";
+import { CountryDropdown, RegionDropdown } from "react-country-region-selector";
 import EditNav from "./EditNav";
-export default class EducationForm extends Component {
+import Footer2 from "../Common/Footer2";
+import { Link } from "react-router-dom";
+import { Redirect } from "react-router-dom";
+
+class ExperienceForm extends Component {
   constructor(props) {
     super(props);
-    this.state = { country: "", region: "" };
+    this.state = { country: "", region: "", error: "" };
   }
   state = {
     startDate: new Date(),
@@ -30,43 +28,28 @@ export default class EducationForm extends Component {
       startDate,
     });
   };
-  handleDelete = async (e) => {
-    if (this.props.match.params.id) {
-      await axios
-        .delete(`/W/student/profile/education/${this.props.match.params.id}`)
-        .then((response) => {
-          this.setState({
-            loggedIn: true,
-          });
-        })
-        .catch((error) => {
-          if (error.response) {
-            this.setState({
-              done: true,
-            });
-          }
-          window.location.reload();
-        });
-    } else
-      this.setState({
-        loggedIn: false,
-      });
-  };
+  setactive(val) {
+    this.setState({ experience: val });
+  }
   componentDidMount = async () => {
     if (this.props.match.params.id) {
       await axios
-        .get(`/W/student/profile/education/${this.props.match.params.id}`)
+        .get(`/W/student/profile/experience/${this.props.match.params.id}`)
         .then((res) => {
-          console.log(res);
+          // console.log(res.data.response.data);
           this.setState({
-            id: res.data.response.data.id,
-            SchoolName: res.data.response.data.school_name,
+            // id: res.data.response.data.id,
+            ExperienceType: res.data.response.data.experience_type,
+            JobTitle: res.data.response.data.job_title,
+            CompanyWebsite: res.data.response.data.company_website,
+            CompanyName: res.data.response.data.company_name,
             region: res.data.response.data.city,
             country: res.data.response.data.country,
             From: res.data.response.data.from,
             To: res.data.response.data.to,
-            cred_url: res.data.response.data.credential_url,
+            Cred_URL: res.data.response.data.cred_url,
           });
+          // console.log(this.state);
         })
         .catch((error) => {
           if (error.response.data.status === 401) {
@@ -78,21 +61,23 @@ export default class EducationForm extends Component {
         });
     }
   };
-
   handleSubmit = async (e) => {
     e.preventDefault();
     const data = {
-      id: this.state.id,
-      school_name: this.state.SchoolName,
+      experience_type: this.state.ExperienceType,
+      job_title: this.state.JobTitle,
+      company_website: this.state.CompanyWebsite,
+      company_name: this.state.CompanyName,
       city: this.state.region,
       country: this.state.country,
       from: this.state.From,
       to: this.state.To,
-      cred_url: this.state.SchoolUrl,
+      cred_url: this.state.Cred_URL,
+      currently_work: 1,
     };
     if (this.props.match.params.id) {
       return await axios
-        .post(`/W/student/profile/education/${this.props.match.params.id}`, data)
+        .post(`/W/student/profile/experience/${this.props.match.params.id}`, data)
         .then((response) => {
           this.setState({
             done: true,
@@ -105,25 +90,29 @@ export default class EducationForm extends Component {
             this.setState({ loggedIn: false });
             window.location.reload();
           }
-
           this.setState({
             error: {
+              ExperienceTypeErr: error.response.data.errors.experience_type,
+              JobTitlErr: error.response.data.errors.job_title,
+              CompanyWebsiteErr: error.response.data.errors.company_website,
+              CompanyNameErr: error.response.data.errors.company_name,
+              Cred_URLErr: error.response.data.errors.cred_url,
               schoolNameErr: error.response.data.errors.school_name,
               countryErr: error.response.data.errors.country,
               cityErr: error.response.data.errors.city,
-              fromErr: error.response.data.errors.from,
-              toErr: error.response.data.errors.to,
+              FromErr: error.response.data.errors.from,
+              ToErr: error.response.data.errors.to,
             },
           });
+          console.log(error);
         });
     } else {
       return await axios
-        .post("/W/student/profile/education", data)
+        .post("/W/student/profile/experience", data)
         .then((response) => {
           this.setState({
             done: true,
           });
-          // console.log(response);
         })
         .catch((error) => {
           if (error.response.data.status === 401) {
@@ -132,56 +121,140 @@ export default class EducationForm extends Component {
             this.setState({ loggedIn: false });
             window.location.reload();
           }
-
+          console.log(error);
           this.setState({
             error: {
+              ExperienceTypeErr: error.response.data.errors.experience_type,
+              JobTitlErr: error.response.data.errors.job_title,
+              CompanyWebsiteErr: error.response.data.errors.company_website,
+              CompanyNameErr: error.response.data.errors.company_name,
+              Cred_URLErr: error.response.data.errors.cred_url,
               schoolNameErr: error.response.data.errors.school_name,
               countryErr: error.response.data.errors.country,
               cityErr: error.response.data.errors.city,
-              fromErr: error.response.data.errors.from,
-              toErr: error.response.data.errors.to,
+              FromErr: error.response.data.errors.from,
+              ToErr: error.response.data.errors.to,
             },
           });
         });
     }
   };
-  setactive(val) {
-    this.setState({ Education: val });
-  }
+  handleDelete = async (e) => {
+    await axios
+      .delete(`/W/student/profile/experience/${this.props.match.params.id}`)
+      .then((response) => {
+        this.setState({
+          done: true,
+        });
+      })
+      .catch((error) => {
+        if (error.response) {
+          this.setState({
+            loggedIn: false,
+            // error: true,
+          });
+        }
+        window.location.reload();
+      });
+  };
   render() {
     const { country, region } = this.state;
     if (this.state.loggedIn === false) {
-      return <Redirect to='/Profile' />;
+      return <Redirect to='/Login' />;
     }
     if (this.state.done === true) {
       return <Redirect to='/Profile' />;
     }
-    // console.log(this.state);
     return (
       <div>
         <div className='container '>
-          <EditNav setactive={"Education"} />
-
+          <EditNav setactive={"experience"} />
           <form class='g-3 mb-3 text-left ' onSubmit={this.handleSubmit}>
             <div className=' row'>
-              <div class='col-lg-10 col-11 col-md-10 col-sm-12 col-xs-12 '>
+              <div class='col-lg-10 col-11 col-md-10 col-sm-12 col-xs-12'>
                 <label for='inputfullname' class='form-label editLabel '>
-                  School Name <span className='red'>*</span>
+                  Experience Type
+                  <span className='red'>*</span>
                 </label>
                 <input
                   type='text'
                   className={
-                    this.state.error && this.state.error.schoolNameErr
+                    this.state.error && this.state.error.ExperienceTypeErr
                       ? "form-control editInput wrong "
                       : "form-control editInput"
                   }
                   id='fullname'
-                  placeholder='Please enter your full name'
-                  onChange={(e) => this.setState({ SchoolName: e.target.value })}
-                  value={this.state.SchoolName ? this.state.SchoolName : ""}
+                  placeholder='Internship'
+                  onChange={(e) => this.setState({ ExperienceType: e.target.value })}
+                  value={this.state.ExperienceType ? this.state.ExperienceType : ""}
                 />
                 <p className='red'>
-                  {this.state.error ? this.state.error.schoolNameErr : ""}
+                  {this.state.error.ExperienceTypeErr
+                    ? this.state.error.ExperienceTypeErr
+                    : ""}
+                </p>
+              </div>
+
+              <div class='col-lg-10 col-11 col-md-10 col-sm-12 col-xs-12'>
+                <label for='inputfullname' class='form-label editLabel '>
+                  Job Title <span className='red'>*</span>
+                </label>
+                <input
+                  type='text'
+                  className={
+                    this.state.error && this.state.error.JobTitlErr
+                      ? "form-control editInput wrong "
+                      : "form-control editInput"
+                  }
+                  id='fullname'
+                  placeholder='Web Developer'
+                  onChange={(e) => this.setState({ JobTitle: e.target.value })}
+                  value={this.state.JobTitle ? this.state.JobTitle : ""}
+                />
+                <p className='red'>
+                  {this.state.error.JobTitlErr ? this.state.error.JobTitlErr : ""}
+                </p>
+              </div>
+              <div class='col-lg-10 col-11 col-md-10 col-sm-12 col-xs-12'>
+                <label for='inputfullname' class='form-label editLabel '>
+                  Company / Organization Name
+                  <span className='red'>*</span>
+                </label>
+                <input
+                  type='text'
+                  className={
+                    this.state.error && this.state.error.CompanyNameErr
+                      ? "form-control editInput wrong "
+                      : "form-control editInput"
+                  }
+                  id='fullname'
+                  placeholder='Qowwa Technologies'
+                  onChange={(e) => this.setState({ CompanyName: e.target.value })}
+                  value={this.state.CompanyName ? this.state.CompanyName : ""}
+                />
+                <p className='red'>
+                  {this.state.error ? this.state.error.CompanyNameErr : ""}
+                </p>
+              </div>
+              <div class='col-lg-10 col-11 col-md-10 col-sm-12 col-xs-12'>
+                <label for='inputfullname' class='form-label editLabel '>
+                  Company Website
+                  <span className='red'>*</span>
+                </label>
+                <input
+                  type='text'
+                  className={
+                    this.state.error && this.state.error.CompanyWebsiteErr
+                      ? "form-control editInput wrong "
+                      : "form-control editInput"
+                  }
+                  id='fullname'
+                  placeholder='Http://www.Example.com'
+                  onChange={(e) => this.setState({ CompanyWebsite: e.target.value })}
+                  value={this.state.CompanyWebsite ? this.state.CompanyWebsite : ""}
+                />
+                <p className='red'>
+                  {this.state.error ? this.state.error.CompanyWebsiteErr : ""}
                 </p>
               </div>
               <div className='col-lg-5 col-11 col-md-5 col-sm-12 col-xs-12'>
@@ -230,14 +303,14 @@ export default class EducationForm extends Component {
                   type='date'
                   id='bdaymonth'
                   className={
-                    this.state.error && this.state.error.fromErr
+                    this.state.error && this.state.error.FromErr
                       ? "form-control editInput wrong "
                       : "form-control editInput"
                   }
                   onChange={(e) => this.setState({ From: e.target.value })}
                   value={this.state.From ? this.state.From : ""}
                 />
-                <p className='red'> {this.state.error ? this.state.error.fromErr : ""}</p>
+                <p className='red'>{this.state.error ? this.state.error.FromErr : ""}</p>
               </div>
               <div class='col-lg-5 col-11 col-md-5 col-sm-12 col-xs-12'>
                 <label for='bdaymonth' className='form-label editLabel '>
@@ -247,14 +320,14 @@ export default class EducationForm extends Component {
                   type='date'
                   id='bdaymonth'
                   className={
-                    this.state.error && this.state.error.toErr
+                    this.state.error && this.state.error.ToErr
                       ? "form-control editInput wrong "
-                      : "form-control editInput "
+                      : "form-control editInput"
                   }
                   onChange={(e) => this.setState({ To: e.target.value })}
                   value={this.state.To ? this.state.To : ""}
                 />
-                <p className='red'>{this.state.error ? this.state.error.toErr : ""}</p>
+                <p className='red'>{this.state.error ? this.state.error.ToErr : ""}</p>
               </div>
               <div class='col-lg-5 col-11 col-md-5 col-sm-12 col-xs-12 '>
                 <label for='inputTerm' className='form-label editLabel'>
@@ -264,13 +337,13 @@ export default class EducationForm extends Component {
                   type='text'
                   className='form-control editInput'
                   id='fullname'
-                  onChange={(e) => this.setState({ SchoolUrl: e.target.value })}
-                  placeholder={this.state.cred_url}
+                  onChange={(e) => this.setState({ Cred_URL: e.target.value })}
+                  placeholder={this.state.Cred_URL}
                 />
               </div>
               <div class='col-lg-5 col-11 col-md-5 col-sm-12 col-xs-12 '>
                 <label for='inputGPA' className='form-label editLabel'>
-                  Grade / GPA
+                  uplaod{" "}
                 </label>
                 <input
                   type='text'
@@ -281,7 +354,6 @@ export default class EducationForm extends Component {
                 />
               </div>
 
-    
               {this.props.match.params.id ? (
                 <div class='col-12 d-flex justify-content-end'>
                   <button
@@ -298,7 +370,7 @@ export default class EducationForm extends Component {
                 </div>
               ) : (
                 <div class='col-12 d-flex justify-content-end'>
-                  <button type='submit' class='btn me-2 my-2 cancelBtn shadow-none'>
+                  <button class='btn me-2 my-2 cancelBtn shadow-none' href='/'>
                     Cancel
                   </button>
                   <button type='submit' class='btn doneBtn shadow-none my-2 '>
@@ -314,4 +386,4 @@ export default class EducationForm extends Component {
     );
   }
 }
-// export default EducationForm;
+export default ExperienceForm;

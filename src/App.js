@@ -13,10 +13,9 @@ import ErrorPage from "./Components/Auth/ErrorPage404";
 import EducationForm from "./Components/EditProfile/EducationForm";
 import AccountsForm from "./Components/EditProfile/AccountsForm";
 import CoursesForm from "./Components/EditProfile/CoursesForm";
-import ExperianceForm from "./Components/EditProfile/ExperianceForm";
+import ExperienceForm from "./Components/EditProfile/ExperienceForm";
 import GeneralForm from "./Components/EditProfile/GeneralForm";
 import SkillsForm from "./Components/EditProfile/SkillsForm";
-import GeneralInfo from "./Components/EditProfile/GeneralInfo";
 import { AuthRoute } from "./Components/Auth/AuthRoute";
 
 // import Skills from "./EditProfile/Skills";
