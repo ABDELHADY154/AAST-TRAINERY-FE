@@ -14,7 +14,7 @@ export default class StudentWorkExp extends Component {
       <>
         <div
           id="lightfont"
-          className="d-flex flex-row  fs-5 "
+          className="d-flex flex-row  fs-5 mt-1"
           style={{ textTransform: "capitalize" }}
         >
           <div className=" d-flex flex-row flex-wrap col-4 col-md-3 me-1  fs-6">
@@ -24,7 +24,7 @@ export default class StudentWorkExp extends Component {
             id=""
             className=" d-flex flex-row flex-wrap col-0 col-md-0  fs-6 "
           ></div>
-          <div id="" className=" d-flex flex-row  col-6 col-md-8 fs-6">
+          <div id="" className=" d-flex flex-row   col-6 col-md-8 fs-6">
             Years Of Experience: {this.props.years_of_exp}
           </div>
           <div

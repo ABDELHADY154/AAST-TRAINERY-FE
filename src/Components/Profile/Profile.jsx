@@ -136,8 +136,9 @@ class Profile extends Component {
               <div className="d-flex flex-row">
                 <div className="d-flex flex-column col-6 col-md-6">
                   <Link
+                    id="bluebtn1"
                     renderAs="button"
-                    className="btn shadow-none bluebtn bluebtn1 "
+                    className="btn shadow-none "
                     // to="/Register"
                   >
                     Generate CV
@@ -145,6 +146,7 @@ class Profile extends Component {
                 </div>
                 <div className="d-flex flex-column col-6 col-md-6">
                   <Link
+                    id="bluebtn"
                     renderAs="button"
                     className="btn shadow-none bluebtn "
                     to="/Profile/General"
@@ -240,9 +242,7 @@ class Profile extends Component {
                 <Link
                   renderAs="button"
                   className="ms-3 plus"
-                  // onClick={(e) => this.handleClick(e)}
                   to="Profile/Education"
-                  // onclick="openCity(event, 'Tokyo')"
                 >
                   +
                 </Link>
@@ -339,16 +339,8 @@ class Profile extends Component {
                     +
                   </Link>
                 </div>
-                <div
-                  id="hiddenhover"
-                  className="d-flex  flex-column col-md-1  pencilforskills"
-                >
-                  <Link to={`/Profile/Skills`}>
-                    <BiPencil fill="#cd8930" color="#cd8930" />
-                  </Link>
-                </div>
               </div>
-              <div className=" d-flex flex-row flex-wrap col-2 mb-2 col-md-12 me-1 fs-5">
+              <div className=" d-flex flex-row flex-wrap col-12 mb-2 col-md-12 me-1 fs-5">
                 Tools and Fields of Expertise
               </div>
 
@@ -363,17 +355,37 @@ class Profile extends Component {
                 );
               })}
               <hr />
-              <div className=" d-flex flex-row flex-wrap col-12 col-md-12 ">
-                <div className="d-flex flex-column col-6 col-md-10 fs-5 ">
+              <div className=" d-flex flex-row  col-12 col-md-12 ">
+                <div className="d-flex flex-column col-6 col-md-11 fs-5 me-2">
                   Interests
                 </div>
+                <div
+                  id="hiddenhover"
+                  className=" d-flex flex-column col-2 col-md-1 p-0 "
+                >
+                  <Link
+                    id="interestpen"
+                    renderAs="button"
+                    to={`/Profile/Skills/${id}`}
+                  >
+                    <BiPencil fill="#cd8930" color="#cd8930" />
+                  </Link>
+                </div>
               </div>
-
-              {this.state.interests.map((i) => {
-                return (
-                  <Studentinterest key={i.id} id={i.id} interest={i.interest} />
-                );
-              })}
+              <div
+                className=" d-flex flex-row flex-wrap col-12 col-md-12 "
+                id="interesttags"
+              >
+                {this.state.interests.map((i) => {
+                  return (
+                    <Studentinterest
+                      key={i.id}
+                      id={i.id}
+                      interest={i.interest}
+                    />
+                  );
+                })}
+              </div>
 
               <hr />
 
@@ -382,19 +394,17 @@ class Profile extends Component {
                 className="flex-row  fs-5 "
                 style={{ textTransform: "capitalize" }}
               >
-                <div className=" flex-row col-6 col-md-9 fs-5 ">
-                  Languages
-                  {this.state.languages.map((i) => {
-                    return (
-                      <StudentLanguage
-                        key={i.id}
-                        id={i.id}
-                        language={i.language}
-                        level={i.level}
-                      />
-                    );
-                  })}
-                </div>
+                <div className=" flex-row col-6 col-md-9 fs-5 ">Languages</div>
+                {this.state.languages.map((i) => {
+                  return (
+                    <StudentLanguage
+                      key={i.id}
+                      id={i.id}
+                      language={i.language}
+                      level={i.level}
+                    />
+                  );
+                })}
               </div>
             </div>
           </div>
