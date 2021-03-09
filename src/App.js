@@ -88,16 +88,19 @@ class App extends React.Component {
                   component={EducationForm}
                 />
 
-                <AuthRoute exact path='/Profile/Experiance' component={ExperienceForm} />
+                <AuthRoute exact path='/Profile/Experiance' component={ExperianceForm} />
                 <AuthRoute
                   exact
                   path='/Profile/Experiance/:id'
-                  component={ExperienceForm}
+                  component={ExperianceForm}
                 />
-
                 <AuthRoute exact path='/Profile/Courses' component={CoursesForm} />
                 <AuthRoute exact path='/Profile/Skills' component={SkillsForm} />
                 <AuthRoute exact path='/Profile/Skills/:id' component={SkillsForm} />
+                <AuthRoute exact path='/Profile/Accounts' component={AccountsForm} />
+
+                <AuthRoute exact path='/Profile/Courses' component={CoursesForm} />
+                <AuthRoute exact path='/Profile/Skills' component={SkillsForm} />
                 <AuthRoute exact path='/Profile/Accounts' component={AccountsForm} />
 
                 <Route exact path='*' component={ErrorPage} />
