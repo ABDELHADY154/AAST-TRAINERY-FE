@@ -409,32 +409,7 @@ class Profile extends Component {
             </div>
           </div>
         </div>
-        {/*<div className='container'>
-          <div id='education' className='card mt-5'>
-            <div className='card-body'>
-              <div className='d-flex flex-row titlecard profiletitle fs-4 mb-2'>
-                Accounts
-                <Link
-                  renderAs='button'
-                  className='  ms-3 plus'
-                  // to="/Register"
-                >
-                  +
-                </Link>
-              </div>
-              {this.state.courses.map((item) => {
-                return (
-                  <studentAccount
-                    key={item.id}
-                    courseProviderName={item.school_name}
-                    courseName={item.courseName}
-                    Coursecred={item.courseCredential_url}
-                  />
-                );
-              })}
-            </div>
-          </div>
-        </div>*/}
+
         <div className="container">
           <div id="education" className="card mt-5">
             <div className="card-body">
@@ -499,4 +474,32 @@ export default Profile;
                     />
                   );
                 })} */
+}
+{
+  /*<div className='container'>
+          <div id='education' className='card mt-5'>
+            <div className='card-body'>
+              <div className='d-flex flex-row titlecard profiletitle fs-4 mb-2'>
+                Accounts
+                <Link
+                  renderAs='button'
+                  className='  ms-3 plus'
+                  // to="/Register"
+                >
+                  +
+                </Link>
+              </div>
+              {this.state.courses.map((item) => {
+                return (
+                  <studentAccount
+                    key={item.id}
+                    courseProviderName={item.school_name}
+                    courseName={item.courseName}
+                    Coursecred={item.courseCredential_url}
+                  />
+                );
+              })}
+            </div>
+          </div>
+        </div>*/
 }
