@@ -17,26 +17,27 @@ class Skills extends Component {
       skillId: 0,
       skill: "",
       yearsExp: 0,
-      Language: "",
+      language: "",
       LanguageId: 0,
       LanguageLevel: 0,
       tags: [],
       interestId: 0,
       interests: [],
+      error: {},
     };
   }
   async componentDidMount() {
     if (this.props.match.params.id) {
       await axios
         .get(`/W/student/profile/skill/${this.props.match.params.id}`)
-        .then((res) => {
+        .then(res => {
           this.setState({
             skill: res.data.response.data.skill_name,
             skillId: res.data.response.data.id,
             yearsExp: res.data.response.data.years_of_exp,
           });
         })
-        .catch((error) => {
+        .catch(error => {
           if (error.response.data.status === 401) {
             sessionStorage.clear("token");
             sessionStorage.clear("status");
@@ -48,13 +49,13 @@ class Skills extends Component {
     if (this.props.match.params.id) {
       await axios
         .get(`/W/student/profile/language${this.props.match.params.id}`)
-        .then((res) => {
+        .then(res => {
           this.setState({
             language: this.state.language,
             level: this.state.LanguageLevel,
           });
         })
-        .catch((error) => {
+        .catch(error => {
           if (error.response.data.status === 401) {
             sessionStorage.clear("token");
             sessionStorage.clear("status");
@@ -65,7 +66,7 @@ class Skills extends Component {
     }
     console.log(this.props.match.params.id);
   }
-  handleSubmitSkills = async (e) => {
+  handleSubmitSkills = async e => {
     e.preventDefault();
     const data = {
       skill_name: this.state.skill,
@@ -76,13 +77,13 @@ class Skills extends Component {
     if (this.props.match.params.id) {
       return await axios
         .put(`/W/student/profile/skill/${this.props.match.params.id}`, data)
-        .then((response) => {
+        .then(response => {
           this.setState({
             loggedIn: true,
           });
           // console.log(this.response.data);
         })
-        .catch((error) => {
+        .catch(error => {
           if (error.response.data.status === 401) {
             sessionStorage.clear("token");
             sessionStorage.clear("status");
@@ -100,12 +101,12 @@ class Skills extends Component {
     } else {
       return await axios
         .post("/W/student/profile/skill", data)
-        .then((response) => {
+        .then(response => {
           this.setState({
             loggedIn: true,
           });
         })
-        .catch((error) => {
+        .catch(error => {
           if (error.response.data.status === 401) {
             sessionStorage.clear("token");
             sessionStorage.clear("status");
@@ -123,15 +124,15 @@ class Skills extends Component {
         });
     }
   };
-  handleDelete = async (e) => {
+  handleDelete = async e => {
     await axios
       .delete(`/W/student/profile/skill/${this.props.match.params.id}`)
-      .then((response) => {
+      .then(response => {
         this.setState({
           loggedIn: true,
         });
       })
-      .catch((error) => {
+      .catch(error => {
         if (error.response) {
           this.setState({
             loggedIn: false,
@@ -156,22 +157,22 @@ class Skills extends Component {
   //       console.log(err.response.data.errors.language);
   //     });
   // };
-  handleSubmitLanguage = async (e) => {
+  handleSubmitLanguage = async e => {
     e.preventDefault();
     const data = {
       language: this.state.language,
       level: this.state.LanguageLevel,
     };
     if (this.props.match.params.id) {
-      return await axios
-        .put(`/W/student/profile/language/${this.props.match.params.id}`, data)
-        .then((response) => {
+      await axios
+        .post(`/W/student/profile/language/${this.props.match.params.id}`, data)
+        .then(response => {
           this.setState({
             loggedIn: true,
           });
           // console.log(this.response.data);
         })
-        .catch((error) => {
+        .catch(error => {
           if (error.response.data.status === 401) {
             sessionStorage.clear("token");
             sessionStorage.clear("status");
@@ -186,14 +187,14 @@ class Skills extends Component {
           });
         });
     } else {
-      return await axios
-        .put("/W/student/profile/language", data)
-        .then((response) => {
+      await axios
+        .post("/W/student/profile/language", data)
+        .then(response => {
           this.setState({
             loggedIn: true,
           });
         })
-        .catch((error) => {
+        .catch(error => {
           if (error.response.data.status === 401) {
             sessionStorage.clear("token");
             sessionStorage.clear("status");
@@ -210,15 +211,15 @@ class Skills extends Component {
         });
     }
   };
-  handleDeleteLanguage = async (e) => {
+  handleDeleteLanguage = async e => {
     await axios
       .delete(`/W/student/profile/language/${this.props.match.params.id}`)
-      .then((response) => {
+      .then(response => {
         this.setState({
           loggedIn: true,
         });
       })
-      .catch((error) => {
+      .catch(error => {
         if (error.response) {
           this.setState({
             loggedIn: false,
@@ -228,20 +229,20 @@ class Skills extends Component {
         window.location.reload();
       });
   };
-  handleSubmiInterest = async (e) => {
+  handleSubmiInterest = async e => {
     e.preventDefault();
     const data = {
       interests: [],
     };
-    this.state.interests.forEach((element) => {
+    this.state.interests.forEach(element => {
       data.interests.push({ interest: element });
     });
     await axios
       .post("/W/student/profile/interest", data)
-      .then((res) => {
+      .then(res => {
         console.log(res.data.response.data);
       })
-      .catch((err) => {
+      .catch(err => {
         console.log(err.response.data.errors.interests);
       });
   };
@@ -345,7 +346,7 @@ class Skills extends Component {
                   }
                   id="fullname"
                   placeholder="Please enter your Skills "
-                  onChange={(e) => this.setState({ skill: e.target.value })}
+                  onChange={e => this.setState({ skill: e.target.value })}
                   value={this.state.skill}
                 />
                 {this.state.error && this.state.error.skillErr ? (
@@ -364,7 +365,7 @@ class Skills extends Component {
                       : "form-control editInput "
                   }
                   placeholder="Please enter your years of Experience"
-                  onChange={(e) => this.setState({ yearsExp: e.target.value })}
+                  onChange={e => this.setState({ yearsExp: e.target.value })}
                   value={this.state.yearsExp}
                 />
                 {this.state.error && this.state.error.yearsExpErr ? (
@@ -408,7 +409,7 @@ class Skills extends Component {
                 </label>
                 <ReactTag
                   className="editLabel"
-                  tags={(e) => this.setState({ interests: e })}
+                  tags={e => this.setState({ interests: e })}
                 />
               </div>
 
@@ -455,7 +456,7 @@ class Skills extends Component {
                   }
                   id="language"
                   placeholder="Please enter your Skills "
-                  onChange={(e) => this.setState({ language: e.target.value })}
+                  onChange={e => this.setState({ language: e.target.value })}
                   value={this.state.language}
                 />{" "}
                 {this.state.error && this.state.error.LanguageLevelErr ? (
@@ -492,7 +493,7 @@ class Skills extends Component {
                       ? "wrong"
                       : " "
                   }
-                  onChange={(newValue) => {
+                  onChange={newValue => {
                     this.setState({ LanguageLevel: `${newValue}` });
                     console.log(`${newValue}`);
                   }}
@@ -548,7 +549,7 @@ class ReactTag extends Component {
   state = {
     tags: [],
   };
-  setTags = (e) => {
+  setTags = e => {
     this.setState({ tags: e });
     this.props.tags(e);
   };
@@ -559,7 +560,7 @@ class ReactTag extends Component {
         tags={this.state.tags}
         editable={true}
         removeOnBackspace={true}
-        onChange={(newTags) => this.setTags(newTags)}
+        onChange={newTags => this.setTags(newTags)}
       />
     );
   }

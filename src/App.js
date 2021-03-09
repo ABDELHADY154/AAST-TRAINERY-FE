@@ -120,8 +120,8 @@ class App extends React.Component {
                   path="/Profile/Courses/:id"
                   component={CoursesForm}
                 />
-      
-          <AuthRoute
+
+                <AuthRoute
                   exact
                   path="/Profile/Skills"
                   component={SkillsForm}
@@ -136,7 +136,7 @@ class App extends React.Component {
                   path="/Profile/Accounts"
                   component={AccountsForm}
                 />
-      <AuthRoute
+                <AuthRoute
                   exact
                   path="/Profile/Accounts/:id"
                   component={AccountsForm}
