@@ -130,6 +130,11 @@ class App extends React.Component {
                   path="/Profile/Accounts"
                   component={AccountsForm}
                 />
+                <AuthRoute
+                  exact
+                  path="/Profile/Accounts/:id"
+                  component={AccountsForm}
+                />
 
                 <AuthRoute
                   exact
