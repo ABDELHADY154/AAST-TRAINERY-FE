@@ -50,9 +50,8 @@ class Skills extends Component {
         .get(`/W/student/profile/language${this.props.match.params.id}`)
         .then((res) => {
           this.setState({
-            LanguageId: res.data.response.data.id,
-            language: res.data.response.data.language,
-            LanguageLevel: res.data.response.data.level,
+            language: this.state.language,
+            level: this.state.LanguageLevel,
           });
         })
         .catch((error) => {
@@ -100,7 +99,7 @@ class Skills extends Component {
         });
     } else {
       return await axios
-        .put("/W/student/profile/skill", data)
+        .post("/W/student/profile/skill", data)
         .then((response) => {
           this.setState({
             loggedIn: true,
@@ -142,10 +141,24 @@ class Skills extends Component {
         window.location.reload();
       });
   };
+  // handleSubmitLanguage = async (e) => {
+  //   e.preventDefault();
+  //   const data = {
+  //     language: this.state.language,
+  //     level: this.state.LanguageLevel,
+  //   };
+  //   await axios
+  //     .post("/W/student/profile/language", data)
+  //     .then((res) => {
+  //       console.log(res.data.response.data);
+  //     })
+  //     .catch((err) => {
+  //       console.log(err.response.data.errors.language);
+  //     });
+  // };
   handleSubmitLanguage = async (e) => {
     e.preventDefault();
     const data = {
-      id: this.state.LanguageId,
       language: this.state.language,
       level: this.state.LanguageLevel,
     };
@@ -168,7 +181,6 @@ class Skills extends Component {
           this.setState({
             error: {
               languageErr: error.response.data.errors.language,
-              languageIdErr: error.response.data.errors.id,
               LanguageLevelErr: error.response.data.errors.level,
             },
           });
@@ -191,11 +203,10 @@ class Skills extends Component {
           this.setState({
             error: {
               languageErr: error.response.data.errors.language,
-              languageIdErr: error.response.data.errors.id,
               LanguageLevelErr: error.response.data.errors.level,
             },
           });
-          console.log(this.state.error);
+          // console.log(this.state.error);
         });
     }
   };
@@ -234,24 +245,24 @@ class Skills extends Component {
         console.log(err.response.data.errors.interests);
       });
   };
-  handleDeleteInterest = async (e) => {
-    await axios
-      .delete(`/W/student/profile/interest/${this.props.match.params.id}`)
-      .then((response) => {
-        this.setState({
-          loggedIn: true,
-        });
-      })
-      .catch((error) => {
-        if (error.response) {
-          this.setState({
-            loggedIn: false,
-            error: true,
-          });
-        }
-        window.location.reload();
-      });
-  };
+  // handleDeleteInterest = async (e) => {
+  //   await axios
+  //     .delete(`/W/student/profile/interest/${this.props.match.params.id}`)
+  //     .then((response) => {
+  //       this.setState({
+  //         loggedIn: true,
+  //       });
+  //     })
+  //     .catch((error) => {
+  //       if (error.response) {
+  //         this.setState({
+  //           loggedIn: false,
+  //           error: true,
+  //         });
+  //       }
+  //       window.location.reload();
+  //     });
+  // };
   render() {
     if (this.state.loggedIn === true) {
       return <Redirect to="/Profile" />;
@@ -446,7 +457,7 @@ class Skills extends Component {
                   placeholder="Please enter your Skills "
                   onChange={(e) => this.setState({ language: e.target.value })}
                   value={this.state.language}
-                />
+                />{" "}
                 {this.state.error && this.state.error.LanguageLevelErr ? (
                   <p className="editerror">
                     {this.state.error.LanguageLevelErr}
@@ -466,9 +477,16 @@ class Skills extends Component {
                 <label for="inputRegNum" className="form-label editLabel mt-3">
                   Level
                 </label>
+                {/* <ReactStars
+                  count={5}
+                  value={4}
+                  edit={false}
+                  size={28}
+                  activeColor="#F2A23A"
+                /> */}
                 <ReactStars
                   count={5}
-                  value={this.state.LanguageLevel}
+                  value={1}
                   className={
                     this.state.error && this.state.error.LanguageLevelErr
                       ? "wrong"

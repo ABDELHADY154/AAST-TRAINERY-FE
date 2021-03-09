@@ -343,7 +343,7 @@ class Profile extends Component {
                   id="hiddenhover"
                   className="d-flex  flex-column col-md-1  pencilforskills"
                 >
-                  <Link to={`/Profile/Skills`}>
+                  <Link to={"/Profile/Skills"}>
                     <BiPencil fill="#cd8930" color="#cd8930" />
                   </Link>
                 </div>
