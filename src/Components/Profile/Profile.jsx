@@ -54,7 +54,7 @@ class Profile extends Component {
   async componentDidMount() {
     await axios
       .get("/W/student/get-profile")
-      .then((res) => {
+      .then(res => {
         this.setState({
           id: res.data.response.data.name.id,
           name: res.data.response.data.name,
@@ -86,7 +86,7 @@ class Profile extends Component {
           // studentAccount: res.data.response.data.studentAccount,
         });
       })
-      .catch((err) => {
+      .catch(err => {
         console.log(err);
       });
   }
@@ -247,7 +247,7 @@ class Profile extends Component {
                   +
                 </Link>
               </div>
-              {this.state.educations.map((item) => {
+              {this.state.educations.map(item => {
                 return (
                   <StudentEducation
                     id={item.id}
@@ -278,7 +278,7 @@ class Profile extends Component {
                   +
                 </Link>
               </div>
-              {this.state.work_experience.map((item) => {
+              {this.state.work_experience.map(item => {
                 return (
                   <StudentWorkExp
                     key={item.id}
@@ -310,7 +310,7 @@ class Profile extends Component {
                   +
                 </Link>
               </div>
-              {this.state.courses.map((item) => {
+              {this.state.courses.map(item => {
                 return (
                   <StudentCourses
                     key={item.id}
@@ -352,7 +352,7 @@ class Profile extends Component {
                 Tools and Fields of Expertise
               </div>
 
-              {this.state.skills.map((item) => {
+              {this.state.skills.map(item => {
                 return (
                   <StudentSkill
                     key={item.id}
@@ -369,7 +369,7 @@ class Profile extends Component {
                 </div>
               </div>
 
-              {this.state.interests.map((i) => {
+              {this.state.interests.map(i => {
                 return (
                   <Studentinterest key={i.id} id={i.id} interest={i.interest} />
                 );
@@ -384,7 +384,7 @@ class Profile extends Component {
               >
                 <div className=" flex-row col-6 col-md-9 fs-5 ">
                   Languages
-                  {this.state.languages.map((i) => {
+                  {this.state.languages.map(i => {
                     return (
                       <StudentLanguage
                         key={i.id}
