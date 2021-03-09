@@ -237,7 +237,7 @@ class Profile extends Component {
         <div className="container">
           <div id="education" className="card mt-5">
             <div className="card-body">
-              <div className="d-flex flex-row titlecard fs-4 mb-2">
+              <div className="d-flex flex-row titlecard profiletitle fs-4 mb-2">
                 Education
                 <Link
                   renderAs="button"
@@ -267,7 +267,7 @@ class Profile extends Component {
         <div className="container">
           <div id="education" className="card mt-5">
             <div className="card-body">
-              <div className="d-flex flex-row titlecard fs-4 mb-2">
+              <div className="d-flex flex-row titlecard profiletitle fs-4 mb-2">
                 Work Experience
                 <Link
                   renderAs="button"
@@ -300,7 +300,7 @@ class Profile extends Component {
         <div className="container">
           <div id="education" className="card mt-5">
             <div className="card-body">
-              <div className="d-flex flex-row titlecard fs-4 mb-2">
+              <div className="d-flex flex-row titlecard profiletitle fs-4 mb-2">
                 Courses
                 <Link
                   renderAs="button"
@@ -328,8 +328,8 @@ class Profile extends Component {
         <div className="container">
           <div id="education" className="card mt-5">
             <div className="card-body">
-              <div className="d-flex flex-row titlecard fs-4 mb-2">
-                <div className="d-flex  flex-row col-md-10 col-10 me-3 ">
+              <div className="d-flex flex-row titlecard profiletitle fs-4 mb-2">
+                <div className="d-flex titlecard flex-row profiletitle col-md-10 col-10 me-3 ">
                   Skills
                   <Link
                     renderAs="button"
@@ -339,7 +339,6 @@ class Profile extends Component {
                     +
                   </Link>
                 </div>
-
               </div>
               <div className=" d-flex flex-row flex-wrap col-12 mb-2 col-md-12 me-1 fs-5">
                 Tools and Fields of Expertise
@@ -413,7 +412,7 @@ class Profile extends Component {
         {/*<div className='container'>
           <div id='education' className='card mt-5'>
             <div className='card-body'>
-              <div className='d-flex flex-row titlecard fs-4 mb-2'>
+              <div className='d-flex flex-row titlecard profiletitle fs-4 mb-2'>
                 Accounts
                 <Link
                   renderAs='button'
@@ -439,7 +438,9 @@ class Profile extends Component {
         <div className="container">
           <div id="education" className="card mt-5">
             <div className="card-body">
-              <div className="d-flex flex-row titlecard fs-4 mb-2">Reviews</div>
+              <div className="d-flex flex-row titlecard profiletitle fs-4 mb-2">
+                Reviews
+              </div>
               <div
                 id="carouselExampleControls"
                 className="carousel slide"

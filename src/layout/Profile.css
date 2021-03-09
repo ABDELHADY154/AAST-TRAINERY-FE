@@ -20,6 +20,13 @@
   /* color: #1e4274; */
   font-family: sf reg;
 }
+#gpa {
+  color: #cd8930 !important;
+  font-family: sf bold !important;
+}
+.profiletitle {
+  font-family: sf bold;
+}
 #containerrrr {
   margin-top: 5em !important;
 }
@@ -27,6 +34,7 @@
   border-radius: 100px;
   width: 7em;
   height: 7em;
+  object-fit: cover !important;
 }
 #bluebtn {
   color: #1e4274 !important;
@@ -67,16 +75,16 @@
   }
   .titlecard {
     color: #cd8930 !important;
-    transition: 1000ms !important;
+    transition: 300ms !important;
   }
   #hiddenhover {
     color: #cd8930 !important;
     opacity: 100% !important;
-    transition: 1000ms !important;
+    transition: 300ms !important;
   }
   #education {
     border-top: solid 3px #1e4274 !important;
-    transition: 1000ms !important;
+    transition: 300ms !important;
   }
 }
 @media screen and (max-width: 991px) {
@@ -85,22 +93,24 @@
   }
   #gpa {
     margin-left: 0 !important;
+    color: #cd8930 !important;
+    font-family: sf bold !important;
   }
   #bluebtn1 {
     margin-right: 0.3em !important;
   }
   .titlecard {
     color: #cd8930 !important;
-    transition: 1000ms !important;
+    transition: 300ms !important;
   }
   #hiddenhover {
     color: #cd8930 !important;
     opacity: 100% !important;
-    transition: 1000ms !important;
+    transition: 300ms !important;
   }
   #education {
     border-top: solid 3px #1e4274 !important;
-    transition: 1000ms !important;
+    transition: 300ms !important;
   }
 }
 
@@ -140,16 +150,16 @@
   }
   .titlecard {
     color: #cd8930 !important;
-    transition: 1000ms !important;
+    transition: 300ms !important;
   }
   #hiddenhover {
     color: #cd8930 !important;
     opacity: 100% !important;
-    transition: 1000ms !important;
+    transition: 300ms !important;
   }
   #education {
     border-top: solid 3px #1e4274 !important;
-    transition: 1000ms !important;
+    transition: 300ms !important;
   }
 }
 @media screen and (max-width: 347px) {
@@ -166,16 +176,16 @@
   }
   .titlecard {
     color: #cd8930 !important;
-    transition: 1000ms !important;
+    transition: 300ms !important;
   }
   #hiddenhover {
     color: #cd8930 !important;
     opacity: 100% !important;
-    transition: 1000ms !important;
+    transition: 300ms !important;
   }
   #education {
     border-top: solid 3px #1e4274 !important;
-    transition: 1000ms !important;
+    transition: 300ms !important;
   }
 }
 #blueribbon {
@@ -209,17 +219,18 @@
   text-decoration: none;
   color: #1e4274;
 }
-#lightfont:hover {
-  background-color: #cd8930 !important;
-  color: #fff !important;
+.plus:hover {
+  align-content: center;
+  justify-content: center;
+  background-color: rgb(230, 227, 227);
+  padding-right: 0.5em;
+  padding-bottom: 0.05em;
+  padding-left: 0.5em;
+  border-radius: 3px;
+  text-decoration: none;
+  color: #1e4274;
 }
-#lightfont:hover #hoverpen {
-  fill: #fff !important;
-  color: #fff !important;
-}
-#lightfont {
-  font-family: SF light !important;
-}
+
 #goldcredentials {
   color: #cd8930;
   text-decoration: none !important;
@@ -229,24 +240,24 @@
   opacity: 0%;
   width: 100%;
   height: 0;
-  transition: 1000ms;
+  transition: 300ms;
 }
 #education {
   border-top: solid 0.1px #1e4274;
-  transition: 1000ms;
+  transition: 300ms;
 }
 #education:hover .titlecard {
   color: #cd8930;
-  transition: 1000ms;
+  transition: 300ms;
 }
 #education:hover #hiddenhover {
   color: #cd8930;
   opacity: 100%;
-  transition: 1000ms;
+  transition: 300ms;
 }
 #education:hover {
   border-top: solid 4px #1e4274;
-  transition: 1000ms;
+  transition: 300ms;
 }
 #bluebtn:hover {
   color: #fff !important;
@@ -274,7 +285,7 @@
 }
 .titlecard {
   color: #1e4274;
-  transition: 1000ms;
+  transition: 300ms;
 }
 * {
   box-sizing: border-box;
@@ -310,4 +321,14 @@ body {
   width: 1% !important;
   margin-left: 0.9% !important;
   font-size: 1.1em;
+}
+#lightfont:hover .skillname {
+  color: #cd8930 !important;
+}
+#lightfont:hover #skillnamepen {
+  color: #1e4274 !important;
+  fill: #1e4274 !important;
+}
+#lightfont {
+  font-family: SF light !important;
 }

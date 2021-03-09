@@ -15,7 +15,7 @@ export default class StudentEdu extends Component {
           className="d-flex flex-row  fs-5 "
           style={{ textTransform: "capitalize" }}
         >
-          <div className=" d-flex flex-row col-10 col-md-11 me-1">
+          <div className=" d-flex  skillname flex-row col-10 col-md-11 me-1">
             {this.props.course_provider}
           </div>
           <div
@@ -23,7 +23,7 @@ export default class StudentEdu extends Component {
             className=" d-flex flex-row col-2 col-md-1 p-0 ms-3"
           >
             <Link renderAs="button" to={`Profile/Courses/${id}`}>
-              <BiPencil fill="#cd8930" color="#cd8930" />
+              <BiPencil id="skillnamepen" fill="#cd8930" color="#cd8930" />
             </Link>
           </div>
         </div>
