@@ -12,35 +12,39 @@ export default class StudentEdu extends Component {
     return (
       <>
         <div
-          id='lightfont'
-          className='flex-row  fs-5 '
+          id="lightfont"
+          className="flex-row d-flex fs-5 col-12 col-md-12 "
           style={{ textTransform: "capitalize" }}
         >
-          <div className=' d-flex flex-row col-10 col-md-11 me-1'>
+          <div className=" d-flex flex-row col-10 col-md-11 me-4">
             {this.props.schoolName}
           </div>
-          <div id='hiddenhover' className='d-flex justify-content-end align-items-end   '>
+          <div
+            id="hiddenhover"
+            className="d-flex flex-column col-md-2 col-2   "
+          >
             <Link to={`/Profile/Education/${id}`}>
-              <BiPencil fill='#cd8930' color='#cd8930' />
+              <BiPencil fill="#cd8930" color="#cd8930" />
             </Link>
           </div>
         </div>
-        <div className='d-flex flex-row fs-6 '>
-          <div className=' d-flex flex-row col-12 col-md-12'>
+        <div className="d-flex flex-row fs-6 ">
+          <div className=" d-flex flex-row col-12 col-md-12">
             {this.props.city}, {this.props.country}.
           </div>
         </div>
-        <div className='d-flex flex-row fs-6 '>
-          <div className=' d-flex flex-row col-12 col-md-12'>
-            {this.props.fromDate} to {this.props.toDate} ·{/* {diffDays} Years */}
+        <div className="d-flex flex-row fs-6 ">
+          <div className=" d-flex flex-row col-12 col-md-12">
+            {this.props.fromDate} to {this.props.toDate} ·
+            {/* {diffDays} Years */}
           </div>
         </div>
-        <div className='d-flex flex-row fs-6 mt-2 '>
+        <div className="d-flex flex-row fs-6 mt-2 ">
           <a
-            id='goldcredentials'
-            renderAs='button'
+            id="goldcredentials"
+            renderAs="button"
             href={this.props.cred}
-            className='  mb-1   d-flex flex-row col-12 col-md-3'
+            className="  mb-1   d-flex flex-row col-12 col-md-3"
             // to="/Register"
           >
             See credentials

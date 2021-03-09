@@ -125,6 +125,11 @@ class App extends React.Component {
                   path="/Profile/Skills/:id"
                   component={SkillsForm}
                 />
+                {/* <AuthRoute
+                  exact
+                  path="/Profile/Skills/Language/:id"
+                  component={SkillsForm}
+                /> */}
                 <AuthRoute
                   exact
                   path="/Profile/Accounts"
