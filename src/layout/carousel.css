@@ -91,17 +91,17 @@
   background-repeat: no-repeat;
 }
 /* logo carousel */
-.carousel-cell {
+.carousel-cell-logo {
   width: 90px !important;
   height: 50px !important;
   margin-right: 10px;
   border-radius: 5px;
 }
 
-.carousel-cell.size-180 {
+.carousel-cell-logo.size-180 {
   width: 180px;
 }
-.carousel-cell.size-large {
+.carousel-cell-logo.size-large {
   width: 75%;
 }
 
