@@ -366,7 +366,7 @@ class Profile extends Component {
                   <Link
                     id="interestpen"
                     renderAs="button"
-                    to={`/Profile/Skills/${id}`}
+                    to={`/Profile/Interest/${id}`}
                   >
                     <BiPencil fill="#cd8930" color="#cd8930" />
                   </Link>
