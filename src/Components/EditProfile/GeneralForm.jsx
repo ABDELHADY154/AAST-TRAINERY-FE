@@ -99,7 +99,7 @@ class GeneralForm extends Component {
       image: URL.createObjectURL(event.target.files[0]),
       imageURL: filename,
     });
-    console.log(this.state.image);
+    // console.log(this.state.image);
   }
 
   handleSubmit = async (e) => {
@@ -171,8 +171,10 @@ class GeneralForm extends Component {
   render() {
     const city = this.state.city;
     if (this.state.loggedIn === false) {
-      return <Redirect to="/Profile" />;
+      return <Redirect to="/Profile" push />;
     }
+    console.log(this.state.imageURL);
+    console.log(this.state.image);
     return (
       <div>
         <div className="container ">

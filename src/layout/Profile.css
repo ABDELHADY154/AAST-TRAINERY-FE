@@ -20,6 +20,9 @@
   /* color: #1e4274; */
   font-family: sf reg;
 }
+.profieImgg {
+  object-fit: cover !important;
+}
 #gpa {
   color: #cd8930 !important;
   font-family: sf bold !important;
