@@ -173,7 +173,7 @@ class GeneralForm extends Component {
     if (this.state.loggedIn === false) {
       return <Redirect to="/Profile" push />;
     }
-    console.log(this.state.imageURL);
+    // console.log(this.state.imageURL);
     console.log(this.state.image);
     return (
       <div>

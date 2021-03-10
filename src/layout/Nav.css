@@ -28,6 +28,11 @@
 body {
   overflow-x: hidden; /* Hide horizontal scrollbar */
 }
+.nameText {
+  width: 70%;
+  flex-direction: column;
+  flex-wrap: wrap;
+}
 .avatar {
   border-radius: 100px !important;
 }

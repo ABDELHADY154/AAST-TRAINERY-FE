@@ -12,7 +12,7 @@ class Nav extends React.Component {
           <div className="container">
             <Link className="navbar-brand mx-2" to="/">
               <img
-                className="navbar-brand profileImage"
+                className="navbar-brand "
                 src={logo}
                 width="170"
                 alt=""
