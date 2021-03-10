@@ -15,6 +15,7 @@ import "react-step-progress-bar/styles.css";
 import { ProgressBar, Step } from "react-step-progress-bar";
 import { BsBookmark } from "react-icons/bs";
 import { IoClose } from "react-icons/io5";
+import { Link } from "react-router-dom";
 
 class Home extends Component {
   constructor() {
@@ -32,7 +33,7 @@ class Home extends Component {
     await resolve(
       axios
         .get("/W/student/get-profile")
-        .then(res => {
+        .then((res) => {
           if (res.status === 200) {
             // sessionStorage.setItem("avatar", res.data.response.data.image);
             this.setState({
@@ -42,7 +43,7 @@ class Home extends Component {
             });
           }
         })
-        .catch(error => {
+        .catch((error) => {
           this.setState({
             error: {
               usernameErr: error.response.status,
@@ -51,7 +52,7 @@ class Home extends Component {
           if (this.state.error.usernameErr === 401) {
             window.location.reload();
           }
-        }),
+        })
     );
   }
 
@@ -355,7 +356,9 @@ class Home extends Component {
                   </div>
                 </div>
                 <div className="col-12 col-md-6 d-flex mt-2 ">
-                  Complete Your General Information
+                  <Link to={`/Profile/General`} className="generalinfolink">
+                    Complete Your General Information
+                  </Link>
                 </div>
               </div>
             </div>
