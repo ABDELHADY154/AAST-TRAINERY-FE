@@ -7,7 +7,7 @@ export default class studentReviews extends Component {
   render() {
     return (
       <>
-        <div
+        {/* <div
           id="carouselExampleControls"
           className="carousel slide"
           data-bs-ride="carousel"
@@ -71,7 +71,7 @@ export default class studentReviews extends Component {
               <span class="visually-hidden">Next</span>
             </button>
           </div>
-        </div>
+        </div> */}
       </>
     );
   }
