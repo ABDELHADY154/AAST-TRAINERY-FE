@@ -320,7 +320,7 @@ body {
   font-family: sans-serif;
 }
 
-/* .carousel {
+.carousel {
   background: #eee;
 }
 
@@ -342,7 +342,7 @@ body {
   font-size: 80px;
   color: white;
 }
-*/ #interestpen {
+#interestpen {
   width: 1% !important;
   margin-left: 1.2% !important;
   font-size: 1.2em;
@@ -356,4 +356,7 @@ body {
 }
 #lightfont {
   font-family: SF light !important;
+}
+.skillnamepencil {
+  font-size: ;
 }
