@@ -30,7 +30,7 @@ class CoursesForm extends Component {
             courseProvider: res.data.response.data.course_provider,
             fromDate: res.data.response.data.from,
             toDate: res.data.response.data.to,
-            CourseUrl: res.data.response.data.cred_url,
+            // CourseUrl: res.data.response.data.cred_url,
           });
           console.log(res.data.response.data);
         })
@@ -103,7 +103,6 @@ class CoursesForm extends Component {
               courseProviderErr: error.response.data.errors.course_provider,
               fromDateErr: error.response.data.errors.from,
               toDateErr: error.response.data.errors.to,
-              CourseUrlErr: error.response.data.errors.cred_url,
             },
           });
         });
@@ -129,17 +128,12 @@ class CoursesForm extends Component {
               courseProviderErr: error.response.data.errors.course_provider,
               fromDateErr: error.response.data.errors.from,
               toDateErr: error.response.data.errors.to,
-              CourseUrlErr: error.response.data.errors.cred_url,
             },
           });
           console.log(error.response.data);
         });
   };
-  // handleCancel = async () => {
-  //   return function handleCancel() {
-  //     window.location.href = "http://programminghead.com";
-  //   };
-  // };
+
   render() {
     console.log(this.state.error);
     if (this.state.loggedIn === false) {
@@ -287,6 +281,7 @@ class CoursesForm extends Component {
                   To <span className="red">*</span>
                 </label>
                 <input
+                  value={this.state.toDate ? this.state.toDate : ""}
                   type="date"
                   id="bdaymonth"
                   className={
@@ -305,20 +300,13 @@ class CoursesForm extends Component {
                   Credential URL
                 </label>
                 <input
-                  // value={this.state.CourseUrl ? this.state.CourseUrl : ""}
+                  value={this.state.CourseUrl ? this.state.CourseUrl : ""}
                   type="text"
                   id="fullname"
-                  placeholder="Course URL Here!"
-                  className={
-                    this.state.error && this.state.error.CourseUrlErr
-                      ? "form-control editInput  halfInput fullwidth wrong "
-                      : "form-control editInput  halfInput fullwidth"
-                  }
+                  className="form-control editInput  halfInput fullwidth"
                   onChange={(e) => this.setState({ CourseUrl: e.target.value })}
+                  placeholder={this.state.cred_url}
                 />
-                <p className="red">
-                  {this.state.error ? this.state.error.CourseUrlErr : ""}
-                </p>
               </div>
               <div className="col-12 col-md-6  fullwidth ">
                 <label
