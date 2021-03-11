@@ -268,20 +268,26 @@ export default class EducationForm extends Component {
                   placeholder={this.state.cred_url}
                 />
               </div>
-              <div class='col-lg-5 col-11 col-md-5 col-sm-12 col-xs-12 '>
-                <label for='inputGPA' className='form-label editLabel'>
-                  Grade / GPA
+              <div className='col-12 col-md-6  fullwidth resBtnMargin '>
+                <label
+                  htmlFor='files'
+                  className='form-control editInput halfInput fullwidth uploadBtn d-flex'
+                >
+                  Upload
+                  <FiUpload className='icon justify-content-end align-items-end ' />
+                  <input
+                    hidden
+                    type='file'
+                    id='files'
+                    accept='application/msword, application/vnd.ms-excel, application/vnd.ms-powerpoint,
+                    text/plain, application/pdf, image/*'
+                    // onChange={(e) =>
+                    //   this.setState({ image: e.target.files[0] })
+                    // }
+                  />
                 </label>
-                <input
-                  type='text'
-                  className='form-control editInput'
-                  id='fullname'
-                  placeholder='Please enter your full name'
-                  onChange={(e) => this.setState({ password: e.target.value })}
-                />
               </div>
 
-    
               {this.props.match.params.id ? (
                 <div class='col-12 d-flex justify-content-end'>
                   <button
