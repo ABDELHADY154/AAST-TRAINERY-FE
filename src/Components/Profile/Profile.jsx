@@ -11,7 +11,7 @@ import StudentCourses from "./StudentCourses/StudentCourses";
 import StudentSkill from "./StudentSkill/StudentSkill";
 import Studentinterest from "./StudentSkill/StudentInterest";
 import StudentLanguage from "./StudentSkill/StudentLanguage";
-import studentReviews from "./StudentReviews/StudentReviews";
+import StudentReviews from "./StudentReviews/StudentReviews";
 
 import studentAccount from "./StudentAccount/StudentAccount";
 import Footer2 from "../Common/Footer2";
@@ -416,11 +416,13 @@ class Profile extends Component {
 
         <div className="container">
           <div id="education" className="card mt-5">
-            <div className="card-body">
+            <div className="card-body py-5 ">
               <div className="d-flex flex-row titlecard profiletitle fs-4 mb-2">
                 Reviews
               </div>
-              <studentReviews />
+              <div className="flex-row d-flex mt-1 ">
+                <StudentReviews />
+              </div>
             </div>
           </div>
         </div>
