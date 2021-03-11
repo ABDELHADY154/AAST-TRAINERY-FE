@@ -30,7 +30,7 @@ class CoursesForm extends Component {
             courseProvider: res.data.response.data.course_provider,
             fromDate: res.data.response.data.from,
             toDate: res.data.response.data.to,
-            // CourseUrl: res.data.response.data.cred_url,
+            CourseUrl: res.data.response.data.cred_url,
           });
           console.log(res.data.response.data);
         })
@@ -103,6 +103,7 @@ class CoursesForm extends Component {
               courseProviderErr: error.response.data.errors.course_provider,
               fromDateErr: error.response.data.errors.from,
               toDateErr: error.response.data.errors.to,
+              CourseUrlErr: error.response.data.errors.cred_url,
             },
           });
         });
@@ -128,6 +129,7 @@ class CoursesForm extends Component {
               courseProviderErr: error.response.data.errors.course_provider,
               fromDateErr: error.response.data.errors.from,
               toDateErr: error.response.data.errors.to,
+              CourseUrlErr: error.response.data.errors.cred_url,
             },
           });
           console.log(error.response.data);
@@ -210,7 +212,7 @@ class CoursesForm extends Component {
           </ul>
           <form class="g-3 mb-3 text-left " onSubmit={this.handleSubmit}>
             <div className=" row ">
-              <div className="col-12 fullwidth">
+              <div className="col-lg-10 col-11 col-md-10 col-sm-12 col-xs-12">
                 <label for="inputfullname" class="form-label editLabel ">
                   Course Name <span className="red">*</span>
                 </label>
@@ -219,8 +221,8 @@ class CoursesForm extends Component {
                   type="text"
                   className={
                     this.state.error && this.state.error.courseNameErr
-                      ? "form-control editInput  halfInput fullwidth wrong "
-                      : "form-control editInput  halfInput fullwidth"
+                      ? "form-control editInput wrong "
+                      : "form-control editInput "
                   }
                   id="fullname"
                   placeholder="Graphic Design Mastery: The FULL Branding & Design Process"
@@ -232,7 +234,7 @@ class CoursesForm extends Component {
                   {this.state.error ? this.state.error.courseNameErr : ""}
                 </p>
               </div>
-              <div class="col-12 fullwidth">
+              <div className="col-lg-10 col-11 col-md-10 col-sm-12 col-xs-12">
                 <label for="inputfullname" class="form-label editLabel ">
                   Course Title / Provider <span className="red">*</span>
                 </label>
@@ -243,8 +245,8 @@ class CoursesForm extends Component {
                   type="text"
                   className={
                     this.state.error && this.state.error.courseProviderErr
-                      ? "form-control editInput  halfInput fullwidth wrong "
-                      : "form-control editInput  halfInput fullwidth"
+                      ? "form-control editInput wrong "
+                      : "form-control editInput"
                   }
                   id="fullname"
                   placeholder="IT"
@@ -257,7 +259,7 @@ class CoursesForm extends Component {
                 </p>
               </div>
 
-              <div className="col-12 col-md-6 fullwidth ">
+              <div className="col-lg-5 col-11 col-md-5 col-sm-12 col-xs-12 ">
                 <label for="bdaymonth" className="form-label editLabel ">
                   From <span className="red">*</span>
                 </label>
@@ -267,8 +269,8 @@ class CoursesForm extends Component {
                   id="bdaymonth"
                   className={
                     this.state.error && this.state.error.fromDateErr
-                      ? "form-control editInput  halfInput fullwidth wrong "
-                      : "form-control editInput  halfInput fullwidth"
+                      ? "form-control editInput  wrong "
+                      : "form-control editInput "
                   }
                   onChange={(e) => this.setState({ fromDate: e.target.value })}
                 />
@@ -276,7 +278,7 @@ class CoursesForm extends Component {
                   {this.state.error ? this.state.error.fromDateErr : ""}
                 </p>
               </div>
-              <div className="col-12 col-md-6  fullwidth ">
+              <div className="col-lg-5 col-11 col-md-5 col-sm-12 col-xs-12">
                 <label for="bdaymonth" className="form-label editLabel ">
                   To <span className="red">*</span>
                 </label>
@@ -286,8 +288,8 @@ class CoursesForm extends Component {
                   id="bdaymonth"
                   className={
                     this.state.error && this.state.error.toDateErr
-                      ? "form-control editInput  halfInput fullwidth wrong "
-                      : "form-control editInput  halfInput fullwidth"
+                      ? "form-control editInput  wrong "
+                      : "form-control editInput "
                   }
                   onChange={(e) => this.setState({ toDate: e.target.value })}
                 />
@@ -295,7 +297,7 @@ class CoursesForm extends Component {
                   {this.state.error ? this.state.error.toDateErr : ""}
                 </p>
               </div>
-              <div class="col-12 col-md-6  fullwidth ">
+              <div class="col-lg-5 col-11 col-md-5 col-sm-12 col-xs-12 ">
                 <label for="inputTerm" className="form-label editLabel">
                   Credential URL
                 </label>
@@ -303,19 +305,27 @@ class CoursesForm extends Component {
                   value={this.state.CourseUrl ? this.state.CourseUrl : ""}
                   type="text"
                   id="fullname"
-                  className="form-control editInput  halfInput fullwidth"
-                  onChange={(e) => this.setState({ CourseUrl: e.target.value })}
                   placeholder={this.state.cred_url}
+                  className={
+                    this.state.error && this.state.error.CourseUrlErr
+                      ? "form-control editInput  wrong "
+                      : "form-control editInput "
+                  }
+                  onChange={(e) => this.setState({ CourseUrl: e.target.value })}
                 />
+                <p className="red">
+                  {this.state.error ? this.state.error.CourseUrlErr : null}
+                </p>
               </div>
-              <div className="col-12 col-md-6  fullwidth ">
+              <div className="col-lg-5 col-11 col-md-5 col-sm-12 col-xs-12  ">
                 <label
                   htmlFor="files"
-                  className="form-control editInput halfInput fullwidth uploadBtn d-flex"
+                  className="form-control editInput uploadBtn d-flex"
                 >
                   Upload
-                  <FiUpload className="icon justify-content-end align-items-end " />
+                  <FiUpload className="uploadIcon ms-auto " />
                   <input
+                    className="form-control editInput"
                     hidden
                     type="file"
                     id="files"
@@ -327,11 +337,7 @@ class CoursesForm extends Component {
                   />
                 </label>
               </div>
-              {this.state.error ? (
-                <span className="red py-3">Please fill all the info *</span>
-              ) : (
-                <span className="red py-3"></span>
-              )}
+
               {this.props.match.params.id ? (
                 <div class="col-12 d-flex justify-content-end">
                   <button

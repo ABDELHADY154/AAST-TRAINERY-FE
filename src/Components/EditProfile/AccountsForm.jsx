@@ -71,8 +71,15 @@ class AccountsForm extends Component {
               </a>
             </li>
           </ul>
-          <form class="row g-3 mb-3">
-            {/* code goes here  */} <p>AccountForm</p>
+
+          <form class="row g-3 mb-3 ">
+            <label className=" col-2 form-label editLabel ">Course Name</label>
+            <input
+              type="text"
+              className="col-8 editInput inputLeft "
+              // id="fullname"
+              placeholder="website here"
+            />
           </form>
         </div>
         <Footer2 />

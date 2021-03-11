@@ -313,12 +313,12 @@ ReactStars:active {
 
 /* ...........Fathy........... */
 .uploadBtn {
-  margin-top: 2em !important;
+  margin-top: 2.15em !important;
   background-color: #fafafa !important;
   content: "upload" !important;
   color: #1e4274 !important;
 }
-.icon {
+.uploadIcon {
   width: 24px;
   height: 24px;
   stroke: currentColor;
@@ -326,15 +326,18 @@ ReactStars:active {
   stroke-linecap: round;
   stroke-linejoin: round;
   fill: none;
-  margin-left: auto !important;
+  /* margin-left: auto !important; */
 }
 
 @media (max-width: 768px) {
   .uploadBtn {
-    margin-top: 0rem !important;
+    margin-top: 1rem !important;
   }
 }
-/* .leftMe {
-  padding-right: 0 !important;
-  padding-left: 0 !important;
-} */
+
+.inputLeft {
+  float: left !important;
+  margin-right: auto !important;
+  /* justify-content: start !important;
+  justify-items: start !important; */
+}
