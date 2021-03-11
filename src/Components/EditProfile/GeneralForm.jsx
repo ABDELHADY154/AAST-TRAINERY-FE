@@ -101,6 +101,8 @@ class GeneralForm extends Component {
 
   handleSubmit = async (e) => {
     e.preventDefault();
+    var formBody = new FormData();
+    // formBody.append()
     const data = {
       name: this.state.name,
       phone_number: this.state.phoneNumber,
@@ -116,10 +118,35 @@ class GeneralForm extends Component {
       end_year: this.state.endYear,
       gpa: this.state.gpa,
       period: this.state.period,
-      // image: this.state.imageURL,
+      image: this.state.imageURL ? this.state.imageURL : this.state.image,
     };
-    await axios
-      .post("/W/student/profile/general", data)
+    if (this.state.imageURL) {
+      formBody.append(
+        "image",
+        this.state.imageURL ? this.state.imageURL : this.state.image
+      );
+    }
+    formBody.append("phone_number", data.phone_number);
+    formBody.append("city", data.city);
+    formBody.append("university", data.university);
+    formBody.append("name", data.name);
+    formBody.append("reg_no", data.reg_no);
+    formBody.append("gender", data.gender);
+    formBody.append("country", data.country);
+    formBody.append("department_id", data.department_id);
+    formBody.append("nationality", data.nationality);
+    formBody.append("date_of_birth", data.date_of_birth);
+    formBody.append("start_year", data.start_year);
+    formBody.append("end_year", data.end_year);
+    formBody.append("period", data.period);
+    formBody.append("gpa", data.gpa);
+
+    await axios({
+      method: "post",
+      url: "/W/student/profile/general",
+      data: formBody,
+      headers: { "Content-Type": "multipart/form-data" },
+    })
       .then((res) => {
         this.setState({
           loggedIn: false,
@@ -155,8 +182,9 @@ class GeneralForm extends Component {
   render() {
     const city = this.state.city;
     if (this.state.loggedIn === false) {
-      return <Redirect to='/Profile' />;
+      return <Redirect to='/Profile' push />;
     }
+    console.log(this.state.imageURL);
     return (
       <div>
         <div className='container '>
@@ -224,7 +252,12 @@ class GeneralForm extends Component {
                       type='file'
                       className='imgUploadBtn'
                       accept='image/x-png,image/gif,image/jpeg'
-                      onChange={(e) => this.setState({ imageURL: e.target.files[0] })}
+                      onChange={(e) =>
+                        this.setState({
+                          imageURL: e.target.files[0],
+                          image: e.target.files[0],
+                        })
+                      }
                     />
                   </div>
                 </div>
