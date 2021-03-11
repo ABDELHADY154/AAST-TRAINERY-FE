@@ -160,6 +160,7 @@
   height: 20px;
   border: 2px solid #1e4274;
 }
+
 .raioLabelEdit {
   margin-left: 10px !important;
   margin-bottom: 0px !important;
@@ -234,7 +235,7 @@ textarea {
   object-fit: cover !important;
 }
 
-.imgUploadBtn::-webkit-file-upload-button {
+/* .imgUploadBtn::-webkit-file-upload-button {
   visibility: hidden;
 }
 .imgUploadBtn::after {
@@ -261,7 +262,7 @@ textarea {
 }
 .imgUploadBtn::before:active {
   border: none !important;
-}
+} */
 ReactStars:active {
   border: none !important;
 }
@@ -294,7 +295,9 @@ ReactStars:active {
 /* ...........Mohannad........... */
 .red {
   color: red;
-  font-size: 20px;
+  font-size: 14px;
+
+  margin-top: 1em !important;
 }
 
 .halfInput {
