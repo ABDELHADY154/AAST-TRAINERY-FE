@@ -335,9 +335,6 @@ ReactStars:active {
   }
 }
 
-.inputLeft {
-  float: left !important;
-  margin-right: auto !important;
-  /* justify-content: start !important;
-  justify-items: start !important; */
+.closeLabel {
+  margin-right: -60px !important;
 }
