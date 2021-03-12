@@ -5,6 +5,7 @@ import { axios } from "../../Api/axios";
 import "../../layout/EditInfo.css";
 import Footer2 from "../Common/Footer2";
 import { FiUpload } from "react-icons/fi";
+import { data } from "flickity";
 
 class CoursesForm extends Component {
   constructor(props) {
@@ -15,7 +16,8 @@ class CoursesForm extends Component {
       fromDate: "",
       toDate: "",
       CourseUrl: null,
-      // image: "",
+      image: "",
+      imageURL: "",
     };
   }
   // get list item by id
@@ -31,6 +33,7 @@ class CoursesForm extends Component {
             fromDate: res.data.response.data.from,
             toDate: res.data.response.data.to,
             CourseUrl: res.data.response.data.cred_url,
+            image: res.data.response.data.cred,
           });
           console.log(res.data.response.data);
         })
@@ -70,21 +73,47 @@ class CoursesForm extends Component {
     }
   };
   //create and update
+  handleChange(event) {
+    var filename = event.target.value.replace(/^.*[\\\/]/, "");
 
+    this.setState({
+      image: URL.createObjectURL(event.target.files[0]),
+      imageURL: filename,
+    });
+  }
   handleSubmit = async (e) => {
     e.preventDefault();
+    var formBody = new FormData();
+
     const data = {
       course_name: this.state.courseName,
       course_provider: this.state.courseProvider,
       from: this.state.fromDate,
       to: this.state.toDate,
       cred_url: this.state.CourseUrl,
-
-      // cred: this.state.image,
+      cred: this.state.imageURL ? this.state.imageURL : this.state.image,
     };
+    if (this.state.imageURL) {
+      formBody.append(
+        "image",
+        this.state.imageURL ? this.state.imageURL : this.state.image
+      );
+    }
+    formBody.append("course_name", data.course_name);
+    formBody.append("course_provider", data.course_provider);
+    formBody.append("from", data.from);
+    formBody.append("to", data.to);
+    formBody.append("cred_url", data.cred_url);
+
     if (this.props.match.params.id) {
-      return await axios
-        .post(`/W/student/profile/course/${this.props.match.params.id}`, data)
+      // return await axios
+      //   .post(`/W/student/profile/course/${this.props.match.params.id}`, data)
+      return await axios({
+        method: "post",
+        url: `/W/student/profile/course/${this.props.match.params.id}`,
+        data: formBody,
+        headers: { "Content-Type": "multipart/form-data" },
+      })
         .then((response) => {
           this.setState({
             loggedIn: false,
@@ -104,12 +133,17 @@ class CoursesForm extends Component {
               fromDateErr: error.response.data.errors.from,
               toDateErr: error.response.data.errors.to,
               CourseUrlErr: error.response.data.errors.cred_url,
+              credErr: error.response.data.errors.cred,
             },
           });
         });
     } else
-      return await axios
-        .post("/W/student/profile/course", data)
+      return await axios({
+        method: "post",
+        url: "/W/student/profile/course",
+        data: formBody,
+        headers: { "Content-Type": "multipart/form-data" },
+      })
         .then((e) => {
           console.log(e);
           this.setState({
@@ -130,6 +164,7 @@ class CoursesForm extends Component {
               fromDateErr: error.response.data.errors.from,
               toDateErr: error.response.data.errors.to,
               CourseUrlErr: error.response.data.errors.cred_url,
+              credErr: error.response.data.errors.cred,
             },
           });
           console.log(error.response.data);
@@ -137,6 +172,8 @@ class CoursesForm extends Component {
   };
 
   render() {
+    console.log(this.state.imageURL);
+
     console.log(this.state.error);
     if (this.state.loggedIn === false) {
       return <Redirect to="/Profile" />;
@@ -329,11 +366,13 @@ class CoursesForm extends Component {
                     hidden
                     type="file"
                     id="files"
-                    accept="application/msword, application/vnd.ms-excel, application/vnd.ms-powerpoint,
-                    text/plain, application/pdf, image/*"
-                    // onChange={(e) =>
-                    //   this.setState({ image: e.target.files[0] })
-                    // }
+                    accept="pdf"
+                    onChange={(e) =>
+                      this.setState({
+                        imageURL: e.target.files[0],
+                        image: e.target.files[0],
+                      })
+                    }
                   />
                 </label>
               </div>
