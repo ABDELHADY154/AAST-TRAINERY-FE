@@ -14,7 +14,7 @@ class CoursesForm extends Component {
       courseProvider: "",
       fromDate: "",
       toDate: "",
-      CourseUrl: "",
+      CourseUrl: null,
       // image: "",
     };
   }
@@ -314,7 +314,7 @@ class CoursesForm extends Component {
                   onChange={(e) => this.setState({ CourseUrl: e.target.value })}
                 />
                 <p className="red">
-                  {this.state.error ? this.state.error.CourseUrlErr : null}
+                  {this.state.error ? this.state.error.CourseUrlErr : ""}
                 </p>
               </div>
               <div className="col-lg-5 col-11 col-md-5 col-sm-12 col-xs-12  ">

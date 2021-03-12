@@ -9,13 +9,13 @@ class AccountsForm extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      website: "",
-      facebook: "",
-      instagram: "",
-      youtube: "",
-      linkedin: "",
-      behance: "",
-      github: "",
+      website: null,
+      facebook: null,
+      instagram: null,
+      youtube: null,
+      linkedin: null,
+      behance: null,
+      github: null,
     };
   }
   //get list
