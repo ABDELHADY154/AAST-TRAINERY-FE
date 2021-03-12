@@ -81,6 +81,7 @@ class Language extends Component {
           this.setState({
             loggedIn: true,
           });
+          console.log(response.data.response.data);
         })
         .catch((error) => {
           if (error.response.data.status === 401) {
@@ -154,15 +155,6 @@ class Language extends Component {
                 ) : (
                   ""
                 )}
-                {/* <select id="inputSkillYears" className="form-select editInput "
-                onChange={(e)=>{
-                  this.setState({language:e.target.value});
-                }}>
-                  <option selected>Language ...</option>
-                  <option>Arabic</option>
-                  <option>English</option>
-                  <option>French</option>
-                </select> */}
                 <label for="inputRegNum" className="form-label editLabel mt-3">
                   Level
                 </label>

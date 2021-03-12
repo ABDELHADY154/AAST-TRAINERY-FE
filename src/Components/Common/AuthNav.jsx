@@ -75,7 +75,7 @@ class AuthNav extends React.Component {
 
   render() {
     return (
-      <div className="navBottom">
+      <div className="navBottom pb-1">
         <nav className="navbar navbar-expand-lg navBg fixed-top">
           <div className="container">
             <Link className="navbar-brand mx-2" renderAs="button" to="/Home">

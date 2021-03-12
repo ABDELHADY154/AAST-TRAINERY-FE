@@ -13,7 +13,7 @@ class Interest extends Component {
     super(props);
     this.state = {
       tags: [],
-      interestId: 0,
+      id: 0,
       interests: [],
       error: {},
     };
@@ -21,13 +21,14 @@ class Interest extends Component {
   async componentDidMount() {
     if (this.props.match.params.id) {
       await axios
-        .get(`/W/student/profile/skill/${this.props.match.params.id}`)
+        .get(`/W/student/profile/interest/${this.props.match.params.id}`)
         .then((res) => {
           this.setState({
-            skill: res.data.response.data.skill_name,
-            skillId: res.data.response.data.id,
-            yearsExp: res.data.response.data.years_of_exp,
+            interests: res.data.response.data.interests,
+            id: res.data.response.data.id,
+            interest: res.data.response.data.interest,
           });
+          console.log(res.data.response.data.interests);
         })
         .catch((error) => {
           if (error.response.data.status === 401) {
@@ -45,35 +46,83 @@ class Interest extends Component {
   handleSubmiInterest = async (e) => {
     e.preventDefault();
     const data = {
+      id: this.state.id,
       interests: [],
     };
     this.state.interests.forEach((element) => {
       data.interests.push({ interest: element });
     });
-    await axios
-      .post("/W/student/profile/interest", data)
-      .then((response) => {
-        this.setState({
-          loggedIn: true,
+    //   await axios
+    //     .post("/W/student/profile/interest", data)
+    //     .then((response) => {
+    //       this.setState({
+    //         loggedIn: true,
+    //       });
+    //       console.log(response.data.response.data);
+    //     })
+    //     .catch((error) => {
+    //       if (error.response.data.status === 401) {
+    //         sessionStorage.clear("token");
+    //         sessionStorage.clear("status");
+    //         this.setState({ loggedIn: false });
+    //         window.location.reload();
+    //       }
+    //       this.setState({
+    //         error: {
+    //           // interestsErr: error.response.data.errors.interests,
+    //           // interestlErr: error.response.data.errors.interest,
+    //         },
+    //       });
+    //       console.log(error.response.data.errors.message);
+    //       // console.log(err.response.data.errors.interests);
+    //     });
+    // };
+    if (this.props.match.params.id) {
+      await axios
+        .post(`/W/student/profile/interest/${this.props.match.params.id}`, data)
+        .then((response) => {
+          this.setState({
+            loggedIn: true,
+          });
+        })
+        .catch((error) => {
+          if (error.response.data.status === 401) {
+            sessionStorage.clear("token");
+            sessionStorage.clear("status");
+            this.setState({ loggedIn: false });
+            window.location.reload();
+          }
+          this.setState({
+            error: {
+              // interestsErr: error.response.data.errors.interests,
+            },
+          });
         });
-      })
-      .catch((error) => {
-        if (error.response.data.status === 401) {
-          sessionStorage.clear("token");
-          sessionStorage.clear("status");
-          this.setState({ loggedIn: false });
-          window.location.reload();
-        }
-        this.setState({
-          error: {
-            interestsErr: error.response.data.errors.interests,
-            interestlErr: error.response.data.errors.interest,
-          },
+    } else {
+      await axios
+        .post("/W/student/profile/interest", data)
+        .then((response) => {
+          this.setState({
+            loggedIn: true,
+          });
+          console.log(response.data.response.data);
+        })
+        .catch((error) => {
+          if (error.response.data.status === 401) {
+            sessionStorage.clear("token");
+            sessionStorage.clear("status");
+            this.setState({ loggedIn: false });
+            window.location.reload();
+          }
+          this.setState({
+            error: {
+              interestsErr: error.response.data.errors.interests,
+            },
+          });
+          console.log(error.response.data.errors.interests);
         });
-        // console.log(err.response.data.errors.interests);
-      });
+    }
   };
-
   // handleDeleteInterest = async (e) => {
   //   await axios
   //     .delete(`/W/student/profile/interest/${this.props.match.params.id}`)
@@ -113,6 +162,12 @@ class Interest extends Component {
                   tags={(e) => this.setState({ interests: e })}
                   value={this.state.interests}
                 />
+                {/* <p>{this.state.interests}</p> */}
+                {this.state.error && this.state.error.interestsErr ? (
+                  <p className="editerror">{this.state.error.interestsErr}</p>
+                ) : (
+                  ""
+                )}
               </div>
 
               {this.props.match.params.id ? (
