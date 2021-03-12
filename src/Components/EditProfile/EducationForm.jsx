@@ -1,20 +1,18 @@
-import React, { Component, useState } from "react";
-// import { axios } from "../../Api/axios";
-import { Redirect } from "react-router-dom";
+import React, { Component } from "react";
+import { Link, Redirect } from "react-router-dom";
 import { axios } from "../../Api/axios";
 import "../../layout/EditInfo.css";
 import Footer2 from "../Common/Footer2";
-import {
-  CountryDropdown,
-  RegionDropdown,
-  CountryRegionData,
-} from "react-country-region-selector";
+import { FiUpload } from "react-icons/fi";
+import { CountryDropdown, RegionDropdown } from "react-country-region-selector";
 import EditNav from "./EditNav";
 export default class EducationForm extends Component {
   constructor(props) {
     super(props);
-    this.state = { country: "", region: "" };
+    this.state = { country: "", region: "", image: "", imageURL: "" };
+    this.handleChange = this.handleChange.bind(this);
   }
+
   state = {
     startDate: new Date(),
   };
@@ -30,6 +28,14 @@ export default class EducationForm extends Component {
       startDate,
     });
   };
+  handleChange(event) {
+    var filename = event.target.value.replace(/^.*[\\\/]/, "");
+
+    this.setState({
+      image: URL.createObjectURL(event.target.files[0]),
+      imageURL: filename,
+    });
+  }
   handleDelete = async (e) => {
     if (this.props.match.params.id) {
       await axios
@@ -52,6 +58,7 @@ export default class EducationForm extends Component {
         loggedIn: false,
       });
   };
+
   componentDidMount = async () => {
     if (this.props.match.params.id) {
       await axios
@@ -69,7 +76,7 @@ export default class EducationForm extends Component {
           });
         })
         .catch((error) => {
-          if (error.response.data.status === 401) {
+          if (error.response.data.status === 401 || error.response.data.status === 404) {
             sessionStorage.clear("token");
             sessionStorage.clear("status");
             this.setState({ loggedIn: false });
@@ -81,6 +88,8 @@ export default class EducationForm extends Component {
 
   handleSubmit = async (e) => {
     e.preventDefault();
+    var formBody = new FormData();
+
     const data = {
       id: this.state.id,
       school_name: this.state.SchoolName,
@@ -89,10 +98,28 @@ export default class EducationForm extends Component {
       from: this.state.From,
       to: this.state.To,
       cred_url: this.state.SchoolUrl,
+      image: this.state.imageURL ? this.state.imageURL : this.state.image,
     };
+    if (this.state.imageURL) {
+      formBody.append(
+        "image",
+        this.state.imageURL ? this.state.imageURL : this.state.image
+      );
+    }
+    formBody.append("school_name", data.school_name);
+    formBody.append("country", data.country);
+    formBody.append("city", data.city);
+    formBody.append("from", data.from);
+    formBody.append("to", data.to);
+    formBody.append("cred_url", data.cred_url);
+
     if (this.props.match.params.id) {
-      return await axios
-        .post(`/W/student/profile/education/${this.props.match.params.id}`, data)
+      return await axios({
+        method: "post",
+        url: `/W/student/profile/education/${this.props.match.params.id}`,
+        data: formBody,
+        headers: { "Content-Type": "multipart/form-data" },
+      })
         .then((response) => {
           this.setState({
             done: true,
@@ -117,8 +144,12 @@ export default class EducationForm extends Component {
           });
         });
     } else {
-      return await axios
-        .post("/W/student/profile/education", data)
+      return await axios({
+        method: "post",
+        url: "/W/student/profile/education",
+        data: formBody,
+        headers: { "Content-Type": "multipart/form-data" },
+      })
         .then((response) => {
           this.setState({
             done: true,
@@ -268,28 +299,31 @@ export default class EducationForm extends Component {
                   placeholder={this.state.cred_url}
                 />
               </div>
-              <div className='col-12 col-md-6  fullwidth resBtnMargin '>
+              <div className='col-lg-5 col-11 col-md-5 col-sm-12 col-xs-12 UploadBtnDiv'>
                 <label
-                  htmlFor='files'
-                  className='form-control editInput halfInput fullwidth uploadBtn d-flex'
+                  htmlFor='file'
+                  className='form-label editLabel uploadBtnn d-flex p-1'
                 >
                   Upload
                   <FiUpload className='icon justify-content-end align-items-end ' />
                   <input
                     hidden
                     type='file'
-                    id='files'
-                    accept='application/msword, application/vnd.ms-excel, application/vnd.ms-powerpoint,
-                    text/plain, application/pdf, image/*'
-                    // onChange={(e) =>
-                    //   this.setState({ image: e.target.files[0] })
-                    // }
+                    id='file'
+                    accept=' image/*,file_extension/
+                    .crt,.cer,.ca-bundle,.p7b,.p7c,.p7s,.pem,.pdf'
+                    onChange={(e) =>
+                      this.setState({
+                        imageURL: e.target.files[0],
+                        image: e.target.files[0],
+                      })
+                    }
                   />
                 </label>
               </div>
 
               {this.props.match.params.id ? (
-                <div class='col-12 d-flex justify-content-end'>
+                <div class='col-12 d-flex justify-content-end '>
                   <button
                     // type={this.handleDelete}
                     class='btn deleteBtn me-2 my-2  shadow-none  '
@@ -304,9 +338,9 @@ export default class EducationForm extends Component {
                 </div>
               ) : (
                 <div class='col-12 d-flex justify-content-end'>
-                  <button type='submit' class='btn me-2 my-2 cancelBtn shadow-none'>
+                  <Link class='btn me-2 my-2 cancelBtn shadow-none' to='/Profile'>
                     Cancel
-                  </button>
+                  </Link>
                   <button type='submit' class='btn doneBtn shadow-none my-2 '>
                     Add
                   </button>

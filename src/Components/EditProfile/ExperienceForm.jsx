@@ -1,17 +1,16 @@
 import React, { Component } from "react";
-// import { Redirect } from "react-router-dom";
 import { axios } from "../../Api/axios";
-// import { Link } from "react-router-dom";
 import { CountryDropdown, RegionDropdown } from "react-country-region-selector";
 import EditNav from "./EditNav";
 import Footer2 from "../Common/Footer2";
-import { Link } from "react-router-dom";
-import { Redirect } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
+import { FiUpload } from "react-icons/fi";
 
 class ExperienceForm extends Component {
   constructor(props) {
     super(props);
     this.state = { country: "", region: "", error: "" };
+    this.handleChange = this.handleChange.bind(this);
   }
   state = {
     startDate: new Date(),
@@ -52,7 +51,7 @@ class ExperienceForm extends Component {
           // console.log(this.state);
         })
         .catch((error) => {
-          if (error.response.data.status === 401) {
+          if (error.response.data.status === 401 || error.response.data.status === 404) {
             sessionStorage.clear("token");
             sessionStorage.clear("status");
             this.setState({ loggedIn: false });
@@ -341,17 +340,27 @@ class ExperienceForm extends Component {
                   placeholder={this.state.Cred_URL}
                 />
               </div>
-              <div class='col-lg-5 col-11 col-md-5 col-sm-12 col-xs-12 '>
-                <label for='inputGPA' className='form-label editLabel'>
-                  uplaod{" "}
+              <div className='col-lg-5 col-11 col-md-5 col-sm-12 col-xs-12 UploadBtnDiv'>
+                <label
+                  htmlFor='file'
+                  className='form-label editLabel uploadBtnn d-flex p-1'
+                >
+                  Upload
+                  <FiUpload className='icon justify-content-end align-items-end ' />
+                  <input
+                    hidden
+                    type='file'
+                    id='file'
+                    accept=' image/*,file_extension/
+                    .crt,.cer,.ca-bundle,.p7b,.p7c,.p7s,.pem,.pdf'
+                    onChange={(e) =>
+                      this.setState({
+                        imageURL: e.target.files[0],
+                        image: e.target.files[0],
+                      })
+                    }
+                  />
                 </label>
-                <input
-                  type='text'
-                  className='form-control editInput'
-                  id='fullname'
-                  placeholder='Please enter your full name'
-                  onChange={(e) => this.setState({ password: e.target.value })}
-                />
               </div>
 
               {this.props.match.params.id ? (
@@ -370,9 +379,9 @@ class ExperienceForm extends Component {
                 </div>
               ) : (
                 <div class='col-12 d-flex justify-content-end'>
-                  <button class='btn me-2 my-2 cancelBtn shadow-none' href='/'>
+                  <Link class='btn me-2 my-2 cancelBtn shadow-none' to='/Profile'>
                     Cancel
-                  </button>
+                  </Link>
                   <button type='submit' class='btn doneBtn shadow-none my-2 '>
                     Add
                   </button>
