@@ -15,7 +15,7 @@ class CoursesForm extends Component {
       courseProvider: "",
       fromDate: "",
       toDate: "",
-      CourseUrl: null,
+      CourseUrl: "",
       image: "",
       imageURL: "",
     };
@@ -84,7 +84,6 @@ class CoursesForm extends Component {
   handleSubmit = async (e) => {
     e.preventDefault();
     var formBody = new FormData();
-
     const data = {
       course_name: this.state.courseName,
       course_provider: this.state.courseProvider,
@@ -103,11 +102,10 @@ class CoursesForm extends Component {
     formBody.append("course_provider", data.course_provider);
     formBody.append("from", data.from);
     formBody.append("to", data.to);
-    formBody.append("cred_url", data.cred_url);
-
+    if (this.state.CourseUrl !== "") {
+      formBody.append("cred_url", data.cred_url);
+    }
     if (this.props.match.params.id) {
-      // return await axios
-      //   .post(`/W/student/profile/course/${this.props.match.params.id}`, data)
       return await axios({
         method: "post",
         url: `/W/student/profile/course/${this.props.match.params.id}`,
@@ -142,10 +140,11 @@ class CoursesForm extends Component {
         method: "post",
         url: "/W/student/profile/course",
         data: formBody,
-        headers: { "Content-Type": "multipart/form-data" },
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
       })
         .then((e) => {
-          console.log(e);
           this.setState({
             done: true,
           });
@@ -172,9 +171,9 @@ class CoursesForm extends Component {
   };
 
   render() {
-    console.log(this.state.imageURL);
+    // console.log(this.state.imageURL);
 
-    console.log(this.state.error);
+    // console.log(this.state.error);
     if (this.state.loggedIn === false) {
       return <Redirect to='/Profile' />;
     }
@@ -234,11 +233,11 @@ class CoursesForm extends Component {
             </li>
           </ul>
 
-          <form class="g-3 mb-3 text-left " onSubmit={this.handleSubmit}>
-            <div className=" row ">
-              <div className="col-lg-10 col-11 col-md-10 col-sm-12 col-xs-12">
-                <label for="inputfullname" class="form-label editLabel ">
-                  Course Name <span className="red">*</span>
+          <form class='g-3 mb-3 text-left ' onSubmit={this.handleSubmit}>
+            <div className=' row '>
+              <div className='col-lg-10 col-11 col-md-10 col-sm-12 col-xs-12'>
+                <label for='inputfullname' class='form-label editLabel '>
+                  Course Name <span className='red'>*</span>
                 </label>
                 <input
                   value={this.state.courseName ? this.state.courseName : ""}
@@ -257,10 +256,9 @@ class CoursesForm extends Component {
                 </p>
               </div>
 
-              <div className="col-lg-10 col-11 col-md-10 col-sm-12 col-xs-12">
-                <label for="inputfullname" class="form-label editLabel ">
-                  Course Title / Provider <span className="red">*</span>
-
+              <div className='col-lg-10 col-11 col-md-10 col-sm-12 col-xs-12'>
+                <label for='inputfullname' class='form-label editLabel '>
+                  Course Title / Provider <span className='red'>*</span>
                 </label>
                 <input
                   value={this.state.courseProvider ? this.state.courseProvider : ""}
@@ -279,11 +277,9 @@ class CoursesForm extends Component {
                 </p>
               </div>
 
-
-              <div className="col-lg-5 col-11 col-md-5 col-sm-12 col-xs-12 ">
-                <label for="bdaymonth" className="form-label editLabel ">
-                  From <span className="red">*</span>
-
+              <div className='col-lg-5 col-11 col-md-5 col-sm-12 col-xs-12 '>
+                <label for='bdaymonth' className='form-label editLabel '>
+                  From <span className='red'>*</span>
                 </label>
                 <input
                   value={this.state.fromDate ? this.state.fromDate : ""}
@@ -301,15 +297,14 @@ class CoursesForm extends Component {
                 </p>
               </div>
 
-              <div className="col-lg-5 col-11 col-md-5 col-sm-12 col-xs-12">
-                <label for="bdaymonth" className="form-label editLabel ">
-                  To <span className="red">*</span>
+              <div className='col-lg-5 col-11 col-md-5 col-sm-12 col-xs-12'>
+                <label for='bdaymonth' className='form-label editLabel '>
+                  To <span className='red'>*</span>
                 </label>
                 <input
                   value={this.state.toDate ? this.state.toDate : ""}
-                  type="date"
-                  id="bdaymonth"
-
+                  type='date'
+                  id='bdaymonth'
                   className={
                     this.state.error && this.state.error.toDateErr
                       ? "form-control editInput  wrong "
@@ -322,16 +317,15 @@ class CoursesForm extends Component {
                 </p>
               </div>
 
-              <div class="col-lg-5 col-11 col-md-5 col-sm-12 col-xs-12 ">
-                <label for="inputTerm" className="form-label editLabel">
+              <div class='col-lg-5 col-11 col-md-5 col-sm-12 col-xs-12 '>
+                <label for='inputTerm' className='form-label editLabel'>
                   Credential URL
                 </label>
                 <input
                   value={this.state.CourseUrl ? this.state.CourseUrl : ""}
-                  type="text"
-                  id="fullname"
-                  placeholder={this.state.cred_url}
-
+                  type='text'
+                  id='fullname'
+                  placeholder={this.state.CourseUrl}
                   className={
                     this.state.error && this.state.error.CourseUrlErr
                       ? "form-control editInput  wrong "
@@ -344,21 +338,19 @@ class CoursesForm extends Component {
                 </p>
               </div>
 
-              <div className="col-lg-5 col-11 col-md-5 col-sm-12 col-xs-12  ">
+              <div className='col-lg-5 col-11 col-md-5 col-sm-12 col-xs-12  '>
                 <label
-                  htmlFor="files"
-                  className="form-control editInput uploadBtn d-flex"
+                  htmlFor='files'
+                  className='form-control editInput uploadBtn d-flex'
                 >
                   Upload
-                  <FiUpload className="uploadIcon ms-auto " />
-
+                  <FiUpload className='uploadIcon ms-auto ' />
                   <input
-                    className="form-control editInput"
+                    className='form-control editInput'
                     hidden
-
-                    type="file"
-                    id="files"
-                    accept="pdf"
+                    type='file'
+                    id='files'
+                    accept='pdf'
                     onChange={(e) =>
                       this.setState({
                         imageURL: e.target.files[0],
