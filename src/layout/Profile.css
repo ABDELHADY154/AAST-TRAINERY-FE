@@ -324,24 +324,6 @@ body {
   background: #fff;
 }
 
-.carousel-cell {
-  width: 66%;
-  height: 200px;
-  margin-right: 10px;
-  background: black;
-  border-radius: 5px;
-  counter-increment: gallery-cell;
-}
-
-.carousel-cell:before {
-  display: block;
-  text-align: center;
-  content: counter(gallery-cell);
-  line-height: 200px;
-  font-size: 80px;
-  color: black;
-}
-
 #interestpen {
   width: 1% !important;
   margin-left: 1.2% !important;
