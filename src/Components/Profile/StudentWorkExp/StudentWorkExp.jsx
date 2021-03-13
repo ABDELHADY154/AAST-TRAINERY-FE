@@ -48,8 +48,9 @@ export default class StudentWorkExp extends Component {
             id='goldcredentials'
             renderAs='button'
             href={this.props.cred}
-            className='  mb-1   d-flex flex-row col-12 col-md-3'
-            // to="/Register"
+            className="  mb-1   d-flex flex-row col-12 col-md-3"
+            target="_blank"
+
           >
             See credentials
           </a>

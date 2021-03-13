@@ -91,6 +91,7 @@ class Profile extends Component {
   }
 
   render() {
+    // console.log(this.state.userData.accounts);
     let id = this.props.id;
     return (
       <div className="container-fluid ">
@@ -416,7 +417,7 @@ class Profile extends Component {
 
         <div className="container">
           <div id="education" className="card mt-5">
-            <div className="card-body py-5 ">
+            <div className="card-body pb-2=5 ">
               <div className="d-flex flex-row titlecard profiletitle fs-4 mb-2">
                 Reviews
               </div>
@@ -451,6 +452,7 @@ export default Profile;
               <div className='d-flex flex-row titlecard profiletitle fs-4 mb-2'>
                 Accounts
                 <Link
+                 
                   renderAs='button'
                   className='  ms-3 plus'
                   // to="/Register"
