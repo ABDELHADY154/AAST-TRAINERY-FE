@@ -98,7 +98,7 @@ class Profile extends Component {
         <div className="container  ">
           <div className="d-flex flex-row flex-wrap">
             <img
-              className="d-flex flex-column col-2 col-md-1 me-4"
+              className="d-flex flex-column col-2 col-md-1 me-4 profileImage"
               id="profilepp"
               src={this.state.image}
             ></img>
@@ -366,7 +366,7 @@ class Profile extends Component {
                   <Link
                     id="interestpen"
                     renderAs="button"
-                    to={`/Profile/Skills/${id}`}
+                    to={`/Profile/Interest/${id}`}
                   >
                     <BiPencil
                       id="skillnamepen"

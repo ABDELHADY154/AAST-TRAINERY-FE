@@ -103,7 +103,7 @@ export default class Footer extends React.Component {
                 </div>
               </div>
               <div id="About" className="d-flex flex-row ">
-                <p className="">© 2020 AAST Trainery. All Rights Reserved.</p>
+                <p className="">© 2021 AAST Trainery. All Rights Reserved.</p>
               </div>
             </div>
           </div>

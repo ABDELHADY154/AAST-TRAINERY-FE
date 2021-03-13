@@ -103,12 +103,12 @@
 }
 
 .editInput[type="date"]::-webkit-calendar-picker-indicator {
-  background: url("https://api.iconify.design/uil:calender.svg?color=%231e4274")
-    no-repeat center center / contain;
+  background: url("https://api.iconify.design/uil:calender.svg?color=%231e4274") no-repeat
+    center center / contain;
 }
 .editInput[type="month"]::-webkit-calendar-picker-indicator {
-  background: url("https://api.iconify.design/uil:calender.svg?color=%231e4274")
-    no-repeat center center / contain;
+  background: url("https://api.iconify.design/uil:calender.svg?color=%231e4274") no-repeat
+    center center / contain;
 }
 .editLabel {
   font-size: 1.1rem !important;
@@ -310,15 +310,21 @@ ReactStars:active {
     width: 100% !important;
   }
 }
+.uploadBtnn {
+  margin-top: 2em !important;
+  background-color: #fafafa !important;
+}
 
 /* ...........Fathy........... */
 .uploadBtn {
-  margin-top: 2em !important;
+
+  margin-top: 2.15em !important;
+
   background-color: #fafafa !important;
   content: "upload" !important;
   color: #1e4274 !important;
 }
-.uploadfileIcon {
+.uploadIcon {
   width: 24px;
   height: 24px;
   stroke: currentColor;
@@ -326,15 +332,16 @@ ReactStars:active {
   stroke-linecap: round;
   stroke-linejoin: round;
   fill: none;
-  margin-left: auto !important;
+  /* margin-left: auto !important; */
 }
 
 @media (max-width: 768px) {
   .uploadBtn {
-    margin-top: 0rem !important;
+    margin-top: 1rem !important;
   }
 }
-/* .leftMe {
-  padding-right: 0 !important;
-  padding-left: 0 !important;
-} */
+
+
+.closeLabel {
+  margin-right: -60px !important;
+}
