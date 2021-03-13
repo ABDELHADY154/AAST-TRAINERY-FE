@@ -15,6 +15,7 @@ import "react-step-progress-bar/styles.css";
 import { ProgressBar, Step } from "react-step-progress-bar";
 import { BsBookmark } from "react-icons/bs";
 import { IoClose } from "react-icons/io5";
+import { Link } from "react-router-dom";
 
 class Home extends Component {
   constructor() {
@@ -347,8 +348,12 @@ class Home extends Component {
                     </ProgressBar>
                   </div>
                 </div>
-                <div className='col-12 col-md-6 d-flex mt-2 '>
-                  Complete Your General Information
+
+                <div className="col-12 col-md-6 d-flex mt-2 ">
+                  <Link to={`/Profile/General`} className="generalinfolink">
+                    Complete Your General Information
+                  </Link>
+
                 </div>
               </div>
             </div>

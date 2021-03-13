@@ -24,10 +24,12 @@ export default class StudentWorkExp extends Component {
           >
             {this.props.experience_type}
           </div>
+
           <div id='worktag' className=' d-flex flex-row flex-wrap col-3 col-md-5 '></div>
           <div id='hiddenhover' className=' d-flex flex-row col-2 col-md-1 p-0 ms-3'>
             <Link renderAs='button' to={`/Profile/Experiance/${id}`}>
               <BiPencil id='skillnamepen' fill='#cd8930' color='#cd8930' />
+
             </Link>
           </div>
         </div>
