@@ -276,3 +276,19 @@
     width: 100% !important ;
   }
 }
+.generalinfolink {
+  text-decoration: none !important;
+  color: #1e4274 !important;
+}
+.generalinfolink:visited {
+  text-decoration: none !important;
+  color: #1e4274 !important;
+}
+.generalinfolink:active {
+  text-decoration: none !important;
+  color: #1e4274 !important;
+}
+.generalinfolink:hover {
+  text-decoration: none !important;
+  color: #1e4274 !important;
+}

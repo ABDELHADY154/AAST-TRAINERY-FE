@@ -75,11 +75,16 @@ class AuthNav extends React.Component {
 
   render() {
     return (
-      <div className="navBottom">
+      <div className="navBottom pb-1">
         <nav className="navbar navbar-expand-lg navBg fixed-top">
           <div className="container">
             <Link className="navbar-brand mx-2" renderAs="button" to="/Home">
-              <img className="navbar-brand" src={logo} width="170" alt=""></img>
+              <img
+                className="navbar-brand profileImage"
+                src={logo}
+                width="170"
+                alt=""
+              ></img>
             </Link>
             <button
               className="navbar-toggler"
@@ -321,7 +326,7 @@ class AuthNav extends React.Component {
                       <ul class="dropdown-menu profileMenu ">
                         <li className="row profileHeader d-flex justify-content-center">
                           <a
-                            class="dropdown-item text-wrap"
+                            class="dropdown-item "
                             href="/Profile"
                             style={{
                               fontSize: 18,
@@ -335,13 +340,15 @@ class AuthNav extends React.Component {
                                 alt="Avatar"
                                 width="40"
                                 height="40"
-                                className="avatar me-2"
+                                className="avatar me-2 profileImage"
                                 role="menuitem"
                               />
                             ) : (
                               <AvatarLoader />
                             )}
-                            {this.state.fullname}
+                            <span className="nameText text-wrap">
+                              {this.state.fullname}
+                            </span>
                             <br />
                             <span
                               className="text-muted "

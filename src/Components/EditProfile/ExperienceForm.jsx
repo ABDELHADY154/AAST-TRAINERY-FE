@@ -1,17 +1,16 @@
 import React, { Component } from "react";
-// import { Redirect } from "react-router-dom";
 import { axios } from "../../Api/axios";
-// import { Link } from "react-router-dom";
 import { CountryDropdown, RegionDropdown } from "react-country-region-selector";
 import EditNav from "./EditNav";
 import Footer2 from "../Common/Footer2";
-import { Link } from "react-router-dom";
-import { Redirect } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
+import { FiUpload } from "react-icons/fi";
 
 class ExperienceForm extends Component {
   constructor(props) {
     super(props);
-    this.state = { country: "", region: "", error: "" };
+    this.state = { country: "", region: "", error: "", image: "", imageURL: "" };
+    this.handleChange = this.handleChange.bind(this);
   }
   state = {
     startDate: new Date(),
@@ -28,6 +27,13 @@ class ExperienceForm extends Component {
       startDate,
     });
   };
+  handleChange(event) {
+    var filename = event.target.value.replace(/^.*[\\\/]/, "");
+    this.setState({
+      image: URL.createObjectURL(event.target.files[0]),
+      imageURL: filename,
+    });
+  }
   setactive(val) {
     this.setState({ experience: val });
   }
@@ -52,7 +58,7 @@ class ExperienceForm extends Component {
           // console.log(this.state);
         })
         .catch((error) => {
-          if (error.response.data.status === 401) {
+          if (error.response.data.status === 401 || error.response.data.status === 404) {
             sessionStorage.clear("token");
             sessionStorage.clear("status");
             this.setState({ loggedIn: false });
@@ -63,6 +69,7 @@ class ExperienceForm extends Component {
   };
   handleSubmit = async (e) => {
     e.preventDefault();
+    var formBody = new FormData();
     const data = {
       experience_type: this.state.ExperienceType,
       job_title: this.state.JobTitle,
@@ -74,10 +81,32 @@ class ExperienceForm extends Component {
       to: this.state.To,
       cred_url: this.state.Cred_URL,
       currently_work: 1,
+      image: this.state.imageURL ? this.state.imageURL : this.state.image,
     };
+    if (this.state.imageURL) {
+      formBody.append(
+        "image",
+        this.state.imageURL ? this.state.imageURL : this.state.image
+      );
+    }
+    formBody.append("experience_type", data.experience_type);
+    formBody.append("job_title", data.job_title);
+    formBody.append("company_website", data.company_website);
+    formBody.append("company_name", data.company_name);
+    formBody.append("city", data.city);
+    formBody.append("country", data.country);
+    formBody.append("from", data.from);
+    formBody.append("to", data.to);
+    formBody.append("cred_url", data.cred_url);
+    formBody.append("currently_work", data.currently_work);
+
     if (this.props.match.params.id) {
-      return await axios
-        .post(`/W/student/profile/experience/${this.props.match.params.id}`, data)
+      return await axios({
+        method: "post",
+        url: `/W/student/profile/experience/${this.props.match.params.id}`,
+        data: formBody,
+        headers: { "Content-Type": "multipart/form-data" },
+      })
         .then((response) => {
           this.setState({
             done: true,
@@ -107,21 +136,24 @@ class ExperienceForm extends Component {
           console.log(error);
         });
     } else {
-      return await axios
-        .post("/W/student/profile/experience", data)
+      return await axios({
+        method: "post",
+        url: "/W/student/profile/experience",
+        data: formBody,
+        headers: { "Content-Type": "multipart/form-data" },
+      })
         .then((response) => {
           this.setState({
             done: true,
           });
         })
         .catch((error) => {
-          if (error.response.data.status === 401) {
+          if (error.response.data.status === 401 || error.response.data.status === 404) {
             sessionStorage.clear("token");
             sessionStorage.clear("status");
             this.setState({ loggedIn: false });
             window.location.reload();
           }
-          console.log(error);
           this.setState({
             error: {
               ExperienceTypeErr: error.response.data.errors.experience_type,
@@ -341,17 +373,27 @@ class ExperienceForm extends Component {
                   placeholder={this.state.Cred_URL}
                 />
               </div>
-              <div class='col-lg-5 col-11 col-md-5 col-sm-12 col-xs-12 '>
-                <label for='inputGPA' className='form-label editLabel'>
-                  uplaod{" "}
+              <div className='col-lg-5 col-11 col-md-5 col-sm-12 col-xs-12 UploadBtnDiv'>
+                <label
+                  htmlFor='file'
+                  className='form-label editLabel uploadBtnn d-flex p-1'
+                >
+                  Upload
+                  <FiUpload className='icon justify-content-end align-items-end ' />
+                  <input
+                    hidden
+                    type='file'
+                    id='file'
+                    accept=' image/*,file_extension/
+                    .crt,.cer,.ca-bundle,.p7b,.p7c,.p7s,.pem,.pdf'
+                    onChange={(e) =>
+                      this.setState({
+                        imageURL: e.target.files[0],
+                        image: e.target.files[0],
+                      })
+                    }
+                  />
                 </label>
-                <input
-                  type='text'
-                  className='form-control editInput'
-                  id='fullname'
-                  placeholder='Please enter your full name'
-                  onChange={(e) => this.setState({ password: e.target.value })}
-                />
               </div>
 
               {this.props.match.params.id ? (
@@ -370,9 +412,9 @@ class ExperienceForm extends Component {
                 </div>
               ) : (
                 <div class='col-12 d-flex justify-content-end'>
-                  <button class='btn me-2 my-2 cancelBtn shadow-none' href='/'>
+                  <Link class='btn me-2 my-2 cancelBtn shadow-none' to='/Profile'>
                     Cancel
-                  </button>
+                  </Link>
                   <button type='submit' class='btn doneBtn shadow-none my-2 '>
                     Add
                   </button>
