@@ -34,7 +34,7 @@ class Landing extends React.Component {
     }
   }
   async componentDidMount() {
-    await axios.get("/W/landingCount").then(data => {
+    await axios.get("/W/landingCount").then((data) => {
       this.setState({
         loading: true,
         students: data.data.response.data.students,

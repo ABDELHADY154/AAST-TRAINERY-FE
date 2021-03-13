@@ -292,3 +292,8 @@
   text-decoration: none !important;
   color: #1e4274 !important;
 }
+@media (min-width: 767) and (max-width: 991) {
+  .tagsipad {
+    margin-right: 52% !important;
+  }
+}

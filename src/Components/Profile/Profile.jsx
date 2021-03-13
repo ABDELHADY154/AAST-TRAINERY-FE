@@ -12,7 +12,6 @@ import StudentSkill from "./StudentSkill/StudentSkill";
 import Studentinterest from "./StudentSkill/StudentInterest";
 import StudentLanguage from "./StudentSkill/StudentLanguage";
 import StudentReviews from "./StudentReviews/StudentReviews";
-import StudentAccounts from "./StudentAccount/StudentAccount";
 import Footer2 from "../Common/Footer2";
 import "../../layout/Home.css";
 import { FaFacebookF } from "react-icons/fa";
