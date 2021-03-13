@@ -34,7 +34,7 @@ class Landing extends React.Component {
     }
   }
   async componentDidMount() {
-    await axios.get("/W/landingCount").then(data => {
+    await axios.get("/W/landingCount").then((data) => {
       this.setState({
         loading: true,
         students: data.data.response.data.students,
@@ -216,7 +216,7 @@ class Landing extends React.Component {
                         Download Trainery and Start Training
                       </span>
                     </div>
-                    <div className="my-3 d-flex flex-row ">
+                    <div className="my-3 d-flex flex-row flex-wrap">
                       <a href="#">
                         <img className="mx-1" src={google} height="40" />
                       </a>
