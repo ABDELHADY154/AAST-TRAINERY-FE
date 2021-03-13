@@ -1,5 +1,3 @@
-/** @format */
-
 import React, { Component } from "react";
 import logo from "../../Components/assests/icons/White-Logo.png";
 import {
