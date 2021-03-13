@@ -77,13 +77,19 @@
     color: #cd8930 !important;
     transition: 300ms !important;
   }
-  #hiddenhover {
+  .skillnamepencil {
     color: #cd8930 !important;
     opacity: 100% !important;
     transition: 300ms !important;
   }
   #education {
     border-top: solid 3px #1e4274 !important;
+    transition: 300ms !important;
+  }
+  .skillnamepencil {
+    fill: #cd8930 !important;
+    color: #cd8930 !important;
+    opacity: 100% !important;
     transition: 300ms !important;
   }
 }
@@ -103,7 +109,7 @@
     color: #cd8930 !important;
     transition: 300ms !important;
   }
-  #hiddenhover {
+  .skillnamepencil {
     color: #cd8930 !important;
     opacity: 100% !important;
     transition: 300ms !important;
@@ -112,13 +118,25 @@
     border-top: solid 3px #1e4274 !important;
     transition: 300ms !important;
   }
+  .skillnamepencil {
+    fill: #cd8930 !important;
+    color: #cd8930 !important;
+    opacity: 100% !important;
+    transition: 300ms !important;
+  }
 }
 
 @media screen and (max-width: 1025px) {
-  #hiddenhover {
+  #skillnamepen {
     overflow: visible !important;
     display: flex !important;
     flex-flow: row !important;
+  }
+  .skillnamepencil {
+    fill: #cd8930 !important;
+    color: #cd8930 !important;
+    opacity: 100% !important;
+    transition: 300ms !important;
   }
 
   .titlecard {
@@ -152,7 +170,7 @@
     color: #cd8930 !important;
     transition: 300ms !important;
   }
-  #hiddenhover {
+  .skillnamepencil {
     color: #cd8930 !important;
     opacity: 100% !important;
     transition: 300ms !important;
@@ -178,13 +196,19 @@
     color: #cd8930 !important;
     transition: 300ms !important;
   }
-  #hiddenhover {
+  .skillnamepencil {
     color: #cd8930 !important;
     opacity: 100% !important;
     transition: 300ms !important;
   }
   #education {
     border-top: solid 3px #1e4274 !important;
+    transition: 300ms !important;
+  }
+  .skillnamepencil {
+    fill: #cd8930 !important;
+    color: #cd8930 !important;
+    opacity: 100% !important;
     transition: 300ms !important;
   }
 }
@@ -235,13 +259,18 @@
   color: #cd8930;
   text-decoration: none !important;
 }
-
-#hiddenhover {
-  opacity: 0%;
-  width: 100%;
-  height: 0;
+.skillnamepencil {
+  fill: transparent;
+  color: transparent;
   transition: 300ms;
 }
+#education:hover .skillnamepencil {
+  fill: #cd8930 !important;
+  color: #cd8930 !important;
+  opacity: 100% !important;
+  transition: 300ms !important;
+}
+
 #education {
   border-top: solid 0.1px #1e4274;
   transition: 300ms;
@@ -250,11 +279,7 @@
   color: #cd8930;
   transition: 300ms;
 }
-#education:hover #hiddenhover {
-  color: #cd8930;
-  opacity: 100%;
-  transition: 300ms;
-}
+
 #education:hover {
   border-top: solid 4px #1e4274;
   transition: 300ms;
@@ -296,31 +321,13 @@ body {
 }
 
 .carousel {
-  background: #eee;
+  background: #fff;
 }
 
-.carousel-cell {
-  width: 66%;
-  height: 200px;
-  margin-right: 10px;
-  background: #8c8;
-  border-radius: 5px;
-  counter-increment: gallery-cell;
-}
-
-/* cell number */
-.carousel-cell:before {
-  display: block;
-  text-align: center;
-  content: counter(gallery-cell);
-  line-height: 200px;
-  font-size: 80px;
-  color: white;
-}
 #interestpen {
   width: 1% !important;
-  margin-left: 0.9% !important;
-  font-size: 1.1em;
+  margin-left: 1.2% !important;
+  font-size: 1.2em;
 }
 #lightfont:hover .skillname {
   color: #cd8930 !important;
@@ -331,4 +338,7 @@ body {
 }
 #lightfont {
   font-family: SF light !important;
+}
+#imgicon {
+  width: 3.3em !important;
 }

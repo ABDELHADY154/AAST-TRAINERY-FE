@@ -35,7 +35,12 @@ export default class StudentWorkExp extends Component {
             className=" d-flex flex-row  col-2 col-md-1 p-0 ms-3 "
           >
             <Link renderAs="button" to={`/Profile/Skills/${id}`}>
-              <BiPencil id="skillnamepen" fill="#cd8930" color="#cd8930" />
+              <BiPencil
+                id="skillnamepen"
+                className="skillnamepencil"
+                fill="#cd8930"
+                color="#cd8930"
+              />
             </Link>
           </div>
         </div>

@@ -106,6 +106,7 @@ class GeneralForm extends Component {
     e.preventDefault();
     var formBody = new FormData();
 
+
     const data = {
       image: this.state.imageURL,
     };
@@ -171,6 +172,7 @@ class GeneralForm extends Component {
   render() {
     const city = this.state.city;
     if (this.state.loggedIn === false) {
+
       return <Redirect to="/Profile" push />;
     }
     // console.log(this.state.imageURL);
@@ -204,6 +206,7 @@ class GeneralForm extends Component {
                       type="file"
                       className="imgUploadBtn"
                       accept="image/x-png,image/gif,image/jpeg"
+
                       onChange={(e) =>
                         this.setState({
                           imageURL: e.target.files[0],
