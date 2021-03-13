@@ -1,35 +1,35 @@
 import React, { Component, useEffect } from "react";
 import ReactStars from "react-rating-stars-component";
 import { render } from "react-dom";
-import ReactTagInput from "@pathofdev/react-tag-input";
 import "@pathofdev/react-tag-input/build/index.css";
 import ReactDOM from "react-dom";
 import "../../layout/EditInfo.css";
 import Footer2 from "../Common/Footer2";
 import { Redirect } from "react-router-dom";
 import { axios } from "../../Api/axios";
-// import { Link } from "react-router-dom";
 import EditNav from "./EditNav";
 
-class Skills extends Component {
+// import { Link } from "react-router-dom";
+
+class Language extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      skillId: 0,
-      skill: "",
-      yearsExp: 0,
+      language: "",
+      id: 0,
+      level: 0,
       error: {},
     };
   }
   async componentDidMount() {
     if (this.props.match.params.id) {
       await axios
-        .get(`/W/student/profile/skill/${this.props.match.params.id}`)
+        .get(`/W/student/profile/language/${this.props.match.params.id}`)
         .then((res) => {
           this.setState({
-            skill: res.data.response.data.skill_name,
-            skillId: res.data.response.data.id,
-            yearsExp: res.data.response.data.years_of_exp,
+            language: res.data.response.data.language,
+            level: res.data.response.data.level,
+            id: res.data.response.data.id,
           });
           console.log(res.data.response.data);
         })
@@ -42,24 +42,22 @@ class Skills extends Component {
           }
         });
     }
-
     console.log(this.props.match.params.id);
   }
-  handleSubmitSkills = async (e) => {
+  handleSubmitLanguage = async (e) => {
     e.preventDefault();
     const data = {
-      skill_name: this.state.skill,
-      id: this.state.skillId,
-      years_of_exp: this.state.yearsExp,
+      language: this.state.language,
+      level: this.state.level,
+      id: this.state.id,
     };
     if (this.props.match.params.id) {
-      return await axios
-        .put(`/W/student/profile/skill/${this.props.match.params.id}`, data)
+      await axios
+        .put(`/W/student/profile/language/${this.props.match.params.id}`, data)
         .then((response) => {
           this.setState({
             loggedIn: true,
           });
-          // console.log(this.response.data);
         })
         .catch((error) => {
           if (error.response.data.status === 401) {
@@ -70,19 +68,20 @@ class Skills extends Component {
           }
           this.setState({
             error: {
-              skillErr: error.response.data.errors.skill_name,
-              yearsExpErr: error.response.data.errors.years_of_exp,
-              skillIdErr: error.response.data.errors.id,
+              languageErr: error.response.data.errors.language,
+              LanguageLevelErr: error.response.data.errors.level,
+              LanguageIdErr: error.response.data.errors.id,
             },
           });
         });
     } else {
-      return await axios
-        .post("/W/student/profile/skill", data)
+      await axios
+        .post("/W/student/profile/language", data)
         .then((response) => {
           this.setState({
             loggedIn: true,
           });
+          console.log(response.data.response.data);
         })
         .catch((error) => {
           if (error.response.data.status === 401) {
@@ -93,18 +92,18 @@ class Skills extends Component {
           }
           this.setState({
             error: {
-              skillErr: error.response.data.errors.skill_name,
-              yearsExpErr: error.response.data.errors.years_of_exp,
-              skillIdErr: error.response.data.errors.id,
+              languageErr: error.response.data.errors.language,
+              LanguageLevelErr: error.response.data.errors.level,
+              LanguageIdErr: error.response.data.errors.id,
             },
           });
-          // console.log(this.state.error);
+          console.log(this.state.error);
         });
     }
   };
-  handleDelete = async (e) => {
+  handleDeleteLanguage = async (e) => {
     await axios
-      .delete(`/W/student/profile/skill/${this.props.match.params.id}`)
+      .delete(`/W/student/profile/language/${this.props.match.params.id}`)
       .then((response) => {
         this.setState({
           loggedIn: true,
@@ -128,49 +127,57 @@ class Skills extends Component {
     return (
       <div>
         <div className="container ">
-          <EditNav setactive={"Skills"} />
+          <EditNav setactive={"Language"} />
           <div>
-            <form className="row g-3 mb-3" onSubmit={this.handleSubmitSkills}>
+            <form className="row g-3 mb-3" onSubmit={this.handleSubmitLanguage}>
+              <hr className="hrSkills ms-2 col-lg-10 col-11 col-md-10 col-sm-12 col-xs-12" />
+
               <div className="col-lg-10 col-11 col-md-10 col-sm-12 col-xs-12">
-                <label for="quantity" className="form-label editLabel ">
-                  Skills
+                <label for="inputSkill" className="form-label editLabel ">
+                  Language
                 </label>
                 <input
                   type="text"
                   className={
-                    this.state.error && this.state.error.nameErr
+                    this.state.error && this.state.error.languageErr
                       ? "form-control editInput wrong"
                       : "form-control editInput "
                   }
-                  id="fullname"
-                  placeholder="Please enter your Skills "
-                  onChange={(e) => this.setState({ skill: e.target.value })}
-                  value={this.state.skill}
+                  id="language"
+                  placeholder="Please enter your languages "
+                  onChange={(e) => this.setState({ language: e.target.value })}
+                  value={this.state.language}
                 />
-                {this.state.error && this.state.error.skillErr ? (
-                  <p className="editerror">{this.state.error.skillErr}</p>
+                {this.state.error && this.state.error.LanguageLevelErr ? (
+                  <p className="editerror">
+                    {this.state.error.LanguageLevelErr}
+                  </p>
                 ) : (
                   ""
                 )}
-              </div>
-              <div className="col-lg-10 col-11 col-md-10 col-sm-12 col-xs-12 ">
-                <label for="quantity" className="form-label editLabel ">
-                  Years of Experiance
+                <label for="inputRegNum" className="form-label editLabel mt-3">
+                  Level
                 </label>
-                <input
-                  type="number"
-                  id="quantity"
+                <ReactStars
+                  count={5}
+                  value={this.state.level}
                   className={
-                    this.state.error && this.state.error.nameErr
-                      ? "form-control editInput wrong"
-                      : "form-control editInput "
+                    this.state.error && this.state.error.LanguageLevelErr
+                      ? "wrong"
+                      : " "
                   }
-                  placeholder="Please enter your years of Experience"
-                  onChange={(e) => this.setState({ yearsExp: e.target.value })}
-                  value={this.state.yearsExp}
+                  onChange={(level) => {
+                    this.setState({ level: `${level}` });
+                    console.log(`${level}`);
+                  }}
+                  size={28}
+                  activeColor="#F2A23A"
+                  edit={true}
                 />
-                {this.state.error && this.state.error.yearsExpErr ? (
-                  <p className="editerror">{this.state.error.yearsExpErr}</p>
+                {this.state.error && this.state.error.LanguageLevelErr ? (
+                  <p className="editerror">
+                    {this.state.error.LanguageLevelErr}
+                  </p>
                 ) : (
                   ""
                 )}
@@ -178,7 +185,7 @@ class Skills extends Component {
               {this.props.match.params.id ? (
                 <div class="col-lg-10 col-11 col-md-10 col-sm-12 col-xs-12 d-flex justify-content-end">
                   <button
-                    onClick={() => this.handleDelete()}
+                    onClick={() => this.handleDeleteLanguage()}
                     type="submit"
                     class="btn deleteBtn me-2 shadow-none "
                   >
@@ -210,4 +217,4 @@ class Skills extends Component {
     );
   }
 }
-export default Skills;
+export default Language;

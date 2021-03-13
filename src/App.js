@@ -16,6 +16,8 @@ import CoursesForm from "./Components/EditProfile/CoursesForm";
 import ExperienceForm from "./Components/EditProfile/ExperienceForm";
 import GeneralForm from "./Components/EditProfile/GeneralForm";
 import SkillsForm from "./Components/EditProfile/SkillsForm";
+import Interest from "./Components/EditProfile/InterestForm";
+import Language from "./Components/EditProfile/LanguageForm";
 import { AuthRoute } from "./Components/Auth/AuthRoute";
 
 // import Skills from "./EditProfile/Skills";
@@ -38,7 +40,7 @@ class App extends React.Component {
     }
   }
 
-  setUser = data => {
+  setUser = (data) => {
     return this.setState({ loggedIn: data });
   };
 
@@ -55,13 +57,11 @@ class App extends React.Component {
             <div className="auth-inner">
               <Switch>
                 {/* <== Home for Guest */}
-
                 <Route
                   exact
                   path="/"
                   component={() => <Landing loggedIn={this.state.loggedIn} />}
                 />
-
                 <Route
                   exact
                   path="/Login"
@@ -82,13 +82,11 @@ class App extends React.Component {
                 />
                 <AuthRoute exact path="/Profile" component={Profile} />
                 {/* <AuthRoute exact path="/GeneralInfo" component={GeneralInfo} /> */}
-
                 <AuthRoute
                   exact
                   path="/Profile/General"
                   component={GeneralForm}
                 />
-
                 <AuthRoute
                   exact
                   path="/Profile/Education"
@@ -99,7 +97,6 @@ class App extends React.Component {
                   path="/Profile/Education/:id"
                   component={EducationForm}
                 />
-
                 <AuthRoute
                   exact
                   path="/Profile/Experiance"
@@ -120,7 +117,6 @@ class App extends React.Component {
                   path="/Profile/Courses/:id"
                   component={CoursesForm}
                 />
-
                 <AuthRoute
                   exact
                   path="/Profile/Skills"
@@ -130,6 +126,27 @@ class App extends React.Component {
                   exact
                   path="/Profile/Skills/:id"
                   component={SkillsForm}
+                />
+                <AuthRoute
+                  exact
+                  path="/Profile/Language"
+                  component={Language}
+                />
+                <AuthRoute
+                  exact
+                  path="/Profile/Language/:id"
+                  component={Language}
+                />
+                <AuthRoute
+                  exact
+                  path="/Profile/Interest/:id"
+                  component={Interest}
+                  render={(Interests) => <Interest {...Interests} />}
+                />
+                <AuthRoute
+                  exact
+                  path="/Profile/Interest"
+                  component={Interest}
                 />
                 <AuthRoute
                   exact
