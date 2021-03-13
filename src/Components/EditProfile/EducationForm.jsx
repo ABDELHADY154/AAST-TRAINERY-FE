@@ -34,6 +34,7 @@ export default class EducationForm extends Component {
     this.setState({
       image: URL.createObjectURL(event.target.files[0]),
       imageURL: filename,
+
     });
   }
   handleDelete = async (e) => {

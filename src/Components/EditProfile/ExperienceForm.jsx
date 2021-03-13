@@ -9,7 +9,7 @@ import { FiUpload } from "react-icons/fi";
 class ExperienceForm extends Component {
   constructor(props) {
     super(props);
-    this.state = { country: "", region: "", error: "" };
+    this.state = { country: "", region: "", error: "", image: "", imageURL: "" };
     this.handleChange = this.handleChange.bind(this);
   }
   state = {
@@ -27,6 +27,13 @@ class ExperienceForm extends Component {
       startDate,
     });
   };
+  handleChange(event) {
+    var filename = event.target.value.replace(/^.*[\\\/]/, "");
+    this.setState({
+      image: URL.createObjectURL(event.target.files[0]),
+      imageURL: filename,
+    });
+  }
   setactive(val) {
     this.setState({ experience: val });
   }
@@ -62,6 +69,7 @@ class ExperienceForm extends Component {
   };
   handleSubmit = async (e) => {
     e.preventDefault();
+    var formBody = new FormData();
     const data = {
       experience_type: this.state.ExperienceType,
       job_title: this.state.JobTitle,
@@ -73,10 +81,32 @@ class ExperienceForm extends Component {
       to: this.state.To,
       cred_url: this.state.Cred_URL,
       currently_work: 1,
+      image: this.state.imageURL ? this.state.imageURL : this.state.image,
     };
+    if (this.state.imageURL) {
+      formBody.append(
+        "image",
+        this.state.imageURL ? this.state.imageURL : this.state.image
+      );
+    }
+    formBody.append("experience_type", data.experience_type);
+    formBody.append("job_title", data.job_title);
+    formBody.append("company_website", data.company_website);
+    formBody.append("company_name", data.company_name);
+    formBody.append("city", data.city);
+    formBody.append("country", data.country);
+    formBody.append("from", data.from);
+    formBody.append("to", data.to);
+    formBody.append("cred_url", data.cred_url);
+    formBody.append("currently_work", data.currently_work);
+
     if (this.props.match.params.id) {
-      return await axios
-        .post(`/W/student/profile/experience/${this.props.match.params.id}`, data)
+      return await axios({
+        method: "post",
+        url: `/W/student/profile/experience/${this.props.match.params.id}`,
+        data: formBody,
+        headers: { "Content-Type": "multipart/form-data" },
+      })
         .then((response) => {
           this.setState({
             done: true,
@@ -106,21 +136,24 @@ class ExperienceForm extends Component {
           console.log(error);
         });
     } else {
-      return await axios
-        .post("/W/student/profile/experience", data)
+      return await axios({
+        method: "post",
+        url: "/W/student/profile/experience",
+        data: formBody,
+        headers: { "Content-Type": "multipart/form-data" },
+      })
         .then((response) => {
           this.setState({
             done: true,
           });
         })
         .catch((error) => {
-          if (error.response.data.status === 401) {
+          if (error.response.data.status === 401 || error.response.data.status === 404) {
             sessionStorage.clear("token");
             sessionStorage.clear("status");
             this.setState({ loggedIn: false });
             window.location.reload();
           }
-          console.log(error);
           this.setState({
             error: {
               ExperienceTypeErr: error.response.data.errors.experience_type,
