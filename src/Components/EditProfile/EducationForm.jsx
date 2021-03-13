@@ -9,7 +9,14 @@ import EditNav from "./EditNav";
 export default class EducationForm extends Component {
   constructor(props) {
     super(props);
-    this.state = { country: "", region: "", image: "", imageURL: "" };
+    this.state = {
+      country: "",
+      region: "",
+      image: "",
+      imageURL: "",
+      SchoolName: "",
+      SchoolUrl: "",
+    };
     this.handleChange = this.handleChange.bind(this);
   }
 
@@ -34,7 +41,6 @@ export default class EducationForm extends Component {
     this.setState({
       image: URL.createObjectURL(event.target.files[0]),
       imageURL: filename,
-
     });
   }
   handleDelete = async (e) => {
@@ -65,7 +71,7 @@ export default class EducationForm extends Component {
       await axios
         .get(`/W/student/profile/education/${this.props.match.params.id}`)
         .then((res) => {
-          console.log(res);
+          // console.log(res.data.response.data.city);
           this.setState({
             id: res.data.response.data.id,
             SchoolName: res.data.response.data.school_name,
@@ -101,9 +107,9 @@ export default class EducationForm extends Component {
       cred_url: this.state.SchoolUrl,
       image: this.state.imageURL ? this.state.imageURL : this.state.image,
     };
-    if (this.state.imageURL) {
+    if (this.state.imageURL || this.state.image) {
       formBody.append(
-        "image",
+        "cred",
         this.state.imageURL ? this.state.imageURL : this.state.image
       );
     }
@@ -112,8 +118,9 @@ export default class EducationForm extends Component {
     formBody.append("city", data.city);
     formBody.append("from", data.from);
     formBody.append("to", data.to);
-    formBody.append("cred_url", data.cred_url);
-
+    if (this.state.SchoolUrl !== "") {
+      formBody.append("cred_url", data.cred_url);
+    }
     if (this.props.match.params.id) {
       return await axios({
         method: "post",
@@ -181,9 +188,10 @@ export default class EducationForm extends Component {
     this.setState({ Education: val });
   }
   render() {
+    console.log(this.state.region);
     const { country, region } = this.state;
     if (this.state.loggedIn === false) {
-      return <Redirect to='/Profile' />;
+      return <Redirect to='/Login' />;
     }
     if (this.state.done === true) {
       return <Redirect to='/Profile' />;
@@ -196,7 +204,7 @@ export default class EducationForm extends Component {
 
           <form class='g-3 mb-3 text-left ' onSubmit={this.handleSubmit}>
             <div className=' row'>
-              <div class='col-lg-10 col-11 col-md-10 col-sm-12 col-xs-12 '>
+              <div class='col-lg-10 col-11 col-md-10 col-sm-12 col-xs-12 mt-sm-0 mt-4'>
                 <label for='inputfullname' class='form-label editLabel '>
                   School Name <span className='red'>*</span>
                 </label>
@@ -241,7 +249,7 @@ export default class EducationForm extends Component {
                 </label>
                 <RegionDropdown
                   country={country}
-                  value={region}
+                  value={this.state.region ? this.state.region : region}
                   onChange={(val) => this.selectRegion(val)}
                   className={
                     this.state.error && this.state.error.cityErr
@@ -297,7 +305,7 @@ export default class EducationForm extends Component {
                   className='form-control editInput'
                   id='fullname'
                   onChange={(e) => this.setState({ SchoolUrl: e.target.value })}
-                  placeholder={this.state.cred_url}
+                  value={this.state.cred_url ? this.state.cred_url : ""}
                 />
               </div>
               <div className='col-lg-5 col-11 col-md-5 col-sm-12 col-xs-12 UploadBtnDiv'>
@@ -324,7 +332,7 @@ export default class EducationForm extends Component {
               </div>
 
               {this.props.match.params.id ? (
-                <div class='col-12 d-flex justify-content-end '>
+                <div class='col-lg-10 col-11 col-md-10 col-sm-12 col-xs-12 d-flex justify-content-end mt-5 '>
                   <button
                     // type={this.handleDelete}
                     class='btn deleteBtn me-2 my-2  shadow-none  '
@@ -338,7 +346,7 @@ export default class EducationForm extends Component {
                   </button>
                 </div>
               ) : (
-                <div class='col-12 d-flex justify-content-end'>
+                <div class='col-lg-10 col-11 col-md-10 col-sm-12 col-xs-12 d-flex justify-content-end mt-5'>
                   <Link class='btn me-2 my-2 cancelBtn shadow-none' to='/Profile'>
                     Cancel
                   </Link>

@@ -9,7 +9,14 @@ import { FiUpload } from "react-icons/fi";
 class ExperienceForm extends Component {
   constructor(props) {
     super(props);
-    this.state = { country: "", region: "", error: "", image: "", imageURL: "" };
+    this.state = {
+      country: "",
+      region: "",
+      error: "",
+      image: "",
+      imageURL: "",
+      currently_work: "",
+    };
     this.handleChange = this.handleChange.bind(this);
   }
   state = {
@@ -80,12 +87,12 @@ class ExperienceForm extends Component {
       from: this.state.From,
       to: this.state.To,
       cred_url: this.state.Cred_URL,
-      currently_work: 1,
+      currently_work: this.state.currently_work === "on" ? 1 : 0,
       image: this.state.imageURL ? this.state.imageURL : this.state.image,
     };
-    if (this.state.imageURL) {
+    if (this.state.imageURL || this.state.image) {
       formBody.append(
-        "image",
+        "cred_url",
         this.state.imageURL ? this.state.imageURL : this.state.image
       );
     }
@@ -197,13 +204,16 @@ class ExperienceForm extends Component {
     if (this.state.done === true) {
       return <Redirect to='/Profile' />;
     }
+
+    // console.log(this.state.currently_work);
+
     return (
       <div>
         <div className='container '>
           <EditNav setactive={"experience"} />
           <form class='g-3 mb-3 text-left ' onSubmit={this.handleSubmit}>
             <div className=' row'>
-              <div class='col-lg-10 col-11 col-md-10 col-sm-12 col-xs-12'>
+              <div class='col-lg-10 col-11 col-md-10 col-sm-12 col-xs-12 mt-sm-0 mt-4'>
                 <label for='inputfullname' class='form-label editLabel '>
                   Experience Type
                   <span className='red'>*</span>
@@ -343,7 +353,22 @@ class ExperienceForm extends Component {
                   value={this.state.From ? this.state.From : ""}
                 />
                 <p className='red'>{this.state.error ? this.state.error.FromErr : ""}</p>
+
+                <div className=''>
+                  <input
+                    type='checkbox'
+                    id='vehicle1'
+                    name='vehicle1'
+                    className='radio'
+                    onChange={(e) => this.setState({ currently_work: e.target.value })}
+                  />
+                  <label forhtml='vehicle1' className='mx-2 my-3 radio'>
+                    {" "}
+                    currently work here
+                  </label>
+                </div>
               </div>
+
               <div class='col-lg-5 col-11 col-md-5 col-sm-12 col-xs-12'>
                 <label for='bdaymonth' className='form-label editLabel '>
                   To <span className='red'>*</span>
@@ -361,6 +386,7 @@ class ExperienceForm extends Component {
                 />
                 <p className='red'>{this.state.error ? this.state.error.ToErr : ""}</p>
               </div>
+
               <div class='col-lg-5 col-11 col-md-5 col-sm-12 col-xs-12 '>
                 <label for='inputTerm' className='form-label editLabel'>
                   Credential URL <span className='red'>*</span>
@@ -397,7 +423,7 @@ class ExperienceForm extends Component {
               </div>
 
               {this.props.match.params.id ? (
-                <div class='col-12 d-flex justify-content-end'>
+                <div class='col-lg-10 col-11 col-md-10 col-sm-12 col-xs-12 d-flex justify-content-end mt-5'>
                   <button
                     // type={this.handleDelete}
                     class='btn deleteBtn me-2 my-2  shadow-none  '
@@ -411,7 +437,7 @@ class ExperienceForm extends Component {
                   </button>
                 </div>
               ) : (
-                <div class='col-12 d-flex justify-content-end'>
+                <div class='col-lg-10 col-11 col-md-10 col-sm-12 col-xs-12 d-flex justify-content-end mt-5'>
                   <Link class='btn me-2 my-2 cancelBtn shadow-none' to='/Profile'>
                     Cancel
                   </Link>
