@@ -9,13 +9,13 @@ class AccountsForm extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      website: null,
-      facebook: null,
-      instagram: null,
-      youtube: null,
-      linkedin: null,
-      behance: null,
-      github: null,
+      WebsitE: "",
+      facebooK: "",
+      instagraM: "",
+      youtubE: "",
+      linkediN: "",
+      behancE: "",
+      githuB: "",
     };
   }
   //get list
@@ -25,7 +25,14 @@ class AccountsForm extends Component {
       .then((aList) => {
         console.log(aList.data.response.data);
         this.setState({
-          accounts: aList.data.response.data,
+          WebsitE: aList.data.response.data.website,
+          facebooK: aList.data.response.data.facebook,
+          instagraM: aList.data.response.data.instagram,
+          youtubE: aList.data.response.data.youtube,
+
+          linkediN: aList.data.response.data.linkedin,
+          behancE: aList.data.response.data.behance,
+          githuB: aList.data.response.data.github,
         });
         console.log(aList);
       })
@@ -37,29 +44,26 @@ class AccountsForm extends Component {
   handleSubmit = async (e) => {
     e.preventDefault();
     const data = {
-      id: this.state.id,
-      website: this.state.website,
-      facebook: this.state.facebook,
-      instagram: this.state.instagram,
-      youtube: this.state.youtube,
-      linkedin: this.state.linkedin,
-      behance: this.state.behance,
-      github: this.state.github,
+      website: this.state.WebsitE,
+      facebook: this.state.facebooK,
+      instagram: this.state.instagraM,
+      youtube: this.state.youtubE,
+      linkedin: this.state.linkediN,
+      behance: this.state.behancE,
+      github: this.state.githuB,
     };
     return await axios
       .post("/W/student/profile/account")
       .then((res) => {
         console.log(res);
         this.setState({
-          id: res.data.response.data.id,
-
-          website: res.data.response.data.website,
-          facebook: res.data.response.data.facebook,
-          instagram: res.data.response.data.instagram,
-          youtube: res.data.response.data.youtube,
-          linkedin: res.data.response.data.linkedin,
-          behance: res.data.response.data.behance,
-          github: res.data.response.data.github,
+          WebsitE: res.data.response.data.website,
+          facebooK: res.data.response.data.facebook,
+          instagraM: res.data.response.data.instagram,
+          youtubE: res.data.response.data.youtube,
+          linkediN: res.data.response.data.linkedin,
+          behancE: res.data.response.data.behance,
+          githuB: res.data.response.data.github,
         });
         console.log(res.data.response.data);
       })
@@ -68,7 +72,7 @@ class AccountsForm extends Component {
       });
   };
   render() {
-    console.log(this.state.facebook);
+    console.log(this.state.facebooK);
     return (
       <div>
         {" "}
@@ -140,13 +144,13 @@ class AccountsForm extends Component {
                 Website
               </label>
               <input
-                value={this.state.website ? this.state.website : ""}
+                value={this.state.WebsitE ? this.state.WebsitE : ""}
                 type="text"
                 className="col-lg-5 
                col-11 col-md-5 col-sm-12 col-xs-12 editInput "
                 // id="fullname"
                 placeholder="URL"
-                onChange={(e) => this.setState({ website: e.target.value })}
+                onChange={(e) => this.setState({ WebsitE: e.target.value })}
               />
             </div>
             <div className="row g-0 mb-3 ">
@@ -154,13 +158,13 @@ class AccountsForm extends Component {
                 Facebook
               </label>
               <input
-                value={this.state.facebook ? this.state.facebook : ""}
+                value={this.state.facebooK ? this.state.facebooK : ""}
                 type="text"
                 className="col-lg-5 
                col-11 col-md-5 col-sm-12 col-xs-12 editInput "
                 // id="fullname"
                 placeholder="URL"
-                onChange={(e) => this.setState({ facebook: e.target.value })}
+                onChange={(e) => this.setState({ facebooK: e.target.value })}
               />
             </div>
             <div className="row g-0 mb-3 ">
@@ -168,13 +172,13 @@ class AccountsForm extends Component {
                 Instagram
               </label>
               <input
-                value={this.state.instagram ? this.state.instagram : ""}
+                value={this.state.instagraM ? this.state.instagraM : ""}
                 type="text"
                 className="col-lg-5 
                col-11 col-md-5 col-sm-12 col-xs-12 editInput "
                 // id="fullname"
                 placeholder="URL"
-                onChange={(e) => this.setState({ instagram: e.target.value })}
+                onChange={(e) => this.setState({ instagraM: e.target.value })}
               />
             </div>
             <div className="row g-0 mb-3 ">
@@ -182,13 +186,13 @@ class AccountsForm extends Component {
                 Youtube
               </label>
               <input
-                value={this.state.youtube ? this.state.youtube : ""}
+                value={this.state.youtubE ? this.state.youtubE : ""}
                 type="text"
                 className="col-lg-5 
                col-11 col-md-5 col-sm-12 col-xs-12 editInput "
                 // id="fullname"
                 placeholder="URL"
-                onChange={(e) => this.setState({ youtube: e.target.value })}
+                onChange={(e) => this.setState({ youtubE: e.target.value })}
               />
             </div>
             <div className="row g-0 mb-3 ">
@@ -196,13 +200,13 @@ class AccountsForm extends Component {
                 LinkedIn
               </label>
               <input
-                value={this.state.linkedin ? this.state.linkedin : ""}
+                value={this.state.linkediN ? this.state.linkediN : ""}
                 type="text"
                 className="col-lg-5 
                col-11 col-md-5 col-sm-12 col-xs-12 editInput "
                 // id="fullname"
                 placeholder="URL"
-                onChange={(e) => this.setState({ linkedin: e.target.value })}
+                onChange={(e) => this.setState({ linkediN: e.target.value })}
               />
             </div>
             <div className="row g-0 mb-3 ">
@@ -210,13 +214,13 @@ class AccountsForm extends Component {
                 Behance
               </label>
               <input
-                value={this.state.behance ? this.state.behance : ""}
+                value={this.state.behancE ? this.state.behancE : ""}
                 type="text"
                 className="col-lg-5 
                col-11 col-md-5 col-sm-12 col-xs-12 editInput "
                 // id="fullname"
                 placeholder="URL"
-                onChange={(e) => this.setState({ behance: e.target.value })}
+                onChange={(e) => this.setState({ behancE: e.target.value })}
               />
             </div>
             <div className="row g-0 mb-3 ">
@@ -224,13 +228,13 @@ class AccountsForm extends Component {
                 Github
               </label>
               <input
-                value={this.state.github ? this.state.github : ""}
+                value={this.state.githuB ? this.state.githuB : ""}
                 type="text"
                 className="col-lg-5 
                col-11 col-md-5 col-sm-12 col-xs-12 editInput "
                 // id="fullname"
                 placeholder="URL"
-                onChange={(e) => this.setState({ github: e.target.value })}
+                onChange={(e) => this.setState({ githuB: e.target.value })}
               />
             </div>
 
