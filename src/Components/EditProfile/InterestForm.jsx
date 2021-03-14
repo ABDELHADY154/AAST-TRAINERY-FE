@@ -19,18 +19,18 @@ class Interest extends Component {
     };
   }
   async componentDidMount() {
-    if (this.props.match.params.id) {
+    if (this.props.match.params.id == "update") {
       await axios
-        .get(`/W/student/profile/interest/${this.props.match.params.id}`)
-        .then((res) => {
+        .get(`/W/student/profile/interest`)
+        .then(res => {
           this.setState({
-            interests: res.data.response.data.interests,
-            id: res.data.response.data.id,
-            interest: res.data.response.data.interest,
+            interests: res.data.response.data,
+            // id: res.data.response.data.id,
+            // interest: res.data.response.data.interest,
           });
           console.log(res.data.response.data.interests);
         })
-        .catch((error) => {
+        .catch(error => {
           if (error.response.data.status === 401) {
             sessionStorage.clear("token");
             sessionStorage.clear("status");
@@ -38,54 +38,36 @@ class Interest extends Component {
             window.location.reload();
           }
         });
+
+      var tagsArr = [];
+      this.state.interests.forEach(el => {
+        // console.log();
+        tagsArr.push(el.interest);
+      });
+      this.setState({ tags: tagsArr });
     }
 
     console.log(this.props.match.params.id);
   }
 
-  handleSubmiInterest = async (e) => {
+  handleSubmiInterest = async e => {
     e.preventDefault();
     const data = {
-      id: this.state.id,
+      // id: this.state.id,
       interests: [],
     };
-    this.state.interests.forEach((element) => {
+    this.state.tags.forEach(element => {
       data.interests.push({ interest: element });
     });
-    //   await axios
-    //     .post("/W/student/profile/interest", data)
-    //     .then((response) => {
-    //       this.setState({
-    //         loggedIn: true,
-    //       });
-    //       console.log(response.data.response.data);
-    //     })
-    //     .catch((error) => {
-    //       if (error.response.data.status === 401) {
-    //         sessionStorage.clear("token");
-    //         sessionStorage.clear("status");
-    //         this.setState({ loggedIn: false });
-    //         window.location.reload();
-    //       }
-    //       this.setState({
-    //         error: {
-    //           // interestsErr: error.response.data.errors.interests,
-    //           // interestlErr: error.response.data.errors.interest,
-    //         },
-    //       });
-    //       console.log(error.response.data.errors.message);
-    //       // console.log(err.response.data.errors.interests);
-    //     });
-    // };
-    if (this.props.match.params.id) {
+    if (this.props.match.params.id == "update") {
       await axios
-        .post(`/W/student/profile/interest/${this.props.match.params.id}`, data)
-        .then((response) => {
+        .put(`/W/student/profile/interest`, data)
+        .then(response => {
           this.setState({
             loggedIn: true,
           });
         })
-        .catch((error) => {
+        .catch(error => {
           if (error.response.data.status === 401) {
             sessionStorage.clear("token");
             sessionStorage.clear("status");
@@ -94,20 +76,20 @@ class Interest extends Component {
           }
           this.setState({
             error: {
-              // interestsErr: error.response.data.errors.interests,
+              interestsErr: error.response.data.errors.interests,
             },
           });
         });
     } else {
       await axios
         .post("/W/student/profile/interest", data)
-        .then((response) => {
+        .then(response => {
           this.setState({
             loggedIn: true,
           });
           console.log(response.data.response.data);
         })
-        .catch((error) => {
+        .catch(error => {
           if (error.response.data.status === 401) {
             sessionStorage.clear("token");
             sessionStorage.clear("status");
@@ -123,26 +105,9 @@ class Interest extends Component {
         });
     }
   };
-  // handleDeleteInterest = async (e) => {
-  //   await axios
-  //     .delete(`/W/student/profile/interest/${this.props.match.params.id}`)
-  //     .then((response) => {
-  //       this.setState({
-  //         loggedIn: true,
-  //       });
-  //     })
-  //     .catch((error) => {
-  //       if (error.response) {
-  //         this.setState({
-  //           loggedIn: false,
-  //           error: true,
-  //         });
-  //       }
-  //       window.location.reload();
-  //     });
-  // };
 
   render() {
+    console.log(this.state.tags);
     if (this.state.loggedIn === true) {
       return <Redirect to="/Profile" />;
     }
@@ -159,8 +124,8 @@ class Interest extends Component {
                 </label>
                 <ReactTag
                   className="editLabel"
-                  tags={(e) => this.setState({ interests: e })}
-                  value={this.state.interests}
+                  tags={e => this.setState({ tags: e })}
+                  value={this.state.tags}
                 />
                 {/* <p>{this.state.interests}</p> */}
                 {this.state.error && this.state.error.interestsErr ? (
@@ -211,7 +176,7 @@ class ReactTag extends Component {
   state = {
     tags: [],
   };
-  setTags = (e) => {
+  setTags = e => {
     this.setState({ tags: e });
     this.props.tags(e);
   };
@@ -219,10 +184,10 @@ class ReactTag extends Component {
   render() {
     return (
       <ReactTagInput
-        tags={this.state.tags}
+        tags={this.props.value}
         editable={true}
         removeOnBackspace={true}
-        onChange={(newTags) => this.setTags(newTags)}
+        onChange={newTags => this.setTags(newTags)}
       />
     );
   }

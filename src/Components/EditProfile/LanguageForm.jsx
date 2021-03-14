@@ -25,7 +25,7 @@ class Language extends Component {
     if (this.props.match.params.id) {
       await axios
         .get(`/W/student/profile/language/${this.props.match.params.id}`)
-        .then((res) => {
+        .then(res => {
           this.setState({
             language: res.data.response.data.language,
             level: res.data.response.data.level,
@@ -33,7 +33,7 @@ class Language extends Component {
           });
           console.log(res.data.response.data);
         })
-        .catch((error) => {
+        .catch(error => {
           if (error.response.data.status === 401) {
             sessionStorage.clear("token");
             sessionStorage.clear("status");
@@ -44,7 +44,7 @@ class Language extends Component {
     }
     console.log(this.props.match.params.id);
   }
-  handleSubmitLanguage = async (e) => {
+  handleSubmitLanguage = async e => {
     e.preventDefault();
     const data = {
       language: this.state.language,
@@ -54,12 +54,12 @@ class Language extends Component {
     if (this.props.match.params.id) {
       await axios
         .put(`/W/student/profile/language/${this.props.match.params.id}`, data)
-        .then((response) => {
+        .then(response => {
           this.setState({
             loggedIn: true,
           });
         })
-        .catch((error) => {
+        .catch(error => {
           if (error.response.data.status === 401) {
             sessionStorage.clear("token");
             sessionStorage.clear("status");
@@ -77,13 +77,13 @@ class Language extends Component {
     } else {
       await axios
         .post("/W/student/profile/language", data)
-        .then((response) => {
+        .then(response => {
           this.setState({
             loggedIn: true,
           });
           console.log(response.data.response.data);
         })
-        .catch((error) => {
+        .catch(error => {
           if (error.response.data.status === 401) {
             sessionStorage.clear("token");
             sessionStorage.clear("status");
@@ -101,15 +101,15 @@ class Language extends Component {
         });
     }
   };
-  handleDeleteLanguage = async (e) => {
+  handleDeleteLanguage = async e => {
     await axios
       .delete(`/W/student/profile/language/${this.props.match.params.id}`)
-      .then((response) => {
+      .then(response => {
         this.setState({
           loggedIn: true,
         });
       })
-      .catch((error) => {
+      .catch(error => {
         if (error.response) {
           this.setState({
             loggedIn: false,
@@ -124,6 +124,7 @@ class Language extends Component {
     if (this.state.loggedIn === true) {
       return <Redirect to="/Profile" />;
     }
+    console.log(this.state.level);
     return (
       <div>
         <div className="container ">
@@ -145,7 +146,7 @@ class Language extends Component {
                   }
                   id="language"
                   placeholder="Please enter your languages "
-                  onChange={(e) => this.setState({ language: e.target.value })}
+                  onChange={e => this.setState({ language: e.target.value })}
                   value={this.state.language}
                 />
                 {this.state.error && this.state.error.LanguageLevelErr ? (
@@ -158,22 +159,45 @@ class Language extends Component {
                 <label for="inputRegNum" className="form-label editLabel mt-3">
                   Level
                 </label>
-                <ReactStars
-                  count={5}
-                  value={this.state.level}
-                  className={
-                    this.state.error && this.state.error.LanguageLevelErr
-                      ? "wrong"
-                      : " "
-                  }
-                  onChange={(level) => {
-                    this.setState({ level: `${level}` });
-                    console.log(`${level}`);
-                  }}
-                  size={28}
-                  activeColor="#F2A23A"
-                  edit={true}
-                />
+                {this.props.match.params.id ? (
+                  this.state.level ? (
+                    <ReactStars
+                      count={5}
+                      value={this.state.level}
+                      className={
+                        this.state.error && this.state.error.LanguageLevelErr
+                          ? "wrong"
+                          : " "
+                      }
+                      onChange={level => {
+                        this.setState({ level: level });
+                        console.log(`${level}`);
+                      }}
+                      size={28}
+                      activeColor="#F2A23A"
+                      edit={true}
+                    />
+                  ) : (
+                    ""
+                  )
+                ) : (
+                  <ReactStars
+                    count={5}
+                    value={this.state.level}
+                    className={
+                      this.state.error && this.state.error.LanguageLevelErr
+                        ? "wrong"
+                        : " "
+                    }
+                    onChange={level => {
+                      this.setState({ level: level });
+                      console.log(`${level}`);
+                    }}
+                    size={28}
+                    activeColor="#F2A23A"
+                    edit={true}
+                  />
+                )}
                 {this.state.error && this.state.error.LanguageLevelErr ? (
                   <p className="editerror">
                     {this.state.error.LanguageLevelErr}

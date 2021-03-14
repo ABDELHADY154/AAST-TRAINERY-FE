@@ -54,9 +54,8 @@ class EditNav extends Component {
               }
               id="Experiance-tab"
               href="/Profile/Experience"
-
             >
-              Experiance
+              Experience
             </a>
           </li>
           <li className="nav-item infoTabs" role="presentation">

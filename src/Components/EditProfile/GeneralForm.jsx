@@ -49,15 +49,15 @@ class GeneralForm extends Component {
   async componentDidMount() {
     await axios
       .get("/departments")
-      .then((res) => {
+      .then(res => {
         this.setState({ dep: res.data.response.data });
       })
-      .catch((err) => {
+      .catch(err => {
         console.log(err);
       });
     await axios
       .get("/W/student/profile/general")
-      .then((res) => {
+      .then(res => {
         // Jacky was here?
         this.setState({
           image: res.data.response.data.image,
@@ -78,13 +78,13 @@ class GeneralForm extends Component {
         });
         console.log(res.data.response.data);
         console.log(res.data.response);
-        this.state.dep.forEach((element) => {
+        this.state.dep.forEach(element => {
           if (element.dep_name == this.state.department) {
             this.setState({ depId: element.id });
           }
         });
       })
-      .catch((error) => {
+      .catch(error => {
         if (error.response.data.status === 401) {
           sessionStorage.clear("token");
           sessionStorage.clear("status");
@@ -94,15 +94,13 @@ class GeneralForm extends Component {
       });
   }
   handleChange(event) {
-    var filename = event.target.value.replace(/^.*[\\\/]/, "");
     this.setState({
       image: URL.createObjectURL(event.target.files[0]),
-      imageURL: filename,
+      imageURL: event.target.files[0],
     });
-    // console.log(this.state.image);
   }
 
-  handleSubmit = async (e) => {
+  handleSubmit = async e => {
     e.preventDefault();
     var formBody = new FormData();
 
@@ -112,7 +110,7 @@ class GeneralForm extends Component {
     if (this.state.imageURL) {
       formBody.append(
         "image",
-        this.state.imageURL ? this.state.imageURL : this.state.image
+        this.state.imageURL ? this.state.imageURL : null,
       );
     }
     formBody.append("phone_number", this.state.phoneNumber);
@@ -136,12 +134,12 @@ class GeneralForm extends Component {
       data: formBody,
       headers: { "Content-Type": "multipart/form-data" },
     })
-      .then((res) => {
+      .then(res => {
         this.setState({
           loggedIn: false,
         });
       })
-      .catch((error) => {
+      .catch(error => {
         if (error.response.data.status === 401) {
           sessionStorage.clear("token");
           sessionStorage.clear("status");
@@ -214,11 +212,12 @@ class GeneralForm extends Component {
                       type="file"
                       className="imgUploadBtn"
                       accept="image/x-png,image/gif,image/jpeg"
-                      onChange={(e) =>
-                        this.setState({
-                          imageURL: e.target.files[0],
-                          image: e.target.files[0],
-                        })
+                      onChange={
+                        e => this.handleChange(e)
+                        // this.setState({
+                        //   imageURL: e.target.files[0],
+                        //   image: e.target.files[0],
+                        // })
                       }
                     />
                   </div>
@@ -238,7 +237,7 @@ class GeneralForm extends Component {
                 }
                 id="fullname"
                 placeholder="Please enter your full name"
-                onChange={(e) => {
+                onChange={e => {
                   this.setState({ name: e.target.value });
                 }}
                 value={this.state.name}
@@ -266,7 +265,7 @@ class GeneralForm extends Component {
                           ? "radio editInput wrong"
                           : "radio editInput "
                       }
-                      onChange={(e) => {
+                      onChange={e => {
                         this.setState({ gender: e.target.value });
                       }}
                       checked
@@ -282,7 +281,7 @@ class GeneralForm extends Component {
                           ? "radio editInput wrong"
                           : "radio editInput "
                       }
-                      onChange={(e) => {
+                      onChange={e => {
                         this.setState({ gender: e.target.value });
                       }}
                     />
@@ -311,7 +310,7 @@ class GeneralForm extends Component {
                       name="inlineRadioOptions"
                       id="Gender"
                       value="female"
-                      onChange={(e) => {
+                      onChange={e => {
                         this.setState({ gender: e.target.value });
                       }}
                       checked
@@ -327,7 +326,7 @@ class GeneralForm extends Component {
                       name="inlineRadioOptions"
                       id="Gender"
                       value="female"
-                      onChange={(e) => {
+                      onChange={e => {
                         this.setState({ gender: e.target.value });
                       }}
                     />
@@ -358,7 +357,7 @@ class GeneralForm extends Component {
                     : "form-control editInput "
                 }
                 id="DOB"
-                onChange={(e) => {
+                onChange={e => {
                   this.setState({ dob: e.target.value });
                 }}
                 value={this.state.dob}
@@ -382,7 +381,7 @@ class GeneralForm extends Component {
                 }
                 id="nationaity"
                 placeholder="Please enter your Nationaity"
-                onChange={(e) => {
+                onChange={e => {
                   this.setState({ nationality: e.target.value });
                 }}
                 value={this.state.nationality}
@@ -401,7 +400,7 @@ class GeneralForm extends Component {
                 value={
                   this.state.country ? this.state.country : this.state.country
                 }
-                onChange={(val) => this.selectCountry(val)}
+                onChange={val => this.selectCountry(val)}
                 className={
                   this.state.error && this.state.error.countryErr
                     ? "wrong form-select signSelect editInput col-lg-5 col-11 col-md-5 col-sm-12 col-xs-12"
@@ -423,7 +422,7 @@ class GeneralForm extends Component {
               <RegionDropdown
                 country={this.state.country}
                 value={city}
-                onChange={(val) => this.selectRegion(val)}
+                onChange={val => this.selectRegion(val)}
                 className={
                   this.state.error && this.state.error.cityErr
                     ? "wrong form-select signSelect editInput col-lg-5 col-11 col-md-5 col-sm-12 col-xs-12"
@@ -443,7 +442,7 @@ class GeneralForm extends Component {
                 Phone Number<span className="text-danger ms-2">*</span>
               </label>
               <input
-                type="number"
+                type="text"
                 className={
                   this.state.error && this.state.error.phoneErr
                     ? "form-control editInput wrong"
@@ -451,7 +450,7 @@ class GeneralForm extends Component {
                 }
                 id="phone"
                 placeholder="Please enter your Phone Number"
-                onChange={(e) => {
+                onChange={e => {
                   this.setState({ phoneNumber: e.target.value });
                 }}
                 value={this.state.phoneNumber}
@@ -474,7 +473,7 @@ class GeneralForm extends Component {
                     ? "form-control editInput signSelect wrong"
                     : "form-control editInput signSelect"
                 }
-                onChange={(e) => {
+                onChange={e => {
                   this.setState({ university: e.target.value });
                 }}
               >
@@ -502,13 +501,13 @@ class GeneralForm extends Component {
                     ? "form-control editInput signSelect wrong"
                     : "form-control editInput signSelect"
                 }
-                onChange={(e) => {
+                onChange={e => {
                   this.setState({ depId: e.target.value });
                 }}
               >
                 <option>Choose your Field of study / Department...</option>
                 {this.state.dep
-                  ? this.state.dep.map((item) => {
+                  ? this.state.dep.map(item => {
                       return this.state.department === item.dep_name ? (
                         <option value={item.id} key={item.id} selected>
                           {item.dep_name}
@@ -540,7 +539,7 @@ class GeneralForm extends Component {
                 }
                 id="RegNum"
                 placeholder="Please enter your Registration Number"
-                onChange={(e) => {
+                onChange={e => {
                   this.setState({ regNo: e.target.value });
                 }}
                 value={this.state.regNo}
@@ -562,7 +561,7 @@ class GeneralForm extends Component {
                     ? "form-control editInput signSelect wrong "
                     : "form-control editInput signSelect"
                 }
-                onChange={(e) => {
+                onChange={e => {
                   this.setState({ period: e.target.value });
                 }}
                 value={this.state.period}
@@ -570,7 +569,7 @@ class GeneralForm extends Component {
                 <option>Choose your Term ...</option>
                 <span className="text-danger ms-2">*</span>
 
-                {this.state.periodNumArr.map((num) => {
+                {this.state.periodNumArr.map(num => {
                   // console.log(num);
                   return this.state.period == num ? (
                     <option value={num} key={num} selected>
@@ -603,7 +602,7 @@ class GeneralForm extends Component {
                 type="number"
                 step=".01"
                 name=""
-                onChange={(e) => {
+                onChange={e => {
                   this.setState({ gpa: e.target.value });
                 }}
                 value={this.state.gpa}
@@ -630,7 +629,7 @@ class GeneralForm extends Component {
                     ? "form-control editInput wrong"
                     : "form-control editInput "
                 }
-                onChange={(e) => {
+                onChange={e => {
                   this.setState({ startYear: e.target.value });
                 }}
                 value={this.state.startYear}
@@ -653,7 +652,7 @@ class GeneralForm extends Component {
                     ? "form-control editInput wrong"
                     : "form-control editInput "
                 }
-                onChange={(e) => {
+                onChange={e => {
                   this.setState({ endYear: e.target.value });
                 }}
                 value={this.state.endYear}
