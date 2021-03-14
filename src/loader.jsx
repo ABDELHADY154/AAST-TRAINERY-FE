@@ -51,7 +51,7 @@ export const LogoesCarousel = (props) => (
     speed={1}
     width={150}
     height={150}
-    viewBox="0 0 150 130"
+    viewBox="0 0 50 80"
     backgroundColor="#fafafa"
     foregroundColor="#e6e6e6"
     {...props}
