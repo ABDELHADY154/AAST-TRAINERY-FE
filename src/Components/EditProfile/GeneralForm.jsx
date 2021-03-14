@@ -77,7 +77,7 @@ class GeneralForm extends Component {
           gpa: res.data.response.data.GPA,
         });
         console.log(res.data.response.data);
-        console.log(res.data.response.data.image);
+        console.log(res.data.response);
         this.state.dep.forEach((element) => {
           if (element.dep_name == this.state.department) {
             this.setState({ depId: element.id });
@@ -95,7 +95,6 @@ class GeneralForm extends Component {
   }
   handleChange(event) {
     var filename = event.target.value.replace(/^.*[\\\/]/, "");
-
     this.setState({
       image: URL.createObjectURL(event.target.files[0]),
       imageURL: filename,
@@ -169,6 +168,7 @@ class GeneralForm extends Component {
         });
       });
   };
+
   render() {
     const city = this.state.city;
     if (this.state.loggedIn === false) {

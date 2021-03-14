@@ -253,13 +253,13 @@ class Landing extends React.Component {
         <div className="container">
           <div className="row  mb-4 carouselRow flex-wrap ">
             <CarouselLogos className=" col-md-10 col-10  col-sm-12 col-xs-12" />
-            {this.state.loading === false ? (
+            {/* {this.state.loading === false ? (
               <div>
                 <LogoesCarousel />
               </div>
             ) : (
               <CarouselLogos className=" col-md-10 col-10  " />
-            )}
+            )} */}
             <div className="col-md-6"></div>
             <div className="d-flex flex-column  align-items-center  mt-5 col-md-1 col-2 contactBtnW ">
               <button className="contactBtn py-1 px-4">Contact</button>
