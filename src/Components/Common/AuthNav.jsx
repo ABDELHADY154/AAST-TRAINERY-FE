@@ -341,7 +341,7 @@ class AuthNav extends React.Component {
                                   alt="Avatar"
                                   width="40"
                                   height="40"
-                                  className="avatar me-2 profileImage"
+                                  className="avatar me-2"
                                   role="menuitem"
                                 />
                               ) : (
@@ -357,21 +357,21 @@ class AuthNav extends React.Component {
                                 // }}
                               >
                                 {this.state.fullname}
+                                <br />
+                                <span
+                                  className="text-muted ms-1"
+                                  style={{
+                                    fontSize: 14,
+                                    fontFamily: "SF light",
+                                    marginLeft: 125,
+                                    // marginTop: -40,
+                                  }}
+                                >
+                                  View Profile
+                                </span>
                               </span>
-                              <br />
                             </div>
                           </a>
-                          <span
-                            className="text-muted "
-                            style={{
-                              fontSize: 14,
-                              fontFamily: "SF light",
-                              marginLeft: 125,
-                              // marginTop: -40,
-                            }}
-                          >
-                            View Profile
-                          </span>
                         </li>
                         <li>
                           <Link
