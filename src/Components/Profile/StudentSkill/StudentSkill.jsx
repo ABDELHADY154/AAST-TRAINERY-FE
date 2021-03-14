@@ -17,18 +17,27 @@ export default class StudentWorkExp extends Component {
           className="d-flex flex-row  fs-5 mt-1 hoverselect"
           style={{ textTransform: "capitalize" }}
         >
-          <div className=" d-flex flex-row flex-wrap col-4 col-md-3 me-1 skillname fs-6">
+          <div className=" d-flex flex-column  col-3 col-md-2 me-1 mt-1  fs-6">
             {this.props.skill_name}
           </div>
-          <div
+          {/* <div
             id=""
             className=" d-flex flex-row flex-wrap col-0 col-md-0  fs-6 "
-          ></div>
-          <div
+          ></div> */}
+          {/* <div
             id=""
             className=" d-flex flex-row skillname  col-6 col-md-8 fs-6"
           >
             Years Of Experience: {this.props.years_of_exp}
+          </div> */}
+          <div id="" className=" d-flex flex-column  col-7 col-md-9 fs-6">
+            <ReactStars
+              count={5}
+              value={this.props.years_of_exp}
+              edit={false}
+              size={23}
+              activeColor="#F2A23A"
+            />
           </div>
           <div
             id="hiddenhover"
