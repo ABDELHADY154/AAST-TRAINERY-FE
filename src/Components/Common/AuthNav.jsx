@@ -326,7 +326,7 @@ class AuthNav extends React.Component {
                       <ul class="dropdown-menu profileMenu ">
                         <li className="row profileHeader d-flex justify-content-center">
                           <a
-                            class="dropdown-item "
+                            class="dropdown-item d-flex flex-row"
                             href="/Profile"
                             style={{
                               fontSize: 18,
@@ -334,34 +334,44 @@ class AuthNav extends React.Component {
                               color: " #1e4274",
                             }}
                           >
-                            {this.state.avatar ? (
-                              <img
-                                src={this.state.avatar}
-                                alt="Avatar"
-                                width="40"
-                                height="40"
-                                className="avatar me-2 profileImage"
-                                role="menuitem"
-                              />
-                            ) : (
-                              <AvatarLoader />
-                            )}
-                            <span className="nameText text-wrap">
-                              {this.state.fullname}
-                            </span>
-                            <br />
-                            <span
-                              className="text-muted "
-                              style={{
-                                fontSize: 14,
-                                fontFamily: "SF light",
-                                marginLeft: 50,
-                                // marginTop: -40,
-                              }}
-                            >
-                              View Profile
-                            </span>
+                            <div className="col-4">
+                              {this.state.avatar ? (
+                                <img
+                                  src={this.state.avatar}
+                                  alt="Avatar"
+                                  width="40"
+                                  height="40"
+                                  className="avatar me-2 profileImage"
+                                  role="menuitem"
+                                />
+                              ) : (
+                                <AvatarLoader />
+                              )}
+                            </div>
+                            <div className="col-10">
+                              <span
+                                className="nameText  text-wrap"
+                                // style={{
+                                //   flexDirection: "column",
+                                //   flexWrap: "wrap",
+                                // }}
+                              >
+                                {this.state.fullname}
+                              </span>
+                              <br />
+                            </div>
                           </a>
+                          <span
+                            className="text-muted "
+                            style={{
+                              fontSize: 14,
+                              fontFamily: "SF light",
+                              marginLeft: 125,
+                              // marginTop: -40,
+                            }}
+                          >
+                            View Profile
+                          </span>
                         </li>
                         <li>
                           <Link

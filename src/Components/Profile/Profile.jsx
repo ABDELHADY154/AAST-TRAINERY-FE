@@ -22,6 +22,8 @@ import { FaLink } from "react-icons/fa";
 import { FaBehance } from "react-icons/fa";
 import { FaGithub } from "react-icons/fa";
 
+import { ProfileImgLoader } from "../../loader";
+
 // import { Redirect } from "react-router-dom";
 import { axios } from "../../Api/axios";
 
@@ -102,11 +104,19 @@ class Profile extends Component {
       <div className="container-fluid ">
         <div className="container  ">
           <div className="d-flex flex-row flex-wrap">
-            <img
-              className="d-flex flex-column col-2 col-md-1 me-4 profileImage"
-              id="profilepp"
-              src={this.state.image}
-            ></img>
+            {this.state.image ? (
+              <img
+                className="d-flex flex-column col-2 col-md-1 me-4 profileImage"
+                id="profilepp"
+                src={this.state.image}
+              ></img>
+            ) : (
+              <ProfileImgLoader
+                className="me-2 "
+                // id="profilepp"
+              />
+            )}
+
             <div className="d-flex flex-column col-7 col-md-4 mt-1 me-5">
               <div
                 className="d-flex flex-row flex-wrap fs-4"

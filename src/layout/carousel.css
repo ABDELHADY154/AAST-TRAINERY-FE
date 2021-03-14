@@ -172,3 +172,52 @@
     height: 15px !important;
   }
 } */
+.swiper-container {
+  /* width: 50%; */
+  /* height: 100%; */
+  /* display:flex; */
+  /* justify-content:flex-start */
+  margin-left: .7em !important;
+
+}
+
+@media (max-width: 500px) {
+  /* .swiper-container {
+    margin-left: .7em !important;
+  } */
+.swiper-pagination{
+  margin-top: 15em !important;
+}
+  }
+
+.swiper-slide {
+  /* width: 70px !important; */
+  /* height: 50px !important; */
+  /* text-align: center; */
+  /* font-size: 18px; */
+  /* background: #fff; */
+
+  /* Center slide text vertically */
+  /* display: -webkit-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-pack: flex-start;
+  -ms-flex-pack: flex-start;
+  -webkit-justify-content: flex-start;
+  justify-content: flex-start;
+  -webkit-box-align: flex-start;
+  -ms-flex-align: flex-start;
+  -webkit-align-items: flex-start;
+  align-items: flex-start; */
+}
+.swiper-slide img{
+  width: 90px !important;
+  height: 50px !important;
+  /* background-size: cover;
+  background-repeat: no-repeat;
+  padding-left: 0 !important;
+  display: flex !important;
+  align-items: flex-start !important; */
+  padding-right: 1em;
+}
