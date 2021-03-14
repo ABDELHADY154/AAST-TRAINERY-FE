@@ -97,6 +97,9 @@
   .orangetitle2 {
     margin-top: 1.5em;
   }
+  .plusmarginback {
+    margin-left: 0% !important;
+  }
   #gpa {
     margin-left: 0 !important;
     color: #cd8930 !important;
@@ -181,6 +184,9 @@
   }
 }
 @media screen and (max-width: 347px) {
+  .plusmarginback {
+    margin-left: 0% !important;
+  }
   #topbtns {
     display: flex !important;
     flex-flow: column !important;
@@ -342,3 +348,12 @@ body {
 #imgicon {
   width: 3.3em !important;
 }
+.plusmarginback {
+  margin-left: -11%;
+}
+/* #accountsicons {
+  font-size: 1.2em; */
+/* width: 2em;
+  height: 2em; */
+/* margin-right: 5%;
+} */

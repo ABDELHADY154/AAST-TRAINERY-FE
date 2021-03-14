@@ -1,5 +1,3 @@
-/** @format */
-
 import React, { Component } from "react";
 import logo from "../../Components/assests/icons/White-Logo.png";
 import {
@@ -20,9 +18,9 @@ export default class Footer extends React.Component {
           <div className="footer-big">
             <div className="container pt-4">
               <div className="row ml-4">
-                <div className="col-md-5 col-sm-4 ">
-                  <div className="footer-widget d-flex justify-content-center text-align-center ">
-                    <div className="mt-2 flex-column">
+                <div className=" col-md-5 col-12 d-flex flex-row loremipad">
+                  <div className="footer-widget ">
+                    <div className="mt-2 flex-row ">
                       <img id="footlogo" src={logo} width="40%"></img>
                       <p className="mt-2 ">
                         Lorem ipsum dolor sit amet, consectetur adipiscing elit.
