@@ -81,7 +81,13 @@ a {
   }
 }
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 768px) {
+  .loremipad {
+    text-align: center;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+  }
   #About {
     margin-top: 2em !important;
     text-align: center;
@@ -130,3 +136,13 @@ a {
     margin-right: 1rem !important;
   }
 }
+/* @media (min-width: 575) and (max-width: 768) {
+  /* #footlogo {
+    width: 1000% !important;
+  } */
+/* .footerlorem {
+    text-align: center !important;
+    display: flex;
+    flex-flow: row;
+  } */
+/* }  */

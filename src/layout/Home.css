@@ -78,6 +78,11 @@
 #job {
   margin-top: -0.7em !important;
 }
+@media screen and (min-width: 1400px) {
+  .btnmovement {
+    margin-left: 3.1em !important;
+  }
+}
 @media screen and (max-width: 766px) {
   #big {
     display: none !important;
@@ -292,8 +297,11 @@
   text-decoration: none !important;
   color: #1e4274 !important;
 }
-@media (min-width: 767) and (max-width: 991) {
-  .tagsipad {
-    margin-right: 52% !important;
+/* @media screen and (max-width: 775) {
+  #firsttagipad {
+    margin-right: 55em !important;
   }
-}
+  #tags {
+    margin-right: 55em !important;
+  }
+} */
