@@ -40,7 +40,7 @@ class App extends React.Component {
     }
   }
 
-  setUser = (data) => {
+  setUser = data => {
     return this.setState({ loggedIn: data });
   };
 
@@ -99,7 +99,7 @@ class App extends React.Component {
                 />
                 <AuthRoute
                   exact
-                  path="/Profile/Experiance"
+                  path="/Profile/Experience"
                   component={ExperienceForm}
                 />
                 <AuthRoute
@@ -141,7 +141,7 @@ class App extends React.Component {
                   exact
                   path="/Profile/Interest/:id"
                   component={Interest}
-                  render={(Interests) => <Interest {...Interests} />}
+                  render={Interests => <Interest {...Interests} />}
                 />
                 <AuthRoute
                   exact
