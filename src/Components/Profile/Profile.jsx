@@ -372,7 +372,7 @@ class Profile extends Component {
                 <div className="d-flex flex-column col-5 col-md-2 fs-5 me-0 ">
                   Interests
                 </div>
-                <div className="d-flex flex-column col-6 col-md-9 fs-5 ms-0 me-3 ">
+                <div className="d-flex flex-column col-6 col-md-9 fs-5 ms-0 me-3 interestmobile interestmobilee">
                   <Link
                     renderAs="button"
                     className=" plus plusmarginback"
@@ -384,7 +384,7 @@ class Profile extends Component {
                 </div>
                 <div
                   id="hiddenhover"
-                  className=" d-flex flex-column col-2 col-md-1 p-0 "
+                  className=" d-flex flex-column col-1 col-md-1 p-0 "
                   style={{ alignContent: "flex-end" }}
                 >
                   <Link

@@ -183,6 +183,17 @@
     transition: 300ms !important;
   }
 }
+@media screen and (max-width: 767px) {
+  .interestmobile {
+    margin-right: -1em !important;
+  }
+}
+@media screen and (max-width: 513px) {
+  .interestmobilee {
+    margin-right: -3% !important;
+  }
+}
+
 @media screen and (max-width: 347px) {
   .plusmarginback {
     margin-left: 0% !important;
