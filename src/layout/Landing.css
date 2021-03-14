@@ -132,3 +132,25 @@ span {
     margin-left: 8rem !important;
   }
 } */
+@media (max-width: 991px) {
+  #CoachCont {
+    display: flex !important;
+    flex-direction: column !important;
+    width: 100%;
+    justify-content: center !important;
+    justify-self: center !important;
+    justify-items: center !important;
+    align-self: center !important;
+    align-content: center !important;
+    text-align: center !important;
+    margin: 0 !important;
+  }
+  #bd {
+    width: 100%;
+    margin: 0 !important;
+  }
+  .cardImg {
+    width: 100% !important;
+    margin: 0 !important;
+  }
+}

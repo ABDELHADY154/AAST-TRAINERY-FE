@@ -49,14 +49,14 @@ a {
   color: #1e4274;
   margin-bottom: 25px;
 }
-.form-check-label {
+.raioLabel {
   color: #1e4274 !important;
   margin-bottom: 50px;
 }
 label.label {
   color: #1e4274;
 }
-input {
+.signInput {
   border: 0 !important;
   outline: 0 !important;
   background: transparent;
@@ -67,7 +67,7 @@ input {
   color: #1e4274;
   margin-bottom: 50px;
 }
-input:focus {
+.signInput:focus {
   border: 0 !important;
   outline: 0 !important;
   background: transparent;
@@ -79,8 +79,8 @@ input:valid {
   border-color: #cd8930;
   
 } */
-input:focus,
-input:valid {
+.signInput:focus,
+.signInput:valid {
   font-size: 14px;
   top: -24px;
   color: #cd8930;
@@ -101,7 +101,7 @@ input:valid {
 .raioLabel {
   margin-left: 10px !important;
 }
-input[type="radio"] {
+.signInput[type="radio"] {
   -webkit-appearance: none;
   width: 20px;
   height: 20px;
@@ -113,7 +113,7 @@ input[type="radio"] {
   /* background: green; */
 }
 
-input[type="radio"]:before {
+.signInput[type="radio"]:before {
   content: "";
   display: block;
   width: 20px;
@@ -123,7 +123,7 @@ input[type="radio"]:before {
   border: 2px solid #1e4274;
 }
 
-input[type="radio"]:checked:before {
+.signInput[type="radio"]:checked:before {
   background: #1e4274;
   background-image: url(../Components/assests/imgs/done2.svg);
   background-color: #1e4274;
@@ -208,7 +208,7 @@ option {
   border-bottom: solid 1px #cd8930 !important;
   border-radius: 0 !important;
 }
-select {
+.signSelect {
   background: url("https://api.iconify.design/mdi:chevron-down.svg?color=%231e4274")
     no-repeat center center / contain;
   background-position: right calc(0.375em + 0.1875rem) center;
@@ -220,7 +220,7 @@ select {
   border-bottom: solid 1px #1e4274 !important;
   border-radius: 0 !important;
 }
-select:focus {
+.signSelect:focus {
   background: url("https://api.iconify.design/mdi:chevron-up.svg?color=%23cd8930")
     no-repeat center center / contain;
   background-position: right calc(0.375em + 0.1875rem) center;
@@ -232,7 +232,7 @@ select:focus {
   border-radius: 0 !important;
   color: #1e4274;
 }
-select option:checked {
+.signSelect option:checked {
   background: #1e4274 -webkit-linear-gradient(bottom, #cd8930 0%, #cd8930 100%);
   color: #fff;
 }
@@ -247,12 +247,12 @@ select option:checked {
   }
 }
 
-input[type="number"]::-webkit-outer-spin-button,
-input[type="number"]::-webkit-inner-spin-button {
+.signInput[type="number"]::-webkit-outer-spin-button,
+.signInput[type="number"]::-webkit-inner-spin-button {
   -webkit-appearance: none;
   margin: 0;
 }
 /* Firefox */
-input[type="number"] {
+.signInput[type="number"] {
   -moz-appearance: textfield;
 }

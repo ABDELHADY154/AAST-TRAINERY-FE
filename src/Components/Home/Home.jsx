@@ -15,6 +15,7 @@ import "react-step-progress-bar/styles.css";
 import { ProgressBar, Step } from "react-step-progress-bar";
 import { BsBookmark } from "react-icons/bs";
 import { IoClose } from "react-icons/io5";
+import { Link } from "react-router-dom";
 
 class Home extends Component {
   constructor() {
@@ -31,8 +32,8 @@ class Home extends Component {
   async componentDidMount() {
     await resolve(
       axios
-        .get("/W/get-profile")
-        .then(res => {
+        .get("/W/student/get-profile")
+        .then((res) => {
           if (res.status === 200) {
             // sessionStorage.setItem("avatar", res.data.response.data.image);
             this.setState({
@@ -42,7 +43,7 @@ class Home extends Component {
             });
           }
         })
-        .catch(error => {
+        .catch((error) => {
           this.setState({
             error: {
               usernameErr: error.response.status,
@@ -51,7 +52,7 @@ class Home extends Component {
           if (this.state.error.usernameErr === 401) {
             window.location.reload();
           }
-        }),
+        })
     );
   }
 
@@ -354,8 +355,11 @@ class Home extends Component {
                     </ProgressBar>
                   </div>
                 </div>
+
                 <div className="col-12 col-md-6 d-flex mt-2 ">
-                  Complete Your General Information
+                  <Link to={`/Profile/General`} className="generalinfolink">
+                    Complete Your General Information
+                  </Link>
                 </div>
               </div>
             </div>
@@ -546,24 +550,30 @@ class Home extends Component {
                     consequuntur quis nobis adipisci et?
                   </p>
                   <div className="d-flex flex-row flex-wrap ">
-                    <div className="d-flex flex-column col-4 col-md-1">
-                      <a href="#" className=" " id="tags">
+                    <div
+                      className="d-flex flex-column  col-4 col-md-1 me-4 "
+                      id="firsttagipad"
+                    >
+                      <a href="#" className="tagsipad" id="tags">
                         Finance
                       </a>
                     </div>
-                    <div className="d-flex flex-column col-4  col-md-1 mb-1">
-                      <a href="#" className="  " id="tags">
+                    <div
+                      className="d-flex flex-column col-4  col-md-1 me-4 mb-1 "
+                      id="firsttagipad"
+                    >
+                      <a href="#" className="tagsipad  " id="tags">
                         Banking
                       </a>
                     </div>
                     <div
                       id="drop"
-                      className="d-flex flex-column col-md-2  
+                      className="d-flex flex-column col-md-3  
                              justify-space-between"
                     >
                       <p>Deadline {"        "}11 Dec 2021</p>
                     </div>
-                    <div className="  d-flex flex-row col-12 col-md-6  ">
+                    <div className=" mb-4 d-flex flex-row col-12 col-md-2 justify-content-start me-1">
                       <BsArrowUpRight
                         className="me-2"
                         color="#cd8930"
@@ -571,15 +581,15 @@ class Home extends Component {
                       />
                       <p id="gold">Promoted</p>
                     </div>
-                    <div className="  d-flex flex-row col-12 col-md-2  ">
-                      <div className="col-md-4"></div>
+                    <div className="  d-flex flex-row col-12 col-md-4 justify-content-end btnmovement">
+                      {/* <div className="col-md-4"></div> */}
                       <BsBookmark
                         id="BsBookmark"
                         color="#1e4274"
-                        className="fs-2 align-self-center mb-4 col-md-2 col-4"
+                        className="fs-2 align-self-center mb-5  col-md-2 col-4"
                         path="0px"
                       />
-                      <button className="applyBtn px-1 py-0 col-md-6 col-8">
+                      <button className="applyBtn px-1 py-0 col-md-3 col-8">
                         Apply
                       </button>
                     </div>
@@ -619,45 +629,54 @@ class Home extends Component {
                     doloremque. Ea omnis ipsam, eum nam tempore culpa illum
                     consequuntur quis nobis adipisci et?
                   </p>
-                  <div className="d-flex flex-row flex-wrap ">
-                    <div className="d-flex flex-column col-4 col-md-1">
-                      <a href="#" className=" " id="tags">
-                        Finance
-                      </a>
-                    </div>
-                    <div className="d-flex flex-column col-4  col-md-1 mb-1">
-                      <a href="#" className="  " id="tags">
-                        Banking
-                      </a>
-                    </div>
-                    <div
-                      id="drop"
-                      className="d-flex flex-column col-md-2  
+
+                  {
+                    <div className="d-flex flex-row flex-wrap ">
+                      <div
+                        className="d-flex flex-column  col-4 col-md-1 me-4 "
+                        id="firsttagipad"
+                      >
+                        <a href="#" className="tagsipad" id="tags">
+                          Finance
+                        </a>
+                      </div>
+                      <div
+                        className="d-flex flex-column col-4  col-md-1 me-4 mb-1 "
+                        id="firsttagipad"
+                      >
+                        <a href="#" className="tagsipad  " id="tags">
+                          Banking
+                        </a>
+                      </div>
+                      <div
+                        id="drop"
+                        className="d-flex flex-column col-md-3  
                              justify-space-between"
-                    >
-                      <p>Deadline {"        "}11 Dec 2021</p>
+                      >
+                        <p>Deadline {"        "}11 Dec 2021</p>
+                      </div>
+                      <div className=" mb-4 d-flex flex-row col-12 col-md-2 justify-content-start me-1">
+                        <BsArrowUpRight
+                          className="me-2"
+                          color="#cd8930"
+                          fill="#cd8930"
+                        />
+                        <p id="gold">Promoted</p>
+                      </div>
+                      <div className="  d-flex flex-row col-12 col-md-4 justify-content-end btnmovement">
+                        {/* <div className="col-md-4"></div> */}
+                        <BsBookmark
+                          id="BsBookmark"
+                          color="#1e4274"
+                          className="fs-2 align-self-center mb-5  col-md-2 col-4"
+                          path="0px"
+                        />
+                        <button className="applyBtn px-1 py-0 col-md-3 col-8">
+                          Apply
+                        </button>
+                      </div>
                     </div>
-                    <div className=" mb-4 d-flex flex-row col-12 col-md-6  ">
-                      <BsArrowUpRight
-                        className="me-2"
-                        color="#cd8930"
-                        fill="#cd8930"
-                      />
-                      <p id="gold">Promoted</p>
-                    </div>
-                    <div className="  d-flex flex-row col-12 col-md-2  ">
-                      <div className="col-md-4"></div>
-                      <BsBookmark
-                        id="BsBookmark"
-                        color="#1e4274"
-                        className="fs-2 align-self-center mb-5 col-md-2 col-4"
-                        path="0px"
-                      />
-                      <button className="applyBtn px-1 py-0 col-md-6 col-8">
-                        Apply
-                      </button>
-                    </div>
-                  </div>
+                  }
                 </div>
               </div>
             </div>

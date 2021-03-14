@@ -26,8 +26,11 @@ class AuthNav extends React.Component {
       status: sessionStorage.getItem("status"),
       loading: false,
       isLoggedIn: false,
+      fullname: "",
+
       // number: 0,
     };
+
     if (this.state.token) {
       this.setState({ loading: true });
     }
@@ -35,6 +38,7 @@ class AuthNav extends React.Component {
   handleLogout = () => {
     sessionStorage.clear("token");
     sessionStorage.clear("status");
+    this.props.setUser(false);
     this.props.setUser(false);
   };
   async componentDidMount() {
@@ -44,21 +48,22 @@ class AuthNav extends React.Component {
     await resolve(
       axios
         .get("/W/studentImg")
-        .then(res => {
+        .then((res) => {
           if (res.status === 200) {
             this.setState({
               user: res.data.response.data,
               avatar: res.data.response.data.image,
+              fullname: res.data.response.data.fullName,
             });
           }
         })
-        .catch(error => {
+        .catch((error) => {
           if (error.response.data.status === 401) {
             sessionStorage.clear("token");
             sessionStorage.clear("status");
             this.setState({ validToken: false });
           }
-        }),
+        })
     );
 
     let token = sessionStorage.getItem("token");
@@ -70,11 +75,16 @@ class AuthNav extends React.Component {
 
   render() {
     return (
-      <div className="navBottom">
-        <nav class="navbar navbar-expand-lg navBg fixed-top">
+      <div className="navBottom pb-1">
+        <nav className="navbar navbar-expand-lg navBg fixed-top">
           <div className="container">
-            <Link className="navbar-brand mx-2" href="/">
-              <img className="navbar-brand" src={logo} width="170" alt=""></img>
+            <Link className="navbar-brand mx-2" renderAs="button" to="/Home">
+              <img
+                className="navbar-brand profileImage"
+                src={logo}
+                width="170"
+                alt=""
+              ></img>
             </Link>
             <button
               className="navbar-toggler"
@@ -90,14 +100,14 @@ class AuthNav extends React.Component {
             <div className="collapse navbar-collapse " id="navbarScroll">
               <ul className="navbar-nav mt-1">
                 <li className="nav-item ">
-                  <Link className="nav-link item navPage" to="/Home">
+                  <Link className="nav-link item navPage mt-2" to="/Home">
                     Explore
                     <span className="sr-only" />
                   </Link>
                 </li>
                 <li className="nav-item ">
                   <Link
-                    className="nav-link item navPage"
+                    className="nav-link item navPage mt-2"
                     to="#"
                     // onClick={this.handleLogout}
                   >
@@ -316,43 +326,60 @@ class AuthNav extends React.Component {
                       <ul class="dropdown-menu profileMenu ">
                         <li className="row profileHeader d-flex justify-content-center">
                           <a
-                            class="dropdown-item"
-                            href="#"
+                            class="dropdown-item d-flex flex-row"
+                            href="/Profile"
                             style={{
                               fontSize: 18,
                               fontFamily: "SF med",
                               color: " #1e4274",
                             }}
                           >
-                            {this.state.avatar ? (
-                              <img
-                                src={this.state.avatar}
-                                alt="Avatar"
-                                width="40"
-                                height="40"
-                                className="avatar me-2"
-                                role="menuitem"
-                              />
-                            ) : (
-                              <AvatarLoader />
-                            )}
-                            Full Name
-                            <br />
-                            <span
-                              className="text-muted "
-                              style={{
-                                fontSize: 14,
-                                fontFamily: "SF light",
-                                marginLeft: 50,
-                                // marginTop: -40,
-                              }}
-                            >
-                              View Profile
-                            </span>
+                            <div className="col-4">
+                              {this.state.avatar ? (
+                                <img
+                                  src={this.state.avatar}
+                                  alt="Avatar"
+                                  width="40"
+                                  height="40"
+                                  className="avatar me-2 profileImage"
+                                  role="menuitem"
+                                />
+                              ) : (
+                                <AvatarLoader />
+                              )}
+                            </div>
+                            <div className="col-10">
+                              <span
+                                className="nameText  text-wrap"
+                                // style={{
+                                //   flexDirection: "column",
+                                //   flexWrap: "wrap",
+                                // }}
+                              >
+                                {this.state.fullname}
+                              </span>
+                              <br />
+                            </div>
                           </a>
+                          <span
+                            className="text-muted "
+                            style={{
+                              fontSize: 14,
+                              fontFamily: "SF light",
+                              marginLeft: 125,
+                              // marginTop: -40,
+                            }}
+                          >
+                            View Profile
+                          </span>
                         </li>
                         <li>
-                          <a class="row " href="#">
+                          <Link
+                            class="row "
+                            // href="/GenaeralInfo"
+                            to="/Profile/General"
+                            renderAs="button"
+                          >
                             <RiEdit2Fill
                               color="red"
                               className="col-3 mt-1 ms-2"
@@ -361,7 +388,7 @@ class AuthNav extends React.Component {
                               pull="left"
                             />
                             <p className="col-7">Edit Profile</p>
-                          </a>
+                          </Link>
                         </li>
                         <li>
                           <a class="row " href="#">

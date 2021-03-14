@@ -9,22 +9,21 @@ import Landing from "./Components/Landing/Landing";
 import Profile from "./Components/Profile/Profile";
 import Forget from "./Components/Auth/ForgetPassword";
 import ErrorPage from "./Components/Auth/ErrorPage404";
-import "./layout/Footer.css";
 
-const CheckAuth = () => {
-  const token = sessionStorage.getItem("token");
-  const status = sessionStorage.getItem("status");
-  if (!token && !status) {
-    return false;
-  }
-  return true;
-};
-const AuthRoute = ({ component: Component, ...rest }) => (
-  <Route
-    {...rest}
-    render={() => (CheckAuth() ? <Component /> : <Redirect to="/Login" />)}
-  />
-);
+import EducationForm from "./Components/EditProfile/EducationForm";
+import AccountsForm from "./Components/EditProfile/AccountsForm";
+import CoursesForm from "./Components/EditProfile/CoursesForm";
+import ExperienceForm from "./Components/EditProfile/ExperienceForm";
+import GeneralForm from "./Components/EditProfile/GeneralForm";
+import SkillsForm from "./Components/EditProfile/SkillsForm";
+import Interest from "./Components/EditProfile/InterestForm";
+import Language from "./Components/EditProfile/LanguageForm";
+import { AuthRoute } from "./Components/Auth/AuthRoute";
+
+// import Skills from "./EditProfile/Skills";
+// import Education from "./EditProfile/Education";
+
+import "./layout/Footer.css";
 
 class App extends React.Component {
   constructor() {
@@ -42,7 +41,6 @@ class App extends React.Component {
   }
 
   setUser = data => {
-    // this.forceUpdate();
     return this.setState({ loggedIn: data });
   };
 
@@ -59,13 +57,11 @@ class App extends React.Component {
             <div className="auth-inner">
               <Switch>
                 {/* <== Home for Guest */}
-
                 <Route
                   exact
                   path="/"
                   component={() => <Landing loggedIn={this.state.loggedIn} />}
                 />
-
                 <Route
                   exact
                   path="/Login"
@@ -85,6 +81,83 @@ class App extends React.Component {
                   }}
                 />
                 <AuthRoute exact path="/Profile" component={Profile} />
+                {/* <AuthRoute exact path="/GeneralInfo" component={GeneralInfo} /> */}
+                <AuthRoute
+                  exact
+                  path="/Profile/General"
+                  component={GeneralForm}
+                />
+                <AuthRoute
+                  exact
+                  path="/Profile/Education"
+                  component={EducationForm}
+                />
+                <AuthRoute
+                  exact
+                  path="/Profile/Education/:id"
+                  component={EducationForm}
+                />
+                <AuthRoute
+                  exact
+                  path="/Profile/Experience"
+                  component={ExperienceForm}
+                />
+                <AuthRoute
+                  exact
+                  path="/Profile/Experiance/:id"
+                  component={ExperienceForm}
+                />
+                <AuthRoute
+                  exact
+                  path="/Profile/Courses"
+                  component={CoursesForm}
+                />
+                <AuthRoute
+                  exact
+                  path="/Profile/Courses/:id"
+                  component={CoursesForm}
+                />
+                <AuthRoute
+                  exact
+                  path="/Profile/Skills"
+                  component={SkillsForm}
+                />
+                <AuthRoute
+                  exact
+                  path="/Profile/Skills/:id"
+                  component={SkillsForm}
+                />
+                <AuthRoute
+                  exact
+                  path="/Profile/Language"
+                  component={Language}
+                />
+                <AuthRoute
+                  exact
+                  path="/Profile/Language/:id"
+                  component={Language}
+                />
+                <AuthRoute
+                  exact
+                  path="/Profile/Interest/:id"
+                  component={Interest}
+                  render={Interests => <Interest {...Interests} />}
+                />
+                <AuthRoute
+                  exact
+                  path="/Profile/Interest"
+                  component={Interest}
+                />
+                <AuthRoute
+                  exact
+                  path="/Profile/Accounts"
+                  component={AccountsForm}
+                />
+                <AuthRoute
+                  exact
+                  path="/Profile/Accounts/:id"
+                  component={AccountsForm}
+                />
                 <Route exact path="*" component={ErrorPage} />
               </Switch>
             </div>

@@ -1,0 +1,370 @@
+@font-face {
+  font-family: SF reg;
+
+  src: url("../Components/assests/Fonts/SF-Compact-Display-Regular.otf");
+}
+@font-face {
+  font-family: SF bold;
+  src: url("../Components/assests/Fonts/SF-Compact-Display-Bold.otf");
+}
+@font-face {
+  font-family: SF light;
+  src: url("../Components/assests/Fonts/SF-Compact-Display-Light.otf");
+}
+@font-face {
+  font-family: SF med;
+  src: url("../Components/assests/Fonts/SF-Compact-Display-Medium.otf");
+}
+
+* {
+  /* color: #1e4274; */
+  font-family: sf reg;
+}
+#gpa {
+  color: #cd8930 !important;
+  font-family: sf bold !important;
+}
+.profiletitle {
+  font-family: sf bold;
+}
+#containerrrr {
+  margin-top: 5em !important;
+}
+#profilepp {
+  border-radius: 100px;
+  width: 7em;
+  height: 7em;
+  object-fit: cover !important;
+}
+#bluebtn {
+  color: #1e4274 !important;
+  border: 1px solid #1e4274 !important;
+  width: 9.375em;
+}
+#bluebtn1 {
+  color: #1e4274 !important;
+  border: 1px solid #1e4274 !important;
+  width: 9.375em;
+}
+.goldbtn {
+  color: #cd8930 !important;
+  border: 1px solid #cd8930 !important;
+  width: 19.5em;
+  margin-top: 0.5em;
+}
+@media screen and (max-width: 1399px) {
+  .goldbtn {
+    width: 7em !important;
+    margin-top: 0em !important;
+    margin-top: 0em !important;
+  }
+  .pencilforskills {
+    margin-left: 8%;
+  }
+  #bluebtn {
+    width: 7em !important;
+  }
+  #bluebtn1 {
+    width: 7em !important;
+  }
+  #topbtns {
+    display: flex !important;
+    flex-flow: row !important;
+
+    /* justify-content: center !important; */
+  }
+  .titlecard {
+    color: #cd8930 !important;
+    transition: 300ms !important;
+  }
+  .skillnamepencil {
+    color: #cd8930 !important;
+    opacity: 100% !important;
+    transition: 300ms !important;
+  }
+  #education {
+    border-top: solid 3px #1e4274 !important;
+    transition: 300ms !important;
+  }
+  .skillnamepencil {
+    fill: #cd8930 !important;
+    color: #cd8930 !important;
+    opacity: 100% !important;
+    transition: 300ms !important;
+  }
+}
+@media screen and (max-width: 991px) {
+  .orangetitle2 {
+    margin-top: 1.5em;
+  }
+  .plusmarginback {
+    margin-left: 0% !important;
+  }
+  #gpa {
+    margin-left: 0 !important;
+    color: #cd8930 !important;
+    font-family: sf bold !important;
+  }
+  #bluebtn1 {
+    margin-right: 0.3em !important;
+  }
+  .titlecard {
+    color: #cd8930 !important;
+    transition: 300ms !important;
+  }
+  .skillnamepencil {
+    color: #cd8930 !important;
+    opacity: 100% !important;
+    transition: 300ms !important;
+  }
+  #education {
+    border-top: solid 3px #1e4274 !important;
+    transition: 300ms !important;
+  }
+  .skillnamepencil {
+    fill: #cd8930 !important;
+    color: #cd8930 !important;
+    opacity: 100% !important;
+    transition: 300ms !important;
+  }
+}
+
+@media screen and (max-width: 1025px) {
+  #skillnamepen {
+    overflow: visible !important;
+    display: flex !important;
+    flex-flow: row !important;
+  }
+  .skillnamepencil {
+    fill: #cd8930 !important;
+    color: #cd8930 !important;
+    opacity: 100% !important;
+    transition: 300ms !important;
+  }
+
+  .titlecard {
+    color: #cd8930;
+  }
+  #education {
+    border-top: solid 3px #1e4274;
+  }
+
+  #bluebtn {
+    margin-right: 0.9em !important;
+    color: #fff !important;
+    background-color: #1e4274 !important;
+    border: #1e4274 1px solid !important;
+    transition: 700ms;
+  }
+  #bluebtn1 {
+    margin-right: -1em !important;
+    color: #fff !important;
+    background-color: #1e4274 !important;
+    border: #1e4274 1px solid !important;
+    transition: 700ms;
+  }
+  .goldbtn {
+    color: #fff !important;
+    background-color: #cd8930 !important;
+    border: #cd8930 1px solid !important;
+    transition: 700ms;
+  }
+  .titlecard {
+    color: #cd8930 !important;
+    transition: 300ms !important;
+  }
+  .skillnamepencil {
+    color: #cd8930 !important;
+    opacity: 100% !important;
+    transition: 300ms !important;
+  }
+  #education {
+    border-top: solid 3px #1e4274 !important;
+    transition: 300ms !important;
+  }
+}
+@media screen and (max-width: 767px) {
+  .interestmobile {
+    margin-right: -1em !important;
+  }
+}
+@media screen and (max-width: 513px) {
+  .interestmobilee {
+    margin-right: -3% !important;
+  }
+}
+
+@media screen and (max-width: 347px) {
+  .plusmarginback {
+    margin-left: 0% !important;
+  }
+  #topbtns {
+    display: flex !important;
+    flex-flow: column !important;
+  }
+  .goldbtn {
+    justify-content: center !important;
+    margin-top: 0.8em !important;
+  }
+  #bluebtn {
+    margin-left: 0em !important;
+  }
+  .titlecard {
+    color: #cd8930 !important;
+    transition: 300ms !important;
+  }
+  .skillnamepencil {
+    color: #cd8930 !important;
+    opacity: 100% !important;
+    transition: 300ms !important;
+  }
+  #education {
+    border-top: solid 3px #1e4274 !important;
+    transition: 300ms !important;
+  }
+  .skillnamepencil {
+    fill: #cd8930 !important;
+    color: #cd8930 !important;
+    opacity: 100% !important;
+    transition: 300ms !important;
+  }
+}
+#blueribbon {
+  padding: 2em;
+  background-color: #1e4274;
+  margin-top: 4em;
+  color: #fff;
+}
+#orangetitle {
+  font-family: SF bold;
+  color: #cd8930;
+  margin-bottom: 0.5em;
+}
+.info {
+  color: #fff !important;
+  margin-top: 0.3em;
+  font-family: SF light;
+}
+.icon {
+  font-size: 1.4em;
+}
+
+.plus {
+  align-content: center;
+  justify-content: center;
+  background-color: rgb(230, 227, 227);
+  padding-right: 0.5em;
+  padding-bottom: 0.05em;
+  padding-left: 0.5em;
+  border-radius: 3px;
+  text-decoration: none;
+  color: #1e4274;
+}
+.plus:hover {
+  align-content: center;
+  justify-content: center;
+  background-color: rgb(230, 227, 227);
+  padding-right: 0.5em;
+  padding-bottom: 0.05em;
+  padding-left: 0.5em;
+  border-radius: 3px;
+  text-decoration: none;
+  color: #1e4274;
+}
+
+#goldcredentials {
+  color: #cd8930;
+  text-decoration: none !important;
+}
+.skillnamepencil {
+  fill: transparent;
+  color: transparent;
+  transition: 300ms;
+}
+#education:hover .skillnamepencil {
+  fill: #cd8930 !important;
+  color: #cd8930 !important;
+  opacity: 100% !important;
+  transition: 300ms !important;
+}
+
+#education {
+  border-top: solid 0.1px #1e4274;
+  transition: 300ms;
+}
+#education:hover .titlecard {
+  color: #cd8930;
+  transition: 300ms;
+}
+
+#education:hover {
+  border-top: solid 4px #1e4274;
+  transition: 300ms;
+}
+#bluebtn:hover {
+  color: #fff !important;
+  background-color: #1e4274 !important;
+  border: #1e4274 1px solid !important;
+  transition: 700ms;
+}
+#bluebtn1:hover {
+  color: #fff !important;
+  background-color: #1e4274 !important;
+  border: #1e4274 1px solid !important;
+  transition: 700ms;
+}
+.goldbtn:hover {
+  color: #fff !important;
+  background-color: #cd8930 !important;
+  border: #cd8930 1px solid !important;
+  transition: 700ms;
+}
+#worktag {
+  align-self: center;
+  justify-self: center;
+  background-color: rgb(230, 227, 227);
+  border-radius: 5px;
+}
+.titlecard {
+  color: #1e4274;
+  transition: 300ms;
+}
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: sans-serif;
+}
+
+.carousel {
+  background: #fff;
+}
+
+#interestpen {
+  width: 1% !important;
+  margin-left: 1.2% !important;
+  font-size: 1.2em;
+}
+#lightfont:hover .skillname {
+  color: #cd8930 !important;
+}
+#lightfont:hover #skillnamepen {
+  color: #1e4274 !important;
+  fill: #1e4274 !important;
+}
+#lightfont {
+  font-family: SF light !important;
+}
+#imgicon {
+  width: 3.3em !important;
+}
+.plusmarginback {
+  margin-left: -11%;
+}
+/* #accountsicons {
+  font-size: 1.2em; */
+/* width: 2em;
+  height: 2em; */
+/* margin-right: 5%;
+} */
