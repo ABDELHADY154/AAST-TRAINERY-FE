@@ -42,6 +42,7 @@ export default class StudentEdu extends Component {
         </div>
         <div className="d-flex flex-row fs-6 mt-2 ">
           <a
+            target="_blank"
             id="goldcredentials"
             renderAs="button"
             href={this.props.cred_url}
