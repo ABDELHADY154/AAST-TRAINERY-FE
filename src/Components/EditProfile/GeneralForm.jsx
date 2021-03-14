@@ -10,6 +10,7 @@ import {
 } from "react-country-region-selector";
 import Footer2 from "../Common/Footer2";
 import EditNav from "./EditNav";
+import { EditImgLoader } from "../../loader";
 
 class GeneralForm extends Component {
   constructor(props) {
@@ -106,7 +107,6 @@ class GeneralForm extends Component {
     e.preventDefault();
     var formBody = new FormData();
 
-
     const data = {
       image: this.state.imageURL,
     };
@@ -172,7 +172,6 @@ class GeneralForm extends Component {
   render() {
     const city = this.state.city;
     if (this.state.loggedIn === false) {
-
       return <Redirect to="/Profile" push />;
     }
     // console.log(this.state.imageURL);
@@ -184,10 +183,19 @@ class GeneralForm extends Component {
           <form className="row g-3 mb-3" onSubmit={this.handleSubmit}>
             <div className="col-11 mb-4 mt-4">
               <div className="row ">
-                <img
-                  src={this.state.image}
-                  className="col-3 profieImg rounded-circle"
-                />
+                {this.state.image ? (
+                  <img
+                    src={this.state.image}
+                    className="col-3 profieImg rounded-circle"
+                  />
+                ) : (
+                  <EditImgLoader
+                    className="col-3 profieImg rounded-circle"
+
+                    // style={{ paddingBottom: 10, paddingRight: 10 }}
+                  />
+                )}
+
                 <div className="col-10 ">
                   <label
                     className="form-label fs-5 mt-2 imgLabel"
@@ -206,7 +214,6 @@ class GeneralForm extends Component {
                       type="file"
                       className="imgUploadBtn"
                       accept="image/x-png,image/gif,image/jpeg"
-
                       onChange={(e) =>
                         this.setState({
                           imageURL: e.target.files[0],
