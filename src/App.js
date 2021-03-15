@@ -92,7 +92,7 @@ class App extends React.Component {
                   path="/Profile/Education"
                   component={EducationForm}
                 />
-                <AuthRoute
+                <AuthRout
                   exact
                   path="/Profile/Education/:id"
                   component={EducationForm}
