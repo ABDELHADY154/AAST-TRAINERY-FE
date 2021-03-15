@@ -24,7 +24,8 @@
     "react-scripts": "^4.0.3",
     "react-scrolltop-button": "^0.1.6",
     "react-step-progress-bar": "^1.0.3",
-    "react-visibility-sensor": "^5.1.1"
+    "react-visibility-sensor": "^5.1.1",
+    "styled-components": "^5.2.1"
   },
   "scripts": {
     "start": "react-scripts start",
