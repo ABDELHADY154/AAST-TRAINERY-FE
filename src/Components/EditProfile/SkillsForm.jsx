@@ -154,7 +154,55 @@ class Skills extends Component {
                 )}
               </div>
               <div className="col-lg-10 col-11 col-md-10 col-sm-12 col-xs-12 ">
-                <label for="quantity" className="form-label editLabel ">
+                <label for="inputRegNum" className="form-label editLabel mt-3">
+                  Level
+                </label>
+                {this.props.match.params.id ? (
+                  this.state.yearsExp ? (
+                    <ReactStars
+                      count={5}
+                      value={this.state.yearsExp}
+                      className={
+                        this.state.error && this.state.error.yearsExpErr
+                          ? "wrong"
+                          : " "
+                      }
+                      onChange={(yearsExp) => {
+                        this.setState({ yearsExp: yearsExp });
+                        console.log(`${yearsExp}`);
+                      }}
+                      size={28}
+                      activeColor="#F2A23A"
+                      edit={true}
+                    />
+                  ) : (
+                    ""
+                  )
+                ) : (
+                  <ReactStars
+                    count={5}
+                    value={this.state.yearsExp}
+                    className={
+                      this.state.error && this.state.error.yearsExpErr
+                        ? "wrong"
+                        : " "
+                    }
+                    onChange={(yearsExp) => {
+                      this.setState({ yearsExp: yearsExp });
+                      console.log(`${yearsExp}`);
+                    }}
+                    size={28}
+                    activeColor="#F2A23A"
+                    edit={true}
+                  />
+                )}
+                {this.state.error && this.state.error.yearsExpErr ? (
+                  <p className="editerror">{this.state.error.yearsExpErr}</p>
+                ) : (
+                  ""
+                )}
+              </div>
+              {/* <label for="quantity" className="form-label editLabel ">
                   Years of Experiance
                 </label>
                 <input
@@ -174,7 +222,7 @@ class Skills extends Component {
                 ) : (
                   ""
                 )}
-              </div>
+              </div> */}
               {this.props.match.params.id ? (
                 <div class="col-lg-10 col-11 col-md-10 col-sm-12 col-xs-12 d-flex justify-content-end">
                   <button

@@ -34,10 +34,9 @@ body {
   flex-wrap: wrap;
 }
 .avatar {
-  border-radius: 100px !important;
-}
-.profileImage {
+  border-radius: 100px !important;  
   object-fit: cover !important;
+
 }
 .navBg {
   background-color: #fff !important;
