@@ -60,7 +60,7 @@ class Profile extends Component {
   async componentDidMount() {
     await axios
       .get("/W/student/get-profile")
-      .then(res => {
+      .then((res) => {
         this.setState({
           id: res.data.response.data.name.id,
           name: res.data.response.data.name,
@@ -92,89 +92,86 @@ class Profile extends Component {
           accounts: res.data.response.data.accounts,
         });
       })
-      .catch(err => {
+      .catch((err) => {
         console.log(err);
       });
   }
 
   render() {
-    console.log(this.state.accounts);
+    // console.log(this.state.accounts);
     let id = this.props.id;
     return (
-      <div className="container-fluid ">
-        <div className="container  ">
-          <div className="d-flex flex-row flex-wrap">
+      <div className='container-fluid '>
+        <div className='container  '>
+          <div className='d-flex flex-row flex-wrap'>
             {this.state.image ? (
               <img
-                className="d-flex flex-column col-2 col-md-1 me-4 profileImage"
-                id="profilepp"
+                className='d-flex flex-column col-2 col-md-1 me-4 profileImage'
+                id='profilepp'
                 src={this.state.image}
               ></img>
             ) : (
               <ProfileImgLoader
-                className="me-2 "
+                className='me-2 '
                 // id="profilepp"
               />
             )}
 
-            <div className="d-flex flex-column col-7 col-md-4 mt-1 me-5">
+            <div className='d-flex flex-column col-7 col-md-4 mt-1 me-5'>
               <div
-                className="d-flex flex-row flex-wrap fs-4"
+                className='d-flex flex-row flex-wrap fs-4'
                 style={{ textTransform: "capitalize" }}
               >
                 {this.state.name}
               </div>
               <div
-                className="d-flex flex-row flex-wrap"
+                className='d-flex flex-row flex-wrap'
                 style={{ textTransform: "capitalize" }}
               >
                 {this.state.university}
               </div>
               <div
-                className="d-flex flex-row flex-wrap "
+                className='d-flex flex-row flex-wrap '
                 style={{ textTransform: "capitalize" }}
               >
                 {this.state.department}
-                <span id="gpa" className=" ms-2">
+                <span id='gpa' className=' ms-2'>
                   {this.state.gpa}
                 </span>
               </div>
-              <div className="d-flex flex-row flex-wrap">
+              <div className='d-flex flex-row flex-wrap'>
                 {this.state.start_year} - {this.state.end_year}
               </div>
             </div>
-            <div className="d-flex flex-column col-md-3 "></div>
-            <div
-              id="topbtns"
-              className="d-flex flex-column col-12 col-md-3 mt-1"
-            >
-              <div className="d-flex flex-row">
-                <div className="d-flex flex-column col-6 col-md-6">
+            <div className='d-flex flex-column col-md-3 '></div>
+            <div id='topbtns' className='d-flex flex-column col-12 col-md-3 mt-1'>
+              <div className='d-flex flex-row'>
+                <div className='d-flex flex-column col-6 col-md-6'>
                   <Link
-                    id="bluebtn1"
-                    renderAs="button"
-                    className="btn shadow-none "
+                    id='bluebtn1'
+                    renderAs='button'
+                    className='btn shadow-none '
                     // to="/Register"
                   >
                     Generate CV
                   </Link>
                 </div>
-                <div className="d-flex flex-column col-6 col-md-6">
+                <div className='d-flex flex-column col-6 col-md-6'>
                   <Link
-                    id="bluebtn"
-                    renderAs="button"
-                    className="btn shadow-none bluebtn "
-                    to="/Profile/General"
+                    id='bluebtn'
+                    renderAs='button'
+                    className='btn shadow-none bluebtn '
+                    to='/Profile/General'
                   >
                     Update Info
                   </Link>
                 </div>
               </div>
-              <div className="d-flex flex-row ">
-                <div className="d-flex flex-column col-4 col-md-2">
+              <div className='d-flex flex-row '>
+                <div className='d-flex flex-column col-4 col-md-2'>
                   <Link
-                    renderAs="button"
-                    className="btn shadow-none goldbtn"
+                    renderAs='button'
+                    className='btn shadow-none goldbtn'
                     // to="/Register"
                   >
                     My Portfolio
@@ -184,85 +181,70 @@ class Profile extends Component {
             </div>
           </div>
         </div>
-        <div id="blueribbon" className="container-fluid">
-          <div className="container">
-            <div className="d-flex flex-row flex-wrap">
-              <div className="d-flex flex-column col-12 col-md-3 me-4">
-                <div id="orangetitle" className="d-flex flex-row fs-4">
+        <div id='blueribbon' className='container-fluid'>
+          <div className='container'>
+            <div className='d-flex flex-row flex-wrap'>
+              <div className='d-flex flex-column col-12 col-md-3 me-4'>
+                <div id='orangetitle' className='d-flex flex-row fs-4'>
                   General Information:
                 </div>
                 <div
-                  className="d-flex flex-row info"
+                  className='d-flex flex-row info'
                   style={{ textTransform: "capitalize" }}
                 >
                   Gender: {"  "}
                   {this.state.gender}
                 </div>
-                <div className="d-flex flex-row info">
+                <div className='d-flex flex-row info'>
                   {" "}
                   Age: {"  "}
                   {this.state.age} {"  "}years
                 </div>
                 <div
-                  className="d-flex flex-row info"
+                  className='d-flex flex-row info'
                   style={{ textTransform: "capitalize" }}
                 >
                   Nationality: {"  "}
                   {this.state.nationality}
                 </div>
                 <div
-                  className="d-flex flex-row info"
+                  className='d-flex flex-row info'
                   style={{ textTransform: "capitalize" }}
                 >
                   Address: {"  "}
                   {this.state.city}, {this.state.country}.
                 </div>
               </div>
-              <div className="d-flex flex-column col-12 col-md-5 me-5"></div>
-              <div className="d-flex flex-column col-12 col-md-3">
-                <div
-                  id="orangetitle"
-                  className="d-flex flex-row fs-4 orangetitle2"
-                >
+              <div className='d-flex flex-column col-12 col-md-5 me-5'></div>
+              <div className='d-flex flex-column col-12 col-md-3'>
+                <div id='orangetitle' className='d-flex flex-row fs-4 orangetitle2'>
                   Contact Information:
                 </div>
-                <div className="d-flex flex-row info">
-                  <MdSettingsPhone
-                    fill="white"
-                    color="white"
-                    className="me-2 icon"
-                  />
+                <div className='d-flex flex-row info'>
+                  <MdSettingsPhone fill='white' color='white' className='me-2 icon' />
                   {this.state.phone_number}
                 </div>
                 <div
-                  className="d-flex flex-row info"
+                  className='d-flex flex-row info'
                   style={{ textTransform: "capitalize" }}
                 >
-                  <HiOutlineMail
-                    fill="white"
-                    color="white"
-                    className="me-2 icon"
-                  />
+                  <HiOutlineMail fill='white' color='white' className='me-2 icon' />
                   {this.state.email}
                 </div>
               </div>
             </div>
           </div>
         </div>
-        <div className="container">
-          <div id="education" className="card mt-5">
-            <div className="card-body">
-              <div className="d-flex flex-row titlecard profiletitle fs-4 mb-2">
+        <div className='container'>
+          <div id='education' className='card mt-5'>
+            <div className='card-body'>
+              <div className='d-flex flex-row titlecard profiletitle fs-4 mb-2'>
                 Education
-                <Link
-                  renderAs="button"
-                  className="ms-3 plus"
-                  to="Profile/Education"
-                >
+                <Link renderAs='button' className='ms-3 plus' to='Profile/Education'>
                   +
                 </Link>
               </div>
-              {this.state.educations.map(item => {
+              {this.state.educations.map((item) => {
                 return (
                   <StudentEducation
                     id={item.id}
@@ -279,21 +261,21 @@ class Profile extends Component {
             </div>
           </div>
         </div>
-        <div className="container">
-          <div id="education" className="card mt-5">
-            <div className="card-body">
-              <div className="d-flex flex-row titlecard profiletitle fs-4 mb-2">
+        <div className='container'>
+          <div id='education' className='card mt-5'>
+            <div className='card-body'>
+              <div className='d-flex flex-row titlecard profiletitle fs-4 mb-2'>
                 Work Experience
                 <Link
-                  renderAs="button"
-                  className="  ms-3 plus"
-                  to="Profile/Experiance"
+                  renderAs='button'
+                  className='  ms-3 plus'
+                  to='Profile/Experiance'
                   // to="/Register"
                 >
                   +
                 </Link>
               </div>
-              {this.state.work_experience.map(item => {
+              {this.state.work_experience.map((item) => {
                 return (
                   <StudentWorkExp
                     key={item.id}
@@ -312,20 +294,16 @@ class Profile extends Component {
             </div>
           </div>
         </div>
-        <div className="container">
-          <div id="education" className="card mt-5">
-            <div className="card-body">
-              <div className="d-flex flex-row titlecard profiletitle fs-4 mb-2">
+        <div className='container'>
+          <div id='education' className='card mt-5'>
+            <div className='card-body'>
+              <div className='d-flex flex-row titlecard profiletitle fs-4 mb-2'>
                 Courses
-                <Link
-                  renderAs="button"
-                  className="  ms-3 plus"
-                  to="Profile/Courses"
-                >
+                <Link renderAs='button' className='  ms-3 plus' to='Profile/Courses'>
                   +
                 </Link>
               </div>
-              {this.state.courses.map(item => {
+              {this.state.courses.map((item) => {
                 return (
                   <StudentCourses
                     key={item.id}
@@ -340,11 +318,11 @@ class Profile extends Component {
             </div>
           </div>
         </div>
-        <div className="container">
-          <div id="education" className="card mt-5">
-            <div className="card-body">
-              <div className="d-flex flex-row titlecard profiletitle fs-4 mb-2">
-                <div className="d-flex titlecard flex-row profiletitle col-md-10 col-10 me-3 ">
+        <div className='container'>
+          <div id='education' className='card mt-5'>
+            <div className='card-body'>
+              <div className='d-flex flex-row titlecard profiletitle fs-4 mb-2'>
+                <div className='d-flex titlecard flex-row profiletitle col-md-10 col-10 me-3 '>
                   Skills
                   {/* <Link
                     renderAs="button"
@@ -355,19 +333,19 @@ class Profile extends Component {
                   </Link> */}
                 </div>
               </div>
-              <div className=" d-flex flex-row flex-wrap col-12 mb-2 col-md-12 me-1 fs-5">
+              <div className=' d-flex flex-row flex-wrap col-12 mb-2 col-md-12 me-1 fs-5'>
                 Tools and Fields of Expertise{" "}
                 <Link
-                  renderAs="button"
-                  className="  ms-3 plus"
-                  to="Profile/Skills"
+                  renderAs='button'
+                  className='  ms-3 plus'
+                  to='Profile/Skills'
                   style={{ width: " 1.5em", alignContent: "center" }}
                 >
                   +
                 </Link>
               </div>
 
-              {this.state.skills.map(item => {
+              {this.state.skills.map((item) => {
                 return (
                   <StudentSkill
                     key={item.id}
@@ -378,73 +356,67 @@ class Profile extends Component {
                 );
               })}
               <hr />
-              <div className=" d-flex flex-row col-12 col-md-12 ">
-                <div className="d-flex flex-column col-5 col-md-2 fs-5 me-0 ">
+              <div className=' d-flex flex-row col-12 col-md-12 '>
+                <div className='d-flex flex-column col-5 col-md-2 fs-5 me-0 '>
                   Interests
                 </div>
-                <div className="d-flex flex-column col-6 col-md-9 fs-5 ms-0 me-3 interestmobile interestmobilee">
+                <div className='d-flex flex-column col-6 col-md-9 fs-5 ms-0 me-3 interestmobile interestmobilee'>
                   <Link
-                    renderAs="button"
-                    className=" plus plusmarginback"
-                    to="Profile/Interest"
+                    renderAs='button'
+                    className=' plus plusmarginback'
+                    to='Profile/Interest'
                     style={{ width: " 1.5em", alignContent: "center" }}
                   >
                     +
                   </Link>
                 </div>
                 <div
-                  id="hiddenhover"
-                  className=" d-flex flex-column col-1 col-md-1 p-0 "
+                  id='hiddenhover'
+                  className=' d-flex flex-column col-1 col-md-1 p-0 '
                   style={{ alignContent: "flex-end" }}
                 >
                   <Link
-                    id="interestpen"
-                    renderAs="button"
+                    id='interestpen'
+                    renderAs='button'
                     to={`/Profile/Interest/update`}
                   >
                     <BiPencil
-                      id="skillnamepen"
-                      className="skillnamepencil"
-                      fill="#cd8930"
-                      color="#cd8930"
+                      id='skillnamepen'
+                      className='skillnamepencil'
+                      fill='#cd8930'
+                      color='#cd8930'
                     />
                   </Link>
                 </div>
               </div>
               <div
-                className=" d-flex flex-row flex-wrap col-12 col-md-12 "
-                id="interesttags"
+                className=' d-flex flex-row flex-wrap col-12 col-md-12 '
+                id='interesttags'
               >
-                {this.state.interests.map(i => {
-                  return (
-                    <Studentinterest
-                      key={i.id}
-                      id={i.id}
-                      interest={i.interest}
-                    />
-                  );
+                {this.state.interests.map((i) => {
+                  return <Studentinterest key={i.id} id={i.id} interest={i.interest} />;
                 })}
               </div>
 
               <hr />
 
               <div
-                id="lightfont"
-                className="flex-row  fs-5 "
+                id='lightfont'
+                className='flex-row  fs-5 '
                 style={{ textTransform: "capitalize" }}
               >
-                <div className=" flex-row col-6 col-md-9 fs-5 ">
+                <div className=' flex-row col-6 col-md-9 fs-5 '>
                   Languages
                   <Link
-                    renderAs="button"
-                    className="ms-3 pb-1 px-2 plus col-2"
-                    to="Profile/Language"
+                    renderAs='button'
+                    className='ms-3 pb-1 px-2 plus col-2'
+                    to='Profile/Language'
                     style={{ width: " 1.5em", alignContent: "center" }}
                   >
                     +
                   </Link>
                 </div>
-                {this.state.languages.map(i => {
+                {this.state.languages.map((i) => {
                   return (
                     <StudentLanguage
                       key={i.id}
@@ -458,129 +430,104 @@ class Profile extends Component {
             </div>
           </div>
         </div>
-        <div className="container">
-          <div id="education" className="card mt-5">
-            <div className="card-body">
-              <div className="d-flex flex-row titlecard profiletitle col-md-11 col-10 fs-4 mb-2">
-                <div className="d-flex titlecard flex-row profiletitle col-md-11 col-10 me-5 ">
+        <div className='container'>
+          <div id='education' className='card mt-5'>
+            <div className='card-body'>
+              <div className='d-flex flex-row titlecard profiletitle col-md-11 col-10 fs-4 mb-2'>
+                <div className='d-flex titlecard flex-row profiletitle col-md-11 col-10 me-5 '>
                   Accounts
-                  <Link
-                    renderAs="button"
-                    className="  ms-3 plus"
-                    to="Profile/Accounts"
-                  >
+                  <Link renderAs='button' className='  ms-3 plus' to='Profile/Accounts'>
                     +
                   </Link>
                 </div>
               </div>
 
-              <div className=" d-flex flex-row col-12 col-md-12 ">
-                <div className="d-flex flex-column col-5 col-md-2 fs-5 me-0 ">
-                  <div className="d-flex flex-row  ">
-                    <div className=" d-flex flex-row   mt-2   ">
+              <div className=' d-flex flex-row col-12 col-md-12 '>
+                <div className='d-flex flex-column col-5 col-md-2 fs-5 me-0 '>
+                  <div className='d-flex flex-row  '>
+                    <div className=' d-flex flex-row   mt-2   '>
                       {/* {this.props.} */}
                       {this.state.accounts ? (
                         <>
                           {this.state.accounts.facebook ? (
-                            <a
-                              target="_blank"
-                              href={this.state.accounts.facebook}
-                            >
+                            <a target='_blank' href={this.state.accounts.facebook}>
                               <FaFacebookF
-                                fill="#1e4274"
-                                color="#1e4274"
-                                id="accountsicons"
-                                className="fs-4 me-4"
+                                fill='#1e4274'
+                                color='#1e4274'
+                                id='accountsicons'
+                                className='fs-4 me-4'
                               />
                             </a>
                           ) : (
                             ""
                           )}
                           {this.state.accounts.instagram ? (
-                            <a
-                              target="_blank"
-                              href={this.state.accounts.instagram}
-                            >
+                            <a target='_blank' href={this.state.accounts.instagram}>
                               <FaInstagram
-                                fill="#1e4274"
-                                color="#1e4274"
-                                id="accountsicons"
-                                className="fs-4 me-4"
+                                fill='#1e4274'
+                                color='#1e4274'
+                                id='accountsicons'
+                                className='fs-4 me-4'
                               />
                             </a>
                           ) : (
                             ""
                           )}
                           {this.state.accounts.youtube ? (
-                            <a
-                              target="_blank"
-                              href={this.state.accounts.youtube}
-                            >
+                            <a target='_blank' href={this.state.accounts.youtube}>
                               <FaYoutube
-                                fill="#1e4274"
-                                color="#1e4274"
-                                id="accountsicons"
-                                className="fs-4 me-4"
+                                fill='#1e4274'
+                                color='#1e4274'
+                                id='accountsicons'
+                                className='fs-4 me-4'
                               />
                             </a>
                           ) : (
                             ""
                           )}
                           {this.state.accounts.linkedin ? (
-                            <a
-                              target="_blank"
-                              href={this.state.accounts.linkedin}
-                            >
+                            <a target='_blank' href={this.state.accounts.linkedin}>
                               <FaLinkedinIn
-                                fill="#1e4274"
-                                color="#1e4274"
-                                id="accountsicons"
-                                className="fs-4 me-4"
+                                fill='#1e4274'
+                                color='#1e4274'
+                                id='accountsicons'
+                                className='fs-4 me-4'
                               />
                             </a>
                           ) : (
                             ""
                           )}
                           {this.state.accounts.website ? (
-                            <a
-                              target="_blank"
-                              href={this.state.accounts.website}
-                            >
+                            <a target='_blank' href={this.state.accounts.website}>
                               <FaLink
-                                fill="#1e4274"
-                                color="#1e4274"
-                                id="accountsicons"
-                                className="fs-4 me-4"
+                                fill='#1e4274'
+                                color='#1e4274'
+                                id='accountsicons'
+                                className='fs-4 me-4'
                               />
                             </a>
                           ) : (
                             ""
                           )}
                           {this.state.accounts.behance ? (
-                            <a
-                              target="_blank"
-                              href={this.state.accounts.behance}
-                            >
+                            <a target='_blank' href={this.state.accounts.behance}>
                               <FaBehance
-                                fill="#1e4274"
-                                color="#1e4274"
-                                id="accountsicons"
-                                className="fs-4 me-4"
+                                fill='#1e4274'
+                                color='#1e4274'
+                                id='accountsicons'
+                                className='fs-4 me-4'
                               />
                             </a>
                           ) : (
                             ""
                           )}
                           {this.state.accounts.github ? (
-                            <a
-                              target="_blank"
-                              href={this.state.accounts.github}
-                            >
+                            <a target='_blank' href={this.state.accounts.github}>
                               <FaGithub
-                                fill="#1e4274"
-                                color="#1e4274"
-                                id="accountsicons"
-                                className="fs-4 me-4"
+                                fill='#1e4274'
+                                color='#1e4274'
+                                id='accountsicons'
+                                className='fs-4 me-4'
                               />
                             </a>
                           ) : (
@@ -597,13 +544,13 @@ class Profile extends Component {
             </div>
           </div>
         </div>
-        <div className="container">
-          <div id="education" className="card mt-5">
-            <div className="card-body pb-5 ">
-              <div className="d-flex flex-row titlecard profiletitle fs-4 mb-2">
+        <div className='container'>
+          <div id='education' className='card mt-5'>
+            <div className='card-body pb-5 '>
+              <div className='d-flex flex-row titlecard profiletitle fs-4 mb-2'>
                 Reviews
               </div>
-              <div className="flex-row d-flex mt-1 ">
+              <div className='flex-row d-flex mt-1 '>
                 <StudentReviews />
               </div>
             </div>
