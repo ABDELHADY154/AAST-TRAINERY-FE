@@ -296,8 +296,19 @@ ReactStars:active {
 .red {
   color: red;
   font-size: 14px;
+  white-space: pre-line;
 
   margin-top: 1em !important;
+}
+.checkBoxExpert {
+  content: "";
+  display: inline;
+  width: 15px;
+  height: 15px;
+  padding-right: 5px;
+  border-radius: 15%;
+  border: 2px solid #1e4274;
+  margin-right: 6px;
 }
 
 .halfInput {
@@ -317,7 +328,6 @@ ReactStars:active {
 
 /* ...........Fathy........... */
 .uploadBtn {
-
   margin-top: 2.15em !important;
 
   background-color: #fafafa !important;
@@ -340,7 +350,6 @@ ReactStars:active {
     margin-top: 1rem !important;
   }
 }
-
 
 .closeLabel {
   margin-right: -60px !important;
