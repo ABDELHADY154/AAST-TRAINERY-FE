@@ -9,7 +9,7 @@ import img3 from "./Assets/Rectangle3.png";
 import img4 from "./Assets/2.png";
 import google from "./Assets/google.png";
 import apple from "./Assets/apple.png";
-import { DepLoader } from "../../loader";
+import { DepLoader, LogoesCarousel } from "../../loader";
 import "../../layout/Landing.css";
 import "../../layout/carousel.css";
 import { BsCheck } from "react-icons/bs";
@@ -34,7 +34,7 @@ class Landing extends React.Component {
     }
   }
   async componentDidMount() {
-    await axios.get("/W/landingCount").then(data => {
+    await axios.get("/W/landingCount").then((data) => {
       this.setState({
         loading: true,
         students: data.data.response.data.students,
@@ -216,7 +216,7 @@ class Landing extends React.Component {
                         Download Trainery and Start Training
                       </span>
                     </div>
-                    <div className="my-3 d-flex flex-row ">
+                    <div className="my-3 d-flex flex-row flex-wrap">
                       <a href="#">
                         <img className="mx-1" src={google} height="40" />
                       </a>
@@ -251,8 +251,15 @@ class Landing extends React.Component {
           </div>
         </div>
         <div className="container">
-          <div className="row   me-5  mb-4 carouselRow flex-wrap ">
-            <CarouselLogos className=" col-md-10 col-10  " />
+          <div className="row  mb-4 carouselRow flex-wrap ">
+            <CarouselLogos className=" col-md-10 col-10  col-sm-12 col-xs-12" />
+            {/* {this.state.loading === false ? (
+              <div>
+                <LogoesCarousel />
+              </div>
+            ) : (
+              <CarouselLogos className=" col-md-10 col-10  " />
+            )} */}
             <div className="col-md-6"></div>
             <div className="d-flex flex-column  align-items-center  mt-5 col-md-1 col-2 contactBtnW ">
               <button className="contactBtn py-1 px-4">Contact</button>

@@ -49,6 +49,7 @@ export default class StudentEdu extends Component {
             id="goldcredentials"
             renderAs="button"
             href={this.props.cred}
+            target="_blank"
             className="  mb-1   d-flex flex-row col-12 col-md-3"
           >
             See credentials

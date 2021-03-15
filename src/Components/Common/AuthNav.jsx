@@ -75,11 +75,16 @@ class AuthNav extends React.Component {
 
   render() {
     return (
-      <div className="navBottom">
+      <div className="navBottom pb-1">
         <nav className="navbar navbar-expand-lg navBg fixed-top">
           <div className="container">
             <Link className="navbar-brand mx-2" renderAs="button" to="/Home">
-              <img className="navbar-brand" src={logo} width="170" alt=""></img>
+              <img
+                className="navbar-brand profileImage"
+                src={logo}
+                width="170"
+                alt=""
+              ></img>
             </Link>
             <button
               className="navbar-toggler"
@@ -321,7 +326,7 @@ class AuthNav extends React.Component {
                       <ul class="dropdown-menu profileMenu ">
                         <li className="row profileHeader d-flex justify-content-center">
                           <a
-                            class="dropdown-item text-wrap"
+                            class="dropdown-item d-flex flex-row"
                             href="/Profile"
                             style={{
                               fontSize: 18,
@@ -329,31 +334,43 @@ class AuthNav extends React.Component {
                               color: " #1e4274",
                             }}
                           >
-                            {this.state.avatar ? (
-                              <img
-                                src={this.state.avatar}
-                                alt="Avatar"
-                                width="40"
-                                height="40"
-                                className="avatar me-2"
-                                role="menuitem"
-                              />
-                            ) : (
-                              <AvatarLoader />
-                            )}
-                            {this.state.fullname}
-                            <br />
-                            <span
-                              className="text-muted "
-                              style={{
-                                fontSize: 14,
-                                fontFamily: "SF light",
-                                marginLeft: 50,
-                                // marginTop: -40,
-                              }}
-                            >
-                              View Profile
-                            </span>
+                            <div className="col-4">
+                              {this.state.avatar ? (
+                                <img
+                                  src={this.state.avatar}
+                                  alt="Avatar"
+                                  width="40"
+                                  height="40"
+                                  className="avatar me-2"
+                                  role="menuitem"
+                                />
+                              ) : (
+                                <AvatarLoader />
+                              )}
+                            </div>
+                            <div className="col-10">
+                              <span
+                                className="nameText  text-wrap"
+                                // style={{
+                                //   flexDirection: "column",
+                                //   flexWrap: "wrap",
+                                // }}
+                              >
+                                {this.state.fullname}
+                                <br />
+                                <span
+                                  className="text-muted ms-1"
+                                  style={{
+                                    fontSize: 14,
+                                    fontFamily: "SF light",
+                                    marginLeft: 125,
+                                    // marginTop: -40,
+                                  }}
+                                >
+                                  View Profile
+                                </span>
+                              </span>
+                            </div>
                           </a>
                         </li>
                         <li>
