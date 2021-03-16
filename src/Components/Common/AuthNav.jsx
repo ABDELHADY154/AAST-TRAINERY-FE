@@ -72,7 +72,7 @@ class AuthNav extends React.Component {
 
     if (this.props.updated == true) {
       console.log("1");
-      return this.setState({ loggedIn: true });
+      return this.setState({ user: true });
     } else {
       console.log("11");
     }
@@ -83,9 +83,9 @@ class AuthNav extends React.Component {
     }
   };
   render() {
-    if (this.props.updated == true) {
-      window.location = window.location;
-    }
+    // if (this.props.updated == true) {
+    //   window.location = window.location;
+    // }
     return (
       <div className='navBottom pb-1'>
         <nav className='navbar navbar-expand-lg navBg fixed-top'>

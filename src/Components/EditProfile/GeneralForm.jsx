@@ -35,9 +35,11 @@ class GeneralForm extends Component {
       gpa: 0,
       dep: [],
       periodNumArr: [3, 4, 5, 6, 7, 8],
+      scrollPixelsY: 0,
     };
 
     this.handleChange = this.handleChange.bind(this);
+    window.scrollTo(0, 0);
   }
   selectCountry(val) {
     this.setState({ country: val });
@@ -92,6 +94,7 @@ class GeneralForm extends Component {
           window.location.reload();
         }
       });
+    window.addEventListener("scroll", this.handleScroll);
   }
   handleChange(event) {
     this.setState({
@@ -99,6 +102,12 @@ class GeneralForm extends Component {
       imageURL: event.target.files[0],
     });
   }
+  handleScroll = () => {
+    this.setState({
+      scrollPixelsY: window.scrollY,
+    });
+    console.log(this.state.scrollPixelsY);
+  };
 
   handleSubmit = async (e) => {
     e.preventDefault();

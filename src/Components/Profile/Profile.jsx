@@ -57,6 +57,7 @@ class Profile extends Component {
     reviews: [],
     accounts: [],
   };
+
   async componentDidMount() {
     await axios
       .get("/W/student/get-profile")

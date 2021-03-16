@@ -39,6 +39,7 @@ class App extends React.Component {
         loggedIn: true,
       };
     }
+    window.scrollTo(0, 0);
   }
 
   setUser = (data) => {
