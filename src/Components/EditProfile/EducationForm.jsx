@@ -127,7 +127,6 @@ export default class EducationForm extends Component {
     formBody.append("to", data.to);
     if (data.cred_url !== "") {
       formBody.append("cred_url", data.cred_url);
-      console.log("s");
     }
     if (this.props.match.params.id) {
       return await axios({
@@ -271,7 +270,7 @@ export default class EducationForm extends Component {
                 />
                 {this.state.error.cityErr !== "" &&
                   this.state.error.cityErr.map((name) => (
-                    <p className='red d-inline'> {name} </p>
+                    <p className='red d-inline '> {name} </p>
                   ))}
               </div>
               <div className='col-lg-5 col-11 col-md-5 col-sm-12 col-xs-12 '>

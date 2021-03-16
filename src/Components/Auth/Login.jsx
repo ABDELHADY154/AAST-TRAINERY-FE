@@ -15,7 +15,6 @@ class Login extends React.Component {
       status: sessionStorage.getItem("status"),
       email: "",
       error: {},
-      password: "",
       hidden: true,
       password: "",
     };
@@ -111,18 +110,18 @@ class Login extends React.Component {
                               {this.state.hidden ? (
                                 <FaEye
                                   color='red'
-                                  className=' w-10'
+                                  className=' ico'
                                   animation='tada'
-                                  size='18px'
+                                  size='22px'
                                   pull='left'
                                   onClick={this.toggleShow}
                                 />
                               ) : (
                                 <FaEyeSlash
                                   color='red'
-                                  className=' w-10'
+                                  className=' ico'
                                   animation='tada'
-                                  size='18px'
+                                  size='22px'
                                   pull='left'
                                   onClick={this.toggleShow}
                                 />
