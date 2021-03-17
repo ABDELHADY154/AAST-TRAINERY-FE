@@ -60,7 +60,7 @@ class Profile extends Component {
   async componentDidMount() {
     await axios
       .get("/W/student/get-profile")
-      .then(res => {
+      .then((res) => {
         this.setState({
           id: res.data.response.data.name.id,
           name: res.data.response.data.name,
@@ -92,7 +92,7 @@ class Profile extends Component {
           accounts: res.data.response.data.accounts,
         });
       })
-      .catch(err => {
+      .catch((err) => {
         console.log(err);
       });
   }
@@ -262,7 +262,7 @@ class Profile extends Component {
                   +
                 </Link>
               </div>
-              {this.state.educations.map(item => {
+              {this.state.educations.map((item) => {
                 return (
                   <StudentEducation
                     id={item.id}
@@ -293,7 +293,7 @@ class Profile extends Component {
                   +
                 </Link>
               </div>
-              {this.state.work_experience.map(item => {
+              {this.state.work_experience.map((item) => {
                 return (
                   <StudentWorkExp
                     key={item.id}
@@ -325,7 +325,7 @@ class Profile extends Component {
                   +
                 </Link>
               </div>
-              {this.state.courses.map(item => {
+              {this.state.courses.map((item) => {
                 return (
                   <StudentCourses
                     key={item.id}
@@ -367,7 +367,7 @@ class Profile extends Component {
                 </Link>
               </div>
 
-              {this.state.skills.map(item => {
+              {this.state.skills.map((item) => {
                 return (
                   <StudentSkill
                     key={item.id}
@@ -415,7 +415,7 @@ class Profile extends Component {
                 className=" d-flex flex-row flex-wrap col-12 col-md-12 "
                 id="interesttags"
               >
-                {this.state.interests.map(i => {
+                {this.state.interests.map((i) => {
                   return (
                     <Studentinterest
                       key={i.id}
@@ -428,33 +428,27 @@ class Profile extends Component {
 
               <hr />
 
-              <div
-                id="lightfont"
-                className="flex-row  fs-5 "
-                style={{ textTransform: "capitalize" }}
-              >
-                <div className=" flex-row col-6 col-md-9 fs-5 ">
-                  Languages
-                  <Link
-                    renderAs="button"
-                    className="ms-3 pb-1 px-2 plus col-2"
-                    to="Profile/Language"
-                    style={{ width: " 1.5em", alignContent: "center" }}
-                  >
-                    +
-                  </Link>
-                </div>
-                {this.state.languages.map(i => {
-                  return (
-                    <StudentLanguage
-                      key={i.id}
-                      id={i.id}
-                      language={i.language}
-                      level={i.level}
-                    />
-                  );
-                })}
+              <div className=" d-flex flex-row flex-wrap col-12 mb-2 col-md-12 me-1 fs-5">
+                Languages
+                <Link
+                  renderAs="button"
+                  className="ms-3 pb-1 px-2 plus col-2"
+                  to="Profile/Language"
+                  style={{ width: " 1.5em", alignContent: "center" }}
+                >
+                  +
+                </Link>
               </div>
+              {this.state.languages.map((i) => {
+                return (
+                  <StudentLanguage
+                    key={i.id}
+                    id={i.id}
+                    language={i.language}
+                    level={i.level}
+                  />
+                );
+              })}
             </div>
           </div>
         </div>
