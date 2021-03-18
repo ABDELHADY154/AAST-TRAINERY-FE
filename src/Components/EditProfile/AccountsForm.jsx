@@ -19,27 +19,27 @@ class AccountsForm extends Component {
     };
   }
   //get list
-  async componentDidMount() {
+  componentDidMount = async () => {
     await axios
       .get("/W/student/profile/account")
       .then((aList) => {
         console.log(aList.data.response.data);
         this.setState({
-          WebsitE: aList.data.response.data.website,
-          facebooK: aList.data.response.data.facebook,
-          instagraM: aList.data.response.data.instagram,
-          youtubE: aList.data.response.data.youtube,
+          WebsitE: aList.data.response.data[`0`].website,
+          facebooK: aList.data.response.data[`0`].facebook,
+          instagraM: aList.data.response.data[`0`].instagram,
+          youtubE: aList.data.response.data[`0`].youtube,
 
-          linkediN: aList.data.response.data.linkedin,
-          behancE: aList.data.response.data.behance,
-          githuB: aList.data.response.data.github,
+          linkediN: aList.data.response.data[`0`].linkedin,
+          behancE: aList.data.response.data[`0`].behance,
+          githuB: aList.data.response.data[`0`].github,
         });
         console.log(aList);
       })
       .catch((err) => {
         console.log(err);
       });
-  }
+  };
 
   handleSubmit = async (e) => {
     e.preventDefault();
@@ -53,7 +53,7 @@ class AccountsForm extends Component {
       github: this.state.githuB,
     };
     return await axios
-      .post("/W/student/profile/account")
+      .post("/W/student/profile/account", data)
       .then((res) => {
         console.log(res);
         this.setState({
@@ -139,7 +139,7 @@ class AccountsForm extends Component {
           </ul>
 
           <form class="text-left g-3 mb-3 " onSubmit={this.handleSubmit}>
-            <div className="row g-0 mb-3 ">
+            <div className="row g-0 mb-3 mt-sm-0 mt-4">
               <label className=" col-lg-2 col-11 col-md-3 col-sm-12 col-xs-12  form-label editLabel closeLabel ">
                 Website
               </label>

@@ -395,39 +395,41 @@ class Profile extends Component {
                 id='interesttags'
               >
                 {this.state.interests.map((i) => {
-                  return <Studentinterest key={i.id} id={i.id} interest={i.interest} />;
+
+                  return (
+                    <Studentinterest
+                      key={i.id}
+                      id={i.id}
+                      interest={i.interest}
+                    />
+                  );
                 })}
               </div>
 
               <hr />
 
-              <div
-                id='lightfont'
-                className='flex-row  fs-5 '
-                style={{ textTransform: "capitalize" }}
-              >
-                <div className=' flex-row col-6 col-md-9 fs-5 '>
-                  Languages
-                  <Link
-                    renderAs='button'
-                    className='ms-3 pb-1 px-2 plus col-2'
-                    to='Profile/Language'
-                    style={{ width: " 1.5em", alignContent: "center" }}
-                  >
-                    +
-                  </Link>
-                </div>
-                {this.state.languages.map((i) => {
-                  return (
-                    <StudentLanguage
-                      key={i.id}
-                      id={i.id}
-                      language={i.language}
-                      level={i.level}
-                    />
-                  );
-                })}
+
+              <div className=" d-flex flex-row flex-wrap col-12 mb-2 col-md-12 me-1 fs-5">
+                Languages
+                <Link
+                  renderAs="button"
+                  className="ms-3 pb-1 px-2 plus col-2"
+                  to="Profile/Language"
+                  style={{ width: " 1.5em", alignContent: "center" }}
+                >
+                  +
+                </Link>
               </div>
+              {this.state.languages.map((i) => {
+                return (
+                  <StudentLanguage
+                    key={i.id}
+                    id={i.id}
+                    language={i.language}
+                    level={i.level}
+                  />
+                );
+              })}
             </div>
           </div>
         </div>
