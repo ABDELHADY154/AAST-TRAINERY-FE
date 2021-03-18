@@ -54,10 +54,10 @@ class AuthNav extends React.Component {
         .then((res) => {
           if (res.status === 200) {
             this.setState({
-              user: res.data.response.data,
               avatar: res.data.response.data.image,
               fullname: res.data.response.data.fullName,
             });
+            console.log(this.props.updated);
           }
         })
 
@@ -71,8 +71,8 @@ class AuthNav extends React.Component {
     );
 
     if (this.props.updated == true) {
-      console.log("1");
-      return this.setState({ user: true });
+      // window.location.reload(true);
+      // return this.setState({ user: true });
     } else {
       console.log("11");
     }
@@ -83,9 +83,11 @@ class AuthNav extends React.Component {
     }
   };
   render() {
-    // if (this.props.updated == true) {
-    //   window.location = window.location;
-    // }
+    console.log(this.props.updated);
+
+    if (this.props.updated == true) {
+      window.location = window.location;
+    }
     return (
       <div className='navBottom pb-1'>
         <nav className='navbar navbar-expand-lg navBg fixed-top'>

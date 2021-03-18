@@ -106,7 +106,7 @@ class GeneralForm extends Component {
     this.setState({
       scrollPixelsY: window.scrollY,
     });
-    console.log(this.state.scrollPixelsY);
+    // console.log(this.state.scrollPixelsY);
   };
 
   handleSubmit = async (e) => {
