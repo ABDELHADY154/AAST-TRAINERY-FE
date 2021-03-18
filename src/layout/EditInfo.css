@@ -304,8 +304,9 @@ ReactStars:active {
   border-bottom: 1px solid #1e4274 !important;
 }
 .signInput:focus + .ico {
-  border: none !important;
-  margin-top: 10px;
+  /* border: none !important;
+  margin-top: 10px; */
+  border-bottom: 1px solid #cd8930 !important;
 }
 .checkBoxExpert {
   content: "";
