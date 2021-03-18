@@ -123,38 +123,38 @@ class Skills extends Component {
 
   render() {
     if (this.state.loggedIn === true) {
-      return <Redirect to="/Profile" />;
+      return <Redirect to='/Profile' />;
     }
     return (
       <div>
-        <div className="container ">
+        <div className='container '>
           <EditNav setactive={"Skills"} />
           <div>
-            <form className="row g-3 mb-3" onSubmit={this.handleSubmitSkills}>
-              <div className="col-lg-10 col-11 col-md-10 col-sm-12 col-xs-12">
-                <label for="quantity" className="form-label editLabel ">
+            <form className='row g-3 mb-3' onSubmit={this.handleSubmitSkills}>
+              <div className='col-lg-10 col-11 col-md-10 col-sm-12 col-xs-12'>
+                <label for='quantity' className='form-label editLabel '>
                   Skills
                 </label>
                 <input
-                  type="text"
+                  type='text'
                   className={
                     this.state.error && this.state.error.nameErr
                       ? "form-control editInput wrong"
                       : "form-control editInput "
                   }
-                  id="fullname"
-                  placeholder="Please enter your Skills "
+                  id='fullname'
+                  placeholder='Please enter your Skills '
                   onChange={(e) => this.setState({ skill: e.target.value })}
                   value={this.state.skill}
                 />
                 {this.state.error && this.state.error.skillErr ? (
-                  <p className="editerror">{this.state.error.skillErr}</p>
+                  <p className='editerror'>{this.state.error.skillErr}</p>
                 ) : (
                   ""
                 )}
               </div>
-              <div className="col-lg-10 col-11 col-md-10 col-sm-12 col-xs-12 ">
-                <label for="inputRegNum" className="form-label editLabel mt-3">
+              <div className='col-lg-10 col-11 col-md-10 col-sm-12 col-xs-12 '>
+                <label for='inputRegNum' className='form-label editLabel mt-3'>
                   Level
                 </label>
                 {this.props.match.params.id ? (
@@ -163,16 +163,14 @@ class Skills extends Component {
                       count={5}
                       value={this.state.yearsExp}
                       className={
-                        this.state.error && this.state.error.yearsExpErr
-                          ? "wrong"
-                          : " "
+                        this.state.error && this.state.error.yearsExpErr ? "wrong" : " "
                       }
                       onChange={(yearsExp) => {
                         this.setState({ yearsExp: yearsExp });
                         console.log(`${yearsExp}`);
                       }}
                       size={28}
-                      activeColor="#F2A23A"
+                      activeColor='#F2A23A'
                       edit={true}
                     />
                   ) : (
@@ -183,21 +181,19 @@ class Skills extends Component {
                     count={5}
                     value={this.state.yearsExp}
                     className={
-                      this.state.error && this.state.error.yearsExpErr
-                        ? "wrong"
-                        : " "
+                      this.state.error && this.state.error.yearsExpErr ? "wrong" : " "
                     }
                     onChange={(yearsExp) => {
                       this.setState({ yearsExp: yearsExp });
                       console.log(`${yearsExp}`);
                     }}
                     size={28}
-                    activeColor="#F2A23A"
+                    activeColor='#F2A23A'
                     edit={true}
                   />
                 )}
                 {this.state.error && this.state.error.yearsExpErr ? (
-                  <p className="editerror">{this.state.error.yearsExpErr}</p>
+                  <p className='editerror'>{this.state.error.yearsExpErr}</p>
                 ) : (
                   ""
                 )}
@@ -224,28 +220,28 @@ class Skills extends Component {
                 )}
               </div> */}
               {this.props.match.params.id ? (
-                <div class="col-lg-10 col-11 col-md-10 col-sm-12 col-xs-12 d-flex justify-content-end">
+                <div class='col-lg-10 col-11 col-md-10 col-sm-12 col-xs-12 d-flex justify-content-end'>
                   <button
                     onClick={() => this.handleDelete()}
-                    type="submit"
-                    class="btn deleteBtn me-2 shadow-none "
+                    type='submit'
+                    class='btn deleteBtn me-2 shadow-none '
                   >
                     Delete
                   </button>
-                  <button type="submit" class="btn updateBtn shadow-none">
+                  <button type='submit' class='btn updateBtn shadow-none'>
                     Update
                   </button>
                 </div>
               ) : (
-                <div className="col-lg-10 col-11 col-md-10 col-sm-12 col-xs-12 d-flex justify-content-end ">
+                <div className='col-lg-10 col-11 col-md-10 col-sm-12 col-xs-12 d-flex justify-content-end '>
                   <a
-                    type="button"
-                    className="btn me-2 cancelBtn shadow-none "
-                    href="/Profile"
+                    type='button'
+                    className='btn me-2 cancelBtn shadow-none '
+                    href='/Profile'
                   >
                     Cancel
                   </a>
-                  <button type="submit" className="btn doneBtn shadow-none">
+                  <button type='submit' className='btn doneBtn shadow-none'>
                     Add
                   </button>
                 </div>

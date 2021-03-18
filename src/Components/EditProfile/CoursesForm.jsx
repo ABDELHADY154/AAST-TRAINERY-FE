@@ -166,7 +166,7 @@ class CoursesForm extends Component {
               credErr: error.response.data.errors.cred,
             },
           });
-          console.log(error.response.data);
+          // console.log(error.response.data);
         });
   };
 
@@ -247,6 +247,7 @@ class CoursesForm extends Component {
             </li>
           </ul>
 
+
           <form class="g-3 mb-3 text-left " onSubmit={this.handleSubmit}>
             <div className=" row ">
               <div className="col-lg-10 col-11 col-md-10 col-sm-12 col-xs-12 mt-sm-0 mt-4">
@@ -317,12 +318,13 @@ class CoursesForm extends Component {
                 </p>
               </div>
 
-              <div className="col-lg-5 col-11 col-md-5 col-sm-12 col-xs-12">
-                <label for="bdaymonth" className="form-label editLabel ">
-                  To <span className="red">*</span>
+              <div className='col-lg-5 col-11 col-md-5 col-sm-12 col-xs-12'>
+                <label for='bdaymonth' className='form-label editLabel '>
+                  To <span className='red'>*</span>
                 </label>
                 <input
                   value={this.state.toDate ? this.state.toDate : ""}
+
                   type="date"
                   id="bdaymonth"
                   className={
@@ -337,12 +339,13 @@ class CoursesForm extends Component {
                 </p>
               </div>
 
-              <div class="col-lg-5 col-11 col-md-5 col-sm-12 col-xs-12 ">
-                <label for="inputTerm" className="form-label editLabel">
+              <div class='col-lg-5 col-11 col-md-5 col-sm-12 col-xs-12 '>
+                <label for='inputTerm' className='form-label editLabel'>
                   Credential URL
                 </label>
                 <input
                   value={this.state.CourseUrl ? this.state.CourseUrl : ""}
+
                   type="text"
                   id="fullname"
                   placeholder={this.state.CourseUrl}
@@ -358,16 +361,18 @@ class CoursesForm extends Component {
                 </p>
               </div>
 
-              <div className="col-lg-5 col-11 col-md-5 col-sm-12 col-xs-12  ">
+              <div className='col-lg-5 col-11 col-md-5 col-sm-12 col-xs-12  '>
                 <label
-                  htmlFor="files"
-                  className="form-control editInput uploadBtn d-flex"
+                  htmlFor='files'
+                  className='form-control editInput uploadBtn d-flex'
                 >
                   Upload
+
                   <FiUpload className="uploadIcon ms-auto " />
                   <input
-                    className="form-control editInput"
+                    className='form-control editInput'
                     hidden
+
                     type="file"
                     id="files"
                     accept=" image/*,file_extension/

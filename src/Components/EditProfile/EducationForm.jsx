@@ -9,7 +9,20 @@ import EditNav from "./EditNav";
 export default class EducationForm extends Component {
   constructor(props) {
     super(props);
-    this.state = { country: "", region: "", image: "", imageURL: "" };
+    this.state = {
+      country: "",
+      region: "",
+      image: "",
+      imageURL: "",
+      SchoolUrl: "",
+      error: {
+        countryErr: [],
+        cityErr: [],
+        fromErr: [],
+        toErr: [],
+        credErr: [],
+      },
+    };
     this.handleChange = this.handleChange.bind(this);
   }
 
@@ -34,7 +47,6 @@ export default class EducationForm extends Component {
     this.setState({
       image: URL.createObjectURL(event.target.files[0]),
       imageURL: filename,
-
     });
   }
   handleDelete = async (e) => {
@@ -90,6 +102,7 @@ export default class EducationForm extends Component {
   handleSubmit = async (e) => {
     e.preventDefault();
     var formBody = new FormData();
+    console.log(this.state.SchoolUrl);
 
     const data = {
       id: this.state.id,
@@ -112,8 +125,9 @@ export default class EducationForm extends Component {
     formBody.append("city", data.city);
     formBody.append("from", data.from);
     formBody.append("to", data.to);
-    formBody.append("cred_url", data.cred_url);
-
+    if (data.cred_url !== "") {
+      formBody.append("cred_url", data.cred_url);
+    }
     if (this.props.match.params.id) {
       return await axios({
         method: "post",
@@ -136,11 +150,12 @@ export default class EducationForm extends Component {
 
           this.setState({
             error: {
-              schoolNameErr: error.response.data.errors.school_name,
               countryErr: error.response.data.errors.country,
               cityErr: error.response.data.errors.city,
               fromErr: error.response.data.errors.from,
               toErr: error.response.data.errors.to,
+              schoolNameErr: error.response.data.errors.school_name,
+              credErr: error.response.data.errors.cred_url,
             },
           });
         });
@@ -155,6 +170,7 @@ export default class EducationForm extends Component {
           this.setState({
             done: true,
           });
+
           // console.log(response);
         })
         .catch((error) => {
@@ -167,13 +183,14 @@ export default class EducationForm extends Component {
 
           this.setState({
             error: {
-              schoolNameErr: error.response.data.errors.school_name,
               countryErr: error.response.data.errors.country,
               cityErr: error.response.data.errors.city,
               fromErr: error.response.data.errors.from,
               toErr: error.response.data.errors.to,
+              credErr: error.response.data.errors.cred_url,
             },
           });
+          // console.log(error.response.data.errors.cred_url);
         });
     }
   };
@@ -183,7 +200,7 @@ export default class EducationForm extends Component {
   render() {
     const { country, region } = this.state;
     if (this.state.loggedIn === false) {
-      return <Redirect to='/Profile' />;
+      return <Redirect to='/login' />;
     }
     if (this.state.done === true) {
       return <Redirect to='/Profile' />;
@@ -196,25 +213,22 @@ export default class EducationForm extends Component {
 
           <form class='g-3 mb-3 text-left ' onSubmit={this.handleSubmit}>
             <div className=' row'>
-              <div class='col-lg-10 col-11 col-md-10 col-sm-12 col-xs-12 '>
+              <div class='col-lg-10 col-11 col-md-10 col-sm-12 col-xs-12 mt-3 mt-sm-0'>
                 <label for='inputfullname' class='form-label editLabel '>
                   School Name <span className='red'>*</span>
                 </label>
                 <input
                   type='text'
-                  className={
-                    this.state.error && this.state.error.schoolNameErr
-                      ? "form-control editInput wrong "
-                      : "form-control editInput"
-                  }
+                  className='form-control editInput'
                   id='fullname'
-                  placeholder='Please enter your full name'
+                  placeholder={
+                    this.state.error && this.state.error.schoolNameErr
+                      ? this.state.error.schoolNameErr
+                      : "Sidi Gaber Language School (SLS)"
+                  }
                   onChange={(e) => this.setState({ SchoolName: e.target.value })}
                   value={this.state.SchoolName ? this.state.SchoolName : ""}
                 />
-                <p className='red'>
-                  {this.state.error ? this.state.error.schoolNameErr : ""}
-                </p>
               </div>
               <div className='col-lg-5 col-11 col-md-5 col-sm-12 col-xs-12'>
                 <label for='inputCountry' className='form-label editLabel'>
@@ -224,16 +238,18 @@ export default class EducationForm extends Component {
                   value={this.state.country ? this.state.country : country}
                   onChange={(val) => this.selectCountry(val)}
                   className={
-                    this.state.error && this.state.error.countryErr
+                    this.state.error && this.state.error.countryErr.length > 0
                       ? "form-control editInput wrong "
                       : "form-control editInput"
                   }
                   id='validationServer04'
                   aria-describedby='validationServer04Feedback'
                 />
-                <p className='red'>
-                  {this.state.error ? this.state.error.countryErr : ""}
-                </p>
+
+                {this.state.error.countryErr !== "" &&
+                  this.state.error.countryErr.map((name) => (
+                    <p className='red d-inline'> {name} </p>
+                  ))}
               </div>
               <div className='col-lg-5 col-11 col-md-5 col-sm-12 col-xs-12 '>
                 <label for='inputCity' className='form-label editLabel'>
@@ -244,7 +260,7 @@ export default class EducationForm extends Component {
                   value={region}
                   onChange={(val) => this.selectRegion(val)}
                   className={
-                    this.state.error && this.state.error.cityErr
+                    this.state.error && this.state.error.cityErr.length > 0
                       ? "form-control editInput wrong "
                       : "form-control editInput"
                   }
@@ -252,7 +268,10 @@ export default class EducationForm extends Component {
                   aria-describedby='validationServer04Feedback'
                   // value={(e) => this.setState({ City: e.target.value })}
                 />
-                <p className='red'>{this.state.error ? this.state.error.cityErr : ""}</p>
+                {this.state.error.cityErr !== "" &&
+                  this.state.error.cityErr.map((name) => (
+                    <p className='red d-inline '> {name} </p>
+                  ))}
               </div>
               <div className='col-lg-5 col-11 col-md-5 col-sm-12 col-xs-12 '>
                 <label for='bdaymonth' className='form-label editLabel '>
@@ -262,14 +281,17 @@ export default class EducationForm extends Component {
                   type='date'
                   id='bdaymonth'
                   className={
-                    this.state.error && this.state.error.fromErr
+                    this.state.error && this.state.error.fromErr.length > 0
                       ? "form-control editInput wrong "
                       : "form-control editInput"
                   }
                   onChange={(e) => this.setState({ From: e.target.value })}
                   value={this.state.From ? this.state.From : ""}
                 />
-                <p className='red'> {this.state.error ? this.state.error.fromErr : ""}</p>
+                {this.state.error.fromErr !== "" &&
+                  this.state.error.fromErr.map((name) => (
+                    <p className='red d-inline'> {name} </p>
+                  ))}
               </div>
               <div class='col-lg-5 col-11 col-md-5 col-sm-12 col-xs-12'>
                 <label for='bdaymonth' className='form-label editLabel '>
@@ -279,14 +301,18 @@ export default class EducationForm extends Component {
                   type='date'
                   id='bdaymonth'
                   className={
-                    this.state.error && this.state.error.toErr
+                    this.state.error && this.state.error.toErr.length > 0
                       ? "form-control editInput wrong "
                       : "form-control editInput "
                   }
                   onChange={(e) => this.setState({ To: e.target.value })}
                   value={this.state.To ? this.state.To : ""}
                 />
-                <p className='red'>{this.state.error ? this.state.error.toErr : ""}</p>
+
+                {this.state.error.toErr !== "" &&
+                  this.state.error.toErr.map((name) => (
+                    <p className='red d-inline'> {name} </p>
+                  ))}
               </div>
               <div class='col-lg-5 col-11 col-md-5 col-sm-12 col-xs-12 '>
                 <label for='inputTerm' className='form-label editLabel'>
@@ -294,25 +320,34 @@ export default class EducationForm extends Component {
                 </label>
                 <input
                   type='text'
-                  className='form-control editInput'
+                  className={
+                    this.state.error && this.state.error.credErr > 0
+                      ? "form-control editInput wrong "
+                      : "form-control editInput "
+                  }
                   id='fullname'
                   onChange={(e) => this.setState({ SchoolUrl: e.target.value })}
-                  placeholder={this.state.cred_url}
+                  placeholder={
+                    this.state.cred_url ? this.state.cred_url : "https://www. "
+                  }
                 />
+                {this.state.error.credErr !== "" && (
+                  <p className='red d-inline'> {this.state.error.credErr}</p>
+                )}
               </div>
-              <div className='col-lg-5 col-11 col-md-5 col-sm-12 col-xs-12 UploadBtnDiv'>
+              <div className='col-lg-5 col-11 col-md-5 col-sm-12 col-xs-12  '>
                 <label
-                  htmlFor='file'
-                  className='form-label editLabel uploadBtnn d-flex p-1'
+                  htmlFor='files'
+                  className='form-control editInput uploadBtn d-flex'
                 >
                   Upload
-                  <FiUpload className='icon justify-content-end align-items-end ' />
+                  <FiUpload className='uploadIcon ms-auto ' />
                   <input
+                    className='form-control editInput'
                     hidden
                     type='file'
-                    id='file'
-                    accept=' image/*,file_extension/
-                    .crt,.cer,.ca-bundle,.p7b,.p7c,.p7s,.pem,.pdf'
+                    id='files'
+                    accept='pdf'
                     onChange={(e) =>
                       this.setState({
                         imageURL: e.target.files[0],
@@ -322,9 +357,8 @@ export default class EducationForm extends Component {
                   />
                 </label>
               </div>
-
               {this.props.match.params.id ? (
-                <div class='col-12 d-flex justify-content-end '>
+                <div class='col-lg-10 col-11 col-md-10 col-sm-12 col-xs-12 d-flex justify-content-end mt-5 '>
                   <button
                     // type={this.handleDelete}
                     class='btn deleteBtn me-2 my-2  shadow-none  '
@@ -338,7 +372,7 @@ export default class EducationForm extends Component {
                   </button>
                 </div>
               ) : (
-                <div class='col-12 d-flex justify-content-end'>
+                <div class='col-lg-10 col-11 col-md-10 col-sm-12 col-xs-12 d-flex justify-content-end mt-5'>
                   <Link class='btn me-2 my-2 cancelBtn shadow-none' to='/Profile'>
                     Cancel
                   </Link>
