@@ -103,12 +103,12 @@
 }
 
 .editInput[type="date"]::-webkit-calendar-picker-indicator {
-  background: url("https://api.iconify.design/uil:calender.svg?color=%231e4274") no-repeat
-    center center / contain;
+  background: url("https://api.iconify.design/uil:calender.svg?color=%231e4274")
+    no-repeat center center / contain;
 }
 .editInput[type="month"]::-webkit-calendar-picker-indicator {
-  background: url("https://api.iconify.design/uil:calender.svg?color=%231e4274") no-repeat
-    center center / contain;
+  background: url("https://api.iconify.design/uil:calender.svg?color=%231e4274")
+    no-repeat center center / contain;
 }
 .editLabel {
   font-size: 1.1rem !important;
@@ -361,4 +361,32 @@ ReactStars:active {
 
 .closeLabel {
   margin-right: -60px !important;
+}
+.widthMe {
+  width: 71.5% !important;
+}
+@media (max-width: 380px) {
+  .widthMe {
+    width: 100% !important;
+  }
+}
+@media (max-width: 1024px) and (min-width: 800px) {
+  .widthMe {
+    width: 72.5% !important;
+  }
+}
+@media (max-width: 786px) and (min-width: 700px) {
+  .widthMe {
+    width: 66% !important;
+  }
+}
+@media (max-width: 5000px) and (min-width: 1400px) {
+  .errMargin {
+    margin-left: 10rem !important;
+  }
+}
+@media (max-width: 1400px) and (min-width: 768px) {
+  .errMargin {
+    margin-left: 7.2rem !important;
+  }
 }

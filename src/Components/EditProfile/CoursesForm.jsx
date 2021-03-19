@@ -6,6 +6,7 @@ import "../../layout/EditInfo.css";
 import Footer2 from "../Common/Footer2";
 import { FiUpload } from "react-icons/fi";
 import { data } from "flickity";
+import EditNav from "./EditNav";
 
 class CoursesForm extends Component {
   constructor(props) {
@@ -186,67 +187,7 @@ class CoursesForm extends Component {
       <div>
         {" "}
         <div className="container ">
-          <h1 className="editTitle text-center">Edit Profile</h1>
-          <h3 className="categoryTitle d-flex justify-content-start mb-3">
-            Categories
-          </h3>
-          <ul className="nav  infoTabsUl nav-tabs" id="myTab" role="tablist">
-            <li className="nav-item infoTabs" role="presentation">
-              <a
-                className="nav-link  tabBtn  "
-                id="General-tab"
-                href="/Profile/General"
-              >
-                General
-              </a>
-            </li>
-            <li className="nav-item infoTabs" role="presentation">
-              <a
-                className="nav-link  tabBtn  "
-                id="Education-tab"
-                href="/Profile/Education"
-              >
-                Education
-              </a>
-            </li>
-            <li class="nav-item infoTabs" role="presentation">
-              <a
-                className="nav-link tabBtn "
-                id="Experiance-tab"
-                href="/Profile/Experiance"
-              >
-                Experiance
-              </a>
-            </li>
-            <li className="nav-item infoTabs" role="presentation">
-              <a
-                className="nav-link tabBtn active"
-                id="Courses-tab"
-                href="/Profile/Courses"
-              >
-                Courses
-              </a>
-            </li>
-            <li className="nav-item infoTabs" role="presentation">
-              <a
-                className="nav-link tabBtn"
-                id="Skills-tab"
-                href="/Profile/Skills"
-              >
-                Skills
-              </a>
-            </li>
-            <li class="nav-item infoTabs" role="presentation">
-              <a
-                className="nav-link tabBtn"
-                id="Accounts-tab"
-                href="/Profile/Accounts"
-              >
-                Accounts
-              </a>
-            </li>
-          </ul>
-
+          <EditNav setactive={"Courses"} />
 
           <form class="g-3 mb-3 text-left " onSubmit={this.handleSubmit}>
             <div className=" row ">
@@ -268,7 +209,7 @@ class CoursesForm extends Component {
                     this.setState({ courseName: e.target.value })
                   }
                 />
-                <p className="red">
+                <p className="editerror">
                   {this.state.error ? this.state.error.courseNameErr : ""}
                 </p>
               </div>
@@ -293,7 +234,7 @@ class CoursesForm extends Component {
                     this.setState({ courseProvider: e.target.value })
                   }
                 />
-                <p className="red">
+                <p className="editerror">
                   {this.state.error ? this.state.error.courseProviderErr : ""}
                 </p>
               </div>
@@ -313,18 +254,17 @@ class CoursesForm extends Component {
                   }
                   onChange={(e) => this.setState({ fromDate: e.target.value })}
                 />
-                <p className="red">
+                <p className="editerror">
                   {this.state.error ? this.state.error.fromDateErr : ""}
                 </p>
               </div>
 
-              <div className='col-lg-5 col-11 col-md-5 col-sm-12 col-xs-12'>
-                <label for='bdaymonth' className='form-label editLabel '>
-                  To <span className='red'>*</span>
+              <div className="col-lg-5 col-11 col-md-5 col-sm-12 col-xs-12">
+                <label for="bdaymonth" className="form-label editLabel ">
+                  To <span className="red">*</span>
                 </label>
                 <input
                   value={this.state.toDate ? this.state.toDate : ""}
-
                   type="date"
                   id="bdaymonth"
                   className={
@@ -334,18 +274,17 @@ class CoursesForm extends Component {
                   }
                   onChange={(e) => this.setState({ toDate: e.target.value })}
                 />
-                <p className="red">
+                <p className="editerror">
                   {this.state.error ? this.state.error.toDateErr : ""}
                 </p>
               </div>
 
-              <div class='col-lg-5 col-11 col-md-5 col-sm-12 col-xs-12 '>
-                <label for='inputTerm' className='form-label editLabel'>
+              <div class="col-lg-5 col-11 col-md-5 col-sm-12 col-xs-12 ">
+                <label for="inputTerm" className="form-label editLabel">
                   Credential URL
                 </label>
                 <input
                   value={this.state.CourseUrl ? this.state.CourseUrl : ""}
-
                   type="text"
                   id="fullname"
                   placeholder={this.state.CourseUrl}
@@ -356,23 +295,21 @@ class CoursesForm extends Component {
                   }
                   onChange={(e) => this.setState({ CourseUrl: e.target.value })}
                 />
-                <p className="red">
+                <p className="editerror">
                   {this.state.error ? this.state.error.CourseUrlErr : ""}
                 </p>
               </div>
 
-              <div className='col-lg-5 col-11 col-md-5 col-sm-12 col-xs-12  '>
+              <div className="col-lg-5 col-11 col-md-5 col-sm-12 col-xs-12  ">
                 <label
-                  htmlFor='files'
-                  className='form-control editInput uploadBtn d-flex'
+                  htmlFor="files"
+                  className="form-control editInput uploadBtn d-flex"
                 >
                   Upload
-
                   <FiUpload className="uploadIcon ms-auto " />
                   <input
-                    className='form-control editInput'
+                    className="form-control editInput"
                     hidden
-
                     type="file"
                     id="files"
                     accept=" image/*,file_extension/
@@ -388,7 +325,7 @@ class CoursesForm extends Component {
               </div>
 
               {this.props.match.params.id ? (
-                <div class="col-12 d-flex justify-content-end">
+                <div class="col-lg-10 col-11 col-md-10 col-sm-12 col-xs-12 d-flex justify-content-end mt-5">
                   <button
                     class="btn deleteBtn me-2 my-2  shadow-none "
                     onClick={() => this.handleDelete()}
@@ -403,7 +340,7 @@ class CoursesForm extends Component {
                   </button>
                 </div>
               ) : (
-                <div class="col-12 d-flex justify-content-end">
+                <div class="col-lg-10 col-11 col-md-10 col-sm-12 col-xs-12 d-flex justify-content-end mt-5">
                   <a href="/Profile">
                     <button
                       type="button"
