@@ -98,7 +98,7 @@
     margin-top: 1.5em;
   }
   .plusmarginback {
-    margin-left: 0% !important;
+    margin-left: 1% !important;
   }
   #gpa {
     margin-left: 0 !important;
@@ -362,9 +362,9 @@ body {
 .plusmarginback {
   margin-left: -11%;
 }
-/* #accountsicons {
-  font-size: 1.2em; */
-/* width: 2em;
-  height: 2em; */
-/* margin-right: 5%;
-} */
+
+#docicon {
+  color: #cd8930 !important;
+  fill: #cd8930 !important;
+  text-decoration: none !important;
+}
