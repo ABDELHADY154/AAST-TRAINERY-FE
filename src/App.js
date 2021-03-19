@@ -32,23 +32,33 @@ class App extends React.Component {
       status: sessionStorage.getItem("status"),
       token: sessionStorage.getItem("token"),
       loggedIn: false,
+      avatar: "",
     };
     if (this.state.token && this.state.status) {
       this.state = {
         loggedIn: true,
       };
     }
+    window.scrollTo(0, 0);
   }
 
-  setUser = data => {
+  setUser = (data) => {
     return this.setState({ loggedIn: data });
+  };
+  setAvatar = (data) => {
+    this.setState({ avatar: data });
+    if (this.state.avatar) {
+    }
   };
 
   render() {
     return (
       <BrowserRouter>
         {this.state.loggedIn == true ? (
-          <AuthNav setUser={this.setUser} />
+          <AuthNav
+            setUser={this.setUser}
+            updated={this.state.avatar ? true : false}
+          />
         ) : (
           <Nav />
         )}
@@ -85,7 +95,7 @@ class App extends React.Component {
                 <AuthRoute
                   exact
                   path="/Profile/General"
-                  component={GeneralForm}
+                  component={() => <GeneralForm setAvatar={this.setAvatar} />}
                 />
                 <AuthRoute
                   exact
@@ -104,7 +114,7 @@ class App extends React.Component {
                 />
                 <AuthRoute
                   exact
-                  path="/Profile/Experiance/:id"
+                  path="/Profile/Experience/:id"
                   component={ExperienceForm}
                 />
                 <AuthRoute
@@ -141,7 +151,7 @@ class App extends React.Component {
                   exact
                   path="/Profile/Interest/:id"
                   component={Interest}
-                  render={Interests => <Interest {...Interests} />}
+                  render={(Interests) => <Interest {...Interests} />}
                 />
                 <AuthRoute
                   exact

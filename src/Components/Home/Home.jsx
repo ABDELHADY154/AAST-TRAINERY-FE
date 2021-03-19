@@ -75,9 +75,15 @@ class Home extends Component {
                 matching opportunities.
               </div>
               <div className="d-flex flex-column col-md-4 col-12  mt-1">
-                <a id="redlink" href="#">
+                <Link
+                  className="texttt fs-3 col-12 col-md-12 "
+                  renderAs="button"
+                  id="redlink"
+                  className=" shadow-none  "
+                  to="/Profile/General"
+                >
                   Update Now
-                </a>
+                </Link>
               </div>
               <div className="d-flex flex-column col-md-2">
                 <button

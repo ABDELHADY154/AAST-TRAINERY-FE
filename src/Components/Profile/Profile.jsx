@@ -57,10 +57,11 @@ class Profile extends Component {
     reviews: [],
     accounts: [],
   };
+
   async componentDidMount() {
     await axios
       .get("/W/student/get-profile")
-      .then(res => {
+      .then((res) => {
         this.setState({
           id: res.data.response.data.name.id,
           name: res.data.response.data.name,
@@ -92,13 +93,13 @@ class Profile extends Component {
           accounts: res.data.response.data.accounts,
         });
       })
-      .catch(err => {
+      .catch((err) => {
         console.log(err);
       });
   }
 
   render() {
-    console.log(this.state.accounts);
+    // console.log(this.state.accounts);
     let id = this.props.id;
     return (
       <div className="container-fluid ">
@@ -134,10 +135,14 @@ class Profile extends Component {
                 className="d-flex flex-row flex-wrap "
                 style={{ textTransform: "capitalize" }}
               >
-                {this.state.department}
-                <span id="gpa" className=" ms-2">
-                  {this.state.gpa}
-                </span>
+                <div className="d-flex flex-column col-md-6 col-12">
+                  {this.state.department}
+                </div>
+                <div className="d-flex flex-column col-md-6 col-12">
+                  <span id="gpa" className=" ms-2">
+                    {this.state.gpa}
+                  </span>
+                </div>
               </div>
               <div className="d-flex flex-row flex-wrap">
                 {this.state.start_year} - {this.state.end_year}
@@ -262,7 +267,7 @@ class Profile extends Component {
                   +
                 </Link>
               </div>
-              {this.state.educations.map(item => {
+              {this.state.educations.map((item) => {
                 return (
                   <StudentEducation
                     id={item.id}
@@ -273,6 +278,7 @@ class Profile extends Component {
                     fromDate={item.from}
                     toDate={item.to}
                     cred={item.credential_url}
+                    credential={item.credential}
                   />
                 );
               })}
@@ -287,13 +293,13 @@ class Profile extends Component {
                 <Link
                   renderAs="button"
                   className="  ms-3 plus"
-                  to="Profile/Experiance"
+                  to="Profile/Experience"
                   // to="/Register"
                 >
                   +
                 </Link>
               </div>
-              {this.state.work_experience.map(item => {
+              {this.state.work_experience.map((item) => {
                 return (
                   <StudentWorkExp
                     key={item.id}
@@ -306,6 +312,7 @@ class Profile extends Component {
                     from={item.from}
                     to={item.to}
                     cred={item.cred}
+                    cred_url={item.cred_url}
                   />
                 );
               })}
@@ -325,7 +332,7 @@ class Profile extends Component {
                   +
                 </Link>
               </div>
-              {this.state.courses.map(item => {
+              {this.state.courses.map((item) => {
                 return (
                   <StudentCourses
                     key={item.id}
@@ -367,7 +374,7 @@ class Profile extends Component {
                 </Link>
               </div>
 
-              {this.state.skills.map(item => {
+              {this.state.skills.map((item) => {
                 return (
                   <StudentSkill
                     key={item.id}
@@ -385,7 +392,7 @@ class Profile extends Component {
                 <div className="d-flex flex-column col-6 col-md-9 fs-5 ms-0 me-3 interestmobile interestmobilee">
                   <Link
                     renderAs="button"
-                    className=" plus plusmarginback"
+                    className=" plus plusmarginback "
                     to="Profile/Interest"
                     style={{ width: " 1.5em", alignContent: "center" }}
                   >
@@ -415,7 +422,7 @@ class Profile extends Component {
                 className=" d-flex flex-row flex-wrap col-12 col-md-12 "
                 id="interesttags"
               >
-                {this.state.interests.map(i => {
+                {this.state.interests.map((i) => {
                   return (
                     <Studentinterest
                       key={i.id}
@@ -428,33 +435,27 @@ class Profile extends Component {
 
               <hr />
 
-              <div
-                id="lightfont"
-                className="flex-row  fs-5 "
-                style={{ textTransform: "capitalize" }}
-              >
-                <div className=" flex-row col-6 col-md-9 fs-5 ">
-                  Languages
-                  <Link
-                    renderAs="button"
-                    className="ms-3 pb-1 px-2 plus col-2"
-                    to="Profile/Language"
-                    style={{ width: " 1.5em", alignContent: "center" }}
-                  >
-                    +
-                  </Link>
-                </div>
-                {this.state.languages.map(i => {
-                  return (
-                    <StudentLanguage
-                      key={i.id}
-                      id={i.id}
-                      language={i.language}
-                      level={i.level}
-                    />
-                  );
-                })}
+              <div className=" d-flex flex-row flex-wrap col-12 mb-2 col-md-12 me-1 fs-5">
+                Languages
+                <Link
+                  renderAs="button"
+                  className=" plus ms-3 plusmarginback"
+                  to="Profile/Language"
+                  style={{ width: " 1.5em", alignContent: "center" }}
+                >
+                  +
+                </Link>
               </div>
+              {this.state.languages.map((i) => {
+                return (
+                  <StudentLanguage
+                    key={i.id}
+                    id={i.id}
+                    language={i.language}
+                    level={i.level}
+                  />
+                );
+              })}
             </div>
           </div>
         </div>

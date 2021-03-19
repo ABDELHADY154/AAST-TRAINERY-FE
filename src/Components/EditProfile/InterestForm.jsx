@@ -116,11 +116,11 @@ class Interest extends Component {
         <div className="container ">
           <EditNav setactive={"Interest"} />
           <div>
-            <form className="row g-3 mb-3" onSubmit={this.handleSubmiInterest}>
+            <form className="row g-3 mb-3 mt-1" onSubmit={this.handleSubmiInterest}>
               {/* <hr className="hrSkills ms-2 col-lg-10 col-11 col-md-10 col-sm-12 col-xs-12" /> */}
               <div className="col-lg-10 col-11 col-md-10 col-sm-12 col-xs-12">
                 <label for="inputRegNum" className="form-label editLabel">
-                  Intrests
+                Interests
                 </label>
                 <ReactTag
                   className="editLabel"
@@ -129,7 +129,7 @@ class Interest extends Component {
                 />
                 {/* <p>{this.state.interests}</p> */}
                 {this.state.error && this.state.error.interestsErr ? (
-                  <p className="editerror">{this.state.error.interestsErr}</p>
+                  <p className="editerror text-capitalize">{this.state.error.interestsErr}</p>
                 ) : (
                   ""
                 )}
@@ -137,13 +137,13 @@ class Interest extends Component {
 
               {this.props.match.params.id ? (
                 <div class="col-lg-10 col-11 col-md-10 col-sm-12 col-xs-12 d-flex justify-content-end">
-                  <button
-                    // onClick={() => this.handleDeleteInterest()}
-                    type="submit"
-                    class="btn deleteBtn me-2 shadow-none "
+                       <a
+                    type="button"
+                    className="btn me-2 cancelBtn shadow-none "
+                    href="/Profile"
                   >
-                    Delete
-                  </button>
+                    Cancel
+                  </a>
                   <button type="submit" class="btn updateBtn shadow-none">
                     Update
                   </button>

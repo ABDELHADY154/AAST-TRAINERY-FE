@@ -9,7 +9,18 @@ import { FiUpload } from "react-icons/fi";
 class ExperienceForm extends Component {
   constructor(props) {
     super(props);
-    this.state = { country: "", region: "", error: "", image: "", imageURL: "" };
+    this.state = {
+      country: "",
+      region: "",
+      error: "",
+      image: "",
+      imageURL: "",
+      currently_work: "",
+      company_website: "",
+      SchoolUrl: "",
+
+      done: false,
+    };
     this.handleChange = this.handleChange.bind(this);
   }
   state = {
@@ -53,7 +64,7 @@ class ExperienceForm extends Component {
             country: res.data.response.data.country,
             From: res.data.response.data.from,
             To: res.data.response.data.to,
-            Cred_URL: res.data.response.data.cred_url,
+            cred_url: res.data.response.data.cred_url,
           });
           // console.log(this.state);
         })
@@ -79,13 +90,13 @@ class ExperienceForm extends Component {
       country: this.state.country,
       from: this.state.From,
       to: this.state.To,
-      cred_url: this.state.Cred_URL,
-      currently_work: 1,
+      cred_url: this.state.SchoolUrl,
+      currently_work: this.state.currently_work == "on" ? 0 : 1,
       image: this.state.imageURL ? this.state.imageURL : this.state.image,
     };
     if (this.state.imageURL) {
       formBody.append(
-        "image",
+        "cred",
         this.state.imageURL ? this.state.imageURL : this.state.image
       );
     }
@@ -97,8 +108,10 @@ class ExperienceForm extends Component {
     formBody.append("country", data.country);
     formBody.append("from", data.from);
     formBody.append("to", data.to);
-    formBody.append("cred_url", data.cred_url);
     formBody.append("currently_work", data.currently_work);
+    if (data.cred_url !== "") {
+      formBody.append("cred_url", data.cred_url);
+    }
 
     if (this.props.match.params.id) {
       return await axios({
@@ -133,7 +146,6 @@ class ExperienceForm extends Component {
               ToErr: error.response.data.errors.to,
             },
           });
-          console.log(error);
         });
     } else {
       return await axios({
@@ -146,6 +158,7 @@ class ExperienceForm extends Component {
           this.setState({
             done: true,
           });
+          console.log(this.state.currently_work);
         })
         .catch((error) => {
           if (error.response.data.status === 401 || error.response.data.status === 404) {
@@ -186,7 +199,7 @@ class ExperienceForm extends Component {
             // error: true,
           });
         }
-        window.location.reload();
+        window.location = window.location;
       });
   };
   render() {
@@ -203,12 +216,12 @@ class ExperienceForm extends Component {
           <EditNav setactive={"experience"} />
           <form class='g-3 mb-3 text-left ' onSubmit={this.handleSubmit}>
             <div className=' row'>
-              <div class='col-lg-10 col-11 col-md-10 col-sm-12 col-xs-12'>
+              <div class='col-lg-10 col-11 col-md-10 col-sm-12 col-xs-12 mt-3 mt-sm-0'>
                 <label for='inputfullname' class='form-label editLabel '>
                   Experience Type
                   <span className='red'>*</span>
                 </label>
-                <input
+                {/* <input
                   type='text'
                   className={
                     this.state.error && this.state.error.ExperienceTypeErr
@@ -219,7 +232,22 @@ class ExperienceForm extends Component {
                   placeholder='Internship'
                   onChange={(e) => this.setState({ ExperienceType: e.target.value })}
                   value={this.state.ExperienceType ? this.state.ExperienceType : ""}
-                />
+                /> */}
+
+                <select
+                  id='inputuni'
+                  className={
+                    this.state.error && this.state.error.JobTitlErr
+                      ? "form-control editInput wrong "
+                      : "form-control editInput"
+                  }
+                  onChange={(e) => this.setState({ ExperienceType: e.target.value })}
+                  value={this.state.ExperienceType ? this.state.ExperienceType : ""}
+                >
+                  <option selected>Choose your Experience Type ...</option>
+                  <option value='Internship'>Internship</option>
+                  <option value='Volunteer'>Volunteer</option>
+                </select>
                 <p className='red'>
                   {this.state.error.ExperienceTypeErr
                     ? this.state.error.ExperienceTypeErr
@@ -243,9 +271,12 @@ class ExperienceForm extends Component {
                   onChange={(e) => this.setState({ JobTitle: e.target.value })}
                   value={this.state.JobTitle ? this.state.JobTitle : ""}
                 />
-                <p className='red'>
-                  {this.state.error.JobTitlErr ? this.state.error.JobTitlErr : ""}
-                </p>
+
+                {this.state.error && this.state.error.JobTitlErr ? (
+                  <p className='editerror'>{this.state.error.JobTitlErr}</p>
+                ) : (
+                  ""
+                )}
               </div>
               <div class='col-lg-10 col-11 col-md-10 col-sm-12 col-xs-12'>
                 <label for='inputfullname' class='form-label editLabel '>
@@ -285,9 +316,12 @@ class ExperienceForm extends Component {
                   onChange={(e) => this.setState({ CompanyWebsite: e.target.value })}
                   value={this.state.CompanyWebsite ? this.state.CompanyWebsite : ""}
                 />
-                <p className='red'>
-                  {this.state.error ? this.state.error.CompanyWebsiteErr : ""}
-                </p>
+
+                {this.state.error && this.state.error.CompanyWebsiteErr ? (
+                  <p className='editerror'>{this.state.error.CompanyWebsiteErr}</p>
+                ) : (
+                  ""
+                )}
               </div>
               <div className='col-lg-5 col-11 col-md-5 col-sm-12 col-xs-12'>
                 <label for='inputCountry' className='form-label editLabel'>
@@ -325,7 +359,11 @@ class ExperienceForm extends Component {
                   aria-describedby='validationServer04Feedback'
                   // value={(e) => this.setState({ City: e.target.value })}
                 />
-                <p className='red'>{this.state.error ? this.state.error.cityErr : ""}</p>
+                {this.state.error && this.state.error.cityErr ? (
+                  <p className='editerror'>{this.state.error.cityErr}</p>
+                ) : (
+                  ""
+                )}
               </div>
               <div className='col-lg-5 col-11 col-md-5 col-sm-12 col-xs-12 '>
                 <label for='bdaymonth' className='form-label editLabel '>
@@ -342,7 +380,23 @@ class ExperienceForm extends Component {
                   onChange={(e) => this.setState({ From: e.target.value })}
                   value={this.state.From ? this.state.From : ""}
                 />
-                <p className='red'>{this.state.error ? this.state.error.FromErr : ""}</p>
+                {this.state.error && this.state.error.FromErr ? (
+                  <p className='editerror'>{this.state.error.FromErr}</p>
+                ) : (
+                  ""
+                )}
+                <input
+                  type='checkbox'
+                  id='vehicle1'
+                  name='vehicle1'
+                  className='checkBoxExpert'
+                  defaultChecked='checked'
+                  value='on'
+                  onChange={(e) => this.setState({ currently_work: e.target.value })}
+                />
+                <label for='vehicle1' classname='radioform-check-label raioLabel  '>
+                  currently work here
+                </label>
               </div>
               <div class='col-lg-5 col-11 col-md-5 col-sm-12 col-xs-12'>
                 <label for='bdaymonth' className='form-label editLabel '>
@@ -359,7 +413,11 @@ class ExperienceForm extends Component {
                   onChange={(e) => this.setState({ To: e.target.value })}
                   value={this.state.To ? this.state.To : ""}
                 />
-                <p className='red'>{this.state.error ? this.state.error.ToErr : ""}</p>
+                {this.state.error && this.state.error.ToErr ? (
+                  <p className='editerror'>{this.state.error.ToErr}</p>
+                ) : (
+                  ""
+                )}
               </div>
               <div class='col-lg-5 col-11 col-md-5 col-sm-12 col-xs-12 '>
                 <label for='inputTerm' className='form-label editLabel'>
@@ -369,23 +427,23 @@ class ExperienceForm extends Component {
                   type='text'
                   className='form-control editInput'
                   id='fullname'
-                  onChange={(e) => this.setState({ Cred_URL: e.target.value })}
+                  onChange={(e) => this.setState({ SchoolUrl: e.target.value })}
                   placeholder={this.state.Cred_URL}
                 />
               </div>
-              <div className='col-lg-5 col-11 col-md-5 col-sm-12 col-xs-12 UploadBtnDiv'>
+              <div className='col-lg-5 col-11 col-md-5 col-sm-12 col-xs-12  '>
                 <label
-                  htmlFor='file'
-                  className='form-label editLabel uploadBtnn d-flex p-1'
+                  htmlFor='files'
+                  className='form-control editInput uploadBtn d-flex'
                 >
                   Upload
-                  <FiUpload className='icon justify-content-end align-items-end ' />
+                  <FiUpload className='uploadIcon ms-auto ' />
                   <input
+                    className='form-control editInput'
                     hidden
                     type='file'
-                    id='file'
-                    accept=' image/*,file_extension/
-                    .crt,.cer,.ca-bundle,.p7b,.p7c,.p7s,.pem,.pdf'
+                    id='files'
+                    accept='pdf'
                     onChange={(e) =>
                       this.setState({
                         imageURL: e.target.files[0],
@@ -397,7 +455,7 @@ class ExperienceForm extends Component {
               </div>
 
               {this.props.match.params.id ? (
-                <div class='col-12 d-flex justify-content-end'>
+                <div class='col-lg-10 col-11 col-md-10 col-sm-12 col-xs-12 d-flex justify-content-end mt-5'>
                   <button
                     // type={this.handleDelete}
                     class='btn deleteBtn me-2 my-2  shadow-none  '
@@ -411,7 +469,7 @@ class ExperienceForm extends Component {
                   </button>
                 </div>
               ) : (
-                <div class='col-12 d-flex justify-content-end'>
+                <div class='col-lg-10 col-11 col-md-10 col-sm-12 col-xs-12 d-flex justify-content-end mt-5'>
                   <Link class='btn me-2 my-2 cancelBtn shadow-none' to='/Profile'>
                     Cancel
                   </Link>

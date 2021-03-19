@@ -130,8 +130,7 @@ class Language extends Component {
         <div className="container ">
           <EditNav setactive={"Language"} />
           <div>
-            <form className="row g-3 mb-3" onSubmit={this.handleSubmitLanguage}>
-              <hr className="hrSkills ms-2 col-lg-10 col-11 col-md-10 col-sm-12 col-xs-12" />
+            <form className="row g-3 mb-3 mt-1" onSubmit={this.handleSubmitLanguage}>
 
               <div className="col-lg-10 col-11 col-md-10 col-sm-12 col-xs-12">
                 <label for="inputSkill" className="form-label editLabel ">
@@ -150,7 +149,7 @@ class Language extends Component {
                   value={this.state.language}
                 />
                 {this.state.error && this.state.error.LanguageLevelErr ? (
-                  <p className="editerror">
+                  <p className="editerror text-capitalize">
                     {this.state.error.LanguageLevelErr}
                   </p>
                 ) : (
@@ -199,7 +198,7 @@ class Language extends Component {
                   />
                 )}
                 {this.state.error && this.state.error.LanguageLevelErr ? (
-                  <p className="editerror">
+                  <p className="editerror text-capitalize">
                     {this.state.error.LanguageLevelErr}
                   </p>
                 ) : (

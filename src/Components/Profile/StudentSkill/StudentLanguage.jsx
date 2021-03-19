@@ -37,6 +37,7 @@ export default class StudentLanguage extends Component {
           >
             <Link renderAs="button" to={`/Profile/Language/${id}`}>
               <BiPencil
+                id="skillnamepen"
                 className="skillnamepencil"
                 fill="#cd8930"
                 color="#cd8930"

@@ -5,6 +5,8 @@ import { axios } from "../../Api/axios";
 import loginBG from "../../Components/assests/imgs/login.jpg";
 import "../../layout/Sign.css";
 import { MdWarning } from "react-icons/md";
+import { FaEye, FaEyeSlash } from "react-icons/fa";
+
 class Login extends React.Component {
   constructor() {
     super();
@@ -13,8 +15,18 @@ class Login extends React.Component {
       status: sessionStorage.getItem("status"),
       email: "",
       error: {},
+      hidden: true,
       password: "",
     };
+
+    this.handlePasswordChange = this.handlePasswordChange.bind(this);
+    this.toggleShow = this.toggleShow.bind(this);
+  }
+  handlePasswordChange(e) {
+    this.setState({ password: e.target.value });
+  }
+  toggleShow() {
+    this.setState({ hidden: !this.state.hidden });
   }
 
   handleSubmit = async (e) => {
@@ -85,22 +97,43 @@ class Login extends React.Component {
 
                           <div className='col-md-11 col-lg-11 form-label-group input-field field'>
                             <label className='label'>Password</label>
-                            <input
-                              type='password'
-                              onChange={(e) =>
-                                this.setState({ password: e.target.value })
-                              }
-                              className={
-                                this.state.error.passwordErr
-                                  ? "wrong signInput "
-                                  : " signInput"
-                              }
-                            />
+                            <div className='d-flex'>
+                              <input
+                                type={this.state.hidden ? "password" : "text"}
+                                onChange={this.handlePasswordChange}
+                                className={
+                                  this.state.error.passwordErr
+                                    ? "wrong signInput "
+                                    : " signInput"
+                                }
+                              />
+                              {this.state.hidden ? (
+                                <FaEye
+                                  color='red'
+                                  className=' ico'
+                                  animation='tada'
+                                  size='22px'
+                                  pull='left'
+                                  onClick={this.toggleShow}
+                                />
+                              ) : (
+                                <FaEyeSlash
+                                  color='red'
+                                  className=' ico'
+                                  animation='tada'
+                                  size='22px'
+                                  pull='left'
+                                  onClick={this.toggleShow}
+                                />
+                              )}
+                            </div>
+
                             {this.state.error.passwordErr && (
                               <p className='error'>{this.state.error.passwordErr}</p>
                             )}
                           </div>
                         </div>
+
                         <div className='col-md-10 col-lg-11'>
                           <Link to='/Register'>
                             <p className='account'>Don’t have an account ?</p>
