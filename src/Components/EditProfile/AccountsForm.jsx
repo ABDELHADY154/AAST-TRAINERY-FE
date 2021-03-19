@@ -238,29 +238,15 @@ class AccountsForm extends Component {
               />
             </div>
 
-            <div class="col-12 d-flex justify-content-end">
-              <button class="btn deleteBtn me-2 my-2  shadow-none ">
-                Delete
+            <div class="col-lg-10 col-11 col-md-10 col-sm-12 col-xs-12 d-flex justify-content-end">
+              <button type="button" class="btn me-2 my-2 cancelBtn shadow-none">
+                Cancel
               </button>
               <button
                 class="btn updateBtn shadow-none my-2 "
                 onClick={this.handleSubmit}
               >
                 Update
-              </button>
-            </div>
-
-            <div class="col-12 d-flex justify-content-end">
-              <a href="/Profile">
-                <button
-                  type="button"
-                  class="btn me-2 my-2 cancelBtn shadow-none"
-                >
-                  Cancel
-                </button>
-              </a>
-              <button type="submit" class="btn doneBtn shadow-none my-2 ">
-                Add
               </button>
             </div>
           </form>

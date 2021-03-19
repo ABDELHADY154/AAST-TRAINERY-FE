@@ -340,6 +340,12 @@ ReactStars:active {
     margin-top: 1rem !important;
   }
 }
+@media (max-width: 768px) {
+  .btnTopMargin
+ {
+    margin-top: 1rem !important;
+  }
+}
 
 
 .closeLabel {

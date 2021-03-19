@@ -267,7 +267,7 @@ class CoursesForm extends Component {
                     this.setState({ courseName: e.target.value })
                   }
                 />
-                <p className="red">
+                <p className="editerror">
                   {this.state.error ? this.state.error.courseNameErr : ""}
                 </p>
               </div>
@@ -292,7 +292,7 @@ class CoursesForm extends Component {
                     this.setState({ courseProvider: e.target.value })
                   }
                 />
-                <p className="red">
+                <p className="editerror">
                   {this.state.error ? this.state.error.courseProviderErr : ""}
                 </p>
               </div>
@@ -312,7 +312,7 @@ class CoursesForm extends Component {
                   }
                   onChange={(e) => this.setState({ fromDate: e.target.value })}
                 />
-                <p className="red">
+                <p className="editerror">
                   {this.state.error ? this.state.error.fromDateErr : ""}
                 </p>
               </div>
@@ -332,7 +332,7 @@ class CoursesForm extends Component {
                   }
                   onChange={(e) => this.setState({ toDate: e.target.value })}
                 />
-                <p className="red">
+                <p className="editerror">
                   {this.state.error ? this.state.error.toDateErr : ""}
                 </p>
               </div>
@@ -353,7 +353,7 @@ class CoursesForm extends Component {
                   }
                   onChange={(e) => this.setState({ CourseUrl: e.target.value })}
                 />
-                <p className="red">
+                <p className="editerror">
                   {this.state.error ? this.state.error.CourseUrlErr : ""}
                 </p>
               </div>
@@ -383,31 +383,31 @@ class CoursesForm extends Component {
               </div>
 
               {this.props.match.params.id ? (
-                <div class="col-12 d-flex justify-content-end">
+                <div class="col-lg-10 col-11 col-md-10 col-sm-12 col-xs-12 d-flex justify-content-end btnTopMargin">
                   <button
-                    class="btn deleteBtn me-2 my-2  shadow-none "
+                    class="btn deleteBtn me-2 shadow-none "
                     onClick={() => this.handleDelete()}
                   >
                     Delete
                   </button>
                   <button
                     onClick={this.handleSubmit}
-                    class="btn updateBtn shadow-none my-2 "
+                    class="btn updateBtn shadow-none "
                   >
                     Update
                   </button>
                 </div>
               ) : (
-                <div class="col-12 d-flex justify-content-end">
+                <div class="col-lg-10 col-11 col-md-10 col-sm-12 col-xs-12 d-flex justify-content-end btnTopMargin">
                   <a href="/Profile">
                     <button
                       type="button"
-                      class="btn me-2 my-2 cancelBtn shadow-none"
+                      class="btn me-2 cancelBtn shadow-none"
                     >
                       Cancel
                     </button>
                   </a>
-                  <button type="submit" class="btn doneBtn shadow-none my-2 ">
+                  <button type="submit" class="btn doneBtn shadow-none ">
                     Add
                   </button>
                 </div>
