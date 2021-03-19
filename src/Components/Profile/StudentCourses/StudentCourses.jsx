@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import "../../../layout/Profile.css";
 import { BiPencil } from "react-icons/bi";
-import { GrDocument } from "react-icons/gr";
+import { CgFileDocument } from "react-icons/cg";
 
 export default class StudentEdu extends Component {
   constructor(props) {
@@ -60,8 +60,12 @@ export default class StudentEdu extends Component {
               renderAs="button"
               target="_blank"
             >
-              <GrDocument id="docicon" color="#cd8930"></GrDocument>
-            </a>
+   <CgFileDocument
+              size="20px"
+                id="docicon"
+                fill="#cd8930"
+                color="#cd8930"
+              ></CgFileDocument>            </a>
           </div>
         </div>
         <hr />
