@@ -241,6 +241,7 @@ ReactStars:active {
   color: #f44336;
   font-size: 14px;
   text-transform: capitalize;
+  word-break: break-all;
 }
 .UploadBtnDiv {
   position: relative;
@@ -262,35 +263,37 @@ ReactStars:active {
   border-radius: 6px;
 }
 /* interest footer */
-.interestFooter{
-  height: 100px; 
-  width:100%;
+.interestFooter {
+  height: 100px;
+  width: 100%;
   position: absolute;
   left: 0;
-  bottom: 0; }
-.wrapper{
-  padding-bottom: 100px; 
+  bottom: 0;
+}
+.wrapper {
+  padding-bottom: 100px;
   min-height: 100%;
-  position:relative;
+  position: relative;
 }
 @media (min-width: 1198px) and (max-width: 1500px) {
   .wrapper {
-    padding-bottom: 122px; 
+    padding-bottom: 122px;
     min-height: 100%;
-    position:relative;
+    position: relative;
   }
-  .interestFooter{
-    height: 100px; 
-    width:100%;
+  .interestFooter {
+    height: 100px;
+    width: 100%;
     position: absolute;
     left: 0;
-    bottom: 0; }
+    bottom: 0;
+  }
 }
 @media (min-width: 750px) and (max-width: 1200px) {
   .wrapper {
-    padding-bottom: 6rem; 
+    padding-bottom: 6rem;
     min-height: 100%;
-    position:relative;
+    position: relative;
   }
 }
 /* @media (min-width: 500px) and (max-width: 700px) {
@@ -309,6 +312,15 @@ ReactStars:active {
 } */
 
 /* ...........Mohannad........... */
+.fromLoader {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  display: flex; /* establish flex container */
+  flex-direction: column; /* make main axis vertical */
+  justify-content: center; /* center items vertically, in this case */
+  align-items: center;
+}
 .red {
   color: red;
   font-size: 14px;

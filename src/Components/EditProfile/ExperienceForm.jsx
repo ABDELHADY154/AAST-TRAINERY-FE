@@ -22,6 +22,7 @@ class ExperienceForm extends Component {
       done: false,
     };
     this.handleChange = this.handleChange.bind(this);
+    window.scrollTo(0, 0);
   }
   state = {
     startDate: new Date(),
@@ -257,7 +258,7 @@ class ExperienceForm extends Component {
 
               <div class='col-lg-10 col-11 col-md-10 col-sm-12 col-xs-12'>
                 <label for='inputfullname' class='form-label editLabel '>
-                Experience Title <span className='red'>*</span>
+                  Experience Title <span className='red'>*</span>
                 </label>
                 <input
                   type='text'

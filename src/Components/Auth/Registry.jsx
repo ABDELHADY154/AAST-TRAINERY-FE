@@ -247,7 +247,7 @@ class Registry extends React.Component {
 
                             {this.state.error.passwordErr !== "" &&
                               this.state.error.passwordErr.map((name) => (
-                                <p className='red d-inline'> {name}, </p>
+                                <p className='red d-inline'> {name} </p>
                               ))}
                           </div>
                           <div className='col-md-10 col-lg-11 form-label-group input-field'>

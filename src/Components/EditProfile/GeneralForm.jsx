@@ -101,6 +101,8 @@ class GeneralForm extends Component {
       image: URL.createObjectURL(event.target.files[0]),
       imageURL: event.target.files[0],
     });
+    // console.log(event.target.files[0].name);
+
   }
   handleScroll = () => {
     this.setState({
