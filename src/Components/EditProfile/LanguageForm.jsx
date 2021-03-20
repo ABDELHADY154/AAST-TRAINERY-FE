@@ -127,7 +127,7 @@ class Language extends Component {
     console.log(this.state.level);
     return (
       <div>
-        <div className="container ">
+        <div className="container wrapperLang">
           <EditNav setactive={"Language"} />
           <div>
             <form className="row g-3 mb-3 mt-1" onSubmit={this.handleSubmitLanguage}>
@@ -235,7 +235,7 @@ class Language extends Component {
             </form>
           </div>
         </div>
-        <Footer2 />
+        <Footer2 className='interestFooter'/>
       </div>
     );
   }
