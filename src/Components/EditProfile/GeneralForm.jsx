@@ -474,6 +474,7 @@ class GeneralForm extends Component {
                 onChange={(e) => {
                   this.setState({ university: e.target.value });
                 }}
+                value={this.state.university ? this.state.university : ""}
               >
                 <option selected>Choose your University / Institution ...</option>
                 <option value='AAST CMT'>AAST CMT</option>

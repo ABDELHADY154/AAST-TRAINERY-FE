@@ -132,7 +132,7 @@ class Language extends Component {
           <div>
             <form className="row g-3 mb-3 mt-1" onSubmit={this.handleSubmitLanguage}>
 
-              <div className="col-lg-10 col-11 col-md-10 col-sm-12 col-xs-12">
+            <div className='col-lg-10 col-11 col-md-10 col-sm-12 col-xs-12'>
                 <label for="inputSkill" className="form-label editLabel ">
                   Language
                 </label>
@@ -155,7 +155,9 @@ class Language extends Component {
                 ) : (
                   ""
                 )}
-                <label for="inputRegNum" className="form-label editLabel mt-3">
+                              <div className='col-lg-10 col-11 col-md-10 col-sm-12 col-xs-12'>
+
+                <label for="inputRegNum" className="form-label editLabel mt-4">
                   Level
                 </label>
                 {this.props.match.params.id ? (
@@ -203,7 +205,7 @@ class Language extends Component {
                   </p>
                 ) : (
                   ""
-                )}
+                )}</div>
               </div>
               {this.props.match.params.id ? (
                 <div class="col-lg-10 col-11 col-md-10 col-sm-12 col-xs-12 d-flex justify-content-end">

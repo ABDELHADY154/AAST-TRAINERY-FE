@@ -154,7 +154,7 @@ class Skills extends Component {
                 )}
               </div>
               <div className='col-lg-10 col-11 col-md-10 col-sm-12 col-xs-12 '>
-                <label for='inputRegNum' className='form-label editLabel mt-3'>
+                <label for='inputRegNum' className='form-label editLabel mt-2'>
                   Level
                 </label>
                 {this.props.match.params.id ? (

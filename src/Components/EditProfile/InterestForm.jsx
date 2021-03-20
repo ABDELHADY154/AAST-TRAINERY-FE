@@ -113,7 +113,7 @@ class Interest extends Component {
     }
     return (
       <div>
-        <div className="container ">
+        <div className="container wrapper">
           <EditNav setactive={"Interest"} />
           <div>
             <form className="row g-3 mb-3 mt-1" onSubmit={this.handleSubmiInterest}>
@@ -165,7 +165,7 @@ class Interest extends Component {
             </form>
           </div>
         </div>
-        <Footer2 />
+        <Footer2 className="interestFooter"/>
       </div>
     );
   }

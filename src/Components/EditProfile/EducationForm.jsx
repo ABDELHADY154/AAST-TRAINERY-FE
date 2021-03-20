@@ -220,7 +220,7 @@ export default class EducationForm extends Component {
                   placeholder={
                     this.state.error && this.state.error.schoolNameErr
                       ? this.state.error.schoolNameErr
-                      : "Sidi Gaber Language School (SLS)"
+                      : "Enter Your School Name"
                   }
                   onChange={(e) => this.setState({ SchoolName: e.target.value })}
                   value={this.state.SchoolName ? this.state.SchoolName : ""}
@@ -329,7 +329,7 @@ export default class EducationForm extends Component {
                   id='fullname'
                   onChange={(e) => this.setState({ SchoolUrl: e.target.value })}
                   placeholder={
-                    this.state.cred_url ? this.state.cred_url : "https://www. "
+                    this.state.cred_url ? this.state.cred_url : "Http://www.Example.com"
                   }
                 />
                 {this.state.error && this.state.error.credErr !== "" && (
