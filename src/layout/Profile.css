@@ -93,6 +93,11 @@
     transition: 300ms !important;
   }
 }
+/* @media screen and (max-width: 452px) {
+  #gpa {
+    margin-left: 1% !important;
+  }
+} */
 @media screen and (max-width: 991px) {
   .orangetitle2 {
     margin-top: 1.5em;
@@ -101,7 +106,7 @@
     margin-left: 1% !important;
   }
   #gpa {
-    margin-left: 0 !important;
+    /* margin-left: 0 !important; */
     color: #cd8930 !important;
     font-family: sf bold !important;
   }
