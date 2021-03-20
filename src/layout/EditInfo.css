@@ -240,6 +240,7 @@ ReactStars:active {
 .editerror {
   color: #f44336;
   font-size: 14px;
+  text-transform: capitalize;
 }
 .UploadBtnDiv {
   position: relative;

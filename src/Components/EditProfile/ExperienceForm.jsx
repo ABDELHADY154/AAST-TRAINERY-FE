@@ -248,7 +248,7 @@ class ExperienceForm extends Component {
                   <option value='Internship'>Internship</option>
                   <option value='Volunteer'>Volunteer</option>
                 </select>
-                <p className='red'>
+                <p className='editerror'>
                   {this.state.error.ExperienceTypeErr
                     ? this.state.error.ExperienceTypeErr
                     : ""}
