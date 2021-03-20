@@ -257,7 +257,7 @@ class ExperienceForm extends Component {
 
               <div class='col-lg-10 col-11 col-md-10 col-sm-12 col-xs-12'>
                 <label for='inputfullname' class='form-label editLabel '>
-                  Job Title <span className='red'>*</span>
+                Experience Title <span className='red'>*</span>
                 </label>
                 <input
                   type='text'
@@ -267,7 +267,7 @@ class ExperienceForm extends Component {
                       : "form-control editInput"
                   }
                   id='fullname'
-                  placeholder='Web Developer'
+                  placeholder='Enter Your Experience Title'
                   onChange={(e) => this.setState({ JobTitle: e.target.value })}
                   value={this.state.JobTitle ? this.state.JobTitle : ""}
                 />
@@ -291,7 +291,7 @@ class ExperienceForm extends Component {
                       : "form-control editInput"
                   }
                   id='fullname'
-                  placeholder='Qowwa Technologies'
+                  placeholder='Enter The Company Name'
                   onChange={(e) => this.setState({ CompanyName: e.target.value })}
                   value={this.state.CompanyName ? this.state.CompanyName : ""}
                 />
