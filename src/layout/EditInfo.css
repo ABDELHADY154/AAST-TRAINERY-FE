@@ -306,26 +306,7 @@ ReactStars:active {
     position:relative;
   }
 } */
-@media (min-width: 1198px) and (max-width: 1500px) {
-  .wrapperLang {
-    padding-bottom: 2rem; 
-    min-height: 100%;
-    position:relative;
-  }
-}
-@media (min-width: 750px) and (max-width: 1200px) {
-  .wrapperLang {
-    padding-bottom: 4rem; 
-    min-height: 100%;
-    position:relative;
-  }
-  .interestFooter{
-    height: 100px; 
-    width:100%;
-    position: absolute;
-    left: 0;
-    bottom: 0; }
-}
+
 /* ...........Mohannad........... */
 .red {
   color: red;

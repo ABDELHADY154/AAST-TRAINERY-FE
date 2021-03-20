@@ -127,7 +127,7 @@ class Skills extends Component {
     }
     return (
       <div>
-        <div className='container wrapperLang'>
+        <div className='container '>
           <EditNav setactive={"Skills"} />
           <div>
             <form className='row g-3 mb-3 mt-1' onSubmit={this.handleSubmitSkills}>
@@ -154,7 +154,7 @@ class Skills extends Component {
                 )}
               </div>
               <div className='col-lg-10 col-11 col-md-10 col-sm-12 col-xs-12 '>
-                <label for='inputRegNum' className='form-label editLabel mt-3'>
+                <label for='inputRegNum' className='form-label editLabel mt-2'>
                   Level
                 </label>
                 {this.props.match.params.id ? (
@@ -249,7 +249,7 @@ class Skills extends Component {
             </form>
           </div>
         </div>
-        <Footer2 className='interestFooter'/>
+        <Footer2 />
       </div>
     );
   }
