@@ -183,7 +183,7 @@ class CoursesForm extends Component {
 
   render() {
     if (this.state.loggedIn === false) {
-      return <Redirect to='/Profile' />;
+      return <Redirect to='/login' />;
     }
     if (this.state.done === true) {
       return <Redirect to='/Profile' />;
