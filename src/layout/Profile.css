@@ -93,15 +93,20 @@
     transition: 300ms !important;
   }
 }
+/* @media screen and (max-width: 452px) {
+  #gpa {
+    margin-left: 1% !important;
+  }
+} */
 @media screen and (max-width: 991px) {
   .orangetitle2 {
     margin-top: 1.5em;
   }
   .plusmarginback {
-    margin-left: 0% !important;
+    margin-left: 1% !important;
   }
   #gpa {
-    margin-left: 0 !important;
+    /* margin-left: 0 !important; */
     color: #cd8930 !important;
     font-family: sf bold !important;
   }
@@ -362,9 +367,9 @@ body {
 .plusmarginback {
   margin-left: -11%;
 }
-/* #accountsicons {
-  font-size: 1.2em; */
-/* width: 2em;
-  height: 2em; */
-/* margin-right: 5%;
-} */
+
+#docicon {
+  color: #cd8930 !important;
+  fill: #cd8930 !important;
+  text-decoration: none !important;
+}

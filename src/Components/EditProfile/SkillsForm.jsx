@@ -130,7 +130,7 @@ class Skills extends Component {
         <div className='container '>
           <EditNav setactive={"Skills"} />
           <div>
-            <form className='row g-3 mb-3' onSubmit={this.handleSubmitSkills}>
+            <form className='row g-3 mb-3 mt-1' onSubmit={this.handleSubmitSkills}>
               <div className='col-lg-10 col-11 col-md-10 col-sm-12 col-xs-12'>
                 <label for='quantity' className='form-label editLabel '>
                   Skills
@@ -148,13 +148,13 @@ class Skills extends Component {
                   value={this.state.skill}
                 />
                 {this.state.error && this.state.error.skillErr ? (
-                  <p className='editerror'>{this.state.error.skillErr}</p>
+                  <p className='editerror text-capitalize'>{this.state.error.skillErr}</p>
                 ) : (
                   ""
                 )}
               </div>
               <div className='col-lg-10 col-11 col-md-10 col-sm-12 col-xs-12 '>
-                <label for='inputRegNum' className='form-label editLabel mt-3'>
+                <label for='inputRegNum' className='form-label editLabel mt-2'>
                   Level
                 </label>
                 {this.props.match.params.id ? (
@@ -193,7 +193,7 @@ class Skills extends Component {
                   />
                 )}
                 {this.state.error && this.state.error.yearsExpErr ? (
-                  <p className='editerror'>{this.state.error.yearsExpErr}</p>
+                  <p className='editerror text-capitalize'>{this.state.error.yearsExpErr}</p>
                 ) : (
                   ""
                 )}

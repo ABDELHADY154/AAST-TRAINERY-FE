@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import "../../../layout/Profile.css";
 import { BiPencil } from "react-icons/bi";
+import { CgFileDocument } from "react-icons/cg";
+
 export default class StudentWorkExp extends Component {
   constructor(props) {
     super(props);
@@ -33,7 +35,7 @@ export default class StudentWorkExp extends Component {
             id="hiddenhover"
             className=" d-flex flex-row col-2 col-md-1 p-0 ms-3"
           >
-            <Link renderAs="button" to={`/Profile/Experiance/${id}`}>
+            <Link renderAs="button" to={`/Profile/Experience/${id}`}>
               <BiPencil
                 className="skillnamepencil"
                 id="skillnamepen"
@@ -53,16 +55,37 @@ export default class StudentWorkExp extends Component {
             {this.props.from} to {this.props.to} ·{/* {diffDays} Years */}
           </div>
         </div>
-        <div className="d-flex flex-row fs-6 mt-2 ">
-          <a
-            id="goldcredentials"
-            renderAs="button"
-            href={this.props.cred}
-            className="  mb-1   d-flex flex-row col-12 col-md-3"
-            target="_blank"
+        <div className="d-flex flex-row flex-wrap fs-6 mt-2 ">
+          <div className="d-flex flex-column col-md-2 col-12 mb-1">
+            <a
+              id="goldcredentials"
+              renderAs="button"
+              href={this.props.cred_url}
+              target="_blank"
+            >
+              See credentials
+            </a>
+          </div>
+          <div
+            id="docicon"
+            style={{ color: "#cd8930", fill: "#cd8930" }}
+            className="d-flex flex-column col-md-2 col-12 mb-1"
           >
-            See credentials
-          </a>
+            <a
+              style={{ color: "#cd8930", fill: "#cd8930" }}
+              id="docicon"
+              href={this.props.cred}
+              renderAs="button"
+              target="_blank"
+            >
+         <CgFileDocument
+              size="20px"
+                id="docicon"
+                fill="#cd8930"
+                color="#cd8930"
+              ></CgFileDocument>
+            </a>
+          </div>
         </div>
         <hr />
       </>
