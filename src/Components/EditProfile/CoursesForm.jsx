@@ -5,7 +5,8 @@ import { axios } from "../../Api/axios";
 import "../../layout/EditInfo.css";
 import Footer2 from "../Common/Footer2";
 import { FiUpload } from "react-icons/fi";
-import { data } from "flickity";
+// import { data } from "flickity";
+import EditNav from "./EditNav";
 
 class CoursesForm extends Component {
   constructor(props) {
@@ -175,137 +176,68 @@ class CoursesForm extends Component {
 
     // console.log(this.state.error);
     if (this.state.loggedIn === false) {
-      return <Redirect to="/Profile" />;
+      return <Redirect to='/Profile' />;
     }
     if (this.state.done === true) {
-      return <Redirect to="/Profile" />;
+      return <Redirect to='/Profile' />;
     }
     // console.log(this.state.image);
 
     return (
       <div>
-        {" "}
-        <div className="container ">
-          <h1 className="editTitle text-center">Edit Profile</h1>
-          <h3 className="categoryTitle d-flex justify-content-start mb-3">
-            Categories
-          </h3>
-          <ul className="nav  infoTabsUl nav-tabs" id="myTab" role="tablist">
-            <li className="nav-item infoTabs" role="presentation">
-              <a
-                className="nav-link  tabBtn  "
-                id="General-tab"
-                href="/Profile/General"
-              >
-                General
-              </a>
-            </li>
-            <li className="nav-item infoTabs" role="presentation">
-              <a
-                className="nav-link  tabBtn  "
-                id="Education-tab"
-                href="/Profile/Education"
-              >
-                Education
-              </a>
-            </li>
-            <li class="nav-item infoTabs" role="presentation">
-              <a
-                className="nav-link tabBtn "
-                id="Experiance-tab"
-                href="/Profile/Experiance"
-              >
-                Experiance
-              </a>
-            </li>
-            <li className="nav-item infoTabs" role="presentation">
-              <a
-                className="nav-link tabBtn active"
-                id="Courses-tab"
-                href="/Profile/Courses"
-              >
-                Courses
-              </a>
-            </li>
-            <li className="nav-item infoTabs" role="presentation">
-              <a
-                className="nav-link tabBtn"
-                id="Skills-tab"
-                href="/Profile/Skills"
-              >
-                Skills
-              </a>
-            </li>
-            <li class="nav-item infoTabs" role="presentation">
-              <a
-                className="nav-link tabBtn"
-                id="Accounts-tab"
-                href="/Profile/Accounts"
-              >
-                Accounts
-              </a>
-            </li>
-          </ul>
+        <div className='container '>
+          <EditNav setactive={"Courses"} />
 
-
-          <form class="g-3 mb-3 text-left " onSubmit={this.handleSubmit}>
-            <div className=" row ">
-              <div className="col-lg-10 col-11 col-md-10 col-sm-12 col-xs-12 mt-sm-0 mt-4">
-                <label for="inputfullname" class="form-label editLabel ">
-                  Course Name <span className="red">*</span>
+          <form class='g-3 mb-3 text-left ' onSubmit={this.handleSubmit}>
+            <div className=' row '>
+              <div className='col-lg-10 col-11 col-md-10 col-sm-12 col-xs-12 mt-3 mt-sm-0'>
+                <label for='inputfullname' class='form-label editLabel '>
+                  Course Name <span className='red'>*</span>
                 </label>
                 <input
                   value={this.state.courseName ? this.state.courseName : ""}
-                  type="text"
+                  type='text'
                   className={
                     this.state.error && this.state.error.courseNameErr
                       ? "form-control editInput wrong "
                       : "form-control editInput "
                   }
-                  id="fullname"
-                  placeholder="Graphic Design Mastery: The FULL Branding & Design Process"
-                  onChange={(e) =>
-                    this.setState({ courseName: e.target.value })
-                  }
+                  id='fullname'
+                  onChange={(e) => this.setState({ courseName: e.target.value })}
                 />
-                <p className="red">
+                <p className='red'>
                   {this.state.error ? this.state.error.courseNameErr : ""}
                 </p>
               </div>
 
-              <div className="col-lg-10 col-11 col-md-10 col-sm-12 col-xs-12">
-                <label for="inputfullname" class="form-label editLabel ">
-                  Course Title / Provider <span className="red">*</span>
+              <div className='col-lg-10 col-11 col-md-10 col-sm-12 col-xs-12'>
+                <label for='inputfullname' class='form-label editLabel '>
+                  Course Title / Provider <span className='red'>*</span>
                 </label>
                 <input
-                  value={
-                    this.state.courseProvider ? this.state.courseProvider : ""
-                  }
-                  type="text"
+                  value={this.state.courseProvider ? this.state.courseProvider : ""}
+                  type='text'
                   className={
                     this.state.error && this.state.error.courseProviderErr
                       ? "form-control editInput wrong "
                       : "form-control editInput"
                   }
-                  id="fullname"
-                  placeholder="IT"
-                  onChange={(e) =>
-                    this.setState({ courseProvider: e.target.value })
-                  }
+                  id='fullname'
+                  onChange={(e) => this.setState({ courseProvider: e.target.value })}
                 />
-                <p className="red">
+                <p className='red'>
                   {this.state.error ? this.state.error.courseProviderErr : ""}
                 </p>
               </div>
 
-              <div className="col-lg-5 col-11 col-md-5 col-sm-12 col-xs-12 ">
-                <label for="bdaymonth" className="form-label editLabel ">
-                  From <span className="red">*</span>
+              <div className='col-lg-5 col-11 col-md-5 col-sm-12 col-xs-12 '>
+                <label for='bdaymonth' className='form-label editLabel '>
+                  From <span className='red'>*</span>
                 </label>
                 <input
                   value={this.state.fromDate ? this.state.fromDate : ""}
-                  type="date"
-                  id="bdaymonth"
+                  type='date'
+                  id='bdaymonth'
                   className={
                     this.state.error && this.state.error.fromDateErr
                       ? "form-control editInput  wrong "
@@ -313,7 +245,7 @@ class CoursesForm extends Component {
                   }
                   onChange={(e) => this.setState({ fromDate: e.target.value })}
                 />
-                <p className="red">
+                <p className='red'>
                   {this.state.error ? this.state.error.fromDateErr : ""}
                 </p>
               </div>
@@ -324,9 +256,8 @@ class CoursesForm extends Component {
                 </label>
                 <input
                   value={this.state.toDate ? this.state.toDate : ""}
-
-                  type="date"
-                  id="bdaymonth"
+                  type='date'
+                  id='bdaymonth'
                   className={
                     this.state.error && this.state.error.toDateErr
                       ? "form-control editInput  wrong "
@@ -334,7 +265,7 @@ class CoursesForm extends Component {
                   }
                   onChange={(e) => this.setState({ toDate: e.target.value })}
                 />
-                <p className="red">
+                <p className='red'>
                   {this.state.error ? this.state.error.toDateErr : ""}
                 </p>
               </div>
@@ -345,10 +276,8 @@ class CoursesForm extends Component {
                 </label>
                 <input
                   value={this.state.CourseUrl ? this.state.CourseUrl : ""}
-
-                  type="text"
-                  id="fullname"
-                  placeholder={this.state.CourseUrl}
+                  type='text'
+                  id='fullname'
                   className={
                     this.state.error && this.state.error.CourseUrlErr
                       ? "form-control editInput  wrong "
@@ -356,7 +285,7 @@ class CoursesForm extends Component {
                   }
                   onChange={(e) => this.setState({ CourseUrl: e.target.value })}
                 />
-                <p className="red">
+                <p className='red'>
                   {this.state.error ? this.state.error.CourseUrlErr : ""}
                 </p>
               </div>
@@ -367,16 +296,14 @@ class CoursesForm extends Component {
                   className='form-control editInput uploadBtn d-flex'
                 >
                   Upload
-
-                  <FiUpload className="uploadIcon ms-auto " />
+                  <FiUpload className='uploadIcon ms-auto ' />
                   <input
                     className='form-control editInput'
                     hidden
-
-                    type="file"
-                    id="files"
-                    accept=" image/*,file_extension/
-                    .crt,.cer,.ca-bundle,.p7b,.p7c,.p7s,.pem,.pdf"
+                    type='file'
+                    id='files'
+                    accept=' image/*,file_extension/
+                    .crt,.cer,.ca-bundle,.p7b,.p7c,.p7s,.pem,.pdf'
                     onChange={(e) =>
                       this.setState({
                         imageURL: e.target.files[0],
@@ -385,34 +312,34 @@ class CoursesForm extends Component {
                     }
                   />
                 </label>
+                {this.state.error && this.state.error.credErr !== "" && (
+                  <p className='red d-inline'> {this.state.error.credErr}</p>
+                )}
               </div>
 
               {this.props.match.params.id ? (
-                <div class="col-12 d-flex justify-content-end">
+                <div class='col-lg-10 col-11 col-md-10 col-sm-12 col-xs-12 d-flex justify-content-end mt-5'>
                   <button
-                    class="btn deleteBtn me-2 my-2  shadow-none "
+                    class='btn deleteBtn me-2 my-2  shadow-none '
                     onClick={() => this.handleDelete()}
                   >
                     Delete
                   </button>
                   <button
                     onClick={this.handleSubmit}
-                    class="btn updateBtn shadow-none my-2 "
+                    class='btn updateBtn shadow-none my-2 '
                   >
                     Update
                   </button>
                 </div>
               ) : (
-                <div class="col-12 d-flex justify-content-end">
-                  <a href="/Profile">
-                    <button
-                      type="button"
-                      class="btn me-2 my-2 cancelBtn shadow-none"
-                    >
+                <div class='col-lg-10 col-11 col-md-10 col-sm-12 col-xs-12 d-flex justify-content-end mt-5'>
+                  <a href='/Profile'>
+                    <button type='button' class='btn me-2 my-2 cancelBtn shadow-none'>
                       Cancel
                     </button>
                   </a>
-                  <button type="submit" class="btn doneBtn shadow-none my-2 ">
+                  <button type='submit' class='btn doneBtn shadow-none my-2 '>
                     Add
                   </button>
                 </div>
