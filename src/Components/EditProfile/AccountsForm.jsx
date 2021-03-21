@@ -1,4 +1,7 @@
 import React, { Component } from "react";
+import { Link, Redirect } from "react-router-dom";
+import EditNav from "./EditNav";
+
 // import { Redirect } from "react-router-dom";
 import { axios } from "../../Api/axios";
 // import { Link } from "react-router-dom";
@@ -54,89 +57,42 @@ class AccountsForm extends Component {
     };
     return await axios
       .post("/W/student/profile/account", data)
-      .then((res) => {
-        console.log(res);
+      .then((e) => {
         this.setState({
-          WebsitE: res.data.response.data.website,
-          facebooK: res.data.response.data.facebook,
-          instagraM: res.data.response.data.instagram,
-          youtubE: res.data.response.data.youtube,
-          linkediN: res.data.response.data.linkedin,
-          behancE: res.data.response.data.behance,
-          githuB: res.data.response.data.github,
+          done: true,
         });
-        console.log(res.data.response.data);
       })
-      .catch((err) => {
-        console.log(err);
+      .catch((error) => {
+        if (error.response.data.status === 401) {
+          sessionStorage.clear("token");
+          sessionStorage.clear("status");
+          this.setState({ loggedIn: false });
+          window.location.reload();
+        }
+        this.setState({
+          error: {
+            WebsitEErr: error.response.data.errors.website,
+            facebooKErr: error.response.data.errors.facebook,
+            instagraMErr: error.response.data.errors.instagram,
+            youtubEErr: error.response.data.errors.youtube,
+            linkediNErr: error.response.data.errors.linkedin,
+            behancEErr: error.response.data.errors.behance,
+            githuBErr: error.response.data.errors.github,
+          },
+        });
+        console.log(error.response.data.errors.behance);
       });
   };
   render() {
+    if (this.state.done === true) {
+      return <Redirect to="/Profile" />;
+    }
     console.log(this.state.facebooK);
     return (
       <div>
         {" "}
         <div className="container ">
-          <h1 className="editTitle text-center">Edit Profile</h1>
-          <h3 className="categoryTitle d-flex justify-content-start mb-3">
-            Categories
-          </h3>
-          <ul className="nav  infoTabsUl nav-tabs" id="myTab" role="tablist">
-            <li className="nav-item infoTabs" role="presentation">
-              <a
-                className="nav-link  tabBtn  "
-                id="General-tab"
-                href="/Profile/General"
-              >
-                General
-              </a>
-            </li>
-            <li className="nav-item infoTabs" role="presentation">
-              <a
-                className="nav-link  tabBtn  "
-                id="Education-tab"
-                href="/Profile/Education"
-              >
-                Education
-              </a>
-            </li>
-            <li class="nav-item infoTabs" role="presentation">
-              <a
-                className="nav-link tabBtn "
-                id="Experiance-tab"
-                href="/Profile/Experiance"
-              >
-                Experiance
-              </a>
-            </li>
-            <li className="nav-item infoTabs" role="presentation">
-              <a
-                className="nav-link tabBtn"
-                id="Courses-tab"
-                href="/Profile/Courses"
-              >
-                Courses
-              </a>
-            </li>
-            <li className="nav-item infoTabs" role="presentation">
-              <a
-                className="nav-link tabBtn"
-                id="Skills-tab"
-                href="/Profile/Skills"
-              >
-                Skills
-              </a>
-            </li>
-            <li class="nav-item infoTabs" role="presentation">
-              <a
-                className="nav-link tabBtn active"
-                id="Accounts-tab"
-                href="/Profile/Accounts"
-              >
-                Accounts
-              </a>
-            </li>
-          </ul>
+          <EditNav setactive={"Accounts"} />
 
           <form class="text-left g-3 mb-3 " onSubmit={this.handleSubmit}>
             <div className="row g-0 mb-3 mt-sm-0 mt-4">
@@ -147,11 +103,14 @@ class AccountsForm extends Component {
                 value={this.state.WebsitE ? this.state.WebsitE : ""}
                 type="text"
                 className="col-lg-5 
-               col-11 col-md-5 col-sm-12 col-xs-12 editInput "
+               col-11 col-md-5 col-sm-12 col-xs-12 editInput form-control  widthMe"
                 // id="fullname"
                 placeholder="URL"
                 onChange={(e) => this.setState({ WebsitE: e.target.value })}
               />
+              <p className="editerror errMargin">
+                {this.state.error ? this.state.error.WebsitEErr : ""}
+              </p>
             </div>
             <div className="row g-0 mb-3 ">
               <label className=" col-lg-2 col-11 col-md-3 col-sm-12 col-xs-12  form-label editLabel closeLabel ">
@@ -161,11 +120,14 @@ class AccountsForm extends Component {
                 value={this.state.facebooK ? this.state.facebooK : ""}
                 type="text"
                 className="col-lg-5 
-               col-11 col-md-5 col-sm-12 col-xs-12 editInput "
+               col-11 col-md-5 col-sm-12 col-xs-12 editInput form-control  widthMe"
                 // id="fullname"
                 placeholder="URL"
                 onChange={(e) => this.setState({ facebooK: e.target.value })}
               />
+              <p className="editerror errMargin">
+                {this.state.error ? this.state.error.facebooKErr : ""}
+              </p>
             </div>
             <div className="row g-0 mb-3 ">
               <label className=" col-lg-2 col-11 col-md-3 col-sm-12 col-xs-12  form-label editLabel closeLabel ">
@@ -175,11 +137,14 @@ class AccountsForm extends Component {
                 value={this.state.instagraM ? this.state.instagraM : ""}
                 type="text"
                 className="col-lg-5 
-               col-11 col-md-5 col-sm-12 col-xs-12 editInput "
+               col-11 col-md-5 col-sm-12 col-xs-12 editInput form-control  widthMe"
                 // id="fullname"
                 placeholder="URL"
                 onChange={(e) => this.setState({ instagraM: e.target.value })}
               />
+              <p className="editerror errMargin">
+                {this.state.error ? this.state.error.instagraMErr : ""}
+              </p>
             </div>
             <div className="row g-0 mb-3 ">
               <label className=" col-lg-2 col-11 col-md-3 col-sm-12 col-xs-12  form-label editLabel closeLabel ">
@@ -189,11 +154,14 @@ class AccountsForm extends Component {
                 value={this.state.youtubE ? this.state.youtubE : ""}
                 type="text"
                 className="col-lg-5 
-               col-11 col-md-5 col-sm-12 col-xs-12 editInput "
+               col-11 col-md-5 col-sm-12 col-xs-12 editInput form-control  widthMe"
                 // id="fullname"
                 placeholder="URL"
                 onChange={(e) => this.setState({ youtubE: e.target.value })}
               />
+              <p className="editerror errMargin">
+                {this.state.error ? this.state.error.youtubEErr : ""}
+              </p>
             </div>
             <div className="row g-0 mb-3 ">
               <label className=" col-lg-2 col-11 col-md-3 col-sm-12 col-xs-12  form-label editLabel closeLabel ">
@@ -203,11 +171,14 @@ class AccountsForm extends Component {
                 value={this.state.linkediN ? this.state.linkediN : ""}
                 type="text"
                 className="col-lg-5 
-               col-11 col-md-5 col-sm-12 col-xs-12 editInput "
+               col-11 col-md-5 col-sm-12 col-xs-12 editInput form-control  widthMe"
                 // id="fullname"
                 placeholder="URL"
                 onChange={(e) => this.setState({ linkediN: e.target.value })}
               />
+              <p className="editerror errMargin">
+                {this.state.error ? this.state.error.linkediNErr : ""}
+              </p>
             </div>
             <div className="row g-0 mb-3 ">
               <label className=" col-lg-2 col-11 col-md-3 col-sm-12 col-xs-12  form-label editLabel closeLabel ">
@@ -217,11 +188,14 @@ class AccountsForm extends Component {
                 value={this.state.behancE ? this.state.behancE : ""}
                 type="text"
                 className="col-lg-5 
-               col-11 col-md-5 col-sm-12 col-xs-12 editInput "
+               col-11 col-md-5 col-sm-12 col-xs-12 editInput form-control  widthMe "
                 // id="fullname"
                 placeholder="URL"
                 onChange={(e) => this.setState({ behancE: e.target.value })}
               />
+              <p className="editerror errMargin">
+                {this.state.error ? this.state.error.behancEErr : ""}
+              </p>
             </div>
             <div className="row g-0 mb-3 ">
               <label className=" col-lg-2 col-11 col-md-3 col-sm-12 col-xs-12  form-label editLabel closeLabel ">
@@ -231,36 +205,25 @@ class AccountsForm extends Component {
                 value={this.state.githuB ? this.state.githuB : ""}
                 type="text"
                 className="col-lg-5 
-               col-11 col-md-5 col-sm-12 col-xs-12 editInput "
+               col-11 col-md-5 col-sm-12 col-xs-12 editInput form-control  widthMe"
                 // id="fullname"
                 placeholder="URL"
                 onChange={(e) => this.setState({ githuB: e.target.value })}
               />
+              <p className="editerror errMargin">
+                {this.state.error ? this.state.error.githuBErr : ""}
+              </p>
             </div>
 
-            <div class="col-12 d-flex justify-content-end">
-              <button class="btn deleteBtn me-2 my-2  shadow-none ">
-                Delete
-              </button>
+            <div class="col-lg-10 col-11 col-md-10 col-sm-12 col-xs-12 d-flex justify-content-end mt-5">
+              <Link class="btn me-2 my-2 cancelBtn shadow-none" to="/Profile">
+                Cancel
+              </Link>
               <button
-                class="btn updateBtn shadow-none my-2 "
+                class="btn doneBtn shadow-none my-2 "
                 onClick={this.handleSubmit}
               >
                 Update
-              </button>
-            </div>
-
-            <div class="col-12 d-flex justify-content-end">
-              <a href="/Profile">
-                <button
-                  type="button"
-                  class="btn me-2 my-2 cancelBtn shadow-none"
-                >
-                  Cancel
-                </button>
-              </a>
-              <button type="submit" class="btn doneBtn shadow-none my-2 ">
-                Add
               </button>
             </div>
           </form>
