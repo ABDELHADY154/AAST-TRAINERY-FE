@@ -3,9 +3,13 @@ import { Link, Redirect } from "react-router-dom";
 import { axios } from "../../Api/axios";
 import "../../layout/EditInfo.css";
 import Footer2 from "../Common/Footer2";
-import { FiUpload } from "react-icons/fi";
+import { FiUpload, FiCheck } from "react-icons/fi";
 import { CountryDropdown, RegionDropdown } from "react-country-region-selector";
 import EditNav from "./EditNav";
+// import { FormLoader } from "../../loader";
+import LoadingOverlay from "react-loading-overlay";
+import BounceLoader from "react-spinners/BounceLoader";
+
 export default class EducationForm extends Component {
   constructor(props) {
     super(props);
@@ -14,10 +18,20 @@ export default class EducationForm extends Component {
       region: "",
       image: "",
       imageURL: "",
-      SchoolUrl: "",
       done: false,
+      SchoolName: "",
+      FormLoading: false,
+      From: "",
+      To: "",
+      error: {
+        creddErr: [],
+        fromErr: [],
+        toErr: [],
+      },
     };
     this.handleChange = this.handleChange.bind(this);
+    this.handleUpload = this.handleUpload.bind(this);
+    window.scrollTo(0, 0);
   }
 
   state = {
@@ -35,28 +49,37 @@ export default class EducationForm extends Component {
       startDate,
     });
   };
-  handleChange(event) {
+  handleUpload(event) {
     var filename = event.target.value.replace(/^.*[\\\/]/, "");
-
     this.setState({
       image: URL.createObjectURL(event.target.files[0]),
-      imageURL: filename,
+      imageURL: event.target.files[0],
+      UrlName: event.target.files[0].name,
     });
+    // console.log(event.target.files[0]);
+  }
+  handleChange(event) {
+    this.setState({ value: event.target.value });
   }
   handleDelete = async (e) => {
     if (this.props.match.params.id) {
+      this.setState({
+        FormLoading: true,
+      });
       await axios
         .delete(`/W/student/profile/education/${this.props.match.params.id}`)
         .then((response) => {
           this.setState({
             loggedIn: true,
             done: true,
+            FormLoading: false,
           });
         })
         .catch((error) => {
           if (error.response) {
             this.setState({
               done: true,
+              FormLoading: false,
             });
           }
           window.location.reload();
@@ -69,6 +92,9 @@ export default class EducationForm extends Component {
 
   componentDidMount = async () => {
     if (this.props.match.params.id) {
+      this.setState({
+        FormLoading: true,
+      });
       await axios
         .get(`/W/student/profile/education/${this.props.match.params.id}`)
         .then((res) => {
@@ -80,7 +106,8 @@ export default class EducationForm extends Component {
             country: res.data.response.data.country,
             From: res.data.response.data.from,
             To: res.data.response.data.to,
-            cred_url: res.data.response.data.credential_url,
+            SchoolUrl: res.data.response.data.credential_url,
+            FormLoading: false,
           });
         })
         .catch((error) => {
@@ -98,7 +125,9 @@ export default class EducationForm extends Component {
     e.preventDefault();
     var formBody = new FormData();
     // console.log(this.state.SchoolUrl);
-
+    this.setState({
+      FormLoading: true,
+    });
     const data = {
       id: this.state.id,
       school_name: this.state.SchoolName,
@@ -115,7 +144,7 @@ export default class EducationForm extends Component {
         this.state.imageURL ? this.state.imageURL : this.state.image
       );
     }
-    formBody.append("school_name", data.school_name);
+    formBody.append("school_name", this.state.SchoolName);
     formBody.append("country", data.country);
     formBody.append("city", data.city);
     formBody.append("from", data.from);
@@ -133,9 +162,13 @@ export default class EducationForm extends Component {
         .then((response) => {
           this.setState({
             done: true,
+            FormLoading: false,
           });
         })
         .catch((error) => {
+          this.setState({
+            FormLoading: false,
+          });
           if (error.response.data.status === 401) {
             sessionStorage.clear("token");
             sessionStorage.clear("status");
@@ -154,6 +187,7 @@ export default class EducationForm extends Component {
               creddErr: error.response.data.errors.cred,
             },
           });
+          // console.log(this.state.SchoolName);
         });
     } else {
       return await axios({
@@ -165,11 +199,15 @@ export default class EducationForm extends Component {
         .then((response) => {
           this.setState({
             done: true,
+            FormLoading: false,
           });
 
           // console.log(response);
         })
         .catch((error) => {
+          this.setState({
+            FormLoading: false,
+          });
           if (error.response.data.status === 401) {
             sessionStorage.clear("token");
             sessionStorage.clear("status");
@@ -182,11 +220,14 @@ export default class EducationForm extends Component {
               countryErr: error.response.data.errors.country,
               cityErr: error.response.data.errors.city,
               fromErr: error.response.data.errors.from,
+
               toErr: error.response.data.errors.to,
               credErr: error.response.data.errors.cred_url,
+              schoolNameErr: error.response.data.errors.school_name,
+              creddErr: error.response.data.errors.cred,
             },
           });
-          // console.log(error.response.data.errors.cred_url);
+          // console.log(error.response.data.errors.school_name);
         });
     }
   };
@@ -204,185 +245,205 @@ export default class EducationForm extends Component {
     // console.log(this.state);
     return (
       <div>
-        <div className='container '>
-          <EditNav setactive={"Education"} />
-
+        <div className='container'>
           <form class='g-3 mb-3 text-left ' onSubmit={this.handleSubmit}>
-            <div className=' row'>
-              <div class='col-lg-10 col-11 col-md-10 col-sm-12 col-xs-12 mt-3 mt-sm-0'>
-                <label for='inputfullname' class='form-label editLabel '>
-                  School Name <span className='red'>*</span>
-                </label>
-                <input
-                  type='text'
-                  className='form-control editInput'
-                  id='fullname'
-                  placeholder={
-                    this.state.error && this.state.error.schoolNameErr
-                      ? this.state.error.schoolNameErr
-                      : "Enter Your School Name"
-                  }
-                  onChange={(e) => this.setState({ SchoolName: e.target.value })}
-                  value={this.state.SchoolName ? this.state.SchoolName : ""}
-                />
-              </div>
-              <div className='col-lg-5 col-11 col-md-5 col-sm-12 col-xs-12'>
-                <label for='inputCountry' className='form-label editLabel'>
-                  Country
-                </label>
-                <CountryDropdown
-                  value={this.state.country ? this.state.country : country}
-                  onChange={(val) => this.selectCountry(val)}
-                  className={
-                    this.state.error && this.state.error.countryErr
-                      ? "form-control editInput wrong "
-                      : "form-control editInput"
-                  }
-                  id='validationServer04'
-                  aria-describedby='validationServer04Feedback'
-                />
+            <LoadingOverlay
+              active={this.state.FormLoading}
+              spinner={<BounceLoader color='#cd8930' />}
+              styles={{
+                overlay: (base) => ({
+                  ...base,
+                  background: "rgb(255, 255, 255)",
+                }),
+              }}
+            >
+              <EditNav setactive={"Education"} />
 
-                {this.state.error && this.state.error.countryErr ? (
-                  <p className='editerror'>{this.state.error.countryErr}</p>
-                ) : (
-                  ""
-                )}
-              </div>
-              <div className='col-lg-5 col-11 col-md-5 col-sm-12 col-xs-12 '>
-                <label for='inputCity' className='form-label editLabel'>
-                  City
-                </label>
-                <RegionDropdown
-                  country={country}
-                  value={region}
-                  onChange={(val) => this.selectRegion(val)}
-                  className={
-                    this.state.error && this.state.error.cityErr
-                      ? "form-control editInput wrong "
-                      : "form-control editInput"
-                  }
-                  id='validationServer04'
-                  aria-describedby='validationServer04Feedback'
-                  // value={(e) => this.setState({ City: e.target.value })}
-                />
-
-                {this.state.error && this.state.error.cityErr ? (
-                  <p className='editerror'>{this.state.error.cityErr}</p>
-                ) : (
-                  ""
-                )}
-              </div>
-              <div className='col-lg-5 col-11 col-md-5 col-sm-12 col-xs-12 '>
-                <label for='bdaymonth' className='form-label editLabel '>
-                  From
-                </label>
-                <input
-                  type='date'
-                  id='bdaymonth'
-                  className={
-                    this.state.error && this.state.error.fromErr
-                      ? "form-control editInput wrong "
-                      : "form-control editInput"
-                  }
-                  onChange={(e) => this.setState({ From: e.target.value })}
-                  value={this.state.From ? this.state.From : ""}
-                />
-
-                {this.state.error && this.state.error.fromErr ? (
-                  <p className='editerror'>{this.state.error.fromErr}</p>
-                ) : (
-                  ""
-                )}
-              </div>
-              <div class='col-lg-5 col-11 col-md-5 col-sm-12 col-xs-12'>
-                <label for='bdaymonth' className='form-label editLabel '>
-                  To <span className='red'>*</span>
-                </label>
-                <input
-                  type='date'
-                  id='bdaymonth'
-                  className={
-                    this.state.error && this.state.error.toErr
-                      ? "form-control editInput wrong "
-                      : "form-control editInput "
-                  }
-                  onChange={(e) => this.setState({ To: e.target.value })}
-                  value={this.state.To ? this.state.To : ""}
-                />
-                {this.state.error && this.state.error.toErr ? (
-                  <p className='editerror'>{this.state.error.toErr}</p>
-                ) : (
-                  ""
-                )}
-              </div>
-              <div class='col-lg-5 col-11 col-md-5 col-sm-12 col-xs-12 '>
-                <label for='inputTerm' className='form-label editLabel'>
-                  Credential URL <span className='red'>*</span>
-                </label>
-                <input
-                  type='text'
-                  className={
-                    this.state.error && this.state.error.credErr
-                      ? "form-control editInput wrong "
-                      : "form-control editInput "
-                  }
-                  id='fullname'
-                  onChange={(e) => this.setState({ SchoolUrl: e.target.value })}
-                  placeholder={
-                    this.state.cred_url ? this.state.cred_url : "Http://www.Example.com"
-                  }
-                />
-                {this.state.error && this.state.error.credErr !== "" && (
-                  <p className='red d-inline'> {this.state.error.credErr}</p>
-                )}
-              </div>
-              <div className='col-lg-5 col-11 col-md-5 col-sm-12 col-xs-12  '>
-                <label
-                  htmlFor='files'
-                  className='form-control editInput uploadBtn d-flex'
-                >
-                  Upload
-                  <FiUpload className='uploadIcon ms-auto ' />
+              <div className=' row'>
+                <div class='col-lg-10 col-11 col-md-10 col-sm-12 col-xs-12 mt-3 mt-sm-0'>
+                  <label for='inputfullname' class='form-label editLabel '>
+                    School Name <span className='red'>*</span>
+                  </label>
                   <input
+                    type='text'
                     className='form-control editInput'
-                    hidden
-                    type='file'
-                    id='files'
-                    accept='pdf'
-                    onChange={(e) =>
-                      this.setState({
-                        imageURL: e.target.files[0],
-                        image: e.target.files[0],
-                      })
+                    id='fullname'
+                    className={
+                      this.state.error && this.state.error.schoolNameErr
+                        ? "form-control editInput wrong "
+                        : "form-control editInput"
                     }
+                    onChange={(e) => this.setState({ SchoolName: e.target.value })}
+                    value={this.state.SchoolName ? this.state.SchoolName : ""}
                   />
-                </label>
-              </div>
-              {this.props.match.params.id ? (
-                <div class='col-lg-10 col-11 col-md-10 col-sm-12 col-xs-12 d-flex justify-content-end mt-5 '>
-                  <button
-                    // type={this.handleDelete}
-                    class='btn deleteBtn me-2 my-2  shadow-none  '
-                    onClick={() => this.handleDelete()}
-                    value='deleted'
+                  {this.state.error && this.state.error.schoolNameErr !== "" && (
+                    <p className='editerror'> {this.state.error.schoolNameErr}</p>
+                  )}
+                </div>
+                <div className='col-lg-5 col-11 col-md-5 col-sm-12 col-xs-12'>
+                  <label for='inputCountry' className='form-label editLabel'>
+                    Country
+                  </label>
+                  <CountryDropdown
+                    value={this.state.country ? this.state.country : country}
+                    onChange={(val) => this.selectCountry(val)}
+                    className={
+                      this.state.error && this.state.error.countryErr
+                        ? "form-control editInput wrong "
+                        : "form-control editInput"
+                    }
+                    id='validationServer04'
+                    aria-describedby='validationServer04Feedback'
+                  />
+
+                  {this.state.error && this.state.error.countryErr ? (
+                    <p className='editerror'>{this.state.error.countryErr}</p>
+                  ) : (
+                    ""
+                  )}
+                </div>
+                <div className='col-lg-5 col-11 col-md-5 col-sm-12 col-xs-12 '>
+                  <label for='inputCity' className='form-label editLabel'>
+                    City
+                  </label>
+                  <RegionDropdown
+                    country={country}
+                    value={region}
+                    onChange={(val) => this.selectRegion(val)}
+                    className={
+                      this.state.error && this.state.error.cityErr
+                        ? "form-control editInput wrong "
+                        : "form-control editInput"
+                    }
+                    id='validationServer04'
+                    aria-describedby='validationServer04Feedback'
+                    // value={(e) => this.setState({ City: e.target.value })}
+                  />
+
+                  {this.state.error && this.state.error.cityErr ? (
+                    <p className='editerror'>{this.state.error.cityErr}</p>
+                  ) : (
+                    ""
+                  )}
+                </div>
+                <div className='col-lg-5 col-11 col-md-5 col-sm-12 col-xs-12 '>
+                  <label for='bdaymonth' className='form-label editLabel '>
+                    From
+                  </label>
+                  <input
+                    type='date'
+                    id='bdaymonth'
+                    className='form-control editInput'
+                    onChange={(e) => this.setState({ From: e.target.value })}
+                    value={this.state.From ? this.state.From : ""}
+                  />
+
+                  {/* {this.state.error.fromErr !== "" &&
+                    this.state.error.fromErr.map((name) => (
+                      <p className='editerror d-inline' key={name}>
+                        {name} <span />
+                      </p>
+                    ))} */}
+                  {this.state.error && this.state.error.fromErr ? (
+                    <p className='editerror'>{this.state.error.fromErr}</p>
+                  ) : (
+                    ""
+                  )}
+                </div>
+                <div class='col-lg-5 col-11 col-md-5 col-sm-12 col-xs-12'>
+                  <label for='bdaymonth' className='form-label editLabel '>
+                    To <span className='red'>*</span>
+                  </label>
+                  <input
+                    type='date'
+                    id='bdaymonth'
+                    className='form-control editInput '
+                    onChange={(e) => this.setState({ To: e.target.value })}
+                    value={this.state.To ? this.state.To : ""}
+                  />
+                  {/* {this.state.error.toErr !== "" &&
+                    this.state.error.toErr.map((name, i) => (
+                      <p className='editerror d-inline' key={i}>
+                        {name} <span />
+                      </p>
+                    ))} */}
+                  {this.state.error && this.state.error.toErr ? (
+                    <p className='editerror d-inline'> {this.state.error.toErr}</p>
+                  ) : (
+                    ""
+                  )}
+                </div>
+                <div class='col-lg-5 col-11 col-md-5 col-sm-12 col-xs-12 '>
+                  <label for='inputTerm' className='form-label editLabel'>
+                    Credential URL <span className='red'>*</span>
+                  </label>
+                  <input
+                    type='text'
+                    className={
+                      this.state.error && this.state.error.credErr
+                        ? "form-control editInput wrong "
+                        : "form-control editInput "
+                    }
+                    id='fullname'
+                    onChange={(e) => this.setState({ SchoolUrl: e.target.value })}
+                    value={this.state.SchoolUrl ? this.state.SchoolUrl : ""}
+                  />
+                  {this.state.error && this.state.error.credErr !== "" && (
+                    <p className='editerror'> {this.state.error.credErr}</p>
+                  )}
+                </div>
+                <div className='col-lg-5 col-11 col-md-5 col-sm-12 col-xs-12  '>
+                  <label
+                    htmlFor='files'
+                    className='form-control editInput uploadBtn d-flex '
                   >
-                    Delete
-                  </button>
-                  <button type='submit' class='btn updateBtn shadow-none my-2 '>
-                    Update
-                  </button>
+                    {this.state.UrlName ? this.state.UrlName : "Upload"}
+                    {this.state.UrlName ? (
+                      <FiCheck className='uploadIcon ms-auto ' />
+                    ) : (
+                      <FiUpload className='uploadIcon ms-auto ' />
+                    )}
+                    <input
+                      className='form-control editInput'
+                      hidden
+                      type='file'
+                      id='files'
+                      onChange={(e) => this.handleUpload(e)}
+                    />
+                  </label>
+
+                  {this.state.error && this.state.error.creddErr ? (
+                    <p className='editerror'>{this.state.error.creddErr}</p>
+                  ) : (
+                    ""
+                  )}
                 </div>
-              ) : (
-                <div class='col-lg-10 col-11 col-md-10 col-sm-12 col-xs-12 d-flex justify-content-end mt-5'>
-                  <Link class='btn me-2 my-2 cancelBtn shadow-none' to='/Profile'>
-                    Cancel
-                  </Link>
-                  <button type='submit' class='btn doneBtn shadow-none my-2 '>
-                    Add
-                  </button>
-                </div>
-              )}
-            </div>
+                {this.props.match.params.id ? (
+                  <div class='col-lg-10 col-11 col-md-10 col-sm-12 col-xs-12 d-flex justify-content-end mt-5 '>
+                    <button
+                      // type={this.handleDelete}
+                      class='btn deleteBtn me-2 my-2  shadow-none  '
+                      onClick={() => this.handleDelete()}
+                      value='deleted'
+                    >
+                      Delete
+                    </button>
+                    <button type='submit' class='btn updateBtn shadow-none my-2 '>
+                      Update
+                    </button>
+                  </div>
+                ) : (
+                  <div class='col-lg-10 col-11 col-md-10 col-sm-12 col-xs-12 d-flex justify-content-end mt-5'>
+                    <Link class='btn me-2 my-2 cancelBtn shadow-none' to='/Profile'>
+                      Cancel
+                    </Link>
+                    <button type='submit' class='btn doneBtn shadow-none my-2 '>
+                      Add
+                    </button>
+                  </div>
+                )}
+              </div>
+            </LoadingOverlay>
           </form>
         </div>
         <Footer2 />

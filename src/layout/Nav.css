@@ -34,9 +34,8 @@ body {
   flex-wrap: wrap;
 }
 .avatar {
-  border-radius: 100px !important;  
+  border-radius: 100px !important;
   object-fit: cover !important;
-
 }
 .navBg {
   background-color: #fff !important;
@@ -75,6 +74,11 @@ body {
   }
 }
 
+@media (max-height: 580px) {
+  .invs {
+    display: none !important;
+  }
+}
 .signIn {
   background-color: #cd8930;
   color: #fff;
