@@ -65,78 +65,17 @@ class AccountsForm extends Component {
           behancE: res.data.response.data.behance,
           githuB: res.data.response.data.github,
         });
-        console.log(res.data.response.data);
       })
       .catch((err) => {
-        console.log(err);
+        // console.log(err);
       });
   };
   render() {
     console.log(this.state.facebooK);
     return (
       <div>
-        {" "}
         <div className="container ">
-          <h1 className="editTitle text-center">Edit Profile</h1>
-          <h3 className="categoryTitle d-flex justify-content-start mb-3">
-            Categories
-          </h3>
-          <ul className="nav  infoTabsUl nav-tabs" id="myTab" role="tablist">
-            <li className="nav-item infoTabs" role="presentation">
-              <a
-                className="nav-link  tabBtn  "
-                id="General-tab"
-                href="/Profile/General"
-              >
-                General
-              </a>
-            </li>
-            <li className="nav-item infoTabs" role="presentation">
-              <a
-                className="nav-link  tabBtn  "
-                id="Education-tab"
-                href="/Profile/Education"
-              >
-                Education
-              </a>
-            </li>
-            <li class="nav-item infoTabs" role="presentation">
-              <a
-                className="nav-link tabBtn "
-                id="Experiance-tab"
-                href="/Profile/Experiance"
-              >
-                Experiance
-              </a>
-            </li>
-            <li className="nav-item infoTabs" role="presentation">
-              <a
-                className="nav-link tabBtn"
-                id="Courses-tab"
-                href="/Profile/Courses"
-              >
-                Courses
-              </a>
-            </li>
-            <li className="nav-item infoTabs" role="presentation">
-              <a
-                className="nav-link tabBtn"
-                id="Skills-tab"
-                href="/Profile/Skills"
-              >
-                Skills
-              </a>
-            </li>
-            <li class="nav-item infoTabs" role="presentation">
-              <a
-                className="nav-link tabBtn active"
-                id="Accounts-tab"
-                href="/Profile/Accounts"
-              >
-                Accounts
-              </a>
-            </li>
-          </ul>
+ 
 
           <form class="text-left g-3 mb-3 " onSubmit={this.handleSubmit}>
             <div className="row g-0 mb-3 mt-sm-0 mt-4">
@@ -148,8 +87,7 @@ class AccountsForm extends Component {
                 type="text"
                 className="col-lg-5 
                col-11 col-md-5 col-sm-12 col-xs-12 editInput "
-                // id="fullname"
-                placeholder="URL"
+                
                 onChange={(e) => this.setState({ WebsitE: e.target.value })}
               />
             </div>
@@ -162,8 +100,6 @@ class AccountsForm extends Component {
                 type="text"
                 className="col-lg-5 
                col-11 col-md-5 col-sm-12 col-xs-12 editInput "
-                // id="fullname"
-                placeholder="URL"
                 onChange={(e) => this.setState({ facebooK: e.target.value })}
               />
             </div>
@@ -176,8 +112,7 @@ class AccountsForm extends Component {
                 type="text"
                 className="col-lg-5 
                col-11 col-md-5 col-sm-12 col-xs-12 editInput "
-                // id="fullname"
-                placeholder="URL"
+               
                 onChange={(e) => this.setState({ instagraM: e.target.value })}
               />
             </div>
@@ -190,8 +125,6 @@ class AccountsForm extends Component {
                 type="text"
                 className="col-lg-5 
                col-11 col-md-5 col-sm-12 col-xs-12 editInput "
-                // id="fullname"
-                placeholder="URL"
                 onChange={(e) => this.setState({ youtubE: e.target.value })}
               />
             </div>
@@ -204,8 +137,6 @@ class AccountsForm extends Component {
                 type="text"
                 className="col-lg-5 
                col-11 col-md-5 col-sm-12 col-xs-12 editInput "
-                // id="fullname"
-                placeholder="URL"
                 onChange={(e) => this.setState({ linkediN: e.target.value })}
               />
             </div>
@@ -218,8 +149,6 @@ class AccountsForm extends Component {
                 type="text"
                 className="col-lg-5 
                col-11 col-md-5 col-sm-12 col-xs-12 editInput "
-                // id="fullname"
-                placeholder="URL"
                 onChange={(e) => this.setState({ behancE: e.target.value })}
               />
             </div>
@@ -233,7 +162,6 @@ class AccountsForm extends Component {
                 className="col-lg-5 
                col-11 col-md-5 col-sm-12 col-xs-12 editInput "
                 // id="fullname"
-                placeholder="URL"
                 onChange={(e) => this.setState({ githuB: e.target.value })}
               />
             </div>

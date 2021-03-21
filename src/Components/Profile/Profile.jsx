@@ -103,7 +103,7 @@ class Profile extends Component {
     let id = this.props.id;
     return (
       <div className="container-fluid ">
-        <div className="container  ">
+        <div className="container">
           <div className="d-flex flex-row flex-wrap">
             {this.state.image ? (
               <img

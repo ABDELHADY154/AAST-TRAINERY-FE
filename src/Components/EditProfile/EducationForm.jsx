@@ -8,7 +8,7 @@ import { CountryDropdown, RegionDropdown } from "react-country-region-selector";
 import EditNav from "./EditNav";
 // import { FormLoader } from "../../loader";
 import LoadingOverlay from "react-loading-overlay";
-import PuffLoader from "react-spinners/PuffLoader";
+import BounceLoader from "react-spinners/BounceLoader";
 
 export default class EducationForm extends Component {
   constructor(props) {
@@ -63,18 +63,23 @@ export default class EducationForm extends Component {
   }
   handleDelete = async (e) => {
     if (this.props.match.params.id) {
+      this.setState({
+        FormLoading: true,
+      });
       await axios
         .delete(`/W/student/profile/education/${this.props.match.params.id}`)
         .then((response) => {
           this.setState({
             loggedIn: true,
             done: true,
+            FormLoading: false,
           });
         })
         .catch((error) => {
           if (error.response) {
             this.setState({
               done: true,
+              FormLoading: false,
             });
           }
           window.location.reload();
@@ -244,7 +249,7 @@ export default class EducationForm extends Component {
           <form class='g-3 mb-3 text-left ' onSubmit={this.handleSubmit}>
             <LoadingOverlay
               active={this.state.FormLoading}
-              spinner={<PuffLoader size={150} />}
+              spinner={<BounceLoader color='#cd8930' />}
               styles={{
                 overlay: (base) => ({
                   ...base,
@@ -407,7 +412,6 @@ export default class EducationForm extends Component {
                     />
                   </label>
 
-      
                   {this.state.error && this.state.error.creddErr ? (
                     <p className='editerror'>{this.state.error.creddErr}</p>
                   ) : (

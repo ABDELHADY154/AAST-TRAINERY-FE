@@ -6,7 +6,7 @@ import Footer2 from "../Common/Footer2";
 import { Link, Redirect } from "react-router-dom";
 import { FiUpload, FiCheck } from "react-icons/fi";
 import LoadingOverlay from "react-loading-overlay";
-import PuffLoader from "react-spinners/PuffLoader";
+import BounceLoader from "react-spinners/BounceLoader";
 
 class ExperienceForm extends Component {
   constructor(props) {
@@ -252,11 +252,13 @@ class ExperienceForm extends Component {
           <form class='g-3 mb-3 text-left ' onSubmit={this.handleSubmit}>
             <LoadingOverlay
               active={this.state.FormLoading}
-              spinner={<PuffLoader size={150} />}
+              spinner={<BounceLoader color='#cd8930' />}
+              color={"#cd8930"}
               styles={{
                 overlay: (base) => ({
                   ...base,
                   background: "rgb(255, 255, 255)",
+                  stroke: "rgba(255, 0, 0, 0.5)",
                 }),
               }}
             >
@@ -279,7 +281,7 @@ class ExperienceForm extends Component {
                     onChange={(e) => this.setState({ ExperienceType: e.target.value })}
                     value={this.state.ExperienceType ? this.state.ExperienceType : ""}
                   >
-                    <option selected>Choose your Experience Type ...</option>
+                    <option selected>Choose your Experience Type </option>
                     <option value='Internship'>Internship</option>
                     <option value='Volunteer'>Volunteer</option>
                   </select>
