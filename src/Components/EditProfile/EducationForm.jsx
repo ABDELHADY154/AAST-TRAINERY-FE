@@ -21,6 +21,8 @@ export default class EducationForm extends Component {
       done: false,
       SchoolName: "",
       FormLoading: false,
+      From: "",
+      To: "",
       error: {
         creddErr: [],
         fromErr: [],
@@ -29,6 +31,7 @@ export default class EducationForm extends Component {
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleUpload = this.handleUpload.bind(this);
+    window.scrollTo(0, 0);
   }
 
   state = {
@@ -50,7 +53,7 @@ export default class EducationForm extends Component {
     var filename = event.target.value.replace(/^.*[\\\/]/, "");
     this.setState({
       image: URL.createObjectURL(event.target.files[0]),
-      imageURL: filename,
+      imageURL: event.target.files[0],
       UrlName: event.target.files[0].name,
     });
     // console.log(event.target.files[0]);
@@ -172,7 +175,7 @@ export default class EducationForm extends Component {
             error: {
               countryErr: error.response.data.errors.country,
               cityErr: error.response.data.errors.city,
-              fromErr: error.response.data.errors.from + " ",
+              fromErr: error.response.data.errors.from,
               toErr: error.response.data.errors.to,
               schoolNameErr: error.response.data.errors.school_name,
               credErr: error.response.data.errors.cred_url,
@@ -211,7 +214,8 @@ export default class EducationForm extends Component {
             error: {
               countryErr: error.response.data.errors.country,
               cityErr: error.response.data.errors.city,
-              fromErr: [error.response.data.errors.from],
+              fromErr: error.response.data.errors.from,
+
               toErr: error.response.data.errors.to,
               credErr: error.response.data.errors.cred_url,
               schoolNameErr: error.response.data.errors.school_name,
@@ -324,29 +328,22 @@ export default class EducationForm extends Component {
                   <input
                     type='date'
                     id='bdaymonth'
-                    className={
-                      this.state.error && this.state.error.fromErr
-                        ? "form-control editInput wrong "
-                        : "form-control editInput"
-                    }
+                    className='form-control editInput'
                     onChange={(e) => this.setState({ From: e.target.value })}
                     value={this.state.From ? this.state.From : ""}
                   />
-                  {/* 
-              
-                  {this.state.error &&
-                    this.state.error.fromErr !== "" &&
-                    this.state.error.fromErr.map((msg) => (
-                      <p className='red d-inline'>
-                        {msg} {"  "}
+
+                  {/* {this.state.error.fromErr !== "" &&
+                    this.state.error.fromErr.map((name) => (
+                      <p className='editerror d-inline' key={name}>
+                        {name} <span />
                       </p>
                     ))} */}
-
-                  {this.state.error &&
-                    this.state.error.fromErr !== "" &&
-                    this.state.error.fromErr.map((name) => (
-                      <p className='editerror'> {name}       {" "}</p>
-                    ))}
+                  {this.state.error && this.state.error.fromErr ? (
+                    <p className='editerror'>{this.state.error.fromErr}</p>
+                  ) : (
+                    ""
+                  )}
                 </div>
                 <div class='col-lg-5 col-11 col-md-5 col-sm-12 col-xs-12'>
                   <label for='bdaymonth' className='form-label editLabel '>
@@ -355,16 +352,18 @@ export default class EducationForm extends Component {
                   <input
                     type='date'
                     id='bdaymonth'
-                    className={
-                      this.state.error && this.state.error.toErr
-                        ? "form-control editInput wrong "
-                        : "form-control editInput "
-                    }
+                    className='form-control editInput '
                     onChange={(e) => this.setState({ To: e.target.value })}
                     value={this.state.To ? this.state.To : ""}
                   />
+                  {/* {this.state.error.toErr !== "" &&
+                    this.state.error.toErr.map((name, i) => (
+                      <p className='editerror d-inline' key={i}>
+                        {name} <span />
+                      </p>
+                    ))} */}
                   {this.state.error && this.state.error.toErr ? (
-                    <p className='editerror'>{this.state.error.toErr}</p>
+                    <p className='editerror d-inline'> {this.state.error.toErr}</p>
                   ) : (
                     ""
                   )}
@@ -404,15 +403,11 @@ export default class EducationForm extends Component {
                       hidden
                       type='file'
                       id='files'
-                      accept='pdf'
                       onChange={(e) => this.handleUpload(e)}
                     />
                   </label>
 
-                  {/* {this.state.error.creddErr !== "" &&
-                    this.state.error.creddErr.map((name) => (
-                      <p className='editerror d-inline'> {name} </p>
-                    ))} */}
+      
                   {this.state.error && this.state.error.creddErr ? (
                     <p className='editerror'>{this.state.error.creddErr}</p>
                   ) : (
