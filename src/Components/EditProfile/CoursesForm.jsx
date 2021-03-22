@@ -119,7 +119,8 @@ class CoursesForm extends Component {
       })
         .then((response) => {
           this.setState({
-            loggedIn: false,
+            done: true,
+            loggedIn: true,
             FormLoading: false,
           });
         })
@@ -183,19 +184,19 @@ class CoursesForm extends Component {
 
   render() {
     if (this.state.loggedIn === false) {
-      return <Redirect to='/login' />;
+      return <Redirect to="/login" />;
     }
     if (this.state.done === true) {
-      return <Redirect to='/Profile' />;
+      return <Redirect to="/Profile" />;
     }
 
     return (
       <div>
-        <div className='container '>
-          <form class='g-3 mb-3 text-left ' onSubmit={this.handleSubmit}>
+        <div className="container ">
+          <form class="g-3 mb-3 text-left " onSubmit={this.handleSubmit}>
             <LoadingOverlay
               active={this.state.FormLoading}
-              spinner={<BounceLoader color='#cd8930' />}
+              spinner={<BounceLoader color="#cd8930" />}
               styles={{
                 overlay: (base) => ({
                   ...base,
@@ -205,151 +206,164 @@ class CoursesForm extends Component {
             >
               <EditNav setactive={"Courses"} />
 
-              <div className=' row '>
-                <div className='col-lg-10 col-11 col-md-10 col-sm-12 col-xs-12 mt-3 mt-sm-0'>
-                  <label for='inputfullname' class='form-label editLabel '>
-                    Course Name <span className='red'>*</span>
+              <div className=" row ">
+                <div className="col-lg-10 col-11 col-md-10 col-sm-12 col-xs-12 mt-3 mt-sm-0">
+                  <label for="inputfullname" class="form-label editLabel ">
+                    Course Name <span className="red">*</span>
                   </label>
                   <input
                     value={this.state.courseName ? this.state.courseName : ""}
-                    type='text'
+                    type="text"
                     className={
                       this.state.error && this.state.error.courseNameErr
                         ? "form-control editInput wrong "
                         : "form-control editInput "
                     }
-                    id='fullname'
-                    onChange={(e) => this.setState({ courseName: e.target.value })}
-                    placeholder='Enter Course Name '
+                    id="fullname"
+                    onChange={(e) =>
+                      this.setState({ courseName: e.target.value })
+                    }
+                    placeholder="Enter Course Name "
                   />
-                  <p className='editerror'>
+                  <p className="editerror">
                     {this.state.error ? this.state.error.courseNameErr : ""}
                   </p>
                 </div>
 
-                <div className='col-lg-10 col-11 col-md-10 col-sm-12 col-xs-12'>
-                  <label for='inputfullname' class='form-label editLabel '>
-                    Course Title / Provider <span className='red'>*</span>
+                <div className="col-lg-10 col-11 col-md-10 col-sm-12 col-xs-12">
+                  <label for="inputfullname" class="form-label editLabel ">
+                    Course Title / Provider <span className="red">*</span>
                   </label>
                   <input
-                    value={this.state.courseProvider ? this.state.courseProvider : ""}
-                    type='text'
+                    value={
+                      this.state.courseProvider ? this.state.courseProvider : ""
+                    }
+                    type="text"
                     className={
                       this.state.error && this.state.error.courseProviderErr
                         ? "form-control editInput wrong "
                         : "form-control editInput"
                     }
-                    id='fullname'
-                    onChange={(e) => this.setState({ courseProvider: e.target.value })}
-                    placeholder='Enter Course Provider '
+                    id="fullname"
+                    onChange={(e) =>
+                      this.setState({ courseProvider: e.target.value })
+                    }
+                    placeholder="Enter Course Provider "
                   />
-                  <p className='editerror'>
+                  <p className="editerror">
                     {this.state.error ? this.state.error.courseProviderErr : ""}
                   </p>
                 </div>
 
-                <div className='col-lg-5 col-11 col-md-5 col-sm-12 col-xs-12 '>
-                  <label for='bdaymonth' className='form-label editLabel '>
-                    From <span className='red'>*</span>
+                <div className="col-lg-5 col-11 col-md-5 col-sm-12 col-xs-12 ">
+                  <label for="bdaymonth" className="form-label editLabel ">
+                    From <span className="red">*</span>
                   </label>
                   <input
                     value={this.state.fromDate ? this.state.fromDate : ""}
-                    type='date'
-                    id='bdaymonth'
-                    className='form-control editInput '
-                    onChange={(e) => this.setState({ fromDate: e.target.value })}
+                    type="date"
+                    id="bdaymonth"
+                    className="form-control editInput "
+                    onChange={(e) =>
+                      this.setState({ fromDate: e.target.value })
+                    }
                   />
-                  <p className='editerror'>
+                  <p className="editerror">
                     {this.state.error ? this.state.error.fromDateErr : ""}
                   </p>
                 </div>
 
-                <div className='col-lg-5 col-11 col-md-5 col-sm-12 col-xs-12'>
-                  <label for='bdaymonth' className='form-label editLabel '>
-                    To <span className='red'>*</span>
+                <div className="col-lg-5 col-11 col-md-5 col-sm-12 col-xs-12">
+                  <label for="bdaymonth" className="form-label editLabel ">
+                    To <span className="red">*</span>
                   </label>
                   <input
                     value={this.state.toDate ? this.state.toDate : ""}
-                    type='date'
-                    id='bdaymonth'
-                    className='form-control editInput '
+                    type="date"
+                    id="bdaymonth"
+                    className="form-control editInput "
                     onChange={(e) => this.setState({ toDate: e.target.value })}
                   />
-                  <p className='editerror'>
+                  <p className="editerror">
                     {this.state.error ? this.state.error.toDateErr : ""}
                   </p>
                 </div>
 
-                <div class='col-lg-5 col-11 col-md-5 col-sm-12 col-xs-12 '>
-                  <label for='inputTerm' className='form-label editLabel'>
+                <div class="col-lg-5 col-11 col-md-5 col-sm-12 col-xs-12 ">
+                  <label for="inputTerm" className="form-label editLabel">
                     Credential URL
                   </label>
                   <input
                     value={this.state.CourseUrl ? this.state.CourseUrl : ""}
-                    type='text'
-                    id='fullname'
+                    type="text"
+                    id="fullname"
                     className={
                       this.state.error && this.state.error.CourseUrlErr
                         ? "form-control editInput  wrong "
                         : "form-control editInput "
                     }
-                    onChange={(e) => this.setState({ CourseUrl: e.target.value })}
-                    placeholder='Enter Credential URL'
+                    onChange={(e) =>
+                      this.setState({ CourseUrl: e.target.value })
+                    }
+                    placeholder="Enter Credential URL"
                   />
-                  <p className='editerror'>
+                  <p className="editerror">
                     {this.state.error ? this.state.error.CourseUrlErr : ""}
                   </p>
                 </div>
 
-                <div className='col-lg-5 col-11 col-md-5 col-sm-12 col-xs-12  '>
+                <div className="col-lg-5 col-11 col-md-5 col-sm-12 col-xs-12  ">
                   <label
-                    htmlFor='files'
-                    className='form-control editInput uploadBtn d-flex'
+                    htmlFor="files"
+                    className="form-control editInput uploadBtn d-flex"
                   >
                     {this.state.UrlName ? this.state.UrlName : "Upload"}
                     {this.state.UrlName ? (
-                      <FiCheck className='uploadIcon ms-auto ' />
+                      <FiCheck className="uploadIcon ms-auto " />
                     ) : (
-                      <FiUpload className='uploadIcon ms-auto ' />
+                      <FiUpload className="uploadIcon ms-auto " />
                     )}
                     <input
-                      className='form-control editInput'
+                      className="form-control editInput"
                       hidden
-                      type='file'
-                      id='files'
-                      accept=' image/*,file_extension/
-                    .crt,.cer,.ca-bundle,.p7b,.p7c,.p7s,.pem,.pdf'
+                      type="file"
+                      id="files"
+                      accept=" image/*,file_extension/
+                    .crt,.cer,.ca-bundle,.p7b,.p7c,.p7s,.pem,.pdf"
                       onChange={(e) => this.handleChange(e)}
                     />
                   </label>
                   {this.state.error && this.state.error.credErr !== "" && (
-                    <p className='red d-inline'> {this.state.error.credErr}</p>
+                    <p className="red d-inline"> {this.state.error.credErr}</p>
                   )}
                 </div>
 
                 {this.props.match.params.id ? (
-                  <div class='col-lg-10 col-11 col-md-10 col-sm-12 col-xs-12 d-flex justify-content-end mt-5'>
+                  <div class="col-lg-10 col-11 col-md-10 col-sm-12 col-xs-12 d-flex justify-content-end mt-5">
                     <button
-                      class='btn deleteBtn me-2 my-2  shadow-none '
+                      class="btn deleteBtn me-2 my-2  shadow-none "
                       onClick={() => this.handleDelete()}
                     >
                       Delete
                     </button>
                     <button
                       onClick={this.handleSubmit}
-                      class='btn updateBtn shadow-none my-2 '
+                      class="btn updateBtn shadow-none my-2 "
                     >
                       Update
                     </button>
                   </div>
                 ) : (
-                  <div class='col-lg-10 col-11 col-md-10 col-sm-12 col-xs-12 d-flex justify-content-end mt-5'>
-                    <a href='/Profile'>
-                      <button type='button' class='btn me-2 my-2 cancelBtn shadow-none'>
+                  <div class="col-lg-10 col-11 col-md-10 col-sm-12 col-xs-12 d-flex justify-content-end mt-5">
+                    <a href="/Profile">
+                      <button
+                        type="button"
+                        class="btn me-2 my-2 cancelBtn shadow-none"
+                      >
                         Cancel
                       </button>
                     </a>
-                    <button type='submit' class='btn doneBtn shadow-none my-2 '>
+                    <button type="submit" class="btn doneBtn shadow-none my-2 ">
                       Add
                     </button>
                   </div>

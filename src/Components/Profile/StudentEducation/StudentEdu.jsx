@@ -46,31 +46,42 @@ export default class StudentEdu extends Component {
           </div>
         </div>
         <div className="d-flex flex-row flex-wrap fs-6 mt-2 ">
-          <div className="d-flex flex-column col-md-2 col-12 mb-1">
-            <a
-              id="goldcredentials"
-              renderAs="button"
-              href={this.props.cred}
-              target="_blank"
-            >
-              See credentials
-            </a>
-          </div>
-          <div id="docicon" className="d-flex flex-column col-md-2 col-12 mb-1">
-            <a
+          {this.props.cred == null ? (
+            "  "
+          ) : (
+            <div className="d-flex flex-column col-md-2 col-12 mb-1">
+              <a
+                id="goldcredentials"
+                renderAs="button"
+                href={this.props.cred}
+                target="_blank"
+              >
+                See credentials
+              </a>
+            </div>
+          )}
+          {this.props.credential == null ? (
+            "  "
+          ) : (
+            <div
               id="docicon"
-              href={this.props.credential}
-              renderAs="button"
-              target="_blank"
+              className="d-flex flex-column col-md-2 col-12 mb-1"
             >
-              <CgFileDocument
-              size="20px"
+              <a
                 id="docicon"
-                fill="#cd8930"
-                color="#cd8930"
-              ></CgFileDocument>
-            </a>
-          </div>
+                href={this.props.credential}
+                renderAs="button"
+                target="_blank"
+              >
+                <CgFileDocument
+                  size="20px"
+                  id="docicon"
+                  fill="#cd8930"
+                  color="#cd8930"
+                ></CgFileDocument>
+              </a>
+            </div>
+          )}
         </div>
 
         <hr />

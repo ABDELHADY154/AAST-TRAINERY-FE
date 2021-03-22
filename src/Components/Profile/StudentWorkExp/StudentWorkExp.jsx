@@ -56,36 +56,42 @@ export default class StudentWorkExp extends Component {
           </div>
         </div>
         <div className="d-flex flex-row flex-wrap fs-6 mt-2 ">
-          <div className="d-flex flex-column col-md-2 col-12 mb-1">
-            <a
-              id="goldcredentials"
-              renderAs="button"
-              href={this.props.cred_url}
-              target="_blank"
-            >
-              See credentials
-            </a>
-          </div>
-          <div
-            id="docicon"
-            style={{ color: "#cd8930", fill: "#cd8930" }}
-            className="d-flex flex-column col-md-2 col-12 mb-1"
-          >
-            <a
-              style={{ color: "#cd8930", fill: "#cd8930" }}
+          {this.props.cred_url == null ? (
+            "  "
+          ) : (
+            <div className="d-flex flex-column col-md-2 col-12 mb-1">
+              <a
+                id="goldcredentials"
+                renderAs="button"
+                href={this.props.cred_url}
+                target="_blank"
+              >
+                See credentials
+              </a>
+            </div>
+          )}
+          {this.props.cred == null ? (
+            "  "
+          ) : (
+            <div
               id="docicon"
-              href={this.props.cred}
-              renderAs="button"
-              target="_blank"
+              className="d-flex flex-column col-md-2 col-12 mb-1"
             >
-         <CgFileDocument
-              size="20px"
+              <a
                 id="docicon"
-                fill="#cd8930"
-                color="#cd8930"
-              ></CgFileDocument>
-            </a>
-          </div>
+                href={this.props.cred}
+                renderAs="button"
+                target="_blank"
+              >
+                <CgFileDocument
+                  size="20px"
+                  id="docicon"
+                  fill="#cd8930"
+                  color="#cd8930"
+                ></CgFileDocument>
+              </a>
+            </div>
+          )}
         </div>
         <hr />
       </>
