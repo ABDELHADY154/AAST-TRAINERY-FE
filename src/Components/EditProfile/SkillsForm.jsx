@@ -141,7 +141,7 @@ class Skills extends Component {
     }
     return (
       <div>
-        <div className='container '>
+        <div className='container wrapper'>
           <div>
             <form className='row g-3 mb-3 mt-1' onSubmit={this.handleSubmitSkills}>
               <LoadingOverlay
@@ -259,7 +259,7 @@ class Skills extends Component {
             </form>
           </div>
         </div>
-        <Footer2 />
+        <Footer2 className="interestFooter"/>
       </div>
     );
   }
