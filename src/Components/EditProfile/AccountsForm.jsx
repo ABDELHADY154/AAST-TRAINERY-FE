@@ -128,18 +128,18 @@ class AccountsForm extends Component {
   };
   render() {
     if (this.state.loggedIn === false) {
-      return <Redirect to='/login' />;
+      return <Redirect to="/login" />;
     }
     if (this.state.done === true) {
-      return <Redirect to='/Profile' />;
+      return <Redirect to="/Profile" />;
     }
     return (
       <div>
-        <div className='container '>
-          <form class='text-left g-3 mb-3 ' onSubmit={this.handleSubmit}>
+        <div className="container ">
+          <form class="text-left g-3 mb-3 " onSubmit={this.handleSubmit}>
             <LoadingOverlay
               active={this.state.FormLoading}
-              spinner={<BounceLoader color='#cd8930' />}
+              spinner={<BounceLoader color="#cd8930" />}
               styles={{
                 overlay: (base) => ({
                   ...base,
@@ -148,112 +148,144 @@ class AccountsForm extends Component {
               }}
             >
               <EditNav setactive={"Accounts"} />
-              <div className='col-lg-10 col-11 col-md-5 col-sm-12 col-xs-12 d-flex mt-sm-0 mt-4 my-3'>
-                <label className='  form-label editLabel  me-4  '>Website</label>
+              <div className="col-lg-10 col-10 col-md-5 col-sm-12 col-xs-12 d-flex mb-4">
+                <label
+                  className="  form-label editLabel  "
+                  style={{ marginRight: "3.6%" }}
+                >
+                  Website
+                </label>
                 <input
                   value={this.state.WebsitE ? this.state.WebsitE : ""}
-                  type='text'
-                  className='col-lg-5 
-               col-11 col-md-5 col-sm-12 col-xs-12 editInput form-control  widthMe'
+                  type="text"
+                  className="form-control editInput"
                   // id="fullname"
                   onChange={(e) => this.setState({ WebsitE: e.target.value })}
-                  placeholder='Enter Your Website '
+                  placeholder="Enter Your Website "
                 />
-                <p className='editerror errMargin'>
+                <p className="editerror errMargin">
                   {this.state.error ? this.state.error.WebsitEErr : ""}
                 </p>
               </div>
-              <div className='col-lg-10 col-11 col-md-5 col-sm-12 col-xs-12 d-flex my-3'>
-                <label className='   form-label editLabel me-2 '>Facebook</label>
+              <div className="col-lg-10 col-10 col-md-5 col-sm-12 col-xs-12 d-flex mb-4">
+                <label
+                  className="   form-label editLabel accLable"
+                  style={{ marginRight: "2.2%" }}
+                >
+                  Facebook
+                </label>
                 <input
                   value={this.state.facebooK ? this.state.facebooK : ""}
-                  type='text'
-                  className='editInput form-control  widthMe me-2'
+                  type="text"
+                  className="form-control editInput"
                   // id="fullname"
                   onChange={(e) => this.setState({ facebooK: e.target.value })}
-                  placeholder='Enter Facebook Profile'
+                  placeholder="Enter Facebook Profile"
                 />
-                <p className='editerror errMargin'>
+                <p className="editerror errMargin">
                   {this.state.error ? this.state.error.facebooKErr : ""}
                 </p>
               </div>
-              <div className='col-lg-10 col-11 col-md-5 col-sm-12 col-xs-12 d-flex '>
-                <label className='   form-label editLabel   '>Instagram</label>
+              <div className="col-lg-10 col-10 col-md-5 col-sm-12 col-xs-12 d-flex mb-4">
+                <label
+                  className="   form-label editLabel  accLable "
+                  style={{ marginRight: "1.8%" }}
+                >
+                  Instagram
+                </label>
                 <input
                   value={this.state.instagraM ? this.state.instagraM : ""}
-                  type='text'
-                  className=' editInput form-control  widthMe '
+                  type="text"
+                  className="form-control editInput "
                   // id="fullname"
                   onChange={(e) => this.setState({ instagraM: e.target.value })}
-                  placeholder='Enter Instagram Profile'
+                  placeholder="Enter Instagram Profile"
                 />
-                <p className='editerror errMargin'>
+                <p className="editerror errMargin">
                   {this.state.error ? this.state.error.instagraMErr : ""}
                 </p>
               </div>
-              <div className='col-lg-10 col-11 col-md-5 col-sm-12 col-xs-12 d-flex '>
-                <label className='   form-label editLabel   '>Youtube</label>
+              <div className="col-lg-10 col-10 col-md-5 col-sm-12 col-xs-12 d-flex mb-4">
+                <label
+                  className="   form-label editLabel accLable  "
+                  style={{ marginRight: "3%" }}
+                >
+                  Youtube
+                </label>
                 <input
                   value={this.state.youtubE ? this.state.youtubE : ""}
-                  type='text'
-                  className='col-lg-5 
-               col-11 col-md-5 col-sm-12 col-xs-12 editInput form-control  widthMe '
+                  type="text"
+                  className="form-control editInput "
                   // id="fullname"
                   onChange={(e) => this.setState({ youtubE: e.target.value })}
-                  placeholder='Enter Youtube Channel'
+                  placeholder="Enter Youtube Channel"
                 />
-                <p className='editerror errMargin'>
+                <p className="editerror errMargin">
                   {this.state.error ? this.state.error.youtubEErr : ""}
                 </p>
               </div>
-              <div className='col-lg-10 col-11 col-md-5 col-sm-12 col-xs-12 d-flex '>
-                <label className='   form-label editLabel   '>Linkedin</label>
+              <div className="col-lg-10 col-10 col-md-5 col-sm-12 col-xs-12 d-flex mb-4">
+                <label
+                  className="   form-label editLabel  accLable "
+                  style={{ marginRight: "3%" }}
+                >
+                  Linkedin
+                </label>
                 <input
                   value={this.state.linkediN ? this.state.linkediN : ""}
-                  type='text'
-                  className='col-lg-5 
-               col-11 col-md-5 col-sm-12 col-xs-12 editInput form-control  widthMe '
+                  type="text"
+                  className="form-control editInput "
                   // id="fullname"
                   onChange={(e) => this.setState({ linkediN: e.target.value })}
-                  placeholder='Enter Linkedin Profile'
+                  placeholder="Enter Linkedin Profile"
                 />
-                <p className='editerror errMargin'>
+                <p className="editerror errMargin">
                   {this.state.error ? this.state.error.linkediNErr : ""}
                 </p>
               </div>
-              <div className='col-lg-10 col-11 col-md-5 col-sm-12 col-xs-12 d-flex'>
-                <label className='form-label editLabel  '>Behance</label>
+              <div className="col-lg-10 col-10 col-md-5 col-sm-12 col-xs-12 d-flex mb-4">
+                <label
+                  className="form-label editLabel accLable"
+                  style={{ marginRight: "2.9%" }}
+                >
+                  Behance
+                </label>
                 <input
                   value={this.state.behancE ? this.state.behancE : ""}
-                  type='text'
-                  className='form-control editInput'
+                  type="text"
+                  className="form-control editInput"
                   onChange={(e) => this.setState({ behancE: e.target.value })}
-                  placeholder='Enter Behance Profile'
+                  placeholder="Enter Behance Profile"
                 />
-                <p className='editerror errMargin'>
+                <p className="editerror errMargin">
                   {this.state.error ? this.state.error.behancEErr : ""}
                 </p>
               </div>
-              <div className='col-lg-10 col-11 col-md-5 col-sm-12 col-xs-12 d-flex '>
-                <label className='   form-label editLabel   '>Github</label>
+              <div className="col-lg-10 col-10 col-md-5 col-sm-12 col-xs-12 d-flex ">
+                <label className="me-5 form-label editLabel  accLable ">
+                  Github
+                </label>
                 <input
                   value={this.state.githuB ? this.state.githuB : ""}
-                  type='text'
-                  className='form-control editInput'
+                  type="text"
+                  className="form-control editInput"
                   // id="fullname"
                   onChange={(e) => this.setState({ githuB: e.target.value })}
-                  placeholder='Enter Github Profile'
+                  placeholder="Enter Github Profile"
                 />
-                <p className='editerror errMargin'>
+                <p className="editerror errMargin">
                   {this.state.error ? this.state.error.githuBErr : ""}
                 </p>
               </div>
 
-              <div class='col-lg-10 col-11 col-md-10 col-sm-12 col-xs-12 d-flex justify-content-end mt-5'>
-                <Link class='btn me-2 my-2 cancelBtn shadow-none' to='/Profile'>
+              <div class="col-lg-10 col-11 col-md-10 col-sm-12 col-xs-12 d-flex justify-content-end mt-5">
+                <Link class="btn me-2 my-2 cancelBtn shadow-none" to="/Profile">
                   Cancel
                 </Link>
-                <button class='btn doneBtn shadow-none my-2 ' onClick={this.handleSubmit}>
+                <button
+                  class="btn doneBtn shadow-none my-2 "
+                  onClick={this.handleSubmit}
+                >
                   Update
                 </button>
               </div>
