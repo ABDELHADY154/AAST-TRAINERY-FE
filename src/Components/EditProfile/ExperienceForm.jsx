@@ -84,7 +84,7 @@ class ExperienceForm extends Component {
             SchoolUrl: res.data.response.data.cred_url,
             FormLoading: false,
           });
-          console.log(res);
+          // console.log(res);
         })
         .catch((error) => {
           if (error.response.data.status === 401 || error.response.data.status === 404) {

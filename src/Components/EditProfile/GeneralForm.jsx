@@ -13,6 +13,7 @@ import EditNav from "./EditNav";
 import { EditImgLoader } from "../../loader";
 import LoadingOverlay from "react-loading-overlay";
 import BounceLoader from "react-spinners/BounceLoader";
+import { FormLoader } from "../../loader";
 
 class GeneralForm extends Component {
   constructor(props) {
@@ -38,7 +39,7 @@ class GeneralForm extends Component {
       dep: [],
       periodNumArr: [3, 4, 5, 6, 7, 8],
       scrollPixelsY: 0,
-      FormLoading: false,
+      FormLoading: true,
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -56,10 +57,11 @@ class GeneralForm extends Component {
     await axios
       .get("/departments")
       .then((res) => {
-        this.setState({ dep: res.data.response.data });
+        this.setState({ dep: res.data.response.data, FormLoading: true });
       })
       .catch((err) => {
-        console.log(err);
+        // console.log(err);
+        this.setState({ FormLoading: false });
       });
     await axios
       .get("/W/student/profile/general")
@@ -100,6 +102,7 @@ class GeneralForm extends Component {
         }
         this.setState({ FormLoading: false });
       });
+
     window.addEventListener("scroll", this.handleScroll);
   }
   handleChange(event) {
@@ -117,9 +120,9 @@ class GeneralForm extends Component {
   };
 
   handleSubmit = async (e) => {
-    e.preventDefault();
     this.setState({ FormLoading: true });
 
+    e.preventDefault();
     var formBody = new FormData();
 
     const data = {
@@ -163,6 +166,7 @@ class GeneralForm extends Component {
         }
         this.setState({
           FormLoading: false,
+
           error: {
             nameErr: error.response.data.errors.name,
             phoneErr: error.response.data.errors.phone_number,
@@ -195,17 +199,10 @@ class GeneralForm extends Component {
     return (
       <div>
         <div className='container '>
-          <form className='row g-3 mb-3' onSubmit={this.handleSubmit}>
-            <LoadingOverlay
-              active={this.state.FormLoading}
-              spinner={<BounceLoader color='#cd8930' />}
-              styles={{
-                overlay: (base) => ({
-                  ...base,
-                  background: "rgb(255, 255, 255)",
-                }),
-              }}
-            >
+          {this.state.FormLoading === true ? (
+            <FormLoader />
+          ) : (
+            <form className='row g-3 mb-3' onSubmit={this.handleSubmit}>
               <EditNav setactive={"General"} />
 
               <div className='col-11 mb-4 mt-4'>
@@ -635,9 +632,9 @@ class GeneralForm extends Component {
                   ""
                 )}
                 {/* <select id="inputGPA" className="form-select editInput ">
-                <option selected>Choose your Grade / GPA...</option>
-                <option></option>
-              </select> */}
+                                               <option selected>Choose your Grade / GPA...</option>
+                                               <option></option>
+                                             </select> */}
               </div>
               <div className='col-lg-5 col-11 col-md-5 col-sm-12 col-xs-12'>
                 <label for='bdaymonth' className='form-label editLabel'>
@@ -702,8 +699,8 @@ class GeneralForm extends Component {
                   Update
                 </button>
               </div>
-            </LoadingOverlay>
-          </form>
+            </form>
+          )}
         </div>
         <Footer2 />
       </div>

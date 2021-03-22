@@ -31,7 +31,7 @@ class Interest extends Component {
             interests: res.data.response.data,
             FormLoading: false, // interest: res.data.response.data.interest,
           });
-          console.log(res.data.response.data.interests);
+          // console.log(res.data.response.data.interests);
         })
         .catch((error) => {
           if (error.response.data.status === 401) {
@@ -110,13 +110,13 @@ class Interest extends Component {
               interestsErr: error.response.data.errors.interests,
             },
           });
-          console.log(error.response.data.errors.interests);
+          // console.log(error.response.data.errors.interests);
         });
     }
   };
 
   render() {
-    console.log(this.state.tags);
+    // console.log(this.state.tags);
     if (this.state.loggedIn === true) {
       return <Redirect to='/Profile' />;
     }

@@ -40,16 +40,15 @@ class AccountsForm extends Component {
           behancE: aList.data.response.data[`0`].behance,
           githuB: aList.data.response.data[`0`].github,
           FormLoading: false,
-          done: true,
         });
       })
       .catch((error) => {
-        // if (error.response.data.status === 401 || error.response.data.status === 404) {
-        //   sessionStorage.clear("token");
-        //   sessionStorage.clear("status");
-        //   this.setState({ loggedIn: false });
-        //   window.location.reload();
-        // }
+        if (error.response.data.status === 401 || error.response.data.status === 404) {
+          sessionStorage.clear("token");
+          sessionStorage.clear("status");
+          this.setState({ loggedIn: false });
+          window.location.reload();
+        }
         this.setState({ FormLoading: false });
       });
   };

@@ -57,7 +57,7 @@ class AuthNav extends React.Component {
               avatar: res.data.response.data.image,
               fullname: res.data.response.data.fullName,
             });
-            console.log(this.props.updated);
+            // console.log(this.props.updated);
           }
         })
 
@@ -74,7 +74,7 @@ class AuthNav extends React.Component {
       // window.location.reload(true);
       // return this.setState({ user: true });
     } else {
-      console.log("11");
+      // console.log("11");
     }
     let token = sessionStorage.getItem("token");
     let status = sessionStorage.getItem("status");
@@ -83,7 +83,7 @@ class AuthNav extends React.Component {
     }
   };
   render() {
-    console.log(this.props.updated);
+    // console.log(this.props.updated);
 
     if (this.props.updated == true) {
       window.location = window.location;

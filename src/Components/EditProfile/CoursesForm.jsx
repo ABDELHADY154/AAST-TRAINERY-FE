@@ -58,10 +58,10 @@ class CoursesForm extends Component {
         this.setState({
           courses: res.data.response.data,
         });
-        console.log(res);
+        // console.log(res);
       })
       .catch((err) => {
-        console.log(err);
+        // console.log(err);
       });
   }
   handleDelete = async (e) => {

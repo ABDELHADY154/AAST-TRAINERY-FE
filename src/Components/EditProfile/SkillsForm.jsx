@@ -1,9 +1,7 @@
 import React, { Component, useEffect } from "react";
 import ReactStars from "react-rating-stars-component";
 import { render } from "react-dom";
-import ReactTagInput from "@pathofdev/react-tag-input";
 import "@pathofdev/react-tag-input/build/index.css";
-import ReactDOM from "react-dom";
 import "../../layout/EditInfo.css";
 import Footer2 from "../Common/Footer2";
 import { Redirect } from "react-router-dom";
@@ -27,7 +25,6 @@ class Skills extends Component {
   async componentDidMount() {
     if (this.props.match.params.id) {
       this.setState({ FormLoading: true });
-
       await axios
         .get(`/W/student/profile/skill/${this.props.match.params.id}`)
         .then((res) => {
@@ -37,7 +34,6 @@ class Skills extends Component {
             yearsExp: res.data.response.data.years_of_exp,
             FormLoading: false,
           });
-          console.log(res.data.response.data);
         })
         .catch((error) => {
           if (error.response.data.status === 401) {
@@ -49,8 +45,6 @@ class Skills extends Component {
           this.setState({ FormLoading: false });
         });
     }
-
-    console.log(this.props.match.params.id);
   }
   handleSubmitSkills = async (e) => {
     this.setState({ FormLoading: true });
@@ -194,7 +188,7 @@ class Skills extends Component {
                         }
                         onChange={(yearsExp) => {
                           this.setState({ yearsExp: yearsExp });
-                          console.log(`${yearsExp}`);
+                          // console.log(`${yearsExp}`);
                         }}
                         size={28}
                         activeColor='#F2A23A'
@@ -212,7 +206,7 @@ class Skills extends Component {
                       }
                       onChange={(yearsExp) => {
                         this.setState({ yearsExp: yearsExp });
-                        console.log(`${yearsExp}`);
+                        // console.log(`${yearsExp}`);
                       }}
                       size={28}
                       activeColor='#F2A23A'
@@ -259,7 +253,7 @@ class Skills extends Component {
             </form>
           </div>
         </div>
-        <Footer2 className="interestFooter"/>
+        <Footer2 className='interestFooter' />
       </div>
     );
   }

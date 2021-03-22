@@ -7,7 +7,6 @@ import { Redirect } from "react-router-dom";
 import "../../layout/Sign.css";
 import loginBG from "../../Components/assests/imgs/login.jpg";
 import PasswordStrengthBar from "react-password-strength-bar";
-import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { AiOutlineEyeInvisible,AiOutlineEye } from "react-icons/ai";
 
 import { Link } from "react-router-dom";

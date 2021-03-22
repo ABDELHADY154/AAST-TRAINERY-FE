@@ -45,7 +45,7 @@ class Language extends Component {
           this.setState({ FormLoading: false });
         });
     }
-    console.log(this.props.match.params.id);
+    // console.log(this.props.match.params.id);
   }
   handleSubmitLanguage = async (e) => {
     this.setState({ FormLoading: true });
@@ -135,7 +135,7 @@ class Language extends Component {
     if (this.state.loggedIn === true) {
       return <Redirect to='/Profile' />;
     }
-    console.log(this.state.level);
+    // console.log(this.state.level);
     return (
       <div>
         <div className='container wrapper'>
@@ -192,7 +192,7 @@ class Language extends Component {
                           }
                           onChange={(level) => {
                             this.setState({ level: level });
-                            console.log(`${level}`);
+                            // console.log(`${level}`);
                           }}
                           size={28}
                           activeColor='#F2A23A'
@@ -212,7 +212,7 @@ class Language extends Component {
                         }
                         onChange={(level) => {
                           this.setState({ level: level });
-                          console.log(`${level}`);
+                          // console.log(`${level}`);
                         }}
                         size={28}
                         activeColor='#F2A23A'
