@@ -59,6 +59,8 @@ class AccountsForm extends Component {
       FormLoading: true,
     });
     e.preventDefault();
+    var formBody = new FormData();
+
     const data = {
       website: this.state.WebsitE,
       facebook: this.state.facebooK,
@@ -68,8 +70,36 @@ class AccountsForm extends Component {
       behance: this.state.behancE,
       github: this.state.githuB,
     };
-    return await axios
-      .post("/W/student/profile/account", data)
+    if (this.state.WebsitE !== "") {
+      formBody.append("website", data.website);
+    }
+    if (this.state.facebooK !== "") {
+      formBody.append("facebook", data.facebook);
+    }
+    if (this.state.instagraM !== "") {
+      formBody.append("instagram", data.instagram);
+    }
+    if (this.state.youtubE !== "") {
+      formBody.append("youtube", data.youtube);
+    }
+    if (this.state.linkediN !== "") {
+      formBody.append("linkedin", data.linkedin);
+    }
+    if (this.state.behancE !== "") {
+      formBody.append("behance", data.behance);
+    }
+    if (this.state.githuB !== "") {
+      formBody.append("github", data.github);
+    }
+
+    return await axios({
+      method: "post",
+      url: "/W/student/profile/account",
+      data: formBody,
+      headers: {
+        "Content-Type": "application/json",
+      },
+    })
       .then((e) => {
         this.setState({
           done: true,
