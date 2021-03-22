@@ -263,7 +263,7 @@ ReactStars:active {
   border-radius: 6px;
 }
 /* interest footer */
-.interestFooter {
+/* .interestFooter {
   height: 100px;
   width: 100%;
   position: absolute;
@@ -288,7 +288,7 @@ ReactStars:active {
     left: 0;
     bottom: 0;
   }
-}
+} */
 @media (min-width: 750px) and (max-width: 1200px) {
   .wrapper {
     padding-bottom: 6rem;

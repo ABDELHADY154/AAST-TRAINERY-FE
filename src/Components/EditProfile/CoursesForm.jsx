@@ -220,6 +220,7 @@ class CoursesForm extends Component {
                     }
                     id='fullname'
                     onChange={(e) => this.setState({ courseName: e.target.value })}
+                    placeholder='Enter Course Name '
                   />
                   <p className='editerror'>
                     {this.state.error ? this.state.error.courseNameErr : ""}
@@ -240,6 +241,7 @@ class CoursesForm extends Component {
                     }
                     id='fullname'
                     onChange={(e) => this.setState({ courseProvider: e.target.value })}
+                    placeholder='Enter Course Provider '
                   />
                   <p className='editerror'>
                     {this.state.error ? this.state.error.courseProviderErr : ""}
@@ -292,6 +294,7 @@ class CoursesForm extends Component {
                         : "form-control editInput "
                     }
                     onChange={(e) => this.setState({ CourseUrl: e.target.value })}
+                    placeholder='Enter Credential URL'
                   />
                   <p className='editerror'>
                     {this.state.error ? this.state.error.CourseUrlErr : ""}

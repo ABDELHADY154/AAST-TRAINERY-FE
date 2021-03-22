@@ -199,9 +199,18 @@ class GeneralForm extends Component {
     return (
       <div>
         <div className='container '>
-          {this.state.FormLoading === true ? (
-            <FormLoader />
-          ) : (
+          <LoadingOverlay
+            active={this.state.FormLoading}
+            spinner={<BounceLoader color='#cd8930' />}
+            color={"#cd8930"}
+            styles={{
+              overlay: (base) => ({
+                ...base,
+                background: "rgb(255, 255, 255)",
+                stroke: "rgba(255, 0, 0, 0.5)",
+              }),
+            }}
+          >
             <form className='row g-3 mb-3' onSubmit={this.handleSubmit}>
               <EditNav setactive={"General"} />
 
@@ -700,7 +709,8 @@ class GeneralForm extends Component {
                 </button>
               </div>
             </form>
-          )}
+          </LoadingOverlay>
+          
         </div>
         <Footer2 />
       </div>

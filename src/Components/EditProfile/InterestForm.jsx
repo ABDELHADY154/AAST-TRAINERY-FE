@@ -136,7 +136,7 @@ class Interest extends Component {
                 }}
               >
                 <EditNav setactive={"Interest"} />
-                <div className='col-lg-10 col-11 col-md-10 col-sm-12 col-xs-12'>
+                <div className='col-lg-10 col-11 col-md-10 col-sm-12 col-xs-12 mt-3 mt-sm-0'>
                   <label for='inputRegNum' className='form-label editLabel'>
                     Interests
                   </label>
@@ -185,7 +185,9 @@ class Interest extends Component {
             </form>
           </div>
         </div>
-        <Footer2 className='interestFooter' />
+        <div className='fixed-bottom'>
+          <Footer2 />
+        </div>{" "}
       </div>
     );
   }

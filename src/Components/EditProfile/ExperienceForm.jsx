@@ -306,6 +306,7 @@ class ExperienceForm extends Component {
                     id='fullname'
                     onChange={(e) => this.setState({ JobTitle: e.target.value })}
                     value={this.state.JobTitle ? this.state.JobTitle : ""}
+                    placeholder='Enter Experience Title'
                   />
 
                   {this.state.error && this.state.error.JobTitlErr ? (
@@ -329,6 +330,7 @@ class ExperienceForm extends Component {
                     id='fullname'
                     onChange={(e) => this.setState({ CompanyName: e.target.value })}
                     value={this.state.CompanyName ? this.state.CompanyName : ""}
+                    placeholder='Enter Organization Name'
                   />
                   <p className='editerror'>
                     {this.state.error ? this.state.error.CompanyNameErr : ""}
@@ -353,6 +355,7 @@ class ExperienceForm extends Component {
                       })
                     }
                     value={this.state.CompanyWebsite ? this.state.CompanyWebsite : ""}
+                    placeholder='Enter Company Website'
                   />
 
                   {this.state.error && this.state.error.CompanyWebsiteErr ? (
@@ -443,6 +446,7 @@ class ExperienceForm extends Component {
                       })
                     }
                     value={this.state.SchoolUrl ? this.state.SchoolUrl : ""}
+                    placeholder='Enter Credential URL'
                   />
                   {this.state.error && this.state.error.Cred_URLErr !== "" && (
                     <p className='editerror'> {this.state.error.Cred_URLErr}</p>

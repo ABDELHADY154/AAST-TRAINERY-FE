@@ -153,7 +153,7 @@ class Language extends Component {
               >
                 <EditNav setactive={"Language"} />
 
-                <div className='col-lg-10 col-11 col-md-10 col-sm-12 col-xs-12'>
+                <div className='col-lg-10 col-11 col-md-10 col-sm-12 col-xs-12 mt-3 mt-sm-0'>
                   <label for='inputSkill' className='form-label editLabel '>
                     Language
                   </label>
@@ -259,7 +259,9 @@ class Language extends Component {
             </form>
           </div>
         </div>
-        <Footer2 className="interestFooter"/>
+        <div className='fixed-bottom'>
+          <Footer2 />
+        </div>{" "}
       </div>
     );
   }

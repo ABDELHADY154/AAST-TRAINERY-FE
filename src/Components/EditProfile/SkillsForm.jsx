@@ -150,7 +150,7 @@ class Skills extends Component {
               >
                 <EditNav setactive={"Skills"} />
 
-                <div className='col-lg-10 col-11 col-md-10 col-sm-12 col-xs-12'>
+                <div className='col-lg-10 col-11 col-md-10 col-sm-12 col-xs-12 mt-3 mt-sm-0'>
                   <label for='quantity' className='form-label editLabel '>
                     Skills
                   </label>
@@ -253,7 +253,9 @@ class Skills extends Component {
             </form>
           </div>
         </div>
-        <Footer2 className='interestFooter' />
+        <div className='fixed-bottom'>
+          <Footer2 />
+        </div>
       </div>
     );
   }

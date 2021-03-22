@@ -43,12 +43,12 @@ class AccountsForm extends Component {
         });
       })
       .catch((error) => {
-        if (error.response.data.status === 401 || error.response.data.status === 404) {
-          sessionStorage.clear("token");
-          sessionStorage.clear("status");
-          this.setState({ loggedIn: false });
-          window.location.reload();
-        }
+        // if (error.response.data.status === 401) {
+        //   sessionStorage.clear("token");
+        //   sessionStorage.clear("status");
+        //   this.setState({ loggedIn: false });
+        //   window.location.reload();
+        // }
         this.setState({ FormLoading: false });
       });
   };
@@ -148,112 +148,101 @@ class AccountsForm extends Component {
               }}
             >
               <EditNav setactive={"Accounts"} />
-              <div className='row g-0 mb-3 mt-sm-0 mt-4'>
-                <label className=' col-lg-2 col-11 col-md-3 col-sm-12 col-xs-12  form-label editLabel closeLabel '>
-                  Website
-                </label>
+              <div className='col-lg-10 col-11 col-md-5 col-sm-12 col-xs-12 d-flex mt-sm-0 mt-4 my-3'>
+                <label className='  form-label editLabel  me-4  '>Website</label>
                 <input
                   value={this.state.WebsitE ? this.state.WebsitE : ""}
                   type='text'
                   className='col-lg-5 
-               col-11 col-md-5 col-sm-12 col-xs-12 editInput form-control  widthMe w-50'
+               col-11 col-md-5 col-sm-12 col-xs-12 editInput form-control  widthMe'
                   // id="fullname"
                   onChange={(e) => this.setState({ WebsitE: e.target.value })}
+                  placeholder='Enter Your Website '
                 />
                 <p className='editerror errMargin'>
                   {this.state.error ? this.state.error.WebsitEErr : ""}
                 </p>
               </div>
-              <div className='row g-0 mb-3 '>
-                <label className=' col-lg-2 col-11 col-md-3 col-sm-12 col-xs-12  form-label editLabel closeLabel '>
-                  Facebook
-                </label>
+              <div className='col-lg-10 col-11 col-md-5 col-sm-12 col-xs-12 d-flex my-3'>
+                <label className='   form-label editLabel me-2 '>Facebook</label>
                 <input
                   value={this.state.facebooK ? this.state.facebooK : ""}
                   type='text'
-                  className='col-lg-5 
-               col-11 col-md-5 col-sm-12 col-xs-12 editInput form-control  widthMe  w-50'
+                  className='editInput form-control  widthMe me-2'
                   // id="fullname"
                   onChange={(e) => this.setState({ facebooK: e.target.value })}
+                  placeholder='Enter Facebook Profile'
                 />
                 <p className='editerror errMargin'>
                   {this.state.error ? this.state.error.facebooKErr : ""}
                 </p>
               </div>
-              <div className='row g-0 mb-3 '>
-                <label className=' col-lg-2 col-11 col-md-3 col-sm-12 col-xs-12  form-label editLabel closeLabel '>
-                  Instagram
-                </label>
+              <div className='col-lg-10 col-11 col-md-5 col-sm-12 col-xs-12 d-flex '>
+                <label className='   form-label editLabel   '>Instagram</label>
                 <input
                   value={this.state.instagraM ? this.state.instagraM : ""}
                   type='text'
-                  className='col-lg-5 
-               col-11 col-md-5 col-sm-12 col-xs-12 editInput form-control  widthMe  w-50'
+                  className=' editInput form-control  widthMe '
                   // id="fullname"
                   onChange={(e) => this.setState({ instagraM: e.target.value })}
+                  placeholder='Enter Instagram Profile'
                 />
                 <p className='editerror errMargin'>
                   {this.state.error ? this.state.error.instagraMErr : ""}
                 </p>
               </div>
-              <div className='row g-0 mb-3 '>
-                <label className=' col-lg-2 col-11 col-md-3 col-sm-12 col-xs-12  form-label editLabel closeLabel '>
-                  Youtube
-                </label>
+              <div className='col-lg-10 col-11 col-md-5 col-sm-12 col-xs-12 d-flex '>
+                <label className='   form-label editLabel   '>Youtube</label>
                 <input
                   value={this.state.youtubE ? this.state.youtubE : ""}
                   type='text'
                   className='col-lg-5 
-               col-11 col-md-5 col-sm-12 col-xs-12 editInput form-control  widthMe  w-50'
+               col-11 col-md-5 col-sm-12 col-xs-12 editInput form-control  widthMe '
                   // id="fullname"
                   onChange={(e) => this.setState({ youtubE: e.target.value })}
+                  placeholder='Enter Youtube Channel'
                 />
                 <p className='editerror errMargin'>
                   {this.state.error ? this.state.error.youtubEErr : ""}
                 </p>
               </div>
-              <div className='row g-0 mb-3 '>
-                <label className=' col-lg-2 col-11 col-md-3 col-sm-12 col-xs-12  form-label editLabel closeLabel '>
-                  LinkedIn
-                </label>
+              <div className='col-lg-10 col-11 col-md-5 col-sm-12 col-xs-12 d-flex '>
+                <label className='   form-label editLabel   '>Linkedin</label>
                 <input
                   value={this.state.linkediN ? this.state.linkediN : ""}
                   type='text'
                   className='col-lg-5 
-               col-11 col-md-5 col-sm-12 col-xs-12 editInput form-control  widthMe  w-50'
+               col-11 col-md-5 col-sm-12 col-xs-12 editInput form-control  widthMe '
                   // id="fullname"
                   onChange={(e) => this.setState({ linkediN: e.target.value })}
+                  placeholder='Enter Linkedin Profile'
                 />
                 <p className='editerror errMargin'>
                   {this.state.error ? this.state.error.linkediNErr : ""}
                 </p>
               </div>
-              <div className='row g-0 mb-3 '>
-                <label className=' col-lg-2 col-11 col-md-3 col-sm-12 col-xs-12  form-label editLabel closeLabel '>
-                  Behance
-                </label>
+              <div className='col-lg-10 col-11 col-md-5 col-sm-12 col-xs-12 d-flex'>
+                <label className='form-label editLabel  '>Behance</label>
                 <input
                   value={this.state.behancE ? this.state.behancE : ""}
                   type='text'
-                  className='col-lg-5 
-               col-11 col-md-5 col-sm-12 col-xs-12 editInput form-control  widthMe  w-50'
-                  // id="fullname"
+                  className='form-control editInput'
                   onChange={(e) => this.setState({ behancE: e.target.value })}
+                  placeholder='Enter Behance Profile'
                 />
                 <p className='editerror errMargin'>
                   {this.state.error ? this.state.error.behancEErr : ""}
                 </p>
               </div>
-              <div className='row g-0 mb-3 '>
-                <label className=' col-lg-2 col-11 col-md-3 col-sm-12 col-xs-12  form-label editLabel closeLabel '>
-                  Github
-                </label>
+              <div className='col-lg-10 col-11 col-md-5 col-sm-12 col-xs-12 d-flex '>
+                <label className='   form-label editLabel   '>Github</label>
                 <input
                   value={this.state.githuB ? this.state.githuB : ""}
                   type='text'
-                  className='form-control editInput w-50'
+                  className='form-control editInput'
                   // id="fullname"
                   onChange={(e) => this.setState({ githuB: e.target.value })}
+                  placeholder='Enter Github Profile'
                 />
                 <p className='editerror errMargin'>
                   {this.state.error ? this.state.error.githuBErr : ""}

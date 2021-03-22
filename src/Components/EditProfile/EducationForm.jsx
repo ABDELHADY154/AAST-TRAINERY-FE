@@ -274,6 +274,7 @@ export default class EducationForm extends Component {
                         : "form-control editInput"
                     }
                     onChange={(e) => this.setState({ SchoolName: e.target.value })}
+                    placeholder='Enter School Name'
                     value={this.state.SchoolName ? this.state.SchoolName : ""}
                   />
                   {this.state.error && this.state.error.schoolNameErr !== "" && (
@@ -387,6 +388,7 @@ export default class EducationForm extends Component {
                     id='fullname'
                     onChange={(e) => this.setState({ SchoolUrl: e.target.value })}
                     value={this.state.SchoolUrl ? this.state.SchoolUrl : ""}
+                    placeholder='Enter Credential URL'
                   />
                   {this.state.error && this.state.error.credErr !== "" && (
                     <p className='editerror'> {this.state.error.credErr}</p>
