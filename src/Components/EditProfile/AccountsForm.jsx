@@ -1,9 +1,14 @@
 import React, { Component } from "react";
+import { Link, Redirect } from "react-router-dom";
+import EditNav from "./EditNav";
+
 // import { Redirect } from "react-router-dom";
 import { axios } from "../../Api/axios";
 // import { Link } from "react-router-dom";
 import "../../layout/EditInfo.css";
 import Footer2 from "../Common/Footer2";
+import LoadingOverlay from "react-loading-overlay";
+import BounceLoader from "react-spinners/BounceLoader";
 
 class AccountsForm extends Component {
   constructor(props) {
@@ -16,33 +21,45 @@ class AccountsForm extends Component {
       linkediN: "",
       behancE: "",
       githuB: "",
+      FormLoading: false,
     };
   }
   //get list
   componentDidMount = async () => {
+    this.setState({ FormLoading: true });
+
     await axios
       .get("/W/student/profile/account")
       .then((aList) => {
-        console.log(aList.data.response.data);
         this.setState({
           WebsitE: aList.data.response.data[`0`].website,
           facebooK: aList.data.response.data[`0`].facebook,
           instagraM: aList.data.response.data[`0`].instagram,
           youtubE: aList.data.response.data[`0`].youtube,
-
           linkediN: aList.data.response.data[`0`].linkedin,
           behancE: aList.data.response.data[`0`].behance,
           githuB: aList.data.response.data[`0`].github,
+          FormLoading: false,
         });
-        console.log(aList);
       })
-      .catch((err) => {
-        console.log(err);
+      .catch((error) => {
+        // if (error.response.data.status === 401) {
+        //   sessionStorage.clear("token");
+        //   sessionStorage.clear("status");
+        //   this.setState({ loggedIn: false });
+        //   window.location.reload();
+        // }
+        this.setState({ FormLoading: false });
       });
   };
 
   handleSubmit = async (e) => {
+    this.setState({
+      FormLoading: true,
+    });
     e.preventDefault();
+    var formBody = new FormData();
+
     const data = {
       website: this.state.WebsitE,
       facebook: this.state.facebooK,
@@ -52,217 +69,227 @@ class AccountsForm extends Component {
       behance: this.state.behancE,
       github: this.state.githuB,
     };
-    return await axios
-      .post("/W/student/profile/account", data)
-      .then((res) => {
-        console.log(res);
+    if (this.state.WebsitE !== "") {
+      formBody.append("website", data.website);
+    }
+    if (this.state.facebooK && this.state.facebooK !== "") {
+      formBody.append("facebook", data.facebook);
+    }
+    if (this.state.instagraM && this.state.instagraM !== "") {
+      formBody.append("instagram", data.instagram);
+    }
+    if (this.state.youtubE && this.state.youtubE !== "") {
+      formBody.append("youtube", data.youtube);
+    }
+    if (this.state.linkediN && this.state.linkediN !== "") {
+      formBody.append("linkedin", data.linkedin);
+    }
+    if (this.state.behancE && this.state.behancE !== "") {
+      formBody.append("behance", data.behance);
+    }
+    if (this.state.githuB && this.state.githuB !== "") {
+      formBody.append("github", data.github);
+    }
+
+    return await axios({
+      method: "post",
+      url: "/W/student/profile/account",
+      data: formBody,
+      headers: {
+        "Content-Type": "application/json",
+      },
+    })
+      .then((e) => {
         this.setState({
-          WebsitE: res.data.response.data.website,
-          facebooK: res.data.response.data.facebook,
-          instagraM: res.data.response.data.instagram,
-          youtubE: res.data.response.data.youtube,
-          linkediN: res.data.response.data.linkedin,
-          behancE: res.data.response.data.behance,
-          githuB: res.data.response.data.github,
+          done: true,
+          FormLoading: false,
         });
-        console.log(res.data.response.data);
       })
-      .catch((err) => {
-        console.log(err);
+      .catch((error) => {
+        if (error.response.data.status === 401) {
+          sessionStorage.clear("token");
+          sessionStorage.clear("status");
+          this.setState({ loggedIn: false });
+          window.location.reload();
+        }
+        this.setState({
+          FormLoading: false,
+          error: {
+            WebsitEErr: error.response.data.errors.website,
+            facebooKErr: error.response.data.errors.facebook,
+            instagraMErr: error.response.data.errors.instagram,
+            youtubEErr: error.response.data.errors.youtube,
+            linkediNErr: error.response.data.errors.linkedin,
+            behancEErr: error.response.data.errors.behance,
+            githuBErr: error.response.data.errors.github,
+          },
+        });
       });
   };
   render() {
-    console.log(this.state.facebooK);
+    if (this.state.loggedIn === false) {
+      return <Redirect to="/login" />;
+    }
+    if (this.state.done === true) {
+      return <Redirect to="/Profile" />;
+    }
     return (
       <div>
-        {" "}
         <div className="container ">
-          <h1 className="editTitle text-center">Edit Profile</h1>
-          <h3 className="categoryTitle d-flex justify-content-start mb-3">
-            Categories
-          </h3>
-          <ul className="nav  infoTabsUl nav-tabs" id="myTab" role="tablist">
-            <li className="nav-item infoTabs" role="presentation">
-              <a
-                className="nav-link  tabBtn  "
-                id="General-tab"
-                href="/Profile/General"
-              >
-                General
-              </a>
-            </li>
-            <li className="nav-item infoTabs" role="presentation">
-              <a
-                className="nav-link  tabBtn  "
-                id="Education-tab"
-                href="/Profile/Education"
-              >
-                Education
-              </a>
-            </li>
-            <li class="nav-item infoTabs" role="presentation">
-              <a
-                className="nav-link tabBtn "
-                id="Experiance-tab"
-                href="/Profile/Experiance"
-              >
-                Experiance
-              </a>
-            </li>
-            <li className="nav-item infoTabs" role="presentation">
-              <a
-                className="nav-link tabBtn"
-                id="Courses-tab"
-                href="/Profile/Courses"
-              >
-                Courses
-              </a>
-            </li>
-            <li className="nav-item infoTabs" role="presentation">
-              <a
-                className="nav-link tabBtn"
-                id="Skills-tab"
-                href="/Profile/Skills"
-              >
-                Skills
-              </a>
-            </li>
-            <li class="nav-item infoTabs" role="presentation">
-              <a
-                className="nav-link tabBtn active"
-                id="Accounts-tab"
-                href="/Profile/Accounts"
-              >
-                Accounts
-              </a>
-            </li>
-          </ul>
-
           <form class="text-left g-3 mb-3 " onSubmit={this.handleSubmit}>
-            <div className="row g-0 mb-3 mt-sm-0 mt-4">
-              <label className=" col-lg-2 col-11 col-md-3 col-sm-12 col-xs-12  form-label editLabel closeLabel ">
-                Website
-              </label>
-              <input
-                value={this.state.WebsitE ? this.state.WebsitE : ""}
-                type="text"
-                className="col-lg-5 
-               col-11 col-md-5 col-sm-12 col-xs-12 editInput "
-                // id="fullname"
-                placeholder="URL"
-                onChange={(e) => this.setState({ WebsitE: e.target.value })}
-              />
-            </div>
-            <div className="row g-0 mb-3 ">
-              <label className=" col-lg-2 col-11 col-md-3 col-sm-12 col-xs-12  form-label editLabel closeLabel ">
-                Facebook
-              </label>
-              <input
-                value={this.state.facebooK ? this.state.facebooK : ""}
-                type="text"
-                className="col-lg-5 
-               col-11 col-md-5 col-sm-12 col-xs-12 editInput "
-                // id="fullname"
-                placeholder="URL"
-                onChange={(e) => this.setState({ facebooK: e.target.value })}
-              />
-            </div>
-            <div className="row g-0 mb-3 ">
-              <label className=" col-lg-2 col-11 col-md-3 col-sm-12 col-xs-12  form-label editLabel closeLabel ">
-                Instagram
-              </label>
-              <input
-                value={this.state.instagraM ? this.state.instagraM : ""}
-                type="text"
-                className="col-lg-5 
-               col-11 col-md-5 col-sm-12 col-xs-12 editInput "
-                // id="fullname"
-                placeholder="URL"
-                onChange={(e) => this.setState({ instagraM: e.target.value })}
-              />
-            </div>
-            <div className="row g-0 mb-3 ">
-              <label className=" col-lg-2 col-11 col-md-3 col-sm-12 col-xs-12  form-label editLabel closeLabel ">
-                Youtube
-              </label>
-              <input
-                value={this.state.youtubE ? this.state.youtubE : ""}
-                type="text"
-                className="col-lg-5 
-               col-11 col-md-5 col-sm-12 col-xs-12 editInput "
-                // id="fullname"
-                placeholder="URL"
-                onChange={(e) => this.setState({ youtubE: e.target.value })}
-              />
-            </div>
-            <div className="row g-0 mb-3 ">
-              <label className=" col-lg-2 col-11 col-md-3 col-sm-12 col-xs-12  form-label editLabel closeLabel ">
-                LinkedIn
-              </label>
-              <input
-                value={this.state.linkediN ? this.state.linkediN : ""}
-                type="text"
-                className="col-lg-5 
-               col-11 col-md-5 col-sm-12 col-xs-12 editInput "
-                // id="fullname"
-                placeholder="URL"
-                onChange={(e) => this.setState({ linkediN: e.target.value })}
-              />
-            </div>
-            <div className="row g-0 mb-3 ">
-              <label className=" col-lg-2 col-11 col-md-3 col-sm-12 col-xs-12  form-label editLabel closeLabel ">
-                Behance
-              </label>
-              <input
-                value={this.state.behancE ? this.state.behancE : ""}
-                type="text"
-                className="col-lg-5 
-               col-11 col-md-5 col-sm-12 col-xs-12 editInput "
-                // id="fullname"
-                placeholder="URL"
-                onChange={(e) => this.setState({ behancE: e.target.value })}
-              />
-            </div>
-            <div className="row g-0 mb-3 ">
-              <label className=" col-lg-2 col-11 col-md-3 col-sm-12 col-xs-12  form-label editLabel closeLabel ">
-                Github
-              </label>
-              <input
-                value={this.state.githuB ? this.state.githuB : ""}
-                type="text"
-                className="col-lg-5 
-               col-11 col-md-5 col-sm-12 col-xs-12 editInput "
-                // id="fullname"
-                placeholder="URL"
-                onChange={(e) => this.setState({ githuB: e.target.value })}
-              />
-            </div>
-
-            <div class="col-12 d-flex justify-content-end">
-              <button class="btn deleteBtn me-2 my-2  shadow-none ">
-                Delete
-              </button>
-              <button
-                class="btn updateBtn shadow-none my-2 "
-                onClick={this.handleSubmit}
-              >
-                Update
-              </button>
-            </div>
-
-            <div class="col-12 d-flex justify-content-end">
-              <a href="/Profile">
-                <button
-                  type="button"
-                  class="btn me-2 my-2 cancelBtn shadow-none"
+            <LoadingOverlay
+              active={this.state.FormLoading}
+              spinner={<BounceLoader color="#cd8930" />}
+              styles={{
+                overlay: (base) => ({
+                  ...base,
+                  background: "rgb(255, 255, 255)",
+                }),
+              }}
+            >
+              <EditNav setactive={"Accounts"} />
+              <div className="col-lg-10 col-10 col-md-5 col-sm-12 col-xs-12 d-flex mb-4">
+                <label
+                  className="  form-label editLabel  "
+                  style={{ marginRight: "3.6%" }}
                 >
+                  Website
+                </label>
+                <input
+                  value={this.state.WebsitE ? this.state.WebsitE : ""}
+                  type="text"
+                  className="form-control editInput"
+                  // id="fullname"
+                  onChange={(e) => this.setState({ WebsitE: e.target.value })}
+                  placeholder="Enter Your Website "
+                />
+                <p className="editerror errMargin">
+                  {this.state.error ? this.state.error.WebsitEErr : ""}
+                </p>
+              </div>
+              <div className="col-lg-10 col-10 col-md-5 col-sm-12 col-xs-12 d-flex mb-4">
+                <label
+                  className="   form-label editLabel accLable"
+                  style={{ marginRight: "2.2%" }}
+                >
+                  Facebook
+                </label>
+                <input
+                  value={this.state.facebooK ? this.state.facebooK : ""}
+                  type="text"
+                  className="form-control editInput"
+                  // id="fullname"
+                  onChange={(e) => this.setState({ facebooK: e.target.value })}
+                  placeholder="Enter Facebook Profile"
+                />
+                <p className="editerror errMargin">
+                  {this.state.error ? this.state.error.facebooKErr : ""}
+                </p>
+              </div>
+              <div className="col-lg-10 col-10 col-md-5 col-sm-12 col-xs-12 d-flex mb-4">
+                <label
+                  className="   form-label editLabel  accLable "
+                  style={{ marginRight: "1.8%" }}
+                >
+                  Instagram
+                </label>
+                <input
+                  value={this.state.instagraM ? this.state.instagraM : ""}
+                  type="text"
+                  className="form-control editInput "
+                  // id="fullname"
+                  onChange={(e) => this.setState({ instagraM: e.target.value })}
+                  placeholder="Enter Instagram Profile"
+                />
+                <p className="editerror errMargin">
+                  {this.state.error ? this.state.error.instagraMErr : ""}
+                </p>
+              </div>
+              <div className="col-lg-10 col-10 col-md-5 col-sm-12 col-xs-12 d-flex mb-4">
+                <label
+                  className="   form-label editLabel accLable  "
+                  style={{ marginRight: "3%" }}
+                >
+                  Youtube
+                </label>
+                <input
+                  value={this.state.youtubE ? this.state.youtubE : ""}
+                  type="text"
+                  className="form-control editInput "
+                  // id="fullname"
+                  onChange={(e) => this.setState({ youtubE: e.target.value })}
+                  placeholder="Enter Youtube Channel"
+                />
+                <p className="editerror errMargin">
+                  {this.state.error ? this.state.error.youtubEErr : ""}
+                </p>
+              </div>
+              <div className="col-lg-10 col-10 col-md-5 col-sm-12 col-xs-12 d-flex mb-4">
+                <label
+                  className="   form-label editLabel  accLable "
+                  style={{ marginRight: "3%" }}
+                >
+                  Linkedin
+                </label>
+                <input
+                  value={this.state.linkediN ? this.state.linkediN : ""}
+                  type="text"
+                  className="form-control editInput "
+                  // id="fullname"
+                  onChange={(e) => this.setState({ linkediN: e.target.value })}
+                  placeholder="Enter Linkedin Profile"
+                />
+                <p className="editerror errMargin">
+                  {this.state.error ? this.state.error.linkediNErr : ""}
+                </p>
+              </div>
+              <div className="col-lg-10 col-10 col-md-5 col-sm-12 col-xs-12 d-flex mb-4">
+                <label
+                  className="form-label editLabel accLable"
+                  style={{ marginRight: "2.9%" }}
+                >
+                  Behance
+                </label>
+                <input
+                  value={this.state.behancE ? this.state.behancE : ""}
+                  type="text"
+                  className="form-control editInput"
+                  onChange={(e) => this.setState({ behancE: e.target.value })}
+                  placeholder="Enter Behance Profile"
+                />
+                <p className="editerror errMargin">
+                  {this.state.error ? this.state.error.behancEErr : ""}
+                </p>
+              </div>
+              <div className="col-lg-10 col-10 col-md-5 col-sm-12 col-xs-12 d-flex ">
+                <label className="me-5 form-label editLabel  accLable ">
+                  Github
+                </label>
+                <input
+                  value={this.state.githuB ? this.state.githuB : ""}
+                  type="text"
+                  className="form-control editInput"
+                  // id="fullname"
+                  onChange={(e) => this.setState({ githuB: e.target.value })}
+                  placeholder="Enter Github Profile"
+                />
+                <p className="editerror errMargin">
+                  {this.state.error ? this.state.error.githuBErr : ""}
+                </p>
+              </div>
+
+              <div class="col-lg-10 col-11 col-md-10 col-sm-12 col-xs-12 d-flex justify-content-end mt-5">
+                <Link class="btn me-2 my-2 cancelBtn shadow-none" to="/Profile">
                   Cancel
+                </Link>
+                <button
+                  class="btn doneBtn shadow-none my-2 "
+                  onClick={this.handleSubmit}
+                >
+                  Update
                 </button>
-              </a>
-              <button type="submit" class="btn doneBtn shadow-none my-2 ">
-                Add
-              </button>
-            </div>
+              </div>
+            </LoadingOverlay>
           </form>
         </div>
         <Footer2 />

@@ -7,7 +7,7 @@ import { Redirect } from "react-router-dom";
 import "../../layout/Sign.css";
 import loginBG from "../../Components/assests/imgs/login.jpg";
 import PasswordStrengthBar from "react-password-strength-bar";
-import { FaEye, FaEyeSlash } from "react-icons/fa";
+import { AiOutlineEyeInvisible,AiOutlineEye } from "react-icons/ai";
 
 import { Link } from "react-router-dom";
 
@@ -220,7 +220,7 @@ class Registry extends React.Component {
                                 }
                               />
                               {this.state.hidden ? (
-                                <FaEye
+                                <AiOutlineEye
                                   color='red'
                                   className=' ico'
                                   animation='tada'
@@ -229,7 +229,7 @@ class Registry extends React.Component {
                                   onClick={this.toggleShow}
                                 />
                               ) : (
-                                <FaEyeSlash
+                                <AiOutlineEyeInvisible
                                   color='red'
                                   className=' ico'
                                   animation='tada'
@@ -247,7 +247,7 @@ class Registry extends React.Component {
 
                             {this.state.error.passwordErr !== "" &&
                               this.state.error.passwordErr.map((name) => (
-                                <p className='red d-inline'> {name}, </p>
+                                <p className='red d-inline'> {name} </p>
                               ))}
                           </div>
                           <div className='col-md-10 col-lg-11 form-label-group input-field'>

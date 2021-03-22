@@ -135,15 +135,20 @@ class Profile extends Component {
                 className="d-flex flex-row flex-wrap "
                 style={{ textTransform: "capitalize" }}
               >
-                <div className="d-flex flex-column col-md-6 col-12">
-                  {this.state.department}
-                </div>
-                <div className="d-flex flex-column col-md-6 col-12">
-                  <span id="gpa" className=" ms-2">
-                    {this.state.gpa}
-                  </span>
-                </div>
+                {/* <div className="d-flex me-1 flex-column col-md-9 col-12"> */}
+                {this.state.department}
               </div>
+              {/* </div> */}
+              {/* <div className="d-flex flex-column col-md-7 col-12"> */}
+              <div
+                className="d-flex flex-row flex-wrap "
+                style={{ textTransform: "capitalize" }}
+              >
+                <span id="gpa" className="">
+                  {this.state.gpa}
+                </span>
+              </div>
+              {/* </div> */}
               <div className="d-flex flex-row flex-wrap">
                 {this.state.start_year} - {this.state.end_year}
               </div>
@@ -204,9 +209,9 @@ class Profile extends Component {
                   {this.state.gender}
                 </div>
                 <div className="d-flex flex-row info">
-                  {" "}
-                  Age: {"  "}
-                  {this.state.age} {"  "}years
+                  Age:
+                  {"  "}
+                  {this.state.age ? this.state.age : " "}
                 </div>
                 <div
                   className="d-flex flex-row info"
@@ -353,13 +358,6 @@ class Profile extends Component {
               <div className="d-flex flex-row titlecard profiletitle fs-4 mb-2">
                 <div className="d-flex titlecard flex-row profiletitle col-md-10 col-10 me-3 ">
                   Skills
-                  {/* <Link
-                    renderAs="button"
-                    className="  ms-3 plus"
-                    to="Profile/Skills"
-                  >
-                    +
-                  </Link> */}
                 </div>
               </div>
               <div className=" d-flex flex-row flex-wrap col-12 mb-2 col-md-12 me-1 fs-5">

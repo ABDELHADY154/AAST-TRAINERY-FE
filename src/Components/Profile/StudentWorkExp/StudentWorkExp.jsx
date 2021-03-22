@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import "../../../layout/Profile.css";
 import { BiPencil } from "react-icons/bi";
-import { GrDocument } from "react-icons/gr";
+import { CgFileDocument } from "react-icons/cg";
 
 export default class StudentWorkExp extends Component {
   constructor(props) {
@@ -56,36 +56,42 @@ export default class StudentWorkExp extends Component {
           </div>
         </div>
         <div className="d-flex flex-row flex-wrap fs-6 mt-2 ">
-          <div className="d-flex flex-column col-md-2 col-12 mb-1">
-            <a
-              id="goldcredentials"
-              renderAs="button"
-              href={this.props.cred_url}
-              target="_blank"
-            >
-              See credentials
-            </a>
-          </div>
-          <div
-            id="docicon"
-            style={{ color: "#cd8930", fill: "#cd8930" }}
-            className="d-flex flex-column col-md-2 col-12 mb-1"
-          >
-            <a
-              style={{ color: "#cd8930", fill: "#cd8930" }}
+          {this.props.cred_url == null ? (
+            "  "
+          ) : (
+            <div className="d-flex flex-column col-md-2 col-12 mb-1">
+              <a
+                id="goldcredentials"
+                renderAs="button"
+                href={this.props.cred_url}
+                target="_blank"
+              >
+                See credentials
+              </a>
+            </div>
+          )}
+          {this.props.cred == null ? (
+            "  "
+          ) : (
+            <div
               id="docicon"
-              href={this.props.cred}
-              renderAs="button"
-              target="_blank"
+              className="d-flex flex-column col-md-2 col-12 mb-1"
             >
-              <GrDocument
-                style={{ color: "#cd8930", fill: "#cd8930" }}
+              <a
                 id="docicon"
-                fill="#cd8930"
-                color="#cd8930"
-              ></GrDocument>
-            </a>
-          </div>
+                href={this.props.cred}
+                renderAs="button"
+                target="_blank"
+              >
+                <CgFileDocument
+                  size="20px"
+                  id="docicon"
+                  fill="#cd8930"
+                  color="#cd8930"
+                ></CgFileDocument>
+              </a>
+            </div>
+          )}
         </div>
         <hr />
       </>

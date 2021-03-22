@@ -57,7 +57,7 @@ class AuthNav extends React.Component {
               avatar: res.data.response.data.image,
               fullname: res.data.response.data.fullName,
             });
-            console.log(this.props.updated);
+            // console.log(this.props.updated);
           }
         })
 
@@ -74,7 +74,7 @@ class AuthNav extends React.Component {
       // window.location.reload(true);
       // return this.setState({ user: true });
     } else {
-      console.log("11");
+      // console.log("11");
     }
     let token = sessionStorage.getItem("token");
     let status = sessionStorage.getItem("status");
@@ -83,7 +83,7 @@ class AuthNav extends React.Component {
     }
   };
   render() {
-    console.log(this.props.updated);
+    // console.log(this.props.updated);
 
     if (this.props.updated == true) {
       window.location = window.location;
@@ -91,7 +91,7 @@ class AuthNav extends React.Component {
     return (
       <div className='navBottom pb-1'>
         <nav className='navbar navbar-expand-lg navBg fixed-top'>
-          <div className='container'>
+          <div className='container '>
             <Link className='navbar-brand mx-2' renderAs='button' to='/Home'>
               <img
                 className='navbar-brand profileImage'
@@ -111,7 +111,10 @@ class AuthNav extends React.Component {
             >
               <span className='navbar-toggler-icon'></span>
             </button>
-            <div className='collapse navbar-collapse ' id='navbarScroll'>
+            <div
+              className='collapse navbar-collapse flex-sm-row d-inherit  flex-column-reverse'
+              id='navbarScroll'
+            >
               <ul className='navbar-nav mt-1'>
                 <li className='nav-item '>
                   <Link className='nav-link item navPage mt-2' to='/Home'>
@@ -327,9 +330,9 @@ class AuthNav extends React.Component {
                         )}
                       </a>
                       <ul class='dropdown-menu profileMenu '>
-                        <li className='row profileHeader d-flex justify-content-center'>
+                        <li className='row profileHeader d-flex justify-content-center invs'>
                           <a
-                            class='dropdown-item d-flex flex-row'
+                            class='dropdown-item d-flex flex-row invs'
                             href='/Profile'
                             style={{
                               fontSize: 18,
@@ -418,7 +421,7 @@ class AuthNav extends React.Component {
                           </a>
                         </li>
 
-                        <hr class='dropdown-divider profileHr' />
+                        <hr class='dropdown-divider profileHr invs' />
 
                         <li>
                           <a class='row ' href='#'>
@@ -457,7 +460,7 @@ class AuthNav extends React.Component {
                           </a>
                         </li>
 
-                        <hr class='dropdown-divider profileHr' />
+                        <hr class='dropdown-divider profileHr invs' />
 
                         <li>
                           <Link class='row ' href='#' onClick={this.handleLogout}>
