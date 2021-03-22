@@ -13,59 +13,52 @@ export default class StudentEdu extends Component {
     return (
       <>
         <div
-          id="lightfont"
-          className="d-flex flex-row  fs-5 "
+          id='lightfont'
+          className='d-flex flex-row  fs-5 '
           style={{ textTransform: "capitalize" }}
         >
-          <div className=" d-flex  skillname flex-row col-10 col-md-11 me-1">
+          <div className=' d-flex  skillname flex-row col-10 col-md-11 me-1'>
             {this.props.course_provider}
           </div>
-          <div
-            id="hiddenhover"
-            className=" d-flex flex-row col-2 col-md-1 p-0 ms-3"
-          >
-            <Link renderAs="button" to={`Profile/Courses/${id}`}>
+          <div id='hiddenhover' className=' d-flex flex-row col-2 col-md-1 p-0 ms-3'>
+            <Link renderAs='button' to={`/Profile/Courses/${id}`}>
               <BiPencil
-                id="skillnamepen"
-                className="skillnamepencil"
-                fill="#cd8930"
-                color="#cd8930"
+                id='skillnamepen'
+                className='skillnamepencil'
+                fill='#cd8930'
+                color='#cd8930'
               />
             </Link>
           </div>
         </div>
-        <div className="d-flex flex-row fs-6 ">
-          <div className=" d-flex flex-row col-12 col-md-12">
+        <div className='d-flex flex-row fs-6 '>
+          <div className=' d-flex flex-row col-12 col-md-12'>
             {this.props.course_name}.
           </div>
         </div>
-        <div className="d-flex flex-row fs-6 ">
-          <div className=" d-flex flex-row col-12 col-md-12"></div>
+        <div className='d-flex flex-row fs-6 '>
+          <div className=' d-flex flex-row col-12 col-md-12'></div>
         </div>
-        <div className="d-flex flex-row flex-wrap fs-6 mt-2 ">
-          <div className="d-flex flex-column col-md-2 col-12 mb-1">
+        <div className='d-flex flex-row flex-wrap fs-6 mt-2 '>
+          <div className='d-flex flex-column col-md-2 col-12 mb-1'>
             <a
-              id="goldcredentials"
-              renderAs="button"
+              id='goldcredentials'
+              renderAs='button'
               href={this.props.cred_url}
-              target="_blank"
+              target='_blank'
             >
               See credentials
             </a>
           </div>
-          <div id="docicon" className="d-flex flex-column col-md-2 col-12 mb-1">
-            <a
-              id="docicon"
-              href={this.props.cred}
-              renderAs="button"
-              target="_blank"
-            >
-   <CgFileDocument
-              size="20px"
-                id="docicon"
-                fill="#cd8930"
-                color="#cd8930"
-              ></CgFileDocument>            </a>
+          <div id='docicon' className='d-flex flex-column col-md-2 col-12 mb-1'>
+            <a id='docicon' href={this.props.cred} renderAs='button' target='_blank'>
+              <CgFileDocument
+                size='20px'
+                id='docicon'
+                fill='#cd8930'
+                color='#cd8930'
+              ></CgFileDocument>{" "}
+            </a>
           </div>
         </div>
         <hr />

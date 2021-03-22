@@ -79,6 +79,9 @@ body {
     display: none !important;
   }
 }
+.d-inherit {
+  display: inherit !important;
+}
 .signIn {
   background-color: #cd8930;
   color: #fff;
