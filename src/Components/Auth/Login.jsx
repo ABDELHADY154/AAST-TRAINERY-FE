@@ -6,6 +6,7 @@ import loginBG from "../../Components/assests/imgs/login.jpg";
 import "../../layout/Sign.css";
 import { MdWarning } from "react-icons/md";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
+import { AiOutlineEyeInvisible,AiOutlineEye } from "react-icons/ai";
 
 class Login extends React.Component {
   constructor() {
@@ -108,7 +109,7 @@ class Login extends React.Component {
                                 }
                               />
                               {this.state.hidden ? (
-                                <FaEye
+                                <AiOutlineEye
                                   color='red'
                                   className=' ico'
                                   animation='tada'
@@ -117,7 +118,7 @@ class Login extends React.Component {
                                   onClick={this.toggleShow}
                                 />
                               ) : (
-                                <FaEyeSlash
+                                <AiOutlineEyeInvisible
                                   color='red'
                                   className=' ico'
                                   animation='tada'
