@@ -72,22 +72,22 @@ class AccountsForm extends Component {
     if (this.state.WebsitE !== "") {
       formBody.append("website", data.website);
     }
-    if (this.state.facebooK !== "") {
+    if (this.state.facebooK && this.state.facebooK !== "") {
       formBody.append("facebook", data.facebook);
     }
-    if (this.state.instagraM !== "") {
+    if (this.state.instagraM && this.state.instagraM !== "") {
       formBody.append("instagram", data.instagram);
     }
-    if (this.state.youtubE !== "") {
+    if (this.state.youtubE && this.state.youtubE !== "") {
       formBody.append("youtube", data.youtube);
     }
-    if (this.state.linkediN !== "") {
+    if (this.state.linkediN && this.state.linkediN !== "") {
       formBody.append("linkedin", data.linkedin);
     }
-    if (this.state.behancE !== "") {
+    if (this.state.behancE && this.state.behancE !== "") {
       formBody.append("behance", data.behance);
     }
-    if (this.state.githuB !== "") {
+    if (this.state.githuB && this.state.githuB !== "") {
       formBody.append("github", data.github);
     }
 
