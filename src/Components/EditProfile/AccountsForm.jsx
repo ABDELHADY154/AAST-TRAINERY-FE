@@ -46,6 +46,8 @@ class AccountsForm extends Component {
 
   handleSubmit = async (e) => {
     e.preventDefault();
+    var formBody = new FormData();
+
     const data = {
       website: this.state.WebsitE,
       facebook: this.state.facebooK,
@@ -55,8 +57,36 @@ class AccountsForm extends Component {
       behance: this.state.behancE,
       github: this.state.githuB,
     };
-    return await axios
-      .post("/W/student/profile/account", data)
+    if (this.state.WebsitE !== "") {
+      formBody.append("website", data.website);
+    }
+    if (this.state.facebooK !== "") {
+      formBody.append("facebook", data.facebook);
+    }
+    if (this.state.instagraM !== "") {
+      formBody.append("instagram", data.instagram);
+    }
+    if (this.state.youtubE !== "") {
+      formBody.append("youtube", data.youtube);
+    }
+    if (this.state.linkediN !== "") {
+      formBody.append("linkedin", data.linkedin);
+    }
+    if (this.state.behancE !== "") {
+      formBody.append("behance", data.behance);
+    }
+    if (this.state.githuB !== "") {
+      formBody.append("github", data.github);
+    }
+
+    return await axios({
+      method: "post",
+      url: "/W/student/profile/account",
+      data: formBody,
+      headers: {
+        "Content-Type": "application/json",
+      },
+    })
       .then((e) => {
         this.setState({
           done: true,
@@ -105,7 +135,7 @@ class AccountsForm extends Component {
                 className="col-lg-5 
                col-11 col-md-5 col-sm-12 col-xs-12 editInput form-control  widthMe"
                 // id="fullname"
-                placeholder="URL"
+                placeholder={this.state.WebsitE}
                 onChange={(e) => this.setState({ WebsitE: e.target.value })}
               />
               <p className="editerror errMargin">
