@@ -144,6 +144,10 @@
 
 #imgicon {
   width: 3.3em !important;
+  height: 3.3em !important;
+
+  object-fit: cover !important;
+  border-radius: 100px;
 }
 #widths {
   width: 20.9375em !important;

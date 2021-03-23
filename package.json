@@ -17,6 +17,7 @@
     "react-content-loader": "^5.1.4",
     "react-country-region-selector": "^3.0.2",
     "react-countup": "^4.3.3",
+    "react-datetime-picker": "^3.2.0",
     "react-dom": "^16.13.1",
     "react-icons": "^4.1.0",
     "react-images-upload": "^1.2.8",

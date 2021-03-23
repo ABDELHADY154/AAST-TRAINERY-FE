@@ -1,0 +1,115 @@
+@font-face {
+  font-family: SF reg;
+
+  src: url("../Components/assests/Fonts/SF-Compact-Display-Regular.otf");
+}
+@font-face {
+  font-family: SF bold;
+  src: url("../Components/assests/Fonts/SF-Compact-Display-Bold.otf");
+}
+@font-face {
+  font-family: SF light;
+  src: url("../Components/assests/Fonts/SF-Compact-Display-Light.otf");
+}
+@font-face {
+  font-family: SF med;
+  src: url("../Components/assests/Fonts/SF-Compact-Display-Medium.otf");
+}
+* {
+  color: #1e4274;
+  font-family: sf reg;
+}
+.pagetitlec {
+  text-align: center !important;
+  justify-content: center !important;
+  align-self: center !important;
+  align-content: center !important;
+}
+
+.containerrr {
+  position: relative;
+  width: 70% !important;
+}
+
+#imagehoverr {
+  display: flex;
+  width: 70%;
+  height: auto;
+}
+
+.overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: rgba(30, 66, 116, 0.5);
+  overflow: hidden;
+
+  height: 0;
+  transition: 0.5s ease;
+  border-radius: 10px;
+}
+#overlayy {
+  width: 70%;
+}
+
+.containerr:hover .overlay {
+  height: 100%;
+}
+
+.texttt {
+  color: white;
+  font-size: 20px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+#linksss:link {
+  text-decoration: none !important;
+  color: #ffffff !important;
+}
+#linksss:visited {
+  text-decoration: none !important;
+  color: #ffffff !important;
+}
+#linksss:active {
+  text-decoration: none !important;
+  color: #ffffff !important;
+}
+#linksss:hover {
+  text-decoration: none !important;
+  color: #ffffff !important;
+}
+/* .carom {
+  margin-left: 4%;
+} */
+.backbtncaro {
+  /* color: red !important;
+  fill: red !important;
+  margin-left: -6%;
+  outline: red !important; */
+  background-color: #cd8930;
+
+  /* border: #1e4274 1px solid !important; */
+}
+.prevbtn {
+  margin-left: 0%;
+  width: 5% !important;
+}
+.nxtbtn {
+  margin-right: 7%;
+  width: 5% !important;
+}
+.careerimg {
+  width: fit-content;
+  height: fit-content;
+}
+#quote {
+  width: 20% !important;
+  height: 100% !important;
+}

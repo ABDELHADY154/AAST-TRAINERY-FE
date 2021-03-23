@@ -9,7 +9,7 @@ import Landing from "./Components/Landing/Landing";
 import Profile from "./Components/Profile/Profile";
 import Forget from "./Components/Auth/ForgetPassword";
 import ErrorPage from "./Components/Auth/ErrorPage404";
-
+import CareerCoaching from "./Components/CareerCoaching/CareerCoaching";
 import EducationForm from "./Components/EditProfile/EducationForm";
 import AccountsForm from "./Components/EditProfile/AccountsForm";
 import CoursesForm from "./Components/EditProfile/CoursesForm";
@@ -157,6 +157,11 @@ class App extends React.Component {
                   exact
                   path="/Profile/Interest"
                   component={Interest}
+                />
+                <AuthRoute
+                  exact
+                  path="/CareerCoaching"
+                  component={CareerCoaching}
                 />
                 <AuthRoute
                   exact
