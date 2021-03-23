@@ -1,0 +1,54 @@
+@font-face {
+  font-family: SF reg;
+
+  src: url("../Components/assests/Fonts/SF-Compact-Display-Regular.otf");
+}
+@font-face {
+  font-family: SF bold;
+  src: url("../Components/assests/Fonts/SF-Compact-Display-Bold.otf");
+}
+@font-face {
+  font-family: SF light;
+  src: url("../Components/assests/Fonts/SF-Compact-Display-Light.otf");
+}
+@font-face {
+  font-family: SF med;
+  src: url("../Components/assests/Fonts/SF-Compact-Display-Medium.otf");
+}
+.companyName {
+  font-family: SF med;
+  font-size: 1.7em;
+}
+.companyImg {
+  border: 3px solid red;
+  width: 100px;
+  height: 100px;
+  object-fit: cover !important;
+}
+.companyTitel {
+  font-family: SF med;
+  font-size: 1.2em;
+}
+.companyDesc {
+  font-family: SF light;
+  font-size: 1em;
+}
+.companyInfoTxt {
+  font-family: SF light;
+  font-size: 1em;
+  color: #cd8930;
+}
+.companyInfoTxt2 {
+  font-family: SF light;
+  font-size: 1em;
+  color: #1e4274;
+}
+.FiPhone svg {
+  color: #cd8930 !important;
+}
+@media (max-width: 1410px) {
+  .companyInfoTxt {
+    display: flex;
+    width: 17em;
+  }
+}
