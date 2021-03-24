@@ -88,7 +88,7 @@ export default class CompanyProfile extends Component {
                   georgia.young@example.com
                 </p>
               </div>
-              <div className="row mt-2">
+              {/* <div className="row mt-2">
                 <p
                   className="col-lg-2 col-2 col-md-4 col-sm-12 col-xs-12 companyInfoTxt"
                   style={{ color: "#1E4274" }}
@@ -115,7 +115,7 @@ export default class CompanyProfile extends Component {
                 </p>
                 <p className="col-lg-3 col-3 col-md-6 col-sm-12 col-xs-12 companyInfoTxt"></p>
                 <p className="col-lg-4 col-4 col-md-10 col-sm-12 col-xs-12 companyInfoTxt text-break text-wrap"></p>
-              </div>
+              </div> */}
               <div className="">
                 <h4 className="companyTitel" style={{ marginLeft: -2 }}>
                   Opened Internship

@@ -15,6 +15,9 @@
   font-family: SF med;
   src: url("../Components/assests/Fonts/SF-Compact-Display-Medium.otf");
 }
+.profileMT {
+  margin-top: 7em;
+}
 .companyName {
   font-family: SF med;
   font-size: 1.7em;
@@ -50,5 +53,149 @@
   .companyInfoTxt {
     display: flex;
     width: 17em;
+  }
+}
+.overvireTitle {
+  font-family: SF med;
+  font-size: 0.9em;
+}
+.overvireTxt {
+  font-family: SF light;
+  font-size: 0.9em;
+  /* margin-top: 0.35em; */
+}
+.company {
+  font-family: SF med;
+  font-size: 1em;
+}
+.dep {
+  font-family: SF reg;
+  font-size: 0.9em;
+}
+@media screen and (min-width: 1440px) {
+  .discCol {
+    margin-left: -10em !important;
+  }
+}
+@media (min-width: 400px) and (max-width: 575px) {
+  .company {
+    width: 6.3em;
+  }
+}
+@media (max-width: 399px) {
+  .company {
+    width: 5.4em;
+  }
+}
+.opportunity {
+  font-family: SF bold;
+  font-size: 1.5em;
+  width: 10em;
+}
+.paid {
+  font-family: SF reg;
+  font-size: 1em;
+  color: #cd8930;
+}
+.tag {
+  align-content: center;
+  justify-content: center;
+  background-color: rgb(230, 227, 227);
+  padding-right: 0.5em;
+  padding-bottom: 0.05em;
+  padding-left: 0.5em;
+  border-radius: 20px;
+  text-decoration: none;
+  font-size: 0.6em;
+  color: #1e4274;
+  -webkit-border-radius: 20px;
+  -moz-border-radius: 20px;
+  -ms-border-radius: 20px;
+  -o-border-radius: 20px;
+}
+ul .reuirLi {
+  list-style-type: disc !important;
+  list-style: inside !important;
+}
+
+.map {
+  width: 16em;
+  height: 5em;
+}
+@media (max-width: 294px) {
+  .map {
+    width: 12em;
+  }
+}
+@media (min-width: 400px) and (max-width: 767px) {
+  .map {
+    width: 22em;
+  }
+}
+/* carousel */
+.carousel-caption {
+  bottom: 0;
+  margin-bottom: 4rem;
+}
+.textCarousel {
+  color: #1e4274 !important;
+  font-family: SF light;
+  font-size: 1.1em;
+}
+.hrReviews {
+  background-color: #cd8930;
+  border: 1px solid #cd8930;
+  width: 5em;
+}
+.txtName {
+  color: #1e4274 !important;
+  font-family: SF reg;
+  font-size: 1em;
+  padding-top: 0.5em;
+  margin-bottom: -0.01em;
+}
+.txtRole {
+  color: #1e4274 !important;
+  font-family: SF light;
+  font-size: 1em;
+}
+.carousel-indicators button {
+  background-color: #1e4274 !important;
+  width: 10px !important;
+  height: 10px !important;
+  border-radius: 100% !important;
+}
+.carousel-indicators button.active {
+  background-color: #cd8930 !important;
+  width: 10px !important;
+  height: 10px !important;
+  border-radius: 100% !important;
+}
+@media (max-width: 600px) {
+  .carousel-indicators button {
+    width: 15px !important;
+    height: 15px !important;
+  }
+}
+@media (max-width: 600px) {
+  .carousel-indicators button.active {
+    width: 15px !important;
+    height: 15px !important;
+  }
+}
+.bg {
+  background-color: #fff;
+  height: 20em;
+  width: 100%;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+@media (max-width: 330px) {
+  .bg {
+    background-color: #fff;
+    height: 28em;
+    width: 100%;
+    background-size: cover;
+    background-repeat: no-repeat;
   }
 }

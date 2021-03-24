@@ -399,7 +399,9 @@ class Home extends Component {
                           />
                         </Link>
                         <div className=" fs-5 mt-2 ms-2 col-md-10 col-8 ">
-                          UI/UX Designer
+                          <Link to={`/Opportunity`}>
+                            <h5>UI/UX Designers</h5>
+                          </Link>
                         </div>
                         <div id="gold" className=" fs-6 mt-2  col-2 col-md-2">
                           Paid
