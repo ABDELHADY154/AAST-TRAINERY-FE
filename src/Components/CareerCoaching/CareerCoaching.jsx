@@ -7,12 +7,13 @@ import img1 from "../assests/imgs/coach1.jpg";
 import img2 from "../assests/imgs/coach2.jpg";
 import img3 from "../assests/imgs/coach3.jpg";
 import quote from "../assests/imgs/quote.png";
+import careerbottom from "../assests/imgs/careerbottom.jpg";
 
 import career1 from "../assests/imgs/career1.png";
 import career2 from "../assests/imgs/career2.png";
 import career3 from "../assests/imgs/career3.png";
 import career4 from "../assests/imgs/career4.png";
-
+import ReactStars from "react-rating-stars-component";
 import { FaFacebookF, FaLinkedinIn, FaYoutube } from "react-icons/fa";
 import DateTimePicker from "react-datetime-picker/dist/DateTimePicker";
 
@@ -516,13 +517,13 @@ export default class CareerCoaching extends Component {
                 <div className="card-body">
                   <div className="d-flex flex-row mt-2">
                     <img
-                      className=" mt-0 d-md-flex d-none flex-column col-md-3 me-5 col-2 me-1 "
+                      className=" mt-0 d-md-flex d-none flex-column col-md-3 me-5 col-2 me-1 careerimg "
                       src={career1}
                     />
 
                     <div className="d-flex flex-column col-md-8">
                       <p className=" fs-3">CV writing service</p>
-                      <p className="card-text mt-2">
+                      <p className="card-text mt-2 cardtextt">
                         Our aim is to make you 100% satisfied with your CV;
                         that’s why we offer a first draft that you approve
                         before you receive the final version of your document.
@@ -542,7 +543,14 @@ export default class CareerCoaching extends Component {
                           <p id="gold">150 L.E</p>
                         </div>
                         <div className=" d-flex flex-row col-6 col-md-2 justify-content-end">
-                          <button className="applyBtn px-4 py-0 ">Book</button>
+                          <Link to="/CvWriting">
+                            <button
+                              className="applyBtn px-2 py-0 "
+                              // to="/CvWriting"
+                            >
+                              Book
+                            </button>
+                          </Link>
                         </div>
                       </div>
                     </div>
@@ -557,13 +565,13 @@ export default class CareerCoaching extends Component {
                 <div className="card-body">
                   <div className="d-flex flex-row mt-2">
                     <img
-                      className=" mt-0 d-md-flex d-none flex-column col-md-3 me-5 col-2 me-1 "
+                      className=" mt-0 d-md-flex d-none flex-column col-md-3 me-5 col-2 me-1 careerimg"
                       src={career2}
                     />
 
                     <div className="d-flex flex-column col-md-8">
                       <p className=" fs-3">Interview coaching</p>
-                      <p className="card-text mt-2">
+                      <p className="card-text mt-2 cardtextt">
                         Our career coaches will help you overcome your interview
                         fears and refine your answers, to enhance your chances
                         of getting the job. you will understand your strengths
@@ -584,7 +592,11 @@ export default class CareerCoaching extends Component {
                           <p id="gold">150 L.E</p>
                         </div>
                         <div className=" d-flex flex-row col-6 col-md-2 justify-content-end">
-                          <button className="applyBtn px-4 py-0 ">Book</button>
+                          <Link to="/InterviewCoaching">
+                            <button className="applyBtn px-2 py-0 ">
+                              Book
+                            </button>
+                          </Link>
                         </div>
                       </div>
                     </div>
@@ -599,13 +611,13 @@ export default class CareerCoaching extends Component {
                 <div className="card-body">
                   <div className="d-flex flex-row mt-2">
                     <img
-                      className=" mt-0 d-md-flex d-none flex-column col-md-3 me-5 col-2 me-1 "
+                      className=" mt-0 d-md-flex d-none flex-column col-md-3 me-5 col-2 me-1 careerimg"
                       src={career3}
                     />
 
                     <div className="d-flex flex-column col-md-8">
                       <p className=" fs-3">Make the right career move</p>
-                      <p className="card-text mt-2">
+                      <p className="card-text mt-2 cardtextt">
                         Do you want to fully prepare yourself for the right
                         career path? your dedicated career coach will help you
                         answer the question, “what is the best career for me?”
@@ -626,7 +638,12 @@ export default class CareerCoaching extends Component {
                           <p id="gold">150 L.E</p>
                         </div>
                         <div className=" d-flex flex-row col-6 col-md-2 justify-content-end">
-                          <button className="applyBtn px-4 py-0 ">Book</button>
+                          <Link to="/CareerMove">
+                            {" "}
+                            <button className="applyBtn px-2 py-0 ">
+                              Book
+                            </button>
+                          </Link>
                         </div>
                       </div>
                     </div>
@@ -649,7 +666,7 @@ export default class CareerCoaching extends Component {
                       <p className=" fs-3">
                         Career Coaching & Advising Services
                       </p>
-                      <p className="card-text mt-2">
+                      <p className="card-text mt-2 cardtextt">
                         Get a career package that includes CV & Profile Review
                         and Interview Coaching plus the career path coaching you
                         will enhance your CV & profile to better reflect your
@@ -672,7 +689,11 @@ export default class CareerCoaching extends Component {
                           <p id="gold">150 L.E</p>
                         </div>
                         <div className=" d-flex flex-row col-6 col-md-2 justify-content-end">
-                          <button className="applyBtn px-4 py-0 ">Book</button>
+                          <Link to="/Advising">
+                            <button className="applyBtn px-2 py-0 ">
+                              Book
+                            </button>
+                          </Link>
                         </div>
                       </div>
                     </div>
@@ -681,7 +702,7 @@ export default class CareerCoaching extends Component {
               </div>
             </div>
           </div>
-          <div className="d-flex flex-row mt-5">
+          <div className="d-flex flex-row mb-3 mt-3">
             <div className="d-flex flex-column col-md-12 col-12  text-wrap bg-none me-5 ">
               <div className="fs-3 " id="Title">
                 Your Colleagues Say{" "}
@@ -694,6 +715,178 @@ export default class CareerCoaching extends Component {
               </div>
             </div>
           </div>
+          <div className="d-flex flex-row">
+            <div className="d-flex flex-row col-md-12 col-12 justify-content-center text-center">
+              <>
+                {/* <div
+                  id="carouselExampleIndicators"
+                  className="carousel slide"
+                  data-bs-ride="carousel"
+                > */}
+                {/* <div class="carousel-indicators">
+                    <button
+                      type="button"
+                      data-bs-target="#carouselExampleIndicators"
+                      data-bs-slide-to="0"
+                      class="active"
+                      aria-current="true"
+                      aria-label="Slide 1"
+                    ></button>
+                    <button
+                      type="button"
+                      data-bs-target="#carouselExampleIndicators"
+                      data-bs-slide-to="1"
+                      aria-label="Slide 2"
+                    ></button>
+                  </div> */}
+                <div
+                  id="carouselExampleControls"
+                  className="carousel slide"
+                  data-bs-ride="carousel"
+                >
+                  <div className="carousel-inner mb-5">
+                    <div className="carousel-item active">
+                      <div className="flex-row d-flex justify-content-center">
+                        <div className="col-md-12">
+                          <div className="d-flex flex-row justify-content-center">
+                            <div className=" fs-6   col-md-12 mb-2 col-12">
+                              <p className="card-text ">
+                                Lorem ipsum dolor sit amet consectetur
+                                adipisicing elit. Ipsam repudiandae aut
+                                possimus. Repellendus at nostrum iste
+                                doloremque. Ea omnis ipsam, eum nam tempore
+                                culpa illum consequuntur quis nobis adipisci et?
+                                {/* {this.state.colleauge_comment} */}
+                              </p>
+                            </div>
+                          </div>
+
+                          <center>
+                            <hr className="commentgoldline d-flex flex-column justify-content-center col-md-3" />
+                          </center>
+                          <div className="d-flex flex-row  col-12 col-md-12 text-center fs-5  ">
+                            <div className="d-flex flex-column col-12 col-md-12">
+                              <center>
+                                {" "}
+                                <p className="boldtext"> Yasmin Sabry</p>
+                              </center>
+                              {/* {this.state.colleauge_name} */}
+                            </div>
+                          </div>
+                          <div className="d-flex flex-row  col-12 col-md-12 text-center fs-5  ">
+                            <div className="d-flex flex-column col-12 col-md-12">
+                              <center>
+                                <p> CV WRITING</p>
+                              </center>
+                              {/* {this.state.colleauge_service} */}
+                            </div>
+                          </div>
+                          <div className="d-flex flex-row  col-12 col-md-12 text-center justify-content-center fs-5 mb-2 ">
+                            {/* <div className="d-flex flex-column justify-content-center col-md-4 me-5"></div> */}
+                            <div className="d-flex flex-column justify-content-center col-md-12 align-items-center">
+                              <ReactStars
+                                count={5}
+                                value="1"
+                                // value={this.props.years_of_exp}
+                                edit={false}
+                                size={23}
+                                activeColor="#F2A23A"
+                              />
+                            </div>
+                            {/* <div className="d-flex flex-column justify-content-center col-md-3"></div> */}
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div className="carousel-item ">
+                      <div className="flex-row d-flex justify-content-center">
+                        <div className="col-md-12">
+                          <div className="d-flex flex-row justify-content-center">
+                            <div className=" fs-6   col-md-12 mb-2 col-12">
+                              <p className="card-text ">
+                                Lorem ipsum dolor sit amet consectetur
+                                adipisicing elit. Ipsam repudiandae aut
+                                possimus. Repellendus at nostrum iste
+                                doloremque. Ea omnis ipsam, eum nam tempore
+                                culpa illum consequuntur quis nobis adipisci et?
+                                {/* {this.state.colleauge_comment} */}
+                              </p>
+                            </div>
+                          </div>
+                          <center>
+                            <hr className="commentgoldline d-flex flex-column justify-content-center col-md-3" />
+                          </center>
+                          <div className="d-flex flex-row  col-12 col-md-12 text-center fs-5  ">
+                            <div className="d-flex flex-column col-12 col-md-12">
+                              <center>
+                                <p className="boldtext">
+                                  Basma Mostafa
+                                  {/* {this.state.colleauge_name} */}
+                                </p>
+                              </center>
+                            </div>
+                          </div>
+                          <div className="d-flex flex-row  col-12 col-md-12 text-center fs-5  ">
+                            <div className="d-flex flex-column col-12 col-md-12">
+                              <center>
+                                <p>
+                                  CV WRITING
+                                  {/* {this.state.colleauge_service} */}
+                                </p>
+                              </center>
+                            </div>
+                          </div>
+                          <div className="d-flex flex-row  col-12 col-md-12 text-center justify-content-center fs-5 mb-2 ">
+                            {/* <div className="d-flex flex-column justify-content-center col-md-4"></div> */}
+                            <div className="d-flex flex-column justify-self-center align-items-center col-md-12 ">
+                              <ReactStars
+                                count={5}
+                                value="3"
+                                // value={this.props.years_of_exp}
+                                edit={false}
+                                size={23}
+                                activeColor="#F2A23A"
+                              />
+                            </div>{" "}
+                            {/* <div className="d-flex flex-column justify-content-center col-md-3"></div> */}
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <button
+                      className="carousel-control-prev"
+                      type="button"
+                      data-bs-target="#carouselExampleControls"
+                      data-bs-slide="prev"
+                    >
+                      <span
+                        className="carousel-control-prev-icon"
+                        aria-hidden="true"
+                      ></span>
+                      <span className="visually-hidden">Previous</span>
+                    </button>
+                    <button
+                      className="carousel-control-next"
+                      type="button"
+                      data-bs-target="#carouselExampleControls"
+                      data-bs-slide="next"
+                    >
+                      <span
+                        className="carousel-control-next-icon"
+                        aria-hidden="true"
+                      ></span>
+                      <span className="visually-hidden">Next</span>
+                    </button>
+                  </div>
+                </div>
+              </>
+            </div>
+          </div>
+          {/* <center>
+            <div className="d-none d-md-flex flex-row col-md-12 careerbottom">
+              <img src={careerbottom} />
+            </div>
+          </center> */}
         </div>
         <Footer2 />
       </div>

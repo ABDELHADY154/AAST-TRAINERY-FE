@@ -18,6 +18,11 @@ import GeneralForm from "./Components/EditProfile/GeneralForm";
 import SkillsForm from "./Components/EditProfile/SkillsForm";
 import Interest from "./Components/EditProfile/InterestForm";
 import Language from "./Components/EditProfile/LanguageForm";
+import CvWriting from "./Components/CareerCoaching/CvWriting";
+import Advising from "./Components/CareerCoaching/Advising";
+import CareerMove from "./Components/CareerCoaching/CareerMove";
+import InterviewCoaching from "./Components/CareerCoaching/InterviewCoaching";
+
 import { AuthRoute } from "./Components/Auth/AuthRoute";
 
 // import Skills from "./EditProfile/Skills";
@@ -163,6 +168,14 @@ class App extends React.Component {
                   path="/CareerCoaching"
                   component={CareerCoaching}
                 />
+                <AuthRoute exact path="/CvWriting" component={CvWriting} />
+                <AuthRoute
+                  exact
+                  path="/InterviewCoaching"
+                  component={InterviewCoaching}
+                />
+                <AuthRoute exact path="/CareerMove" component={CareerMove} />
+                <AuthRoute exact path="/Advising" component={Advising} />
                 <AuthRoute
                   exact
                   path="/Profile/Accounts"

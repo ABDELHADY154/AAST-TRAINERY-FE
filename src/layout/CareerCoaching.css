@@ -112,4 +112,48 @@
 #quote {
   width: 20% !important;
   height: 100% !important;
+  background-color: transparent;
+}
+.commentgoldline {
+  color: #cd8930;
+  width: 15em;
+  /* margin-left: 40%; */
+  /* align-content: center;
+  justify-content: center;
+  align-self: center;
+  justify-self: center; */
+}
+.boldtext {
+  font-family: sf bold;
+}
+@media screen and (max-width: 1388px) {
+  .careerimg {
+    /* display: none !important; */
+    width: 20%;
+    height: 20%;
+  }
+  /* .careercourseimg {
+    width: 5% !important;
+    height: 5% !important;
+  } */
+  /* .cardtextt {
+    display: flex;
+    flex-direction: row !important;
+    width: 100%;
+  } */
+}
+/* .careerbottom {
+  width: 130%;
+} */
+.reviewbox {
+  border: none;
+  background-color: #f2f2f2;
+  height: 8em;
+  width: 100%;
+  box-shadow: none;
+}
+
+.reviewstars {
+  box-shadow: none;
+  border: none;
 }

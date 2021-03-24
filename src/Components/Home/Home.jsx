@@ -66,7 +66,7 @@ class Home extends Component {
       var Alert =
         this.state.alert == true ? (
           <div id="alerting" className="d-flex flex-row  flex-wrap py-2  mb-3 ">
-            <div className="container d-flex flex-row  flex-wrap ">
+            <div className="container d-flex flex-row  flex-wrap justify-space-between">
               <div
                 id="alertingtitle"
                 className="d-flex flex-column col-md-6 col-12 mt-1"
@@ -74,7 +74,7 @@ class Home extends Component {
                 Here to help, Update your profile information to get the best
                 matching opportunities.
               </div>
-              <div className="d-flex flex-column col-md-4 col-12  mt-1">
+              <div className="d-flex flex-column col-md-4 col-12 justify-content-end  mt-1">
                 <Link
                   className="texttt fs-3 col-12 col-md-12 "
                   renderAs="button"
