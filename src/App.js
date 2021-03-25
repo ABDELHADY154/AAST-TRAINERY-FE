@@ -168,14 +168,26 @@ class App extends React.Component {
                   path="/CareerCoaching"
                   component={CareerCoaching}
                 />
-                <AuthRoute exact path="/CvWriting" component={CvWriting} />
                 <AuthRoute
                   exact
-                  path="/InterviewCoaching"
+                  path="/CareerCoaching/CvWriting"
+                  component={CvWriting}
+                />
+                <AuthRoute
+                  exact
+                  path="/CareerCoaching/InterviewCoaching"
                   component={InterviewCoaching}
                 />
-                <AuthRoute exact path="/CareerMove" component={CareerMove} />
-                <AuthRoute exact path="/Advising" component={Advising} />
+                <AuthRoute
+                  exact
+                  path="/CareerCoaching/CareerMove"
+                  component={CareerMove}
+                />
+                <AuthRoute
+                  exact
+                  path="/CareerCoaching/Advising"
+                  component={Advising}
+                />
                 <AuthRoute
                   exact
                   path="/Profile/Accounts"

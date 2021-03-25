@@ -6,9 +6,12 @@ import img from "../assests/imgs/career1.jpg";
 import img1 from "../assests/imgs/coach1.jpg";
 import img2 from "../assests/imgs/coach2.jpg";
 import img3 from "../assests/imgs/coach3.jpg";
-import quote from "../assests/imgs/quote.png";
-import careerbottom from "../assests/imgs/careerbottom.jpg";
-
+import { ImQuotesLeft } from "react-icons/im";
+import ReactDOM from "react-dom";
+import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
+import { Carousel } from "react-responsive-carousel";
+// import careerbottom from "../assests/imgs/careerbottom.jpg";
+import CoachCaro from "../CareerCoaching/CoachCaro";
 import career1 from "../assests/imgs/career1.png";
 import career2 from "../assests/imgs/career2.png";
 import career3 from "../assests/imgs/career3.png";
@@ -60,453 +63,8 @@ export default class CareerCoaching extends Component {
             <div>Our Coaches</div>
           </div>
         </div>
-        <div className="container-fluid carom">
-          <div className="d-flex flex-row flex-wrap   mt-5">
-            <div
-              id="carousell"
-              className="carousel slide"
-              data-bs-ride="carousel"
-            >
-              <div className="carousel-inner ">
-                <div className=" d-flex flex-row flex-wrap align-content-center  container-fluid">
-                  <div className="carousel-item  d-flex flex-row text-wrap text-center ">
-                    <div className="containerrr">
-                      <img
-                        src={img1}
-                        //   {this.state.coach_img}
-                        id="imagehoverr"
-                        className="d-flex flex-column col-md-3 col-12 rounded "
-                        alt="..."
-                      />
-                      <div class="overlay" id="overlayy">
-                        <a
-                          id="linksss"
-                          href="#"
-                          class="texttt fs-4 col-12 col-md-12 "
-                        >
-                          Micheal Hanna
-                          {/* {this.state.coach_name} */}
-                          <br />
-                          <span class="texttt fs-6 col-12 col-md-12 mt-4">
-                            CEO at Nobels CO.
-                            {/* {this.state.job_title} at {this.state.company_name} */}
-                          </span>
-                        </a>
-
-                        <div className="mt-5 ">
-                          <li>
-                            <a href="#">
-                              <FaFacebookF
-                                color="#ffffff"
-                                fill="#ffffff"
-                                className="m-2"
-                              />
-                            </a>
-                            <a href="#">
-                              <FaLinkedinIn
-                                color="#ffffff"
-                                fill="#ffffff"
-                                className="m-2"
-                              />
-                            </a>
-                            <a href="#">
-                              <FaYoutube
-                                color="#ffffff"
-                                fill="#ffffff"
-                                className="m-2"
-                              />
-                            </a>
-                          </li>
-                        </div>
-                      </div>
-                    </div>
-                    {/* <div className="d-flex flex-column col-md-1 col-1"></div> */}
-                    <div className="containerrr">
-                      <img
-                        src={img2}
-                        //   {this.state.coach_img}
-                        id="imagehoverr"
-                        className="d-flex flex-column col-md-3 col-12 rounded "
-                        alt="..."
-                      />
-                      <div class="overlay" id="overlayy">
-                        <a
-                          id="linksss"
-                          href="#"
-                          class="texttt fs-4 col-12 col-md-12 "
-                        >
-                          Sarah Abdelwekil
-                          {/* {this.state.coach_name} */}
-                          <br />
-                          <span class="texttt fs-6 col-12 col-md-12 mt-4">
-                            HR Manager at Qowwa
-                            {/* {this.state.job_title} at {this.state.company_name} */}
-                          </span>
-                        </a>
-
-                        <div className="mt-5 ">
-                          <li>
-                            <a href="#">
-                              <FaFacebookF
-                                color="#ffffff"
-                                fill="#ffffff"
-                                className="m-2"
-                              />
-                            </a>
-                            <a href="#">
-                              <FaLinkedinIn
-                                color="#ffffff"
-                                fill="#ffffff"
-                                className="m-2"
-                              />
-                            </a>
-                            <a href="#">
-                              <FaYoutube
-                                color="#ffffff"
-                                fill="#ffffff"
-                                className="m-2"
-                              />
-                            </a>
-                          </li>
-                        </div>
-                      </div>
-                    </div>
-                    {/* <div className="d-flex flex-column col-md-1 col-1"></div> */}
-                    <div className="containerrr">
-                      <img
-                        src={img1}
-                        //   {this.state.coach_img}
-                        id="imagehoverr"
-                        className="d-flex flex-column col-md-3 col-12 rounded "
-                        alt="..."
-                      />
-                      <div class="overlay" id="overlayy">
-                        <a
-                          id="linksss"
-                          href="#"
-                          class="texttt fs-4 col-12 col-md-12 "
-                        >
-                          Abdellatif Okazi {/* {this.state.coach_name} */}
-                          <br />
-                          <span class="texttt fs-6 col-12 col-md-12 mt-4">
-                            TA at AAST{" "}
-                            {/* {this.state.job_title} at {this.state.company_name} */}
-                          </span>
-                        </a>
-
-                        <div className="mt-5 ">
-                          <li>
-                            <a href="#">
-                              <FaFacebookF
-                                color="#ffffff"
-                                fill="#ffffff"
-                                className="m-2"
-                              />
-                            </a>
-                            <a href="#">
-                              <FaLinkedinIn
-                                color="#ffffff"
-                                fill="#ffffff"
-                                className="m-2"
-                              />
-                            </a>
-                            <a href="#">
-                              <FaYoutube
-                                color="#ffffff"
-                                fill="#ffffff"
-                                className="m-2"
-                              />
-                            </a>
-                          </li>
-                        </div>
-                      </div>
-                    </div>
-                    <div className="containerrr">
-                      <img
-                        src={img2}
-                        //   {this.state.coach_img}
-                        id="imagehoverr"
-                        className="d-flex flex-column col-md-3 col-12 rounded "
-                        alt="..."
-                      />
-                      <div class="overlay" id="overlayy">
-                        <a
-                          id="linksss"
-                          href="#"
-                          class="texttt fs-4 col-12 col-md-12 "
-                        >
-                          Abdellatif Okazi {/* {this.state.coach_name} */}
-                          <br />
-                          <span class="texttt fs-6 col-12 col-md-12 mt-4">
-                            TA at AAST{" "}
-                            {/* {this.state.job_title} at {this.state.company_name} */}
-                          </span>
-                        </a>
-
-                        <div className="mt-5 ">
-                          <li>
-                            <a href="#">
-                              <FaFacebookF
-                                color="#ffffff"
-                                fill="#ffffff"
-                                className="m-2"
-                              />
-                            </a>
-                            <a href="#">
-                              <FaLinkedinIn
-                                color="#ffffff"
-                                fill="#ffffff"
-                                className="m-2"
-                              />
-                            </a>
-                            <a href="#">
-                              <FaYoutube
-                                color="#ffffff"
-                                fill="#ffffff"
-                                className="m-2"
-                              />
-                            </a>
-                          </li>
-                        </div>
-                      </div>
-                    </div>
-                    {/* <div className="d-flex flex-column col-md-1 col-1"></div> */}{" "}
-                  </div>
-
-                  <div className="carousel-item active d-flex flex-row text-wrap text-center ">
-                    <div className="containerrr">
-                      <img
-                        src={img1}
-                        //   {this.state.coach_img}
-                        id="imagehoverr"
-                        className="d-flex flex-column col-md-3 col-12 rounded "
-                        alt="..."
-                      />
-                      <div class="overlay" id="overlayy">
-                        <a
-                          id="linksss"
-                          href="#"
-                          class="texttt fs-4 col-12 col-md-12 "
-                        >
-                          Micheal Hanna
-                          {/* {this.state.coach_name} */}
-                          <br />
-                          <span class="texttt fs-6 col-12 col-md-12 mt-4">
-                            CEO at Nobels CO.
-                            {/* {this.state.job_title} at {this.state.company_name} */}
-                          </span>
-                        </a>
-
-                        <div className="mt-5 ">
-                          <li>
-                            <a href="#">
-                              <FaFacebookF
-                                color="#ffffff"
-                                fill="#ffffff"
-                                className="m-2"
-                              />
-                            </a>
-                            <a href="#">
-                              <FaLinkedinIn
-                                color="#ffffff"
-                                fill="#ffffff"
-                                className="m-2"
-                              />
-                            </a>
-                            <a href="#">
-                              <FaYoutube
-                                color="#ffffff"
-                                fill="#ffffff"
-                                className="m-2"
-                              />
-                            </a>
-                          </li>
-                        </div>
-                      </div>
-                    </div>
-                    {/* <div className="d-flex flex-column col-md-1 col-1"></div> */}
-                    <div className="containerrr">
-                      <img
-                        src={img2}
-                        //   {this.state.coach_img}
-                        id="imagehoverr"
-                        className="d-flex flex-column col-md-3 col-12 rounded "
-                        alt="..."
-                      />
-                      <div class="overlay" id="overlayy">
-                        <a
-                          id="linksss"
-                          href="#"
-                          class="texttt fs-4 col-12 col-md-12 "
-                        >
-                          Sarah Abdelwekil
-                          {/* {this.state.coach_name} */}
-                          <br />
-                          <span class="texttt fs-6 col-12 col-md-12 mt-4">
-                            HR Manager at Qowwa
-                            {/* {this.state.job_title} at {this.state.company_name} */}
-                          </span>
-                        </a>
-
-                        <div className="mt-5 ">
-                          <li>
-                            <a href="#">
-                              <FaFacebookF
-                                color="#ffffff"
-                                fill="#ffffff"
-                                className="m-2"
-                              />
-                            </a>
-                            <a href="#">
-                              <FaLinkedinIn
-                                color="#ffffff"
-                                fill="#ffffff"
-                                className="m-2"
-                              />
-                            </a>
-                            <a href="#">
-                              <FaYoutube
-                                color="#ffffff"
-                                fill="#ffffff"
-                                className="m-2"
-                              />
-                            </a>
-                          </li>
-                        </div>
-                      </div>
-                    </div>
-                    {/* <div className="d-flex flex-column col-md-1 col-1"></div> */}
-                    <div className="containerrr">
-                      <img
-                        src={img3}
-                        //   {this.state.coach_img}
-                        id="imagehoverr"
-                        className="d-flex flex-column col-md-3 col-12 rounded "
-                        alt="..."
-                      />
-                      <div class="overlay" id="overlayy">
-                        <a
-                          id="linksss"
-                          href="#"
-                          class="texttt fs-4 col-12 col-md-12 "
-                        >
-                          Abdellatif Okazi {/* {this.state.coach_name} */}
-                          <br />
-                          <span class="texttt fs-6 col-12 col-md-12 mt-4">
-                            TA at AAST{" "}
-                            {/* {this.state.job_title} at {this.state.company_name} */}
-                          </span>
-                        </a>
-
-                        <div className="mt-5 ">
-                          <li>
-                            <a href="#">
-                              <FaFacebookF
-                                color="#ffffff"
-                                fill="#ffffff"
-                                className="m-2"
-                              />
-                            </a>
-                            <a href="#">
-                              <FaLinkedinIn
-                                color="#ffffff"
-                                fill="#ffffff"
-                                className="m-2"
-                              />
-                            </a>
-                            <a href="#">
-                              <FaYoutube
-                                color="#ffffff"
-                                fill="#ffffff"
-                                className="m-2"
-                              />
-                            </a>
-                          </li>
-                        </div>
-                      </div>
-                    </div>
-                    <div className="containerrr">
-                      <img
-                        src={img3}
-                        //   {this.state.coach_img}
-                        id="imagehoverr"
-                        className="d-flex flex-column col-md-3 col-12 rounded "
-                        alt="..."
-                      />
-                      <div class="overlay" id="overlayy">
-                        <a
-                          id="linksss"
-                          href="#"
-                          class="texttt fs-4 col-12 col-md-12 "
-                        >
-                          Abdellatif Okazi {/* {this.state.coach_name} */}
-                          <br />
-                          <span class="texttt fs-6 col-12 col-md-12 mt-4">
-                            TA at AAST{" "}
-                            {/* {this.state.job_title} at {this.state.company_name} */}
-                          </span>
-                        </a>
-
-                        <div className="mt-5 ">
-                          <li>
-                            <a href="#">
-                              <FaFacebookF
-                                color="#ffffff"
-                                fill="#ffffff"
-                                className="m-2"
-                              />
-                            </a>
-                            <a href="#">
-                              <FaLinkedinIn
-                                color="#ffffff"
-                                fill="#ffffff"
-                                className="m-2"
-                              />
-                            </a>
-                            <a href="#">
-                              <FaYoutube
-                                color="#ffffff"
-                                fill="#ffffff"
-                                className="m-2"
-                              />
-                            </a>
-                          </li>
-                        </div>
-                      </div>
-                    </div>
-                    {/* <div className="d-flex flex-column col-md-1 col-1"></div> */}{" "}
-                  </div>
-                </div>
-                <button
-                  className="carousel-control-prev prevbtn"
-                  type="button"
-                  data-bs-target="#carouselExampleControls"
-                  data-bs-slide="prev"
-                >
-                  <span
-                    className="carousel-control-prev-icon  backbtncaro"
-                    aria-hidden="true"
-                    color={"#1e4274"}
-                    fill={"#1e4274"}
-                  ></span>
-                  <span className="visually-hidden ">Previous</span>
-                </button>
-                <button
-                  className="carousel-control-next nxtbtn"
-                  type="button"
-                  data-bs-target="#carouselExampleControls"
-                  data-bs-slide="next"
-                >
-                  <span
-                    className="carousel-control-next-icon backbtncaro"
-                    aria-hidden="true"
-                  ></span>
-                  <span className="visually-hidden">Next</span>
-                </button>
-              </div>
-            </div>
-          </div>
-          {/* </div> */}
+        <div className="container carom">
+          <CoachCaro />
         </div>
 
         <div className="container mt-5">
@@ -543,7 +101,7 @@ export default class CareerCoaching extends Component {
                           <p id="gold">150 L.E</p>
                         </div>
                         <div className=" d-flex flex-row col-6 col-md-2 justify-content-end">
-                          <Link to="/CvWriting">
+                          <Link to="/CareerCoaching/CvWriting">
                             <button
                               className="applyBtn px-2 py-0 "
                               // to="/CvWriting"
@@ -592,7 +150,7 @@ export default class CareerCoaching extends Component {
                           <p id="gold">150 L.E</p>
                         </div>
                         <div className=" d-flex flex-row col-6 col-md-2 justify-content-end">
-                          <Link to="/InterviewCoaching">
+                          <Link to="/CareerCoaching/InterviewCoaching">
                             <button className="applyBtn px-2 py-0 ">
                               Book
                             </button>
@@ -638,7 +196,7 @@ export default class CareerCoaching extends Component {
                           <p id="gold">150 L.E</p>
                         </div>
                         <div className=" d-flex flex-row col-6 col-md-2 justify-content-end">
-                          <Link to="/CareerMove">
+                          <Link to="/CareerCoaching/CareerMove">
                             {" "}
                             <button className="applyBtn px-2 py-0 ">
                               Book
@@ -689,7 +247,7 @@ export default class CareerCoaching extends Component {
                           <p id="gold">150 L.E</p>
                         </div>
                         <div className=" d-flex flex-row col-6 col-md-2 justify-content-end">
-                          <Link to="/Advising">
+                          <Link to="/CareerCoaching/Advising">
                             <button className="applyBtn px-2 py-0 ">
                               Book
                             </button>
@@ -707,11 +265,8 @@ export default class CareerCoaching extends Component {
               <div className="fs-3 " id="Title">
                 Your Colleagues Say{" "}
               </div>
-              <div
-                id="quote"
-                className="d-flex flex-column col-md-6 d-none d-md-flex "
-              >
-                <img className="h-50 w-50" src={quote} />
+              <div className="d-flex flex-column col-md-6 d-flex d-md-flex ">
+                <ImQuotesLeft fill="#cd8930" color="#cd8930" className="fs-1" />
               </div>
             </div>
           </div>
