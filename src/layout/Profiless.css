@@ -46,9 +46,9 @@
   font-size: 1em;
   color: #1e4274;
 }
-.FiPhone svg {
+/* .FiPhone svg {
   color: #cd8930 !important;
-}
+} */
 @media (max-width: 1410px) {
   .companyInfoTxt {
     display: flex;
@@ -198,4 +198,9 @@ ul .reuirLi {
     background-size: cover;
     background-repeat: no-repeat;
   }
+}
+#iconss {
+  color: #cd8930 !important;
+  fill: #cd8930 !important;
+  text-decoration: none !important;
 }

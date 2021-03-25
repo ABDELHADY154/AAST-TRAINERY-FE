@@ -58,8 +58,8 @@ export default class advisorProfile extends Component {
                 <p className="col-lg-3 col-3 col-md-6 col-sm-12 col-xs-12 companyInfoTxt">
                   <AiOutlineMail
                     className="me-2 "
-                    color="#CD8930"
-                    size="22"
+                    id="iconss"
+                    size="21"
                     style={{ color: "#cd8930 " }}
                   />
                   georgia.young@example.com
@@ -156,17 +156,6 @@ export default class advisorProfile extends Component {
                               fill="#cd8930"
                             />
                             <p id="gold">Promoted</p>
-                          </div>
-                          <div className="  d-flex flex-row col-12 col-md-4 justify-content-end btnmovement">
-                            <BsBookmark
-                              id="BsBookmark"
-                              color="#1e4274"
-                              className="fs-2 align-self-center col-md-2 col-4"
-                              path="0px"
-                            />
-                            <button className="applyBtn px-1 py-0 col-md-3 col-8">
-                              Apply
-                            </button>
                           </div>
                         </div>
                       </div>

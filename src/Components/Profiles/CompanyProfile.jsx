@@ -3,15 +3,14 @@ import { Redirect } from "react-router-dom";
 import { axios } from "../../Api/axios";
 import { Link } from "react-router-dom";
 import "../../layout/Profiless.css";
+import img1 from "../../Components/assests/imgs/rec2.png";
 import img2 from "../../Components/assests/imgs/cib.png";
 import "../../layout/Home.css";
 import Footer2 from "../Common/Footer2";
 import { FiPhone, FiSearch, FiUsers } from "react-icons/fi";
 import { IoLocationOutline } from "react-icons/io5";
-import { AiOutlineGlobal, AiOutlineMail } from "react-icons/ai";
-import { BsArrowUpRight } from "react-icons/bs";
-import { BsBookmark } from "react-icons/bs";
-
+import { AiOutlineGlobal, AiOutlineMail, AiOutlinePhone } from "react-icons/ai";
+import { GoLocation } from "react-icons/go";
 export default class CompanyProfile extends Component {
   constructor(props) {
     super(props);
@@ -27,18 +26,21 @@ export default class CompanyProfile extends Component {
   };
   render() {
     return (
-      <div>
+      <div className="profileMT">
         <div className="container ">
           <div className="row ">
             <img
-              src={img2}
+              src={img1}
               className="  ms-3 me-2 col-2 rounded-circle companyImg"
             />
-            <div className="col-6  mt-3 ">
-              <h4 className="companyName ">Qowwa Inc.</h4>
-              <p className="">Computer Software</p>
+            <div className="col-8 mt-3 ">
+              <div className=" w-10">
+                {/* <div className=" col-md-12 col-12  col-xs-6  mt-3 "> */}
+                <h4 className="companyName ">Qowwa Inc.</h4>
+                <p className="">Computer Software</p>
+              </div>
             </div>
-            <div className="mt-4">
+            <div className="mt-2">
               <h5 className="companyTitel">Company Profile</h5>
               <p className="companyDesc">
                 Qowwa's main focus is to empower local businesses that move the
@@ -52,18 +54,18 @@ export default class CompanyProfile extends Component {
               <h5 className="companyTitel">Company Info</h5>
               <div className="row mt-3">
                 <p className="col-lg-2 col-2 col-md-4 col-sm-12 col-xs-12 companyInfoTxt">
-                  <FiPhone
+                  <AiOutlinePhone
+                    id="iconss"
                     className="me-2 "
-                    color="#CD8930"
-                    size="16"
+                    size="20"
                     style={{ color: "#cd8930 " }}
                   />
                   (316) 555-0116
                 </p>
                 <p className="col-lg-3 col-3 col-md-6 col-sm-12 col-xs-12 companyInfoTxt">
-                  <IoLocationOutline
+                  <GoLocation
+                    id="iconss"
                     className="me-2 "
-                    color="#CD8930"
                     size="20"
                     style={{ color: "#cd8930 " }}
                   />
@@ -71,8 +73,8 @@ export default class CompanyProfile extends Component {
                 </p>
                 <p className="col-lg-3 col-3 col-md-6 col-sm-12 col-xs-12 companyInfoTxt">
                   <AiOutlineGlobal
+                    id="iconss"
                     className="me-2 "
-                    color="#CD8930"
                     size="20"
                     style={{ color: "#cd8930 ", size: 10 }}
                   />
@@ -80,42 +82,15 @@ export default class CompanyProfile extends Component {
                 </p>
                 <p className="col-lg-4 col-4 col-md-10 col-sm-12 col-xs-12 companyInfoTxt text-break text-wrap">
                   <AiOutlineMail
+                    id="iconss"
                     className="me-2 "
                     color="#CD8930"
-                    size="22"
+                    size="21"
                     style={{ color: "#cd8930 ", size: 10 }}
                   />
                   georgia.young@example.com
                 </p>
               </div>
-              {/* <div className="row mt-2">
-                <p
-                  className="col-lg-2 col-2 col-md-4 col-sm-12 col-xs-12 companyInfoTxt"
-                  style={{ color: "#1E4274" }}
-                >
-                  <FiSearch
-                    className="me-2 "
-                    color="#CD8930"
-                    size="18"
-                    style={{ color: "#cd8930 " }}
-                  />
-                  Year Founded: 2016
-                </p>
-                <p
-                  className="col-lg-3 col-3 col-md-6 col-sm-12 col-xs-12 companyInfoTxt"
-                  style={{ color: "#1E4274" }}
-                >
-                  <FiUsers
-                    className="me-2 "
-                    color="#CD8930"
-                    size="20"
-                    style={{ color: "#cd8930 " }}
-                  />
-                  1-10 employees
-                </p>
-                <p className="col-lg-3 col-3 col-md-6 col-sm-12 col-xs-12 companyInfoTxt"></p>
-                <p className="col-lg-4 col-4 col-md-10 col-sm-12 col-xs-12 companyInfoTxt text-break text-wrap"></p>
-              </div> */}
               <div className="">
                 <h4 className="companyTitel" style={{ marginLeft: -2 }}>
                   Opened Internship
@@ -170,7 +145,7 @@ export default class CompanyProfile extends Component {
                             </a>
                           </div>
                           <div
-                            className="d-flex flex-column col-4  col-md-1 me-4 "
+                            className="d-flex flex-column col-4 col-md-1 me-4 "
                             id="firsttagipad"
                           >
                             <a href="#" className="tagsipad  " id="tags">
@@ -183,25 +158,6 @@ export default class CompanyProfile extends Component {
                              justify-space-between"
                           >
                             <p>Deadline {"        "}11 Dec 2021</p>
-                          </div>
-                          <div className="  d-flex flex-row col-12 col-md-2 justify-content-start me-1">
-                            <BsArrowUpRight
-                              className="me-2"
-                              color="#cd8930"
-                              fill="#cd8930"
-                            />
-                            <p id="gold">Promoted</p>
-                          </div>
-                          <div className="  d-flex flex-row col-12 col-md-4 justify-content-end btnmovement">
-                            <BsBookmark
-                              id="BsBookmark"
-                              color="#1e4274"
-                              className="fs-2 align-self-center col-md-2 col-4"
-                              path="0px"
-                            />
-                            <button className="applyBtn px-1 py-0 col-md-3 col-8">
-                              Apply
-                            </button>
                           </div>
                         </div>
                       </div>

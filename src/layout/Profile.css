@@ -366,3 +366,9 @@ body {
   fill: #cd8930 !important;
   text-decoration: none !important;
 }
+#iconssPhone {
+  /* color: #cd8930 !important; */
+  border-color: #cd8930 !important;
+  /* border: #cd8930 1px solid !important; */
+  text-decoration: none !important;
+}
