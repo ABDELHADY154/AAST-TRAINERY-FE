@@ -205,3 +205,15 @@ ul .reuirLi {
     left: -2em !important;
   }
 }
+.reviewbox {
+  border: none;
+  background-color: #f2f2f2;
+  height: 8em;
+  width: 100%;
+  box-shadow: none;
+}
+
+.reviewstars {
+  box-shadow: none;
+  border: none;
+}
