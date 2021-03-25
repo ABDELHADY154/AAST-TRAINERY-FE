@@ -133,17 +133,20 @@ class Language extends Component {
 
   render() {
     if (this.state.loggedIn === true) {
-      return <Redirect to='/Profile' />;
+      return <Redirect to="/Profile" />;
     }
     // console.log(this.state.level);
     return (
       <div>
-        <div className='container wrapper'>
+        <div className="container wrapper">
           <div>
-            <form className='row g-3 mb-3 mt-1' onSubmit={this.handleSubmitLanguage}>
+            <form
+              className="row g-3 mb-3 mt-1"
+              onSubmit={this.handleSubmitLanguage}
+            >
               <LoadingOverlay
                 active={this.state.FormLoading}
-                spinner={<BounceLoader color='#cd8930' />}
+                spinner={<BounceLoader color="#cd8930" />}
                 styles={{
                   overlay: (base) => ({
                     ...base,
@@ -153,31 +156,36 @@ class Language extends Component {
               >
                 <EditNav setactive={"Language"} />
 
-                <div className='col-lg-10 col-11 col-md-10 col-sm-12 col-xs-12 mt-3 mt-sm-0'>
-                  <label for='inputSkill' className='form-label editLabel '>
+                <div className="col-lg-10 col-11 col-md-10 col-sm-12 col-xs-12 mt-3 mt-sm-0">
+                  <label for="inputSkill" className="form-label editLabel ">
                     Language
                   </label>
                   <input
-                    type='text'
+                    type="text"
                     className={
                       this.state.error && this.state.error.languageErr
                         ? "form-control editInput wrong"
                         : "form-control editInput "
                     }
-                    id='language'
-                    placeholder='Please enter your languages '
-                    onChange={(e) => this.setState({ language: e.target.value })}
+                    id="language"
+                    placeholder="Please enter your languages "
+                    onChange={(e) =>
+                      this.setState({ language: e.target.value })
+                    }
                     value={this.state.language}
                   />
                   {this.state.error && this.state.error.LanguageLevelErr ? (
-                    <p className='editerror text-capitalize'>
+                    <p className="editerror text-capitalize">
                       {this.state.error.LanguageLevelErr}
                     </p>
                   ) : (
                     ""
                   )}
-                  <div className='col-lg-10 col-11 col-md-10 col-sm-12 col-xs-12'>
-                    <label for='inputRegNum' className='form-label editLabel mt-4'>
+                  <div className="col-lg-10 col-11 col-md-10 col-sm-12 col-xs-12">
+                    <label
+                      for="inputRegNum"
+                      className="form-label editLabel mt-4"
+                    >
                       Level
                     </label>
                     {this.props.match.params.id ? (
@@ -186,7 +194,8 @@ class Language extends Component {
                           count={5}
                           value={this.state.level}
                           className={
-                            this.state.error && this.state.error.LanguageLevelErr
+                            this.state.error &&
+                            this.state.error.LanguageLevelErr
                               ? "wrong"
                               : " "
                           }
@@ -195,7 +204,7 @@ class Language extends Component {
                             // console.log(`${level}`);
                           }}
                           size={28}
-                          activeColor='#F2A23A'
+                          activeColor="#F2A23A"
                           edit={true}
                         />
                       ) : (
@@ -215,12 +224,12 @@ class Language extends Component {
                           // console.log(`${level}`);
                         }}
                         size={28}
-                        activeColor='#F2A23A'
+                        activeColor="#F2A23A"
                         edit={true}
                       />
                     )}
                     {this.state.error && this.state.error.LanguageLevelErr ? (
-                      <p className='editerror text-capitalize'>
+                      <p className="editerror text-capitalize">
                         {this.state.error.LanguageLevelErr}
                       </p>
                     ) : (
@@ -229,28 +238,28 @@ class Language extends Component {
                   </div>
                 </div>
                 {this.props.match.params.id ? (
-                  <div class='col-lg-10 col-11 col-md-10 col-sm-12 col-xs-12 d-flex justify-content-end'>
+                  <div class="col-lg-10 col-11 col-md-10 col-sm-12 col-xs-12 d-flex justify-content-end">
                     <button
                       onClick={() => this.handleDeleteLanguage()}
-                      type='submit'
-                      class='btn deleteBtn me-2 shadow-none '
+                      type="submit"
+                      class="btn deleteBtn me-2 shadow-none "
                     >
                       Delete
                     </button>
-                    <button type='submit' class='btn updateBtn shadow-none'>
+                    <button type="submit" class="btn updateBtn shadow-none">
                       Update
                     </button>
                   </div>
                 ) : (
-                  <div className='col-lg-10 col-11 col-md-10 col-sm-12 col-xs-12 d-flex justify-content-end '>
+                  <div className="col-lg-10 col-11 col-md-10 col-sm-12 col-xs-12 d-flex justify-content-end ">
                     <a
-                      type='button'
-                      className='btn me-2 cancelBtn shadow-none '
-                      href='/Profile'
+                      type="button"
+                      className="btn me-2 cancelBtn shadow-none "
+                      href="/Profile"
                     >
                       Cancel
                     </a>
-                    <button type='submit' className='btn doneBtn shadow-none'>
+                    <button type="submit" className="btn doneBtn shadow-none">
                       Add
                     </button>
                   </div>
@@ -259,9 +268,9 @@ class Language extends Component {
             </form>
           </div>
         </div>
-        <div className='fixed-bottom'>
+        <div className="interestFooter">
           <Footer2 />
-        </div>{" "}
+        </div>
       </div>
     );
   }

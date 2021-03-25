@@ -118,16 +118,19 @@ class Interest extends Component {
   render() {
     // console.log(this.state.tags);
     if (this.state.loggedIn === true) {
-      return <Redirect to='/Profile' />;
+      return <Redirect to="/Profile" />;
     }
     return (
       <div>
-        <div className='container wrapper'>
+        <div className="container wrapper">
           <div>
-            <form className='row g-3 mb-3 mt-1' onSubmit={this.handleSubmiInterest}>
+            <form
+              className="row g-3 mb-3 mt-1"
+              onSubmit={this.handleSubmiInterest}
+            >
               <LoadingOverlay
                 active={this.state.FormLoading}
-                spinner={<BounceLoader color='#cd8930' />}
+                spinner={<BounceLoader color="#cd8930" />}
                 styles={{
                   overlay: (base) => ({
                     ...base,
@@ -136,18 +139,18 @@ class Interest extends Component {
                 }}
               >
                 <EditNav setactive={"Interest"} />
-                <div className='col-lg-10 col-11 col-md-10 col-sm-12 col-xs-12 mt-3 mt-sm-0'>
-                  <label for='inputRegNum' className='form-label editLabel'>
+                <div className="col-lg-10 col-11 col-md-10 col-sm-12 col-xs-12 mt-3 mt-sm-0">
+                  <label for="inputRegNum" className="form-label editLabel">
                     Interests
                   </label>
                   <ReactTag
-                    className='editLabel'
+                    className="editLabel"
                     tags={(e) => this.setState({ tags: e })}
                     value={this.state.tags}
                   />
                   {/* <p>{this.state.interests}</p> */}
                   {this.state.error && this.state.error.interestsErr ? (
-                    <p className='editerror text-capitalize'>
+                    <p className="editerror text-capitalize">
                       {this.state.error.interestsErr}
                     </p>
                   ) : (
@@ -155,28 +158,28 @@ class Interest extends Component {
                   )}
                 </div>
                 {this.props.match.params.id ? (
-                  <div class='col-lg-10 col-11 col-md-10 col-sm-12 col-xs-12 d-flex justify-content-end mt-5 '>
+                  <div class="col-lg-10 col-11 col-md-10 col-sm-12 col-xs-12 d-flex justify-content-end mt-5 ">
                     <a
-                      type='button'
-                      className='btn me-2 cancelBtn shadow-none '
-                      href='/Profile'
+                      type="button"
+                      className="btn me-2 cancelBtn shadow-none "
+                      href="/Profile"
                     >
                       Cancel
                     </a>
-                    <button type='submit' class='btn updateBtn shadow-none'>
+                    <button type="submit" class="btn updateBtn shadow-none">
                       Update
                     </button>
                   </div>
                 ) : (
-                  <div className='col-lg-10 col-11 col-md-10 col-sm-12 col-xs-12 d-flex justify-content-end mt-5 '>
+                  <div className="col-lg-10 col-11 col-md-10 col-sm-12 col-xs-12 d-flex justify-content-end mt-5 ">
                     <a
-                      type='button'
-                      className='btn me-2 cancelBtn shadow-none '
-                      href='/Profile'
+                      type="button"
+                      className="btn me-2 cancelBtn shadow-none "
+                      href="/Profile"
                     >
                       Cancel
                     </a>
-                    <button type='submit' className='btn doneBtn shadow-none'>
+                    <button type="submit" className="btn doneBtn shadow-none">
                       Add
                     </button>
                   </div>
@@ -185,9 +188,9 @@ class Interest extends Component {
             </form>
           </div>
         </div>
-        <div className='fixed-bottom'>
+        <div className="interestFooter">
           <Footer2 />
-        </div>{" "}
+        </div>
       </div>
     );
   }

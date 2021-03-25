@@ -262,10 +262,87 @@ ReactStars:active {
   padding: 0.4em 2.5em;
   border-radius: 6px;
 }
-
-@media (min-width: 750px) and (max-width: 1200px) {
-  .accLable {
-    margin-right: 8%;
+/* interest footer */
+.interestFooter {
+  height: 100px;
+  width: 100%;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+}
+.wrapper {
+  padding-bottom: 10.5em;
+  min-height: 100%;
+  position: relative;
+}
+/* @media (min-width: 1199px) and (max-width: 1400px) {
+  .wrapper {
+    padding-bottom: 40em;
+    min-height: 100%;
+    position: relative;
+  }
+  .interestFooter {
+    height: 100px;
+    width: 100%;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+  }
+} */
+@media (min-width: 992px) and (max-width: 1200px) {
+  .wrapper {
+    padding-bottom: 30em;
+    min-height: 100%;
+    position: relative;
+  }
+  .interestFooter {
+    height: 100px;
+    width: 100%;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+  }
+}
+@media (min-width: 768px) and (max-width: 991px) {
+  .wrapper {
+    padding-bottom: 22.5em;
+    min-height: 100%;
+    position: relative;
+  }
+  .interestFooter {
+    height: 100px;
+    width: 100%;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+  }
+}
+@media (min-width: 576px) and (max-width: 767px) {
+  .wrapper {
+    padding-bottom: 122px;
+    min-height: 100%;
+    position: relative;
+  }
+  .interestFooter {
+    height: 100px;
+    width: 100%;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+  }
+}
+@media (min-width: 576px) and (max-width: 575px) {
+  .wrapper {
+    padding-bottom: 122px;
+    min-height: 100%;
+    position: relative;
+  }
+  .interestFooter {
+    height: 100px;
+    width: 100%;
+    position: absolute;
+    left: 0;
+    bottom: 0;
   }
 }
 .accountInput {
