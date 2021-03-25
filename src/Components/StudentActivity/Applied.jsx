@@ -14,7 +14,7 @@ class Applied extends Component {
         <Link to="/Profile/Activity/Applied" />
         <div className="container">
           <ActivityNavbar setactive={"Applied"} />
-          <div className="card">
+          <div className="card mt-5">
             <div className="card-body">
               <div className="d-flex flex-row">
                 <img

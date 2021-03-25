@@ -392,3 +392,7 @@ ReactStars:active {
 .closeLabel {
   margin-right: -60px !important;
 }
+.savedInternshipIcon {
+  color: blue !important;
+  fill: #1e4274 !important;
+}

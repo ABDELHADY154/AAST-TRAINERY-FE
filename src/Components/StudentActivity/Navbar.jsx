@@ -20,7 +20,7 @@ class ActivityNavbar extends Component {
                     : "nav-link tabBtn"
                 }
                 //   id="General-tab"
-                href="/Activity/Applied"
+                href="/Profile/Activity/Applied"
               >
                 Applied
               </a>
@@ -33,7 +33,7 @@ class ActivityNavbar extends Component {
                     : "nav-link tabBtn"
                 }
                 //   id="Education-tab"
-                href="/Activity/Accepted"
+                href="/Profile/Activity/Accepted"
               >
                 Accepted
               </a>
@@ -46,7 +46,7 @@ class ActivityNavbar extends Component {
                     : "nav-link tabBtn"
                 }
                 //   id="Experiance-tab"
-                href="/Activity/Saved"
+                href="/Profile/Activity/Saved"
               >
                 Saved
               </a>
