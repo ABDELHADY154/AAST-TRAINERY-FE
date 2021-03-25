@@ -139,25 +139,29 @@ ul .reuirLi {
 }
 .textCarousel {
   color: #1e4274 !important;
-  font-family: SF light;
-  font-size: 1.1em;
+  font-family: SF reg;
+  font-size: 1em;
 }
 .hrReviews {
   background-color: #cd8930;
-  border: 1px solid #cd8930;
-  width: 5em;
+  border: 0.7px solid #cd8930;
+  width: 6em;
+  /* margin-top: 0.5em; */
 }
 .txtName {
   color: #1e4274 !important;
   font-family: SF reg;
-  font-size: 1em;
+  font-size: 0.9em;
   padding-top: 0.5em;
   margin-bottom: -0.01em;
 }
 .txtRole {
   color: #1e4274 !important;
   font-family: SF light;
-  font-size: 1em;
+  font-size: 0.8em;
+}
+#carouselExampleIndicators {
+  position: unset;
 }
 .carousel-indicators button {
   background-color: #1e4274 !important;
@@ -171,36 +175,33 @@ ul .reuirLi {
   height: 10px !important;
   border-radius: 100% !important;
 }
-@media (max-width: 600px) {
-  .carousel-indicators button {
-    width: 15px !important;
-    height: 15px !important;
-  }
+.reviewsBtnIndicators {
+  margin-bottom: -1em;
+  /* margin-top: -5em; */
 }
-@media (max-width: 600px) {
-  .carousel-indicators button.active {
-    width: 15px !important;
-    height: 15px !important;
-  }
+.starsReview {
+  margin-top: -1em;
 }
-.bg {
-  background-color: #fff;
-  height: 20em;
-  width: 100%;
-  background-size: cover;
-  background-repeat: no-repeat;
+#carouselExampleControls {
+  padding-bottom: 5em;
 }
-@media (max-width: 330px) {
-  .bg {
-    background-color: #fff;
-    height: 28em;
-    width: 100%;
-    background-size: cover;
-    background-repeat: no-repeat;
-  }
+.prevBtnReviews {
+  margin-left: -3em !important;
+}
+.nextBtnReviews {
+  margin-left: 6em !important;
+  padding-left: 4em !important;
 }
 #iconss {
   color: #cd8930 !important;
   fill: #cd8930 !important;
   text-decoration: none !important;
+}
+@media screen and (max-width: 500px) {
+  .nextBtnReviews {
+    right: -2em !important;
+  }
+  .prevBtnReviews {
+    left: -2em !important;
+  }
 }

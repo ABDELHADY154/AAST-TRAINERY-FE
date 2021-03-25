@@ -10,10 +10,11 @@ import Footer2 from "../Common/Footer2";
 import { FiPhone, FiSearch, FiUsers } from "react-icons/fi";
 import { IoLocationOutline } from "react-icons/io5";
 import { AiOutlineGlobal, AiOutlineMail } from "react-icons/ai";
-import { BsArrowUpRight } from "react-icons/bs";
+import { BsChevronRight, BsChevronLeft } from "react-icons/bs";
 import { BsBookmark } from "react-icons/bs";
 import { GoPrimitiveDot } from "react-icons/go";
 import { CarouselReviews } from "./CarouselReviews";
+import ReactStars from "react-rating-stars-component";
 
 export default class advisorProfile extends Component {
   constructor(props) {
@@ -159,10 +160,168 @@ export default class advisorProfile extends Component {
                 </button>
               </div>
             </div>
+            {/* carousel */}
             <div className="col-12">
               <p className="companyTitel ">Company internship reviews</p>
+              {/* <CarouselReviews /> */}
+              <>
+                <div
+                  id="carouselExampleControls"
+                  className="carousel slide "
+                  data-bs-ride="carousel"
+                >
+                  <div className="carousel-inner mb-5">
+                    <div className="carousel-item active">
+                      <div className="flex-row d-flex justify-content-center">
+                        <div className="col-md-12">
+                          <div className="d-flex flex-row justify-content-center">
+                            <div className=" carouselCaption text-center col-md-11 mb-2 col-11">
+                              <p className="textCarousel lh-sm">
+                                Lorem ipsum dolor sit amet consectetur
+                                adipisicing elit. Ipsam repudiandae aut
+                                possimus. Repellendus at nostrum iste
+                                doloremque. Ea omnis ipsam, eum nam tempore
+                                culpa illum consequuntur quis nobis adipisci et?
+                                Lorem ipsum dolor sit amet consectetur
+                                adipisicing elit. Ipsam repudiandae aut
+                                possimus. Repellendus at nostrum iste
+                                doloremque. Ea omnis ipsam, eum nam tempore
+                                culpa illum consequuntur quis nobis adipisci et?
+                              </p>
+                            </div>
+                          </div>
 
-              <CarouselReviews />
+                          <center>
+                            <div className="hrReviews position-absolute top-40 start-50 translate-middle "></div>
+                          </center>
+                          <div className="d-flex flex-row col-12 col-md-12 text-center fs-5  ">
+                            <div className="d-flex flex-column col-12 col-md-12">
+                              <center>
+                                <p className="txtName">full name</p>
+                              </center>
+                            </div>
+                          </div>
+                          <div className="d-flex flex-row  col-12 col-md-12 text-center fs-5  ">
+                            <div className="d-flex flex-column col-12 col-md-12">
+                              <center>
+                                <p className="txtRole">Trainig role</p>
+                              </center>
+                            </div>
+                          </div>
+                          <div className="d-flex flex-row  col-12 col-md-12 text-center justify-content-center  mb-2 starsReview">
+                            <div className="d-flex flex-column justify-content-center col-md-12 align-items-center">
+                              <ReactStars
+                                count={5}
+                                value="4"
+                                edit={false}
+                                size={23}
+                                activeColor="#F2A23A"
+                              />
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div className="carousel-item ">
+                      <div className="flex-row d-flex justify-content-center">
+                        <div className="col-md-12">
+                          <div className="d-flex flex-row justify-content-center">
+                            <div className=" carouselCaption text-center col-md-11 mb-2 col-11">
+                              <p className="textCarousel lh-sm ">
+                                Lorem ipsum dolor sit amet consectetur
+                                adipisicing elit. Ipsam repudiandae aut
+                                possimus. Repellendus at nostrum iste
+                                doloremque. Ea omnis ipsam, eum nam tempore
+                                culpa illum consequuntur quis nobis adipisci et?
+                              </p>
+                            </div>
+                          </div>
+
+                          <center>
+                            <div className="hrReviews position-absolute top-40 start-50 translate-middle "></div>
+                          </center>
+                          <div className="d-flex flex-row col-12 col-md-12 text-center fs-5  ">
+                            <div className="d-flex flex-column col-12 col-md-12">
+                              <center>
+                                <p className="txtName">full name</p>
+                              </center>
+                            </div>
+                          </div>
+                          <div className="d-flex flex-row  col-12 col-md-12 text-center fs-5  ">
+                            <div className="d-flex flex-column col-12 col-md-12">
+                              <center>
+                                <p className="txtRole">Trainig role</p>
+                              </center>
+                            </div>
+                          </div>
+                          <div className="d-flex flex-row  col-12 col-md-12 text-center justify-content-center mb-2 ">
+                            <div className="d-flex flex-column justify-content-center col-md-12 align-items-center">
+                              <ReactStars
+                                count={5}
+                                value="1"
+                                edit={false}
+                                size={23}
+                                activeColor="#F2A23A"
+                              />
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    {/* <div
+                      id="carouselExampleIndicators"
+                      className="carousel slide"
+                      data-bs-ride="carousel"
+                    >
+                      <div class="carousel-indicators reviewsBtnIndicators">
+                        <button
+                          type="button"
+                          data-bs-target="#carouselExampleIndicators"
+                          data-bs-slide-to="0"
+                          class="active"
+                          aria-current="true"
+                          aria-label="Slide 1"
+                        ></button>
+                        <button
+                          type="button"
+                          data-bs-target="#carouselExampleIndicators"
+                          data-bs-slide-to="1"
+                          aria-label="Slide 2"
+                        ></button>
+                      </div>
+                    </div> */}
+
+                    <button
+                      className="carousel-control-prev prevBtnReviews"
+                      type="button"
+                      data-bs-target="#carouselExampleControls"
+                      data-bs-slide="prev"
+                    >
+                      <span
+                        className="carousel-control-prev-icon"
+                        aria-hidden="true"
+                      ></span>
+                      <span className="visually-shown">
+                        <BsChevronLeft id="iconss" size="20" />
+                      </span>
+                    </button>
+                    <button
+                      className="carousel-control-next nextBtnReviews"
+                      type="button"
+                      data-bs-target="#carouselExampleControls"
+                      data-bs-slide="next"
+                    >
+                      <span
+                        className="carousel-control-next-icon"
+                        aria-hidden="true"
+                      ></span>
+                      <span className="visually-shown">
+                        <BsChevronRight id="iconss" size="20" />
+                      </span>
+                    </button>
+                  </div>
+                </div>
+              </>
             </div>
           </div>
         </div>
