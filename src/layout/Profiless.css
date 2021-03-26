@@ -23,10 +23,12 @@
   font-size: 1.7em;
 }
 .companyImg {
-  border: 3px solid red;
-  width: 100px;
-  height: 100px;
+  /* border: 3px solid red; */
+  width: 6em;
+  height: 6em;
   object-fit: cover !important;
+  /* padding-left: -2em !important; */
+  /* padding-right: -2em !important; */
 }
 .companyTitel {
   font-family: SF med;
@@ -45,6 +47,12 @@
   font-family: SF light;
   font-size: 1em;
   color: #1e4274;
+}
+@media (max-width: 1410px) {
+  .companyInfoTxt {
+    display: flex !important;
+    width: 20em !important;
+  }
 }
 /* .FiPhone svg {
   color: #cd8930 !important;
@@ -147,6 +155,9 @@ ul .reuirLi {
   .map {
     width: 22em;
   }
+}
+.tagsP {
+  padding: 0.2em 1em;
 }
 /* carousel */
 .carouselCaption {

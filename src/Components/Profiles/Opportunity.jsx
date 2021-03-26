@@ -176,7 +176,7 @@ export default class advisorProfile extends Component {
                         <div className="col-md-12">
                           <div className="d-flex flex-row justify-content-center">
                             <div className=" carouselCaption text-center col-md-11 mb-2 col-11">
-                              <p className="textCarousel lh-sm">
+                              <p className="txtCarousel lh-sm">
                                 Lorem ipsum dolor sit amet consectetur
                                 adipisicing elit. Ipsam repudiandae aut
                                 possimus. Repellendus at nostrum iste
@@ -227,7 +227,7 @@ export default class advisorProfile extends Component {
                         <div className="col-md-12">
                           <div className="d-flex flex-row justify-content-center">
                             <div className=" carouselCaption text-center col-md-11 mb-2 col-11">
-                              <p className="textCarousel lh-sm ">
+                              <p className="txtCarousel lh-sm ">
                                 Lorem ipsum dolor sit amet consectetur
                                 adipisicing elit. Ipsam repudiandae aut
                                 possimus. Repellendus at nostrum iste
