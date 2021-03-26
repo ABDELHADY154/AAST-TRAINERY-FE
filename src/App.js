@@ -179,6 +179,11 @@ class App extends React.Component {
                 />
                 <AuthRoute
                   exact
+                  path="/CompanyProfile/:id"
+                  component={CompanyProfile}
+                />
+                <AuthRoute
+                  exact
                   path="/advisorProfile"
                   component={advisorProfile}
                 />

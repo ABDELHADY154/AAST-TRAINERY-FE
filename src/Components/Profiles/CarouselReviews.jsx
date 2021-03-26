@@ -35,7 +35,7 @@ export class CarouselReviews extends Component {
         <div className="carousel-inner">
           <div className="carousel-item active bg">
             <div className="carousel-caption carouselCaption text-center caption ">
-              <p className="textCarousel lh-sm">
+              <p className="txtCarousel lh-sm">
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut
                 dolor quis morbi sagittis donec sed massa. Velit malesuada amet
                 pretium turpis in commodo aliquet pulvinar ultrices.
@@ -56,7 +56,7 @@ export class CarouselReviews extends Component {
           </div>
           <div className="carousel-item bg">
             <div className="carousel-caption carouselCaption text-center caption ">
-              <p className="textCarousel lh-sm">
+              <p className="txtCarousel lh-sm">
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut
                 dolor quis morbi sagittis donec sed massa. Velit malesuada amet
                 pretium turpis in commodo aliquet pulvinar ultrices. Lorem ipsum
@@ -80,7 +80,7 @@ export class CarouselReviews extends Component {
           </div>
           <div className="carousel-item bg">
             <div className="carousel-caption carouselCaption text-center caption ">
-              <p className="textCarousel lh-sm">
+              <p className="txtCarousel lh-sm">
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut
                 dolor quis morbi sagittis donec sed massa. Velit malesuada amet
                 pretium turpis in commodo aliquet pulvinar ultrices.

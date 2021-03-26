@@ -64,6 +64,22 @@
   font-size: 0.9em;
   /* margin-top: 0.35em; */
 }
+.websiteLink {
+  color: #cd8930;
+  font-family: SF light;
+}
+.websiteLink:hover {
+  color: #cd8930;
+  font-family: SF light;
+}
+.websiteLink:active {
+  color: #cd8930;
+  font-family: SF light;
+}
+.websiteLink:link {
+  color: #cd8930;
+  font-family: SF light;
+}
 .company {
   font-family: SF med;
   font-size: 1em;
@@ -137,7 +153,7 @@ ul .reuirLi {
   bottom: 0;
   margin-bottom: 4rem;
 }
-.textCarousel {
+.txtCarousel {
   color: #1e4274 !important;
   font-family: SF reg;
   font-size: 1em;
