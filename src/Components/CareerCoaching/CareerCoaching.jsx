@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component, useState } from "react";
 import { Link } from "react-router-dom";
 import "../../layout/CareerCoaching.css";
 import Footer2 from "../Common/Footer2";
@@ -18,9 +18,21 @@ import career3 from "../assests/imgs/career3.png";
 import career4 from "../assests/imgs/career4.png";
 import ReactStars from "react-rating-stars-component";
 import { FaFacebookF, FaLinkedinIn, FaYoutube } from "react-icons/fa";
-import DateTimePicker from "react-datetime-picker/dist/DateTimePicker";
+// import DateTimePicker from "react-datetime-picker/dist/DateTimePicker";
+import DateTimePicker from "react-datetime-picker";
 
 export default class CareerCoaching extends Component {
+  // constructor(props) {
+  //   super(props);
+  //   this.state = {
+  //     value: [],
+  //   };
+  //   onChange = (e) => {
+  //     this.setState({ value: e });
+  //     this.props.value(e);
+  //   };
+  // }
+
   render() {
     return (
       <div className="container-fluid ">
@@ -91,6 +103,8 @@ export default class CareerCoaching extends Component {
                         and Refine your job search strategy
                       </p>
                       {/* <DateTimePicker/> */}
+                      {/* <DateTimePicker onChange={onChange()} value={value} /> */}
+                      <DatePicker />
                       <div className="d-flex flex-row flex-wrap ">
                         <div className=" mb-4 d-flex mt-1 flex-row col-12 col-md-7 justify-content-start ">
                           <p id="gold">
@@ -447,4 +461,14 @@ export default class CareerCoaching extends Component {
       </div>
     );
   }
+}
+
+function DatePicker() {
+  const [value, onChange] = useState(new Date());
+
+  return (
+    <div>
+      <DateTimePicker onChange={onChange} value={value} />
+    </div>
+  );
 }
