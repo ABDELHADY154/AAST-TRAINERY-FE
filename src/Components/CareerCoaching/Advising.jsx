@@ -1,9 +1,10 @@
-import React, { Component } from "react";
+import React, { Component, useState } from "react";
 import { Link } from "react-router-dom";
 import "../../layout/CareerCoaching.css";
 import Footer2 from "../Common/Footer2";
 import img from "../assests/imgs/img4.png";
 import ReactStars from "react-rating-stars-component";
+import DateTimePicker from "react-datetime-picker";
 
 export default class CareerCoaching extends Component {
   render() {
@@ -28,8 +29,11 @@ export default class CareerCoaching extends Component {
                 challenging interview questions, and identifying your
                 personality, skills, interests, and career values, and how ready
                 you are for your targeted career.
-              </div>
+              </div>{" "}
               <div className="d-flex flex-row flex-wrap mt-5">
+                <DatePicker />
+              </div>
+              <div className="d-flex flex-row flex-wrap mt-2">
                 <div className=" mb-4 d-flex mt-1 flex-row col-12 col-md-7 justify-content-start ">
                   <p id="gold">Please check your email for all details</p>
                 </div>
@@ -97,4 +101,13 @@ export default class CareerCoaching extends Component {
       </div>
     );
   }
+}
+function DatePicker() {
+  const [value, onChange] = useState(new Date());
+
+  return (
+    <div>
+      <DateTimePicker onChange={onChange} value={value} />
+    </div>
+  );
 }

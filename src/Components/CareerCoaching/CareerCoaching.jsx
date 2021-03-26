@@ -18,7 +18,7 @@ import career3 from "../assests/imgs/career3.png";
 import career4 from "../assests/imgs/career4.png";
 import ReactStars from "react-rating-stars-component";
 import { FaFacebookF, FaLinkedinIn, FaYoutube } from "react-icons/fa";
-// import DateTimePicker from "react-datetime-picker/dist/DateTimePicker";
+
 import DateTimePicker from "react-datetime-picker";
 
 export default class CareerCoaching extends Component {
@@ -154,6 +154,8 @@ export default class CareerCoaching extends Component {
                         language, manner of speaking, etc.
                       </p>
                       {/* <DateTimePicker/> */}
+                      <DatePicker />
+
                       <div className="d-flex flex-row flex-wrap ">
                         <div className=" mb-4 d-flex mt-1 flex-row col-12 col-md-7 justify-content-start ">
                           <p id="gold">
@@ -200,6 +202,8 @@ export default class CareerCoaching extends Component {
                         career plan for your next career move.
                       </p>
                       {/* <DateTimePicker/> */}
+                      <DatePicker />
+
                       <div className="d-flex flex-row flex-wrap ">
                         <div className=" mb-4 d-flex mt-1 flex-row col-12 col-md-7 justify-content-start ">
                           <p id="gold">
@@ -251,6 +255,8 @@ export default class CareerCoaching extends Component {
                         your targeted career.
                       </p>
                       {/* <DateTimePicker/> */}
+                      <DatePicker />
+
                       <div className="d-flex flex-row flex-wrap ">
                         <div className=" mb-4 d-flex mt-1 flex-row col-12 col-md-7 justify-content-start ">
                           <p id="gold">
