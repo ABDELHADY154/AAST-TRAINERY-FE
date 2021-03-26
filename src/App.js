@@ -18,6 +18,8 @@ import GeneralForm from "./Components/EditProfile/GeneralForm";
 import SkillsForm from "./Components/EditProfile/SkillsForm";
 import Interest from "./Components/EditProfile/InterestForm";
 import Language from "./Components/EditProfile/LanguageForm";
+import Explore from "./Components/Explore/Explore";
+
 import { AuthRoute } from "./Components/Auth/AuthRoute";
 
 // import Skills from "./EditProfile/Skills";
@@ -55,120 +57,74 @@ class App extends React.Component {
     return (
       <BrowserRouter>
         {this.state.loggedIn == true ? (
-          <AuthNav
-            setUser={this.setUser}
-            updated={this.state.avatar ? true : false}
-          />
+          <AuthNav setUser={this.setUser} updated={this.state.avatar ? true : false} />
         ) : (
           <Nav />
         )}
-        <div className="app">
-          <div className="auth-wrapper">
-            <div className="auth-inner">
+        <div className='app'>
+          <div className='auth-wrapper'>
+            <div className='auth-inner'>
               <Switch>
                 {/* <== Home for Guest */}
                 <Route
                   exact
-                  path="/"
+                  path='/'
                   component={() => <Landing loggedIn={this.state.loggedIn} />}
                 />
                 <Route
                   exact
-                  path="/Login"
+                  path='/Login'
                   component={() => <Login setUser={this.setUser} />}
                 />
                 <Route
                   exact
-                  path="/Register"
+                  path='/Register'
                   component={() => <Registry setUser={this.setUser} />}
                 />
-                <Route exact path="/Forget" component={Forget} />
+                <Route exact path='/Forget' component={Forget} />
                 <AuthRoute
                   exact
-                  path="/Home"
+                  path='/Home'
                   component={() => {
                     return <Home setUser={this.setUser} />;
                   }}
                 />
-                <AuthRoute exact path="/Profile" component={Profile} />
+                <AuthRoute exact path='/Profile' component={Profile} />
                 {/* <AuthRoute exact path="/GeneralInfo" component={GeneralInfo} /> */}
                 <AuthRoute
                   exact
-                  path="/Profile/General"
+                  path='/Profile/General'
                   component={() => <GeneralForm setAvatar={this.setAvatar} />}
                 />
+                <AuthRoute exact path='/Profile/Education' component={EducationForm} />
                 <AuthRoute
                   exact
-                  path="/Profile/Education"
+                  path='/Profile/Education/:id'
                   component={EducationForm}
                 />
+                <AuthRoute exact path='/Profile/Experience' component={ExperienceForm} />
                 <AuthRoute
                   exact
-                  path="/Profile/Education/:id"
-                  component={EducationForm}
-                />
-                <AuthRoute
-                  exact
-                  path="/Profile/Experience"
+                  path='/Profile/Experience/:id'
                   component={ExperienceForm}
                 />
+                <AuthRoute exact path='/Profile/Courses' component={CoursesForm} />
+                <AuthRoute exact path='/Profile/Courses/:id' component={CoursesForm} />
+                <AuthRoute exact path='/Profile/Skills' component={SkillsForm} />
+                <AuthRoute exact path='/Profile/Skills/:id' component={SkillsForm} />
+                <AuthRoute exact path='/Profile/Language' component={Language} />
+                <AuthRoute exact path='/Profile/Language/:id' component={Language} />
                 <AuthRoute
                   exact
-                  path="/Profile/Experience/:id"
-                  component={ExperienceForm}
-                />
-                <AuthRoute
-                  exact
-                  path="/Profile/Courses"
-                  component={CoursesForm}
-                />
-                <AuthRoute
-                  exact
-                  path="/Profile/Courses/:id"
-                  component={CoursesForm}
-                />
-                <AuthRoute
-                  exact
-                  path="/Profile/Skills"
-                  component={SkillsForm}
-                />
-                <AuthRoute
-                  exact
-                  path="/Profile/Skills/:id"
-                  component={SkillsForm}
-                />
-                <AuthRoute
-                  exact
-                  path="/Profile/Language"
-                  component={Language}
-                />
-                <AuthRoute
-                  exact
-                  path="/Profile/Language/:id"
-                  component={Language}
-                />
-                <AuthRoute
-                  exact
-                  path="/Profile/Interest/:id"
+                  path='/Profile/Interest/:id'
                   component={Interest}
                   render={(Interests) => <Interest {...Interests} />}
                 />
-                <AuthRoute
-                  exact
-                  path="/Profile/Interest"
-                  component={Interest}
-                />
-                <AuthRoute
-                  exact
-                  path="/Profile/Accounts"
-                  component={AccountsForm}
-                />
-                <AuthRoute
-                  exact
-                  path="/Profile/Accounts/:id"
-                  component={AccountsForm}
-                />
-                <Route exact path="*" component={ErrorPage} />
+                <AuthRoute exact path='/Profile/Interest' component={Interest} />
+                <AuthRoute exact path='/Profile/Accounts' component={AccountsForm} />
+                <AuthRoute exact path='/Profile/Accounts/:id' component={AccountsForm} />
+                <AuthRoute exact path='/Explore' component={Explore} />
+                <Route exact path='*' component={ErrorPage} />
               </Switch>
             </div>
           </div>
