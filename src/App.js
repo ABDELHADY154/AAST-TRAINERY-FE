@@ -19,6 +19,7 @@ import SkillsForm from "./Components/EditProfile/SkillsForm";
 import Interest from "./Components/EditProfile/InterestForm";
 import Language from "./Components/EditProfile/LanguageForm";
 import Explore from "./Components/Explore/Explore";
+import Search from "./Components/Search/Search";
 
 import { AuthRoute } from "./Components/Auth/AuthRoute";
 
@@ -124,6 +125,8 @@ class App extends React.Component {
                 <AuthRoute exact path='/Profile/Accounts' component={AccountsForm} />
                 <AuthRoute exact path='/Profile/Accounts/:id' component={AccountsForm} />
                 <AuthRoute exact path='/Explore' component={Explore} />
+                <AuthRoute exact path='/Search' component={Search} />
+
                 <Route exact path='*' component={ErrorPage} />
               </Switch>
             </div>

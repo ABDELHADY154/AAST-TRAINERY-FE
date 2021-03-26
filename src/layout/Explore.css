@@ -34,3 +34,25 @@
 #custom-search-input .glyphicon-search {
   font-size: 23px;
 }
+/* Search */
+
+.halfborder {
+  margin: 2px 0 0 0;
+  background: none;
+  box-shadow: none;
+  border: 0;
+  border-radius: 0;
+
+  color: #666666;
+  padding: 0 8px 0 10px;
+}
+#goldtab2 {
+  color: #cd8930 !important;
+  font-family: sf light;
+}
+.primarycolor1 {
+  background-color: #cd8930;
+  width: 2rem !important;
+  /* padding-bottom: 2px; */
+  height: 0.1rem;
+}
