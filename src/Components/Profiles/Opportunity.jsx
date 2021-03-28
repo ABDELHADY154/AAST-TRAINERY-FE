@@ -15,49 +15,84 @@ import { BsBookmark } from "react-icons/bs";
 import { GoPrimitiveDot } from "react-icons/go";
 import { CarouselReviews } from "./CarouselReviews";
 import ReactStars from "react-rating-stars-component";
-
+import LoadingOverlay from "react-loading-overlay";
+import BounceLoader from "react-spinners/BounceLoader";
 export default class advisorProfile extends Component {
   constructor(props) {
     super(props);
     this.state = {
       scrollPixelsY: 0,
+      data: {},
+      internshipPosts: [],
+      FormLoading: true,
     };
     window.scrollTo(0, 0);
   }
-
   handleScroll = () => {
     this.setState({
       scrollPixelsY: window.scrollY,
     });
   };
+  async componentDidMount() {
+    this.setState({ FormLoading: true });
+    await axios
+      .get(`/W/student/company/${10}`)
+      .then((res) => {
+        this.setState({
+          id: res.data.response.data.id,
+          data: res.data.response.data,
+          internshipPosts: res.data.response.data.internshipPosts,
+          FormLoading: false,
+        });
+        // console.log(res.data.response.data.internshipPosts);
+        // console.log(res.data.response.data.internshipPosts.description);
+      })
+      .catch((err) => {
+        this.setState({ FormLoading: true });
+        console.log(err);
+      });
+  }
+
   render() {
     return (
       <div className="profileMT">
-        <div className="container ">
-          <div className="row ">
-            <img
-              src={img}
-              className="ms-3 me-2 col-3 rounded-circle companyImg"
-            />
-            <div className="col-7 mt-3 ">
-              <div className="d-flex flex-row w-7">
-                <h4 className="opportunity col-md-12 col-12  col-xs-6">
-                  Web Developer
-                </h4>
-              </div>
-              <div className="row">
-                <p className="col-6 col-lg-2 col-md-3 col-sm-5 col-xs-4 company">
-                  Qowwa
-                </p>
-                <p className="dep col-2 col-lg-1 col-md-2  col-sm-3 col-xs-4">
-                  BIS
-                </p>
-                <p className="paid col-1 col-lg-1 col-md-1 col-sm-2 col-xs-2">
-                  Paid
-                </p>
+        <LoadingOverlay
+          active={this.state.FormLoading}
+          spinner={<BounceLoader color="#cd8930" />}
+          color={"#cd8930"}
+          styles={{
+            overlay: (base) => ({
+              ...base,
+              background: "rgb(255, 255, 255)",
+              stroke: "rgba(255, 0, 0, 0.5)",
+            }),
+          }}
+        >
+          <div className="container ">
+            <div className="d-flex flex-row  ">
+              <img
+                src={img}
+                className="ms-1 me-3 col-2 rounded-circle companyImg"
+              />
+              <div className="col-7 mt-3 ">
+                <div className="d-flex flex-row w-7">
+                  <h4 className="opportunity col-md-12 col-12  col-xs-6">
+                    Web Developer
+                  </h4>
+                </div>
+                <div className="row">
+                  <p className="col-6 col-lg-2 col-md-3 col-sm-5 col-xs-4 company">
+                    Qowwa
+                  </p>
+                  <p className="dep col-2 col-lg-1 col-md-2  col-sm-3 col-xs-4">
+                    BIS
+                  </p>
+                  <p className="paid col-1 col-lg-1 col-md-1 col-sm-2 col-xs-2">
+                    Paid
+                  </p>
+                </div>
               </div>
             </div>
-
             <div className=" d-flex flex-row flex-wrap col-12 col-md-12 mt-2">
               <div className="d-flex flex-row me-2 fs-5 ">
                 <p
@@ -68,7 +103,6 @@ export default class advisorProfile extends Component {
                 </p>
               </div>
             </div>
-
             <div className="mt-4">
               <h5 className="companyTitel">Overview</h5>
               <div className="row d-flex justify-content-between">
@@ -104,17 +138,18 @@ export default class advisorProfile extends Component {
                     </div>
                   </div>
                   <div
-                    className="bg-dark col-xl-5 col-xxl-4 col-lg-4 col-md-6 map"
+                    className="col-xl-5 col-xxl-4 col-lg-4 col-md-6 "
                     // style={{ width: 260, height: 90 }}
-                  ></div>
-                  {/* <iframe
-                    src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d13646.513994923827!2d29.9491302!3d31.2310203!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x49897e2d526104e2!2zRHIuIEFiZGVsaGFkeSBFbHNoYW15IC4g2K8uINi52KjYr9in2YTZh9in2K_ZiiDYp9mE2LTYp9mF2YouINil2LPYqti02KfYsdmKINis2LHYp9it2Kkg2KfZhNiq2KzZhdmK2YQg2Ygg2KfZhNit2LHZiNmCIC4!5e0!3m2!1sen!2seg!4v1616949635625!5m2!1sen!2seg"
-                    width="600"
-                    height="450"
-                    // style="border:0;"
-                    allowfullscreen=""
-                    loading="lazy"
-                  ></iframe> */}
+                  >
+                    <iframe
+                      src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d13646.513994923827!2d29.9491302!3d31.2310203!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x49897e2d526104e2!2zRHIuIEFiZGVsaGFkeSBFbHNoYW15IC4g2K8uINi52KjYr9in2YTZh9in2K_ZiiDYp9mE2LTYp9mF2YouINil2LPYqti02KfYsdmKINis2LHYp9it2Kkg2KfZhNiq2KzZhdmK2YQg2Ygg2KfZhNit2LHZiNmCIC4!5e0!3m2!1sen!2seg!4v1616949635625!5m2!1sen!2seg"
+                      width="270"
+                      height="100"
+                      // style="border:0;"
+                      allowfullscreen=""
+                      loading="lazy"
+                    ></iframe>
+                  </div>
                 </div>
               </div>
 
@@ -331,40 +366,40 @@ export default class advisorProfile extends Component {
                 </div>
               </>
             </div>
-          </div>
-          <div className="d-flex flex-row ">
-            <div className="d-flex flex-column col-md-7 me-2  text-wrap bg-none me-5 ">
-              <p className="mb-0 companyTitel" id="Title">
-                Add Your Review
-              </p>
-              <ReactStars
-                className="reviewstars"
-                count={5}
-                value="3"
-                onChange={value => {
-                  this.setState({ value: value });
-                }}
-                size={28}
-                activeColor="#F2A23A"
-                edit={true}
-              />
+            <div className="d-flex flex-row ">
+              <div className="d-flex flex-column col-md-7 me-2  text-wrap bg-none me-5 ">
+                <p className="mb-0 companyTitel" id="Title">
+                  Add Your Review
+                </p>
+                <ReactStars
+                  className="reviewstars"
+                  count={5}
+                  value="3"
+                  onChange={(value) => {
+                    this.setState({ value: value });
+                  }}
+                  size={28}
+                  activeColor="#F2A23A"
+                  edit={true}
+                />
+              </div>
+            </div>
+            <div className="d-flex flex-row mt-3 mb-5 ">
+              <textarea
+                placeholder="Enter Your Review Here..."
+                type="text"
+                name="name"
+                className="reviewbox d-flex flex-column col-md-12 col-12 pt-2  px-3"
+              ></textarea>
+            </div>
+            <div className="d-flex flex-row mb-5 justify-content-end ">
+              <button className="applyBtn px-1 py-0 col-md-1 col-4 ">
+                Review
+              </button>
             </div>
           </div>
-          <div className="d-flex flex-row mt-3 mb-5 ">
-            <textarea
-              placeholder="Enter Your Review Here..."
-              type="text"
-              name="name"
-              className="reviewbox d-flex flex-column col-md-12 col-12 pt-2  px-3"
-            ></textarea>
-          </div>
-          <div className="d-flex flex-row mb-5 justify-content-end ">
-            <button className="applyBtn px-1 py-0 col-md-1 col-4 ">
-              Review
-            </button>
-          </div>
-        </div>
-        <Footer2 />
+          <Footer2 />
+        </LoadingOverlay>
       </div>
     );
   }

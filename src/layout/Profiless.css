@@ -142,7 +142,7 @@ ul .reuirLi {
   list-style: inside !important;
 }
 
-.map {
+/* .map {
   width: 16em;
   height: 5em;
 }
@@ -155,7 +155,7 @@ ul .reuirLi {
   .map {
     width: 22em;
   }
-}
+} */
 .tagsP {
   padding: 0.2em 1em;
 }
