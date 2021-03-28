@@ -33,7 +33,7 @@ export default class CompanyProfile extends Component {
     this.setState({ FormLoading: true });
     await axios
       .get(`/W/student/company/${10}`)
-      .then((res) => {
+      .then(res => {
         this.setState({
           id: res.data.response.data.id,
           data: res.data.response.data,
@@ -43,7 +43,7 @@ export default class CompanyProfile extends Component {
         // console.log(res.data.response.data.internshipPosts);
         // console.log(res.data.response.data.internshipPosts.description);
       })
-      .catch((err) => {
+      .catch(err => {
         this.setState({ FormLoading: true });
         console.log(err);
       });
@@ -59,7 +59,7 @@ export default class CompanyProfile extends Component {
           spinner={<BounceLoader color="#cd8930" />}
           color={"#cd8930"}
           styles={{
-            overlay: (base) => ({
+            overlay: base => ({
               ...base,
               background: "rgb(255, 255, 255)",
               stroke: "rgba(255, 0, 0, 0.5)",
@@ -92,7 +92,8 @@ export default class CompanyProfile extends Component {
                 <div className="row mt-3">
                   <p className="col-lg-2 col-3 col-md-3 col-sm-12 col-xs-12 companyInfoTxt ">
                     <a
-                      // href="tel:`${this.state.data.phone_number}`"
+                      // href=`tel:${this.state.data.phone_number}`
+                      href={`tel:${this.state.data.phone_number}`}
                       className="websiteLink"
                       target="_blank"
                     >
@@ -131,7 +132,7 @@ export default class CompanyProfile extends Component {
                   </p>
                   <p className="col-xl-4 col-lg-4 col-4 col-md-5 col-sm-12 col-xs-12 companyInfoTxt text-break text-wrap">
                     <a
-                      // href="mailto: basmamostafa@aast-trainery.com
+                      href={`mailto:${this.state.data.email}`}
                       // ?subject = Feedback&body = Message"
                       className="websiteLink"
                       target="_blank"
@@ -158,7 +159,7 @@ export default class CompanyProfile extends Component {
                 </div>
                 <div>
                   <h4 className="companyTitel">Ended Internship</h4>
-                  {this.state.internshipPosts.map((item) => {
+                  {this.state.internshipPosts.map(item => {
                     return (
                       <CompanyPost
                         id={item.id}
@@ -217,7 +218,7 @@ class CompanyPost extends Component {
                 <div className="d-flex ms-3 flex-column">
                   {this.props.company_name}
                 </div>
-                {this.props.departments.map((item) => {
+                {this.props.departments.map(item => {
                   return (
                     <Departments
                       id={item.id}
@@ -234,7 +235,7 @@ class CompanyPost extends Component {
               <p className="card-text mt-2">{this.props.description}</p>
 
               <div className="d-flex flex-row flex-wrap ">
-                {this.props.tags.map((item) => {
+                {this.props.tags.map(item => {
                   return (
                     <Interest
                       id={item.id}

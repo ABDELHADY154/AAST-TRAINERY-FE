@@ -107,6 +107,14 @@ export default class advisorProfile extends Component {
                     className="bg-dark col-xl-5 col-xxl-4 col-lg-4 col-md-6 map"
                     // style={{ width: 260, height: 90 }}
                   ></div>
+                  {/* <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d13646.513994923827!2d29.9491302!3d31.2310203!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x49897e2d526104e2!2zRHIuIEFiZGVsaGFkeSBFbHNoYW15IC4g2K8uINi52KjYr9in2YTZh9in2K_ZiiDYp9mE2LTYp9mF2YouINil2LPYqti02KfYsdmKINis2LHYp9it2Kkg2KfZhNiq2KzZhdmK2YQg2Ygg2KfZhNit2LHZiNmCIC4!5e0!3m2!1sen!2seg!4v1616949635625!5m2!1sen!2seg"
+                    width="600"
+                    height="450"
+                    // style="border:0;"
+                    allowfullscreen=""
+                    loading="lazy"
+                  ></iframe> */}
                 </div>
               </div>
 
@@ -333,7 +341,7 @@ export default class advisorProfile extends Component {
                 className="reviewstars"
                 count={5}
                 value="3"
-                onChange={(value) => {
+                onChange={value => {
                   this.setState({ value: value });
                 }}
                 size={28}
