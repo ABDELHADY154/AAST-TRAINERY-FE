@@ -7,6 +7,18 @@ import ReactStars from "react-rating-stars-component";
 import DateTimePicker from "react-datetime-picker";
 
 export default class CareerCoaching extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      scrollPixelsY: 0,
+    };
+    window.scrollTo(0, 0);
+  }
+  handleScroll = () => {
+    this.setState({
+      scrollPixelsY: window.scrollY,
+    });
+  };
   render() {
     return (
       <div className="container-fluid ">
@@ -43,7 +55,7 @@ export default class CareerCoaching extends Component {
                   //   to="/CvWriting"
                   >
                     <button
-                      className="applyBtn px-2 py-0 "
+                      className="applyBtn px-4 py-0 "
                       // to="/CvWriting"
                     >
                       Book
@@ -67,7 +79,7 @@ export default class CareerCoaching extends Component {
               <ReactStars
                 className="reviewstars"
                 count={5}
-                value="3"
+                // value={this.state.rating}
                 onChange={(value) => {
                   this.setState({ value: value });
                   // console.log(`${value}`);

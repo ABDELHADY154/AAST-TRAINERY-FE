@@ -32,6 +32,18 @@ export default class CareerCoaching extends Component {
   //     this.props.value(e);
   //   };
   // }
+  constructor(props) {
+    super(props);
+    this.state = {
+      scrollPixelsY: 0,
+    };
+    window.scrollTo(0, 0);
+  }
+  handleScroll = () => {
+    this.setState({
+      scrollPixelsY: window.scrollY,
+    });
+  };
 
   render() {
     return (
@@ -68,16 +80,16 @@ export default class CareerCoaching extends Component {
               id="Experienceimg"
               className="d-flex flex-column col-md-6 d-none d-md-flex ms-5"
             >
-              <img className="h-100" src={img} />
+              <img className="h-100 w-100 careerimgh" src={img} />
             </div>
           </div>
           <div className="d-flex flex-row fs-3 pagetitlec mt-5">
             <div>Our Coaches</div>
           </div>
         </div>
-        <div className="container carom">
+        {/* <div className="container carom">
           <CoachCaro />
-        </div>
+        </div> */}
 
         <div className="container mt-5">
           {/* CAREER CARD 1 */}
@@ -87,11 +99,11 @@ export default class CareerCoaching extends Component {
                 <div className="card-body">
                   <div className="d-flex flex-row mt-2">
                     <img
-                      className=" mt-0 d-md-flex d-none flex-column col-md-3 me-5 col-2 me-1 careerimg "
+                      className=" mt-0 d-md-flex d-none flex-column  col-md-3 me-5 col-2 me-1 careerimg "
                       src={career1}
                     />
 
-                    <div className="d-flex flex-column col-md-8">
+                    <div className="d-flex flex-column col-md-9">
                       <p className=" fs-3">CV writing service</p>
                       <p className="card-text mt-2 cardtextt">
                         Our aim is to make you 100% satisfied with your CV;
@@ -104,22 +116,20 @@ export default class CareerCoaching extends Component {
                       </p>
                       {/* <DateTimePicker/> */}
                       {/* <DateTimePicker onChange={onChange()} value={value} /> */}
-                      <DatePicker />
-                      <div className="d-flex flex-row flex-wrap ">
-                        <div className=" mb-4 d-flex mt-1 flex-row col-12 col-md-7 justify-content-start ">
+
+                      <div className="d-flex  mt-2 flex-row flex-wrap ">
+                        <div className=" mb-1 d-flex mt-1 flex-row col-12 col-md-7 justify-content-start ">
                           <p id="gold">
                             Please check your email for all details
                           </p>
                         </div>
-                        <div className=" mb-4 d-flex flex-row mt-1 col-4 col-md-3 justify-content-end  ">
+                        <div className=" mb-1 d-flex flex-row mt-1 col-4 col-md-3 justify-content-center  ">
                           <p id="gold">150 L.E</p>
                         </div>
-                        <div className=" d-flex flex-row col-6 col-md-2 justify-content-end">
+                        <div className=" d-flex flex-row col-6 col-md-2 mt-0 justify-content-end">
                           <Link to="/CareerCoaching/CvWriting">
-                            <button
-                              className="applyBtn px-2 py-0 "
-                              // to="/CvWriting"
-                            >
+                            {" "}
+                            <button className="applyBtn px-4 py-0 bookbtn">
                               Book
                             </button>
                           </Link>
@@ -141,7 +151,7 @@ export default class CareerCoaching extends Component {
                       src={career2}
                     />
 
-                    <div className="d-flex flex-column col-md-8">
+                    <div className="d-flex flex-column col-md-9">
                       <p className=" fs-3">Interview coaching</p>
                       <p className="card-text mt-2 cardtextt">
                         Our career coaches will help you overcome your interview
@@ -154,20 +164,20 @@ export default class CareerCoaching extends Component {
                         language, manner of speaking, etc.
                       </p>
                       {/* <DateTimePicker/> */}
-                      <DatePicker />
 
-                      <div className="d-flex flex-row flex-wrap ">
-                        <div className=" mb-4 d-flex mt-1 flex-row col-12 col-md-7 justify-content-start ">
+                      <div className="d-flex   mt-2 flex-row flex-wrap ">
+                        <div className=" mb-1 d-flex mt-1 flex-row col-12 col-md-7 justify-content-start ">
                           <p id="gold">
                             Please check your email for all details
                           </p>
                         </div>
-                        <div className=" mb-4 d-flex flex-row mt-1 col-4 col-md-3 justify-content-end  ">
+                        <div className=" mb-1 d-flex flex-row mt-1 col-4 col-md-3 justify-content-center  ">
                           <p id="gold">150 L.E</p>
                         </div>
-                        <div className=" d-flex flex-row col-6 col-md-2 justify-content-end">
+                        <div className=" d-flex flex-row col-6 col-md-2 mt-0 justify-content-end">
                           <Link to="/CareerCoaching/InterviewCoaching">
-                            <button className="applyBtn px-2 py-0 ">
+                            {" "}
+                            <button className="applyBtn px-4 py-0 bookbtn">
                               Book
                             </button>
                           </Link>
@@ -189,7 +199,7 @@ export default class CareerCoaching extends Component {
                       src={career3}
                     />
 
-                    <div className="d-flex flex-column col-md-8">
+                    <div className="d-flex flex-column col-md-9">
                       <p className=" fs-3">Make the right career move</p>
                       <p className="card-text mt-2 cardtextt">
                         Do you want to fully prepare yourself for the right
@@ -202,21 +212,20 @@ export default class CareerCoaching extends Component {
                         career plan for your next career move.
                       </p>
                       {/* <DateTimePicker/> */}
-                      <DatePicker />
 
-                      <div className="d-flex flex-row flex-wrap ">
-                        <div className=" mb-4 d-flex mt-1 flex-row col-12 col-md-7 justify-content-start ">
+                      <div className="d-flex  mt-2 flex-row flex-wrap ">
+                        <div className=" mb-1 d-flex mt-1 flex-row col-12 col-md-7 justify-content-start ">
                           <p id="gold">
                             Please check your email for all details
                           </p>
                         </div>
-                        <div className=" mb-4 d-flex flex-row mt-1 col-4 col-md-3 justify-content-end  ">
+                        <div className=" mb-1 d-flex flex-row mt-1 col-4 col-md-3 justify-content-center  ">
                           <p id="gold">150 L.E</p>
                         </div>
                         <div className=" d-flex flex-row col-6 col-md-2 justify-content-end">
                           <Link to="/CareerCoaching/CareerMove">
                             {" "}
-                            <button className="applyBtn px-2 py-0 ">
+                            <button className="applyBtn px-4 py-0 bookbtn ">
                               Book
                             </button>
                           </Link>
@@ -238,7 +247,7 @@ export default class CareerCoaching extends Component {
                       src={career4}
                     />
 
-                    <div className="d-flex flex-column col-md-8">
+                    <div className="d-flex flex-column col-md-9">
                       <p className=" fs-3">
                         Career Coaching & Advising Services
                       </p>
@@ -255,20 +264,20 @@ export default class CareerCoaching extends Component {
                         your targeted career.
                       </p>
                       {/* <DateTimePicker/> */}
-                      <DatePicker />
 
-                      <div className="d-flex flex-row flex-wrap ">
-                        <div className=" mb-4 d-flex mt-1 flex-row col-12 col-md-7 justify-content-start ">
+                      <div className="d-flex  mt-2 flex-row flex-wrap ">
+                        <div className=" mb-1 d-flex mt-1 flex-row col-12 col-md-7 justify-content-start ">
                           <p id="gold">
                             Please check your email for all details
                           </p>
                         </div>
-                        <div className=" mb-4 d-flex flex-row mt-1 col-4 col-md-3 justify-content-end  ">
+                        <div className=" mb-1 d-flex flex-row mt-1 col-4 col-md-3 justify-content-center  ">
                           <p id="gold">150 L.E</p>
                         </div>
-                        <div className=" d-flex flex-row col-6 col-md-2 justify-content-end">
+                        <div className=" d-flex flex-row col-6 col-md-2 mt-0 justify-content-end">
                           <Link to="/CareerCoaching/Advising">
-                            <button className="applyBtn px-2 py-0 ">
+                            {" "}
+                            <button className="applyBtn px-4 py-0 bookbtn">
                               Book
                             </button>
                           </Link>

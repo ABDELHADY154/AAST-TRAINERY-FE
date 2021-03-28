@@ -81,10 +81,15 @@
   text-decoration: none !important;
   color: #ffffff !important;
 }
-
-.careerimg {
+.careerimgh {
   width: fit-content;
   height: fit-content;
+}
+.careerimg {
+  width: 17%;
+  height: 70%;
+  /* width: fit-content;
+  height: fit-content; */
 }
 
 .commentgoldline {
@@ -113,8 +118,8 @@
     border: none;
   }
 }
-/* @media screen and (max-width: 764px) {
-  #CoachCaro {
-    axis: vertical;
+@media (min-width: 767px) and (max-width: 991px) {
+  .bookbtn {
+    margin-left: -10% !important;
   }
-} */
+}
