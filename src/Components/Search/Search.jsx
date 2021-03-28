@@ -162,159 +162,204 @@ class Search extends Component {
               </a>
             </li>
           </ul>
+          <ul className='nav  infoTabsUl nav-tabs' id='myTab' role='tablist'>
+            <li className='nav-item infoTabs' role='presentation'>
+              <label class='radio-inline'>
+                <input name='radioGroup' id='radio1' value='option1' type='radio' /> All
+              </label>
+            </li>
+            <li className='nav-item infoTabs' role='presentation'>
+              <label class='radio-inline'>
+                <input name='radioGroup' id='radio1' value='option1' type='radio' />{" "}
+                BIS/IT
+              </label>
+            </li>
+            <li class='nav-item infoTabs' role='presentation'>
+              <label class='radio-inline'>
+                <input name='radioGroup' id='radio1' value='option1' type='radio' />{" "}
+                Accounting
+              </label>
+            </li>
+            <li className='nav-item infoTabs' role='presentation'>
+              <label class='radio-inline'>
+                <input name='radioGroup' id='radio1' value='option1' type='radio' />{" "}
+                BIS/IT
+              </label>
+            </li>
+            <li className='nav-item infoTabs' role='presentation'>
+              <a
+                className={
+                  this.props && this.props.setactive === "Skills"
+                    ? "nav-link tabBtn active"
+                    : "nav-link tabBtn"
+                }
+                id='Skills-tab'
+                href='/Profile/Skills'
+              >
+                Skills
+              </a>
+            </li>
+            <li class='nav-item infoTabs' role='presentation'>
+              <a
+                className={
+                  this.props && this.props.setactive === "Interest"
+                    ? "nav-link tabBtn active"
+                    : "nav-link tabBtn"
+                }
+                id='Interest-tab'
+                href='/Profile/Interest'
+              >
+                Interest
+              </a>
+            </li>
+            <li class='nav-item infoTabs' role='presentation'>
+              <a
+                className={
+                  this.props && this.props.setactive === "Language"
+                    ? "nav-link tabBtn active"
+                    : "nav-link tabBtn"
+                }
+                id='Language-tab'
+                href='/Profile/Language'
+              >
+                Language
+              </a>
+            </li>
+            <li class='nav-item infoTabs' role='presentation'>
+              <a
+                className={
+                  this.props && this.props.setactive === "Accounts"
+                    ? "nav-link tabBtn active"
+                    : "nav-link tabBtn"
+                }
+                id='Accounts-tab'
+                href='/Profile/Accounts'
+              >
+                Accounts
+              </a>
+            </li>
+          </ul>
           <div className='row mb-4'>
-            <div className='col-md-6'>
-              <div className='card '>
-                <div className='card-body '>
-                  <div className='d-flex flex-row'>
-                    <img
-                      className=' mt-0 d-flex flex-column col-md-9 col-6 me-1'
-                      id='imgicon'
-                      src={img2}
-                    />
-                    <div className=' fs-5 mt-2 ms-2 col-md-10 col-8'>Ux</div>
-                    <div id='goldtab2' className='  mt-2  col-2 col-md-1'>
-                      Paid
-                    </div>
-                  </div>
-                  <div id='job' className='d-flex flex-row ms-5 '>
-                    <div className='d-flex ms-3 flex-column'>CIB</div>
-                    <div id='gold' className='d-flex ms-2 flex-column'>
-                      Finance
-                    </div>
-                  </div>
-                  <p className='card-text mt-2'>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsam
-                    repudiandae aut possimus. Repellendus at nostrum iste doloremque. Ea
-                    omnis ipsam, eum nam tempore culpa illum consequuntur quis nobis
-                    adipisci et?
-                  </p>
-                  <div className='d-flex flex-row flex-wrap '>
-                    <div
-                      className='d-flex flex-column  col-4 col-md-2  justify-space-between me-1'
-                      id='firsttagipad'
-                    >
-                      <a href='#' className='tagsipad' id='tags'>
-                        Finance
-                      </a>
-                    </div>
-                    <div
-                      className='d-flex flex-column  col-4 col-md-2 justify-space-between me-1'
-                      id='firsttagipad'
-                    >
-                      <a href='#' className='tagsipad  ' id='tags'>
-                        Banking
-                      </a>
-                    </div>
-                    <div
-                      id='drop'
-                      className='d-flex flex-column col-md-3 col-7 
+            <div className='col-md-12 col-12'>
+              <div id='tabcard' className='row'>
+                <div className='col-md-6' id='tabcontainer'>
+                  <div className='card'>
+                    <div className='card-body'>
+                      <div className='d-flex flex-row '>
+                        <img
+                          className=' mt-0 d-flex flex-column  col-2 '
+                          id='imgicon'
+                          src={img2}
+                        />
+                        <div className=' fs-5 mt-2 ms-2 col-md-10 col-8 '>
+                          UI/UX Designer
+                        </div>
+                        <div id='gold' className=' fs-6 mt-2  col-2 col-md-2'>
+                          Paid
+                        </div>
+                      </div>
+                      <div id='job' className='d-flex flex-row ms-5 '>
+                        <div className='d-flex ms-3 flex-column'>CIB</div>
+                        <div id='gold' className='d-flex ms-2 flex-column'>
+                          Finance
+                        </div>
+                      </div>
+                      <p className='card-text mt-2'>
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsam
+                        repudiandae aut possimus. Repellendus at nostrum iste doloremque.
+                        Ea omnis ipsam, eum nam tempore culpa illum consequuntur quis
+                        nobis adipisci et?
+                      </p>
+                      <div className='d-flex flex-row flex-wrap '>
+                        <div className='d-flex flex-column col-4 col-md-2'>
+                          <a href='#' className=' ' id='tags'>
+                            Finance
+                          </a>
+                        </div>
+                        <div className='d-flex flex-column col-4 me-3 col-md-2  mb-1'>
+                          <a href='#' className='' id='tags'>
+                            Banking
+                          </a>
+                        </div>
+                        <div
+                          id='drop'
+                          className='d-flex flex-column me-4  col-md-5  
                              justify-space-between'
-                    >
-                      <p>Deadline {"        "}11 Dec 2021</p>
+                        >
+                          <p>Deadline {"        "}11 Dec 2021</p>
+                        </div>
+                        <div
+                          id='promoted'
+                          className='  d-flex flex-row col-12 col-md-2  '
+                        >
+                          <BsArrowUpRight className='me-2' fill='#cd8930' />
+                          <p id='gold'>Promoted</p>
+                        </div>
+                      </div>
                     </div>
-                    <div className=' d-flex flex-row col-6 col-md-2  '>
-                      <BsArrowUpRight className='mb-1 ' color='#cd8930' fill='#cd8930' />
-                      <p id='gold'>Promoted</p>
-                    </div>
-                    <div className='  d-flex flex-row col-6 col-md-2 mx-auto '>
-                      {/* <div className="col-md-4"></div> */}
-                      <BsBookmark
-                        id='BsBookmark'
-                        color='#1e4274'
-                        className='fs-1 align-self-center col-md-4 col-4'
-                        path='0px'
-                      />
-                      <button className='applyBtn px-1 py-0 col-md-12 col-6'>
-                        Apply
-                      </button>
+                  </div>
+                </div>
+
+                <div className='col-md-6' id='tabcontainer'>
+                  <div className='card'>
+                    <div className='card-body'>
+                      <div className='d-flex flex-row '>
+                        <img
+                          className=' mt-0 d-flex flex-column  col-2 '
+                          id='imgicon'
+                          src={img2}
+                        />
+                        <div className=' fs-5 mt-2 ms-2 col-md-10 col-8 '>
+                          UI/UX Designer
+                        </div>
+                        <div id='gold' className=' fs-6 mt-2  col-2 col-md-2'>
+                          Paid
+                        </div>
+                      </div>
+                      <div id='job' className='d-flex flex-row ms-5 '>
+                        <div className='d-flex ms-3 flex-column'>CIB</div>
+                        <div id='gold' className='d-flex ms-2 flex-column'>
+                          Finance
+                        </div>
+                      </div>
+                      <p className='card-text mt-2'>
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsam
+                        repudiandae aut possimus. Repellendus at nostrum iste doloremque.
+                        Ea omnis ipsam, eum nam tempore culpa illum consequuntur quis
+                        nobis adipisci et?
+                      </p>
+                      <div className='d-flex flex-row flex-wrap '>
+                        <div className='d-flex flex-column col-4 col-md-2'>
+                          <a href='#' className=' ' id='tags'>
+                            Finance
+                          </a>
+                        </div>
+                        <div className='d-flex flex-column col-4 me-3 col-md-2  mb-1'>
+                          <a href='#' className='' id='tags'>
+                            Banking
+                          </a>
+                        </div>
+                        <div
+                          id='drop'
+                          className='d-flex flex-column me-4  col-md-5  
+                             justify-space-between'
+                        >
+                          <p>Deadline {"        "}11 Dec 2021</p>
+                        </div>
+                        <div
+                          id='promoted'
+                          className='  d-flex flex-row col-12 col-md-2  '
+                        >
+                          <BsArrowUpRight className='me-2' fill='#cd8930' />
+                          <p id='gold'>Promoted</p>
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
-            <div className='col-md-6'>
-              <div className='card '>
-                <div className='card-body '>
-                  <div className='d-flex flex-row flex-wrap'>
-                    {" "}
-                    <img
-                      className=' mt-0 d-flex flex-column col-md-4 col-2 me-3'
-                      id='imgicon'
-                      src={img2}
-                    />
-                    <p id='' className='card-title fs-5 mt-2'>
-                      Dr. Rehab ElBadrawy
-                    </p>
-                  </div>
-                  <hr />
-                  <div className='d-flex flex-row'>
-                    <img
-                      className=' mt-0 d-flex flex-column col-md-9 col-6 me-1'
-                      id='imgicon'
-                      src={img2}
-                    />
-                    <div className=' fs-5 mt-2 ms-2 col-md-10 col-8'>UI</div>
-                    <div id='goldtab2' className=' mt-2  col-2 col-md-1'>
-                      Paid
-                    </div>
-                  </div>
-                  <div id='job' className='d-flex flex-row ms-5 '>
-                    <div className='d-flex ms-3 flex-column'>CIB</div>
-                    <div id='gold' className='d-flex ms-2 flex-column'>
-                      Finance
-                    </div>
-                  </div>
-                  <p className='card-text mt-2'>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsam
-                    repudiandae aut possimus. Repellendus at nostrum iste doloremque. Ea
-                    omnis ipsam, eum nam tempore culpa illum consequuntur quis nobis
-                    adipisci et?
-                  </p>
-                  <div className='d-flex flex-row flex-wrap '>
-                    <div
-                      className='d-flex flex-column  col-4 col-md-1 ml-5  justify-space-between '
-                      id='firsttagipad'
-                    >
-                      <a href='#' className='tagsipad' id='tags'>
-                        Finance
-                      </a>
-                    </div>
-                    <div
-                      className='d-flex flex-column  col-4 col-md-1  mx-5 '
-                      id='firsttagipad'
-                    >
-                      <a href='#' className='tagsipad  ' id='tags'>
-                        Banking
-                      </a>
-                    </div>
-                    <div
-                      id='drop'
-                      className='d-flex flex-column col-md-3 col-7 
-                            '
-                    >
-                      <p>Deadline {"        "}11 Dec 2021</p>
-                    </div>
-                    <div className=' d-flex flex-row col-6 col-md-2  '>
-                      <BsArrowUpRight className='mb-1 ' color='#cd8930' fill='#cd8930' />
-                      <p id='gold'>Promoted</p>
-                    </div>
-                    <div className='  d-flex flex-row col-6 col-md-2 mx-auto '>
-                      {/* <div className="col-md-4"></div> */}
-                      <BsBookmark
-                        id='BsBookmark'
-                        color='#1e4274'
-                        className='fs-1 align-self-center col-md-4 col-4'
-                        path='0px'
-                      />
-                      <button className='applyBtn px-1 py-0 col-md-12 col-10'>
-                        Apply
-                      </button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
+            
           </div>
         </div>
 
