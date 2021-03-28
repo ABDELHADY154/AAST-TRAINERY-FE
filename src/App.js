@@ -21,6 +21,7 @@ import Language from "./Components/EditProfile/LanguageForm";
 import Applied from "../src/Components/StudentActivity/Applied";
 import Accepted from "../src/Components/StudentActivity/Accepted";
 import Saved from "../src/Components/StudentActivity/Saved";
+import Appointment from "../src/Components/StudentActivity/Appointment";
 
 import { AuthRoute } from "./Components/Auth/AuthRoute";
 
@@ -186,6 +187,11 @@ class App extends React.Component {
                   exact
                   path="/Profile/Activity/Saved"
                   component={Saved}
+                />
+                <AuthRoute
+                  exact
+                  path="/Profile/Activity/Appointment"
+                  component={Appointment}
                 />
                 <Route exact path="*" component={ErrorPage} />
               </Switch>

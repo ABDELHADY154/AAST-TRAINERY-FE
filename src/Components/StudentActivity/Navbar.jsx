@@ -59,7 +59,7 @@ class ActivityNavbar extends Component {
                     : "nav-link tabBtn"
                 }
                 //   id="Courses-tab"
-                href="/Activity/Appointment"
+                href="/Profile/Activity/Appointment"
               >
                 Appointment
               </a>
