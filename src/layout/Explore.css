@@ -60,9 +60,27 @@
   width: 61%;
   display: inline-flex;
 }
-@media (max-width: 618px) {
+.smallres {
+  display: inline-flex;
+}
+@media (max-width: 770px) {
   .s {
     width: 50%;
     display: contents !important;
   }
+  .smallres {
+    width: 50%;
+    display: contents !important;
+  }
+}
+.gray {
+  font-style: normal;
+  font-weight: normal;
+  font-size: 16px;
+  line-height: 28px;
+
+  color: #cccccc !important;
+}
+.nomargin {
+  margin: 0 !important;
 }

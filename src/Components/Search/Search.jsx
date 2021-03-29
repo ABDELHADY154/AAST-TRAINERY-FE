@@ -129,7 +129,6 @@ class Search extends Component {
             </div>
           </div>
           <h3 className=' d-flex justify-content-start ' id='gold'>
-            {" "}
             Filter your result
           </h3>
           <div className='primarycolor1 mb-3 '></div>
@@ -138,7 +137,7 @@ class Search extends Component {
               <a
                 className='nav-link tabBtn active'
                 id='General-tab'
-                href='/Profile/General'
+                // href='/Profile/General'
               >
                 Department
               </a>
@@ -147,7 +146,7 @@ class Search extends Component {
               <a
                 className='nav-link tabBtn '
                 id='Education-tab'
-                href='/Profile/Education'
+                // href='/Profile/Education'
               >
                 State
               </a>
@@ -156,13 +155,17 @@ class Search extends Component {
               <a
                 className='nav-link tabBtn '
                 id='Experiance-tab'
-                href='/Profile/Experience'
+                // href='/Profile/Experience'
               >
                 Payment
               </a>
             </li>
           </ul>
-          <ul className='nav  infoTabsUl nav-tabs' id='myTab' role='tablist'>
+          <ul
+            className='nav  infoTabsUl text-nowrap nomargin align-items-center py-2'
+            id='myTab'
+            role='tablist'
+          >
             <li className='nav-item infoTabs' role='presentation'>
               <label class='radio-inline'>
                 <input name='radioGroup' id='radio1' value='option1' type='radio' /> All
@@ -170,73 +173,62 @@ class Search extends Component {
             </li>
             <li className='nav-item infoTabs' role='presentation'>
               <label class='radio-inline'>
-                <input name='radioGroup' id='radio1' value='option1' type='radio' />{" "}
+                <input name='radioGroup' id='radio1' value='option1' type='radio' />
                 BIS/IT
               </label>
             </li>
             <li class='nav-item infoTabs' role='presentation'>
               <label class='radio-inline'>
-                <input name='radioGroup' id='radio1' value='option1' type='radio' />{" "}
+                <input name='radioGroup' id='radio1' value='option1' type='radio' />
                 Accounting
               </label>
             </li>
             <li className='nav-item infoTabs' role='presentation'>
               <label class='radio-inline'>
-                <input name='radioGroup' id='radio1' value='option1' type='radio' />{" "}
-                BIS/IT
+                <input name='radioGroup' id='radio1' value='option1' type='radio' />
+                Marketing
               </label>
             </li>
             <li className='nav-item infoTabs' role='presentation'>
-              <a
-                className={
-                  this.props && this.props.setactive === "Skills"
-                    ? "nav-link tabBtn active"
-                    : "nav-link tabBtn"
-                }
-                id='Skills-tab'
-                href='/Profile/Skills'
-              >
-                Skills
-              </a>
+              <label class='radio-inline'>
+                <input name='radioGroup' id='radio1' value='option1' type='radio' /> Media
+              </label>
             </li>
-            <li class='nav-item infoTabs' role='presentation'>
-              <a
-                className={
-                  this.props && this.props.setactive === "Interest"
-                    ? "nav-link tabBtn active"
-                    : "nav-link tabBtn"
-                }
-                id='Interest-tab'
-                href='/Profile/Interest'
-              >
-                Interest
-              </a>
+            <li className='nav-item infoTabs' role='presentation'>
+              <label class='radio-inline'>
+                <input name='radioGroup' id='radio1' value='option1' type='radio' />
+                Political science
+              </label>
             </li>
-            <li class='nav-item infoTabs' role='presentation'>
-              <a
-                className={
-                  this.props && this.props.setactive === "Language"
-                    ? "nav-link tabBtn active"
-                    : "nav-link tabBtn"
-                }
-                id='Language-tab'
-                href='/Profile/Language'
-              >
-                Language
-              </a>
+            <li className='nav-item infoTabs' role='presentation'>
+              <label class='radio-inline'>
+                <input name='radioGroup' id='radio1' value='option1' type='radio' />
+                Political science
+              </label>
             </li>
-            <li class='nav-item infoTabs' role='presentation'>
-              <a
-                className={
-                  this.props && this.props.setactive === "Accounts"
-                    ? "nav-link tabBtn active"
-                    : "nav-link tabBtn"
-                }
-                id='Accounts-tab'
-                href='/Profile/Accounts'
-              >
-                Accounts
-              </a>
+            <li className='nav-item infoTabs' role='presentation'>
+              <label class='radio-inline'>
+                <input name='radioGroup' id='radio1' value='option1' type='radio' />
+                Political science
+              </label>
+            </li>
+            <li className='nav-item infoTabs' role='presentation'>
+              <label class='radio-inline'>
+                <input name='radioGroup' id='radio1' value='option1' type='radio' />
+                Political science
+              </label>
+            </li>
+            <li className='nav-item infoTabs' role='presentation'>
+              <label class='radio-inline'>
+                <input name='radioGroup' id='radio1' value='option1' type='radio' />
+                Political science
+              </label>
+            </li>
+            <li className='nav-item infoTabs' role='presentation'>
+              <label class='radio-inline'>
+                <input name='radioGroup' id='radio1' value='option1' type='radio' />
+                Political science
+              </label>
             </li>
           </ul>
           <div className='row mb-4'>
@@ -270,21 +262,21 @@ class Search extends Component {
                         Ea omnis ipsam, eum nam tempore culpa illum consequuntur quis
                         nobis adipisci et?
                       </p>
-                      <div className='d-flex flex-row flex-wrap '>
-                        <div className='d-flex flex-column col-4 col-md-2'>
+                      <div className='d-flex flex-row flex-nowrap smallres'>
+                        <div className='d-flex  col-4 col-md-2'>
                           <a href='#' className=' ' id='tags'>
                             Finance
                           </a>
                         </div>
-                        <div className='d-flex flex-column col-4 me-3 col-md-2  mb-1'>
+                        <div className='d-flex  col-4 me-3 col-md-2  '>
                           <a href='#' className='' id='tags'>
                             Banking
                           </a>
                         </div>
                         <div
                           id='drop'
-                          className='d-flex flex-column me-4  col-md-5  
-                             justify-space-between'
+                          className='d-flex  col-md-3  
+                            '
                         >
                           <p>Deadline {"        "}11 Dec 2021</p>
                         </div>
@@ -295,6 +287,18 @@ class Search extends Component {
                           <BsArrowUpRight className='me-2' fill='#cd8930' />
                           <p id='gold'>Promoted</p>
                         </div>
+                        <div className='col-12 col-md-5 d-flex justify-content-start smallres'>
+                          {/* <div className="col-md-4"></div> */}
+                          <BsBookmark
+                            id='BsBookmark'
+                            color='#1e4274'
+                            className='fs-2  col-md-2 col-4'
+                            path='0px'
+                          />
+                          <button className='applyBtn px-1 py-0 col-md-5 col-8'>
+                            Apply
+                          </button>
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -303,6 +307,24 @@ class Search extends Component {
                 <div className='col-md-6' id='tabcontainer'>
                   <div className='card'>
                     <div className='card-body'>
+                      <div className='d-flex flex-row justify-content-between smallres'>
+                        <div className='d-flex'>
+                          <img
+                            className=' mt-0 d-flex flex-column col-md-4 col-2 me-3'
+                            id='imgicon'
+                            src={img2}
+                          />
+                          <p id='' className='card-title fs-5 mt-2'>
+                            Dr. Rehab ElBadrawy
+                          </p>
+                        </div>
+
+                        <div className='d-flex flex-row-reverse align-items-center'>
+                          <div class='gray d-flex mt-2 '>2 min ago</div>
+                        </div>
+                      </div>
+                      <hr />
+
                       <div className='d-flex flex-row '>
                         <img
                           className=' mt-0 d-flex flex-column  col-2 '
@@ -328,30 +350,36 @@ class Search extends Component {
                         Ea omnis ipsam, eum nam tempore culpa illum consequuntur quis
                         nobis adipisci et?
                       </p>
-                      <div className='d-flex flex-row flex-wrap '>
-                        <div className='d-flex flex-column col-4 col-md-2'>
+                      <div className='d-flex flex-row flex-nowrap smallres'>
+                        <div className='d-flex  col-4 col-md-2'>
                           <a href='#' className=' ' id='tags'>
                             Finance
                           </a>
                         </div>
-                        <div className='d-flex flex-column col-4 me-3 col-md-2  mb-1'>
+                        <div className='d-flex  col-4 me-3 col-md-2  '>
                           <a href='#' className='' id='tags'>
                             Banking
                           </a>
                         </div>
                         <div
                           id='drop'
-                          className='d-flex flex-column me-4  col-md-5  
-                             justify-space-between'
+                          className='d-flex  col-md-3  
+                            '
                         >
                           <p>Deadline {"        "}11 Dec 2021</p>
                         </div>
-                        <div
-                          id='promoted'
-                          className='  d-flex flex-row col-12 col-md-2  '
-                        >
-                          <BsArrowUpRight className='me-2' fill='#cd8930' />
-                          <p id='gold'>Promoted</p>
+
+                        <div className='col-12 col-md-5 d-flex justify-content-end smallres'>
+                          {/* <div className="col-md-4"></div> */}
+                          <BsBookmark
+                            id='BsBookmark'
+                            color='#1e4274'
+                            className='fs-2  col-md-2 col-4'
+                            path='0px'
+                          />
+                          <button className='applyBtn px-1 py-0 col-md-5 col-8'>
+                            Apply
+                          </button>
                         </div>
                       </div>
                     </div>
@@ -359,7 +387,6 @@ class Search extends Component {
                 </div>
               </div>
             </div>
-            
           </div>
         </div>
 
