@@ -17,6 +17,8 @@ import { IoClose } from "react-icons/io5";
 import { Link } from "react-router-dom";
 import "../../layout/Explore.css";
 
+import { RiAdvertisementLine } from "react-icons/ri";
+
 import { GrSearch } from "react-icons/gr";
 
 class Search extends Component {
@@ -268,7 +270,7 @@ class Search extends Component {
                             Finance
                           </a>
                         </div>
-                        <div className='d-flex  col-4 me-3 col-md-2  '>
+                        <div className='d-flex  col-4  col-md-2  '>
                           <a href='#' className='' id='tags'>
                             Banking
                           </a>
@@ -284,7 +286,7 @@ class Search extends Component {
                           id='promoted'
                           className='  d-flex flex-row col-12 col-md-2  '
                         >
-                          <BsArrowUpRight className='me-2' fill='#cd8930' />
+                          <BsArrowUpRight className='me-2 fs-4' fill='#cd8930' />
                           <p id='gold'>Promoted</p>
                         </div>
                         <div className='col-12 col-md-5 d-flex justify-content-start smallres'>
@@ -324,7 +326,6 @@ class Search extends Component {
                         </div>
                       </div>
                       <hr />
-
                       <div className='d-flex flex-row '>
                         <img
                           className=' mt-0 d-flex flex-column  col-2 '
@@ -356,7 +357,7 @@ class Search extends Component {
                             Finance
                           </a>
                         </div>
-                        <div className='d-flex  col-4 me-3 col-md-2  '>
+                        <div className='d-flex  col-4  col-md-2  '>
                           <a href='#' className='' id='tags'>
                             Banking
                           </a>
@@ -368,8 +369,14 @@ class Search extends Component {
                         >
                           <p>Deadline {"        "}11 Dec 2021</p>
                         </div>
-
-                        <div className='col-12 col-md-5 d-flex justify-content-end smallres'>
+                        <div
+                          id='promoted'
+                          className='  d-flex flex-row col-12 col-md-2 d-none '
+                        >
+                          <BsArrowUpRight className='me-2 fs-4' fill='#cd8930' />
+                          <p id='gold'>Promoted</p>
+                        </div>
+                        <div className='col-12 col-md-5 justify-content-end smallres'>
                           {/* <div className="col-md-4"></div> */}
                           <BsBookmark
                             id='BsBookmark'
@@ -380,6 +387,82 @@ class Search extends Component {
                           <button className='applyBtn px-1 py-0 col-md-5 col-8'>
                             Apply
                           </button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div className='col-md-6' id='tabcontainer'>
+                  <div className='card'>
+                    <div className='card-body'>
+                      <div className='d-flex flex-row '>
+                        <img
+                          className=' mt-0 d-flex flex-column  col-2 '
+                          id='imgicon'
+                          src={img2}
+                        />
+                        <div className=' fs-5 mt-2 ms-2 col-md-10 col-8 '>
+                          UI/UX Designer
+                        </div>
+                      </div>
+                      <div id='job' className='d-flex flex-row ms-5 '>
+                        <div className='d-flex ms-3 flex-column'>CIB</div>
+                        <div id='gold' className='d-flex ms-2 flex-column'>
+                          Finance
+                        </div>
+                      </div>
+                      <p className='card-text mt-2'>
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsam
+                        repudiandae aut possimus. Repellendus at nostrum iste doloremque.
+                        Ea omnis ipsam, eum nam tempore culpa illum consequuntur quis
+                        nobis adipisci et?
+                      </p>
+                      <div className='d-flex flex-row flex-nowrap smallres'>
+                        <div
+                          id='promoted'
+                          className='  d-flex flex-row col-12 col-md-2 fs-5'
+                        >
+                          <RiAdvertisementLine className='me-2 fs-3' fill='#cd8930' />
+                          <p id='gold'>ADS</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div className='col-md-6' id='tabcontainer'>
+                  <div className='card'>
+                    <div className='card-body'>
+                      <div className='d-flex flex-row '>
+                        <img
+                          className=' mt-0 d-flex flex-column  col-2 '
+                          id='imgicon'
+                          src={img2}
+                        />
+                        <div className=' fs-5 mt-2 ms-2 col-md-10 col-8 '>
+                          UI/UX Designer
+                        </div>
+                      </div>
+                      <div id='job' className='d-flex flex-row ms-5 '>
+                        <div className='d-flex ms-3 flex-column'>CIB</div>
+                        <div id='gold' className='d-flex ms-2 flex-column'>
+                          Finance
+                        </div>
+                      </div>
+                      <div className='d-flex flex-row flex-wrap '>
+                        <img
+                          className=' mt-0 d-flex flex-column col-md-12 col-12 me-1'
+                          // id='imgicon'
+                          src={img3}
+                        />
+                      </div>
+                      <div className='d-flex flex-row flex-nowrap smallres'>
+                        <div
+                          id='promoted'
+                          className='  d-flex flex-row col-12 col-md-2 fs-5'
+                        >
+                          <RiAdvertisementLine className='me-2 fs-3' fill='#cd8930' />
+                          <p id='gold'>ADS</p>
                         </div>
                       </div>
                     </div>
