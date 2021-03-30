@@ -235,7 +235,7 @@ class Search extends Component {
           </ul>
           <div className='row mb-4'>
             <div className='col-md-12 col-12'>
-              <div id='tabcard' className='row'>
+              <div id='tabcard' className='row flex-wrap'>
                 <div className='col-md-6' id='tabcontainer'>
                   <div className='card'>
                     <div className='card-body'>
@@ -351,8 +351,8 @@ class Search extends Component {
                         Ea omnis ipsam, eum nam tempore culpa illum consequuntur quis
                         nobis adipisci et?
                       </p>
-                      <div className='d-flex flex-row flex-nowrap smallres'>
-                        <div className='d-flex  col-4 col-md-2'>
+                      <div className='d-flex flex-row flex-nowrap smallres ww'>
+                        <div className='d-flex  col-4 col-md-2 s'>
                           <a href='#' className=' ' id='tags'>
                             Finance
                           </a>

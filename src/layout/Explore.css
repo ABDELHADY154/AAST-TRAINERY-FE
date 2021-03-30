@@ -58,7 +58,11 @@
 }
 .s {
   width: 61%;
+  height: 15px;
   display: inline-flex;
+}
+.ww {
+  height: 35px;
 }
 .smallres {
   display: inline-flex;

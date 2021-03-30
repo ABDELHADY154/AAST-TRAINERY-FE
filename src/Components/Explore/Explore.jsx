@@ -132,7 +132,7 @@ class Explore extends Component {
               </span>
             </div>
           </div>
-          <div className='row mb-4'>
+          <div className='flex-column mb-4'>
             <div className='col-md-12'>
               <div className='col-md-12'>
                 <div className='card '>
@@ -160,8 +160,8 @@ class Explore extends Component {
                       omnis ipsam, eum nam tempore culpa illum consequuntur quis nobis
                       adipisci et?
                     </p>
-                    <div className='d-flex flex-row flex-wrap '>
-                      <div className='s'>
+                    <div className='d-flex flex-row flex-wrap ww'>
+                      <div className='s  align-middle'>
                         <div
                           className='d-flex flex-column  col-4 col-md-1 me-4 '
                           id='firsttagipad'
@@ -230,7 +230,7 @@ class Explore extends Component {
                     </div>
 
                     <hr />
-                    <div className='d-flex flex-row'>
+                    <div className='d-flex flex-row '>
                       <img
                         className=' mt-0 d-flex flex-column col-md-1 col-2 me-1'
                         id='imgicon'
@@ -253,10 +253,10 @@ class Explore extends Component {
                       omnis ipsam, eum nam tempore culpa illum consequuntur quis nobis
                       adipisci et?
                     </p>
-                    <div className='d-flex flex-row flex-wrap '>
+                    <div className='d-flex flex-row flex-wrap ww'>
                       <div className='s'>
                         <div
-                          className='d-flex flex-column  col-4 col-md-1 me-4 '
+                          className='d-flex flex-column  col-4 col-md-1 me-4 ss'
                           id='firsttagipad'
                         >
                           <a href='#' className='tagsipad' id='tags'>
