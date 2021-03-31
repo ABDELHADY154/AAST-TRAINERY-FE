@@ -7,7 +7,7 @@ import img1 from "../../Components/assests/imgs/rec2.png";
 import img2 from "../../Components/assests/imgs/cib.png";
 import "../../layout/Home.css";
 import Footer2 from "../Common/Footer2";
-import { FiPhone, FiSearch, FiUsers } from "react-icons/fi";
+import { BsCheck, BsArrowUpRight } from "react-icons/bs";
 import { IoLocationOutline } from "react-icons/io5";
 import { AiOutlineGlobal, AiOutlineMail, AiOutlinePhone } from "react-icons/ai";
 import { GoLocation } from "react-icons/go";
@@ -33,7 +33,7 @@ export default class CompanyProfile extends Component {
     this.setState({ FormLoading: true });
     await axios
       .get(`/W/student/company/${35}`)
-      .then(res => {
+      .then((res) => {
         this.setState({
           id: res.data.response.data.id,
           data: res.data.response.data,
@@ -42,7 +42,7 @@ export default class CompanyProfile extends Component {
         });
         // console.log(res.data.response.data.internshipPosts.ended);
       })
-      .catch(err => {
+      .catch((err) => {
         this.setState({ FormLoading: true });
         console.log(err);
       });
@@ -58,7 +58,7 @@ export default class CompanyProfile extends Component {
           spinner={<BounceLoader color="#cd8930" />}
           color={"#cd8930"}
           styles={{
-            overlay: base => ({
+            overlay: (base) => ({
               ...base,
               background: "rgb(255, 255, 255)",
               stroke: "rgba(255, 0, 0, 0.5)",
@@ -152,7 +152,84 @@ export default class CompanyProfile extends Component {
                     Opened Internship
                   </h4>
                   {this.state.internshipPosts.open
-                    ? this.state.internshipPosts.open.map(item => {
+                    ? this.state.internshipPosts.open.map((item) => {
+                        return this.state.internshipPosts.post_type ===
+                          "adsPost" ? (
+                          <CompanyPostADS
+                            id={item.id}
+                            key={item.id}
+                            company_logo={item.company_logo}
+                            description={item.description}
+                            company_name={item.company_name}
+                            sponsor_image={item.sponsor_image}
+                          />
+                        ) : (
+                          <CompanyPost
+                            id={item.id}
+                            key={item.id}
+                            company_logo={item.company_logo}
+                            description={item.description}
+                            title={item.title}
+                            company_name={item.company_name}
+                            application_deadline={item.application_deadline}
+                            salary={item.salary}
+                            departments={item.departments}
+                            tags={item.tags}
+                          />
+                        );
+                        // <Choose>
+                        //   <When
+                        //     condition={
+                        //       this.state.internshipPosts.post_type ===
+                        //       "adsPost"
+                        //     }
+                        //   >
+                        //     <CompanyPostADS
+                        //       id={item.id}
+                        //       key={item.id}
+                        //       company_logo={item.company_logo}
+                        //       description={item.description}
+                        //       company_name={item.company_name}
+                        //       sponsor_image={item.sponsor_image}
+                        //     />{" "}
+                        //   </When>
+                        //   <When
+                        //     condition={
+                        //       this.state.internshipPosts.post_type ==
+                        //       "companyPost"
+                        //     }
+                        //   >
+                        //     <CompanyPost
+                        //       id={item.id}
+                        //       key={item.id}
+                        //       company_logo={item.company_logo}
+                        //       description={item.description}
+                        //       title={item.title}
+                        //       company_name={item.company_name}
+                        //       application_deadline={item.application_deadline}
+                        //       salary={item.salary}
+                        //       departments={item.departments}
+                        //       tags={item.tags}
+                        //     />
+                        //   </When>
+                        // </Choose>
+                      })
+                    : ""}
+
+                  {/* <CompanyPostPromoted
+                            id={item.id}
+                            key={item.id}
+                            company_logo={item.company_logo}
+                            description={item.description}
+                            title={item.title}
+                            company_name={item.company_name}
+                            application_deadline={item.application_deadline}
+                            salary={item.salary}
+                            departments={item.departments}
+                            tags={item.tags}
+                          /> */}
+                  {/* {this.state.internshipPosts.open
+                    ? this.state.internshipPosts.open.map((item) => {
                         return (
                           <CompanyPost
                             id={item.id}
@@ -168,12 +245,12 @@ export default class CompanyProfile extends Component {
                           />
                         );
                       })
-                    : ""}
+                    : ""} */}
                 </div>
                 <div>
                   <h4 className="companyTitel">Ended Internship</h4>
                   {this.state.internshipPosts.ended
-                    ? this.state.internshipPosts.ended.map(item => {
+                    ? this.state.internshipPosts.ended.map((item) => {
                         return (
                           <CompanyPost
                             id={item.id}
@@ -207,7 +284,8 @@ export default class CompanyProfile extends Component {
     );
   }
 }
-class CompanyPost extends Component {
+
+class CompanyPostADS extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -216,13 +294,9 @@ class CompanyPost extends Component {
     };
   }
   render() {
-    // console.log(this.props.ended);
-
-    // console.log(this.props.departments);
     let id = this.props.id;
     return (
       <>
-        {/* {this.props.ended == false ? ( */}
         <div className="row mb-3">
           <div className="col-md-12">
             <div className="card">
@@ -231,7 +305,47 @@ class CompanyPost extends Component {
                   <img
                     className=" mt-0 d-flex flex-column col-md-1 col-2 me-1"
                     id="imgicon"
-                    // src={img2}
+                    src={this.props.company_logo}
+                  />
+                  <div className=" fs-5 mt-2 ms-2 col-md-10 col-8">
+                    {this.props.company_name}
+                  </div>
+                </div>
+                <p className="card-text mt-2">{this.props.description}</p>
+                <img
+                  className=" mt-0  col-md-11 col-11 me-1"
+                  style={{ width: "100%", height: "40%" }}
+                  src={this.props.sponsor_image}
+                  // src={img1}
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </>
+    );
+  }
+}
+class CompanyPostPromoted extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      departments: [],
+      tags: [],
+    };
+  }
+  render() {
+    let id = this.props.id;
+    return (
+      <>
+        <div className="row mb-3">
+          <div className="col-md-12">
+            <div className="card">
+              <div className="card-body">
+                <div className="d-flex flex-row">
+                  <img
+                    className=" mt-0 d-flex flex-column col-md-1 col-2 me-1"
+                    id="imgicon"
                     src={this.props.company_logo}
                   />
                   <div className=" fs-5 mt-2 ms-2 col-md-10 col-8">
@@ -245,7 +359,7 @@ class CompanyPost extends Component {
                   <div className="d-flex ms-3 flex-column">
                     {this.props.company_name}
                   </div>
-                  {this.props.departments.map(item => {
+                  {this.props.departments.map((item) => {
                     return (
                       <Departments
                         id={item.id}
@@ -255,14 +369,11 @@ class CompanyPost extends Component {
                       />
                     );
                   })}
-                  {/* <div id="gold" className="  d-flex ms-2 flex-column">
-                  {this.props.departments}
-                </div> */}
                 </div>
                 <p className="card-text mt-2">{this.props.description}</p>
 
                 <div className="d-flex flex-row flex-wrap ">
-                  {this.props.tags.map(item => {
+                  {this.props.tags.map((item) => {
                     return (
                       <Interest
                         id={item.id}
@@ -271,14 +382,89 @@ class CompanyPost extends Component {
                       />
                     );
                   })}
-                  {/* <div
-                  className="d-flex flex-column col-4 col-md-1 me-4 "
-                  id="firsttagipad"
-                >
-                  <a href="#" className="tagsipad  " id="tags">
-                    Banking
-                  </a>
-                </div> */}
+                  <div
+                    id="drop"
+                    className="d-flex flex-column col-md-3  
+                 justify-space-between"
+                  >
+                    <p>
+                      Deadline {"        "}
+                      {this.props.application_deadline}
+                    </p>
+                  </div>
+                  <div
+                    id="promoted"
+                    className="  d-flex flex-row col-12 col-md-2  "
+                  >
+                    <BsArrowUpRight className="me-2" fill="#cd8930" />
+                    <p id="gold">Promoted</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </>
+    );
+  }
+}
+
+class CompanyPost extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      departments: [],
+      tags: [],
+    };
+  }
+  render() {
+    let id = this.props.id;
+    return (
+      <>
+        <div className="row mb-3">
+          <div className="col-md-12">
+            <div className="card">
+              <div className="card-body">
+                <div className="d-flex flex-row">
+                  <img
+                    className=" mt-0 d-flex flex-column col-md-1 col-2 me-1"
+                    id="imgicon"
+                    src={this.props.company_logo}
+                  />
+                  <div className=" fs-5 mt-2 ms-2 col-md-10 col-8">
+                    {this.props.title}
+                  </div>
+                  <div id="goldtab" className=" fs-6 mt-2 col-2 col-md-1">
+                    {this.props.salary}
+                  </div>
+                </div>
+                <div id="job" className="d-flex flex-row ms-5 ">
+                  <div className="d-flex ms-3 flex-column">
+                    {this.props.company_name}
+                  </div>
+                  {this.props.departments.map((item) => {
+                    return (
+                      <Departments
+                        id={item.id}
+                        key={item.id}
+                        departments={item.departments}
+                        dep_name={item.dep_name}
+                      />
+                    );
+                  })}
+                </div>
+                <p className="card-text mt-2">{this.props.description}</p>
+
+                <div className="d-flex flex-row flex-wrap ">
+                  {this.props.tags.map((item) => {
+                    return (
+                      <Interest
+                        id={item.id}
+                        key={item.id}
+                        interest={item.interest}
+                      />
+                    );
+                  })}
                   <div
                     id="drop"
                     className="d-flex flex-column col-md-3  
@@ -294,12 +480,6 @@ class CompanyPost extends Component {
             </div>
           </div>
         </div>
-        {/* ) : (
-          <p className="companyDesc">
-            There are no ended Internship at
-            {this.props.company_name}.
-          </p>
-        )} */}
       </>
     );
   }
