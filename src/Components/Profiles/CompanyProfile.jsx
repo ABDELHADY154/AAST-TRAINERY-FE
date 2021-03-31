@@ -32,8 +32,8 @@ export default class CompanyProfile extends Component {
   async componentDidMount() {
     this.setState({ FormLoading: true });
     await axios
-      .get(`/W/student/company/${14}`)
-      .then((res) => {
+      .get(`/W/student/company/${35}`)
+      .then(res => {
         this.setState({
           id: res.data.response.data.id,
           data: res.data.response.data,
@@ -42,7 +42,7 @@ export default class CompanyProfile extends Component {
         });
         // console.log(res.data.response.data.internshipPosts.ended);
       })
-      .catch((err) => {
+      .catch(err => {
         this.setState({ FormLoading: true });
         console.log(err);
       });
@@ -50,7 +50,7 @@ export default class CompanyProfile extends Component {
 
   render() {
     let id = this.props.id;
-    // console.log(this.state.internshipPosts);
+    console.log(this.state.internshipPosts.open);
     return (
       <div className="">
         <LoadingOverlay
@@ -58,7 +58,7 @@ export default class CompanyProfile extends Component {
           spinner={<BounceLoader color="#cd8930" />}
           color={"#cd8930"}
           styles={{
-            overlay: (base) => ({
+            overlay: base => ({
               ...base,
               background: "rgb(255, 255, 255)",
               stroke: "rgba(255, 0, 0, 0.5)",
@@ -151,32 +151,45 @@ export default class CompanyProfile extends Component {
                   <h4 className="companyTitel" style={{ marginLeft: -2 }}>
                     Opened Internship
                   </h4>
-                  <p className="companyDesc">
-                    There are currently no open Internship at{" "}
-                    {this.state.data.company_name}.
-                  </p>
+                  {this.state.internshipPosts.open
+                    ? this.state.internshipPosts.open.map(item => {
+                        return (
+                          <CompanyPost
+                            id={item.id}
+                            key={item.id}
+                            company_logo={item.company_logo}
+                            description={item.description}
+                            title={item.title}
+                            company_name={item.company_name}
+                            application_deadline={item.application_deadline}
+                            salary={item.salary}
+                            departments={item.departments}
+                            tags={item.tags}
+                          />
+                        );
+                      })
+                    : ""}
                 </div>
                 <div>
                   <h4 className="companyTitel">Ended Internship</h4>
-                  {/* {this.state.data.ended == true ? ( */}
-                  <>
-                    {this.state.internshipPosts.map((item) => {
-                      return (
-                        <CompanyPost
-                          id={item.id}
-                          key={item.id}
-                          company_logo={item.company_logo}
-                          description={item.description}
-                          title={item.title}
-                          company_name={item.company_name}
-                          application_deadline={item.application_deadline}
-                          salary={item.salary}
-                          departments={item.departments}
-                          tags={item.tags}
-                        />
-                      );
-                    })}
-                  </>
+                  {this.state.internshipPosts.ended
+                    ? this.state.internshipPosts.ended.map(item => {
+                        return (
+                          <CompanyPost
+                            id={item.id}
+                            key={item.id}
+                            company_logo={item.company_logo}
+                            description={item.description}
+                            title={item.title}
+                            company_name={item.company_name}
+                            application_deadline={item.application_deadline}
+                            salary={item.salary}
+                            departments={item.departments}
+                            tags={item.tags}
+                          />
+                        );
+                      })
+                    : ""}
                   {/* ) : (
                     <p className="companyDesc">
                       There are no ended Internship at{" "}
@@ -232,7 +245,7 @@ class CompanyPost extends Component {
                   <div className="d-flex ms-3 flex-column">
                     {this.props.company_name}
                   </div>
-                  {this.props.departments.map((item) => {
+                  {this.props.departments.map(item => {
                     return (
                       <Departments
                         id={item.id}
@@ -249,7 +262,7 @@ class CompanyPost extends Component {
                 <p className="card-text mt-2">{this.props.description}</p>
 
                 <div className="d-flex flex-row flex-wrap ">
-                  {this.props.tags.map((item) => {
+                  {this.props.tags.map(item => {
                     return (
                       <Interest
                         id={item.id}
