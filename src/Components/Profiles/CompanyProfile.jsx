@@ -32,7 +32,7 @@ export default class CompanyProfile extends Component {
   async componentDidMount() {
     this.setState({ FormLoading: true });
     await axios
-      .get(`/W/student/company/${10}`)
+      .get(`/W/student/company/${14}`)
       .then((res) => {
         this.setState({
           id: res.data.response.data.id,
@@ -40,8 +40,7 @@ export default class CompanyProfile extends Component {
           internshipPosts: res.data.response.data.internshipPosts,
           FormLoading: false,
         });
-        // console.log(res.data.response.data.internshipPosts);
-        // console.log(res.data.response.data.internshipPosts.description);
+        // console.log(res.data.response.data.internshipPosts.ended);
       })
       .catch((err) => {
         this.setState({ FormLoading: true });
@@ -71,7 +70,7 @@ export default class CompanyProfile extends Component {
               <div className="d-flex flex-row">
                 <img
                   // src={img1}
-                  src={this.state.data.image}
+                  src={this.state.data.logo}
                   className="ms-1 me-3 col-2 rounded-circle companyImg"
                 />
                 <div className="col-8 mt-3 ">
@@ -159,21 +158,31 @@ export default class CompanyProfile extends Component {
                 </div>
                 <div>
                   <h4 className="companyTitel">Ended Internship</h4>
-                  {this.state.internshipPosts.map((item) => {
-                    return (
-                      <CompanyPost
-                        id={item.id}
-                        key={item.id}
-                        description={item.description}
-                        title={item.title}
-                        company_name={item.company_name}
-                        application_deadline={item.application_deadline}
-                        salary={item.salary}
-                        departments={item.departments}
-                        tags={item.tags}
-                      />
-                    );
-                  })}
+                  {/* {this.state.data.ended == true ? ( */}
+                  <>
+                    {this.state.internshipPosts.map((item) => {
+                      return (
+                        <CompanyPost
+                          id={item.id}
+                          key={item.id}
+                          company_logo={item.company_logo}
+                          description={item.description}
+                          title={item.title}
+                          company_name={item.company_name}
+                          application_deadline={item.application_deadline}
+                          salary={item.salary}
+                          departments={item.departments}
+                          tags={item.tags}
+                        />
+                      );
+                    })}
+                  </>
+                  {/* ) : (
+                    <p className="companyDesc">
+                      There are no ended Internship at{" "}
+                       {this.state.data.company_name}.
+                     </p>
+                   )} */}
                 </div>
               </div>
             </div>
@@ -194,58 +203,62 @@ class CompanyPost extends Component {
     };
   }
   render() {
-    console.log(this.props.departments);
+    // console.log(this.props.ended);
+
+    // console.log(this.props.departments);
     let id = this.props.id;
     return (
-      <div className="row mb-3">
-        <div className="col-md-12">
-          <div className="card">
-            <div className="card-body">
-              <div className="d-flex flex-row">
-                <img
-                  className=" mt-0 d-flex flex-column col-md-1 col-2 me-1"
-                  id="imgicon"
-                  src={img2}
-                  // src={this.props.image}
-                />
-                <div className=" fs-5 mt-2 ms-2 col-md-10 col-8">
-                  {this.props.title}
+      <>
+        {/* {this.props.ended == false ? ( */}
+        <div className="row mb-3">
+          <div className="col-md-12">
+            <div className="card">
+              <div className="card-body">
+                <div className="d-flex flex-row">
+                  <img
+                    className=" mt-0 d-flex flex-column col-md-1 col-2 me-1"
+                    id="imgicon"
+                    // src={img2}
+                    src={this.props.company_logo}
+                  />
+                  <div className=" fs-5 mt-2 ms-2 col-md-10 col-8">
+                    {this.props.title}
+                  </div>
+                  <div id="goldtab" className=" fs-6 mt-2 col-2 col-md-1">
+                    {this.props.salary}
+                  </div>
                 </div>
-                <div id="goldtab" className=" fs-6 mt-2 col-2 col-md-1">
-                  {this.props.salary}
-                </div>
-              </div>
-              <div id="job" className="d-flex flex-row ms-5 ">
-                <div className="d-flex ms-3 flex-column">
-                  {this.props.company_name}
-                </div>
-                {this.props.departments.map((item) => {
-                  return (
-                    <Departments
-                      id={item.id}
-                      key={item.id}
-                      departments={item.departments}
-                      dep_name={item.dep_name}
-                    />
-                  );
-                })}
-                {/* <div id="gold" className="  d-flex ms-2 flex-column">
+                <div id="job" className="d-flex flex-row ms-5 ">
+                  <div className="d-flex ms-3 flex-column">
+                    {this.props.company_name}
+                  </div>
+                  {this.props.departments.map((item) => {
+                    return (
+                      <Departments
+                        id={item.id}
+                        key={item.id}
+                        departments={item.departments}
+                        dep_name={item.dep_name}
+                      />
+                    );
+                  })}
+                  {/* <div id="gold" className="  d-flex ms-2 flex-column">
                   {this.props.departments}
                 </div> */}
-              </div>
-              <p className="card-text mt-2">{this.props.description}</p>
+                </div>
+                <p className="card-text mt-2">{this.props.description}</p>
 
-              <div className="d-flex flex-row flex-wrap ">
-                {this.props.tags.map((item) => {
-                  return (
-                    <Interest
-                      id={item.id}
-                      key={item.id}
-                      interest={item.interest}
-                    />
-                  );
-                })}
-                {/* <div
+                <div className="d-flex flex-row flex-wrap ">
+                  {this.props.tags.map((item) => {
+                    return (
+                      <Interest
+                        id={item.id}
+                        key={item.id}
+                        interest={item.interest}
+                      />
+                    );
+                  })}
+                  {/* <div
                   className="d-flex flex-column col-4 col-md-1 me-4 "
                   id="firsttagipad"
                 >
@@ -253,21 +266,28 @@ class CompanyPost extends Component {
                     Banking
                   </a>
                 </div> */}
-                <div
-                  id="drop"
-                  className="d-flex flex-column col-md-3  
+                  <div
+                    id="drop"
+                    className="d-flex flex-column col-md-3  
                  justify-space-between"
-                >
-                  <p>
-                    Deadline {"        "}
-                    {this.props.application_deadline}
-                  </p>
+                  >
+                    <p>
+                      Deadline {"        "}
+                      {this.props.application_deadline}
+                    </p>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
+        {/* ) : (
+          <p className="companyDesc">
+            There are no ended Internship at
+            {this.props.company_name}.
+          </p>
+        )} */}
+      </>
     );
   }
 }
