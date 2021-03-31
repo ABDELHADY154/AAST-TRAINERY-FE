@@ -1,3 +1,273 @@
+import React, { Component } from "react";
+import Slider from "react-slick";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+
+import img3 from "../assests/imgs/coach3.jpg";
+import { FaFacebookF, FaLinkedinIn, FaYoutube } from "react-icons/fa";
+import "../../layout/CareerCoaching.css";
+
+export default class CoachCaro extends Component {
+  render() {
+    var settings = {
+      dots: true,
+      infinite: false,
+      speed: 500,
+      slidesToShow: 4,
+      slidesToScroll: 4,
+      initialSlide: 0,
+      responsive: [
+        {
+          breakpoint: 1024,
+          settings: {
+            slidesToShow: 3,
+            slidesToScroll: 3,
+            infinite: true,
+            dots: true,
+          },
+        },
+        {
+          breakpoint: 600,
+          settings: {
+            slidesToShow: 2,
+            slidesToScroll: 2,
+            initialSlide: 2,
+          },
+        },
+        {
+          breakpoint: 480,
+          settings: {
+            slidesToShow: 1,
+            slidesToScroll: 1,
+          },
+        },
+      ],
+    };
+    return (
+      <div>
+        <Slider {...settings}>
+          <div>
+            <div className="containerrr">
+              {" "}
+              <img
+                src={img3}
+                id="imagehoverr"
+                className="d-flex flex-column col-md-3 col-12 rounded "
+              />
+              <div class="overlay" id="overlayy">
+                <a
+                  id="linksss"
+                  href="#"
+                  class="textttt fs-5 mt-0 mt-2 col-12 col-md-12 "
+                >
+                  Micheal Hanna
+                  {/* {this.state.coach_name} */}
+                  <br />
+                  <span class="textttt fs-6 col-12 col-md-12 mt-4">
+                    CEO at Nobels CO.
+                    {/* {this.state.job_title} at {this.state.company_name} */}
+                  </span>
+                </a>
+
+                <div className="mt-3 ">
+                  <li>
+                    <a href="#">
+                      <FaFacebookF
+                        color="#ffffff"
+                        fill="#ffffff"
+                        className="m-2"
+                      />
+                    </a>
+                    <a href="#">
+                      <FaLinkedinIn
+                        color="#ffffff"
+                        fill="#ffffff"
+                        className="m-2"
+                      />
+                    </a>
+                    <a href="#">
+                      <FaYoutube
+                        color="#ffffff"
+                        fill="#ffffff"
+                        className="m-2"
+                      />
+                    </a>
+                  </li>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div>
+            <div className="containerrr">
+              {" "}
+              <img
+                src={img3}
+                id="imagehoverr"
+                className="d-flex flex-column col-md-3 col-12 rounded "
+              />
+              <div class="overlay" id="overlayy">
+                <a
+                  id="linksss"
+                  href="#"
+                  class="textttt fs-5 mt-0 mt-2 col-12 col-md-12 "
+                >
+                  Micheal Hanna
+                  {/* {this.state.coach_name} */}
+                  <br />
+                  <span class="textttt fs-6 col-12 col-md-12 mt-4">
+                    CEO at Nobels CO.
+                    {/* {this.state.job_title} at {this.state.company_name} */}
+                  </span>
+                </a>
+
+                <div className="mt-3 ">
+                  <li>
+                    <a href="#">
+                      <FaFacebookF
+                        color="#ffffff"
+                        fill="#ffffff"
+                        className="m-2"
+                      />
+                    </a>
+                    <a href="#">
+                      <FaLinkedinIn
+                        color="#ffffff"
+                        fill="#ffffff"
+                        className="m-2"
+                      />
+                    </a>
+                    <a href="#">
+                      <FaYoutube
+                        color="#ffffff"
+                        fill="#ffffff"
+                        className="m-2"
+                      />
+                    </a>
+                  </li>
+                </div>
+              </div>
+            </div>{" "}
+          </div>
+          <div>
+            <div className="containerrr">
+              {" "}
+              <img
+                src={img3}
+                id="imagehoverr"
+                className="d-flex flex-column col-md-3 col-12 rounded "
+              />
+              <div class="overlay" id="overlayy">
+                <a
+                  id="linksss"
+                  href="#"
+                  class="textttt fs-5 mt-0 mt-2 col-12 col-md-12 "
+                >
+                  Micheal Hanna
+                  {/* {this.state.coach_name} */}
+                  <br />
+                  <span class="textttt fs-6 col-12 col-md-12 mt-4">
+                    CEO at Nobels CO.
+                    {/* {this.state.job_title} at {this.state.company_name} */}
+                  </span>
+                </a>
+
+                <div className="mt-3 ">
+                  <li>
+                    <a href="#">
+                      <FaFacebookF
+                        color="#ffffff"
+                        fill="#ffffff"
+                        className="m-2"
+                      />
+                    </a>
+                    <a href="#">
+                      <FaLinkedinIn
+                        color="#ffffff"
+                        fill="#ffffff"
+                        className="m-2"
+                      />
+                    </a>
+                    <a href="#">
+                      <FaYoutube
+                        color="#ffffff"
+                        fill="#ffffff"
+                        className="m-2"
+                      />
+                    </a>
+                  </li>
+                </div>
+              </div>
+            </div>{" "}
+          </div>
+          <div>
+            <div className="containerrr">
+              {" "}
+              <img
+                src={img3}
+                id="imagehoverr"
+                className="d-flex flex-column col-md-3 col-12 rounded "
+              />
+              <div class="overlay" id="overlayy">
+                <a
+                  id="linksss"
+                  href="#"
+                  class="textttt fs-5 mt-0 mt-2 col-12 col-md-12 "
+                >
+                  Micheal Hanna
+                  {/* {this.state.coach_name} */}
+                  <br />
+                  <span class="textttt fs-6 col-12 col-md-12 mt-4">
+                    CEO at Nobels CO.
+                    {/* {this.state.job_title} at {this.state.company_name} */}
+                  </span>
+                </a>
+
+                <div className="mt-3 ">
+                  <li>
+                    <a href="#">
+                      <FaFacebookF
+                        color="#ffffff"
+                        fill="#ffffff"
+                        className="m-2"
+                      />
+                    </a>
+                    <a href="#">
+                      <FaLinkedinIn
+                        color="#ffffff"
+                        fill="#ffffff"
+                        className="m-2"
+                      />
+                    </a>
+                    <a href="#">
+                      <FaYoutube
+                        color="#ffffff"
+                        fill="#ffffff"
+                        className="m-2"
+                      />
+                    </a>
+                  </li>
+                </div>
+              </div>
+            </div>{" "}
+          </div>
+          <div>
+            <h3>5</h3>
+          </div>
+          <div>
+            <h3>6</h3>
+          </div>
+          <div>
+            <h3>7</h3>
+          </div>
+          <div>
+            <h3>8</h3>
+          </div>
+        </Slider>
+      </div>
+    );
+  }
+}
+
 // import ReactDOM from "react-dom";
 // import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
 // import { Carousel } from "react-responsive-carousel";

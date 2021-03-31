@@ -28,9 +28,11 @@
     "react-router-dom": "^5.2.0",
     "react-scripts": "^4.0.3",
     "react-scrolltop-button": "^0.1.9",
+    "react-slick": "^0.28.1",
     "react-spinners": "^0.10.6",
     "react-step-progress-bar": "^1.0.3",
     "react-visibility-sensor": "^5.1.1",
+    "slick-carousel": "^1.8.1",
     "styled-components": "^5.2.1",
     "swiper": "^6.5.0"
   },
