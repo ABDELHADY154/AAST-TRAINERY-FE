@@ -151,10 +151,17 @@ export default class CompanyProfile extends Component {
                   <h4 className="companyTitel" style={{ marginLeft: -2 }}>
                     Opened Internship
                   </h4>
+
+                  {/* {this.state.internshipPosts.open !== [] ? (
+                    <p>opened</p>
+                  ) : this.state.internshipPosts.open == [] ? (
+                    <p>not</p>
+                  ) : (
+                    ""
+                  )} */}
                   {this.state.internshipPosts.open
                     ? this.state.internshipPosts.open.map((item) => {
-                        return this.state.internshipPosts.post_type ===
-                          "adsPost" ? (
+                        return item.post_type == "adsPost" ? (
                           <CompanyPostADS
                             id={item.id}
                             key={item.id}
@@ -163,7 +170,7 @@ export default class CompanyProfile extends Component {
                             company_name={item.company_name}
                             sponsor_image={item.sponsor_image}
                           />
-                        ) : (
+                        ) : item.post_type == "companyPost" ? (
                           <CompanyPost
                             id={item.id}
                             key={item.id}
@@ -176,82 +183,39 @@ export default class CompanyProfile extends Component {
                             departments={item.departments}
                             tags={item.tags}
                           />
+                        ) : item.post_type == "promotedPost" ? (
+                          <CompanyPostPromoted
+                            id={item.id}
+                            key={item.id}
+                            company_logo={item.company_logo}
+                            description={item.description}
+                            title={item.title}
+                            company_name={item.company_name}
+                            application_deadline={item.application_deadline}
+                            salary={item.salary}
+                            departments={item.departments}
+                            tags={item.tags}
+                          />
+                        ) : (
+                          ""
                         );
-                        // <Choose>
-                        //   <When
-                        //     condition={
-                        //       this.state.internshipPosts.post_type ===
-                        //       "adsPost"
-                        //     }
-                        //   >
-                        //     <CompanyPostADS
-                        //       id={item.id}
-                        //       key={item.id}
-                        //       company_logo={item.company_logo}
-                        //       description={item.description}
-                        //       company_name={item.company_name}
-                        //       sponsor_image={item.sponsor_image}
-                        //     />{" "}
-                        //   </When>
-                        //   <When
-                        //     condition={
-                        //       this.state.internshipPosts.post_type ==
-                        //       "companyPost"
-                        //     }
-                        //   >
-                        //     <CompanyPost
-                        //       id={item.id}
-                        //       key={item.id}
-                        //       company_logo={item.company_logo}
-                        //       description={item.description}
-                        //       title={item.title}
-                        //       company_name={item.company_name}
-                        //       application_deadline={item.application_deadline}
-                        //       salary={item.salary}
-                        //       departments={item.departments}
-                        //       tags={item.tags}
-                        //     />
-                        //   </When>
-                        // </Choose>
                       })
                     : ""}
-
-                  {/* <CompanyPostPromoted
-                            id={item.id}
-                            key={item.id}
-                            company_logo={item.company_logo}
-                            description={item.description}
-                            title={item.title}
-                            company_name={item.company_name}
-                            application_deadline={item.application_deadline}
-                            salary={item.salary}
-                            departments={item.departments}
-                            tags={item.tags}
-                          /> */}
-                  {/* {this.state.internshipPosts.open
-                    ? this.state.internshipPosts.open.map((item) => {
-                        return (
-                          <CompanyPost
-                            id={item.id}
-                            key={item.id}
-                            company_logo={item.company_logo}
-                            description={item.description}
-                            title={item.title}
-                            company_name={item.company_name}
-                            application_deadline={item.application_deadline}
-                            salary={item.salary}
-                            departments={item.departments}
-                            tags={item.tags}
-                          />
-                        );
-                      })
-                    : ""} */}
                 </div>
                 <div>
                   <h4 className="companyTitel">Ended Internship</h4>
                   {this.state.internshipPosts.ended
                     ? this.state.internshipPosts.ended.map((item) => {
-                        return (
+                        return item.post_type == "adsPost" ? (
+                          <CompanyPostADS
+                            id={item.id}
+                            key={item.id}
+                            company_logo={item.company_logo}
+                            description={item.description}
+                            company_name={item.company_name}
+                            sponsor_image={item.sponsor_image}
+                          />
+                        ) : item.post_type == "companyPost" ? (
                           <CompanyPost
                             id={item.id}
                             key={item.id}
@@ -264,6 +228,21 @@ export default class CompanyProfile extends Component {
                             departments={item.departments}
                             tags={item.tags}
                           />
+                        ) : item.post_type == "promotedPost" ? (
+                          <CompanyPostPromoted
+                            id={item.id}
+                            key={item.id}
+                            company_logo={item.company_logo}
+                            description={item.description}
+                            title={item.title}
+                            company_name={item.company_name}
+                            application_deadline={item.application_deadline}
+                            salary={item.salary}
+                            departments={item.departments}
+                            tags={item.tags}
+                          />
+                        ) : (
+                          ""
                         );
                       })
                     : ""}
