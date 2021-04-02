@@ -34,7 +34,7 @@ export default class advisorProfile extends Component {
   async componentDidMount() {
     this.setState({ FormLoading: true });
     await axios
-      .get(`/W/student/company/${10}`)
+      .get(`/W/student/advisor/${10}`)
       .then((res) => {
         this.setState({
           id: res.data.response.data.id,
@@ -42,7 +42,7 @@ export default class advisorProfile extends Component {
           internshipPosts: res.data.response.data.internshipPosts,
           FormLoading: false,
         });
-        // console.log(res.data.response.data.internshipPosts);
+        console.log(res.data.response.data.internshipPosts);
         // console.log(res.data.response.data.internshipPosts.description);
       })
       .catch((err) => {
@@ -75,28 +75,19 @@ export default class advisorProfile extends Component {
               />
               <div className="col-6  mt-3 ">
                 <h4 className="companyName ">
-                  {this.state.data.company_name}
+                  {this.state.data.name}
                   {/* Dr. Rehab Elbadrawy */}
                 </h4>
                 <p className="">
                   {/* BIS  */}
-                  {this.state.data.company_field}
+                  {this.state.data.title}
                   {"   "}
                   Training advisor
                 </p>
               </div>
               <div className="mt-4">
                 <h5 className="companyTitel">Advisor Profile</h5>
-                <p className="companyDesc">
-                  {this.state.data.company_desc}
-                  {/* Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut
-                malesuada molestie tempor ornare condimentum mi, dictum. Ut
-                lobortis nulla aliquet enim, fusce vitae. Pellentesque molestie
-                metus nisi in condimentum id. Quam donec eros pellentesque
-                fringilla. Facilisi sem pellentesque dui quis consectetur eu.
-                Consequat elit etiam ultricies morbi leo hac id mauris quisque.
-                Felis habitant neque tellus risus eu non urna dui. */}
-                </p>
+                <p className="companyDesc">{this.state.data.bio}</p>
               </div>
               <div className="mt-1">
                 <h5 className="companyTitel">Advisor Info</h5>
@@ -117,7 +108,6 @@ export default class advisorProfile extends Component {
                       />
                       {this.state.data.email}
                     </a>
-                    {/* georgia.young@example.com */}
                   </p>
                   <p
                     className="col-lg-2 col-2 col-md-6 col-sm-12 col-xs-12 companyInfoTxt"
@@ -129,7 +119,7 @@ export default class advisorProfile extends Component {
                       size="20"
                       style={{ color: "#cd8930 " }}
                     />
-                    AAST - CMT
+                    {this.state.data.university}
                   </p>
                   <p
                     className="col-lg-3 col-3 col-md-6 col-sm-12 col-xs-12 companyInfoTxt"
@@ -141,16 +131,12 @@ export default class advisorProfile extends Component {
                       size="20"
                       style={{ color: "#cd8930 ", size: 10 }}
                     />
-                    {/* {this.state.data.email} */}
-                    BIS Department
+                    {this.state.data.department}
                   </p>
                 </div>
                 <div>
                   <h4 className="companyTitel">Published Internship</h4>
-                  {/* <p className="companyDesc">
-                    There are currently no open Internship at{" "}
-                    {this.state.data.company_name}.
-                  </p> */}
+
                   {this.state.internshipPosts.map((item) => {
                     return (
                       <CompanyPost
