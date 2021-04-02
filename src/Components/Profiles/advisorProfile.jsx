@@ -148,6 +148,7 @@ export default class advisorProfile extends Component {
                         application_deadline={item.application_deadline}
                         salary={item.salary}
                         departments={item.departments}
+                        company_logo={item.company_logo}
                         tags={item.tags}
                       />
                     );
@@ -181,7 +182,7 @@ class CompanyPost extends Component {
                 <img
                   className=" mt-0 d-flex flex-column col-md-1 col-2 me-1"
                   id="imgicon"
-                  src={img2}
+                  src={this.props.company_logo}
                 />
                 <div className=" fs-5 mt-2 ms-2 col-md-10 col-8">
                   {/* UI/UX Designer */}
