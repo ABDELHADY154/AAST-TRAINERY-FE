@@ -87,7 +87,7 @@ export default class CareerCoaching extends Component {
             <div>Our Coaches</div>
           </div>
         </div>
-        <div className="container carom">
+        <div className="container ">
           <CoachCaro />
         </div>
 

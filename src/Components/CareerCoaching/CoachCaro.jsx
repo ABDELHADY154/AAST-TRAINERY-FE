@@ -10,12 +10,18 @@ import "../../layout/CareerCoaching.css";
 export default class CoachCaro extends Component {
   render() {
     var settings = {
+      autoplay: true,
+      speed: 2000,
+      autoplaySpeed: 2000,
       dots: true,
-      infinite: false,
+      infinite: true,
       speed: 500,
       slidesToShow: 4,
       slidesToScroll: 4,
       initialSlide: 0,
+      pauseOnHover: true,
+      // fade: true,
+
       responsive: [
         {
           breakpoint: 1024,
@@ -44,223 +50,535 @@ export default class CoachCaro extends Component {
       ],
     };
     return (
-      <div>
+      <div className="mt-5 justify-content-center ms-3">
         <Slider {...settings}>
-          <div>
-            <div className="containerrr">
-              {" "}
-              <img
-                src={img3}
-                id="imagehoverr"
-                className="d-flex flex-column col-md-3 col-12 rounded "
-              />
-              <div class="overlay" id="overlayy">
-                <a
-                  id="linksss"
-                  href="#"
-                  class="textttt fs-5 mt-0 mt-2 col-12 col-md-12 "
-                >
-                  Micheal Hanna
-                  {/* {this.state.coach_name} */}
-                  <br />
-                  <span class="textttt fs-6 col-12 col-md-12 mt-4">
-                    CEO at Nobels CO.
-                    {/* {this.state.job_title} at {this.state.company_name} */}
-                  </span>
-                </a>
+          <div className="containerrr col-md-12 col-12">
+            {" "}
+            <img
+              src={img3}
+              id="imagehoverr"
+              className="d-flex flex-column col-md-3 col-12 rounded "
+            />
+            <div className="overlay " id="overlayy">
+              <a
+                id="linksss"
+                href="#"
+                className="textttt fs-4 mt-5  col-12 col-md-12 "
+              >
+                Micheal 1{/* {this.state.coach_name} */}
+                <br />
+                <span className="textttt fs-6 col-12 mt-3  col-md-12 ">
+                  CEO at Nobels CO. 1
+                  {/* {this.state.job_title} at {this.state.company_name} */}
+                </span>
+              </a>
 
-                <div className="mt-3 ">
-                  <li>
-                    <a href="#">
-                      <FaFacebookF
-                        color="#ffffff"
-                        fill="#ffffff"
-                        className="m-2"
-                      />
-                    </a>
-                    <a href="#">
-                      <FaLinkedinIn
-                        color="#ffffff"
-                        fill="#ffffff"
-                        className="m-2"
-                      />
-                    </a>
-                    <a href="#">
-                      <FaYoutube
-                        color="#ffffff"
-                        fill="#ffffff"
-                        className="m-2"
-                      />
-                    </a>
-                  </li>
-                </div>
+              <div className="mt-3 socialscoach">
+                <li>
+                  <a href="#">
+                    <FaFacebookF
+                      color="#ffffff"
+                      fill="#ffffff"
+                      className="m-2"
+                    />
+                  </a>
+                  <a href="#">
+                    <FaLinkedinIn
+                      color="#ffffff"
+                      fill="#ffffff"
+                      className="m-2"
+                    />
+                  </a>
+                  <a href="#">
+                    <FaYoutube color="#ffffff" fill="#ffffff" className="m-2" />
+                  </a>
+                </li>
               </div>
             </div>
           </div>
-          <div>
-            <div className="containerrr">
-              {" "}
-              <img
-                src={img3}
-                id="imagehoverr"
-                className="d-flex flex-column col-md-3 col-12 rounded "
-              />
-              <div class="overlay" id="overlayy">
-                <a
-                  id="linksss"
-                  href="#"
-                  class="textttt fs-5 mt-0 mt-2 col-12 col-md-12 "
-                >
-                  Micheal Hanna
-                  {/* {this.state.coach_name} */}
-                  <br />
-                  <span class="textttt fs-6 col-12 col-md-12 mt-4">
-                    CEO at Nobels CO.
-                    {/* {this.state.job_title} at {this.state.company_name} */}
-                  </span>
-                </a>
+          <div className="containerrr col-md-12 col-12">
+            {" "}
+            <img
+              src={img3}
+              id="imagehoverr"
+              className="d-flex flex-column col-md-3 col-12 rounded "
+            />
+            <div className="overlay " id="overlayy">
+              <a
+                id="linksss"
+                href="#"
+                className="textttt fs-4 mt-5  col-12 col-md-12 "
+              >
+                Micheal 1{/* {this.state.coach_name} */}
+                <br />
+                <span className="textttt fs-6 col-12 mt-3  col-md-12 ">
+                  CEO at Nobels CO. 1
+                  {/* {this.state.job_title} at {this.state.company_name} */}
+                </span>
+              </a>
 
-                <div className="mt-3 ">
-                  <li>
-                    <a href="#">
-                      <FaFacebookF
-                        color="#ffffff"
-                        fill="#ffffff"
-                        className="m-2"
-                      />
-                    </a>
-                    <a href="#">
-                      <FaLinkedinIn
-                        color="#ffffff"
-                        fill="#ffffff"
-                        className="m-2"
-                      />
-                    </a>
-                    <a href="#">
-                      <FaYoutube
-                        color="#ffffff"
-                        fill="#ffffff"
-                        className="m-2"
-                      />
-                    </a>
-                  </li>
-                </div>
+              <div className="mt-3 socialscoach">
+                <li>
+                  <a href="#">
+                    <FaFacebookF
+                      color="#ffffff"
+                      fill="#ffffff"
+                      className="m-2"
+                    />
+                  </a>
+                  <a href="#">
+                    <FaLinkedinIn
+                      color="#ffffff"
+                      fill="#ffffff"
+                      className="m-2"
+                    />
+                  </a>
+                  <a href="#">
+                    <FaYoutube color="#ffffff" fill="#ffffff" className="m-2" />
+                  </a>
+                </li>
               </div>
-            </div>{" "}
+            </div>
           </div>
-          <div>
-            <div className="containerrr">
-              {" "}
-              <img
-                src={img3}
-                id="imagehoverr"
-                className="d-flex flex-column col-md-3 col-12 rounded "
-              />
-              <div class="overlay" id="overlayy">
-                <a
-                  id="linksss"
-                  href="#"
-                  class="textttt fs-5 mt-0 mt-2 col-12 col-md-12 "
-                >
-                  Micheal Hanna
-                  {/* {this.state.coach_name} */}
-                  <br />
-                  <span class="textttt fs-6 col-12 col-md-12 mt-4">
-                    CEO at Nobels CO.
-                    {/* {this.state.job_title} at {this.state.company_name} */}
-                  </span>
-                </a>
+          <div className="containerrr col-md-12 col-12">
+            {" "}
+            <img
+              src={img3}
+              id="imagehoverr"
+              className="d-flex flex-column col-md-3 col-12 rounded "
+            />
+            <div className="overlay " id="overlayy">
+              <a
+                id="linksss"
+                href="#"
+                className="textttt fs-4 mt-5  col-12 col-md-12 "
+              >
+                Micheal 1{/* {this.state.coach_name} */}
+                <br />
+                <span className="textttt fs-6 col-12 mt-3  col-md-12 ">
+                  CEO at Nobels CO. 1
+                  {/* {this.state.job_title} at {this.state.company_name} */}
+                </span>
+              </a>
 
-                <div className="mt-3 ">
-                  <li>
-                    <a href="#">
-                      <FaFacebookF
-                        color="#ffffff"
-                        fill="#ffffff"
-                        className="m-2"
-                      />
-                    </a>
-                    <a href="#">
-                      <FaLinkedinIn
-                        color="#ffffff"
-                        fill="#ffffff"
-                        className="m-2"
-                      />
-                    </a>
-                    <a href="#">
-                      <FaYoutube
-                        color="#ffffff"
-                        fill="#ffffff"
-                        className="m-2"
-                      />
-                    </a>
-                  </li>
-                </div>
+              <div className="mt-3 socialscoach">
+                <li>
+                  <a href="#">
+                    <FaFacebookF
+                      color="#ffffff"
+                      fill="#ffffff"
+                      className="m-2"
+                    />
+                  </a>
+                  <a href="#">
+                    <FaLinkedinIn
+                      color="#ffffff"
+                      fill="#ffffff"
+                      className="m-2"
+                    />
+                  </a>
+                  <a href="#">
+                    <FaYoutube color="#ffffff" fill="#ffffff" className="m-2" />
+                  </a>
+                </li>
               </div>
-            </div>{" "}
+            </div>
           </div>
-          <div>
-            <div className="containerrr">
-              {" "}
-              <img
-                src={img3}
-                id="imagehoverr"
-                className="d-flex flex-column col-md-3 col-12 rounded "
-              />
-              <div class="overlay" id="overlayy">
-                <a
-                  id="linksss"
-                  href="#"
-                  class="textttt fs-5 mt-0 mt-2 col-12 col-md-12 "
-                >
-                  Micheal Hanna
-                  {/* {this.state.coach_name} */}
-                  <br />
-                  <span class="textttt fs-6 col-12 col-md-12 mt-4">
-                    CEO at Nobels CO.
-                    {/* {this.state.job_title} at {this.state.company_name} */}
-                  </span>
-                </a>
+          <div className="containerrr col-md-12 col-12">
+            {" "}
+            <img
+              src={img3}
+              id="imagehoverr"
+              className="d-flex flex-column col-md-3 col-12 rounded "
+            />
+            <div className="overlay " id="overlayy">
+              <a
+                id="linksss"
+                href="#"
+                className="textttt fs-4 mt-5  col-12 col-md-12 "
+              >
+                Micheal 1{/* {this.state.coach_name} */}
+                <br />
+                <span className="textttt fs-6 col-12 mt-3  col-md-12 ">
+                  CEO at Nobels CO. 1
+                  {/* {this.state.job_title} at {this.state.company_name} */}
+                </span>
+              </a>
 
-                <div className="mt-3 ">
-                  <li>
-                    <a href="#">
-                      <FaFacebookF
-                        color="#ffffff"
-                        fill="#ffffff"
-                        className="m-2"
-                      />
-                    </a>
-                    <a href="#">
-                      <FaLinkedinIn
-                        color="#ffffff"
-                        fill="#ffffff"
-                        className="m-2"
-                      />
-                    </a>
-                    <a href="#">
-                      <FaYoutube
-                        color="#ffffff"
-                        fill="#ffffff"
-                        className="m-2"
-                      />
-                    </a>
-                  </li>
-                </div>
+              <div className="mt-3 socialscoach">
+                <li>
+                  <a href="#">
+                    <FaFacebookF
+                      color="#ffffff"
+                      fill="#ffffff"
+                      className="m-2"
+                    />
+                  </a>
+                  <a href="#">
+                    <FaLinkedinIn
+                      color="#ffffff"
+                      fill="#ffffff"
+                      className="m-2"
+                    />
+                  </a>
+                  <a href="#">
+                    <FaYoutube color="#ffffff" fill="#ffffff" className="m-2" />
+                  </a>
+                </li>
               </div>
-            </div>{" "}
+            </div>
           </div>
-          <div>
-            <h3>5</h3>
+          <div className="containerrr col-md-12 col-12">
+            {" "}
+            <img
+              src={img3}
+              id="imagehoverr"
+              className="d-flex flex-column col-md-3 col-12 rounded "
+            />
+            <div className="overlay " id="overlayy">
+              <a
+                id="linksss"
+                href="#"
+                className="textttt fs-4 mt-5  col-12 col-md-12 "
+              >
+                Micheal 1{/* {this.state.coach_name} */}
+                <br />
+                <span className="textttt fs-6 col-12 mt-3  col-md-12 ">
+                  CEO at Nobels CO. 1
+                  {/* {this.state.job_title} at {this.state.company_name} */}
+                </span>
+              </a>
+
+              <div className="mt-3 socialscoach">
+                <li>
+                  <a href="#">
+                    <FaFacebookF
+                      color="#ffffff"
+                      fill="#ffffff"
+                      className="m-2"
+                    />
+                  </a>
+                  <a href="#">
+                    <FaLinkedinIn
+                      color="#ffffff"
+                      fill="#ffffff"
+                      className="m-2"
+                    />
+                  </a>
+                  <a href="#">
+                    <FaYoutube color="#ffffff" fill="#ffffff" className="m-2" />
+                  </a>
+                </li>
+              </div>
+            </div>
           </div>
-          <div>
-            <h3>6</h3>
+          <div className="containerrr col-md-12 col-12">
+            {" "}
+            <img
+              src={img3}
+              id="imagehoverr"
+              className="d-flex flex-column col-md-3 col-12 rounded "
+            />
+            <div className="overlay " id="overlayy">
+              <a
+                id="linksss"
+                href="#"
+                className="textttt fs-4 mt-5  col-12 col-md-12 "
+              >
+                Micheal 1{/* {this.state.coach_name} */}
+                <br />
+                <span className="textttt fs-6 col-12 mt-3  col-md-12 ">
+                  CEO at Nobels CO. 1
+                  {/* {this.state.job_title} at {this.state.company_name} */}
+                </span>
+              </a>
+
+              <div className="mt-3 socialscoach">
+                <li>
+                  <a href="#">
+                    <FaFacebookF
+                      color="#ffffff"
+                      fill="#ffffff"
+                      className="m-2"
+                    />
+                  </a>
+                  <a href="#">
+                    <FaLinkedinIn
+                      color="#ffffff"
+                      fill="#ffffff"
+                      className="m-2"
+                    />
+                  </a>
+                  <a href="#">
+                    <FaYoutube color="#ffffff" fill="#ffffff" className="m-2" />
+                  </a>
+                </li>
+              </div>
+            </div>
           </div>
-          <div>
-            <h3>7</h3>
+          <div className="containerrr col-md-12 col-12">
+            {" "}
+            <img
+              src={img3}
+              id="imagehoverr"
+              className="d-flex flex-column col-md-3 col-12 rounded "
+            />
+            <div className="overlay " id="overlayy">
+              <a
+                id="linksss"
+                href="#"
+                className="textttt fs-4 mt-5  col-12 col-md-12 "
+              >
+                Micheal 1{/* {this.state.coach_name} */}
+                <br />
+                <span className="textttt fs-6 col-12 mt-3  col-md-12 ">
+                  CEO at Nobels CO. 1
+                  {/* {this.state.job_title} at {this.state.company_name} */}
+                </span>
+              </a>
+
+              <div className="mt-3 socialscoach">
+                <li>
+                  <a href="#">
+                    <FaFacebookF
+                      color="#ffffff"
+                      fill="#ffffff"
+                      className="m-2"
+                    />
+                  </a>
+                  <a href="#">
+                    <FaLinkedinIn
+                      color="#ffffff"
+                      fill="#ffffff"
+                      className="m-2"
+                    />
+                  </a>
+                  <a href="#">
+                    <FaYoutube color="#ffffff" fill="#ffffff" className="m-2" />
+                  </a>
+                </li>
+              </div>
+            </div>
           </div>
-          <div>
-            <h3>8</h3>
+          <div className="containerrr col-md-12 col-12">
+            {" "}
+            <img
+              src={img3}
+              id="imagehoverr"
+              className="d-flex flex-column col-md-3 col-12 rounded "
+            />
+            <div className="overlay " id="overlayy">
+              <a
+                id="linksss"
+                href="#"
+                className="textttt fs-4 mt-5  col-12 col-md-12 "
+              >
+                Micheal 1{/* {this.state.coach_name} */}
+                <br />
+                <span className="textttt fs-6 col-12 mt-3  col-md-12 ">
+                  CEO at Nobels CO. 1
+                  {/* {this.state.job_title} at {this.state.company_name} */}
+                </span>
+              </a>
+
+              <div className="mt-3 socialscoach">
+                <li>
+                  <a href="#">
+                    <FaFacebookF
+                      color="#ffffff"
+                      fill="#ffffff"
+                      className="m-2"
+                    />
+                  </a>
+                  <a href="#">
+                    <FaLinkedinIn
+                      color="#ffffff"
+                      fill="#ffffff"
+                      className="m-2"
+                    />
+                  </a>
+                  <a href="#">
+                    <FaYoutube color="#ffffff" fill="#ffffff" className="m-2" />
+                  </a>
+                </li>
+              </div>
+            </div>
+          </div>
+          <div className="containerrr col-md-12 col-12">
+            {" "}
+            <img
+              src={img3}
+              id="imagehoverr"
+              className="d-flex flex-column col-md-3 col-12 rounded "
+            />
+            <div className="overlay " id="overlayy">
+              <a
+                id="linksss"
+                href="#"
+                className="textttt fs-4 mt-5  col-12 col-md-12 "
+              >
+                Micheal 1{/* {this.state.coach_name} */}
+                <br />
+                <span className="textttt fs-6 col-12 mt-3  col-md-12 ">
+                  CEO at Nobels CO. 1
+                  {/* {this.state.job_title} at {this.state.company_name} */}
+                </span>
+              </a>
+
+              <div className="mt-3 socialscoach">
+                <li>
+                  <a href="#">
+                    <FaFacebookF
+                      color="#ffffff"
+                      fill="#ffffff"
+                      className="m-2"
+                    />
+                  </a>
+                  <a href="#">
+                    <FaLinkedinIn
+                      color="#ffffff"
+                      fill="#ffffff"
+                      className="m-2"
+                    />
+                  </a>
+                  <a href="#">
+                    <FaYoutube color="#ffffff" fill="#ffffff" className="m-2" />
+                  </a>
+                </li>
+              </div>
+            </div>
+          </div>
+          <div className="containerrr col-md-12 col-12">
+            {" "}
+            <img
+              src={img3}
+              id="imagehoverr"
+              className="d-flex flex-column col-md-3 col-12 rounded "
+            />
+            <div className="overlay " id="overlayy">
+              <a
+                id="linksss"
+                href="#"
+                className="textttt fs-4 mt-5  col-12 col-md-12 "
+              >
+                Micheal 1{/* {this.state.coach_name} */}
+                <br />
+                <span className="textttt fs-6 col-12 mt-3  col-md-12 ">
+                  CEO at Nobels CO. 1
+                  {/* {this.state.job_title} at {this.state.company_name} */}
+                </span>
+              </a>
+
+              <div className="mt-3 socialscoach">
+                <li>
+                  <a href="#">
+                    <FaFacebookF
+                      color="#ffffff"
+                      fill="#ffffff"
+                      className="m-2"
+                    />
+                  </a>
+                  <a href="#">
+                    <FaLinkedinIn
+                      color="#ffffff"
+                      fill="#ffffff"
+                      className="m-2"
+                    />
+                  </a>
+                  <a href="#">
+                    <FaYoutube color="#ffffff" fill="#ffffff" className="m-2" />
+                  </a>
+                </li>
+              </div>
+            </div>
+          </div>
+          <div className="containerrr col-md-12 col-12">
+            {" "}
+            <img
+              src={img3}
+              id="imagehoverr"
+              className="d-flex flex-column col-md-3 col-12 rounded "
+            />
+            <div className="overlay " id="overlayy">
+              <a
+                id="linksss"
+                href="#"
+                className="textttt fs-4 mt-5  col-12 col-md-12 "
+              >
+                Micheal 1{/* {this.state.coach_name} */}
+                <br />
+                <span className="textttt fs-6 col-12 mt-3  col-md-12 ">
+                  CEO at Nobels CO. 1
+                  {/* {this.state.job_title} at {this.state.company_name} */}
+                </span>
+              </a>
+
+              <div className="mt-3 socialscoach">
+                <li>
+                  <a href="#">
+                    <FaFacebookF
+                      color="#ffffff"
+                      fill="#ffffff"
+                      className="m-2"
+                    />
+                  </a>
+                  <a href="#">
+                    <FaLinkedinIn
+                      color="#ffffff"
+                      fill="#ffffff"
+                      className="m-2"
+                    />
+                  </a>
+                  <a href="#">
+                    <FaYoutube color="#ffffff" fill="#ffffff" className="m-2" />
+                  </a>
+                </li>
+              </div>
+            </div>
+          </div>
+          <div className="containerrr col-md-12 col-12">
+            {" "}
+            <img
+              src={img3}
+              id="imagehoverr"
+              className="d-flex flex-column col-md-3 col-12 rounded "
+            />
+            <div className="overlay " id="overlayy">
+              <a
+                id="linksss"
+                href="#"
+                className="textttt fs-4 mt-5  col-12 col-md-12 "
+              >
+                Micheal 1{/* {this.state.coach_name} */}
+                <br />
+                <span className="textttt fs-6 col-12 mt-3  col-md-12 ">
+                  CEO at Nobels CO. 1
+                  {/* {this.state.job_title} at {this.state.company_name} */}
+                </span>
+              </a>
+
+              <div className="mt-3 socialscoach">
+                <li>
+                  <a href="#">
+                    <FaFacebookF
+                      color="#ffffff"
+                      fill="#ffffff"
+                      className="m-2"
+                    />
+                  </a>
+                  <a href="#">
+                    <FaLinkedinIn
+                      color="#ffffff"
+                      fill="#ffffff"
+                      className="m-2"
+                    />
+                  </a>
+                  <a href="#">
+                    <FaYoutube color="#ffffff" fill="#ffffff" className="m-2" />
+                  </a>
+                </li>
+              </div>
+            </div>
           </div>
         </Slider>
       </div>
