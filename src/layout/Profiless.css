@@ -70,8 +70,25 @@
 .overvireTxt {
   font-family: SF light;
   font-size: 0.9em;
+  text-transform: capitalize;
   /* margin-top: 0.35em; */
 }
+.location {
+  color: #1e4274;
+}
+.location:hover {
+  color: #cd8930;
+}
+.location:active {
+  color: #cd8930;
+}
+.location:link {
+  color: #1e4274;
+}
+.location:visited {
+  color: #cd8930;
+}
+
 .websiteLink {
   color: #cd8930;
   font-family: SF light;
@@ -95,6 +112,13 @@
 .dep {
   font-family: SF reg;
   font-size: 0.9em;
+  margin-top: -1em;
+}
+@media (max-width: 600px) {
+  .departments {
+    display: flex;
+    flex-direction: column !important;
+  }
 }
 @media screen and (min-width: 1440px) {
   .discCol {
@@ -122,6 +146,7 @@
   color: #cd8930;
 }
 .tag {
+  margin-bottom: 1em;
   align-content: center;
   justify-content: center;
   background-color: rgb(230, 227, 227);

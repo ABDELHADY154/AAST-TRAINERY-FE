@@ -23,7 +23,9 @@ export default class advisorProfile extends Component {
     this.state = {
       scrollPixelsY: 0,
       data: {},
-      internshipPosts: [],
+      departments: [],
+      tags: [],
+      requirements: [],
       FormLoading: true,
     };
     window.scrollTo(0, 0);
@@ -36,15 +38,17 @@ export default class advisorProfile extends Component {
   async componentDidMount() {
     this.setState({ FormLoading: true });
     await axios
-      .get(`/W/student/company/${10}`)
+      .get(`/W/student/post/${3}`)
       .then((res) => {
         this.setState({
           id: res.data.response.data.id,
           data: res.data.response.data,
-          internshipPosts: res.data.response.data.internshipPosts,
+          departments: res.data.response.data.departments,
+          tags: res.data.response.data.tags,
+          requirements: res.data.response.data.requirements,
           FormLoading: false,
         });
-        // console.log(res.data.response.data.internshipPosts);
+        console.log(res.data.response.data.tags);
         // console.log(res.data.response.data.internshipPosts.description);
       })
       .catch((err) => {
@@ -71,37 +75,48 @@ export default class advisorProfile extends Component {
           <div className="container ">
             <div className="d-flex flex-row  ">
               <img
-                src={img}
+                // src={img}
+                src={this.state.data.company_logo}
                 className="ms-1 me-3 col-2 rounded-circle companyImg"
               />
               <div className="col-7 mt-3 ">
                 <div className="d-flex flex-row w-7">
                   <h4 className="opportunity col-md-12 col-12  col-xs-6">
-                    Web Developer
+                    {this.state.data.title}
                   </h4>
                 </div>
                 <div className="row">
-                  <p className="col-6 col-lg-2 col-md-3 col-sm-5 col-xs-4 company">
-                    Qowwa
+                  <p className="col-8 col-lg-5 col-md-7 col-sm-8 col-xs-8 company">
+                    {this.state.data.company_name}
                   </p>
-                  <p className="dep col-2 col-lg-1 col-md-2  col-sm-3 col-xs-4">
-                    BIS
+                  <p className="col-4 col-lg-3 col-md-4 col-sm-4 col-xs-4 paid">
+                    {this.state.data.salary}
                   </p>
-                  <p className="paid col-1 col-lg-1 col-md-1 col-sm-2 col-xs-2">
-                    Paid
-                  </p>
+                </div>
+                <div className=" departments d-flex flex-row">
+                  {this.state.departments.map((item) => {
+                    return (
+                      <Departments
+                        id={item.id}
+                        key={item.id}
+                        departments={item.departments}
+                        dep_name={item.dep_name}
+                      />
+                    );
+                  })}
                 </div>
               </div>
             </div>
-            <div className=" d-flex flex-row flex-wrap col-12 col-md-12 mt-2">
-              <div className="d-flex flex-row me-2 fs-5 ">
-                <p
-                  style={{ textTransform: "capitalize" }}
-                  className=" d-flex flex-row flex-wrap col-12 col-md-12  mt-2 tag "
-                >
-                  mmnnnnnnm
-                </p>
-              </div>
+            <div className=" d-flex flex-row flex-wrap col-12 col-md-12">
+              {this.state.tags.map((item) => {
+                return (
+                  <Interest
+                    id={item.id}
+                    key={item.id}
+                    interest={item.interest}
+                  />
+                );
+              })}
             </div>
             <div className="mt-4">
               <h5 className="companyTitel">Overview</h5>
@@ -117,18 +132,37 @@ export default class advisorProfile extends Component {
                       <p className="overvireTitle mb-1">
                         Application deadline:
                       </p>
+                      <p className="overvireTitle mb-1">location:</p>
                     </div>
                     <div className="col-6 col-xl-6 col-xxl-6 col-lg-6 col-md-6 col-sm-6 col-xs-6 discCol">
-                      <p className="overvireTxt mb-1">Oct 1, 2020</p>
-                      <p className="overvireTxt mb-1">2</p>
-                      <p className="overvireTxt mb-1">Any</p>
-                      <p className="overvireTxt mb-1">Full Time</p>
-                      <p className="overvireTxt mb-1">Paid</p>
-                      <p className="overvireTxt mb-1">Oct 14, 2020</p>
+                      <p className=" overvireTxt mb-1">
+                        {this.state.data.published_on}
+                      </p>
+                      <p className="overvireTxt mb-1">
+                        {this.state.data.vacancy}
+                      </p>
+                      <p className="overvireTxt mb-1">
+                        {this.state.data.gender}
+                      </p>
+                      <p className="overvireTxt mb-1">{this.state.data.type}</p>
+                      <p className="overvireTxt mb-1">
+                        {this.state.data.salary}
+                      </p>
+                      <p className="overvireTxt mb-1">
+                        {this.state.data.application_deadline}
+                      </p>
+                      <a
+                        className="overvireTxt location mb-1"
+                        href={`http://maps.google.com/?q=1200:${this.state.data.location_url}`}
+                        // href={`${this.state.data.location_url}`}
+                        // href="http://maps.google.com/?q=1200 Pennsylvania Ave SE, Washington, District of Columbia, 20003"
+                      >
+                        {this.state.data.location}
+                      </a>
                     </div>
                   </div>
                 </div>
-                <div className="col-xl-5 col-xxl-4 col-lg-4 col-md-6  ">
+                {/* <div className="col-xl-5 col-xxl-4 col-lg-4 col-md-6  ">
                   <div className="row d-flex justify-content-between">
                     <div className="col-6 col-xl-4 col-xxl-4 col-lg-4 col-md-5 col-sm-6 col-xs-6  titleCol">
                       <p className="overvireTitle mb-1">Puplished on:</p>
@@ -150,35 +184,27 @@ export default class advisorProfile extends Component {
                       loading="lazy"
                     ></iframe>
                   </div>
-                </div>
+                </div> */}
               </div>
 
               <div className="mt-4">
                 <h5 className="companyTitel">Description</h5>
-                <p className="companyDesc">
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut
-                  malesuada molestie tempor ornare condimentum mi, dictum. Ut
-                  lobortis nulla aliquet enim, fusce vitae. Pellentesque
-                  molestie metus nisi in condimentum id. Quam donec eros
-                  pellentesque fringilla. Facilisi sem pellentesque dui quis
-                  consectetur eu. Consequat elit etiam ultricies morbi leo hac
-                  id mauris quisque. Felis habitant neque tellus risus eu non
-                  urna dui.
-                </p>
+                <p className="companyDesc">{this.state.data.description}</p>
               </div>
 
               <div className="mt-4">
                 <h5 className="companyTitel">Requirements</h5>
                 <ul className="reuirLi">
-                  <li className=" companyDesc reuirLi">
-                    knowledge about Web, IOS, Android Design Guidelines.
-                  </li>
-                  <li className=" companyDesc reuirLi">
-                    knowledge about Web, IOS, Android Design Guidelines.
-                  </li>{" "}
-                  <li className=" companyDesc reuirLi">
-                    knowledge about Web, IOS, Android Design Guidelines.
-                  </li>
+                  {this.state.requirements.map((item) => {
+                    return (
+                      <Requirements
+                        id={item.id}
+                        key={item.id}
+                        requirements={item.requirements}
+                        req={item.req}
+                      />
+                    );
+                  })}
                 </ul>
               </div>
             </div>
@@ -311,29 +337,6 @@ export default class advisorProfile extends Component {
                         </div>
                       </div>
                     </div>
-                    {/* <div
-                      id="carouselExampleIndicators"
-                      className="carousel slide"
-                      data-bs-ride="carousel"
-                    >
-                      <div class="carousel-indicators reviewsBtnIndicators">
-                        <button
-                          type="button"
-                          data-bs-target="#carouselExampleIndicators"
-                          data-bs-slide-to="0"
-                          class="active"
-                          aria-current="true"
-                          aria-label="Slide 1"
-                        ></button>
-                        <button
-                          type="button"
-                          data-bs-target="#carouselExampleIndicators"
-                          data-bs-slide-to="1"
-                          aria-label="Slide 2"
-                        ></button>
-                      </div>
-                    </div> */}
-
                     <button
                       className="carousel-control-prev prevBtnReviews"
                       type="button"
@@ -402,5 +405,43 @@ export default class advisorProfile extends Component {
         </LoadingOverlay>
       </div>
     );
+  }
+}
+
+class Departments extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {};
+  }
+  render() {
+    return <p className="dep me-2">{this.props.dep_name}</p>;
+  }
+}
+
+class Interest extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {};
+  }
+  render() {
+    return (
+      <div className="d-flex flex-row me-2 fs-5 ">
+        <p
+          style={{ textTransform: "capitalize" }}
+          className=" d-flex flex-row flex-wrap col-12 col-md-12 tag "
+        >
+          {this.props.interest}
+        </p>
+      </div>
+    );
+  }
+}
+class Requirements extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {};
+  }
+  render() {
+    return <li className=" companyDesc reuirLi">{this.props.req} </li>;
   }
 }
