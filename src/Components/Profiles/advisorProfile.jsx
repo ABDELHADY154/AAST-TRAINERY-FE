@@ -193,24 +193,20 @@ class CompanyPost extends Component {
                   {/* Paid */}
                 </div>
               </div>
-              <div id="job" className="d-flex flex-row ms-5 ">
-                <div className="d-flex ms-3 flex-column">
-                  {/* CIB */}
-                  {this.props.company_name}
+              <div id="job" className="ms-5 ">
+                <div className=" ms-3  mt-1 ">{this.props.company_name}</div>
+                <div className="mt-1 ms-2  d-flex flex-row departments">
+                  {this.props.departments.map((item) => {
+                    return (
+                      <Departments
+                        id={item.id}
+                        key={item.id}
+                        departments={item.departments}
+                        dep_name={item.dep_name}
+                      />
+                    );
+                  })}
                 </div>
-                {this.props.departments.map((item) => {
-                  return (
-                    <Departments
-                      id={item.id}
-                      key={item.id}
-                      departments={item.departments}
-                      dep_name={item.dep_name}
-                    />
-                  );
-                })}
-                {/* <div id="gold" className="  d-flex ms-2 flex-column">
-                Finance
-              </div> */}
               </div>
               <p className="card-text mt-2">
                 {this.props.description}
@@ -274,7 +270,7 @@ class Departments extends Component {
   }
   render() {
     return (
-      <div id="gold" className="  d-flex ms-2 flex-column">
+      <div id="gold" className="ms-2 ">
         {this.props.dep_name}
       </div>
     );
@@ -288,7 +284,7 @@ class Interest extends Component {
   }
   render() {
     return (
-      <div className=" me-4 tags " id="firsttagipad">
+      <div className=" me-4 tags  mt-1 mb-1" id="firsttagipad">
         <a href="#" className="tagsipad tagsP " id="tags">
           {this.props.interest}
         </a>

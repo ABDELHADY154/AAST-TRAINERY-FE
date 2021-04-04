@@ -292,11 +292,14 @@ class CompanyPostADS extends Component {
                 </div>
                 <p className="card-text mt-2">{this.props.description}</p>
                 <img
-                  className=" mt-0  col-md-11 col-11 me-1"
-                  style={{ width: "100%", height: "40%" }}
+                  className=" mt-0 adsImg col-md-11 col-11 me-1"
                   src={this.props.sponsor_image}
-                  // src={img1}
                 />
+                {/* <img
+                  className="adsImg mt-0  col-md-11 col-11 me-1"
+                  style={{ width: "100%", height: "20%" }}
+                  src={img1}
+                /> */}
               </div>
             </div>
           </div>
@@ -334,20 +337,20 @@ class CompanyPostPromoted extends Component {
                     {this.props.salary}
                   </div>
                 </div>
-                <div id="job" className="d-flex flex-row ms-5 ">
-                  <div className="d-flex ms-3 flex-column">
-                    {this.props.company_name}
+                <div id="job" className="ms-5 ">
+                  <div className=" ms-3  mt-1 ">{this.props.company_name}</div>
+                  <div className="mt-1 ms-2  d-flex flex-row departments">
+                    {this.props.departments.map((item) => {
+                      return (
+                        <Departments
+                          id={item.id}
+                          key={item.id}
+                          departments={item.departments}
+                          dep_name={item.dep_name}
+                        />
+                      );
+                    })}
                   </div>
-                  {this.props.departments.map((item) => {
-                    return (
-                      <Departments
-                        id={item.id}
-                        key={item.id}
-                        departments={item.departments}
-                        dep_name={item.dep_name}
-                      />
-                    );
-                  })}
                 </div>
                 <p className="card-text mt-2">{this.props.description}</p>
 
@@ -417,33 +420,35 @@ class CompanyPost extends Component {
                     {this.props.salary}
                   </div>
                 </div>
-                <div id="job" className="d-flex flex-row ms-5 ">
-                  <div className="d-flex ms-3 flex-column">
-                    {this.props.company_name}
+                <div id="job" className="ms-5 ">
+                  <div className=" ms-3  mt-1 ">{this.props.company_name}</div>
+                  <div className="mt-1 ms-2  d-flex flex-row departments">
+                    {this.props.departments.map((item) => {
+                      return (
+                        <Departments
+                          id={item.id}
+                          key={item.id}
+                          departments={item.departments}
+                          dep_name={item.dep_name}
+                        />
+                      );
+                    })}
                   </div>
-                  {this.props.departments.map((item) => {
-                    return (
-                      <Departments
-                        id={item.id}
-                        key={item.id}
-                        departments={item.departments}
-                        dep_name={item.dep_name}
-                      />
-                    );
-                  })}
                 </div>
                 <p className="card-text mt-2">{this.props.description}</p>
 
                 <div className="d-flex flex-row flex-wrap ">
-                  {this.props.tags.map((item) => {
-                    return (
-                      <Interest
-                        id={item.id}
-                        key={item.id}
-                        interest={item.interest}
-                      />
-                    );
-                  })}
+                  <div className="mt-5 mb-5">
+                    {this.props.tags.map((item) => {
+                      return (
+                        <Interest
+                          id={item.id}
+                          key={item.id}
+                          interest={item.interest}
+                        />
+                      );
+                    })}
+                  </div>
                   <div
                     id="drop"
                     className="d-flex flex-column col-md-3  
@@ -471,7 +476,7 @@ class Departments extends Component {
   }
   render() {
     return (
-      <div id="gold" className="  d-flex ms-2 flex-column">
+      <div className="ms-2 " id="gold">
         {this.props.dep_name}
       </div>
     );
@@ -485,7 +490,7 @@ class Interest extends Component {
   }
   render() {
     return (
-      <div className=" me-4 tags " id="firsttagipad">
+      <div className=" me-4 mt-1 mb-1 tags " id="firsttagipad">
         <a href="#" className="tagsipad tagsP " id="tags">
           {this.props.interest}
         </a>

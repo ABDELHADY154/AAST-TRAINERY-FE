@@ -123,7 +123,7 @@ export default class advisorProfile extends Component {
               <div className="row d-flex justify-content-between">
                 <div className="col-xl-4 col-xxl-4 col-lg-4 col-md-6 ">
                   <div className="row d-flex justify-content-between">
-                    <div className="col-6 col-xl-5 col-xxl-5 col-lg-4 col-md-6 col-sm-6 col-xs-6  titleCol">
+                    <div className="col-6 col-xl-5 col-xxl-5 col-lg-6 col-md-5 col-sm-6 col-xs-6  titleCol">
                       <p className="overvireTitle mb-1">Puplished on:</p>
                       <p className="overvireTitle mb-1">Vacancy:</p>
                       <p className="overvireTitle mb-1">Gender:</p>
@@ -134,7 +134,7 @@ export default class advisorProfile extends Component {
                       </p>
                       <p className="overvireTitle mb-1">location:</p>
                     </div>
-                    <div className="col-6 col-xl-6 col-xxl-6 col-lg-6 col-md-6 col-sm-6 col-xs-6 discCol">
+                    <div className="col-6 col-xl-7 col-xxl-7 col-lg-6 col-md-7 col-sm-6 col-xs-6 discCol">
                       <p className=" overvireTxt mb-1">
                         {this.state.data.published_on}
                       </p>
@@ -152,8 +152,8 @@ export default class advisorProfile extends Component {
                         {this.state.data.application_deadline}
                       </p>
                       <a
-                        className="overvireTxt location mb-1"
-                        href={`http://maps.google.com/?q=1200:${this.state.data.location_url}`}
+                        className="overvireTxt location mb-1 "
+                        href={`http://maps.google.com/?q=1200:${this.state.data.location}`}
                         // href={`${this.state.data.location_url}`}
                         // href="http://maps.google.com/?q=1200 Pennsylvania Ave SE, Washington, District of Columbia, 20003"
                       >

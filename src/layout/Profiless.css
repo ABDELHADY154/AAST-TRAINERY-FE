@@ -114,7 +114,7 @@
   font-size: 0.9em;
   margin-top: -1em;
 }
-@media (max-width: 600px) {
+@media screen and (max-width: 600px) {
   .departments {
     display: flex;
     flex-direction: column !important;
@@ -268,4 +268,7 @@ ul .reuirLi {
 .reviewstars {
   box-shadow: none;
   border: none;
+}
+.adsImg {
+  height: 8em !important;
 }
