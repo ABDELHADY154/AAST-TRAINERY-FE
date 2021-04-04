@@ -18,16 +18,18 @@ class Saved extends Component {
 
           <div className="card mt-5 mb-3">
             <div className="card-body">
-              <div className="d-flex flex-row flex-wrap">
-                {" "}
+              <div className="d-flex flex-row">
                 <img
-                  className=" mt-0 d-flex flex-column col-md-4 col-2 me-3"
+                  className=" mt-0 d-flex flex-column col-md-1 col-2 me-1"
                   id="imgicon"
                   src={img2}
                 />
-                <p id="" className="card-title fs-5 mt-2">
-                  Dr. Rehab ElBadrawy
-                </p>
+                <div className=" fs-5 mt-2 ms-2 col-md-10 col-8">
+                  UI/UX Designer
+                </div>
+                <div className=" fs-6 mt-2 col-2 col-md-1 text-muted  ">
+                  2 min ago
+                </div>
               </div>
               <hr />
               <div className="d-flex flex-row">
@@ -55,9 +57,9 @@ class Saved extends Component {
                 doloremque. Ea omnis ipsam, eum nam tempore culpa illum
                 consequuntur quis nobis adipisci et?
               </p>
-              <div className="d-flex flex-row flex-wrap ">
+              <div className="d-flex flex-row flex-wrap rowHeight3 ">
                 <div
-                  className="d-flex flex-column  col-4 col-md-1 me-4 "
+                  className="d-flex flex-column  col-4 col-md-1 me-4 mrcss "
                   id="firsttagipad"
                 >
                   <a href="#" className="tagsipad" id="tags">
@@ -65,7 +67,7 @@ class Saved extends Component {
                   </a>
                 </div>
                 <div
-                  className="d-flex flex-column col-4  col-md-1 me-4 mb-1 "
+                  className="d-flex flex-column col-4  col-md-1 me-4 mb-1 mrcss "
                   id="firsttagipad"
                 >
                   <a href="#" className="tagsipad  " id="tags">
@@ -74,8 +76,8 @@ class Saved extends Component {
                 </div>
                 <div
                   id="drop"
-                  className="d-flex flex-column col-md-3  
-                             justify-space-between"
+                  className="d-flex flex-column col-md-2 col-9 
+                             justify-space-between mrcss textWidth"
                 >
                   <p>Deadline {"        "}11 Dec 2021</p>
                 </div>

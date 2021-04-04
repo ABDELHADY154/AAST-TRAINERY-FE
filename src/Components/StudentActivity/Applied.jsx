@@ -14,7 +14,7 @@ class Applied extends Component {
         <Link to="/Profile/Activity/Applied" />
         <div className="container">
           <ActivityNavbar setactive={"Applied"} />
-          <div className="card mt-5">
+          <div className="card cardMt">
             <div className="card-body">
               <div className="d-flex flex-row">
                 <img
@@ -43,9 +43,9 @@ class Applied extends Component {
               </p>
 
               {
-                <div className="d-flex flex-row flex-wrap ">
+                <div className="d-flex flex-row flex-wrap rowHeight ">
                   <div
-                    className="d-flex flex-column  col-4 col-md-1 me-4 "
+                    className="d-flex flex-column  col-4 col-md-1 me-4 mrcss "
                     id="firsttagipad"
                   >
                     <a href="#" className="tagsipad" id="tags">
@@ -53,7 +53,7 @@ class Applied extends Component {
                     </a>
                   </div>
                   <div
-                    className="d-flex flex-column col-4  col-md-1 me-4 mb-1 "
+                    className="d-flex flex-column col-4  col-md-1 me-4 mb-1 mrcss "
                     id="firsttagipad"
                   >
                     <a href="#" className="tagsipad  " id="tags">
@@ -62,8 +62,8 @@ class Applied extends Component {
                   </div>
                   <div
                     id="drop"
-                    className="d-flex flex-column col-md-3  
-                             justify-space-between"
+                    className="d-flex flex-column col-md-2 col-9 
+                             justify-space-between mrcss textWidth"
                   >
                     <p>Deadline {"        "}11 Dec 2021</p>
                   </div>
@@ -79,7 +79,7 @@ class Applied extends Component {
               }
             </div>
           </div>
-          <div className="card mt-3">
+          <div className="card cardMt">
             <div className="card-body">
               <div className="d-flex flex-row">
                 <img
@@ -108,9 +108,9 @@ class Applied extends Component {
               </p>
 
               {
-                <div className="d-flex flex-row flex-wrap ">
+                <div className="d-flex flex-row flex-wrap rowHeight ">
                   <div
-                    className="d-flex flex-column  col-4 col-md-1 me-4 "
+                    className="d-flex flex-column  col-4 col-md-1 me-4 mrcss "
                     id="firsttagipad"
                   >
                     <a href="#" className="tagsipad" id="tags">
@@ -118,7 +118,7 @@ class Applied extends Component {
                     </a>
                   </div>
                   <div
-                    className="d-flex flex-column col-4  col-md-1 me-4 mb-1 "
+                    className="d-flex flex-column col-4  col-md-1 me-4 mb-1 mrcss "
                     id="firsttagipad"
                   >
                     <a href="#" className="tagsipad  " id="tags">
@@ -127,8 +127,8 @@ class Applied extends Component {
                   </div>
                   <div
                     id="drop"
-                    className="d-flex flex-column col-md-3  
-                             justify-space-between"
+                    className="d-flex flex-column col-md-2 col-9 
+                             justify-space-between mrcss textWidth"
                   >
                     <p>Deadline {"        "}11 Dec 2021</p>
                   </div>
