@@ -294,12 +294,8 @@ class CompanyPostADS extends Component {
                 <img
                   className=" mt-0 adsImg col-md-11 col-11 me-1"
                   src={this.props.sponsor_image}
+                  // src={img1}
                 />
-                {/* <img
-                  className="adsImg mt-0  col-md-11 col-11 me-1"
-                  style={{ width: "100%", height: "20%" }}
-                  src={img1}
-                /> */}
               </div>
             </div>
           </div>
@@ -438,17 +434,15 @@ class CompanyPost extends Component {
                 <p className="card-text mt-2">{this.props.description}</p>
 
                 <div className="d-flex flex-row flex-wrap ">
-                  <div className="mt-5 mb-5">
-                    {this.props.tags.map((item) => {
-                      return (
-                        <Interest
-                          id={item.id}
-                          key={item.id}
-                          interest={item.interest}
-                        />
-                      );
-                    })}
-                  </div>
+                  {this.props.tags.map((item) => {
+                    return (
+                      <Interest
+                        id={item.id}
+                        key={item.id}
+                        interest={item.interest}
+                      />
+                    );
+                  })}
                   <div
                     id="drop"
                     className="d-flex flex-column col-md-3  

@@ -271,4 +271,5 @@ ul .reuirLi {
 }
 .adsImg {
   height: 8em !important;
+  object-fit: cover !important;
 }
