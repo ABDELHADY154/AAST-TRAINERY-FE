@@ -88,3 +88,19 @@
 .nomargin {
   margin: 0 !important;
 }
+.goldenn {
+  color: #cd8930 !important;
+  font-family: sf light;
+}
+#tagsipad {
+  text-align: center;
+  justify-items: center;
+  border-radius: 20px !important;
+  color: #1e4274 !important;
+  background-color: #f2f2f2 !important;
+  /* height: 110%;
+  width: 110%; */
+  font-size: 14px;
+  display: inline-table;
+  overflow: hidden; /* overflow: hidden; */
+}
