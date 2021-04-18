@@ -1,19 +1,11 @@
 import React, { Component } from "react";
-import { resolve } from "../../Api/Resolvers/resolver";
-import { axios } from "../../Api/axios";
-import { Loader } from "../../loader";
-import img from "../../Components/assests/imgs/girlavi.png";
-import MaleAvatar from "../../Components/assests/imgs/boyavi.png";
-import img2 from "../../Components/assests/imgs/cib.png";
-import img3 from "../../Components/assests/imgs/cibExplore.png";
-import "../../layout/Home.css";
-import { BsCheck, BsArrowUpRight } from "react-icons/bs";
+
+import { BsArrowUpRight, BsBookmark } from "react-icons/bs";
+import { RiAdvertisementLine } from "react-icons/ri";
 
 import "react-step-progress-bar/styles.css";
-import { BsBookmark, BsBookmarkFill } from "react-icons/bs";
-import { IoClose } from "react-icons/io5";
-import { Link } from "react-router-dom";
 import "../../layout/Explore.css";
+import "../../layout/Home.css";
 
 export class Ecard extends Component {
   constructor() {
@@ -64,17 +56,11 @@ export class Ecard extends Component {
               );
             })}
 
-            <div className='d-flex flex-row'>
-              <img
+<img
                 className=' mt-0 d-flex flex-column col-md-1 col-2 me-1'
                 id='imgicon'
                 src={this.props.company_logo}
               />
-              <div className=' fs-5 mt-2 ms-2 col-md-10 col-8'>{this.props.title}</div>
-              <div id='goldtab' className=' fs-6 mt-2  col-2 col-md-1'>
-                {this.props.salary ? this.props.salary : ""}
-              </div>
-            </div>
             <div id='job' className='d-flex flex-row py-2 ms-5'>
               <div className='d-flex ms-3 flex-column'>{this.props.company_name}</div>
               <div id='gold' className='d-flex ms-2 flex-row'>
@@ -90,15 +76,38 @@ export class Ecard extends Component {
               </div>
             </div>
             <p className='card-text mt-2'>{this.props.description}</p>
+            {this.props.post_type === "adsPost" ? (
+              <div>
+                <img
+                  className=' mt-0 d-flex flex-column col-md-6 col-2 me-1'
+                  id='imgicon'
+                  src={this.props.sponsor_image}
+                />
+                <div className='d-flex flex-row flex-nowrap smallres'>
+                  <div id='promoted' className='  d-flex flex-row col-12 col-md-2 fs-5'>
+                    <RiAdvertisementLine className='me-2 fs-3' fill='#cd8930' />
+                    <p id='gold'>ADS</p>
+                  </div>
+                </div>
+              </div>
+            ) : (
+              ""
+            )}
+
+            {/* <img
+              className=' mt-0 d-flex flex-column col-md-1 col-2 me-1'
+              id='imgicon'
+              src={this.props.sponsor_image}
+            /> */}
             <div className='d-flex flex-row flex-wrap ww'>
-              <div className='s  align-middle h-100'>
-                <div className='d-flex flex-row me-4 mb-1 col-12  col-md-1' id=''>
+              <div className='s  align-middle '>
+                <div className='d-block me-4 mb-1 col-6  col-md-12 ' id=''>
                   {this.props.tags
                     ? this.props.tags.map((x, i) => {
                         return (
                           <a
                             href='#'
-                            className='  m-1 m-md-2 p-0 p-md-1 text-center d-flex'
+                            className=' broker-tag ms-1 d-inline-block'
                             id='tagsipad'
                           >
                             {x.interest ? x.interest : ""}
@@ -110,10 +119,12 @@ export class Ecard extends Component {
                 <div
                   id='drop'
                   className='d-flex flex-column   text-center
-                              col-md-auto text-center'
+                              text-center  col-3'
                 >
-                  <div className='align-self-center d-flex align-items-center my-3 p-1 text-center'>
-                    {this.props.application_deadline}
+                  <div className='d-flex flex-row flex-wrap'>
+                    {this.props.application_deadline
+                      ? "Deadline " + this.props.application_deadline
+                      : ""}
                   </div>
                 </div>
                 <div
@@ -121,14 +132,14 @@ export class Ecard extends Component {
  col-md-auto text-center'
                 >
                   {this.props.post_type == "promotedPost" ? (
-                    <div className='align-self-center d-flex align-items-center my-2 p-1 text-center'>
+                    <div className='d-flex flex-row flex-wrap promotedPost'>
                       <BsArrowUpRight
-                        className='m-2'
+                        className='m-0 '
                         color='#cd8930'
                         fill='#cd8930'
                         size={20}
                       />
-                      <p id='gold' className='m-1'>
+                      <p id='gold' className='m-0'>
                         Promoted
                       </p>
                     </div>

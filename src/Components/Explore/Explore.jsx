@@ -31,6 +31,7 @@ class Explore extends Component {
       alert: true,
       saved: false,
       posts: [],
+      Search: "",
     };
     this.toggleSave = this.toggleSave.bind(this);
   }
@@ -38,22 +39,13 @@ class Explore extends Component {
   async componentDidMount() {
     await resolve(
       axios
-        .get("/W/student/posts")
+        .get("/W/student/posts?q=10")
         .then((res) => {
           if (res.status === 200) {
             this.setState({
               posts: res.data.response.data,
               loading: true,
             });
-            // res.data.response.data.map((data, i) => {
-            //   //   console.log(data);
-            //   this.setState({
-            //     advisor: [data.advisor],
-            //     departments: [data.departments],
-            //     tags: [data.tages],
-            //   });
-            // console.log(this.state.posts);
-            // });
           }
         })
         .catch((error) => {
@@ -70,7 +62,7 @@ class Explore extends Component {
     this.setState({ saved: !this.state.saved ? true : false });
     console.log(this.state.saved);
   };
-
+  handleSearch = () => {};
   render() {
     if (this.state.user.profile_updated === false) {
       var Alert =
@@ -130,9 +122,12 @@ class Explore extends Component {
                 type='text'
                 class='form-control input-lg'
                 placeholder='Write some thing'
+                onChange={(e) => {
+                  this.setState({ Search: e.target.value });
+                }}
               />
               <span class='input-group-btn'>
-                <button class='btn btn-info btn-lg' type='button'>
+                <button class='btn btn-info btn-lg' type='button' href='/Search/'>
                   {/* <i class='IoClose glyphicon-search'></i> */}
                   <GrSearch />
                 </button>
@@ -162,129 +157,47 @@ class Explore extends Component {
                           application_deadline={data.application_deadline}
                           post_type={data.post_type}
                           advisor={[data.advisor]}
+                          post_type={data.post_type}
+                          sponsor_image={data.sponsor_image}
                         />
                       );
                     })
                   : ""}
-
-                {/* <div className='card '>
-                  <div className='card-body '>
-                    <div className='d-flex flex-row justify-content-between'>
-                      <div className='d-flex'>
-                        <img
-                          className=' mt-0 d-flex flex-column col-md-4 col-2 me-3'
-                          id='imgicon'
-                          src={img2}
-                        />
-                        <p id='' className='card-title fs-5 mt-2'>
-                          Dr. Rehab ElBadrawy
-                        </p>
-                      </div>
-
-                      <div className='d-flex flex-row-reverse'>
-                        <div class='gray'>2 min ago</div>
-                      </div>
-                    </div>
-
-                    <hr />
-                    <div className='d-flex flex-row '>
-                      <img
-                        className=' mt-0 d-flex flex-column col-md-1 col-2 me-1'
-                        id='imgicon'
-                        src={img2}
-                      />
-                      <div className=' fs-5 mt-2 ms-2 col-md-10 col-8'>UI</div>
-                      <div id='goldtab' className=' fs-6 mt-2  col-2 col-md-1'>
-                        Paid
-                      </div>
-                    </div>
-                    <div id='job' className='d-flex flex-row ms-5 '>
-                      <div className='d-flex ms-3 flex-column'>CIB</div>
-                      <div id='gold' className='d-flex ms-2 flex-column'>
-                        Finance
-                      </div>
-                    </div>
-                    <p className='card-text mt-2'>
-                      Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsam
-                      repudiandae aut possimus. Repellendus at nostrum iste doloremque. Ea
-                      omnis ipsam, eum nam tempore culpa illum consequuntur quis nobis
-                      adipisci et?
-                    </p>
-                    <div className='d-flex flex-row flex-wrap ww'>
-                      <div className='s'>
-                        <div
-                          className='d-flex flex-column  col-4 col-md-1 me-4 ss'
-                          id='firsttagipad'
-                        >
-                          <a href='#' className='tagsipad' id='tags'>
-                            Finance
-                          </a>
-                        </div>
-                        <div
-                          className='d-flex flex-column col-4  col-md-1 me-4 mb-1 '
-                          id='firsttagipad'
-                        >
-                          <a href='#' className='tagsipad  ' id='tags'>
-                            Banking
-                          </a>
-                        </div>
-                        <div
-                          id='drop'
-                          className='d-flex flex-column col-md-3  
-                             justify-space-between'
-                        >
-                          <p>Deadline 11 Dec 2021</p>
-                        </div>
-                      </div>
-
-                      <div className='  d-flex flex-row col-12 col-md-4 justify-content-end btnmovement'>
-                        <div className='col-md-4'></div>
-                        <BsBookmark
-                          id='BsBookmark'
-                          color='#1e4274'
-                          className='fs-2 align-self-center mb-5  col-md-2 col-4'
-                          path='0px'
-                        />
-                        <button className='applyBtn px-1 py-0 col-md-3 col-8'>
-                          Apply
-                        </button>
-                      </div>
-                    </div>
-                  </div> */}
               </div>
-              {/* <div className='card '>
-                  <div className='card-body '>
-                    <div className='d-flex flex-row'>
-                      <img
-                        className=' mt-0 d-flex flex-column col-md-1 col-2 me-1'
-                        id='imgicon'
-                        src={img2}
-                      />
-                      <div className=' fs-5 mt-2 ms-2 col-md-10 col-8'>testtts22</div>
-                    </div>
-
-                    <p className='card-text mt-2'>
-                      Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsam
-                      repudiandae aut possimus. Repellendus at nostrum iste doloremque. Ea
-                      omnis ipsam, eum nam tempore culpa illum consequuntur quis nobis
-                      adipisci et?
-                    </p>
-                    <div className='d-flex flex-row flex-wrap '>
-                      <img
-                        className=' mt-0 d-flex flex-column col-md-12 col-12 me-1'
-                        // id='imgicon'
-                        src={img3}
-                      />
-                    </div>
-                  </div>
-                </div>
-              </div> */}
             </div>
           </div>
         </div>
 
         <div className='text-center stext  my-4'>
-          <a>Load More...</a>
+          <nav aria-label='Page navigation example'>
+            <ul class='pagination justify-content-center'>
+              <li class='page-item disabled'>
+                <a class='page-link' href='#' tabindex='-1'>
+                  Previous
+                </a>
+              </li>
+              <li class='page-item'>
+                <a class='page-link' href='#'>
+                  1
+                </a>
+              </li>
+              <li class='page-item'>
+                <a class='page-link' href='#'>
+                  2
+                </a>
+              </li>
+              <li class='page-item'>
+                <a class='page-link' href='#'>
+                  3
+                </a>
+              </li>
+              <li class='page-item'>
+                <a class='page-link' href='#'>
+                  Next
+                </a>
+              </li>
+            </ul>
+          </nav>
         </div>
         <Footer2 />
       </div>
