@@ -118,7 +118,7 @@ export class Ecard extends Component {
                 </div>
                 <div
                   id='drop'
-                  className='d-flex flex-column   text-center
+                  className='d-flex flex-column   
                               text-center  col-3'
                 >
                   <div className='d-flex flex-row flex-wrap'>
@@ -129,7 +129,7 @@ export class Ecard extends Component {
                 </div>
                 <div
                   className='d-flex flex-column   text-center
- col-md-auto text-center'
+ col-md-auto '
                 >
                   {this.props.post_type == "promotedPost" ? (
                     <div className='d-flex flex-row flex-wrap promotedPost'>

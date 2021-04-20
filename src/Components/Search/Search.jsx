@@ -237,9 +237,9 @@ class Search extends Component {
               </label>
             </li>
           </ul>
-          <div className='row mb-4'>
+          <div className='row '>
             <div className='col-md-12 col-12'>
-              <div id='tabcard' className='row flex-wrap'>
+              <div id='tabcard' className='d-flex  flex-wrap'>
                 {this.state.posts
                   ? this.state.posts.map((data) => {
                       return (
@@ -256,6 +256,7 @@ class Search extends Component {
                           advisor={[data.advisor]}
                           post_type={data.post_type}
                           sponsor_image={data.sponsor_image}
+                          // className="d-flex flex-wrap"
                         />
                       );
                     })

@@ -66,7 +66,6 @@
 } */
 .smallres {
   display: inline-flex;
-  
 }
 @media (max-width: 770px) {
   .s {
@@ -133,4 +132,30 @@
 }
 .d-contents {
   display: contents !important;
+  grid-column: 1 !important;
+}
+.gallery {
+  margin: 5px;
+  border: 1px solid #ccc;
+  float: left;
+  width: 180px;
+}
+.widthhh {
+  height: 80% !important;
+}
+#bottom {
+  display: inline-block;
+  align-self: flex-end;
+}
+.nocard {
+  position: relative;
+  display: flex;
+  min-width: 0;
+  word-wrap: break-word;
+  flex-direction: none !important;
+
+  background-color: #fff;
+  background-clip: border-box;
+  border: 1px solid rgba(0, 0, 0, 0.125);
+  border-radius: 0.25rem;
 }

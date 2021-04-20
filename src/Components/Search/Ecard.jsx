@@ -27,9 +27,9 @@ export class Ecard extends Component {
   render() {
     return (
       <div className='d-contents'>
-        <div className='col-md-6' id='tabcontainer'>
-          <div className='card'>
-            <div className='card-body'>
+        <div className='col-md-6 d-flex d-flex  align-top flex-wrap' id='tabcontainer'>
+          <div className=' nocard m-1  d-flex d-inline-flex align-self-stretch '>
+            <div className='card-body my-auto  align-self-end '>
               {this.props.advisor.map((x) => {
                 return x ? (
                   <div className=''>
@@ -63,7 +63,7 @@ export class Ecard extends Component {
                   src={this.props.company_logo}
                 />
                 <div className=' fs-5 ms-2 col-md-10 col-8'>{this.props.title}</div>
-                <div id='goldtab' className=' fs-6 mt-2  col-2 col-md-1 m-0'>
+                <div id='goldtab' className=' fs-6 mt-2  col-2 col-md-2 m-0'>
                   {this.props.salary ? this.props.salary : ""}
                 </div>
               </div>
@@ -73,7 +73,7 @@ export class Ecard extends Component {
                   {this.props.departments
                     ? this.props.departments.map((x) => {
                         return (
-                          <div id='gold ' className='d-inline mx-1 goldenn' key={x.id}>
+                          <div id='gold ' className='d-inline mx-1  goldenn ' key={x.id}>
                             {x.dep_name}
                           </div>
                         );
@@ -114,14 +114,17 @@ export class Ecard extends Component {
                     })
                   : ""}
               </div>
-              <div className='d-flex flex-row  justify-content-between smallres mt-4 '>
+              <div
+                className='d-flex flex-row  justify-content-between smallres align-items-end mt-4 '
+                id='bottom'
+              >
                 <div className='d-flex  flex-wrap col-6 col-md-3 '>
                   {this.props.application_deadline
                     ? "Deadline " + this.props.application_deadline
                     : ""}
                 </div>
                 {this.props.post_type == "promotedPost" ? (
-                  <div className='d-flex  flex-wrap promotedPost me-auto'>
+                  <div className='d-flex  flex-wrap promotedPost me-auto '>
                     <BsArrowUpRight
                       className='m-0 '
                       color='#cd8930'
@@ -138,7 +141,7 @@ export class Ecard extends Component {
                 <div className='flex-row '>
                   {" "}
                   <div
-                    className=' d-flex flex-row-end   col-md-auto  justify-content-end
+                    className=' d-flex flex-row-end   col-md-auto  justify-content-end align-self-end align-items-end
                   '
                   >
                     {/* <div className="col-md-4"></div> */}
