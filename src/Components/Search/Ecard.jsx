@@ -114,38 +114,39 @@ export class Ecard extends Component {
                     })
                   : ""}
               </div>
-              <div className='d-flex flex-row flex-nowrap smallres mt-4'>
-                <div className='d-flex flex-row flex-wrap col-6 col-md-3'>
+              <div className='d-flex flex-row  justify-content-between smallres mt-4 '>
+                <div className='d-flex  flex-wrap col-6 col-md-3 '>
                   {this.props.application_deadline
                     ? "Deadline " + this.props.application_deadline
                     : ""}
                 </div>
-                <div className=''>
-                  {this.props.post_type == "promotedPost" ? (
-                    <div className='d-flex flex-row flex-wrap promotedPost'>
-                      <BsArrowUpRight
-                        className='m-0 '
-                        color='#cd8930'
-                        fill='#cd8930'
-                        size={20}
-                      />
-                      <p id='gold' className='m-0'>
-                        Promoted
-                      </p>
-                    </div>
-                  ) : (
-                    ""
-                  )}
-                </div>
-                <div className=''>
+                {this.props.post_type == "promotedPost" ? (
+                  <div className='d-flex  flex-wrap promotedPost me-auto'>
+                    <BsArrowUpRight
+                      className='m-0 '
+                      color='#cd8930'
+                      fill='#cd8930'
+                      size={20}
+                    />
+                    <p id='gold' className='m-0'>
+                      Promoted
+                    </p>
+                  </div>
+                ) : (
+                  ""
+                )}
+                <div className='flex-row '>
                   {" "}
-                  <div className=' d-flex flex-row-end'>
+                  <div
+                    className=' d-flex flex-row-end   col-md-auto  justify-content-end
+                  '
+                  >
                     {/* <div className="col-md-4"></div> */}
                     <BsBookmark
                       id='BsBookmark'
                       color='#1e4274'
-                      className='fs-2  col-md-9 col-8'
-                      path='0px'
+                      className=' col-md-5 col-3'
+                      size={30}
                     />
                     <button className='applyBtn px-1 py-0 col-md-12 col-8'>Apply</button>
                   </div>
