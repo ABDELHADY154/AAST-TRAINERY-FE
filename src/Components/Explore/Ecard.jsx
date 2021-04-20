@@ -28,7 +28,7 @@ export class Ecard extends Component {
     return (
       <div>
         <div className='card '>
-          <div className='card-body mb-4'>
+          <div className='card-body '>
             {this.props.advisor.map((x) => {
               return x ? (
                 <div className=''>
@@ -56,11 +56,11 @@ export class Ecard extends Component {
               );
             })}
 
-<img
-                className=' mt-0 d-flex flex-column col-md-1 col-2 me-1'
-                id='imgicon'
-                src={this.props.company_logo}
-              />
+            <img
+              className=' mt-0 d-flex flex-column col-md-1 col-2 me-1'
+              id='imgicon'
+              src={this.props.company_logo}
+            />
             <div id='job' className='d-flex flex-row py-2 ms-5'>
               <div className='d-flex ms-3 flex-column'>{this.props.company_name}</div>
               <div id='gold' className='d-flex ms-2 flex-row'>
@@ -79,8 +79,8 @@ export class Ecard extends Component {
             {this.props.post_type === "adsPost" ? (
               <div>
                 <img
-                  className=' mt-0 d-flex flex-column col-md-6 col-2 me-1'
-                  id='imgicon'
+                  className=' mt-0 d-flex flex-column col-md-6 col-2 me-1 w-100'
+                  height='400'
                   src={this.props.sponsor_image}
                 />
                 <div className='d-flex flex-row flex-nowrap smallres'>
@@ -154,7 +154,7 @@ export class Ecard extends Component {
                 <BsBookmark
                   id='BsBookmark'
                   color='#1e4274'
-                  className='fs-2 align-self-center mb-5  col-md-2 col-4'
+                  className='fs-2 align-self-center  col-md-2 col-4'
                   path='0px'
                 />
                 <button className='applyBtn px-1 py-0 col-md-3 col-8'>Apply</button>

@@ -62,7 +62,7 @@ export class Ecard extends Component {
                   id='imgicon'
                   src={this.props.company_logo}
                 />
-                <div className=' fs-5 mt-2 ms-2 col-md-10 col-8'>{this.props.title}</div>
+                <div className=' fs-5 ms-2 col-md-10 col-8'>{this.props.title}</div>
                 <div id='goldtab' className=' fs-6 mt-2  col-2 col-md-1 m-0'>
                   {this.props.salary ? this.props.salary : ""}
                 </div>
@@ -85,8 +85,8 @@ export class Ecard extends Component {
               {this.props.post_type === "adsPost" ? (
                 <div>
                   <img
-                    className=' mt-0 d-flex flex-column col-md-6 col-2 me-1'
-                    id='imgicon'
+                    className=' mt-0 d-flex flex-column col-md-6 col-2 me-1 w-100'
+                    height='200'
                     src={this.props.sponsor_image}
                   />
                   <div className='d-flex flex-row flex-nowrap smallres'>
@@ -99,31 +99,28 @@ export class Ecard extends Component {
               ) : (
                 ""
               )}
-              <div className='d-flex flex-row flex-nowrap smallres'>
-                <div className='me-4 mb-1 col-6  col-md-5'>
-                  {this.props.tags
-                    ? this.props.tags.map((x, i) => {
-                        return (
-                          <a
-                            href='#'
-                            className=' broker-tag ms-1 d-inline-block'
-                            id='tagsipad'
-                          >
-                            {x.interest ? x.interest : ""}
-                          </a>
-                        );
-                      })
-                    : ""}{" "}
-                </div>
+              <div className='me-4 mb-1 col-12  col-md-12'>
+                {this.props.tags
+                  ? this.props.tags.map((x, i) => {
+                      return (
+                        <a
+                          href='#'
+                          className=' broker-tag ms-1 d-inline-block'
+                          id='tagsipad'
+                        >
+                          {x.interest ? x.interest : ""}
+                        </a>
+                      );
+                    })
+                  : ""}
+              </div>
+              <div className='d-flex flex-row flex-nowrap smallres mt-4'>
                 <div className='d-flex flex-row flex-wrap col-6 col-md-3'>
                   {this.props.application_deadline
                     ? "Deadline " + this.props.application_deadline
                     : ""}
                 </div>
-                <div
-                  className='d-flex flex-column   text-center
- col-md-auto text-center'
-                >
+                <div className=''>
                   {this.props.post_type == "promotedPost" ? (
                     <div className='d-flex flex-row flex-wrap promotedPost'>
                       <BsArrowUpRight
@@ -140,16 +137,19 @@ export class Ecard extends Component {
                     ""
                   )}
                 </div>
-              </div>
-              <div className='  d-flex flex-row col-12 col-md-11 justify-content-end '>
-                {/* <div className="col-md-4"></div> */}
-                <BsBookmark
-                  id='BsBookmark'
-                  color='#1e4274'
-                  className='fs-2  col-md-2 col-4'
-                  path='0px'
-                />
-                <button className='applyBtn px-1 py-0 col-md-5 col-8'>Apply</button>
+                <div className=''>
+                  {" "}
+                  <div className=' d-flex flex-row-end'>
+                    {/* <div className="col-md-4"></div> */}
+                    <BsBookmark
+                      id='BsBookmark'
+                      color='#1e4274'
+                      className='fs-2  col-md-9 col-8'
+                      path='0px'
+                    />
+                    <button className='applyBtn px-1 py-0 col-md-12 col-8'>Apply</button>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
