@@ -32,6 +32,7 @@ class Explore extends Component {
       saved: false,
       posts: [],
       Search: "",
+      title: "",
     };
     this.toggleSave = this.toggleSave.bind(this);
   }
@@ -46,6 +47,7 @@ class Explore extends Component {
               posts: res.data.response.data,
               loading: true,
             });
+            console.log(res.data.response.data[0].title);
           }
         })
         .catch((error) => {
@@ -62,7 +64,9 @@ class Explore extends Component {
     this.setState({ saved: !this.state.saved ? true : false });
     console.log(this.state.saved);
   };
-  handleSearch = () => {};
+  // async handleSearch() {
+  //   await resolve(axois.get);
+  // }
   render() {
     if (this.state.user.profile_updated === false) {
       var Alert =
@@ -117,22 +121,30 @@ class Explore extends Component {
           </p>
           {/* BIG CARD WITH ADVISOR */}
           <div id='custom-search-input' className='my-4'>
-            <div class='input-group col-md-12 '>
-              <input
-                type='text'
-                class='form-control input-lg'
-                placeholder='Write some thing'
-                onChange={(e) => {
-                  this.setState({ Search: e.target.value });
-                }}
-              />
-              <span class='input-group-btn'>
-                <button class='btn btn-info btn-lg' type='button' href='/Search/'>
-                  {/* <i class='IoClose glyphicon-search'></i> */}
-                  <GrSearch />
-                </button>
-              </span>
-            </div>
+            <form>
+              <div class='input-group col-md-12'>
+                <input
+                  type='text'
+                  class='form-control input-lg'
+                  placeholder='Write some thing'
+                  onChange={(e) => {
+                    this.setState({ Search: e.target.value });
+                  }}
+                />
+                <span class='input-group-btn'>
+                  <Link
+                    class='btn btn-info btn-lg'
+                    type='button'
+                    to={{
+                      pathname: "/Search",
+                      params: { val: this.state.Search },
+                    }}
+                  >
+                    <GrSearch />
+                  </Link>
+                </span>
+              </div>
+            </form>
           </div>
           <div className='flex-column mb-4'>
             <div className='col-md-12'>

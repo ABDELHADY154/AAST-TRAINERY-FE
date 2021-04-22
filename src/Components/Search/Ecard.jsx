@@ -26,27 +26,26 @@ export class Ecard extends Component {
   }
   render() {
     return (
-      <div className='d-contents'>
-        <div className='col-md-6 d-flex d-flex  align-top flex-wrap' id='tabcontainer'>
-          <div className=' nocard m-1  d-flex d-inline-flex align-self-stretch '>
-            <div className='card-body my-auto  align-self-end '>
+      <div className='col-md-6 col-12  '>
+        <div className='d-flex col-12  '>
+          <div className='m-1 nocard align-self-start d-flex  '>
+            <div className='card-body none  m-auto '>
               {this.props.advisor.map((x) => {
                 return x ? (
-                  <div className=''>
-                    <div className='d-flex flex-row justify-content-between'>
+                  <div className='flex-container'>
+                    <div className='d-flex  justify-content-between'>
                       <div className='d-flex'>
                         <img
-                          className=' mt-0 d-flex flex-column col-md-4 col-2 me-3'
-                          id='imgicon'
+                          className='  mt-0 d-flex flex-column col-md-4 col-4  adslogo  complogo'
                           src={x !== "null" ? x.image : ""}
                         />
-                        <p id='' className='card-title fs-5 mt-2'>
+                        <p id='' className='card-title fs-6 mt-2 mx-2'>
                           {x.name}{" "}
                         </p>
                       </div>
 
-                      <div className='d-flex flex-row-reverse'>
-                        <div class='gray'>2 min ago</div>
+                      <div className='d-flex flex-row-reverse ms-auto  align-items-center col-md-6 col-2'>
+                        <div class='gray '>2 min ago</div>
                       </div>
                     </div>
 
@@ -56,41 +55,55 @@ export class Ecard extends Component {
                   ""
                 );
               })}
-              <div className='d-flex flex-row'>
+              <div className='d-flex flex-row justify-content-between'>
                 <img
-                  className=' mt-0 d-flex flex-column col-md-1 col-2 me-1'
-                  id='imgicon'
+                  className='col-md-2 col-4 me-1  adslogo complogo'
                   src={this.props.company_logo}
                 />
-                <div className=' fs-5 ms-2 col-md-10 col-8'>{this.props.title}</div>
-                <div id='goldtab' className=' fs-6 mt-2  col-2 col-md-2 m-0'>
+
+                <div className='card-title align-self-center fs-6 mt-2 mx-1 col-md-6 col-5 d-flex   align-items-center'>
+                  {this.props.post_type === "adsPost"
+                    ? this.props.company_name
+                    : this.props.title}
+                </div>
+
+                <div
+                  id='goldtab'
+                  className=' d-flex flex-row-reverse  align-items-center col-md-2 col-2 '
+                >
                   {this.props.salary ? this.props.salary : ""}
                 </div>
               </div>
-              <div id='job' className='d-flex flex-row ms-5 '>
-                <div className='d-flex ms-3 flex-column'>{this.props.company_name}</div>
-                <div id='gold' className='d-flex ms-2 flex-row'>
+              {/* <div className='pt-2'> */}
+              <div className='d-flex   col-md-12 col-5 hidee flex-warp'>
+                <div className='card-title fs-6  align-self-center col-md-3 col-12 '>
+                  {this.props.post_type === "adsPost" ? "" : this.props.company_name}
+                </div>{" "}
+                <div className=' d-block d-md-inline-flex '>
                   {this.props.departments
                     ? this.props.departments.map((x) => {
                         return (
-                          <div id='gold ' className='d-inline mx-1  goldenn ' key={x.id}>
-                            {x.dep_name}
+                          <div id='gold' className='d-flex m-2' key={x.id}>
+                            {x.dep_name + " "}
                           </div>
                         );
                       })
                     : ""}
                 </div>
               </div>
+
               <p className='card-text mt-2'>{this.props.description}</p>
               {this.props.post_type === "adsPost" ? (
                 <div>
                   <img
-                    className=' mt-0 d-flex flex-column col-md-6 col-2 me-1 w-100'
-                    height='200'
+                    className=' mt-0 d-flex flex-column col-md-12 col-11 me-1  adspic'
                     src={this.props.sponsor_image}
                   />
                   <div className='d-flex flex-row flex-nowrap smallres'>
-                    <div id='promoted' className='  d-flex flex-row col-12 col-md-2 fs-5'>
+                    <div
+                      id='promoted'
+                      className='  d-flex flex-row col-12 col-md-2 fs-5 mt-3'
+                    >
                       <RiAdvertisementLine className='me-2 fs-3' fill='#cd8930' />
                       <p id='gold'>ADS</p>
                     </div>
@@ -138,22 +151,25 @@ export class Ecard extends Component {
                 ) : (
                   ""
                 )}
-                <div className='flex-row '>
-                  {" "}
-                  <div
-                    className=' d-flex flex-row-end   col-md-auto  justify-content-end align-self-end align-items-end
+                {this.props.post_type !== "adsPost" ? (
+                  <div className='flex-row '>
+                    <div
+                      className=' d-flex flex-row-end   col-md-auto  justify-content-end align-self-end align-items-end
                   '
-                  >
-                    {/* <div className="col-md-4"></div> */}
-                    <BsBookmark
-                      id='BsBookmark'
-                      color='#1e4274'
-                      className=' col-md-5 col-3'
-                      size={30}
-                    />
-                    <button className='applyBtn px-1 py-0 col-md-12 col-8'>Apply</button>
+                    >
+                      {/* <div className="col-md-4"></div> */}
+                      <BsBookmark
+                        id='BsBookmark'
+                        color='#1e4274'
+                        className=' col-md-2 col-3'
+                        size={30}
+                      />
+                      <button className='applyBtn px-1 py-0 col-md-5 col-8'>Apply</button>
+                    </div>
                   </div>
-                </div>
+                ) : (
+                  ""
+                )}
               </div>
             </div>
           </div>

@@ -27,49 +27,46 @@ class Search extends Component {
       avatar: "",
       alert: true,
       saved: false,
-      Search: "",
+      posts: [],
       // val: this.props,
     };
     this.toggleSave = this.toggleSave.bind(this);
   }
+  // console.log(this.props.location.params);
 
   async componentDidMount() {
-    await resolve(
-      axios
-        .get("/W/student/search/a")
+    if (this.props.location.params && this.props.location.params !== undefined) {
+      this.setState({ Search: this.props.location.params.val });
+      await axios
+        .get(`/W/student/search/${this.props.location.params.val}`)
         .then((res) => {
           if (res.status === 200) {
-            this.setState({
-              posts: res.data.response.data,
-              loading: true,
-            });
-            // res.data.response.data.map((data, i) => {
-            //   //   console.log(data);
-            //   this.setState({
-            //     advisor: [data.advisor],
-            //     departments: [data.departments],
-            //     tags: [data.tages],
-            //   });
-            // console.log(this.state.posts);
-            // });
+            this.setState({ posts: res.data.response.data });
           }
-        })
-        .catch((error) => {
-          if (error.response.data.status === 401 || error.response.data.status === 404) {
-            sessionStorage.clear("token");
-            sessionStorage.clear("status");
-            this.setState({ loggedIn: false });
-            window.location.reload();
-          }
-        })
-    );
+          // console.log(res);
+        });
+      this.props.location.params.val = undefined;
+    }
   }
   toggleSave = () => {
     this.setState({ saved: !this.state.saved ? true : false });
     console.log(this.state.saved);
   };
+  handleChange = (e) => {
+    this.setState({ Search: e.target.value });
+  };
+  handleSubmit = async (e) => {
+    e.preventDefault();
 
+    await axios.get(`/W/student/search/${this.state.Search}`).then((res) => {
+      if (res.status === 200) {
+        this.setState({ posts: res.data.response.data });
+      }
+    });
+  };
   render() {
+    // console.log(this.state.Search);
+
     if (this.state.user.profile_updated === false) {
       var Alert =
         this.state.alert == true ? (
@@ -119,20 +116,27 @@ class Search extends Component {
         <div className='container'>
           <div className='fs-3 mt-5 mb-3'>Search </div>
           <div id='custom-search-input' className='my-4'>
-            <div class='input-group col-md-12 '>
-              <input
-                type='text'
-                class='form-control input-lg'
-                placeholder='Write some thing'
-                onchange={this.select}
-              />
-              <span class='input-group-btn'>
-                <button class='btn btn-info btn-lg' type='button' onClick={this.Search}>
-                  {/* <i class='IoClose glyphicon-search'></i> */}
-                  <GrSearch />
-                </button>
-              </span>
-            </div>
+            <form onSubmit={this.handleSubmit} id='fromSearch'>
+              <div class='input-group col-md-12 '>
+                <input
+                  type='text'
+                  class='form-control input-lg'
+                  onChange={this.handleChange}
+                  value={this.state.Search ? this.state.Search : ""}
+                />
+
+                <div class='input-group-btn'>
+                  <button
+                    class='btn btn-info btn-lg'
+                    type='submit'
+                    form='fromSearch'
+                    // onClick={() => this.handleSubmit()}
+                  >
+                    <GrSearch />
+                  </button>
+                </div>
+              </div>
+            </form>
           </div>
           <h3 className=' d-flex justify-content-start ' id='gold'>
             Filter your result
@@ -237,9 +241,9 @@ class Search extends Component {
               </label>
             </li>
           </ul>
-          <div className='row '>
-            <div className='col-md-12 col-12'>
-              <div id='tabcard' className='d-flex  flex-wrap'>
+          <div className=''>
+            <div className=' d-flex col-md-12 col-12  '>
+              <div className='d-flex flex-wrap flex-row  '>
                 {this.state.posts
                   ? this.state.posts.map((data) => {
                       return (

@@ -72,6 +72,10 @@
     width: 50%;
     display: contents !important;
   }
+  .none {
+    margin: 0;
+    padding: 10px !important;
+  }
   .smallres {
     width: 50%;
     display: contents !important;
@@ -83,6 +87,13 @@
   .promotedPost {
     display: block;
   }
+  .hidee {
+    margin-left: 0 !important;
+  }
+}
+.hidee {
+  margin-left: 7rem;
+  word-wrap: break-word;
 }
 .gray {
   font-style: normal;
@@ -130,32 +141,38 @@
   border-radius: 6px;
   display: inline-block;
 }
-.d-contents {
-  display: contents !important;
-  grid-column: 1 !important;
-}
-.gallery {
-  margin: 5px;
-  border: 1px solid #ccc;
-  float: left;
-  width: 180px;
-}
-.widthhh {
-  height: 80% !important;
-}
+
+
 #bottom {
   display: inline-block;
   align-self: flex-end;
 }
 .nocard {
-  position: relative;
-  display: flex;
+  display: flexbox;
   min-width: 0;
   word-wrap: break-word;
   flex-direction: none !important;
-
+  display: table;
+  clear: both;
   background-color: #fff;
   background-clip: border-box;
-  border: 1px solid rgba(0, 0, 0, 0.125);
+  border: 2px solid rgba(0, 0, 0, 0.125);
   border-radius: 0.25rem;
+  flex-wrap: wrap;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.complogo {
+  object-fit: contain !important;
+}
+.adslogo {
+  height: 60px !important;
+}
+.adspic {
+  object-fit: cover !important;
+  height: 12em !important;
+}
+.ms-7 {
+  margin-left: 7rem !important;
 }

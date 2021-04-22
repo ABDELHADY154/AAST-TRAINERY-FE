@@ -56,11 +56,17 @@ export class Ecard extends Component {
               );
             })}
 
-            <img
-              className=' mt-0 d-flex flex-column col-md-1 col-2 me-1'
-              id='imgicon'
-              src={this.props.company_logo}
-            />
+            <div className='d-flex flex-row'>
+              <img
+                className=' mt-0 d-flex flex-column col-md-1 col-2 me-1'
+                id='imgicon'
+                src={this.props.company_logo}
+              />
+              <div className=' fs-5 ms-2 col-md-10 col-8'>{this.props.title}</div>
+              <div id='goldtab' className=' fs-6 mt-2  col-2 col-md-2 me-auto'>
+                {this.props.salary ? this.props.salary : ""}
+              </div>
+            </div>
             <div id='job' className='d-flex flex-row py-2 ms-5'>
               <div className='d-flex ms-3 flex-column'>{this.props.company_name}</div>
               <div id='gold' className='d-flex ms-2 flex-row'>
