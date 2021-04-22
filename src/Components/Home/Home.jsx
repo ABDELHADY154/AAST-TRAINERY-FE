@@ -437,8 +437,10 @@ class Home extends Component {
                           id="promoted"
                           className="  d-flex flex-row col-12 col-md-2  "
                         >
-                          <BsArrowUpRight className="me-2" fill="#cd8930" />
-                          <p id="gold">Promoted</p>
+                          <BsArrowUpRight fill="#cd8930" size="22" />
+                          <p id="gold" style={{ marginLeft: 2 }}>
+                            Promoted
+                          </p>
                         </div>
                       </div>
                     </div>
@@ -495,8 +497,10 @@ class Home extends Component {
                           id="promoted"
                           className="  d-flex flex-row col-12 col-md-2  "
                         >
-                          <BsArrowUpRight className="me-2" fill="#cd8930" />
-                          <p id="gold">Promoted</p>
+                          <BsArrowUpRight size="22" fill="#cd8930" />
+                          <p id="gold" style={{ marginLeft: 2 }}>
+                            Promoted
+                          </p>
                         </div>
                       </div>
                     </div>

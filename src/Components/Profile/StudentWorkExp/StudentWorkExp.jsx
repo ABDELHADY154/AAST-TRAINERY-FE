@@ -20,15 +20,16 @@ export default class StudentWorkExp extends Component {
           <div className=" d-flex skillname flex-row flex-wrap col-4 col-md-5 me-1">
             {this.props.job_title} at {this.props.company_name}
           </div>
-          <div
-            id="worktag"
-            className=" d-flex flex-row flex-wrap col-3 col-md-1  fs-6 plus"
-          >
-            {this.props.experience_type}
+          <div className="col-3 col-md-1 ">
+            <div id="worktag">
+              <p className="d-flex justify-content-center align-items-center flex-row flex-wrap fs-6 ">
+                {this.props.experience_type}
+              </p>
+            </div>
           </div>
 
           <div
-            id="worktag"
+            // id="worktag"
             className=" d-flex flex-row flex-wrap col-3 col-md-5 "
           ></div>
           <div
