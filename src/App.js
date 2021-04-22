@@ -18,6 +18,11 @@ import GeneralForm from "./Components/EditProfile/GeneralForm";
 import SkillsForm from "./Components/EditProfile/SkillsForm";
 import Interest from "./Components/EditProfile/InterestForm";
 import Language from "./Components/EditProfile/LanguageForm";
+import Applied from "../src/Components/StudentActivity/Applied";
+import Accepted from "../src/Components/StudentActivity/Accepted";
+import Saved from "../src/Components/StudentActivity/Saved";
+import Appointment from "../src/Components/StudentActivity/Appointment";
+
 import { AuthRoute } from "./Components/Auth/AuthRoute";
 
 // import Skills from "./EditProfile/Skills";
@@ -167,6 +172,26 @@ class App extends React.Component {
                   exact
                   path="/Profile/Accounts/:id"
                   component={AccountsForm}
+                />
+                <AuthRoute
+                  exact
+                  path="/Profile/Activity/Applied"
+                  component={Applied}
+                />
+                <AuthRoute
+                  exact
+                  path="/Profile/Activity/Accepted"
+                  component={Accepted}
+                />{" "}
+                <AuthRoute
+                  exact
+                  path="/Profile/Activity/Saved"
+                  component={Saved}
+                />
+                <AuthRoute
+                  exact
+                  path="/Profile/Activity/Appointment"
+                  component={Appointment}
                 />
                 <Route exact path="*" component={ErrorPage} />
               </Switch>
