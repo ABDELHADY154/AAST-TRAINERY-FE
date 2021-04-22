@@ -36,6 +36,10 @@
   font-family: sf light;
   margin-left: 6em;
 }
+#graytab {
+  font-family: sf light;
+  margin-left: 3.8em;
+}
 * {
   color: #1e4274;
   font-family: sf reg;
@@ -138,6 +142,9 @@
   }
 
   #goldtab {
+    margin-left: 0em !important;
+  }
+  #graytab {
     margin-left: 0em !important;
   }
 }
@@ -275,6 +282,9 @@
     align-items: center;
   }
   #goldtab {
+    margin-left: 0em !important;
+  }
+  #graytab {
     margin-left: 0em !important;
   }
   #tabcontainer {

@@ -411,3 +411,7 @@ ReactStars:active {
     height: 10em !important;
   }
 }
+.careerimgh {
+  width: fit-content;
+  height: fit-content;
+}
