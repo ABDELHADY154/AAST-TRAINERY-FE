@@ -43,10 +43,10 @@ class Appointment extends Component {
               </div>
               <div className="row mb-3">
                 <div className="d-flex justify-content-end">
-                  <button className="applyBtn col-md-2 col-sm-2 col-4  me-2">
+                  <button className="applyBtn col-md-2 col-lg-1 col-sm-2 col-4  me-2">
                     Contact
                   </button>
-                  <button className="applyBtn  col-md-2 col-sm-2 col-4 ">
+                  <button className="applyBtn col-lg-1 col-md-2 col-sm-2 col-4 ">
                     Review
                   </button>
                 </div>
