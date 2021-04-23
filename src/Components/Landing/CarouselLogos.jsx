@@ -50,48 +50,9 @@ export class CarouselLogos extends Component {
         },
       ],
     };
-    // var swiper = new Swiper(".swiper-container", {
-    //   slidesPerView: 3,
-    //   spaceBetween: 40,
-    //   freeMode: true,
-    //   pagination: {
-    //     el: ".swiper-pagination",
-    //     clickable: true,
-    //   },
-    // });
     return (
-      // <div className="swiper-container   ms-5 col-lg-4 col-6 col-sm-12 col-xs-12 ">
-      //   <div className="swiper-wrapper">
-      //     <div className="swiper-slide">
-      //       <img src={logo1} className="img-responsive" />
-      //     </div>
-      //     <div className="swiper-slide ">
-      //       <img src={logo1} className="img-responsive" />
-      //     </div>
-      //     <div className="swiper-slide ">
-      //       <img src={logo1} className="img-responsive" />
-      //     </div>
-      //     <div className="swiper-slide  ">
-      //       <img src={logo1} className="img-responsive" />
-      //     </div>
-      //     <div className="swiper-slide">
-      //       <img src={logo1} className="img-responsive" />
-      //     </div>
-      //     <div className="swiper-slide ">
-      //       <img src={logo1} className="img-responsive" />
-      //     </div>
-      //     <div className="swiper-slide   ">
-      //       <img src={logo1} className="img-responsive" />
-      //     </div>
-      //     <div className="swiper-slide">
-      //       <img src={logo1} className="img-responsive" />
-      //     </div>
-      //   </div>
-
-      //   <div className="swiper-pagination "></div>
-      // </div>
       <div
-        class="  LogoCarousel col-lg-4 col-6 col-sm-7 col-md-4 "
+        class="  LogoCarousel col-lg-9 col-10 col-sm-7 col-md-9 "
         data-flickity='{ "freeScroll": true, "prevNextButtons": false, "groupCells": true, "asNavFor": ".carousel-main"}'
       >
         <div class=" logo1 size-180 carousel-cell-logo">
