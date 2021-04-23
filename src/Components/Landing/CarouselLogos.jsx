@@ -91,7 +91,7 @@ export class CarouselLogos extends Component {
       //   <div className="swiper-pagination "></div>
       // </div>
       <div
-        class="  LogoCarousel col-lg-4 col-6 col-sm-7 "
+        class="  LogoCarousel col-lg-4 col-6 col-sm-7 col-md-4 "
         data-flickity='{ "freeScroll": true, "prevNextButtons": false, "groupCells": true, "asNavFor": ".carousel-main"}'
       >
         <div class=" logo1 size-180 carousel-cell-logo">

@@ -251,8 +251,8 @@ class Landing extends React.Component {
           </div>
         </div>
         <div className="container">
-          <div className="row  mb-4 carouselRow flex-wrap ">
-            <CarouselLogos className=" col-md-10 col-10  col-sm-12 col-xs-12" />
+          <div className="d-flex flex-row  flex-wrap mb-4 carouselRow  justify-content-center ">
+            <CarouselLogos className=" d-flex flex-column col-md-10 col-10  col-sm-12 col-xs-12  " />
             {/* {this.state.loading === false ? (
               <div>
                 <LogoesCarousel />
@@ -260,9 +260,9 @@ class Landing extends React.Component {
             ) : (
               <CarouselLogos className=" col-md-10 col-10  " />
             )} */}
-            <div className="col-md-6"></div>
-            <div className="d-flex flex-column  align-items-center  mt-5 col-md-1 col-2 contactBtnW ">
-              <button className="contactBtn py-1 px-4">Contact</button>
+
+            <div className="d-flex flex-column  ms-5 mt-5 col-md-1 col-2 contactBtnW ">
+              <button className="contactBtn text-center  py-1">Contact</button>
             </div>
           </div>
         </div>

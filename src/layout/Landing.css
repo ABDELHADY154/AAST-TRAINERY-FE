@@ -119,9 +119,9 @@ span {
   .carouselRow {
     margin-left: -1rem !important;
   }
-  .contactBtn {
+  /* .contactBtn {
     margin-left: 8rem !important;
-  }
+  } */
 }
 /* @media (max-width: 2560) {
   .carouselRow {
