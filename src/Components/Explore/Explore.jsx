@@ -17,6 +17,7 @@ import { BsBookmark, BsBookmarkFill } from "react-icons/bs";
 import { IoClose } from "react-icons/io5";
 import { Link } from "react-router-dom";
 import "../../layout/Explore.css";
+import paginate from "paginate-array";
 
 import { GrSearch } from "react-icons/gr";
 
@@ -33,22 +34,45 @@ class Explore extends Component {
       posts: [],
       Search: "",
       title: "",
+      todos: [],
+      size: 10,
+      page: 1,
+      currPage: null,
     };
     this.toggleSave = this.toggleSave.bind(this);
+    // this.previousPage = this.previousPage.bind(this);
+    // this.nextPage = this.nextPage.bind(this);
   }
 
   async componentDidMount() {
     await resolve(
       axios
-        .get("/W/student/posts?q=10")
-        .then((res) => {
-          if (res.status === 200) {
+        .get(`/W/student/posts?q=${this.state.size}`)
+
+        .then((todos) => {
+          if (todos.status === 200) {
             this.setState({
-              posts: res.data.response.data,
+              posts: todos.data.response.data,
               loading: true,
+              size: 5,
+              page: 1,
             });
-            console.log(res.data.response.data[0].title);
+
+            console.log(1);
+            console.log(this.state.posts);
           }
+
+          const currPage = paginate(
+            todos.data.response.data,
+            this.state.page,
+            this.state.size
+          );
+          this.setState({
+            ...this.state,
+            todos,
+            currPage,
+          });
+          console.log(currPage.data);
         })
         .catch((error) => {
           if (error.response.data.status === 401 || error.response.data.status === 404) {
@@ -60,14 +84,56 @@ class Explore extends Component {
         })
     );
   }
-  toggleSave = () => {
+  toggleSave = (e) => {
     this.setState({ saved: !this.state.saved ? true : false });
     console.log(this.state.saved);
   };
   // async handleSearch() {
   //   await resolve(axois.get);
   // }
+  // previousPage() {
+  //   const { page, size, todos } = this.state;
+
+  //   if (page > 1) {
+  //     const newPage = page - 1;
+  //     const newCurrPage = paginate(todos, newPage, size);
+
+  //     this.setState({
+  //       ...this.state,
+  //       page: newPage,
+  //       currPage: newCurrPage,
+  //     });
+  //   }
+  // }
+
+  // nextPage() {
+  //   let { currPage, page, size, todos } = this.state;
+
+  //   if (page < currPage.totalPages) {
+  //     const newPage = page + 1;
+  //     const newCurrPage = paginate(todos, newPage, size);
+  //     this.setState({ ...this.state, page: newPage, currPage: newCurrPage });
+  //   }
+  // }
+
+  // handleChange(e) {
+  //   const { value } = e.target;
+  //   const { todos, page } = this.state;
+
+  //   const newSize = +value;
+  //   const newPage = 1;
+  //   const newCurrPage = paginate(todos, newPage, newSize);
+
+  //   this.setState({
+  //     ...this.state,
+  //     size: newSize,
+  //     page: newPage,
+  //     currPage: newCurrPage,
+  //   });
+  // }
   render() {
+    const { page, size, currPage } = this.state;
+
     if (this.state.user.profile_updated === false) {
       var Alert =
         this.state.alert == true ? (
@@ -133,7 +199,7 @@ class Explore extends Component {
                 />
                 <span class='input-group-btn'>
                   <Link
-                    class='btn btn-info btn-lg'
+                    class='btn border-left btn-lg'
                     type='button'
                     to={{
                       pathname: "/Search",
@@ -149,13 +215,29 @@ class Explore extends Component {
           <div className='flex-column mb-4'>
             <div className='col-md-12'>
               <div className='col-md-12'>
-                {/* Adviosr posts */}
-                {/* {this.state.posts.map((v, i) => {
-                  return (
-                    
-                  );
-                })} */}
-                {this.state.posts
+                {currPage
+                  ? currPage.data.map((data) => {
+                      return (
+                        <Ecard
+                          title={data.title}
+                          company_logo={data.company_logo}
+                          salary={data.salary}
+                          company_name={data.company_name}
+                          departments={data.departments}
+                          description={data.description}
+                          tags={data.tags}
+                          application_deadline={data.application_deadline}
+                          post_type={data.post_type}
+                          advisor={[data.advisor]}
+                          post_type={data.post_type}
+                          sponsor_image={data.sponsor_image}
+                          key={data.id}
+                        />
+                      );
+                    })
+                  : ""}
+
+                {/* {this.state.posts
                   ? this.state.posts.map((data) => {
                       return (
                         <Ecard
@@ -171,10 +253,11 @@ class Explore extends Component {
                           advisor={[data.advisor]}
                           post_type={data.post_type}
                           sponsor_image={data.sponsor_image}
+                          key={data.id}
                         />
                       );
                     })
-                  : ""}
+                  : ""} */}
               </div>
             </div>
           </div>

@@ -117,7 +117,7 @@ class AuthNav extends React.Component {
             >
               <ul className='navbar-nav mt-1'>
                 <li className='nav-item '>
-                  <Link className='nav-link item navPage mt-2' to='/Home'>
+                  <Link className='nav-link item navPage mt-2' to='/Explore'>
                     Explore
                     <span className='sr-only' />
                   </Link>

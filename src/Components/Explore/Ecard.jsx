@@ -15,7 +15,12 @@ export class Ecard extends Component {
       loading: false,
       token: sessionStorage.getItem("token"),
     };
+    this.toggleSave = this.toggleSave.bind(this);
   }
+  toggleSave = () => {
+    this.setState({ saved: !this.state.saved ? true : false });
+    // console.log(this.state.saved);
+  };
   componentDidMount() {
     // this.props.senddata.map((data) => {
     //   //   console.log(data);
@@ -27,8 +32,8 @@ export class Ecard extends Component {
   render() {
     return (
       <div>
-        <div className='card '>
-          <div className='card-body '>
+        <div className='card my-4'>
+          <div className='card-body py-5'>
             {this.props.advisor.map((x) => {
               return x ? (
                 <div className=''>
@@ -62,18 +67,34 @@ export class Ecard extends Component {
                 id='imgicon'
                 src={this.props.company_logo}
               />
-              <div className=' fs-5 ms-2 col-md-10 col-8'>{this.props.title}</div>
-              <div id='goldtab' className=' fs-6 mt-2  col-2 col-md-2 me-auto'>
+              <div className='card-title align-self-start fs-6 mt-2 mx-1 col-md-6 col-5 d-flex   align-items-center'>
+                {this.props.post_type === "adsPost"
+                  ? this.props.company_name
+                  : this.props.title}
+              </div>
+              <div className=' goldenn d-flex flex-row-reverse align-items-center col-md-5 col-2 ms-3'>
                 {this.props.salary ? this.props.salary : ""}
               </div>
             </div>
-            <div id='job' className='d-flex flex-row py-2 ms-5'>
-              <div className='d-flex ms-3 flex-column'>{this.props.company_name}</div>
-              <div id='gold' className='d-flex ms-2 flex-row'>
+            <div
+              id=''
+              className='d-flex flex-row py-2 ms-2 mt-2 mt-md-0 ms-md-5 flexswtich'
+            >
+              <div className='d-flex ms-3 flex-column'>
+                {" "}
+                {this.props.post_type !== "adsPost"
+                  ? this.props.company_name
+                  : this.props.title}
+              </div>
+              <div id='gold' className='d-flex ms-2 flex-row flexswtich'>
                 {this.props.departments
                   ? this.props.departments.map((x) => {
                       return (
-                        <div id='gold ' className='d-inline mx-1 goldenn' key={x.id}>
+                        <div
+                          id='gold '
+                          className='d-inline d-flex ms-3 flex-column goldenn my-2 my-md-0'
+                          key={x.id}
+                        >
                           {x.dep_name}
                         </div>
                       );
@@ -163,7 +184,12 @@ export class Ecard extends Component {
                   className='fs-2 align-self-center  col-md-2 col-4'
                   path='0px'
                 />
-                <button className='applyBtn px-1 py-0 col-md-3 col-8'>Apply</button>
+                <button
+                  className='applyBtn px-1 py-0 col-md-3 col-8'
+                  Onclick={(e) => this.toggleSave(e)}
+                >
+                  Apply
+                </button>
               </div>
             </div>
           </div>

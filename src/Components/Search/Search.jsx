@@ -30,6 +30,7 @@ class Search extends Component {
       isloading: false,
       posts: [],
       searchdep: [],
+
       // val: this.props,
     };
     this.toggleSave = this.toggleSave.bind(this);
@@ -362,11 +363,7 @@ class Search extends Component {
                 {
                   this.state.posts != null &&
                     this.state.posts.map(this.createEcardElement)
-                  // this.state.posts.map((data) => {
-                  //   return (
-
-                  //   );
-                  // })
+                 
                 }
               </div>
             </div>
