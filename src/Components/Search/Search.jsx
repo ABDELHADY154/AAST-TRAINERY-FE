@@ -27,13 +27,32 @@ class Search extends Component {
       avatar: "",
       alert: true,
       saved: false,
+      isloading: false,
       posts: [],
+      searchdep: [],
       // val: this.props,
     };
     this.toggleSave = this.toggleSave.bind(this);
+    this.onChangeValue = this.onChangeValue.bind(this);
   }
-  // console.log(this.props.location.params);
-
+  createEcardElement = (data) => (
+    <Ecard
+      key={data.id}
+      title={data.title}
+      company_logo={data.company_logo}
+      salary={data.salary}
+      company_name={data.company_name}
+      departments={data.departments}
+      description={data.description}
+      tags={data.tags}
+      application_deadline={data.application_deadline}
+      post_type={data.post_type}
+      advisor={[data.advisor]}
+      post_type={data.post_type}
+      sponsor_image={data.sponsor_image}
+      className='col-md-6 col-12'
+    />
+  );
   async componentDidMount() {
     if (this.props.location.params && this.props.location.params !== undefined) {
       this.setState({ Search: this.props.location.params.val });
@@ -41,9 +60,9 @@ class Search extends Component {
         .get(`/W/student/search/${this.props.location.params.val}`)
         .then((res) => {
           if (res.status === 200) {
-            this.setState({ posts: res.data.response.data });
+            // this.setState({ posts: res.data.response.data, isloading: true });
+            this.wfuction(res.data.response.data);
           }
-          // console.log(res);
         });
       this.props.location.params.val = undefined;
     }
@@ -60,13 +79,47 @@ class Search extends Component {
 
     await axios.get(`/W/student/search/${this.state.Search}`).then((res) => {
       if (res.status === 200) {
-        this.setState({ posts: res.data.response.data });
+        this.setState({
+          posts: res.data.response.data,
+        });
+        // console.log(this.state.posts);
       }
     });
   };
-  render() {
-    // console.log(this.state.Search);
+  wfuction = (comp) => {
+    // comp.map((e) => {
+    //   // console.log(e);
+    //   this.state.posts = e;
+    // }); // this.setState({ posts: comp });
+    var wf = this;
 
+    wf.setState({ posts: comp }, function () {
+      console.log("ITEMS : ", wf.state.posts);
+    });
+  };
+
+  onChangeValue = (event) => {
+    if (this.state.posts !== undefined) {
+      this.state.posts &&
+        this.state.posts.forEach((req) => {
+          if (req.departments !== 0) {
+            req.departments.forEach((rec) => {
+              if (rec.dep_name == event) {
+                this.state.searchdep = [];
+                this.state.searchdep.push(req);
+                this.wfuction(this.state.searchdep);
+              } else {
+                console.log("error 1 ");
+              }
+            });
+          } else {
+            console.log("error 2 ");
+          }
+        });
+    }
+  };
+
+  render() {
     if (this.state.user.profile_updated === false) {
       var Alert =
         this.state.alert == true ? (
@@ -171,262 +224,150 @@ class Search extends Component {
               </a>
             </li>
           </ul>
-          <ul
-            className='nav  infoTabsUl text-nowrap nomargin align-items-center py-2'
-            id='myTab'
-            role='tablist'
-          >
-            <li className='nav-item infoTabs' role='presentation'>
-              <label class='radio-inline'>
-                <input name='radioGroup' id='radio1' value='option1' type='radio' /> All
-              </label>
-            </li>
-            <li className='nav-item infoTabs' role='presentation'>
-              <label class='radio-inline'>
-                <input name='radioGroup' id='radio1' value='option1' type='radio' />
-                BIS/IT
-              </label>
-            </li>
-            <li class='nav-item infoTabs' role='presentation'>
-              <label class='radio-inline'>
-                <input name='radioGroup' id='radio1' value='option1' type='radio' />
-                Accounting
-              </label>
-            </li>
-            <li className='nav-item infoTabs' role='presentation'>
-              <label class='radio-inline'>
-                <input name='radioGroup' id='radio1' value='option1' type='radio' />
-                Marketing
-              </label>
-            </li>
-            <li className='nav-item infoTabs' role='presentation'>
-              <label class='radio-inline'>
-                <input name='radioGroup' id='radio1' value='option1' type='radio' /> Media
-              </label>
-            </li>
-            <li className='nav-item infoTabs' role='presentation'>
-              <label class='radio-inline'>
-                <input name='radioGroup' id='radio1' value='option1' type='radio' />
-                Political science
-              </label>
-            </li>
-            <li className='nav-item infoTabs' role='presentation'>
-              <label class='radio-inline'>
-                <input name='radioGroup' id='radio1' value='option1' type='radio' />
-                Political science
-              </label>
-            </li>
-            <li className='nav-item infoTabs' role='presentation'>
-              <label class='radio-inline'>
-                <input name='radioGroup' id='radio1' value='option1' type='radio' />
-                Political science
-              </label>
-            </li>
-            <li className='nav-item infoTabs' role='presentation'>
-              <label class='radio-inline'>
-                <input name='radioGroup' id='radio1' value='option1' type='radio' />
-                Political science
-              </label>
-            </li>
-            <li className='nav-item infoTabs' role='presentation'>
-              <label class='radio-inline'>
-                <input name='radioGroup' id='radio1' value='option1' type='radio' />
-                Political science
-              </label>
-            </li>
-            <li className='nav-item infoTabs' role='presentation'>
-              <label class='radio-inline'>
-                <input name='radioGroup' id='radio1' value='option1' type='radio' />
-                Political science
-              </label>
-            </li>
-          </ul>
+          {/* onSubmit={this.formSubmit} */}
+          <form>
+            <ul
+              className='nav  infoTabsUl text-nowrap nomargin align-items-center py-2'
+              id='myTab'
+              role='tablist'
+            >
+              <li className='nav-item infoTabs' role='presentation'>
+                <label class='radio-inline'>
+                  <input
+                    name='inlineRadio1'
+                    id='radio signInput'
+                    value='option1'
+                    type='radio'
+                    onChange={(e) => this.onChangeValue(e.target.value)}
+                  />
+                  All
+                </label>
+              </li>
+              <li className='nav-item infoTabs' role='presentation'>
+                <label class='radio-inline'>
+                  <input
+                    name='inlineRadio1'
+                    id='radio signInput'
+                    type='radio'
+                    value='Business Information Systems'
+                    onChange={(e) => this.onChangeValue(e.target.value)}
+                  />
+                  BIS/IT
+                </label>
+              </li>
+              <li class='nav-item infoTabs' role='presentation'>
+                <label class='radio-inline'>
+                  <input
+                    name='inlineRadio1'
+                    id='radio signInput'
+                    value='Accounting'
+                    type='radio'
+                    onChange={(e) => this.onChangeValue(e.target.value)}
+                  />
+                  Accounting
+                </label>
+              </li>
+              <li className='nav-item infoTabs' role='presentation'>
+                <label class='radio-inline'>
+                  <input
+                    name='inlineRadio1'
+                    id='radio signInput'
+                    value='Marketing'
+                    type='radio'
+                    onChange={(e) => this.onChangeValue(e.target.value)}
+                  />
+                  Marketing
+                </label>
+              </li>
+              <li className='nav-item infoTabs' role='presentation'>
+                <label class='radio-inline'>
+                  <input
+                    name='inlineRadio1'
+                    id='radio signInput'
+                    value='Media Management'
+                    type='radio'
+                    onChange={(e) => this.onChangeValue(e.target.value)}
+                  />
+                  Media Management
+                </label>
+              </li>
+              <li className='nav-item infoTabs' role='presentation'>
+                <label class='radio-inline'>
+                  <input
+                    name='inlineRadio1'
+                    id='radio signInput'
+                    value='Finance'
+                    type='radio'
+                    onChange={(e) => this.onChangeValue(e.target.value)}
+                  />
+                  Finance
+                </label>
+              </li>
+              <li className='nav-item infoTabs' role='presentation'>
+                <label class='radio-inline'>
+                  <input
+                    name='inlineRadio1'
+                    id='radio signInput'
+                    value='Humanities'
+                    type='radio'
+                    onChange={(e) => this.onChangeValue(e.target.value)}
+                  />
+                  Humanities
+                </label>
+              </li>
+
+              <li className='nav-item infoTabs' role='presentation'>
+                <label class='radio-inline'>
+                  <input
+                    name='inlineRadio1'
+                    id='radio signInput'
+                    value='Political Science'
+                    type='radio'
+                    onChange={(e) => this.onChangeValue(e.target.value)}
+                  />
+                  Political science
+                </label>
+              </li>
+              <li className='nav-item infoTabs' role='presentation'>
+                <label class='radio-inline'>
+                  <input
+                    name='inlineRadio1'
+                    id='radio signInput'
+                    value='Language and translation'
+                    type='radio'
+                    onChange={(e) => this.onChangeValue(e.target.value)}
+                  />
+                  Language and translation
+                </label>
+              </li>
+
+              <li className='nav-item infoTabs' role='presentation'>
+                <label class='radio-inline'>
+                  <input
+                    name='inlineRadio1'
+                    id='radio signInput'
+                    value='Media'
+                    type='radio'
+                    onChange={(e) => this.onChangeValue(e.target.value)}
+                  />
+                  Media
+                </label>
+              </li>
+            </ul>
+          </form>
+
           <div className=''>
-            <div className=' d-flex col-md-12 col-12  '>
-              <div className='d-flex flex-wrap flex-row  '>
-                {this.state.posts
-                  ? this.state.posts.map((data) => {
-                      return (
-                        <Ecard
-                          title={data.title}
-                          company_logo={data.company_logo}
-                          salary={data.salary}
-                          company_name={data.company_name}
-                          departments={data.departments}
-                          description={data.description}
-                          tags={data.tags}
-                          application_deadline={data.application_deadline}
-                          post_type={data.post_type}
-                          advisor={[data.advisor]}
-                          post_type={data.post_type}
-                          sponsor_image={data.sponsor_image}
-                          // className="d-flex flex-wrap"
-                        />
-                      );
-                    })
-                  : ""}
-                {/* 
-                <div className='col-md-6' id='tabcontainer'>
-                  <div className='card'>
-                    <div className='card-body'>
-                      <div className='d-flex flex-row justify-content-between smallres'>
-                        <div className='d-flex'>
-                          <img
-                            className=' mt-0 d-flex flex-column col-md-4 col-2 me-3'
-                            id='imgicon'
-                            src={img2}
-                          />
-                          <p id='' className='card-title fs-5 mt-2'>
-                            Dr. Rehab ElBadrawy
-                          </p>
-                        </div>
+            <div className='   '>
+              <div className=' col-12 d-flex flex-row nav'>
+                {
+                  this.state.posts != null &&
+                    this.state.posts.map(this.createEcardElement)
+                  // this.state.posts.map((data) => {
+                  //   return (
 
-                        <div className='d-flex flex-row-reverse align-items-center'>
-                          <div class='gray d-flex mt-2 '>2 min ago</div>
-                        </div>
-                      </div>
-                      <hr />
-                      <div className='d-flex flex-row '>
-                        <img
-                          className=' mt-0 d-flex flex-column  col-2 '
-                          id='imgicon'
-                          src={img2}
-                        />
-                        <div className=' fs-5 mt-2 ms-2 col-md-10 col-8 '>
-                          UI/UX Designer
-                        </div>
-                        <div id='gold' className=' fs-6 mt-2  col-2 col-md-2'>
-                          Paid
-                        </div>
-                      </div>
-                      <div id='job' className='d-flex flex-row ms-5 '>
-                        <div className='d-flex ms-3 flex-column'>CIB</div>
-                        <div id='gold' className='d-flex ms-2 flex-column'>
-                          Finance
-                        </div>
-                      </div>
-                      <p className='card-text mt-2'>
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsam
-                        repudiandae aut possimus. Repellendus at nostrum iste doloremque.
-                        Ea omnis ipsam, eum nam tempore culpa illum consequuntur quis
-                        nobis adipisci et?
-                      </p>
-                      <div className='d-flex flex-row flex-nowrap smallres ww'>
-                        <div className='d-flex  col-4 col-md-2 s'>
-                          <a href='#' className=' ' id='tags'>
-                            Finance
-                          </a>
-                        </div>
-                        <div className='d-flex  col-4  col-md-2  '>
-                          <a href='#' className='' id='tags'>
-                            Banking
-                          </a>
-                        </div>
-                        <div
-                          id='drop'
-                          className='d-flex  col-md-3  
-                            '
-                        >
-                          <p>Deadline {"        "}11 Dec 2021</p>
-                        </div>
-                        <div
-                          id='promoted'
-                          className='  d-flex flex-row col-12 col-md-2 d-none '
-                        >
-                          <BsArrowUpRight className='me-2 fs-4' fill='#cd8930' />
-                          <p id='gold'>Promoted</p>
-                        </div>
-                        <div className='col-12 col-md-5 justify-content-end smallres'>
-                          <BsBookmark
-                            id='BsBookmark'
-                            color='#1e4274'
-                            className='fs-2  col-md-2 col-4'
-                            path='0px'
-                          />
-                          <button className='applyBtn px-1 py-0 col-md-5 col-8'>
-                            Apply
-                          </button>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-                <div className='col-md-6' id='tabcontainer'>
-                  <div className='card'>
-                    <div className='card-body'>
-                      <div className='d-flex flex-row '>
-                        <img
-                          className=' mt-0 d-flex flex-column  col-2 '
-                          id='imgicon'
-                          src={img2}
-                        />
-                        <div className=' fs-5 mt-2 ms-2 col-md-10 col-8 '>
-                          UI/UX Designer
-                        </div>
-                      </div>
-                      <div id='job' className='d-flex flex-row ms-5 '>
-                        <div className='d-flex ms-3 flex-column'>CIB</div>
-                        <div id='gold' className='d-flex ms-2 flex-column'>
-                          Finance
-                        </div>
-                      </div>
-                      <p className='card-text mt-2'>
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsam
-                        repudiandae aut possimus. Repellendus at nostrum iste doloremque.
-                        Ea omnis ipsam, eum nam tempore culpa illum consequuntur quis
-                        nobis adipisci et?
-                      </p>
-                      <div className='d-flex flex-row flex-nowrap smallres'>
-                        <div
-                          id='promoted'
-                          className='  d-flex flex-row col-12 col-md-2 fs-5'
-                        >
-                          <RiAdvertisementLine className='me-2 fs-3' fill='#cd8930' />
-                          <p id='gold'>ADS</p>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div className='col-md-6' id='tabcontainer'> 
-                  <div className='card'>
-                    <div className='card-body'>
-                      <div className='d-flex flex-row '>
-                        <img
-                          className=' mt-0 d-flex flex-column  col-2 '
-                          id='imgicon'
-                          src={img2}
-                        />
-                        <div className=' fs-5 mt-2 ms-2 col-md-10 col-8 '>
-                          UI/UX Designer
-                        </div>
-                      </div>
-                      <div id='job' className='d-flex flex-row ms-5 '>
-                        <div className='d-flex ms-3 flex-column'>CIB</div>
-                        <div id='gold' className='d-flex ms-2 flex-column'>
-                          Finance
-                        </div>
-                      </div>
-                      <div className='d-flex flex-row flex-wrap '>
-                        <img
-                          className=' mt-0 d-flex flex-column col-md-12 col-12 me-1'
-                          // id='imgicon'
-                          src={img3}
-                        />
-                      </div>
-                      <div className='d-flex flex-row flex-nowrap smallres'>
-                        <div
-                          id='promoted'
-                          className='  d-flex flex-row col-12 col-md-2 fs-5'
-                        >
-                          <RiAdvertisementLine className='me-2 fs-3' fill='#cd8930' />
-                          <p id='gold'>ADS</p>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>*/}
+                  //   );
+                  // })
+                }
               </div>
             </div>
           </div>

@@ -17,18 +17,13 @@ export class Ecard extends Component {
     };
   }
   componentDidMount() {
-    // this.props.senddata.map((data) => {
-    //   //   console.log(data);
-    // this.setState({
-    //   advisor: this.props.advisor,
-    // });
-    // });
+
   }
   render() {
     return (
-      <div className='col-md-6 col-12  '>
+      <div className='col-md-6 col-12 align-self-center  '>
         <div className='d-flex col-12  '>
-          <div className='m-1 nocard align-self-start d-flex  '>
+          <div className='m-3 nocard align-self-start d-flex  '>
             <div className='card-body none  m-auto '>
               {this.props.advisor.map((x) => {
                 return x ? (
@@ -39,7 +34,7 @@ export class Ecard extends Component {
                           className='  mt-0 d-flex flex-column col-md-4 col-4  adslogo  complogo'
                           src={x !== "null" ? x.image : ""}
                         />
-                        <p id='' className='card-title fs-6 mt-2 mx-2'>
+                        <p id='' className='card-title fs-6 mt-2  mx-md-2 mx-5 '>
                           {x.name}{" "}
                         </p>
                       </div>
@@ -61,34 +56,37 @@ export class Ecard extends Component {
                   src={this.props.company_logo}
                 />
 
-                <div className='card-title align-self-center fs-6 mt-2 mx-1 col-md-6 col-5 d-flex   align-items-center'>
+                <div className='card-title align-self-start fs-6 mt-2 mx-1 col-md-6 col-5 d-flex   align-items-center'>
                   {this.props.post_type === "adsPost"
                     ? this.props.company_name
                     : this.props.title}
                 </div>
-
                 <div
                   id='goldtab'
-                  className=' d-flex flex-row-reverse  align-items-center col-md-2 col-2 '
+                  className=' d-flex flex-row-reverse align-items-center col-md-2 col-2 ml-2'
                 >
                   {this.props.salary ? this.props.salary : ""}
                 </div>
               </div>
-              {/* <div className='pt-2'> */}
-              <div className='d-flex   col-md-12 col-5 hidee flex-warp'>
-                <div className='card-title fs-6  align-self-center col-md-3 col-12 '>
-                  {this.props.post_type === "adsPost" ? "" : this.props.company_name}
-                </div>{" "}
-                <div className=' d-block d-md-inline-flex '>
-                  {this.props.departments
-                    ? this.props.departments.map((x) => {
-                        return (
-                          <div id='gold' className='d-flex m-2' key={x.id}>
-                            {x.dep_name + " "}
-                          </div>
-                        );
-                      })
-                    : ""}
+   
+              <div
+                id='job'
+                className='col-md-6 col-12 msss none d-md-inline-flex d-inline'
+              >
+                <div className=' testkda col-md-6 col-6 my-2 my-md-0'>
+                  {this.props.company_name}
+                </div>
+                <div className='mt-1 ms-md-2 ms-0 d-flex flex-row col-md-6 col-6'>
+                  {/* {this.props.departments && this.props.departments.length > 4} */}
+                  {this.props.departments &&
+                    this.props.departments.length < 4 &&
+                    this.props.departments.map((item) => {
+                      return (
+                        <div id='gold' className='d-flex mx-2' key={item.id}>
+                          {item.dep_name + " "}
+                        </div>
+                      );
+                    })}
                 </div>
               </div>
 
@@ -131,13 +129,13 @@ export class Ecard extends Component {
                 className='d-flex flex-row  justify-content-between smallres align-items-end mt-4 '
                 id='bottom'
               >
-                <div className='d-flex  flex-wrap col-6 col-md-3 '>
+                <div className='d-flex  flex-wrap col-6 col-md-4 '>
                   {this.props.application_deadline
                     ? "Deadline " + this.props.application_deadline
                     : ""}
                 </div>
                 {this.props.post_type == "promotedPost" ? (
-                  <div className='d-flex  flex-wrap promotedPost me-auto '>
+                  <div className='d-flex  flex-wrap promotedPost me-auto col-6 col-md-3'>
                     <BsArrowUpRight
                       className='m-0 '
                       color='#cd8930'
@@ -152,9 +150,9 @@ export class Ecard extends Component {
                   ""
                 )}
                 {this.props.post_type !== "adsPost" ? (
-                  <div className='flex-row '>
+                  <div className='d-flex flex-row-reverse ms-auto'>
                     <div
-                      className=' d-flex flex-row-end   col-md-auto  justify-content-end align-self-end align-items-end
+                      className=' d-flex flex-row-end   col-md-12 col-8 mt-md-0 mt-3 justify-content-end align-self-end align-items-end
                   '
                     >
                       {/* <div className="col-md-4"></div> */}
@@ -164,7 +162,9 @@ export class Ecard extends Component {
                         className=' col-md-2 col-3'
                         size={30}
                       />
-                      <button className='applyBtn px-1 py-0 col-md-5 col-8'>Apply</button>
+                      <button className='applyBtn px-4 py-0 col-md-auto col-12'>
+                        Apply
+                      </button>
                     </div>
                   </div>
                 ) : (
