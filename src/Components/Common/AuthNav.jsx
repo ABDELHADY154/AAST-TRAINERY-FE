@@ -17,6 +17,7 @@ import {
 import { FiLogOut } from "react-icons/fi";
 import "../../layout/Nav.css";
 import "../../layout/Main.css";
+import careercoaching from "../CareerCoaching/CareerCoaching";
 
 class AuthNav extends React.Component {
   constructor(props) {
@@ -51,7 +52,7 @@ class AuthNav extends React.Component {
     await resolve(
       axios
         .get("/W/studentImg")
-        .then((res) => {
+        .then(res => {
           if (res.status === 200) {
             this.setState({
               avatar: res.data.response.data.image,
@@ -61,13 +62,13 @@ class AuthNav extends React.Component {
           }
         })
 
-        .catch((error) => {
+        .catch(error => {
           if (error.response.data.status === 401) {
             sessionStorage.clear("token");
             sessionStorage.clear("status");
             this.setState({ validToken: false });
           }
-        })
+        }),
     );
 
     if (this.props.updated == true) {
@@ -89,87 +90,92 @@ class AuthNav extends React.Component {
       window.location = window.location;
     }
     return (
-      <div className='navBottom pb-1'>
-        <nav className='navbar navbar-expand-lg navBg fixed-top'>
-          <div className='container '>
-            <Link className='navbar-brand mx-2' renderAs='button' to='/Home'>
+      <div className="navBottom pb-1">
+        <nav className="navbar navbar-expand-lg navBg fixed-top">
+          <div className="container ">
+            <Link className="navbar-brand mx-2" renderAs="button" to="/Home">
               <img
-                className='navbar-brand profileImage'
+                className="navbar-brand profileImage"
                 src={logo}
-                width='170'
-                alt=''
+                width="170"
+                alt=""
               ></img>
             </Link>
             <button
-              className='navbar-toggler'
-              type='button'
-              data-bs-toggle='collapse'
-              data-bs-target='#navbarScroll'
-              aria-controls='navbarScroll'
-              aria-expanded='false'
-              aria-label='Toggle navigation'
+              className="navbar-toggler"
+              type="button"
+              data-bs-toggle="collapse"
+              data-bs-target="#navbarScroll"
+              aria-controls="navbarScroll"
+              aria-expanded="false"
+              aria-label="Toggle navigation"
             >
-              <span className='navbar-toggler-icon'></span>
+              <span className="navbar-toggler-icon"></span>
             </button>
             <div
-              className='collapse navbar-collapse flex-sm-row d-inherit  flex-column-reverse'
-              id='navbarScroll'
+              className="collapse navbar-collapse flex-sm-row d-inherit  flex-column-reverse"
+              id="navbarScroll"
             >
-              <ul className='navbar-nav mt-1'>
-                <li className='nav-item '>
-                  <Link className='nav-link item navPage mt-2' to='/Explore'>
+              <ul className="navbar-nav mt-1">
+                <li className="nav-item ">
+                  <Link className="nav-link item navPage mt-2" to="/Explore">
                     Explore
-                    <span className='sr-only' />
+                    <span className="sr-only" />
                   </Link>
                 </li>
-                <li className='nav-item '>
+                <li className="nav-item ">
                   <Link
-                    className='nav-link item navPage mt-2'
-                    to='#'
-                    // onClick={this.handleLogout}
+                    className="nav-link item navPage mt-2"
+                    to="/CareerCoaching"
                   >
                     Career Coaching
                   </Link>
                 </li>
               </ul>
-              <ul className='navbar-nav me-auto my-2'>
-                <li className='nav-item'></li>
+              <ul className="navbar-nav me-auto my-2">
+                <li className="nav-item"></li>
 
-                <li className='nav-item'>
-                  <a className='nav-link disabled' href='#' aria-disabled='true'></a>
+                <li className="nav-item">
+                  <a
+                    className="nav-link disabled"
+                    href="#"
+                    aria-disabled="true"
+                  ></a>
                 </li>
               </ul>
               {/* notification */}
-              <div className='d-flex justify-content-center '>
-                <ul className='nav my-1 mx-3 col-auto  dropstart '>
+              <div className="d-flex justify-content-center ">
+                <ul className="nav my-1 mx-3 col-auto  dropstart ">
                   <div>
-                    <a className='nav-item item col-6 ' href='#'>
+                    <a className="nav-item item col-6 " href="#">
                       <a
-                        className='dropdown-toggle'
-                        id='dropdownMenu2'
-                        data-bs-toggle='dropdown'
-                        aria-expanded='false'
+                        className="dropdown-toggle"
+                        id="dropdownMenu2"
+                        data-bs-toggle="dropdown"
+                        aria-expanded="false"
                       >
                         <IoIosNotificationsOutline
                           value={{
                             color: "#007BC2",
                             className: "global-class-name mt-0",
                           }}
-                          className='noti mt-2 d-inline-block'
+                          className="noti mt-2 d-inline-block"
                         />
                       </a>
                       <ul
-                        className='dropdown-menu notificationMenu col-sm-6 col-md-6'
-                        lass='dropdown-menu'
-                        aria-labelledby='dropdownMenu2'
+                        className="dropdown-menu notificationMenu col-sm-6 col-md-6"
+                        lass="dropdown-menu"
+                        aria-labelledby="dropdownMenu2"
                       >
-                        <p className='text-center  mb-2 notificationTitle'>Notications</p>
+                        <p className="text-center  mb-2 notificationTitle">
+                          Notications
+                        </p>
                         {/* Notication 1 */}
-                        <div class='alert itemAlert ' role='alert'>
-                          <div className=' row NoticationContent '>
-                            <div className='row col-2 notificationStyle d-flex align-items-center'>
+                        <div class="alert itemAlert " role="alert">
+                          <div className=" row NoticationContent ">
+                            <div className="row col-2 notificationStyle d-flex align-items-center">
                               <div
-                                class='alertLine'
+                                class="alertLine"
                                 style={{
                                   backgroundColor: "#f44336",
                                 }}
@@ -177,54 +183,57 @@ class AuthNav extends React.Component {
                                 <AiOutlineWarning
                                   style={{ fill: "red" }}
                                   // color="#F44336"
-                                  className='notificationIcon me-1 ms-2 d-flex align-items-center'
-                                  animation='tada'
-                                  size='18px'
-                                  pull='left'
+                                  className="notificationIcon me-1 ms-2 d-flex align-items-center"
+                                  animation="tada"
+                                  size="18px"
+                                  pull="left"
                                 />
                               </div>
                             </div>
 
-                            <div className='notificationText col-10 '>
-                              <h4 className='  '>
-                                Unfortunately, you were rejected in the applied internship
+                            <div className="notificationText col-10 ">
+                              <h4 className="  ">
+                                Unfortunately, you were rejected in the applied
+                                internship
                               </h4>
-                              <h5 className=''>Tap for more information</h5>
+                              <h5 className="">Tap for more information</h5>
                             </div>
                           </div>
                         </div>
                         {/* Notication 2 */}
-                        <div class='alert itemAlert ' role='alert'>
-                          <div className=' row NoticationContent '>
-                            <div className='row col-2 notificationStyle d-flex align-items-center'>
+                        <div class="alert itemAlert " role="alert">
+                          <div className=" row NoticationContent ">
+                            <div className="row col-2 notificationStyle d-flex align-items-center">
                               <div
-                                class='alertLine '
+                                class="alertLine "
                                 style={{
                                   backgroundColor: "#007BC2",
                                 }}
                               >
                                 <MdInfoOutline
                                   style={{ fill: "#007BC2" }} // color="red"
-                                  className='notificationIcon me-1 ms-2 d-flex align-items-center'
-                                  animation='tada'
-                                  size='18px'
-                                  pull='left'
+                                  className="notificationIcon me-1 ms-2 d-flex align-items-center"
+                                  animation="tada"
+                                  size="18px"
+                                  pull="left"
                                 />
                               </div>
                             </div>
 
-                            <div className='notificationText col-10 mt-2'>
-                              <h4 className='  '>Review your finished session</h4>
-                              <h5 className=''>Tap for more information</h5>
+                            <div className="notificationText col-10 mt-2">
+                              <h4 className="  ">
+                                Review your finished session
+                              </h4>
+                              <h5 className="">Tap for more information</h5>
                             </div>
                           </div>
                         </div>
                         {/* Notication 3 */}
-                        <div class='alert itemAlert ' role='alert'>
-                          <div className=' row NoticationContent '>
-                            <div className='row col-2 notificationStyle d-flex align-items-center'>
+                        <div class="alert itemAlert " role="alert">
+                          <div className=" row NoticationContent ">
+                            <div className="row col-2 notificationStyle d-flex align-items-center">
                               <div
-                                class='alertLine '
+                                class="alertLine "
                                 style={{
                                   backgroundColor: "#007BC2",
                                 }}
@@ -232,28 +241,29 @@ class AuthNav extends React.Component {
                                 <MdInfoOutline
                                   style={{ fill: "#007BC2" }}
                                   // color="red"
-                                  className='notificationIcon me-1 ms-2 d-flex align-items-center'
-                                  animation='tada'
-                                  size='18px'
-                                  pull='left'
+                                  className="notificationIcon me-1 ms-2 d-flex align-items-center"
+                                  animation="tada"
+                                  size="18px"
+                                  pull="left"
                                 />
                               </div>
                             </div>
 
-                            <div className='notificationText col-10 '>
-                              <h4 className='  '>
-                                You have a recomendation to apply for an internship
+                            <div className="notificationText col-10 ">
+                              <h4 className="  ">
+                                You have a recomendation to apply for an
+                                internship
                               </h4>
-                              <h5 className=''>Tap for more information</h5>
+                              <h5 className="">Tap for more information</h5>
                             </div>
                           </div>
                         </div>
                         {/* Notication 4 */}
-                        <div class='alert itemAlert ' role='alert'>
-                          <div className=' row NoticationContent '>
-                            <div className='row col-2 notificationStyle d-flex align-items-center'>
+                        <div class="alert itemAlert " role="alert">
+                          <div className=" row NoticationContent ">
+                            <div className="row col-2 notificationStyle d-flex align-items-center">
                               <div
-                                class='alertLine '
+                                class="alertLine "
                                 style={{
                                   backgroundColor: "#4CAF50",
                                 }}
@@ -261,28 +271,29 @@ class AuthNav extends React.Component {
                                 <AiOutlineCheckCircle
                                   style={{ fill: "#4CAF50" }}
                                   // color="green"
-                                  className='notificationIcon me-1 ms-2 d-flex align-items-center'
-                                  animation='tada'
-                                  size='18px'
-                                  pull='left'
+                                  className="notificationIcon me-1 ms-2 d-flex align-items-center"
+                                  animation="tada"
+                                  size="18px"
+                                  pull="left"
                                 />
                               </div>
                             </div>
 
-                            <div className='notificationText col-10 '>
-                              <h4 className='  '>
-                                Congratulations you got accepted in the applied internship
+                            <div className="notificationText col-10 ">
+                              <h4 className="  ">
+                                Congratulations you got accepted in the applied
+                                internship
                               </h4>
-                              <h5 className=''>Tap for more information</h5>
+                              <h5 className="">Tap for more information</h5>
                             </div>
                           </div>
                         </div>
                         {/* Notication 5 */}
-                        <div class='alert itemAlert ' role='alert'>
-                          <div className=' row NoticationContent '>
-                            <div className='row col-2 notificationStyle d-flex align-items-center'>
+                        <div class="alert itemAlert " role="alert">
+                          <div className=" row NoticationContent ">
+                            <div className="row col-2 notificationStyle d-flex align-items-center">
                               <div
-                                class='alertLine '
+                                class="alertLine "
                                 style={{
                                   backgroundColor: "#4CAF50",
                                 }}
@@ -290,73 +301,73 @@ class AuthNav extends React.Component {
                                 <AiOutlineCheckCircle
                                   style={{ fill: "#4CAF50" }}
                                   // color="green"
-                                  className='notificationIcon me-1 ms-2 d-flex align-items-center'
-                                  animation='tada'
-                                  size='18px'
-                                  pull='left'
+                                  className="notificationIcon me-1 ms-2 d-flex align-items-center"
+                                  animation="tada"
+                                  size="18px"
+                                  pull="left"
                                 />
                               </div>
                             </div>
 
-                            <div className='notificationText col-10 '>
-                              <h4 className='  '>
+                            <div className="notificationText col-10 ">
+                              <h4 className="  ">
                                 Your session has been booked successfully
                               </h4>
-                              <h5 className=''>Tap for more information</h5>
+                              <h5 className="">Tap for more information</h5>
                             </div>
                           </div>
                         </div>
                       </ul>
                     </a>
                     {/* profile */}
-                    <div class='btn-group '>
+                    <div class="btn-group ">
                       <a
-                        type='button'
-                        class=' dropdown-toggle'
-                        data-bs-toggle='dropdown'
-                        aria-expanded='false'
+                        type="button"
+                        class=" dropdown-toggle"
+                        data-bs-toggle="dropdown"
+                        aria-expanded="false"
                       >
                         {this.state.avatar ? (
                           <img
                             src={this.state.avatar}
-                            alt='Avatar'
-                            width='40'
-                            height='40'
-                            className='avatar'
-                            role='menuitem'
+                            alt="Avatar"
+                            width="40"
+                            height="40"
+                            className="avatar"
+                            role="menuitem"
                           />
                         ) : (
                           <AvatarLoader />
                         )}
                       </a>
-                      <ul class='dropdown-menu profileMenu '>
-                        <li className='row profileHeader d-flex justify-content-center invs'>
+                      <ul class="dropdown-menu profileMenu ">
+                        <li className="row profileHeader d-flex justify-content-center invs">
                           <a
-                            class='dropdown-item d-flex flex-row invs'
-                            href='/Profile'
+                            class="dropdown-item d-flex flex-row invs"
+                            href="/Profile"
                             style={{
                               fontSize: 18,
                               fontFamily: "SF med",
                               color: " #1e4274",
                             }}
                           >
-                            <div className='col-4'>
+                            <div className="col-4">
                               {this.state.avatar ? (
                                 <img
                                   src={this.state.avatar}
-                                  alt='Avatar'
-                                  width='40'
-                                  height='40'
-                                  className='avatar me-2'
-                                  role='menuitem'
+                                  alt="Avatar"
+                                  width="40"
+                                  height="40"
+                                  className="avatar me-2"
+                                  role="menuitem"
                                 />
                               ) : (
                                 <AvatarLoader />
                               )}
                             </div>
-                            <div className='col-10'>
+                            <div className="col-10">
                               <span
-                                className='nameText  text-wrap'
+                                className="nameText  text-wrap"
                                 // style={{
                                 //   flexDirection: "column",
                                 //   flexWrap: "wrap",
@@ -365,7 +376,7 @@ class AuthNav extends React.Component {
                                 {this.state.fullname}
                                 <br />
                                 <span
-                                  className='text-muted ms-1'
+                                  className="text-muted ms-1"
                                   style={{
                                     fontSize: 14,
                                     fontFamily: "SF light",
@@ -381,97 +392,101 @@ class AuthNav extends React.Component {
                         </li>
                         <li>
                           <Link
-                            class='row '
+                            class="row "
                             // href="/GenaeralInfo"
-                            to='/Profile/General'
-                            renderAs='button'
+                            to="/Profile/General"
+                            renderAs="button"
                           >
                             <RiEdit2Fill
-                              color='red'
-                              className='col-3 mt-1 ms-2'
-                              animation='tada'
-                              size='18px'
-                              pull='left'
+                              color="red"
+                              className="col-3 mt-1 ms-2"
+                              animation="tada"
+                              size="18px"
+                              pull="left"
                             />
-                            <p className='col-7'>Edit Profile</p>
+                            <p className="col-7">Edit Profile</p>
                           </Link>
                         </li>
                         <li>
-                          <a class='row ' href='#'>
+                          <Link to="/Profile/Activity/Applied" class="row">
                             <MdFlashOn
-                              color='red'
-                              className='col-3 mt-1 ms-2'
-                              animation='tada'
-                              size='18px'
-                              pull='left'
+                              color="red"
+                              className="col-3 mt-1 ms-2"
+                              animation="tada"
+                              size="18px"
+                              pull="left"
                             />
-                            <p className='col-7'>Activity</p>
-                          </a>
+                            <p className="col-7">Activity</p>
+                          </Link>
                         </li>
                         <li>
-                          <a class='row ' href='#'>
+                          <a class="row " href="#">
                             <MdAssignment
-                              color='red'
-                              className='col-3 mt-1 ms-2'
-                              animation='tada'
-                              size='18px'
-                              pull='left'
+                              color="red"
+                              className="col-3 mt-1 ms-2"
+                              animation="tada"
+                              size="18px"
+                              pull="left"
                             />
-                            <p className='col-7'>Portfolio</p>
+                            <p className="col-7">Portfolio</p>
                           </a>
                         </li>
 
-                        <hr class='dropdown-divider profileHr invs' />
+                        <hr class="dropdown-divider profileHr invs" />
 
                         <li>
-                          <a class='row ' href='#'>
+                          <a class="row " href="#">
                             <MdInfoOutline
-                              color='red'
-                              className='col-3 mt-1 ms-2'
-                              animation='tada'
-                              size='18px'
-                              pull='left'
+                              color="red"
+                              className="col-3 mt-1 ms-2"
+                              animation="tada"
+                              size="18px"
+                              pull="left"
                             />
-                            <p className='col-7'>About Us</p>
+                            <p className="col-7">About Us</p>
                           </a>
                         </li>
                         <li>
-                          <a class='row ' href='#'>
+                          <a class="row " href="#">
                             <MdSettings
-                              color='red'
-                              className='col-3 mt-1 ms-2'
-                              animation='tada'
-                              size='18px'
-                              pull='left'
+                              color="red"
+                              className="col-3 mt-1 ms-2"
+                              animation="tada"
+                              size="18px"
+                              pull="left"
                             />
-                            <p className='col-9'>Account setting</p>
+                            <p className="col-9">Account setting</p>
                           </a>
                         </li>
                         <li>
-                          <a class='row ' href='#'>
+                          <a class="row " href="#">
                             <MdPermPhoneMsg
-                              color='red'
-                              className='col-3 mt-1 ms-2'
-                              animation='tada'
-                              size='18px'
-                              pull='left'
+                              color="red"
+                              className="col-3 mt-1 ms-2"
+                              animation="tada"
+                              size="18px"
+                              pull="left"
                             />
-                            <p className='col-7'>Contact Us</p>
+                            <p className="col-7">Contact Us</p>
                           </a>
                         </li>
 
-                        <hr class='dropdown-divider profileHr invs' />
+                        <hr class="dropdown-divider profileHr invs" />
 
                         <li>
-                          <Link class='row ' href='#' onClick={this.handleLogout}>
+                          <Link
+                            class="row "
+                            href="#"
+                            onClick={this.handleLogout}
+                          >
                             <FiLogOut
-                              color='red'
-                              className='col-3 mt-1 ms-2'
-                              animation='tada'
-                              size='18px'
-                              pull='left'
+                              color="red"
+                              className="col-3 mt-1 ms-2"
+                              animation="tada"
+                              size="18px"
+                              pull="left"
                             />
-                            <p className='col-7'>Log Out</p>
+                            <p className="col-7">Log Out</p>
                           </Link>
                         </li>
                       </ul>
