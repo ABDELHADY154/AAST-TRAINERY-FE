@@ -34,7 +34,7 @@ export default class advisorProfile extends Component {
   async componentDidMount() {
     this.setState({ FormLoading: true });
     await axios
-      .get(`/W/student/advisor/${10}`)
+      .get(`/W/student/advisor/${1}`)
       .then((res) => {
         this.setState({
           id: res.data.response.data.id,

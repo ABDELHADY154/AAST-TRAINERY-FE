@@ -8,6 +8,8 @@ import img2 from "../../Components/assests/imgs/cib.png";
 import "../../layout/Home.css";
 import Footer2 from "../Common/Footer2";
 import { BsCheck, BsArrowUpRight } from "react-icons/bs";
+import { BsBookmark, BsFillBookmarkFill } from "react-icons/bs";
+
 import { IoLocationOutline } from "react-icons/io5";
 import { AiOutlineGlobal, AiOutlineMail, AiOutlinePhone } from "react-icons/ai";
 import { GoLocation } from "react-icons/go";
@@ -32,7 +34,7 @@ export default class CompanyProfile extends Component {
   async componentDidMount() {
     this.setState({ FormLoading: true });
     await axios
-      .get(`/W/student/company/${1}`)
+      .get(`/W/student/company/${3}`)
       .then((res) => {
         this.setState({
           id: res.data.response.data.id,
@@ -169,6 +171,7 @@ export default class CompanyProfile extends Component {
                             description={item.description}
                             company_name={item.company_name}
                             sponsor_image={item.sponsor_image}
+                            saved={item.saved}
                           />
                         ) : item.post_type == "companyPost" ? (
                           <CompanyPost
@@ -182,6 +185,7 @@ export default class CompanyProfile extends Component {
                             salary={item.salary}
                             departments={item.departments}
                             tags={item.tags}
+                            saved={item.saved}
                           />
                         ) : item.post_type == "promotedPost" ? (
                           <CompanyPostPromoted
@@ -195,6 +199,7 @@ export default class CompanyProfile extends Component {
                             salary={item.salary}
                             departments={item.departments}
                             tags={item.tags}
+                            saved={item.saved}
                           />
                         ) : (
                           ""
@@ -213,6 +218,7 @@ export default class CompanyProfile extends Component {
                             company_logo={item.company_logo}
                             description={item.description}
                             company_name={item.company_name}
+                            saved={item.saved}
                             sponsor_image={item.sponsor_image}
                           />
                         ) : item.post_type == "companyPost" ? (
@@ -227,6 +233,7 @@ export default class CompanyProfile extends Component {
                             salary={item.salary}
                             departments={item.departments}
                             tags={item.tags}
+                            saved={item.saved}
                           />
                         ) : item.post_type == "promotedPost" ? (
                           <CompanyPostPromoted
@@ -240,6 +247,7 @@ export default class CompanyProfile extends Component {
                             salary={item.salary}
                             departments={item.departments}
                             tags={item.tags}
+                            saved={item.saved}
                           />
                         ) : (
                           ""
@@ -285,7 +293,7 @@ class CompanyPostADS extends Component {
                 </div>
                 <p className="card-text mt-2">{this.props.description}</p>
                 <img
-                  className=" mt-0 adsImg col-md-11 col-11 me-1"
+                  className=" mt-0 adsImg col-md-11 col-11 me-1 w-100"
                   src={this.props.sponsor_image}
                   // src={img1}
                 />
@@ -308,27 +316,61 @@ class CompanyPostPromoted extends Component {
   render() {
     let id = this.props.id;
     return (
-      <>
-        <div className="row mb-3">
-          <div className="col-md-12">
-            <div className="card">
-              <div className="card-body">
-                <div className="d-flex flex-row">
-                  <img
-                    className=" mt-0 d-flex flex-column col-md-1 col-2 me-1"
-                    id="imgicon"
-                    src={this.props.company_logo}
-                  />
-                  <div className=" fs-5 mt-2 ms-2 col-md-10 col-8">
-                    {this.props.title}
-                  </div>
-                  <div id="goldtab" className=" fs-6 mt-2 col-2 col-md-1">
-                    {this.props.salary}
-                  </div>
+      <div className="row mb-3">
+        <div className="col-md-12">
+          <div className="card">
+            <div className="card-body">
+              <div className="d-flex flex-row">
+                <img
+                  className=" mt-0 d-flex flex-column col-md-4 col-2 me-1"
+                  id="imgicon"
+                  src={this.props.company_logo}
+                />
+                <div className=" fs-5 mt-2 ms-2 col-md-10 col-8">
+                  <p
+                    id=""
+                    className="card-title fw-bold"
+                    style={{ fontSize: 18 }}
+                  >
+                    {/* {this.props.advisor.name} */}
+                  </p>
                 </div>
-                <div id="job" className="ms-5 ">
-                  <div className=" ms-3  mt-1 ">{this.props.company_name}</div>
-                  <div className="mt-1 ms-2  d-flex flex-row departments">
+                <div
+                  id="graytab"
+                  className=" fs-6 mt-2 text-muted col-2 col-md-1"
+                >
+                  2 min ago
+                </div>
+              </div>
+              <hr />
+              <div className="d-flex flex-row">
+                <img
+                  className=" mt-0 d-flex flex-column col-md-4 col-2 me-1"
+                  id="imgicon"
+                  src={this.props.company_logo}
+                />
+                <div className=" fs-5 mt-2 ms-2 col-md-10 col-8">
+                  <p
+                    id=""
+                    className="card-title fw-bold"
+                    style={{ fontSize: 18 }}
+                  >
+                    {this.props.title}
+                  </p>
+                </div>
+                <div id="goldtab" className=" fs-6 mt-2  col-2 col-md-1">
+                  {this.props.salary}
+                </div>
+              </div>
+              <div id="job" className="d-flex flex-row ms-5 ">
+                <div className="column">
+                  <div className="d-flex ms-3 flex-column">
+                    {this.props.company_name}
+                  </div>
+                  {/* <div id="gold" className="d-flex ms-2 flex-column">
+                  Finance
+                </div> */}
+                  <div className="mt-1 ms-2 departments d-flex flex-row flex-wrap ">
                     {this.props.departments.map((item) => {
                       return (
                         <Departments
@@ -341,9 +383,10 @@ class CompanyPostPromoted extends Component {
                     })}
                   </div>
                 </div>
-                <p className="card-text mt-2">{this.props.description}</p>
-
-                <div className="d-flex flex-row flex-wrap ">
+              </div>
+              <p className="card-text mt-2">{this.props.description}</p>
+              <div className="d-flex flex-row flex-wrap ">
+                <div className="d-flex flex-row flex-wrap " id="firsttagipad">
                   {this.props.tags.map((item) => {
                     return (
                       <Interest
@@ -353,29 +396,62 @@ class CompanyPostPromoted extends Component {
                       />
                     );
                   })}
-                  <div
-                    id="drop"
-                    className="d-flex flex-column col-md-3  
-                 justify-space-between"
-                  >
-                    <p>
-                      Deadline {"        "}
-                      {this.props.application_deadline}
-                    </p>
-                  </div>
-                  <div
-                    id="promoted"
-                    className="  d-flex flex-row col-12 col-md-2  "
-                  >
-                    <BsArrowUpRight className="me-2" fill="#cd8930" />
-                    <p id="gold">Promoted</p>
-                  </div>
+                </div>
+              </div>
+              <div className="row mt-1">
+                <div className="col-12 col-md-5 " style={{ marginRight: 38 }}>
+                  <p>
+                    Deadline {"        "} {this.props.application_deadline}
+                  </p>
+                </div>
+                <div className="  d-flex flex-row col-12 col-md-2 justify-content-start me-1">
+                  <BsArrowUpRight
+                    className="me-2"
+                    color="#cd8930"
+                    fill="#cd8930"
+                  />
+                  <p id="gold">Promoted</p>
+                </div>
+                <div className="  d-flex flex-row col-12 col-md-4 justify-content-end btnmovement">
+                  {this.props.saved == true ? (
+                    <BsFillBookmarkFill
+                      id="BsBookmark"
+                      fill="#1e4274"
+                      className="fs-2 align-self-center col-md-2 col-4"
+                      style={{ marginTop: -10 }}
+                      path="0px"
+                      onClick={() => {
+                        this.setState({
+                          saved: this.props.saved,
+                        });
+                      }}
+                    />
+                  ) : this.props.saved == false ? (
+                    <BsBookmark
+                      id="BsBookmark"
+                      fill="#1e4274"
+                      className="fs-2 align-self-center col-md-2 col-4"
+                      style={{ marginTop: -10 }}
+                      path="0px"
+                      onClick={() => {
+                        this.setState({
+                          saved: this.props.saved,
+                        });
+                      }}
+                    />
+                  ) : (
+                    ""
+                  )}
+
+                  <button className="applyBtn px-1 py-0 col-md-5 col-8 col-sm-5">
+                    Apply
+                  </button>
                 </div>
               </div>
             </div>
           </div>
         </div>
-      </>
+      </div>
     );
   }
 }
@@ -391,27 +467,35 @@ class CompanyPost extends Component {
   render() {
     let id = this.props.id;
     return (
-      <>
-        <div className="row mb-3">
-          <div className="col-md-12">
-            <div className="card">
-              <div className="card-body">
-                <div className="d-flex flex-row">
-                  <img
-                    className=" mt-0 d-flex flex-column col-md-1 col-2 me-1"
-                    id="imgicon"
-                    src={this.props.company_logo}
-                  />
-                  <div className=" fs-5 mt-2 ms-2 col-md-10 col-8">
+      <div className="row mb-3">
+        <div className="col-md-12">
+          <div className="card">
+            <div className="card-body">
+              <div className="d-flex flex-row">
+                <img
+                  className=" mt-0 d-flex flex-column col-md-4 col-2 me-1"
+                  id="imgicon"
+                  src={this.props.company_logo}
+                />
+                <div className=" fs-5 mt-2 ms-2 col-md-10 col-8">
+                  <p
+                    id=""
+                    className="card-title fw-bold"
+                    style={{ fontSize: 18 }}
+                  >
                     {this.props.title}
-                  </div>
-                  <div id="goldtab" className=" fs-6 mt-2 col-2 col-md-1">
-                    {this.props.salary}
-                  </div>
+                  </p>
                 </div>
-                <div id="job" className="ms-5 ">
-                  <div className=" ms-3  mt-1 ">{this.props.company_name}</div>
-                  <div className="mt-1 ms-2  d-flex flex-row departments">
+                <div id="goldtab" className=" fs-6 mt-2  col-2 col-md-1">
+                  {this.props.salary}
+                </div>
+              </div>
+              <div id="job" className="d-flex flex-row ms-5 ">
+                <div className="column">
+                  <div className="d-flex ms-3 flex-column">
+                    {this.props.company_name}
+                  </div>
+                  <div className="mt-1 ms-2 departments d-flex flex-row flex-wrap ">
                     {this.props.departments.map((item) => {
                       return (
                         <Departments
@@ -424,9 +508,10 @@ class CompanyPost extends Component {
                     })}
                   </div>
                 </div>
-                <p className="card-text mt-2">{this.props.description}</p>
-
-                <div className="d-flex flex-row flex-wrap ">
+              </div>
+              <p className="card-text mt-2">{this.props.description}</p>
+              <div className="d-flex flex-row flex-wrap ">
+                <div className="d-flex flex-row flex-wrap " id="firsttagipad">
                   {this.props.tags.map((item) => {
                     return (
                       <Interest
@@ -436,22 +521,49 @@ class CompanyPost extends Component {
                       />
                     );
                   })}
-                  <div
-                    id="drop"
-                    className="d-flex flex-column col-md-3  
-                 justify-space-between"
-                  >
-                    <p>
-                      Deadline {"        "}
-                      {this.props.application_deadline}
-                    </p>
-                  </div>
+                </div>
+              </div>
+              <div className="row mt-1">
+                <div className="col-12 col-md-7 " style={{ marginRight: 38 }}>
+                  <p>
+                    Deadline {"        "} {this.props.application_deadline}
+                  </p>
+                </div>
+                <div className="  d-flex flex-row col-12 col-md-4 justify-content-end btnmovement">
+                  {this.props.saved == true ? (
+                    <BsFillBookmarkFill
+                      id="BsBookmark"
+                      fill="#1e4274"
+                      className="fs-2 align-self-center col-md-2 col-4"
+                      style={{ marginTop: -10 }}
+                      path="0px"
+                    />
+                  ) : this.props.saved == false ? (
+                    <BsBookmark
+                      id="BsBookmark"
+                      fill="#1e4274"
+                      className="fs-2 align-self-center col-md-2 col-4"
+                      style={{ marginTop: -10 }}
+                      path="0px"
+                      onClick={() => {
+                        this.setState({
+                          saved: this.props.saved,
+                        });
+                      }}
+                    />
+                  ) : (
+                    ""
+                  )}
+
+                  <button className="applyBtn px-1 py-0 col-md-5 col-8 col-sm-5">
+                    Apply
+                  </button>
                 </div>
               </div>
             </div>
           </div>
         </div>
-      </>
+      </div>
     );
   }
 }

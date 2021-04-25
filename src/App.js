@@ -195,6 +195,8 @@ class App extends React.Component {
                   path="/Profile/Activity/Appointment"
                   component={Appointment}
                 />
+                <AuthRoute
+                  exact
                   path="/CompanyProfile"
                   component={CompanyProfile}
                 />

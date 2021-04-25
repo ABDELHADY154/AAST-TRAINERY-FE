@@ -359,13 +359,36 @@ class PromptedPost extends Component {
                   <p id="gold">Promoted</p>
                 </div>
                 <div className="  d-flex flex-row col-12 col-md-4 justify-content-end btnmovement">
-                  <BsBookmark
-                    id="BsBookmark"
-                    fill="#1e4274"
-                    className="fs-2 align-self-center col-md-2 col-4"
-                    style={{ marginTop: -20 }}
-                    path="0px"
-                  />
+                  {this.props.saved == true ? (
+                    <BsFillBookmarkFill
+                      id="BsBookmark"
+                      fill="#1e4274"
+                      className="fs-2 align-self-center col-md-2 col-4"
+                      style={{ marginTop: -10 }}
+                      path="0px"
+                      onClick={() => {
+                        this.setState({
+                          saved: this.props.saved,
+                        });
+                      }}
+                    />
+                  ) : this.props.saved == false ? (
+                    <BsBookmark
+                      id="BsBookmark"
+                      fill="#1e4274"
+                      className="fs-2 align-self-center col-md-2 col-4"
+                      style={{ marginTop: -10 }}
+                      path="0px"
+                      onClick={() => {
+                        this.setState({
+                          saved: this.props.saved,
+                        });
+                      }}
+                    />
+                  ) : (
+                    ""
+                  )}
+
                   <button className="appliedBtn px-1 py-0 col-md-5 col-8 col-sm-5">
                     Applied
                   </button>
