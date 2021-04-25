@@ -73,7 +73,7 @@ export default class advisorProfile extends Component {
           }}
         >
           <div className="container ">
-            <div className="d-flex flex-row  ">
+            <div className="d-flex flex-row mb-3 ">
               <img
                 // src={img}
                 src={this.state.data.company_logo}
@@ -86,10 +86,10 @@ export default class advisorProfile extends Component {
                   </h4>
                 </div>
                 <div className="row">
-                  <p className="col-8 col-lg-5 col-md-7 col-sm-8 col-xs-8 company">
+                  <p className="col-3  col-md-2 col-sm-5 col-xs-5  company">
                     {this.state.data.company_name}
                   </p>
-                  <p className="col-4 col-lg-3 col-md-4 col-sm-4 col-xs-4 paid">
+                  <p className="col-2 col-md-3 col-sm-3 col-xs-3  paid">
                     {this.state.data.salary}
                   </p>
                 </div>
@@ -162,29 +162,6 @@ export default class advisorProfile extends Component {
                     </div>
                   </div>
                 </div>
-                {/* <div className="col-xl-5 col-xxl-4 col-lg-4 col-md-6  ">
-                  <div className="row d-flex justify-content-between">
-                    <div className="col-6 col-xl-4 col-xxl-4 col-lg-4 col-md-5 col-sm-6 col-xs-6  titleCol">
-                      <p className="overvireTitle mb-1">Puplished on:</p>
-                    </div>
-                    <div className="col-6 col-xl-7 col-xxl-7 col-lg-7 col-md-6 col-sm-6 col-xs-6 discCol">
-                      <p className="overvireTxt mb-1">Oct 14, 2020</p>
-                    </div>
-                  </div>
-                  <div
-                    className="col-xl-5 col-xxl-4 col-lg-4 col-md-6 "
-                    // style={{ width: 260, height: 90 }}
-                  >
-                    <iframe
-                      src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d13646.513994923827!2d29.9491302!3d31.2310203!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x49897e2d526104e2!2zRHIuIEFiZGVsaGFkeSBFbHNoYW15IC4g2K8uINi52KjYr9in2YTZh9in2K_ZiiDYp9mE2LTYp9mF2YouINil2LPYqti02KfYsdmKINis2LHYp9it2Kkg2KfZhNiq2KzZhdmK2YQg2Ygg2KfZhNit2LHZiNmCIC4!5e0!3m2!1sen!2seg!4v1616949635625!5m2!1sen!2seg"
-                      width="270"
-                      height="100"
-                      // style="border:0;"
-                      allowfullscreen=""
-                      loading="lazy"
-                    ></iframe>
-                  </div>
-                </div> */}
               </div>
 
               <div className="mt-4">

@@ -246,17 +246,10 @@ export default class CompanyProfile extends Component {
                         );
                       })
                     : ""}
-                  {/* ) : (
-                    <p className="companyDesc">
-                      There are no ended Internship at{" "}
-                       {this.state.data.company_name}.
-                     </p>
-                   )} */}
                 </div>
               </div>
             </div>
           </div>
-
           <Footer2 />
         </LoadingOverlay>
       </div>
