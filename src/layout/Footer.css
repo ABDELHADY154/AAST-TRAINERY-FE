@@ -18,7 +18,22 @@ a {
 .no-padding {
   padding: 0 !important;
 }
-
+/* #footer {
+  min-height: 100%;
+  height: auto !important;
+  height: 100%;
+  margin: 0 auto -60px;
+   position: relative;
+  bottom: 0px !important;
+  width: 100%;
+  z-index: -9999 !important;
+} */
+#footer {
+  height: auto;
+}
+.push {
+  height: auto;
+}
 .footer--light {
   background: #1e4274;
 }

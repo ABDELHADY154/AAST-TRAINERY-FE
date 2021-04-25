@@ -48,7 +48,7 @@ class Accepted extends Component {
   render() {
     // console.log(this.state.advisor);
     return (
-      <div>
+      <div className="wrapper">
         <LoadingOverlay
           active={this.state.FormLoading}
           spinner={<BounceLoader color="#cd8930" />}
@@ -65,61 +65,67 @@ class Accepted extends Component {
           <div className="container">
             <ActivityNavbar setactive={"Accepted"} />
 
-            {this.state.data.map((item) => {
-              return item.post_type == "advisorPost" ? (
-                <AdvisorPost
-                  id={item.id}
-                  key={item.id}
-                  title={item.title}
-                  company_name={item.company_name}
-                  company_logo={item.company_logo}
-                  description={item.description}
-                  application_deadline={item.application_deadline}
-                  salary={item.salary}
-                  advisor={item.advisor}
-                  post_type={item.post_type}
-                  departments={item.departments}
-                  tags={item.tags}
-                  saved={item.saved}
-                />
-              ) : item.post_type == "companyPost" ? (
-                <CompanyPost
-                  id={item.id}
-                  key={item.id}
-                  title={item.title}
-                  company_name={item.company_name}
-                  company_logo={item.company_logo}
-                  description={item.description}
-                  application_deadline={item.application_deadline}
-                  salary={item.salary}
-                  advisor={item.advisor}
-                  post_type={item.post_type}
-                  departments={item.departments}
-                  tags={item.tags}
-                  saved={item.saved}
-                />
-              ) : item.post_type == "promotedPost" ? (
-                <AdvisorPost
-                  id={item.id}
-                  key={item.id}
-                  title={item.title}
-                  company_name={item.company_name}
-                  company_logo={item.company_logo}
-                  description={item.description}
-                  application_deadline={item.application_deadline}
-                  salary={item.salary}
-                  advisor={item.advisor}
-                  post_type={item.post_type}
-                  departments={item.departments}
-                  tags={item.tags}
-                  saved={item.saved}
-                />
-              ) : (
-                ""
-              );
-            })}
+            {this.state.data.length == 0 ? (
+              <div>THERE ARE NO INTERNSHIPS HERE!</div>
+            ) : (
+              this.state.data.map((item) => {
+                return item.post_type == "advisorPost" ? (
+                  <AdvisorPost
+                    id={item.id}
+                    key={item.id}
+                    title={item.title}
+                    company_name={item.company_name}
+                    company_logo={item.company_logo}
+                    description={item.description}
+                    application_deadline={item.application_deadline}
+                    salary={item.salary}
+                    advisor={item.advisor}
+                    post_type={item.post_type}
+                    departments={item.departments}
+                    tags={item.tags}
+                    saved={item.saved}
+                  />
+                ) : item.post_type == "companyPost" ? (
+                  <CompanyPost
+                    id={item.id}
+                    key={item.id}
+                    title={item.title}
+                    company_name={item.company_name}
+                    company_logo={item.company_logo}
+                    description={item.description}
+                    application_deadline={item.application_deadline}
+                    salary={item.salary}
+                    advisor={item.advisor}
+                    post_type={item.post_type}
+                    departments={item.departments}
+                    tags={item.tags}
+                    saved={item.saved}
+                  />
+                ) : item.post_type == "promotedPost" ? (
+                  <PromptedPost
+                    id={item.id}
+                    key={item.id}
+                    title={item.title}
+                    company_name={item.company_name}
+                    company_logo={item.company_logo}
+                    description={item.description}
+                    application_deadline={item.application_deadline}
+                    salary={item.salary}
+                    advisor={item.advisor}
+                    post_type={item.post_type}
+                    departments={item.departments}
+                    tags={item.tags}
+                    saved={item.saved}
+                  />
+                ) : (
+                  "gf"
+                );
+              })
+            )}
+            <div class="push"></div>
           </div>
-          <Footer2 />
+
+          <Footer2 className="mt-2" />
         </LoadingOverlay>
       </div>
     );

@@ -62,62 +62,65 @@ class Accepted extends Component {
           }}
         >
           <Link to="/Profile/Activity/Accepted" />
-          <div className="container">
+          <div className="container mb-5">
             <ActivityNavbar setactive={"Saved"} />
-
-            {this.state.data.map((item) => {
-              return item.post_type == "advisorPost" ? (
-                <AdvisorPost
-                  id={item.id}
-                  key={item.id}
-                  title={item.title}
-                  company_name={item.company_name}
-                  company_logo={item.company_logo}
-                  description={item.description}
-                  application_deadline={item.application_deadline}
-                  salary={item.salary}
-                  advisor={item.advisor}
-                  post_type={item.post_type}
-                  departments={item.departments}
-                  tags={item.tags}
-                  saved={item.saved}
-                />
-              ) : item.post_type == "companyPost" ? (
-                <CompanyPost
-                  id={item.id}
-                  key={item.id}
-                  title={item.title}
-                  company_name={item.company_name}
-                  company_logo={item.company_logo}
-                  description={item.description}
-                  application_deadline={item.application_deadline}
-                  salary={item.salary}
-                  advisor={item.advisor}
-                  post_type={item.post_type}
-                  departments={item.departments}
-                  tags={item.tags}
-                  saved={item.saved}
-                />
-              ) : item.post_type == "promotedPost" ? (
-                <PromptedPost
-                  id={item.id}
-                  key={item.id}
-                  title={item.title}
-                  company_name={item.company_name}
-                  company_logo={item.company_logo}
-                  description={item.description}
-                  application_deadline={item.application_deadline}
-                  salary={item.salary}
-                  advisor={item.advisor}
-                  post_type={item.post_type}
-                  departments={item.departments}
-                  tags={item.tags}
-                  saved={item.saved}
-                />
-              ) : (
-                ""
-              );
-            })}
+            {this.state.data.length == 0 ? (
+              <div>THERE ARE NO INTERNSHIPS HERE!</div>
+            ) : (
+              this.state.data.map((item) => {
+                return item.post_type == "advisorPost" ? (
+                  <AdvisorPost
+                    id={item.id}
+                    key={item.id}
+                    title={item.title}
+                    company_name={item.company_name}
+                    company_logo={item.company_logo}
+                    description={item.description}
+                    application_deadline={item.application_deadline}
+                    salary={item.salary}
+                    advisor={item.advisor}
+                    post_type={item.post_type}
+                    departments={item.departments}
+                    tags={item.tags}
+                    saved={item.saved}
+                  />
+                ) : item.post_type == "companyPost" ? (
+                  <CompanyPost
+                    id={item.id}
+                    key={item.id}
+                    title={item.title}
+                    company_name={item.company_name}
+                    company_logo={item.company_logo}
+                    description={item.description}
+                    application_deadline={item.application_deadline}
+                    salary={item.salary}
+                    advisor={item.advisor}
+                    post_type={item.post_type}
+                    departments={item.departments}
+                    tags={item.tags}
+                    saved={item.saved}
+                  />
+                ) : item.post_type == "promotedPost" ? (
+                  <PromptedPost
+                    id={item.id}
+                    key={item.id}
+                    title={item.title}
+                    company_name={item.company_name}
+                    company_logo={item.company_logo}
+                    description={item.description}
+                    application_deadline={item.application_deadline}
+                    salary={item.salary}
+                    advisor={item.advisor}
+                    post_type={item.post_type}
+                    departments={item.departments}
+                    tags={item.tags}
+                    saved={item.saved}
+                  />
+                ) : (
+                  " "
+                );
+              })
+            )}
           </div>
           <Footer2 />
         </LoadingOverlay>
