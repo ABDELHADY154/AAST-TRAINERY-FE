@@ -391,20 +391,26 @@ class Home extends Component {
                   <div className="card">
                     <div className="card-body">
                       <div className="d-flex flex-row ">
-                        <img
-                          className=" mt-0 d-flex flex-column  col-2 "
-                          id="imgicon"
-                          src={img2}
-                        />
+                        <Link to={`/CompanyProfile`}>
+                          <img
+                            className=" mt-0 d-flex flex-column  col-2 "
+                            id="imgicon"
+                            src={img2}
+                          />
+                        </Link>
                         <div className=" fs-5 mt-2 ms-2 col-md-10 col-8 ">
-                          UI/UX Designer
+                          <Link to={`/Opportunity`}>
+                            <h5>UI/UX Designers</h5>
+                          </Link>
                         </div>
                         <div id="gold" className=" fs-6 mt-2  col-2 col-md-2">
                           Paid
                         </div>
                       </div>
                       <div id="job" className="d-flex flex-row ms-5 ">
-                        <div className="d-flex ms-3 flex-column">CIB</div>
+                        <Link to={`/CompanyProfile`}>
+                          <div className="d-flex ms-3 flex-column">CIB</div>
+                        </Link>
                         <div id="gold" className="d-flex ms-2 flex-column">
                           Finance
                         </div>
@@ -523,15 +529,18 @@ class Home extends Component {
               <div className="card">
                 <div className="card-body">
                   <div className="d-flex flex-row flex-wrap">
-                    {" "}
-                    <img
-                      className=" mt-0 d-flex flex-column col-md-4 col-2 me-3"
-                      id="imgicon"
-                      src={img2}
-                    />
-                    <p id="" className="card-title fs-5 mt-2">
-                      Dr. Rehab ElBadrawy
-                    </p>
+                    <Link to={`/advisorProfile`}>
+                      <img
+                        className=" mt-0 d-flex flex-column col-md-4 col-2 me-3"
+                        id="imgicon"
+                        src={img2}
+                      />
+                    </Link>
+                    <Link to={`/advisorProfile`}>
+                      <p id="" className="card-title fs-5 mt-2">
+                        Dr. Rehab ElBadrawy
+                      </p>
+                    </Link>
                   </div>
                   <hr />
                   <div className="d-flex flex-row">
