@@ -27,7 +27,10 @@ class Accepted extends Component {
                 <div className=" fs-5 mt-2 ms-2 col-md-10 col-8">
                   UI/UX Designer
                 </div>
-                <div className=" fs-6 mt-2 col-2 col-md-1 text-muted  ">
+                <div
+                  className=" fs-6 mt-2 col-2 col-md-1 text-muted"
+                  id="muteMargin"
+                >
                   2 min ago
                 </div>
               </div>
@@ -41,7 +44,10 @@ class Accepted extends Component {
                 <div className=" fs-5 mt-2 ms-2 col-md-10 col-8">
                   UI/UX Designer
                 </div>
-                <div id="goldtab" className=" fs-6 mt-2  col-2 col-md-1">
+                <div
+                  id="mygoldtab"
+                  className=" fs-6 mt-2  col-2 col-md-1 goldMargin"
+                >
                   Paid
                 </div>
               </div>
@@ -82,7 +88,10 @@ class Accepted extends Component {
                   <p>Deadline {"        "}11 Dec 2021</p>
                 </div>
                 <div className=" mb-4 d-flex flex-row col-12 col-md-2 justify-content-start me-1"></div>
-                <div className="  d-flex flex-row col-12 col-md-4 justify-content-end btnmovement">
+                <div
+                  className="  d-flex flex-row col-12 col-md-4 justify-content-end btnmovement"
+                  id="btnmargin"
+                >
                   {/* <div className="col-md-4"></div> */}
 
                   <button className="applyBtn px-1 py-0 col-md-4 col-8 mb-5">

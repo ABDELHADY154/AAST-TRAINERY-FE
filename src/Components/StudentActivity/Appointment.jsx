@@ -16,6 +16,37 @@ class Appointment extends Component {
         <div className="container">
           <ActivityNavbar setactive={"Appointment"} />
           <div class="card mb-3">
+            <div class="row g-0">
+              <div class="col-md-4">
+                <img
+                  src="https://mdbootstrap.com/wp-content/uploads/2020/06/vertical.jpg"
+                  alt="..."
+                  height="187px"
+                  width="188px"
+                />
+              </div>
+              <div class="col-md-8">
+                <div class="card-body">
+                  <h5 class="card-title">Interview Coaching</h5>
+                  <div className="row">
+                    <div className="col-md">1</div>
+
+                    <div className="col-md">2</div>
+                  </div>
+                  <div className="row">
+                    <div className="col-md">3</div>
+
+                    <div className="col-md">4</div>
+                  </div>
+
+                  <p class="card-text">
+                    <small id="gold">Resend this email</small>
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="card mb-3">
             <div class="row no-gutters">
               <div class="col-md-4">
                 <img src={rec3} class="card-img" alt="..." />

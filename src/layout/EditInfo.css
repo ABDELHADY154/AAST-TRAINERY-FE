@@ -449,3 +449,31 @@ ReactStars:active {
     height: 10em !important;
   }
 }
+
+@media screen and (min-width: 1400px) {
+  #btnmargin {
+    margin-left: 5.3rem !important;
+  }
+}
+@media screen and (min-width: 1400px) {
+  #muteMargin {
+    margin-left: 3.6rem !important;
+  }
+}
+@media screen and (min-width: 1400px) {
+  #btnmargin2 {
+    margin-left: 11.9rem !important;
+  }
+}
+@media (max-width: 576px) {
+  #mygoldtab {
+    margin-left: -0.3rem !important;
+    color: #cd8930 !important;
+    font-family: sf light;
+  }
+}
+#mygoldtab {
+  color: #cd8930 !important;
+  font-family: sf light;
+  margin-left: 6em;
+}
