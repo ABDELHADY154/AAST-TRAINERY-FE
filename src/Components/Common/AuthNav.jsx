@@ -17,6 +17,7 @@ import {
 import { FiLogOut } from "react-icons/fi";
 import "../../layout/Nav.css";
 import "../../layout/Main.css";
+import careercoaching from "../CareerCoaching/CareerCoaching";
 
 class AuthNav extends React.Component {
   constructor(props) {
@@ -51,7 +52,7 @@ class AuthNav extends React.Component {
     await resolve(
       axios
         .get("/W/studentImg")
-        .then((res) => {
+        .then(res => {
           if (res.status === 200) {
             this.setState({
               avatar: res.data.response.data.image,
@@ -61,13 +62,13 @@ class AuthNav extends React.Component {
           }
         })
 
-        .catch((error) => {
+        .catch(error => {
           if (error.response.data.status === 401) {
             sessionStorage.clear("token");
             sessionStorage.clear("status");
             this.setState({ validToken: false });
           }
-        })
+        }),
     );
 
     if (this.props.updated == true) {
@@ -125,8 +126,7 @@ class AuthNav extends React.Component {
                 <li className="nav-item ">
                   <Link
                     className="nav-link item navPage mt-2"
-                    to="#"
-                    // onClick={this.handleLogout}
+                    to="/CareerCoaching"
                   >
                     Career Coaching
                   </Link>

@@ -9,7 +9,7 @@ import Landing from "./Components/Landing/Landing";
 import Profile from "./Components/Profile/Profile";
 import Forget from "./Components/Auth/ForgetPassword";
 import ErrorPage from "./Components/Auth/ErrorPage404";
-
+import CareerCoaching from "./Components/CareerCoaching/CareerCoaching";
 import EducationForm from "./Components/EditProfile/EducationForm";
 import AccountsForm from "./Components/EditProfile/AccountsForm";
 import CoursesForm from "./Components/EditProfile/CoursesForm";
@@ -18,6 +18,11 @@ import GeneralForm from "./Components/EditProfile/GeneralForm";
 import SkillsForm from "./Components/EditProfile/SkillsForm";
 import Interest from "./Components/EditProfile/InterestForm";
 import Language from "./Components/EditProfile/LanguageForm";
+import CvWriting from "./Components/CareerCoaching/CvWriting";
+import Advising from "./Components/CareerCoaching/Advising";
+import CareerMove from "./Components/CareerCoaching/CareerMove";
+import InterviewCoaching from "./Components/CareerCoaching/InterviewCoaching";
+
 import Applied from "../src/Components/StudentActivity/Applied";
 import Accepted from "../src/Components/StudentActivity/Accepted";
 import Saved from "../src/Components/StudentActivity/Saved";
@@ -49,10 +54,10 @@ class App extends React.Component {
     window.scrollTo(0, 0);
   }
 
-  setUser = (data) => {
+  setUser = data => {
     return this.setState({ loggedIn: data });
   };
-  setAvatar = (data) => {
+  setAvatar = data => {
     this.setState({ avatar: data });
     if (this.state.avatar) {
     }
@@ -158,12 +163,37 @@ class App extends React.Component {
                   exact
                   path="/Profile/Interest/:id"
                   component={Interest}
-                  render={(Interests) => <Interest {...Interests} />}
+                  render={Interests => <Interest {...Interests} />}
                 />
                 <AuthRoute
                   exact
                   path="/Profile/Interest"
                   component={Interest}
+                />
+                <AuthRoute
+                  exact
+                  path="/CareerCoaching"
+                  component={CareerCoaching}
+                />
+                <AuthRoute
+                  exact
+                  path="/CareerCoaching/CvWriting"
+                  component={CvWriting}
+                />
+                <AuthRoute
+                  exact
+                  path="/CareerCoaching/InterviewCoaching"
+                  component={InterviewCoaching}
+                />
+                <AuthRoute
+                  exact
+                  path="/CareerCoaching/CareerMove"
+                  component={CareerMove}
+                />
+                <AuthRoute
+                  exact
+                  path="/CareerCoaching/Advising"
+                  component={Advising}
                 />
                 <AuthRoute
                   exact

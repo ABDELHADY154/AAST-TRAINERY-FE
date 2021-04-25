@@ -33,7 +33,7 @@ class Home extends Component {
     await resolve(
       axios
         .get("/W/student/get-profile")
-        .then((res) => {
+        .then(res => {
           if (res.status === 200) {
             // sessionStorage.setItem("avatar", res.data.response.data.image);
             this.setState({
@@ -43,7 +43,7 @@ class Home extends Component {
             });
           }
         })
-        .catch((error) => {
+        .catch(error => {
           this.setState({
             error: {
               usernameErr: error.response.status,
@@ -52,7 +52,7 @@ class Home extends Component {
           if (this.state.error.usernameErr === 401) {
             window.location.reload();
           }
-        })
+        }),
     );
   }
 
@@ -66,7 +66,7 @@ class Home extends Component {
       var Alert =
         this.state.alert == true ? (
           <div id="alerting" className="d-flex flex-row  flex-wrap py-2  mb-3 ">
-            <div className="container d-flex flex-row  flex-wrap ">
+            <div className="container d-flex flex-row  flex-wrap justify-space-between">
               <div
                 id="alertingtitle"
                 className="d-flex flex-column col-md-10 col-12 mt-1"
@@ -74,7 +74,7 @@ class Home extends Component {
                 Here to help, Update your profile information to get the best
                 matching opportunities.
               </div>
-              <div className="d-flex flex-column col-md-1 col-3  mt-1">
+              <div className="d-flex flex-column col-md-4 col-12 justify-content-end  mt-1">
                 <Link
                   className="texttt fs-3 col-4 col-md-1 "
                   renderAs="button"
