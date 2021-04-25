@@ -74,9 +74,18 @@
     margin-top: 1em !important;
   }
 }
+.sflex {
+  display: inline !important;
+}
 @media (max-width: 770px) {
   .flexswtich {
     display: inline !important;
+  }
+  .msss {
+    margin-left: 6.8rem;
+  }
+  .sflex {
+    display: flex !important;
   }
   .s {
     width: 50%;
@@ -112,9 +121,7 @@
   display: flex;
   margin-top: 0.25em;
 }
-.msss {
-  margin-left: 6.8rem;
-}
+
 .hidee {
   margin-left: 7rem;
   word-wrap: break-word;

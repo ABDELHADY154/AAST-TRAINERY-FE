@@ -31,14 +31,21 @@ class Search extends Component {
       posts: [],
       searchdep: [],
 
-      // val: this.props,
+      todos: [],
+      size: 10,
+      page: 1,
+      currPage: null,
+      num: 0,
     };
-    this.toggleSave = this.toggleSave.bind(this);
+    // this.toggleSave = this.toggleSave.bind(this);
+    this.previousPage = this.previousPage.bind(this);
+    this.nextPage = this.nextPage.bind(this);
     this.onChangeValue = this.onChangeValue.bind(this);
   }
   createEcardElement = (data) => (
     <Ecard
       key={data.id}
+      id={data.id}
       title={data.title}
       company_logo={data.company_logo}
       salary={data.salary}
@@ -68,10 +75,7 @@ class Search extends Component {
       this.props.location.params.val = undefined;
     }
   }
-  toggleSave = () => {
-    this.setState({ saved: !this.state.saved ? true : false });
-    console.log(this.state.saved);
-  };
+
   handleChange = (e) => {
     this.setState({ Search: e.target.value });
   };
@@ -83,19 +87,7 @@ class Search extends Component {
         this.setState({
           posts: res.data.response.data,
         });
-        // console.log(this.state.posts);
       }
-    });
-  };
-  wfuction = (comp) => {
-    // comp.map((e) => {
-    //   // console.log(e);
-    //   this.state.posts = e;
-    // }); // this.setState({ posts: comp });
-    var wf = this;
-
-    wf.setState({ posts: comp }, function () {
-      console.log("ITEMS : ", wf.state.posts);
     });
   };
 
@@ -118,6 +110,66 @@ class Search extends Component {
           }
         });
     }
+  };
+
+  previousPage = async (e) => {
+    if (this.state.page > 1) {
+      const newPage = this.state.page - 1;
+      this.setState({
+        posts: [],
+        page: newPage,
+      });
+      await resolve(
+        axios
+          .get(`/W/student/search/${this.state.Search}?page=${newPage}`)
+          .then((todos) => {
+            if (todos.status === 200) {
+              this.setState({
+                posts: todos.data.response.data,
+                loading: true,
+              });
+            }
+          })
+          .catch((error) => {
+            if (
+              error.response.data.status === 401 ||
+              error.response.data.status === 404
+            ) {
+              sessionStorage.clear("token");
+              sessionStorage.clear("status");
+              this.setState({ loggedIn: false });
+              window.location.reload();
+            }
+          })
+      );
+    }
+  };
+  nextPage = async (e) => {
+    const newPage = this.state.page + 1;
+    this.setState({
+      posts: [],
+      page: newPage,
+    });
+    await resolve(
+      axios
+        .get(`/W/student/search/${this.state.Search}?page=${newPage}`)
+        .then((todos) => {
+          if (todos.status === 200) {
+            this.setState({
+              posts: todos.data.response.data,
+              loading: true,
+            });
+          }
+        })
+        .catch((error) => {
+          if (error.response.data.status === 401 || error.response.data.status === 404) {
+            sessionStorage.clear("token");
+            sessionStorage.clear("status");
+            this.setState({ loggedIn: false });
+            window.location.reload();
+          }
+        })
+    );
   };
 
   render() {
@@ -360,18 +412,28 @@ class Search extends Component {
           <div className=''>
             <div className='   '>
               <div className=' col-12 d-flex flex-row nav'>
-                {
-                  this.state.posts != null &&
-                    this.state.posts.map(this.createEcardElement)
-                 
-                }
+                {this.state.posts != null &&
+                  this.state.posts.map(this.createEcardElement)}
               </div>
             </div>
           </div>
         </div>
-
         <div className='text-center stext  my-4'>
-          <a>Load More...</a>
+          <nav aria-label='Page navigation example'>
+            <ul class='pagination justify-content-center'>
+              <li class={this.state.page > 1 ? "page-item " : "page-item disabled"}>
+                <button class='page-link' onClick={this.previousPage}>
+                  previousPage
+                </button>
+              </li>
+
+              <li class='page-item'>
+                <button class='page-link' onClick={this.nextPage}>
+                  Next
+                </button>
+              </li>
+            </ul>
+          </nav>
         </div>
         <Footer2 />
       </div>
