@@ -28,11 +28,27 @@ a {
   width: 100%;
   z-index: -9999 !important;
 } */
-#footer {
+/* #footer {
   height: auto;
+} */
+/* #page-container {
+  position: relative;
+  min-height: 100vh;
 }
-.push {
-  height: auto;
+#content-wrap {
+  padding-bottom: 12em;
+}
+#footer {
+  position: absolute;
+  bottom: 0 !important;
+  width: 100%;
+  height: 13em;
+} */
+#footer {
+  margin-bottom: -10px !important;
+}
+#marginb {
+  margin-bottom: 50%;
 }
 .footer--light {
   background: #1e4274;

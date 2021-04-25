@@ -10,6 +10,7 @@ import "../../layout/EditInfo.css";
 import { axios } from "../../Api/axios";
 import LoadingOverlay from "react-loading-overlay";
 import BounceLoader from "react-spinners/BounceLoader";
+import "../../layout/Footer.css";
 
 class Accepted extends Component {
   constructor(props) {
@@ -48,7 +49,7 @@ class Accepted extends Component {
   render() {
     // console.log(this.state.advisor);
     return (
-      <div className="wrapper">
+      <div id="page-container">
         <LoadingOverlay
           active={this.state.FormLoading}
           spinner={<BounceLoader color="#cd8930" />}
@@ -61,71 +62,71 @@ class Accepted extends Component {
             }),
           }}
         >
-          <Link to="/Profile/Activity/Accepted" />
-          <div className="container">
-            <ActivityNavbar setactive={"Accepted"} />
+          <div id="content-wrap">
+            <Link to="/Profile/Activity/Accepted" />
+            <div className="container">
+              <ActivityNavbar setactive={"Accepted"} />
 
-            {this.state.data.length == 0 ? (
-              <div>THERE ARE NO INTERNSHIPS HERE!</div>
-            ) : (
-              this.state.data.map((item) => {
-                return item.post_type == "advisorPost" ? (
-                  <AdvisorPost
-                    id={item.id}
-                    key={item.id}
-                    title={item.title}
-                    company_name={item.company_name}
-                    company_logo={item.company_logo}
-                    description={item.description}
-                    application_deadline={item.application_deadline}
-                    salary={item.salary}
-                    advisor={item.advisor}
-                    post_type={item.post_type}
-                    departments={item.departments}
-                    tags={item.tags}
-                    saved={item.saved}
-                  />
-                ) : item.post_type == "companyPost" ? (
-                  <CompanyPost
-                    id={item.id}
-                    key={item.id}
-                    title={item.title}
-                    company_name={item.company_name}
-                    company_logo={item.company_logo}
-                    description={item.description}
-                    application_deadline={item.application_deadline}
-                    salary={item.salary}
-                    advisor={item.advisor}
-                    post_type={item.post_type}
-                    departments={item.departments}
-                    tags={item.tags}
-                    saved={item.saved}
-                  />
-                ) : item.post_type == "promotedPost" ? (
-                  <PromptedPost
-                    id={item.id}
-                    key={item.id}
-                    title={item.title}
-                    company_name={item.company_name}
-                    company_logo={item.company_logo}
-                    description={item.description}
-                    application_deadline={item.application_deadline}
-                    salary={item.salary}
-                    advisor={item.advisor}
-                    post_type={item.post_type}
-                    departments={item.departments}
-                    tags={item.tags}
-                    saved={item.saved}
-                  />
-                ) : (
-                  "gf"
-                );
-              })
-            )}
-            <div class="push"></div>
+              {this.state.data.length == 0 ? (
+                <div id="marginb">THERE ARE NO INTERNSHIPS HERE!</div>
+              ) : (
+                this.state.data.map((item) => {
+                  return item.post_type == "advisorPost" ? (
+                    <AdvisorPost
+                      id={item.id}
+                      key={item.id}
+                      title={item.title}
+                      company_name={item.company_name}
+                      company_logo={item.company_logo}
+                      description={item.description}
+                      application_deadline={item.application_deadline}
+                      salary={item.salary}
+                      advisor={item.advisor}
+                      post_type={item.post_type}
+                      departments={item.departments}
+                      tags={item.tags}
+                      saved={item.saved}
+                    />
+                  ) : item.post_type == "companyPost" ? (
+                    <CompanyPost
+                      id={item.id}
+                      key={item.id}
+                      title={item.title}
+                      company_name={item.company_name}
+                      company_logo={item.company_logo}
+                      description={item.description}
+                      application_deadline={item.application_deadline}
+                      salary={item.salary}
+                      advisor={item.advisor}
+                      post_type={item.post_type}
+                      departments={item.departments}
+                      tags={item.tags}
+                      saved={item.saved}
+                    />
+                  ) : item.post_type == "promotedPost" ? (
+                    <PromptedPost
+                      id={item.id}
+                      key={item.id}
+                      title={item.title}
+                      company_name={item.company_name}
+                      company_logo={item.company_logo}
+                      description={item.description}
+                      application_deadline={item.application_deadline}
+                      salary={item.salary}
+                      advisor={item.advisor}
+                      post_type={item.post_type}
+                      departments={item.departments}
+                      tags={item.tags}
+                      saved={item.saved}
+                    />
+                  ) : (
+                    "gf"
+                  );
+                })
+              )}
+            </div>
           </div>
-
-          <Footer2 className="mt-2" />
+          <Footer2 id="footer" />
         </LoadingOverlay>
       </div>
     );

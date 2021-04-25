@@ -10,6 +10,7 @@ import "../../layout/EditInfo.css";
 import { axios } from "../../Api/axios";
 import LoadingOverlay from "react-loading-overlay";
 import BounceLoader from "react-spinners/BounceLoader";
+import "../../layout/Footer.css";
 
 class Accepted extends Component {
   constructor(props) {
@@ -49,7 +50,7 @@ class Accepted extends Component {
   render() {
     // console.log(this.state.data.length);
     return (
-      <div>
+      <div id="page-container">
         <LoadingOverlay
           active={this.state.FormLoading}
           spinner={<BounceLoader color="#cd8930" />}
@@ -67,7 +68,7 @@ class Accepted extends Component {
             <ActivityNavbar setactive={"Applied"} />
 
             {this.state.data.length == 0 ? (
-              <div>THERE ARE NO INTERNSHIPS HERE!</div>
+              <div id="marginb">THERE ARE NO INTERNSHIPS HERE!</div>
             ) : (
               this.state.data.map((item) => {
                 return item.post_type == "advisorPost" ? (
