@@ -18,6 +18,9 @@ import GeneralForm from "./Components/EditProfile/GeneralForm";
 import SkillsForm from "./Components/EditProfile/SkillsForm";
 import Interest from "./Components/EditProfile/InterestForm";
 import Language from "./Components/EditProfile/LanguageForm";
+import Explore from "./Components/Explore/Explore";
+import Search from "./Components/Search/Search";
+
 import CvWriting from "./Components/CareerCoaching/CvWriting";
 import Advising from "./Components/CareerCoaching/Advising";
 import CareerMove from "./Components/CareerCoaching/CareerMove";
@@ -165,6 +168,8 @@ class App extends React.Component {
                   component={Interest}
                   render={Interests => <Interest {...Interests} />}
                 />
+                <AuthRoute exact path="/Explore" component={Explore} />
+                <AuthRoute exact path="/Search" component={Search} />
                 <AuthRoute
                   exact
                   path="/Profile/Interest"
