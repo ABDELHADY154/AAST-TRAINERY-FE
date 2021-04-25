@@ -26,7 +26,7 @@
   /* border: 3px solid red; */
   width: 6em;
   height: 6em;
-  object-fit: cover !important;
+  object-fit: contain !important;
   /* padding-left: -2em !important; */
   /* padding-right: -2em !important; */
 }
@@ -271,5 +271,5 @@ ul .reuirLi {
 }
 .adsImg {
   height: 8em !important;
-  object-fit: cover !important;
+  object-fit: contain !important;
 }

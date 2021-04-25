@@ -32,7 +32,7 @@ export default class CompanyProfile extends Component {
   async componentDidMount() {
     this.setState({ FormLoading: true });
     await axios
-      .get(`/W/student/company/${35}`)
+      .get(`/W/student/company/${1}`)
       .then((res) => {
         this.setState({
           id: res.data.response.data.id,
