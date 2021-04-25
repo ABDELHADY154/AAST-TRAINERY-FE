@@ -18,7 +18,10 @@ import GeneralForm from "./Components/EditProfile/GeneralForm";
 import SkillsForm from "./Components/EditProfile/SkillsForm";
 import Interest from "./Components/EditProfile/InterestForm";
 import Language from "./Components/EditProfile/LanguageForm";
-
+import Applied from "../src/Components/StudentActivity/Applied";
+import Accepted from "../src/Components/StudentActivity/Accepted";
+import Saved from "../src/Components/StudentActivity/Saved";
+import Appointment from "../src/Components/StudentActivity/Appointment";
 import CompanyProfile from "./Components/Profiles/CompanyProfile";
 import advisorProfile from "./Components/Profiles/advisorProfile";
 import Opportunity from "./Components/Profiles/Opportunity";
@@ -174,6 +177,24 @@ class App extends React.Component {
                 />
                 <AuthRoute
                   exact
+                  path="/Profile/Activity/Applied"
+                  component={Applied}
+                />
+                <AuthRoute
+                  exact
+                  path="/Profile/Activity/Accepted"
+                  component={Accepted}
+                />{" "}
+                <AuthRoute
+                  exact
+                  path="/Profile/Activity/Saved"
+                  component={Saved}
+                />
+                <AuthRoute
+                  exact
+                  path="/Profile/Activity/Appointment"
+                  component={Appointment}
+                />
                   path="/CompanyProfile"
                   component={CompanyProfile}
                 />

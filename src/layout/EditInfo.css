@@ -354,3 +354,64 @@ ReactStars:active {
 .closeLabel {
   margin-right: -60px !important;
 }
+.savedInternshipIcon {
+  color: blue !important;
+  fill: #1e4274 !important;
+}
+
+@media (min-width: 1202px) {
+  .mrcss {
+    margin-right: 0 !important;
+  }
+}
+@media (min-width: 1202px) {
+  .rowHeight {
+    height: 25px !important;
+  }
+}
+@media (max-width: 420px) {
+  .rowHeight {
+    height: 6em;
+  }
+}
+.cardMt {
+  margin-top: 1em !important;
+}
+@media (max-width: 422px) {
+  .cardMt {
+    margin-top: 2em;
+  }
+}
+
+@media (min-width: 757px) and (max-width: 1021px) {
+  .textWidth {
+    width: 30% !important;
+  }
+}
+.titleTimeMle {
+  margin-top: 0.9em !important;
+}
+@media (min-width: 1202px) {
+  .rowHeight2 {
+    height: 25px !important;
+  }
+}
+@media (max-width: 420px) {
+  .rowHeight2 {
+    height: 8em !important;
+  }
+}
+@media (min-width: 1202px) {
+  .rowHeight3 {
+    height: 25px !important;
+  }
+}
+@media (max-width: 420px) {
+  .rowHeight3 {
+    height: 10em !important;
+  }
+}
+.careerimgh {
+  width: fit-content;
+  height: fit-content;
+}
