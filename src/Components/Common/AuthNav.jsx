@@ -52,7 +52,7 @@ class AuthNav extends React.Component {
     await resolve(
       axios
         .get("/W/studentImg")
-        .then((res) => {
+        .then(res => {
           if (res.status === 200) {
             this.setState({
               avatar: res.data.response.data.image,
@@ -62,13 +62,13 @@ class AuthNav extends React.Component {
           }
         })
 
-        .catch((error) => {
+        .catch(error => {
           if (error.response.data.status === 401) {
             sessionStorage.clear("token");
             sessionStorage.clear("status");
             this.setState({ validToken: false });
           }
-        })
+        }),
     );
 
     if (this.props.updated == true) {
@@ -408,7 +408,7 @@ class AuthNav extends React.Component {
                           </Link>
                         </li>
                         <li>
-                          <a class="row " href="#">
+                          <Link to="/Profile/Activity/Applied" class="row">
                             <MdFlashOn
                               color="red"
                               className="col-3 mt-1 ms-2"
@@ -417,7 +417,7 @@ class AuthNav extends React.Component {
                               pull="left"
                             />
                             <p className="col-7">Activity</p>
-                          </a>
+                          </Link>
                         </li>
                         <li>
                           <a class="row " href="#">

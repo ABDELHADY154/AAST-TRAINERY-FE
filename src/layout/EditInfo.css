@@ -262,53 +262,15 @@ ReactStars:active {
   padding: 0.4em 2.5em;
   border-radius: 6px;
 }
-/* interest footer */
-/* .interestFooter {
-  height: 100px;
-  width: 100%;
-  position: absolute;
-  left: 0;
-  bottom: 0;
-}
-.wrapper {
-  padding-bottom: 100px;
-  min-height: 100%;
-  position: relative;
-}
-@media (min-width: 1198px) and (max-width: 1500px) {
-  .wrapper {
-    padding-bottom: 122px;
-    min-height: 100%;
-    position: relative;
-  }
-  .interestFooter {
-    height: 100px;
-    width: 100%;
-    position: absolute;
-    left: 0;
-    bottom: 0;
-  }
-} */
+
 @media (min-width: 750px) and (max-width: 1200px) {
   .accLable {
     margin-right: 8%;
   }
 }
-/* @media (min-width: 500px) and (max-width: 700px) {
-  .wrapper {
-  padding-bottom: 4rem!important; 
-    min-height: 100%;
-    position:relative;
-  }
+.accountInput {
+  margin-left: -1.7em;
 }
-@media (min-width: 500px) and (max-width: 700px) {
-  .wrapperLang {
-    padding-bottom: 4rem!important; 
-    min-height: 100%;
-    position:relative;
-  }
-} */
-
 /* ...........Mohannad........... */
 /* .global-class-name {
   margin-top: 100px;
@@ -391,4 +353,65 @@ ReactStars:active {
 
 .closeLabel {
   margin-right: -60px !important;
+}
+.savedInternshipIcon {
+  color: blue !important;
+  fill: #1e4274 !important;
+}
+
+@media (min-width: 1202px) {
+  .mrcss {
+    margin-right: 0 !important;
+  }
+}
+@media (min-width: 1202px) {
+  .rowHeight {
+    height: 25px !important;
+  }
+}
+@media (max-width: 420px) {
+  .rowHeight {
+    height: 6em;
+  }
+}
+.cardMt {
+  margin-top: 1em !important;
+}
+@media (max-width: 422px) {
+  .cardMt {
+    margin-top: 2em;
+  }
+}
+
+@media (min-width: 757px) and (max-width: 1021px) {
+  .textWidth {
+    width: 30% !important;
+  }
+}
+.titleTimeMle {
+  margin-top: 0.9em !important;
+}
+@media (min-width: 1202px) {
+  .rowHeight2 {
+    height: 25px !important;
+  }
+}
+@media (max-width: 420px) {
+  .rowHeight2 {
+    height: 8em !important;
+  }
+}
+@media (min-width: 1202px) {
+  .rowHeight3 {
+    height: 25px !important;
+  }
+}
+@media (max-width: 420px) {
+  .rowHeight3 {
+    height: 10em !important;
+  }
+}
+.careerimgh {
+  width: fit-content;
+  height: fit-content;
 }

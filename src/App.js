@@ -23,6 +23,13 @@ import Advising from "./Components/CareerCoaching/Advising";
 import CareerMove from "./Components/CareerCoaching/CareerMove";
 import InterviewCoaching from "./Components/CareerCoaching/InterviewCoaching";
 
+import Applied from "../src/Components/StudentActivity/Applied";
+import Accepted from "../src/Components/StudentActivity/Accepted";
+import Saved from "../src/Components/StudentActivity/Saved";
+import Appointment from "../src/Components/StudentActivity/Appointment";
+import CompanyProfile from "./Components/Profiles/CompanyProfile";
+import advisorProfile from "./Components/Profiles/advisorProfile";
+import Opportunity from "./Components/Profiles/Opportunity";
 import { AuthRoute } from "./Components/Auth/AuthRoute";
 
 // import Skills from "./EditProfile/Skills";
@@ -47,10 +54,10 @@ class App extends React.Component {
     window.scrollTo(0, 0);
   }
 
-  setUser = (data) => {
+  setUser = data => {
     return this.setState({ loggedIn: data });
   };
-  setAvatar = (data) => {
+  setAvatar = data => {
     this.setState({ avatar: data });
     if (this.state.avatar) {
     }
@@ -156,7 +163,7 @@ class App extends React.Component {
                   exact
                   path="/Profile/Interest/:id"
                   component={Interest}
-                  render={(Interests) => <Interest {...Interests} />}
+                  render={Interests => <Interest {...Interests} />}
                 />
                 <AuthRoute
                   exact
@@ -198,6 +205,42 @@ class App extends React.Component {
                   path="/Profile/Accounts/:id"
                   component={AccountsForm}
                 />
+                <AuthRoute
+                  exact
+                  path="/Profile/Activity/Applied"
+                  component={Applied}
+                />
+                <AuthRoute
+                  exact
+                  path="/Profile/Activity/Accepted"
+                  component={Accepted}
+                />{" "}
+                <AuthRoute
+                  exact
+                  path="/Profile/Activity/Saved"
+                  component={Saved}
+                />
+                <AuthRoute
+                  exact
+                  path="/Profile/Activity/Appointment"
+                  component={Appointment}
+                />
+                <AuthRoute
+                  exact
+                  path="/CompanyProfile"
+                  component={CompanyProfile}
+                />
+                <AuthRoute
+                  exact
+                  path="/CompanyProfile/:id"
+                  component={CompanyProfile}
+                />
+                <AuthRoute
+                  exact
+                  path="/advisorProfile"
+                  component={advisorProfile}
+                />
+                <AuthRoute exact path="/Opportunity" component={Opportunity} />
                 <Route exact path="*" component={ErrorPage} />
               </Switch>
             </div>
