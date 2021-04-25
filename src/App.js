@@ -22,7 +22,9 @@ import Applied from "../src/Components/StudentActivity/Applied";
 import Accepted from "../src/Components/StudentActivity/Accepted";
 import Saved from "../src/Components/StudentActivity/Saved";
 import Appointment from "../src/Components/StudentActivity/Appointment";
-
+import CompanyProfile from "./Components/Profiles/CompanyProfile";
+import advisorProfile from "./Components/Profiles/advisorProfile";
+import Opportunity from "./Components/Profiles/Opportunity";
 import { AuthRoute } from "./Components/Auth/AuthRoute";
 
 // import Skills from "./EditProfile/Skills";
@@ -193,6 +195,20 @@ class App extends React.Component {
                   path="/Profile/Activity/Appointment"
                   component={Appointment}
                 />
+                  path="/CompanyProfile"
+                  component={CompanyProfile}
+                />
+                <AuthRoute
+                  exact
+                  path="/CompanyProfile/:id"
+                  component={CompanyProfile}
+                />
+                <AuthRoute
+                  exact
+                  path="/advisorProfile"
+                  component={advisorProfile}
+                />
+                <AuthRoute exact path="/Opportunity" component={Opportunity} />
                 <Route exact path="*" component={ErrorPage} />
               </Switch>
             </div>

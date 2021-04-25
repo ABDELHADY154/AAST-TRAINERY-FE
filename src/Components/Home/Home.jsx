@@ -69,29 +69,29 @@ class Home extends Component {
             <div className="container d-flex flex-row  flex-wrap ">
               <div
                 id="alertingtitle"
-                className="d-flex flex-column col-md-6 col-12 mt-1"
+                className="d-flex flex-column col-md-10 col-12 mt-1"
               >
                 Here to help, Update your profile information to get the best
                 matching opportunities.
               </div>
-              <div className="d-flex flex-column col-md-4 col-12  mt-1">
+              <div className="d-flex flex-column col-md-1 col-3  mt-1">
                 <Link
-                  className="texttt fs-3 col-12 col-md-12 "
+                  className="texttt fs-3 col-4 col-md-1 "
                   renderAs="button"
                   id="redlink"
-                  className=" shadow-none  "
+                  className=" shadow-none  text-start"
                   to="/Profile/General"
                 >
                   Update Now
                 </Link>
               </div>
-              <div className="d-flex flex-column col-md-2">
+              <div className="d-flex flex-column  col-md-1 col-1">
                 <button
                   onClick={() => {
                     this.setState({ alert: false });
                   }}
                   id="closed"
-                  className="btn p-0"
+                  className="btn p-0 text-start"
                   type="button"
                   data-bs-toggle="collapse"
                   data-bs-target="#alerting"
@@ -391,20 +391,26 @@ class Home extends Component {
                   <div className="card">
                     <div className="card-body">
                       <div className="d-flex flex-row ">
-                        <img
-                          className=" mt-0 d-flex flex-column  col-2 "
-                          id="imgicon"
-                          src={img2}
-                        />
+                        <Link to={`/CompanyProfile`}>
+                          <img
+                            className=" mt-0 d-flex flex-column  col-2 "
+                            id="imgicon"
+                            src={img2}
+                          />
+                        </Link>
                         <div className=" fs-5 mt-2 ms-2 col-md-10 col-8 ">
-                          UI/UX Designer
+                          <Link to={`/Opportunity`}>
+                            <h5>UI/UX Designers</h5>
+                          </Link>
                         </div>
                         <div id="gold" className=" fs-6 mt-2  col-2 col-md-2">
                           Paid
                         </div>
                       </div>
                       <div id="job" className="d-flex flex-row ms-5 ">
-                        <div className="d-flex ms-3 flex-column">CIB</div>
+                        <Link to={`/CompanyProfile`}>
+                          <div className="d-flex ms-3 flex-column">CIB</div>
+                        </Link>
                         <div id="gold" className="d-flex ms-2 flex-column">
                           Finance
                         </div>
@@ -523,15 +529,18 @@ class Home extends Component {
               <div className="card">
                 <div className="card-body">
                   <div className="d-flex flex-row flex-wrap">
-                    {" "}
-                    <img
-                      className=" mt-0 d-flex flex-column col-md-4 col-2 me-3"
-                      id="imgicon"
-                      src={img2}
-                    />
-                    <p id="" className="card-title fs-5 mt-2">
-                      Dr. Rehab ElBadrawy
-                    </p>
+                    <Link to={`/advisorProfile`}>
+                      <img
+                        className=" mt-0 d-flex flex-column col-md-4 col-2 me-3"
+                        id="imgicon"
+                        src={img2}
+                      />
+                    </Link>
+                    <Link to={`/advisorProfile`}>
+                      <p id="" className="card-title fs-5 mt-2">
+                        Dr. Rehab ElBadrawy
+                      </p>
+                    </Link>
                   </div>
                   <hr />
                   <div className="d-flex flex-row">

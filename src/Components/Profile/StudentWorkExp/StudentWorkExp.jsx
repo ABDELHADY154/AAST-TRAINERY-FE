@@ -17,15 +17,8 @@ export default class StudentWorkExp extends Component {
           className="d-flex flex-row  fs-5 "
           style={{ textTransform: "capitalize" }}
         >
-          <div className=" d-flex skillname flex-row flex-wrap col-4 col-md-5 me-1">
+          <div className=" d-flex skillname flex-row flex-wrap col-7 col-md-6 me-1">
             {this.props.job_title} at {this.props.company_name}
-          </div>
-          <div className="col-3 col-md-1 ">
-            <div id="worktag">
-              <p className="d-flex justify-content-center align-items-center flex-row flex-wrap fs-6 ">
-                {this.props.experience_type}
-              </p>
-            </div>
           </div>
 
           <div
@@ -46,9 +39,25 @@ export default class StudentWorkExp extends Component {
             </Link>
           </div>
         </div>
-        <div className="d-flex flex-row fs-6 ">
-          <div className=" d-flex flex-row col-12 col-md-12">
+        {/* <div
+          className="d-flex flex-row  fs-5 "
+          style={{ textTransform: "capitalize" }}
+        >
+         
+        </div> */}
+        <div className="d-flex flex-row flex-wrap fs-6 ">
+          <div className=" d-flex flex-column col-6 col-md-4">
             {this.props.city}, {this.props.country}.
+          </div>
+          <div className="col-3 col-md-2 mt-1 ">
+            {/* <div > */}
+            <p
+              id="worktag"
+              className="d-flex justify-content-center align-items-center flex-row flex-wrap fs-6 "
+            >
+              {this.props.experience_type}
+            </p>
+            {/* </div> */}
           </div>
         </div>
         <div className="d-flex flex-row fs-6 ">

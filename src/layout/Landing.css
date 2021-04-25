@@ -74,6 +74,7 @@
   margin-top: 0.3em;
   font-family: SF light;
   color: #1e4274 !important;
+  /* font-size: 16px !important; */
 }
 #checklist {
   margin-left: 0;
@@ -119,9 +120,9 @@ span {
   .carouselRow {
     margin-left: -1rem !important;
   }
-  .contactBtn {
+  /* .contactBtn {
     margin-left: 8rem !important;
-  }
+  } */
 }
 /* @media (max-width: 2560) {
   .carouselRow {
