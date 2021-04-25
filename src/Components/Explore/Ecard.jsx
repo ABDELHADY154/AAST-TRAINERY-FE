@@ -1,7 +1,8 @@
 import React, { Component } from "react";
 
-import { BsArrowUpRight, BsBookmark } from "react-icons/bs";
+import { BsArrowUpRight, BsBookmark, BsBookmarkFill } from "react-icons/bs";
 import { RiAdvertisementLine } from "react-icons/ri";
+import { axios } from "../../Api/axios";
 
 import "react-step-progress-bar/styles.css";
 import "../../layout/Explore.css";
@@ -13,27 +14,34 @@ export class Ecard extends Component {
     this.state = {
       data: "",
       loading: false,
+      saved: false,
+
       token: sessionStorage.getItem("token"),
     };
     this.toggleSave = this.toggleSave.bind(this);
+    this.untoggleSave = this.toggleSave.bind(this);
   }
-  toggleSave = () => {
+  toggleSave = async (e) => {
     this.setState({ saved: !this.state.saved ? true : false });
-    // console.log(this.state.saved);
+    await axios.get(`/W/student/unsave/${this.props.id}`).then((res) => {
+      if (res.status === 200) {
+        console.log(res);
+      }
+    });
   };
-  componentDidMount() {
-    // this.props.senddata.map((data) => {
-    //   //   console.log(data);
-    // this.setState({
-    //   advisor: this.props.advisor,
-    // });
-    // });
-  }
+  untoggleSave = async (e) => {
+    this.setState({ saved: !this.state.saved ? true : false });
+    await axios.get(`/W/student/save/${this.props.id}`).then((res) => {
+      if (res.status === 200) {
+        console.log(res);
+      }
+    });
+  };
   render() {
     return (
       <div>
-        <div className='card my-4'>
-          <div className='card-body py-5'>
+        <div className='card mb-4'>
+          <div className='card-body pb-5'>
             {this.props.advisor.map((x) => {
               return x ? (
                 <div className=''>
@@ -72,7 +80,7 @@ export class Ecard extends Component {
                   ? this.props.company_name
                   : this.props.title}
               </div>
-              <div className=' goldenn d-flex flex-row-reverse align-items-center col-md-5 col-2 ms-3'>
+              <div className=' goldenn d-flex flex-row-reverse align-items-center col-md-5 col-2  ms-auto'>
                 {this.props.salary ? this.props.salary : ""}
               </div>
             </div>
@@ -178,12 +186,25 @@ export class Ecard extends Component {
 
               <div className='  d-flex flex-row col-12 col-md-4 justify-content-end btnmovement'>
                 {/* <div className="col-md-4"></div> */}
-                <BsBookmark
-                  id='BsBookmark'
-                  color='#1e4274'
-                  className='fs-2 align-self-center  col-md-2 col-4'
-                  path='0px'
-                />
+                {this.state.saved ? (
+                  <BsBookmarkFill
+                    id='BsBookmark'
+                    color='#1e4274'
+                    fill='#1e4274'
+                    className=' col-md-2 col-3'
+                    onClick={this.untoggleSave}
+                    size={30}
+                  />
+                ) : (
+                  <BsBookmark
+                    id='BsBookmark'
+                    color='#1e4274'
+                    fill='#1e4274'
+                    className=' col-md-2 col-3'
+                    onClick={this.toggleSave}
+                    size={30}
+                  />
+                )}
                 <button
                   className='applyBtn px-1 py-0 col-md-3 col-8'
                   Onclick={(e) => this.toggleSave(e)}
