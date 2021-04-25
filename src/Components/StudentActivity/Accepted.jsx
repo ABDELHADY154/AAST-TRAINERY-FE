@@ -120,7 +120,7 @@ class Accepted extends Component {
                       saved={item.saved}
                     />
                   ) : (
-                    "gf"
+                    ""
                   );
                 })
               )}
