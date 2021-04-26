@@ -70,7 +70,7 @@ export class CarouselLogos extends Component {
           ? this.state.logos.map(item => {
               return (
                 <div className="logo1">
-                  <img className="" src={item.logo} />
+                  <img className="logoCaroImg" src={item.logo} />
                 </div>
               );
             })
