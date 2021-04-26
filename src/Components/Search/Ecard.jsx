@@ -19,22 +19,23 @@ export class Ecard extends Component {
   componentDidMount() {}
   render() {
     return (
-      <div className="col-md-6 col-12 align-self-center  ">
+      <div className="row align-self-center  ">
         <div className="d-flex col-12  ">
           <div className="m-3 nocard align-self-start d-flex  ">
             <div className="card-body none  m-auto ">
               {this.props.advisor.map((x) => {
                 return x ? (
                   <div className="flex-container">
-                    <div className="d-flex  justify-content-between">
-                      <div className="d-flex">
+                    <div className="">
+                      <div className="d-flex col-md-6 col-6 col-sm-7">
                         <img
-                          className=" mt-0 d-flex flex-row  col-md-1 col-2 me-3 rounded"
-                          // id="imgicon"
+                          className=" me-1 rounded"
+                          id="advisorlogo"
+                          style={{ height: 55, width: 55 }}
                           src={x !== "null" ? x.image : ""}
                         />
 
-                        <p id="" className="card-title fs-6 mt-2 ">
+                        <p id="" className="card-title fs-6 mt-2 ms-2">
                           {x.name}{" "}
                         </p>
                       </div>
@@ -50,7 +51,7 @@ export class Ecard extends Component {
                   ""
                 );
               })}
-              <div className="d-flex flex-row justify-content-between">
+              <div className="d-flex flex-row n">
                 <img
                   className=" mt-0 d-flex flex-row  col-md-1 col-2 me-1 rounded"
                   id="imgicon"
@@ -58,7 +59,7 @@ export class Ecard extends Component {
                 />
 
                 <h5
-                  className="card-title mt-2 col-md-6 col-5 col-sm-8 col-xs-9 d-flex align-items-center"
+                  className="card-title ms-2 mt-2 col-md-8 col-7 col-sm-6 col-xs-7 d-flex align-items-center"
                   style={{ marginRight: 24 }}
                 >
                   {this.props.post_type === "adsPost"
@@ -139,7 +140,7 @@ export class Ecard extends Component {
                 className="d-flex flex-row  justify-content-between smallres align-items-end mt-4 "
                 id="bottom"
               >
-                <div className="d-flex  flex-wrap col-6 col-md-6 ">
+                <div className="d-flex  flex-wrap col-6 col-md-2 ">
                   {this.props.application_deadline
                     ? "Deadline " + this.props.application_deadline
                     : ""}

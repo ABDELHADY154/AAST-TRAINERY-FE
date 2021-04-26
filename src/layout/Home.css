@@ -156,6 +156,9 @@
   width: 3.3em !important;
   object-fit: contain !important;
 }
+#advisorlogo {
+  object-fit: cover !important;
+}
 #widths {
   width: 20.9375em !important;
   margin: 1em 2em !important;
