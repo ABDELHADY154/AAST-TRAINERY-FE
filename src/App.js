@@ -1,5 +1,7 @@
 import React from "react";
 import { BrowserRouter, Redirect, Route, Switch } from "react-router-dom";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 import Registry from "./Components/Auth/Registry";
 import Home from "./Components/Home/Home";
 import Login from "./Components/Auth/Login";

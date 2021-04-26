@@ -106,15 +106,27 @@
 }
 
 .logo1 {
-  background-image: url("../Components/Landing/Assets/logo1.png") !important;
-  width: 90px !important;
-  height: 50px !important;
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  height: 150px;
+  width: 150px;
+  object-fit: contain !important;  
+  /* background-image: url("../Components/Landing/Assets/logo1.png") !important; */
+  /* width: 90px !important;
+  height: 150px !important;
   background-size: cover;
   background-repeat: no-repeat;
   padding-left: 0 !important;
   display: flex !important;
   align-items: flex-start !important;
-  margin-right: 44px;
+  margin-right: 44px; */
+  
+}
+.logoCaroImg{
+  height: 150px;
+  width: 150px;
+  object-fit: contain !important;
 }
 .LogoCarousel {
   margin-bottom: 2rem;

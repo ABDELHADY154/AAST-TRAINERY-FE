@@ -34,7 +34,7 @@ class Landing extends React.Component {
     }
   }
   async componentDidMount() {
-    await axios.get("/W/landingCount").then((data) => {
+    await axios.get("/W/landingCount").then(data => {
       this.setState({
         loading: true,
         students: data.data.response.data.students,
@@ -254,8 +254,8 @@ class Landing extends React.Component {
           </div>
         </div>
         <div className="container">
-          <div className="d-flex flex-row  flex-wrap mb-4 carouselRow  justify-content-center ">
-            <CarouselLogos className=" d-flex flex-column" />
+          <div className=" mb-4 ">
+            <CarouselLogos />
             {/* {this.state.loading === false ? (
               <div>
                 <LogoesCarousel />
