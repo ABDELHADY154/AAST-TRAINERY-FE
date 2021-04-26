@@ -441,31 +441,34 @@ class PromptedPost extends Component {
                 </div>
               </div>
               <div className="row mt-1">
-                <div className="col-12 col-md-5 " style={{ marginRight: 38 }}>
+                <div
+                  className="d-flex flex-column col-4 col-md-2 mt-3"
+                  style={{ marginRight: 38 }}
+                >
                   <p>
                     Deadline {"        "} {this.props.application_deadline}
                   </p>
                 </div>
-                <div className=" mb-4 d-flex flex-row col-12 col-md-2 justify-content-start me-1">
+                <div className=" mb-3 d-flex flex-row col-8 col-md-9 justify-content-end ms-5 mt-3 ">
                   <BsArrowUpRight
                     className="me-2"
                     color="#cd8930"
                     fill="#cd8930"
                   />
                   <p id="gold">Promoted</p>
-                </div>
-                <div className="  d-flex flex-row col-12 col-md-4 justify-content-end btnmovement">
+                  {/* <div className="  d-flex flex-row col-12 col-md-4 justify-content-end btnmovement"> */}
                   <BsFillBookmarkFill
                     id="BsBookmark"
                     fill="#1e4274"
-                    className="fs-2 align-self-center col-md-2 col-4"
+                    className="fs-2 align-self-center col-md-2 col-4 mt-0"
                     style={{ marginTop: -28 }}
                     path="0px"
                   />
-                  <button className="applyBtn px-1 py-0 col-md-5 col-8 col-sm-5">
+                  <button className="applyBtn px-1 py-0 col-md-2 col-4 col-sm-5 ">
                     Apply
                   </button>
-                </div>
+                </div>{" "}
+                {/* </div> */}
               </div>
             </div>
           </div>

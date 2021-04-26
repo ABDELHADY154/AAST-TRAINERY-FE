@@ -94,7 +94,7 @@ export default class Footer extends React.Component {
                       <FaInstagram
                         color="#ffffff"
                         fill="#ffffff"
-                        id="instagram"
+                        id="Socialmediafooticon"
                       />
                     </a>
                     <a href="#">
@@ -102,6 +102,7 @@ export default class Footer extends React.Component {
                         color="#ffffff"
                         fill="#ffffff"
                         className="m-2"
+                        id="Socialmediafooticon"
                       />
                     </a>
                     <a href="#">
@@ -109,6 +110,7 @@ export default class Footer extends React.Component {
                         color="#ffffff"
                         fill="#ffffff"
                         className="m-2"
+                        id="Socialmediafooticon"
                       />
                     </a>
                     <a href="#">
@@ -116,6 +118,7 @@ export default class Footer extends React.Component {
                         color="#ffffff"
                         fill="#ffffff"
                         className="m-2"
+                        id="Socialmediafooticon"
                       />
                     </a>
                   </li>

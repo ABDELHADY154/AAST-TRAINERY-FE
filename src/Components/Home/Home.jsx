@@ -33,7 +33,7 @@ class Home extends Component {
     await resolve(
       axios
         .get("/W/student/get-profile")
-        .then(res => {
+        .then((res) => {
           if (res.status === 200) {
             // sessionStorage.setItem("avatar", res.data.response.data.image);
             this.setState({
@@ -43,7 +43,7 @@ class Home extends Component {
             });
           }
         })
-        .catch(error => {
+        .catch((error) => {
           this.setState({
             error: {
               usernameErr: error.response.status,
@@ -52,7 +52,7 @@ class Home extends Component {
           if (this.state.error.usernameErr === 401) {
             window.location.reload();
           }
-        }),
+        })
     );
   }
 
@@ -66,20 +66,20 @@ class Home extends Component {
       var Alert =
         this.state.alert == true ? (
           <div id="alerting" className="d-flex flex-row  flex-wrap py-2  mb-3 ">
-            <div className="container d-flex flex-row  flex-wrap justify-space-between">
+            <div className="container d-flex flex-row  flex-wrap ">
               <div
                 id="alertingtitle"
-                className="d-flex flex-column col-md-10 col-12 mt-1"
+                className="d-flex flex-column col-md-10 col-9 mt-1"
               >
                 Here to help, Update your profile information to get the best
                 matching opportunities.
               </div>
-              <div className="d-flex flex-column col-md-4 col-12 justify-content-end  mt-1">
+              <div className="d-flex flex-column col-md-1 col-2   mt-1">
                 <Link
-                  className="texttt fs-3 col-4 col-md-1 "
+                  className="texttt fs-3 col-5 col-md-1 justify-content-start "
                   renderAs="button"
                   id="redlink"
-                  className=" shadow-none  text-start"
+                  className=" shadow-none  text-end"
                   to="/Profile/General"
                 >
                   Update Now
@@ -111,7 +111,7 @@ class Home extends Component {
     return (
       <div className="container-fluid mt-5 ">
         {Alert}
-        <div className="container">
+        <div className="container mb-4">
           <div className="d-flex flex-row ">
             <div id="" className="d-flex flex-column text-wrap bg-none">
               <div className="fs-3" id="bold">
@@ -717,27 +717,42 @@ class Home extends Component {
             <div id="widths" className=" mt-3 containerrr  col-md-3 col-12 ">
               <img id="imagehover" src={rec1} />
               <div class="overlay">
-                <a id="linksss" href="#" class="texttt fs-3 col-12 col-md-12 ">
+                <Link
+                  to="/CareerCoaching/CvWriting"
+                  id="linksss"
+                  href="#"
+                  class="texttt fs-3 col-12 col-md-12 "
+                >
                   CV Review
-                </a>
-              </div>
-            </div>
-            {/* <div className="col-1 d-flex"></div> */}
-            <div id="widths" className=" mt-3 containerrr  col-md-3 col-12 ">
-              <img id="imagehover" src={rec2} />
-              <div class="overlay">
-                <a id="linksss" href="#" class="texttt fs-3 col-12 col-md-12 ">
-                  Career Coaching Path
-                </a>
+                </Link>
               </div>
             </div>
             {/* <div className="col-1 d-flex"></div> */}
             <div id="widths" className=" mt-3 containerrr  col-md-3 col-12 ">
               <img id="imagehover" src={rec3} />
               <div class="overlay">
-                <a id="linksss" href="#" class="texttt fs-3 col-12 col-md-12 ">
+                <Link
+                  to="/CareerCoaching/CareerMove"
+                  id="linksss"
+                  href="#"
+                  class="texttt fs-3 col-12 col-md-12 "
+                >
+                  Career Coaching Path
+                </Link>
+              </div>
+            </div>
+            {/* <div className="col-1 d-flex"></div> */}
+            <div id="widths" className=" mt-3 containerrr  col-md-3 col-12 ">
+              <img id="imagehover" src={rec2} />
+              <div class="overlay">
+                <Link
+                  to="/CareerCoaching/InterviewCoaching"
+                  id="linksss"
+                  href="#"
+                  class="texttt fs-3 col-12 col-md-12 "
+                >
                   Interview Preperation
-                </a>
+                </Link>
               </div>
             </div>
           </div>
