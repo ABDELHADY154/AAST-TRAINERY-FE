@@ -12,6 +12,7 @@ import { BsBookmark, BsBookmarkFill } from "react-icons/bs";
 import { IoClose } from "react-icons/io5";
 import { Link } from "react-router-dom";
 import "../../layout/Explore.css";
+import search from "../../Components/assests/imgs/search.png";
 
 import { RiAdvertisementLine } from "react-icons/ri";
 
@@ -380,9 +381,16 @@ class Search extends Component {
           </div>
         </div>
 
-        <div className="text-center stext  my-4">
-          <a>Load More...</a>
-        </div>
+        {this.state.posts.length == 0 ? (
+          <div className="col-12">
+            <img className="row center img-fluid mt-4 mb-5" src={search} />
+          </div>
+        ) : (
+          <div className="text-center stext  my-4">
+            <a>Load More...</a>
+          </div>
+        )}
+
         <Footer2 />
       </div>
     );
