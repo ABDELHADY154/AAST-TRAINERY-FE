@@ -14,9 +14,9 @@ class Appointment extends Component {
     return (
       <div>
         <Link to="/Profile/Activity/Appointment" />
-        <div className="container">
+        <div className="container mb-5">
           <ActivityNavbar setactive={"Appointment"} />
-          <div class="card mb-3 mt-3">
+          <div class="card mb-5 mt-3">
             <div class="row ">
               <div class="d-flex flex-column col-md-2 col-sm-3 col-1 d-none d-sm-flex ms-3">
                 <img
@@ -42,11 +42,11 @@ class Appointment extends Component {
                 </div>
               </div>
               <div className="row mb-3">
-                <div className="d-flex justify-content-end">
+                <div className="d-flex justify-content-end mb-4">
                   <button className="applyBtn col-md-2 col-lg-1 col-sm-2 col-4  me-2">
                     Contact
                   </button>
-                  <button className="applyBtn col-lg-1 col-md-2 col-sm-2 col-4 ">
+                  <button className="applyBtn col-lg-1 col-md-2 col-sm-2 col-4 mb-5">
                     Review
                   </button>
                 </div>

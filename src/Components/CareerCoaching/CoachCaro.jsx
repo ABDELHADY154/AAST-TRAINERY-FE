@@ -3,7 +3,19 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
+import img1 from "../assests/imgs/coach1.jpg";
+import img2 from "../assests/imgs/coach2.jpg";
 import img3 from "../assests/imgs/coach3.jpg";
+import img4 from "../assests/imgs/coach4.jpg";
+import img5 from "../assests/imgs/coach5.jpg";
+import img6 from "../assests/imgs/coach6.jpg";
+import img7 from "../assests/imgs/coach7.jpg";
+import img8 from "../assests/imgs/coach8.jpg";
+import img9 from "../assests/imgs/coach9.jpg";
+import img10 from "../assests/imgs/coach10.jpg";
+import img11 from "../assests/imgs/coach11.jpg";
+import img12 from "../assests/imgs/coach12.jpg";
+
 import { FaFacebookF, FaLinkedinIn, FaYoutube } from "react-icons/fa";
 import "../../layout/CareerCoaching.css";
 
@@ -55,7 +67,7 @@ export default class CoachCaro extends Component {
           <div className="containerrr col-md-12 col-12">
             {" "}
             <img
-              src={img3}
+              src={img1}
               id="imagehoverr"
               className="d-flex flex-column col-md-3 col-12 rounded "
             />
@@ -65,10 +77,54 @@ export default class CoachCaro extends Component {
                 href="#"
                 className="textttt fs-4 mt-5  col-12 col-md-12 "
               >
-                Micheal 1{/* {this.state.coach_name} */}
+                Mena Adel{/* {this.state.coach_name} */}
                 <br />
                 <span className="textttt fs-6 col-12 mt-3  col-md-12 ">
-                  CEO at Nobels CO. 1
+                  CEO at Nobels CO.
+                  {/* {this.state.job_title} at {this.state.company_name} */}
+                </span>
+              </a>
+
+              <div className="mt-3 socialscoach">
+                <li>
+                  <a href="#">
+                    <FaFacebookF
+                      color="#ffffff"
+                      fill="#ffffff"
+                      className="m-2"
+                    />
+                  </a>
+                  <a href="#">
+                    <FaLinkedinIn
+                      color="#ffffff"
+                      fill="#ffffff"
+                      className="m-2"
+                    />
+                  </a>
+                  <a href="#">
+                    <FaYoutube color="#ffffff" fill="#ffffff" className="m-2" />
+                  </a>
+                </li>
+              </div>
+            </div>
+          </div>
+          <div className="containerrr col-md-12 col-12">
+            {" "}
+            <img
+              src={img2}
+              id="imagehoverr"
+              className="d-flex flex-column col-md-3 col-12 rounded "
+            />
+            <div className="overlay " id="overlayy">
+              <a
+                id="linksss"
+                href="#"
+                className="textttt fs-4 mt-5  col-12 col-md-12 "
+              >
+                Menna Fady {/* {this.state.coach_name} */}
+                <br />
+                <span className="textttt fs-6 col-12 mt-3  col-md-12 ">
+                  CEO at Qowwa CO.
                   {/* {this.state.job_title} at {this.state.company_name} */}
                 </span>
               </a>
@@ -109,10 +165,10 @@ export default class CoachCaro extends Component {
                 href="#"
                 className="textttt fs-4 mt-5  col-12 col-md-12 "
               >
-                Micheal 1{/* {this.state.coach_name} */}
+                Micheal Sami {/* {this.state.coach_name} */}
                 <br />
                 <span className="textttt fs-6 col-12 mt-3  col-md-12 ">
-                  CEO at Nobels CO. 1
+                  CEO at Nobels CO.
                   {/* {this.state.job_title} at {this.state.company_name} */}
                 </span>
               </a>
@@ -143,7 +199,7 @@ export default class CoachCaro extends Component {
           <div className="containerrr col-md-12 col-12">
             {" "}
             <img
-              src={img3}
+              src={img4}
               id="imagehoverr"
               className="d-flex flex-column col-md-3 col-12 rounded "
             />
@@ -153,10 +209,10 @@ export default class CoachCaro extends Component {
                 href="#"
                 className="textttt fs-4 mt-5  col-12 col-md-12 "
               >
-                Micheal 1{/* {this.state.coach_name} */}
+                Abdelwahed Shetta{/* {this.state.coach_name} */}
                 <br />
                 <span className="textttt fs-6 col-12 mt-3  col-md-12 ">
-                  CEO at Nobels CO. 1
+                  CEO at EverPaws
                   {/* {this.state.job_title} at {this.state.company_name} */}
                 </span>
               </a>
@@ -187,7 +243,7 @@ export default class CoachCaro extends Component {
           <div className="containerrr col-md-12 col-12">
             {" "}
             <img
-              src={img3}
+              src={img5}
               id="imagehoverr"
               className="d-flex flex-column col-md-3 col-12 rounded "
             />
@@ -197,10 +253,10 @@ export default class CoachCaro extends Component {
                 href="#"
                 className="textttt fs-4 mt-5  col-12 col-md-12 "
               >
-                Micheal 1{/* {this.state.coach_name} */}
+                Fadwa Amir{/* {this.state.coach_name} */}
                 <br />
                 <span className="textttt fs-6 col-12 mt-3  col-md-12 ">
-                  CEO at Nobels CO. 1
+                  CEO at Kabel CO.
                   {/* {this.state.job_title} at {this.state.company_name} */}
                 </span>
               </a>
@@ -231,7 +287,7 @@ export default class CoachCaro extends Component {
           <div className="containerrr col-md-12 col-12">
             {" "}
             <img
-              src={img3}
+              src={img6}
               id="imagehoverr"
               className="d-flex flex-column col-md-3 col-12 rounded "
             />
@@ -241,10 +297,10 @@ export default class CoachCaro extends Component {
                 href="#"
                 className="textttt fs-4 mt-5  col-12 col-md-12 "
               >
-                Micheal 1{/* {this.state.coach_name} */}
+                Salma Lewis{/* {this.state.coach_name} */}
                 <br />
                 <span className="textttt fs-6 col-12 mt-3  col-md-12 ">
-                  CEO at Nobels CO. 1
+                  CEO at Stars CO.
                   {/* {this.state.job_title} at {this.state.company_name} */}
                 </span>
               </a>
@@ -275,7 +331,7 @@ export default class CoachCaro extends Component {
           <div className="containerrr col-md-12 col-12">
             {" "}
             <img
-              src={img3}
+              src={img7}
               id="imagehoverr"
               className="d-flex flex-column col-md-3 col-12 rounded "
             />
@@ -285,10 +341,10 @@ export default class CoachCaro extends Component {
                 href="#"
                 className="textttt fs-4 mt-5  col-12 col-md-12 "
               >
-                Micheal 1{/* {this.state.coach_name} */}
+                Basma Abdelreheem{/* {this.state.coach_name} */}
                 <br />
                 <span className="textttt fs-6 col-12 mt-3  col-md-12 ">
-                  CEO at Nobels CO. 1
+                  CEO at Deewan stores
                   {/* {this.state.job_title} at {this.state.company_name} */}
                 </span>
               </a>
@@ -319,7 +375,7 @@ export default class CoachCaro extends Component {
           <div className="containerrr col-md-12 col-12">
             {" "}
             <img
-              src={img3}
+              src={img8}
               id="imagehoverr"
               className="d-flex flex-column col-md-3 col-12 rounded "
             />
@@ -329,10 +385,10 @@ export default class CoachCaro extends Component {
                 href="#"
                 className="textttt fs-4 mt-5  col-12 col-md-12 "
               >
-                Micheal 1{/* {this.state.coach_name} */}
+                Bassem Samer{/* {this.state.coach_name} */}
                 <br />
                 <span className="textttt fs-6 col-12 mt-3  col-md-12 ">
-                  CEO at Nobels CO. 1
+                  CEO at Volla Agency
                   {/* {this.state.job_title} at {this.state.company_name} */}
                 </span>
               </a>
@@ -363,7 +419,7 @@ export default class CoachCaro extends Component {
           <div className="containerrr col-md-12 col-12">
             {" "}
             <img
-              src={img3}
+              src={img9}
               id="imagehoverr"
               className="d-flex flex-column col-md-3 col-12 rounded "
             />
@@ -373,10 +429,10 @@ export default class CoachCaro extends Component {
                 href="#"
                 className="textttt fs-4 mt-5  col-12 col-md-12 "
               >
-                Micheal 1{/* {this.state.coach_name} */}
+                Samir ElGazaeirly {/* {this.state.coach_name} */}
                 <br />
                 <span className="textttt fs-6 col-12 mt-3  col-md-12 ">
-                  CEO at Nobels CO. 1
+                  CEO at ElGazareily Inc.
                   {/* {this.state.job_title} at {this.state.company_name} */}
                 </span>
               </a>
@@ -407,7 +463,7 @@ export default class CoachCaro extends Component {
           <div className="containerrr col-md-12 col-12">
             {" "}
             <img
-              src={img3}
+              src={img10}
               id="imagehoverr"
               className="d-flex flex-column col-md-3 col-12 rounded "
             />
@@ -417,10 +473,10 @@ export default class CoachCaro extends Component {
                 href="#"
                 className="textttt fs-4 mt-5  col-12 col-md-12 "
               >
-                Micheal 1{/* {this.state.coach_name} */}
+                Mariam Ahmed{/* {this.state.coach_name} */}
                 <br />
                 <span className="textttt fs-6 col-12 mt-3  col-md-12 ">
-                  CEO at Nobels CO. 1
+                  CEO at Players Inc.
                   {/* {this.state.job_title} at {this.state.company_name} */}
                 </span>
               </a>
@@ -451,7 +507,7 @@ export default class CoachCaro extends Component {
           <div className="containerrr col-md-12 col-12">
             {" "}
             <img
-              src={img3}
+              src={img11}
               id="imagehoverr"
               className="d-flex flex-column col-md-3 col-12 rounded "
             />
@@ -461,10 +517,10 @@ export default class CoachCaro extends Component {
                 href="#"
                 className="textttt fs-4 mt-5  col-12 col-md-12 "
               >
-                Micheal 1{/* {this.state.coach_name} */}
+                Abdool Mohamed{/* {this.state.coach_name} */}
                 <br />
                 <span className="textttt fs-6 col-12 mt-3  col-md-12 ">
-                  CEO at Nobels CO. 1
+                  CEO at Abdool agency
                   {/* {this.state.job_title} at {this.state.company_name} */}
                 </span>
               </a>
@@ -495,7 +551,7 @@ export default class CoachCaro extends Component {
           <div className="containerrr col-md-12 col-12">
             {" "}
             <img
-              src={img3}
+              src={img12}
               id="imagehoverr"
               className="d-flex flex-column col-md-3 col-12 rounded "
             />
@@ -505,54 +561,10 @@ export default class CoachCaro extends Component {
                 href="#"
                 className="textttt fs-4 mt-5  col-12 col-md-12 "
               >
-                Micheal 1{/* {this.state.coach_name} */}
+                Bassem Shamy{/* {this.state.coach_name} */}
                 <br />
                 <span className="textttt fs-6 col-12 mt-3  col-md-12 ">
-                  CEO at Nobels CO. 1
-                  {/* {this.state.job_title} at {this.state.company_name} */}
-                </span>
-              </a>
-
-              <div className="mt-3 socialscoach">
-                <li>
-                  <a href="#">
-                    <FaFacebookF
-                      color="#ffffff"
-                      fill="#ffffff"
-                      className="m-2"
-                    />
-                  </a>
-                  <a href="#">
-                    <FaLinkedinIn
-                      color="#ffffff"
-                      fill="#ffffff"
-                      className="m-2"
-                    />
-                  </a>
-                  <a href="#">
-                    <FaYoutube color="#ffffff" fill="#ffffff" className="m-2" />
-                  </a>
-                </li>
-              </div>
-            </div>
-          </div>
-          <div className="containerrr col-md-12 col-12">
-            {" "}
-            <img
-              src={img3}
-              id="imagehoverr"
-              className="d-flex flex-column col-md-3 col-12 rounded "
-            />
-            <div className="overlay " id="overlayy">
-              <a
-                id="linksss"
-                href="#"
-                className="textttt fs-4 mt-5  col-12 col-md-12 "
-              >
-                Micheal 1{/* {this.state.coach_name} */}
-                <br />
-                <span className="textttt fs-6 col-12 mt-3  col-md-12 ">
-                  CEO at Nobels CO. 1
+                  CEO at Naqaa CO.
                   {/* {this.state.job_title} at {this.state.company_name} */}
                 </span>
               </a>
