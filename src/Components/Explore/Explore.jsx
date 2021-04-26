@@ -194,12 +194,14 @@ class Explore extends Component {
             Lorem ipsum dolor sit amet consectetur adipisicing elit.
           </p>
           {/* BIG CARD WITH ADVISOR */}
+
           <div id="custom-search-input" className="my-4">
             <form id="fromSearch">
               <div class="input-group col-md-12">
                 <input
                   type="text"
                   class="form-control input-lg"
+                  // style={{ height: "5%" }}
                   placeholder="Write some thing"
                   onChange={(e) => {
                     this.setState({ Search: e.target.value });
@@ -214,7 +216,7 @@ class Explore extends Component {
                       params: { val: this.state.Search },
                     }}
                   >
-                    <GrSearch />
+                    <GrSearch fill="#1E4274" color="#1E4274" />
                   </Link>
                 </span>
               </div>
@@ -280,22 +282,22 @@ class Explore extends Component {
                 </a>
               </li>
               <li class="page-item">
-                <a class="page-link" href="#">
+                <a class="page-link" href="#" style={{ color: "#1E4274" }}>
                   1
                 </a>
               </li>
               <li class="page-item">
-                <a class="page-link" href="#">
+                <a class="page-link" href="#" style={{ color: "#1E4274" }}>
                   2
                 </a>
               </li>
               <li class="page-item">
-                <a class="page-link" href="#">
+                <a class="page-link" href="#" style={{ color: "#1E4274" }}>
                   3
                 </a>
               </li>
               <li class="page-item">
-                <a class="page-link" href="#">
+                <a class="page-link" href="#" style={{ color: "#1E4274" }}>
                   Next
                 </a>
               </li>

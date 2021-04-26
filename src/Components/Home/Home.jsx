@@ -25,6 +25,7 @@ class Home extends Component {
       loading: false,
       token: sessionStorage.getItem("token"),
       avatar: "",
+      data: [],
       alert: true,
     };
   }
@@ -54,6 +55,21 @@ class Home extends Component {
           }
         })
     );
+    await axios
+      .get("/A/student/studentApplied")
+      .then((res) => {
+        this.setState({
+          id: res.data.response.data.id,
+          data: res.data.response.data,
+          advisor: res.data.response.data.advisor,
+          FormLoading: false,
+        });
+        // console.log(res.data.response.data.advisor.name);
+      })
+      .catch((err) => {
+        this.setState({ FormLoading: true });
+        console.log(err);
+      });
   }
 
   // handleRemove(){
@@ -387,131 +403,25 @@ class Home extends Component {
                 Your Activities
               </h5>
               <div id="tabcard" className="row">
-                <div className="col-md-6" id="tabcontainer">
-                  <div className="card">
-                    <div className="card-body">
-                      <div className="d-flex flex-row ">
-                        <Link to={`/CompanyProfile`}>
-                          <img
-                            className=" mt-0 d-flex flex-column  col-2 "
-                            id="imgicon"
-                            src={img2}
-                          />
-                        </Link>
-                        <div className=" fs-5 mt-2 ms-2 col-md-10 col-8 ">
-                          <Link to={`/Opportunity`}>
-                            <h5>UI/UX Designers</h5>
-                          </Link>
-                        </div>
-                        <div id="gold" className=" fs-6 mt-2  col-2 col-md-2">
-                          Paid
-                        </div>
-                      </div>
-                      <div id="job" className="d-flex flex-row ms-5 ">
-                        <Link to={`/CompanyProfile`}>
-                          <div className="d-flex ms-3 flex-column">CIB</div>
-                        </Link>
-                        <div id="gold" className="d-flex ms-2 flex-column">
-                          Finance
-                        </div>
-                      </div>
-                      <p className="card-text mt-2">
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                        Ipsam repudiandae aut possimus. Repellendus at nostrum
-                        iste doloremque. Ea omnis ipsam, eum nam tempore culpa
-                        illum consequuntur quis nobis adipisci et?
-                      </p>
-                      <div className="d-flex flex-row flex-wrap ">
-                        <div className="d-flex flex-column col-4 col-md-2">
-                          <a href="#" className=" " id="tags">
-                            Finance
-                          </a>
-                        </div>
-                        <div className="d-flex flex-column col-4 me-3 col-md-2  mb-1">
-                          <a href="#" className="" id="tags">
-                            Banking
-                          </a>
-                        </div>
-                        <div
-                          id="drop"
-                          className="d-flex flex-column me-4  col-md-5  
-                             justify-space-between"
-                        >
-                          <p>Deadline {"        "}11 Dec 2021</p>
-                        </div>
-                        <div
-                          id="promoted"
-                          className="  d-flex flex-row col-12 col-md-2  "
-                        >
-                          <BsArrowUpRight fill="#cd8930" size="22" />
-                          <p id="gold" style={{ marginLeft: 2 }}>
-                            Promoted
-                          </p>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-                <div className="col-md-6" id="tabcontainer">
-                  <div className="card">
-                    <div className="card-body">
-                      <div className="d-flex flex-row ">
-                        <img
-                          className=" mt-0 d-flex flex-column  col-2 "
-                          id="imgicon"
-                          src={img2}
-                        />
-                        <div className=" fs-5 mt-2 ms-2 col-md-10 col-8 ">
-                          UI/UX Designer
-                        </div>
-                        <div id="gold" className=" fs-6 mt-2  col-2 col-md-2">
-                          Paid
-                        </div>
-                      </div>
-                      <div id="job" className="d-flex flex-row ms-5 ">
-                        <div className="d-flex ms-3 flex-column">CIB</div>
-                        <div id="gold" className="d-flex ms-2 flex-column">
-                          Finance
-                        </div>
-                      </div>
-                      <p className="card-text mt-2">
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                        Ipsam repudiandae aut possimus. Repellendus at nostrum
-                        iste doloremque. Ea omnis ipsam, eum nam tempore culpa
-                        illum consequuntur quis nobis adipisci et?
-                      </p>
-                      <div className="d-flex flex-row flex-wrap ">
-                        <div className="d-flex flex-column col-4 col-md-2">
-                          <a href="#" className=" " id="tags">
-                            Finance
-                          </a>
-                        </div>
-                        <div className="d-flex flex-column col-4 me-3 col-md-2  mb-1">
-                          <a href="#" className="" id="tags">
-                            Banking
-                          </a>
-                        </div>
-                        <div
-                          id="drop"
-                          className="d-flex flex-column me-4  col-md-5  
-                             justify-space-between"
-                        >
-                          <p>Deadline {"        "}11 Dec 2021</p>
-                        </div>
-                        <div
-                          id="promoted"
-                          className="  d-flex flex-row col-12 col-md-2  "
-                        >
-                          <BsArrowUpRight size="22" fill="#cd8930" />
-                          <p id="gold" style={{ marginLeft: 2 }}>
-                            Promoted
-                          </p>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
+                {this.state.data.map((item) => {
+                  return (
+                    <AppliedCard
+                      id={item.id}
+                      key={item.id}
+                      title={item.title}
+                      company_name={item.company_name}
+                      company_logo={item.company_logo}
+                      description={item.description}
+                      application_deadline={item.application_deadline}
+                      salary={item.salary}
+                      advisor={item.advisor}
+                      post_type={item.post_type}
+                      departments={item.departments}
+                      tags={item.tags}
+                      saved={item.saved}
+                    />
+                  );
+                })}
               </div>
             </div>
             <hr className="breakliner mb-3" />
@@ -763,3 +673,121 @@ class Home extends Component {
   }
 }
 export default Home;
+
+class AppliedCard extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {};
+  }
+  render() {
+    return (
+      <div className=" mt-2 col-md-6" id="tabcontainer">
+        <div className="card">
+          <div className="card-body">
+            <div className="d-flex flex-row ">
+              <img
+                className=" mt-0 d-flex flex-column  col-2 rounded"
+                id="imgicon"
+                src={this.props.company_logo}
+              />
+              <div className=" fs-5 mt-2 ms-2 col-md-10 col-8 mb-2">
+                {this.props.title}
+              </div>
+              <div id="gold" className=" fs-6 mt-2  col-2 col-md-2">
+                {this.props.salary}
+              </div>
+            </div>
+            <div id="job" className=" d-flex flex-row ms-5 flex-wrap  ">
+              <div className="d-flex ms-3 flex-row">
+                {this.props.company_name}
+              </div>
+
+              <div
+                id="gold"
+                className=" ms-2 departments d-flex flex-row flex-wrap "
+              >
+                {this.props.departments.map((item) => {
+                  return (
+                    <Departments
+                      id={item.id}
+                      key={item.id}
+                      departments={item.departments}
+                      dep_name={item.dep_name}
+                    />
+                  );
+                })}
+              </div>
+            </div>
+            <p className="card-text mt-2 Lines">{this.props.description}</p>
+
+            <div className="d-flex flex-row flex-wrap " id="">
+              {this.props.tags.map((item) => {
+                return (
+                  <Interest
+                    id={item.id}
+                    key={item.id}
+                    interest={item.interest}
+                  />
+                );
+              })}
+            </div>
+            <div className="d-flex flex-row flex-wrap ">
+              <div
+                id="drop"
+                className="d-flex flex-column me-4  col-md-5  
+                             justify-space-between"
+              >
+                <p>
+                  Deadline {"        "}
+                  {this.props.application_deadline}
+                </p>
+              </div>
+              {/* <div
+                id="promoted"
+                className="  d-flex flex-row col-12 col-md-2  "
+              >
+                <BsArrowUpRight size="22" fill="#cd8930" />
+                <p id="gold" style={{ marginLeft: 2 }}>
+                  Promoted
+                </p>
+              </div> */}
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  }
+}
+class Departments extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {};
+  }
+  render() {
+    return (
+      <div id="gold" className="ms-2 ">
+        {this.props.dep_name}
+      </div>
+    );
+  }
+}
+class Interest extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {};
+  }
+  render() {
+    return (
+      <div className=" me-2 tags  mt-1 mb-1" id="firsttagipad">
+        <a
+          href="#"
+          className="tagsipad tagsP"
+          id="tags"
+          style={{ paddingLeft: 10, paddingRight: 10 }}
+        >
+          {this.props.interest}
+        </a>
+      </div>
+    );
+  }
+}

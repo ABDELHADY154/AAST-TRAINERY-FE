@@ -29,8 +29,8 @@ export class Ecard extends Component {
                     <div className="d-flex  justify-content-between">
                       <div className="d-flex">
                         <img
-                          className=" mt-0 d-flex flex-row  col-md-1 col-2 me-1 rounded"
-                          id="imgicon"
+                          className=" mt-0 d-flex flex-row  col-md-1 col-2 me-3 rounded"
+                          // id="imgicon"
                           src={x !== "null" ? x.image : ""}
                         />
 
@@ -97,7 +97,7 @@ export class Ecard extends Component {
                 </div>
               </div>
 
-              <p className="card-text mt-2">{this.props.description}</p>
+              <p className="card-text mt-2 Lines">{this.props.description}</p>
               {this.props.post_type === "adsPost" ? (
                 <div>
                   <img

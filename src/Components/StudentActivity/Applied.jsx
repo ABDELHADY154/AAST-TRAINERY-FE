@@ -149,7 +149,7 @@ class CompanyPost extends Component {
             <div className="card-body">
               <div className="d-flex flex-row">
                 <img
-                  className=" mt-0 d-flex flex-column col-md-4 col-2 me-1"
+                  className="rounded mt-0 d-flex flex-column col-md-4 col-2 me-1"
                   id="imgicon"
                   src={this.props.company_logo}
                 />
@@ -188,7 +188,7 @@ class CompanyPost extends Component {
                   </div>
                 </div>
               </div>
-              <p className="card-text mt-2">{this.props.description}</p>
+              <p className="card-text mt-2 Lines">{this.props.description}</p>
               <div className="d-flex flex-row flex-wrap ">
                 <div className="d-flex flex-row flex-wrap " id="firsttagipad">
                   {this.props.tags.map((item) => {
@@ -268,7 +268,7 @@ class PromptedPost extends Component {
             <div className="card-body">
               <div className="d-flex flex-row">
                 <img
-                  className=" mt-0 d-flex flex-column col-md-4 col-2 me-1"
+                  className="rounded mt-0 d-flex flex-column col-md-4 col-2 me-1"
                   id="imgicon"
                   src={this.props.company_logo}
                 />
@@ -420,7 +420,7 @@ class AdvisorPost extends Component {
             <div className="card-body">
               <div className="d-flex flex-row">
                 <img
-                  className=" mt-0 d-flex flex-column col-md-4 col-2 me-1"
+                  className="rounded mt-0 d-flex flex-column col-md-4 col-2 me-1"
                   id="imgicon"
                   src={this.props.company_logo}
                 />
@@ -433,17 +433,17 @@ class AdvisorPost extends Component {
                     {/* {this.props.advisor.name} */}
                   </p>
                 </div>
-                <div
+                {/* <div
                   id="graytab"
                   className=" fs-6 mt-2 text-muted col-2 col-md-1"
                 >
                   2 min ago
-                </div>
+                </div> */}
               </div>
               <hr />
               <div className="d-flex flex-row">
                 <img
-                  className=" mt-0 d-flex flex-column col-md-4 col-2 me-1"
+                  className="rounded mt-0 d-flex flex-column col-md-4 col-2 me-1"
                   id="imgicon"
                   src={this.props.company_logo}
                 />

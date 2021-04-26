@@ -147,7 +147,7 @@ export class Ecard extends Component {
                       ? "Deadline " + this.props.application_deadline
                       : ""}
                   </div>
-                  <div className="col-4 col-md-4 col-sm-4">
+                  <div className="col-5 col-md-4 col-sm-4">
                     {this.props.post_type == "promotedPost" ? (
                       <div className="d-flex flex-row">
                         <BsArrowUpRight
@@ -161,10 +161,10 @@ export class Ecard extends Component {
                         </p>
                       </div>
                     ) : (
-                      ""
+                      <div className="me-5 ms-5"></div>
                     )}
                   </div>
-                  <div className=" col-3 col-md-3 justify-content-end ">
+                  <div className=" col-3  justify-content-end ">
                     {/* <div className="col-md-4"></div> */}
                     <BsBookmark
                       id="BsBookmark"

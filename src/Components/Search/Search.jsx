@@ -188,7 +188,7 @@ class Search extends Component {
                 <div class="input-group-btn">
                   <span class="input-group-btn">
                     <button class="btn border-left btn-lg" type="button">
-                      <GrSearch />
+                      <GrSearch fill="#1E4274" color="#1E4274" />
                     </button>
                   </span>
                 </div>
