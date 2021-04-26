@@ -11,6 +11,7 @@ import { axios } from "../../Api/axios";
 import LoadingOverlay from "react-loading-overlay";
 import BounceLoader from "react-spinners/BounceLoader";
 import "../../layout/Footer.css";
+import none from "../../Components/assests/imgs/none.png";
 
 class Accepted extends Component {
   constructor(props) {
@@ -67,7 +68,17 @@ class Accepted extends Component {
             <div className="container ">
               <ActivityNavbar setactive={"Saved"} />
               {this.state.data.length == 0 ? (
-                <div id="marginb">THERE ARE NO INTERNSHIPS HERE!</div>
+                <div className="col-12">
+                  <Link
+                    className="row mb-5 mt-2 d-flex justify-content-center explore"
+                    to="/Explore"
+                  >
+                    Explore our new internship
+                    <span className="sr-only" />
+                  </Link>
+
+                  <img className="row center img-fluid" src={none} />
+                </div>
               ) : (
                 this.state.data.map((item) => {
                   return item.post_type == "advisorPost" ? (

@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { BrowserRouter as Router, Route, NavLink } from "react-router-dom";
 import { Link } from "react-router-dom";
 import ActivityNavbar from "./Navbar";
-import img2 from "../../Components/assests/imgs/cib.png";
+import none from "../../Components/assests/imgs/none.png";
 import { BsArrowUpRight } from "react-icons/bs";
 import Footer2 from "../Common/Footer2";
 import { BsBookmark, BsFillBookmarkFill } from "react-icons/bs";
@@ -68,7 +68,17 @@ class Accepted extends Component {
               <ActivityNavbar setactive={"Accepted"} />
 
               {this.state.data.length == 0 ? (
-                <div id="marginb">THERE ARE NO INTERNSHIPS HERE!</div>
+                <div className="col-12">
+                  <Link
+                    className="row mb-5 mt-2 d-flex justify-content-center explore"
+                    to="/Explore"
+                  >
+                    Explore our new internship
+                    <span className="sr-only" />
+                  </Link>
+
+                  <img className="row center img-fluid" src={none} />
+                </div>
               ) : (
                 this.state.data.map((item) => {
                   return item.post_type == "advisorPost" ? (

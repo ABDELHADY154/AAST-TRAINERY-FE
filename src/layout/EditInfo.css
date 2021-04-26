@@ -415,3 +415,31 @@ ReactStars:active {
   width: fit-content;
   height: fit-content;
 }
+.center {
+  margin: auto;
+  width: 20.5em;
+}
+@media (max-width: 1200px) {
+  .center {
+    margin: auto;
+    width: 25em;
+  }
+}
+@media (max-width: 1500px) {
+  .center {
+    margin: auto;
+    width: 26em;
+  }
+}
+.explore {
+  color: #1e4274 !important;
+  font-size: 1.2em !important;
+}
+.explore:hover {
+  color: #cd8930 !important;
+  font-size: 1.2em !important;
+}
+.explore:active {
+  color: #cd8930 !important;
+  font-size: 1.2em !important;
+}

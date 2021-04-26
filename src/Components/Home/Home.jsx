@@ -690,7 +690,7 @@ class AppliedCard extends Component {
                 id="imgicon"
                 src={this.props.company_logo}
               />
-              <div className=" fs-5 mt-2 ms-2 col-md-10 col-8 mb-2">
+              <div className=" fs-5 mt-2 ms-2 col-md-9 col-7 mb-2">
                 {this.props.title}
               </div>
               <div id="gold" className=" fs-6 mt-2  col-2 col-md-2">
