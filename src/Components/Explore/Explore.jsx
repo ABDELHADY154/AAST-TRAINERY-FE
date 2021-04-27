@@ -242,6 +242,8 @@ class Explore extends Component {
                           post_type={data.post_type}
                           sponsor_image={data.sponsor_image}
                           key={data.id}
+                          saved={data.saved}
+                          applied={data.applied}
                         />
                       );
                     })

@@ -52,6 +52,8 @@ class Search extends Component {
       advisor={[data.advisor]}
       post_type={data.post_type}
       sponsor_image={data.sponsor_image}
+      saved={data.saved}
+      applied={data.applied}
       className="col-md-6 col-12"
     />
   );

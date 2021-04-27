@@ -79,17 +79,17 @@ export default class advisorProfile extends Component {
                 src={this.state.data.company_logo}
                 className="ms-1 me-3 col-2 rounded-circle companyImg"
               />
-              <div className="col-7 mt-3 ">
+              <div className="col-12 mt-3 ">
                 <div className="d-flex flex-row w-7">
-                  <h4 className="opportunity col-md-12 col-12  col-xs-6">
+                  <h4 className="opportunity col-md-12 col-12">
                     {this.state.data.title}
                   </h4>
                 </div>
                 <div className="row">
-                  <p className="col-3  col-md-2 col-sm-5 col-xs-5  company">
+                  <p className="col-10 col-md-10 col-sm-10 col-xs-10  company">
                     {this.state.data.company_name}
                   </p>
-                  <p className="col-2 col-md-3 col-sm-3 col-xs-3  paid">
+                  <p className="col-2 col-md-2 col-sm-2 col-xs-3 paid">
                     {this.state.data.salary}
                   </p>
                 </div>
@@ -185,7 +185,7 @@ export default class advisorProfile extends Component {
                 </ul>
               </div>
             </div>
-            <div className="d-flex flex-row flex-wrap mb-3">
+            <div className="d-flex flex-row flex-wrap mb-4 mt-5">
               <div className="d-flex flex-column col-4 col-md-1 me-4 "></div>
               <div className="d-flex flex-column col-4  col-md-1 me-4 "></div>
               <div

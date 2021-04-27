@@ -9,11 +9,17 @@ import rec1 from "../../Components/assests/imgs/rec1.png";
 import rec2 from "../../Components/assests/imgs/rec2.png";
 import rec3 from "../../Components/assests/imgs/rec3.png";
 import "../../layout/Home.css";
-import { BsCheck, BsArrowUpRight } from "react-icons/bs";
+import {
+  BsCheck,
+  BsArrowUpRight,
+  BsBookmark,
+  BsFillBookmarkFill,
+} from "react-icons/bs";
+
 import Footer2 from "../Common/Footer2";
 import "react-step-progress-bar/styles.css";
 import { ProgressBar, Step } from "react-step-progress-bar";
-import { BsBookmark } from "react-icons/bs";
+// import { BsBookmark } from "react-icons/bs";
 import { IoClose } from "react-icons/io5";
 import { Link } from "react-router-dom";
 
@@ -35,7 +41,7 @@ class Home extends Component {
     await resolve(
       axios
         .get("/W/student/get-profile")
-        .then(res => {
+        .then((res) => {
           if (res.status === 200) {
             // sessionStorage.setItem("avatar", res.data.response.data.image);
             this.setState({
@@ -45,7 +51,7 @@ class Home extends Component {
             });
           }
         })
-        .catch(error => {
+        .catch((error) => {
           this.setState({
             error: {
               usernameErr: error.response.status,
@@ -54,11 +60,11 @@ class Home extends Component {
           if (this.state.error.usernameErr === 401) {
             window.location.reload();
           }
-        }),
+        })
     );
     await axios
       .get("/W/student/studentApplied")
-      .then(res => {
+      .then((res) => {
         this.setState({
           id: res.data.response.data.id,
           data: res.data.response.data,
@@ -67,13 +73,13 @@ class Home extends Component {
         });
         // console.log(res.data.response.data.advisor.name);
       })
-      .catch(err => {
+      .catch((err) => {
         this.setState({ FormLoading: true });
         console.log(err);
       });
     await axios
       .get("/W/student/posts")
-      .then(res => {
+      .then((res) => {
         this.setState({
           // id: res.data.response.data.id,
           // data: res.data.response.data,
@@ -83,7 +89,7 @@ class Home extends Component {
         });
         // console.log(res.data.response.data.advisor.name);
       })
-      .catch(err => {
+      .catch((err) => {
         this.setState({ FormLoading: true });
         console.log(err);
       });
@@ -498,10 +504,11 @@ class Home extends Component {
                     departments={this.state.explorePosts[0].departments}
                     tags={this.state.explorePosts[0].tags}
                     saved={this.state.explorePosts[0].saved}
+                    applied={this.state.explorePosts[0].applied}
                   />
                 </>
               ) : (
-                <p className="text-center">No Activity</p>
+                <p className="text-center">No Recommended Posts</p>
               )}
             </div>
           </div>
@@ -528,6 +535,7 @@ class Home extends Component {
                     departments={this.state.explorePosts[1].departments}
                     tags={this.state.explorePosts[1].tags}
                     saved={this.state.explorePosts[1].saved}
+                    applied={this.state.explorePosts[1].applied}
                   />
                 </>
               ) : (
@@ -610,28 +618,37 @@ class AppliedCard extends Component {
         <div className="card">
           <div className="card-body">
             <div className="d-flex flex-row ">
-              <img
-                className=" mt-0 d-flex flex-column  col-2 rounded"
-                id="imgicon"
-                src={this.props.company_logo}
-              />
-              <div className=" fs-5 mt-2 ms-2 col-md-9 col-7 mb-2">
-                {this.props.title}
-              </div>
+              <Link to={`/CompanyProfile`}>
+                {" "}
+                <img
+                  className=" mt-0 d-flex flex-column  col-2 rounded"
+                  id="imgicon"
+                  src={this.props.company_logo}
+                />
+              </Link>
+              <Link
+                to={`/Opportunity`}
+                className=" fs-5 mt-2 ms-2 col-md-9 col-7 mb-2"
+              >
+                <div>{this.props.title}</div>
+              </Link>
               <div id="gold" className=" fs-6 mt-2  col-2 col-md-2">
                 {this.props.salary}
               </div>
             </div>
             <div id="job" className=" d-flex flex-row ms-5 flex-wrap  ">
-              <div className="d-flex ms-3 flex-row">
-                {this.props.company_name}
-              </div>
+              <Link to={`/CompanyProfile`}>
+                {" "}
+                <div className="d-flex ms-3 flex-row">
+                  {this.props.company_name}
+                </div>
+              </Link>
 
               <div
                 id="gold"
                 className=" ms-2 departments d-flex flex-row flex-wrap "
               >
-                {this.props.departments.map(item => {
+                {this.props.departments.map((item) => {
                   return (
                     <Departments
                       id={item.id}
@@ -646,7 +663,7 @@ class AppliedCard extends Component {
             <p className="card-text mt-2 Lines">{this.props.description}</p>
 
             <div className="d-flex flex-row flex-wrap " id="">
-              {this.props.tags.map(item => {
+              {this.props.tags.map((item) => {
                 return (
                   <Interest
                     id={item.id}
@@ -717,7 +734,7 @@ class Interest extends Component {
   }
 }
 
-const ExploreCard = props => {
+const ExploreCard = (props) => {
   console.log(props);
   return (
     <div className="card">
@@ -725,26 +742,37 @@ const ExploreCard = props => {
         <div className="d-flex flex-row flex-wrap">
           <Link to={`/advisorProfile`}>
             <img
-              className=" mt-0 d-flex flex-column col-md-4 col-2 me-3"
-              id="imgicon"
+              className=" me-1 rounded"
+              id="advisorlogo"
+              style={{ height: 55, width: 55 }}
               src={props.advisor.image}
             />
           </Link>
           <Link to={`/advisorProfile`}>
-            <p id="" className="card-title fs-5 mt-2">
+            <p id="" className="card-title fs-6 mt-2 ms-2">
               {props.advisor.name}
             </p>
           </Link>
         </div>
         <hr />
         <div className="d-flex flex-row">
-          <img
-            className=" mt-0 d-flex flex-column col-md-1 col-2 me-1"
-            id="imgicon"
-            src={props.company_logo}
-          />
-          <div className=" fs-5 mt-2 ms-2 col-md-10 col-8">{props.title}</div>
-          <div id="goldtab" className=" fs-6 mt-2  col-2 col-md-1">
+          <Link to={`/CompanyProfile`}>
+            <img
+              className=" mt-0 d-flex flex-row  col-md-1 col-2 me-1 rounded"
+              id="imgicon"
+              src={props.company_logo}
+            />
+          </Link>
+          <Link
+            to={`/Opportunity`}
+            className="card-title ms-2 mt-2 col-md-8 col-7 col-sm-6 col-xs-7 d-flex align-items-center"
+          >
+            <h5 style={{ marginRight: 24 }}>{props.title}</h5>
+          </Link>
+          <div
+            id="goldtab"
+            className=" d-flex flex-row-reverse align-items-center col-md-2 col-2"
+          >
             {props.salary}
           </div>
         </div>
@@ -754,7 +782,7 @@ const ExploreCard = props => {
             Finance
           </div>
         </div>
-        <p className="card-text mt-2">{props.description}</p>
+        <p className="card-text mt-2 Lines">{props.description}</p>
         <div className="d-flex flex-row flex-wrap ">
           <div
             className="d-flex flex-column  col-4 col-md-1 me-4 "
@@ -772,26 +800,56 @@ const ExploreCard = props => {
               Banking
             </a>
           </div>
-          <div
-            id="drop"
-            className="d-flex flex-column col-md-3  
-               justify-space-between"
-          >
+          <div id="drop" className="d-flex  flex-wrap col-6 col-md-2">
             <p>Deadline {"        "}11 Dec 2021</p>
           </div>
-          <div className=" mb-4 d-flex flex-row col-12 col-md-2 justify-content-start me-1">
+          <div className="d-flex  flex-wrap promotedPost me-auto col-5 col-md-3">
             <BsArrowUpRight className="me-2" color="#cd8930" fill="#cd8930" />
             <p id="gold">Promoted</p>
           </div>
           <div className="  d-flex flex-row col-12 col-md-4 justify-content-end btnmovement">
             {/* <div className="col-md-4"></div> */}
-            <BsBookmark
-              id="BsBookmark"
-              color="#1e4274"
-              className="fs-2 align-self-center mb-5  col-md-2 col-4"
-              path="0px"
-            />
-            <button className="applyBtn px-1 py-0 col-md-3 col-8">Apply</button>
+            {props.saved == true ? (
+              <BsFillBookmarkFill
+                id="BsBookmark"
+                fill="#1e4274"
+                className="fs-2 align-self-center col-md-2 col-4"
+                style={{ marginTop: -14 }}
+                path="0px"
+              />
+            ) : props.saved == false ? (
+              <BsBookmark
+                id="BsBookmark"
+                fill="#1e4274"
+                className="fs-2 align-self-center col-md-2 col-4"
+                style={{ marginTop: -10 }}
+                path="0px"
+                onClick={() => {
+                  this.setState({
+                    saved: props.saved,
+                  });
+                }}
+              />
+            ) : (
+              ""
+            )}
+            {props.applied == true ? (
+              <Link
+                to={`/Opportunity`}
+                className="text-center appliedBtn px-1 py-0 col-md-5 col-8 col-sm-5"
+              >
+                Applied
+              </Link>
+            ) : props.applied == false ? (
+              <Link
+                to={`/Opportunity`}
+                className="text-center applyBtn px-1 py-0 col-md-5 col-8 col-sm-5"
+              >
+                Apply
+              </Link>
+            ) : (
+              ""
+            )}
           </div>
         </div>
       </div>

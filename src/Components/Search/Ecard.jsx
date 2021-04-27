@@ -1,11 +1,12 @@
 import React, { Component } from "react";
 
-import { BsArrowUpRight, BsBookmark } from "react-icons/bs";
+import { BsArrowUpRight, BsBookmark, BsFillBookmarkFill } from "react-icons/bs";
 import { RiAdvertisementLine } from "react-icons/ri";
 
 import "react-step-progress-bar/styles.css";
 import "../../layout/Explore.css";
 import "../../layout/Home.css";
+import { Link } from "react-router-dom";
 
 export class Ecard extends Component {
   constructor() {
@@ -28,16 +29,20 @@ export class Ecard extends Component {
                   <div className="flex-container">
                     <div className="">
                       <div className="d-flex col-md-6 col-6 col-sm-7">
-                        <img
-                          className=" me-1 rounded"
-                          id="advisorlogo"
-                          style={{ height: 55, width: 55 }}
-                          src={x !== "null" ? x.image : ""}
-                        />
+                        <Link to={`/advisorProfile`}>
+                          <img
+                            className=" me-1 rounded"
+                            id="advisorlogo"
+                            style={{ height: 55, width: 55 }}
+                            src={x !== "null" ? x.image : ""}
+                          />
+                        </Link>
 
-                        <p id="" className="card-title fs-6 mt-2 ms-2">
-                          {x.name}{" "}
-                        </p>
+                        <Link to={`/advisorProfile`}>
+                          <p id="" className="card-title fs-6 mt-2 ms-2">
+                            {x.name}{" "}
+                          </p>
+                        </Link>
                       </div>
 
                       {/* <div className="d-flex flex-row-reverse ms-auto  align-items-center col-md-6 col-2">
@@ -52,20 +57,24 @@ export class Ecard extends Component {
                 );
               })}
               <div className="d-flex flex-row n">
-                <img
-                  className=" mt-0 d-flex flex-row  col-md-1 col-2 me-1 rounded"
-                  id="imgicon"
-                  src={this.props.company_logo}
-                />
-
-                <h5
+                <Link to={`/CompanyProfile`}>
+                  {" "}
+                  <img
+                    className=" mt-0 d-flex flex-row  col-md-1 col-2 me-1 rounded"
+                    id="imgicon"
+                    src={this.props.company_logo}
+                  />
+                </Link>
+                <Link
+                  to={`/Opportunity`}
                   className="card-title ms-2 mt-2 col-md-8 col-7 col-sm-6 col-xs-7 d-flex align-items-center"
-                  style={{ marginRight: 24 }}
                 >
-                  {this.props.post_type === "adsPost"
-                    ? this.props.company_name
-                    : this.props.title}
-                </h5>
+                  <h5 style={{ marginRight: 24 }}>
+                    {this.props.post_type === "adsPost"
+                      ? this.props.company_name
+                      : this.props.title}
+                  </h5>
+                </Link>
                 <div
                   id="goldtab"
                   className=" d-flex flex-row-reverse align-items-center col-md-2 col-2"
@@ -75,11 +84,13 @@ export class Ecard extends Component {
               </div>
               <div className="row">
                 <div id="" className="d-flex flex-row ms-3 ">
-                  <div className="ms-5" style={{ marginLeft: 20 }}>
-                    {this.props.post_type !== "adsPost"
-                      ? this.props.company_name
-                      : this.props.title}
-                  </div>
+                  <Link to={`/CompanyProfile`}>
+                    <div className="ms-5" style={{ marginLeft: 20 }}>
+                      {this.props.post_type !== "adsPost"
+                        ? this.props.company_name
+                        : this.props.title}
+                    </div>
+                  </Link>
                 </div>
                 <div
                   id="gold"
@@ -167,15 +178,47 @@ export class Ecard extends Component {
                   "
                     >
                       {/* <div className="col-md-4"></div> */}
-                      <BsBookmark
-                        id="BsBookmark"
-                        color="#1e4274"
-                        className=" col-md-2 col-3"
-                        size={30}
-                      />
-                      <button className="applyBtn px-4 py-0 col-md-auto col-12">
-                        Apply
-                      </button>
+                      {this.props.saved == true ? (
+                        <BsFillBookmarkFill
+                          id="BsBookmark"
+                          fill="#1e4274"
+                          className="fs-2 align-self-center col-md-2 col-4"
+                          // style={{ marginTop: -10 }}
+                          path="0px"
+                        />
+                      ) : this.props.saved == false ? (
+                        <BsBookmark
+                          id="BsBookmark"
+                          fill="#1e4274"
+                          className="fs-2 align-self-center col-md-2 col-4"
+                          // style={{ marginTop: -5 }}
+                          path="0px"
+                          onClick={() => {
+                            this.setState({
+                              saved: this.props.saved,
+                            });
+                          }}
+                        />
+                      ) : (
+                        ""
+                      )}
+                      {this.props.applied == true ? (
+                        <Link
+                          to={`/Opportunity`}
+                          className="text-center appliedBtn px-1 py-0 col-md-5 col-8 col-sm-5"
+                        >
+                          Applied
+                        </Link>
+                      ) : this.props.applied == false ? (
+                        <Link
+                          to={`/Opportunity`}
+                          className="text-center applyBtn px-1 py-0 col-md-5 col-8 col-sm-5"
+                        >
+                          Apply
+                        </Link>
+                      ) : (
+                        ""
+                      )}
                     </div>
                   </div>
                 ) : (
