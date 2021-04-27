@@ -27,6 +27,7 @@ class Home extends Component {
       avatar: "",
       data: [],
       alert: true,
+      explorePosts: [],
     };
   }
 
@@ -34,7 +35,7 @@ class Home extends Component {
     await resolve(
       axios
         .get("/W/student/get-profile")
-        .then((res) => {
+        .then(res => {
           if (res.status === 200) {
             // sessionStorage.setItem("avatar", res.data.response.data.image);
             this.setState({
@@ -44,7 +45,7 @@ class Home extends Component {
             });
           }
         })
-        .catch((error) => {
+        .catch(error => {
           this.setState({
             error: {
               usernameErr: error.response.status,
@@ -53,11 +54,11 @@ class Home extends Component {
           if (this.state.error.usernameErr === 401) {
             window.location.reload();
           }
-        })
+        }),
     );
     await axios
-      .get("/A/student/studentApplied")
-      .then((res) => {
+      .get("/W/student/studentApplied")
+      .then(res => {
         this.setState({
           id: res.data.response.data.id,
           data: res.data.response.data,
@@ -66,7 +67,23 @@ class Home extends Component {
         });
         // console.log(res.data.response.data.advisor.name);
       })
-      .catch((err) => {
+      .catch(err => {
+        this.setState({ FormLoading: true });
+        console.log(err);
+      });
+    await axios
+      .get("/W/student/posts")
+      .then(res => {
+        this.setState({
+          // id: res.data.response.data.id,
+          // data: res.data.response.data,
+          // advisor: res.data.response.data.advisor,
+          // FormLoading: false,
+          explorePosts: res.data.response.data,
+        });
+        // console.log(res.data.response.data.advisor.name);
+      })
+      .catch(err => {
         this.setState({ FormLoading: true });
         console.log(err);
       });
@@ -78,6 +95,7 @@ class Home extends Component {
   // }
 
   render() {
+    console.log(this.state.explorePosts);
     if (this.state.user.profile_updated === false) {
       var Alert =
         this.state.alert == true ? (
@@ -403,29 +421,54 @@ class Home extends Component {
                 Your Activities
               </h5>
               <div id="tabcard" className="row">
-                {this.state.data.map((item) => {
-                  return (
+                {this.state.data && this.state.data.length !== 0 ? (
+                  <>
                     <AppliedCard
-                      id={item.id}
-                      key={item.id}
-                      title={item.title}
-                      company_name={item.company_name}
-                      company_logo={item.company_logo}
-                      description={item.description}
-                      application_deadline={item.application_deadline}
-                      salary={item.salary}
-                      advisor={item.advisor}
-                      post_type={item.post_type}
-                      departments={item.departments}
-                      tags={item.tags}
-                      saved={item.saved}
+                      id={this.state.data[0].id}
+                      key={this.state.data[0].id}
+                      title={this.state.data[0].title}
+                      company_name={this.state.data[0].company_name}
+                      company_logo={this.state.data[0].company_logo}
+                      description={this.state.data[0].description}
+                      application_deadline={
+                        this.state.data[0].application_deadline
+                      }
+                      salary={this.state.data[0].salary}
+                      advisor={this.state.data[0].advisor}
+                      post_type={this.state.data[0].post_type}
+                      departments={this.state.data[0].departments}
+                      tags={this.state.data[0].tags}
+                      saved={this.state.data[0].saved}
                     />
-                  );
-                })}
+                    <AppliedCard
+                      id={this.state.data[1].id}
+                      key={this.state.data[1].id}
+                      title={this.state.data[1].title}
+                      company_name={this.state.data[1].company_name}
+                      company_logo={this.state.data[1].company_logo}
+                      description={this.state.data[1].description}
+                      application_deadline={
+                        this.state.data[1].application_deadline
+                      }
+                      salary={this.state.data[1].salary}
+                      advisor={this.state.data[1].advisor}
+                      post_type={this.state.data[1].post_type}
+                      departments={this.state.data[1].departments}
+                      tags={this.state.data[1].tags}
+                      saved={this.state.data[1].saved}
+                    />
+                  </>
+                ) : (
+                  <p className="text-center">No Activity</p>
+                )}
               </div>
             </div>
             <hr className="breakliner mb-3" />
-            <a href="#" id="gold" className="align-self-center pb-2 ">
+            <a
+              href="/Profile/Activity/Applied"
+              id="gold"
+              className="align-self-center pb-2 "
+            >
               See all activities
             </a>
           </div>
@@ -436,184 +479,66 @@ class Home extends Component {
 
           <div className="row mb-4">
             <div className="col-md-12">
-              <div className="card">
-                <div className="card-body">
-                  <div className="d-flex flex-row flex-wrap">
-                    <Link to={`/advisorProfile`}>
-                      <img
-                        className=" mt-0 d-flex flex-column col-md-4 col-2 me-3"
-                        id="imgicon"
-                        src={img2}
-                      />
-                    </Link>
-                    <Link to={`/advisorProfile`}>
-                      <p id="" className="card-title fs-5 mt-2">
-                        Dr. Rehab ElBadrawy
-                      </p>
-                    </Link>
-                  </div>
-                  <hr />
-                  <div className="d-flex flex-row">
-                    <img
-                      className=" mt-0 d-flex flex-column col-md-1 col-2 me-1"
-                      id="imgicon"
-                      src={img2}
-                    />
-                    <div className=" fs-5 mt-2 ms-2 col-md-10 col-8">
-                      UI/UX Designer
-                    </div>
-                    <div id="goldtab" className=" fs-6 mt-2  col-2 col-md-1">
-                      Paid
-                    </div>
-                  </div>
-                  <div id="job" className="d-flex flex-row ms-5 ">
-                    <div className="d-flex ms-3 flex-column">CIB</div>
-                    <div id="gold" className="d-flex ms-2 flex-column">
-                      Finance
-                    </div>
-                  </div>
-                  <p className="card-text mt-2">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    Ipsam repudiandae aut possimus. Repellendus at nostrum iste
-                    doloremque. Ea omnis ipsam, eum nam tempore culpa illum
-                    consequuntur quis nobis adipisci et?
-                  </p>
-                  <div className="d-flex flex-row flex-wrap ">
-                    <div
-                      className="d-flex flex-column  col-4 col-md-1 me-4 "
-                      id="firsttagipad"
-                    >
-                      <a href="#" className="tagsipad" id="tags">
-                        Finance
-                      </a>
-                    </div>
-                    <div
-                      className="d-flex flex-column col-4  col-md-1 me-4 mb-1 "
-                      id="firsttagipad"
-                    >
-                      <a href="#" className="tagsipad  " id="tags">
-                        Banking
-                      </a>
-                    </div>
-                    <div
-                      id="drop"
-                      className="d-flex flex-column col-md-3  
-                             justify-space-between"
-                    >
-                      <p>Deadline {"        "}11 Dec 2021</p>
-                    </div>
-                    <div className=" mb-4 d-flex flex-row col-12 col-md-2 justify-content-start me-1">
-                      <BsArrowUpRight
-                        className="me-2"
-                        color="#cd8930"
-                        fill="#cd8930"
-                      />
-                      <p id="gold">Promoted</p>
-                    </div>
-                    <div className="  d-flex flex-row col-12 col-md-4 justify-content-end btnmovement">
-                      {/* <div className="col-md-4"></div> */}
-                      <BsBookmark
-                        id="BsBookmark"
-                        color="#1e4274"
-                        className="fs-2 align-self-center mb-5  col-md-2 col-4"
-                        path="0px"
-                      />
-                      <button className="applyBtn px-1 py-0 col-md-3 col-8">
-                        Apply
-                      </button>
-                    </div>
-                  </div>
-                </div>
-              </div>
+              {this.state.explorePosts &&
+              this.state.explorePosts.length !== 0 ? (
+                <>
+                  <ExploreCard
+                    id={this.state.explorePosts[0].id}
+                    key={this.state.explorePosts[0].id}
+                    title={this.state.explorePosts[0].title}
+                    company_name={this.state.explorePosts[0].company_name}
+                    company_logo={this.state.explorePosts[0].company_logo}
+                    description={this.state.explorePosts[0].description}
+                    application_deadline={
+                      this.state.explorePosts[0].application_deadline
+                    }
+                    salary={this.state.explorePosts[0].salary}
+                    advisor={this.state.explorePosts[0].advisor}
+                    post_type={this.state.explorePosts[0].post_type}
+                    departments={this.state.explorePosts[0].departments}
+                    tags={this.state.explorePosts[0].tags}
+                    saved={this.state.explorePosts[0].saved}
+                  />
+                </>
+              ) : (
+                <p className="text-center">No Activity</p>
+              )}
             </div>
           </div>
           {/* BIG CARD */}
 
           <div className="row">
             <div className="col-md-12">
-              <div className="card">
-                <div className="card-body">
-                  <div className="d-flex flex-row">
-                    <img
-                      className=" mt-0 d-flex flex-column col-md-1 col-2 me-1"
-                      id="imgicon"
-                      src={img2}
-                    />
-                    <div className=" fs-5 mt-2 ms-2 col-md-10 col-8">
-                      UI/UX Designer
-                    </div>
-                    <div id="goldtab" className=" fs-6 mt-2 col-2 col-md-1">
-                      Paid
-                    </div>
-                  </div>
-                  <div id="job" className="d-flex flex-row ms-5 ">
-                    <div className="d-flex ms-3 flex-column">CIB</div>
-                    <div id="gold" className="  d-flex ms-2 flex-column">
-                      Finance
-                    </div>
-                  </div>
-                  <p className="card-text mt-2">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    Ipsam repudiandae aut possimus. Repellendus at nostrum iste
-                    doloremque. Ea omnis ipsam, eum nam tempore culpa illum
-                    consequuntur quis nobis adipisci et?
-                  </p>
-
-                  {
-                    <div className="d-flex flex-row flex-wrap ">
-                      <div
-                        className="d-flex flex-column  col-4 col-md-1 me-4 "
-                        id="firsttagipad"
-                      >
-                        <a href="#" className="tagsipad" id="tags">
-                          Finance
-                        </a>
-                      </div>
-                      <div
-                        className="d-flex flex-column col-4  col-md-1 me-4 mb-1 "
-                        id="firsttagipad"
-                      >
-                        <a href="#" className="tagsipad  " id="tags">
-                          Banking
-                        </a>
-                      </div>
-                      <div
-                        id="drop"
-                        className="d-flex flex-column col-md-3  
-                             justify-space-between"
-                      >
-                        <p>Deadline {"        "}11 Dec 2021</p>
-                      </div>
-                      <div className=" mb-4 d-flex flex-row col-12 col-md-2 justify-content-start me-1">
-                        <BsArrowUpRight
-                          className="me-2"
-                          color="#cd8930"
-                          fill="#cd8930"
-                        />
-                        <p id="gold">Promoted</p>
-                      </div>
-                      <div className="  d-flex flex-row col-12 col-md-4 justify-content-end btnmovement">
-                        {/* <div className="col-md-4"></div> */}
-                        <BsBookmark
-                          id="BsBookmark"
-                          color="#1e4274"
-                          className="fs-2 align-self-center mb-5  col-md-2 col-4"
-                          path="0px"
-                        />
-                        <button className="applyBtn px-1 py-0 col-md-3 col-8">
-                          Apply
-                        </button>
-                      </div>
-                    </div>
-                  }
-                </div>
-              </div>
+              {this.state.explorePosts &&
+              this.state.explorePosts.length !== 0 ? (
+                <>
+                  <ExploreCard
+                    id={this.state.explorePosts[1].id}
+                    key={this.state.explorePosts[1].id}
+                    title={this.state.explorePosts[1].title}
+                    company_name={this.state.explorePosts[1].company_name}
+                    company_logo={this.state.explorePosts[1].company_logo}
+                    description={this.state.explorePosts[1].description}
+                    application_deadline={
+                      this.state.explorePosts[1].application_deadline
+                    }
+                    salary={this.state.explorePosts[1].salary}
+                    advisor={this.state.explorePosts[1].advisor}
+                    post_type={this.state.explorePosts[1].post_type}
+                    departments={this.state.explorePosts[1].departments}
+                    tags={this.state.explorePosts[1].tags}
+                    saved={this.state.explorePosts[1].saved}
+                  />
+                </>
+              ) : (
+                <p className="text-center">No Activity</p>
+              )}
             </div>
           </div>
           <div className="flex-row d-flex mt-3">
             <div className="d-flex flex-column col-md-11"></div>
             <a
-              href="#"
+              href="/Explore"
               id="exploreall"
               className="d-flex flex-column col-md-1 fs-5 "
             >
@@ -706,7 +631,7 @@ class AppliedCard extends Component {
                 id="gold"
                 className=" ms-2 departments d-flex flex-row flex-wrap "
               >
-                {this.props.departments.map((item) => {
+                {this.props.departments.map(item => {
                   return (
                     <Departments
                       id={item.id}
@@ -721,7 +646,7 @@ class AppliedCard extends Component {
             <p className="card-text mt-2 Lines">{this.props.description}</p>
 
             <div className="d-flex flex-row flex-wrap " id="">
-              {this.props.tags.map((item) => {
+              {this.props.tags.map(item => {
                 return (
                   <Interest
                     id={item.id}
@@ -791,3 +716,85 @@ class Interest extends Component {
     );
   }
 }
+
+const ExploreCard = props => {
+  console.log(props);
+  return (
+    <div className="card">
+      <div className="card-body">
+        <div className="d-flex flex-row flex-wrap">
+          <Link to={`/advisorProfile`}>
+            <img
+              className=" mt-0 d-flex flex-column col-md-4 col-2 me-3"
+              id="imgicon"
+              src={props.advisor.image}
+            />
+          </Link>
+          <Link to={`/advisorProfile`}>
+            <p id="" className="card-title fs-5 mt-2">
+              {props.advisor.name}
+            </p>
+          </Link>
+        </div>
+        <hr />
+        <div className="d-flex flex-row">
+          <img
+            className=" mt-0 d-flex flex-column col-md-1 col-2 me-1"
+            id="imgicon"
+            src={props.company_logo}
+          />
+          <div className=" fs-5 mt-2 ms-2 col-md-10 col-8">{props.title}</div>
+          <div id="goldtab" className=" fs-6 mt-2  col-2 col-md-1">
+            {props.salary}
+          </div>
+        </div>
+        <div id="job" className="d-flex flex-row ms-5 ">
+          <div className="d-flex ms-3 flex-column">{props.company_name}</div>
+          <div id="gold" className="d-flex ms-2 flex-column">
+            Finance
+          </div>
+        </div>
+        <p className="card-text mt-2">{props.description}</p>
+        <div className="d-flex flex-row flex-wrap ">
+          <div
+            className="d-flex flex-column  col-4 col-md-1 me-4 "
+            id="firsttagipad"
+          >
+            <a href="#" className="tagsipad" id="tags">
+              Finance
+            </a>
+          </div>
+          <div
+            className="d-flex flex-column col-4  col-md-1 me-4 mb-1 "
+            id="firsttagipad"
+          >
+            <a href="#" className="tagsipad  " id="tags">
+              Banking
+            </a>
+          </div>
+          <div
+            id="drop"
+            className="d-flex flex-column col-md-3  
+               justify-space-between"
+          >
+            <p>Deadline {"        "}11 Dec 2021</p>
+          </div>
+          <div className=" mb-4 d-flex flex-row col-12 col-md-2 justify-content-start me-1">
+            <BsArrowUpRight className="me-2" color="#cd8930" fill="#cd8930" />
+            <p id="gold">Promoted</p>
+          </div>
+          <div className="  d-flex flex-row col-12 col-md-4 justify-content-end btnmovement">
+            {/* <div className="col-md-4"></div> */}
+            <BsBookmark
+              id="BsBookmark"
+              color="#1e4274"
+              className="fs-2 align-self-center mb-5  col-md-2 col-4"
+              path="0px"
+            />
+            <button className="applyBtn px-1 py-0 col-md-3 col-8">Apply</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
