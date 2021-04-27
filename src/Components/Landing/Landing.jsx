@@ -164,8 +164,11 @@ class Landing extends React.Component {
                   src={img2}
                   height="200"
                 />
-                <div className="carousel-caption2">
-                  <h5 className="textt "> Career Coaching Path</h5>
+                <div
+                  className="carousel-caption2"
+                  // style={{ marginRight: "-15%", paddingBottom: "10%" }}
+                >
+                  <h5 className="textt ">Career Coaching Path</h5>
                 </div>
               </div>
             </div>
@@ -251,19 +254,18 @@ class Landing extends React.Component {
           </div>
         </div>
         <div className="container">
-          <div className="row  mb-4 carouselRow flex-wrap ">
-            <CarouselLogos className=" col-md-10 col-10  col-sm-12 col-xs-12" />
-            {/* {this.state.loading === false ? (
+          <CarouselLogos />
+          {/* {this.state.loading === false ? (
               <div>
                 <LogoesCarousel />
               </div>
             ) : (
-              <CarouselLogos className=" col-md-10 col-10  " />
+              <CarouselLogos />
             )} */}
-            <div className="col-md-6"></div>
-            <div className="d-flex flex-column  align-items-center  mt-5 col-md-1 col-2 contactBtnW ">
-              <button className="contactBtn py-1 px-4">Contact</button>
-            </div>
+          <div className="mb-4 mt-5 d-flex justify-content-center">
+            <button className="d-flex justify-content-center contactBtn col-md-2 col-4 col-lg-1 col-sm-4 text-center  py-1">
+              Contact
+            </button>
           </div>
         </div>
         <Footer />

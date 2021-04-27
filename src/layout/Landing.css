@@ -74,6 +74,7 @@
   margin-top: 0.3em;
   font-family: SF light;
   color: #1e4274 !important;
+  /* font-size: 16px !important; */
 }
 #checklist {
   margin-left: 0;
@@ -119,19 +120,8 @@ span {
   .carouselRow {
     margin-left: -1rem !important;
   }
-  .contactBtn {
-    margin-left: 8rem !important;
-  }
 }
-/* @media (max-width: 2560) {
-  .carouselRow {
-    margin-left: -23rem !important;
-    padding-left: -23rem !important;
-  }
-  .contactBtn {
-    margin-left: 8rem !important;
-  }
-} */
+
 @media (max-width: 991px) {
   #CoachCont {
     display: flex !important;
@@ -153,4 +143,6 @@ span {
     width: 100% !important;
     margin: 0 !important;
   }
+}
+.contactBtnW {
 }

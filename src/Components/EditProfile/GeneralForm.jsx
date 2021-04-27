@@ -640,10 +640,7 @@ class GeneralForm extends Component {
                 ) : (
                   ""
                 )}
-                {/* <select id="inputGPA" className="form-select editInput ">
-                                               <option selected>Choose your Grade / GPA...</option>
-                                               <option></option>
-                                             </select> */}
+              
               </div>
               <div className='col-lg-5 col-11 col-md-5 col-sm-12 col-xs-12'>
                 <label for='bdaymonth' className='form-label editLabel'>

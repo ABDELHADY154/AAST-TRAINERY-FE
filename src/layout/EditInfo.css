@@ -19,8 +19,6 @@
 .tabBtn {
   color: #1e4274 !important;
 
-  /* padding: 0 !important;
-  margin: 1em !important; */
   margin-bottom: 1em !important;
   border: none !important;
 }
@@ -31,13 +29,11 @@
 .tabBtn:after {
   display: block;
   content: "";
-  /* transform: scaleX(1); */
   transform: scale(1, 1);
   border: none !important;
   transition: transform 300ms ease-in-out;
 }
 .tabBtn:hover:after {
-  /* transform: scaleX(0); */
   transform: scale(0.5, 1);
   border-bottom: 2px solid #1e4274 !important;
 }
@@ -48,7 +44,6 @@
 .tabBtn.active:after {
   display: block;
   content: "";
-  /* transform: scaleX(1); */
   transform: scale(1, 1);
   border: none !important;
   transition: transform 300ms ease-in-out;
@@ -66,11 +61,9 @@
     overflow-x: auto;
     overflow-y: hidden;
     flex-wrap: nowrap;
-    /* overflow: auto; */
     white-space: nowrap;
   }
   .infoTabsUl::-webkit-scrollbar {
-    /* width: 2px !important; */
     height: 2px !important;
   }
   .infoTabs {
@@ -116,7 +109,6 @@
 }
 
 .hrSkills {
-  /* width: 953px; */
   color: #e0e0e0;
   margin-bottom: 0 !important;
 }
@@ -262,57 +254,16 @@ ReactStars:active {
   padding: 0.4em 2.5em;
   border-radius: 6px;
 }
-/* interest footer */
-/* .interestFooter {
-  height: 100px;
-  width: 100%;
-  position: absolute;
-  left: 0;
-  bottom: 0;
-}
-.wrapper {
-  padding-bottom: 100px;
-  min-height: 100%;
-  position: relative;
-}
-@media (min-width: 1198px) and (max-width: 1500px) {
-  .wrapper {
-    padding-bottom: 122px;
-    min-height: 100%;
-    position: relative;
-  }
-  .interestFooter {
-    height: 100px;
-    width: 100%;
-    position: absolute;
-    left: 0;
-    bottom: 0;
-  }
-} */
+
 @media (min-width: 750px) and (max-width: 1200px) {
   .accLable {
     margin-right: 8%;
   }
 }
-/* @media (min-width: 500px) and (max-width: 700px) {
-  .wrapper {
-  padding-bottom: 4rem!important; 
-    min-height: 100%;
-    position:relative;
-  }
+.accountInput {
+  margin-left: -1.7em;
 }
-@media (min-width: 500px) and (max-width: 700px) {
-  .wrapperLang {
-    padding-bottom: 4rem!important; 
-    min-height: 100%;
-    position:relative;
-  }
-} */
-
 /* ...........Mohannad........... */
-/* .global-class-name {
-  margin-top: 100px;
-} */
 
 .fromLoader {
   display: flex;
@@ -334,8 +285,6 @@ ReactStars:active {
   border-bottom: 1px solid #1e4274 !important;
 }
 .signInput:focus + .ico {
-  /* border: none !important;
-  margin-top: 10px; */
   border-bottom: 1px solid #cd8930 !important;
 }
 .checkBoxExpert {
@@ -380,7 +329,6 @@ ReactStars:active {
   stroke-linecap: round;
   stroke-linejoin: round;
   fill: none;
-  /* margin-left: auto !important; */
 }
 
 @media (max-width: 768px) {
@@ -391,4 +339,93 @@ ReactStars:active {
 
 .closeLabel {
   margin-right: -60px !important;
+}
+.savedInternshipIcon {
+  color: blue !important;
+  fill: #1e4274 !important;
+}
+
+@media (min-width: 1202px) {
+  .mrcss {
+    margin-right: 0 !important;
+  }
+}
+@media (min-width: 1202px) {
+  .rowHeight {
+    height: 25px !important;
+  }
+}
+@media (max-width: 420px) {
+  .rowHeight {
+    height: 6em;
+  }
+}
+.cardMt {
+  margin-top: 1em !important;
+}
+@media (max-width: 422px) {
+  .cardMt {
+    margin-top: 2em;
+  }
+}
+
+@media (min-width: 757px) and (max-width: 1021px) {
+  .textWidth {
+    width: 30% !important;
+  }
+}
+.titleTimeMle {
+  margin-top: 0.9em !important;
+}
+@media (min-width: 1202px) {
+  .rowHeight2 {
+    height: 25px !important;
+  }
+}
+@media (max-width: 420px) {
+  .rowHeight2 {
+    height: 8em !important;
+  }
+}
+@media (min-width: 1202px) {
+  .rowHeight3 {
+    height: 25px !important;
+  }
+}
+@media (max-width: 420px) {
+  .rowHeight3 {
+    height: 10em !important;
+  }
+}
+.careerimgh {
+  width: fit-content;
+  height: fit-content;
+}
+.center {
+  margin: auto;
+  width: 20.5em;
+}
+@media (max-width: 1200px) {
+  .center {
+    margin: auto;
+    width: 25em;
+  }
+}
+@media (max-width: 1500px) {
+  .center {
+    margin: auto;
+    width: 26em;
+  }
+}
+.explore {
+  color: #1e4274 !important;
+  font-size: 1.2em !important;
+}
+.explore:hover {
+  color: #cd8930 !important;
+  font-size: 1.2em !important;
+}
+.explore:active {
+  color: #cd8930 !important;
+  font-size: 1.2em !important;
 }

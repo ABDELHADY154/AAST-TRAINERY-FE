@@ -24,7 +24,7 @@
   border-radius: 20px !important;
   color: #1e4274 !important;
   height: 1.6em;
-  width: 5em;
+  /* width: 5em; */
   background-color: #f2f2f2 !important;
 }
 #gold {
@@ -36,6 +36,10 @@
   font-family: sf light;
   margin-left: 6em;
 }
+#graytab {
+  font-family: sf light;
+  margin-left: 3.8em;
+}
 * {
   color: #1e4274;
   font-family: sf reg;
@@ -46,6 +50,10 @@
 }
 #bold {
   font-family: sf bold;
+}
+#Socialmediafooticon:hover {
+  color: #cd8930;
+  fill: #cd8930;
 }
 
 .indexedStep {
@@ -128,7 +136,6 @@
     font-size: 20px;
 
     top: 50%;
-    left: 50%;
 
     text-align: center;
   }
@@ -140,10 +147,17 @@
   #goldtab {
     margin-left: 0em !important;
   }
+  #graytab {
+    margin-left: 0em !important;
+  }
 }
 
 #imgicon {
   width: 3.3em !important;
+  object-fit: contain !important;
+}
+#advisorlogo {
+  object-fit: cover !important;
 }
 #widths {
   width: 20.9375em !important;
@@ -157,6 +171,24 @@
   border-radius: 5px !important;
   height: 30px;
 }
+.appliedBtn {
+  background-color: #1e4274 !important;
+  color: #fff;
+  font-family: SF light;
+  border: 1px solid #fff;
+  border-radius: 5px !important;
+  height: 30px;
+  -webkit-border-radius: 5px !important;
+  -moz-border-radius: 5px !important;
+  -ms-border-radius: 5px !important;
+  -o-border-radius: 5px !important;
+}
+.appliedBtn:hover {
+  background-color: #fff !important;
+  color: #1e4274;
+  border: 1px solid #1e4274;
+}
+
 .applyBtn:hover {
   background-color: #1e4274 !important;
   color: #fff;
@@ -277,6 +309,9 @@
   #goldtab {
     margin-left: 0em !important;
   }
+  #graytab {
+    margin-left: 0em !important;
+  }
   #tabcontainer {
     width: 100% !important ;
   }
@@ -297,11 +332,3 @@
   text-decoration: none !important;
   color: #1e4274 !important;
 }
-/* @media screen and (max-width: 775) {
-  #firsttagipad {
-    margin-right: 55em !important;
-  }
-  #tags {
-    margin-right: 55em !important;
-  }
-} */

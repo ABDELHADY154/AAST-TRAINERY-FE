@@ -1,0 +1,142 @@
+@font-face {
+  font-family: SF reg;
+
+  src: url("../Components/assests/Fonts/SF-Compact-Display-Regular.otf");
+}
+@font-face {
+  font-family: SF bold;
+  src: url("../Components/assests/Fonts/SF-Compact-Display-Bold.otf");
+}
+@font-face {
+  font-family: SF light;
+  src: url("../Components/assests/Fonts/SF-Compact-Display-Light.otf");
+}
+@font-face {
+  font-family: SF med;
+  src: url("../Components/assests/Fonts/SF-Compact-Display-Medium.otf");
+}
+* {
+  color: #1e4274;
+  font-family: sf reg;
+}
+.pagetitlec {
+  text-align: center !important;
+  justify-content: center !important;
+  align-self: center !important;
+  align-content: center !important;
+}
+
+#imagehoverr {
+  display: flex;
+  width: 95%;
+  height: auto;
+}
+
+.overlay {
+  position: absolute;
+  text-align: center !important;
+  justify-content: center !important;
+  align-self: center !important;
+  align-content: center !important;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: rgba(30, 66, 116, 0.5);
+  overflow: hidden;
+
+  height: 0;
+  transition: 0.5s ease;
+  border-radius: 4px;
+}
+#overlayy {
+  width: 95%;
+  font-size: x-large;
+}
+
+.containerr:hover .overlay {
+  height: 100%;
+}
+.socialscoach {
+  /* position: absolute; */
+  margin-top: 50% !important;
+  font-size: 0.8em !important;
+}
+.textttt {
+  color: white;
+  justify-content: center !important;
+  justify-self: center !important;
+  /* font-size: 0.9em !important; */
+  position: absolute;
+  /* margin-top: 20em !important; */
+  -webkit-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+/* #linksss {
+  top: -20em !important;
+} */
+#linksss:link {
+  text-decoration: none !important;
+  color: #ffffff !important;
+}
+#linksss:visited {
+  text-decoration: none !important;
+  color: #ffffff !important;
+}
+#linksss:active {
+  text-decoration: none !important;
+  color: #ffffff !important;
+}
+#linksss:hover {
+  text-decoration: none !important;
+  color: #ffffff !important;
+}
+.careerimgh {
+  width: fit-content;
+  height: fit-content;
+}
+.careerimg {
+  width: 17%;
+  height: 70%;
+  /* width: fit-content;
+  height: fit-content; */
+}
+#reviewbox {
+  border: none;
+  background-color: #f2f2f2 !important;
+  height: 8em;
+  width: 100%;
+  box-shadow: none;
+}
+.commentgoldline {
+  color: #cd8930;
+  width: 15em;
+}
+.boldtext {
+  font-family: sf bold;
+}
+@media screen and (max-width: 1388px) {
+  .careerimg {
+    width: 20%;
+    height: 20%;
+  }
+
+  #reviewbox {
+    border: none;
+    background-color: #f2f2f2 !important;
+    height: 8em;
+    width: 100%;
+    box-shadow: none;
+  }
+
+  .reviewstars {
+    box-shadow: none;
+    border: none;
+  }
+}
+@media (min-width: 767px) and (max-width: 991px) {
+  .bookbtn {
+    margin-left: -10% !important;
+  }
+}

@@ -318,8 +318,8 @@
   transition: 700ms;
 }
 #worktag {
-  align-self: center;
-  justify-self: center;
+  /* align-self: center; */
+  /* justify-self: center; */
   background-color: rgb(230, 227, 227);
   border-radius: 5px;
 }
@@ -364,5 +364,11 @@ body {
 #docicon {
   color: #cd8930 !important;
   fill: #cd8930 !important;
+  text-decoration: none !important;
+}
+#iconssPhone {
+  /* color: #cd8930 !important; */
+  border-color: #cd8930 !important;
+  /* border: #cd8930 1px solid !important; */
   text-decoration: none !important;
 }

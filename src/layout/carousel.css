@@ -18,13 +18,10 @@
 .carousel-caption {
   bottom: 0;
   margin-bottom: 4rem;
-  /* margin-left: calc(-5rem + 10vw) !important; */
-  /* padding-right: calc(8rem + 7vw) !important; */
 }
 .titleCarousel {
   color: #fff !important;
   font-size: calc(1.375rem + 1.5vw) !important;
-  /* margin-bottom: calc(0.5rem + 0.5vw) !important; */
 }
 .textCarousel {
   color: #fff !important;
@@ -49,7 +46,6 @@
   width: 10px !important;
   height: 10px !important;
   border-radius: 100% !important;
-  /* border: 2px solid #cd8930 !important; */
 }
 .carousel-indicators button.active {
   background-color: #cd8930 !important;
@@ -106,25 +102,23 @@
 }
 
 .logo1 {
-  background-image: url("../Components/Landing/Assets/logo1.png") !important;
-  width: 90px !important;
-  height: 50px !important;
-  background-size: cover;
-  background-repeat: no-repeat;
-  padding-left: 0 !important;
   display: flex !important;
-  align-items: flex-start !important;
-  margin-right: 44px;
+  justify-content: center !important;
+  align-items: center !important;
+  height: 150px;
+  width: 150px;
+  object-fit: contain !important;
+}
+.logoCaroImg {
+  height: 150px;
+  width: 150px;
+  object-fit: contain !important;
 }
 .LogoCarousel {
   margin-bottom: 2rem;
   margin-top: 2rem;
+}
 
-  /* width: 90%; */
-}
-.flickity-page-dots {
-  /* bottom: 0px; */
-}
 .flickity-page-dots .dot {
   width: 12px;
   height: 12px;
@@ -140,84 +134,19 @@
     width: 15rem;
   }
 }
-/* @media (max-width: 1440) {
-  .LogoCarousel {
-    margin-top: 40rem !important;
-    margin-right: 20rem !important;
-    padding-right: 20rem !important;
-    background-color: aquamarine !important;
-  }
-} */
-/* .carousel-indicators button {
-  background-color: #fff !important;
-  width: 10px !important;
-  height: 10px !important;
-  border-radius: 100% !important;
-}
-.carousel-indicators button.active {
-  background-color: #cd8930 !important;
-  width: 10px !important;
-  height: 10px !important;
-  border-radius: 100% !important;
-}
-@media (max-width: 600px) {
-  .carousel-indicators button {
-    width: 15px !important;
-    height: 15px !important;
-  }
-}
-@media (max-width: 600px) {
-  .carousel-indicators button.active {
-    width: 15px !important;
-    height: 15px !important;
-  }
-} */
-.swiper-container {
-  /* width: 50%; */
-  /* height: 100%; */
-  /* display:flex; */
-  /* justify-content:flex-start */
-  margin-left: .7em !important;
 
+.swiper-container {
+  margin-left: 0.7em !important;
 }
 
 @media (max-width: 500px) {
-  /* .swiper-container {
-    margin-left: .7em !important;
-  } */
-.swiper-pagination{
-  margin-top: 15em !important;
-}
+  .swiper-pagination {
+    margin-top: 15em !important;
   }
-
-.swiper-slide {
-  /* width: 70px !important; */
-  /* height: 50px !important; */
-  /* text-align: center; */
-  /* font-size: 18px; */
-  /* background: #fff; */
-
-  /* Center slide text vertically */
-  /* display: -webkit-box;
-  display: -ms-flexbox;
-  display: -webkit-flex;
-  display: flex;
-  -webkit-box-pack: flex-start;
-  -ms-flex-pack: flex-start;
-  -webkit-justify-content: flex-start;
-  justify-content: flex-start;
-  -webkit-box-align: flex-start;
-  -ms-flex-align: flex-start;
-  -webkit-align-items: flex-start;
-  align-items: flex-start; */
 }
-.swiper-slide img{
+
+.swiper-slide img {
   width: 90px !important;
   height: 50px !important;
-  /* background-size: cover;
-  background-repeat: no-repeat;
-  padding-left: 0 !important;
-  display: flex !important;
-  align-items: flex-start !important; */
   padding-right: 1em;
 }
