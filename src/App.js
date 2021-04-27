@@ -247,7 +247,11 @@ class App extends React.Component {
                   path="/advisorProfile"
                   component={advisorProfile}
                 />
-                <AuthRoute exact path="/Opportunity" component={Opportunity} />
+                <AuthRoute
+                  exact
+                  path="/Opportunity/:id"
+                  component={Opportunity}
+                />
                 <Route exact path="*" component={ErrorPage} />
               </Switch>
             </div>

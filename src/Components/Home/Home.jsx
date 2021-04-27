@@ -39,7 +39,7 @@ class Home extends Component {
     await resolve(
       axios
         .get("/W/student/get-profile")
-        .then((res) => {
+        .then(res => {
           if (res.status === 200) {
             this.setState({
               user: res.data.response.data,
@@ -48,7 +48,7 @@ class Home extends Component {
             });
           }
         })
-        .catch((error) => {
+        .catch(error => {
           this.setState({
             error: {
               usernameErr: error.response.status,
@@ -57,11 +57,11 @@ class Home extends Component {
           if (this.state.error.usernameErr === 401) {
             window.location.reload();
           }
-        })
+        }),
     );
     await axios
       .get("/W/student/studentApplied")
-      .then((res) => {
+      .then(res => {
         this.setState({
           id: res.data.response.data.id,
           data: res.data.response.data,
@@ -70,19 +70,19 @@ class Home extends Component {
         });
         // console.log(res.data.response.data.advisor.name);
       })
-      .catch((err) => {
+      .catch(err => {
         this.setState({ FormLoading: true });
         console.log(err);
       });
     await axios
       .get("/W/student/posts")
-      .then((res) => {
+      .then(res => {
         this.setState({
           explorePosts: res.data.response.data,
         });
         // console.log(res.data.response.data.advisor.name);
       })
-      .catch((err) => {
+      .catch(err => {
         this.setState({ FormLoading: true });
         console.log(err);
       });
@@ -618,7 +618,7 @@ class AppliedCard extends Component {
                 />
               </Link>
               <Link
-                to={`/Opportunity`}
+                to={`/Opportunity/${this.props.id}`}
                 className=" fs-5 mt-2 ms-2 col-md-9 col-7 mb-2"
               >
                 <div>{this.props.title}</div>
@@ -639,7 +639,7 @@ class AppliedCard extends Component {
                 id="gold"
                 className=" ms-2 departments d-flex flex-row flex-wrap "
               >
-                {this.props.departments.map((item) => {
+                {this.props.departments.map(item => {
                   return (
                     <Departments
                       id={item.id}
@@ -654,7 +654,7 @@ class AppliedCard extends Component {
             <p className="card-text mt-2 Lines">{this.props.description}</p>
 
             <div className="d-flex flex-row flex-wrap " id="">
-              {this.props.tags.map((item) => {
+              {this.props.tags.map(item => {
                 return (
                   <Interest
                     id={item.id}
@@ -716,7 +716,7 @@ class Interest extends Component {
   }
 }
 
-const ExploreCard = (props) => {
+const ExploreCard = props => {
   console.log(props);
   return (
     <div className="card">

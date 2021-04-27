@@ -32,8 +32,8 @@ export default class advisorProfile extends Component {
   async componentDidMount() {
     this.setState({ FormLoading: true });
     await axios
-      .get(`/W/student/post/${3}`)
-      .then((res) => {
+      .get(`/W/student/post/${this.props.match.params.id}`)
+      .then(res => {
         this.setState({
           id: res.data.response.data.id,
           data: res.data.response.data,
@@ -45,7 +45,7 @@ export default class advisorProfile extends Component {
         console.log(res.data.response.data.tags);
         // console.log(res.data.response.data.internshipPosts.description);
       })
-      .catch((err) => {
+      .catch(err => {
         this.setState({ FormLoading: true });
         console.log(err);
       });
@@ -59,7 +59,7 @@ export default class advisorProfile extends Component {
           spinner={<BounceLoader color="#cd8930" />}
           color={"#cd8930"}
           styles={{
-            overlay: (base) => ({
+            overlay: base => ({
               ...base,
               background: "rgb(255, 255, 255)",
               stroke: "rgba(255, 0, 0, 0.5)",
@@ -93,7 +93,7 @@ export default class advisorProfile extends Component {
                   </p>
                 </div>
                 <div className=" departments d-flex flex-row">
-                  {this.state.departments.map((item) => {
+                  {this.state.departments.map(item => {
                     return (
                       <Departments
                         id={item.id}
@@ -107,7 +107,7 @@ export default class advisorProfile extends Component {
               </div>
             </div>
             <div className=" d-flex flex-row flex-wrap col-12 col-md-12">
-              {this.state.tags.map((item) => {
+              {this.state.tags.map(item => {
                 return (
                   <Interest
                     id={item.id}
@@ -169,7 +169,7 @@ export default class advisorProfile extends Component {
               <div className="mt-4">
                 <h5 className="companyTitel">Requirements</h5>
                 <ul className="reuirLi">
-                  {this.state.requirements.map((item) => {
+                  {this.state.requirements.map(item => {
                     return (
                       <Requirements
                         id={item.id}
@@ -352,7 +352,7 @@ export default class advisorProfile extends Component {
                   className="reviewstars"
                   count={5}
                   value="3"
-                  onChange={(value) => {
+                  onChange={value => {
                     this.setState({ value: value });
                   }}
                   size={28}
