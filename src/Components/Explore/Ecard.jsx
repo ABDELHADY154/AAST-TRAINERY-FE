@@ -37,14 +37,15 @@ export class Ecard extends Component {
             {this.props.advisor.map((x) => {
               return x ? (
                 <div className="">
-                  <div className="d-flex flex-row justify-content-between">
-                    <div className="d-flex">
+                  <div className="">
+                    <div className="d-flex col-md-6 col-6 col-sm-7">
                       <img
-                        className=" mt-0 d-flex flex-column col-md-4 col-2 me-3"
-                        id="imgicon"
+                        className=" me-1 rounded"
+                        id="advisorlogo"
+                        style={{ height: 55, width: 55 }}
                         src={x !== "null" ? x.image : ""}
                       />
-                      <p id="" className="card-title fs-5  mt-2">
+                      <p id="" className="card-title fs-6 mt-2 ms-2">
                         {x.name}{" "}
                       </p>
                     </div>
@@ -60,18 +61,25 @@ export class Ecard extends Component {
                 ""
               );
             })}
-            <div className="d-flex flex-row flex-wrap">
+            <div className="d-flex flex-row n">
               <img
                 className=" mt-0 d-flex flex-row  col-md-1 col-2 me-1 rounded"
                 id="imgicon"
                 src={this.props.company_logo}
               />
-              <h5 className="card-title  mt-2 mx-1 col-md-7 col-5 col-sm-8 col-xs-9 d-flex align-items-center">
+
+              <h5
+                className="card-title ms-2 mt-2 col-md-8 col-7 col-sm-6 col-xs-7 d-flex align-items-center"
+                style={{ marginRight: 24 }}
+              >
                 {this.props.post_type === "adsPost"
                   ? this.props.company_name
                   : this.props.title}
               </h5>
-              <div className=" goldenn d-flex flex-row-reverse align-items-center col-md-2 col-2 ms-3">
+              <div
+                id="goldtab"
+                className=" d-flex flex-row-reverse align-items-center col-md-2 col-2"
+              >
                 {this.props.salary ? this.props.salary : ""}
               </div>
             </div>
@@ -124,63 +132,66 @@ export class Ecard extends Component {
               id='imgicon'
               src={this.props.sponsor_image}
             /> */}
-            <div className="d-flex flex-row flex-wrap ">
-              <div className="  align-middle ">
-                <div className="me-4 mb-1 col-11 col-md-12 ">
-                  {this.props.tags
-                    ? this.props.tags.map((x, i) => {
-                        return (
-                          <a
-                            href="#"
-                            className=" broker-tag ms-1 d-inline-block"
-                            id="tagsipad"
-                          >
-                            {x.interest ? x.interest : ""}
-                          </a>
-                        );
-                      })
-                    : ""}
+            <div className="me-4 mb-1 col-12  col-md-12">
+              {this.props.tags
+                ? this.props.tags.map((x, i) => {
+                    return (
+                      <a
+                        href="#"
+                        className=" broker-tag ms-1 d-inline-block"
+                        id="tagsipad"
+                      >
+                        {x.interest ? x.interest : ""}
+                      </a>
+                    );
+                  })
+                : ""}
+            </div>
+            <div
+              className="d-flex flex-row  justify-content-between smallres align-items-end mt-4 "
+              id="bottom"
+            >
+              <div className="d-flex  flex-wrap col-6 col-md-2 ">
+                {this.props.application_deadline
+                  ? "Deadline " + this.props.application_deadline
+                  : ""}
+              </div>
+              {this.props.post_type == "promotedPost" ? (
+                <div className="d-flex  flex-wrap promotedPost me-auto col-5 col-md-3">
+                  <BsArrowUpRight
+                    className="m-0 "
+                    color="#cd8930"
+                    fill="#cd8930"
+                    size={18}
+                  />
+                  <p id="gold" className="m-0">
+                    Promoted
+                  </p>
                 </div>
-                <div className="d-flex flex-row flex-wrap ">
-                  <div className="col-5 col-md-5">
-                    {this.props.application_deadline
-                      ? "Deadline " + this.props.application_deadline
-                      : ""}
-                  </div>
-                  <div className="col-5 col-md-4 col-sm-4">
-                    {this.props.post_type == "promotedPost" ? (
-                      <div className="d-flex flex-row">
-                        <BsArrowUpRight
-                          className=""
-                          color="#cd8930"
-                          fill="#cd8930"
-                          size={17}
-                        />
-                        <p id="gold" className="">
-                          Promoted
-                        </p>
-                      </div>
-                    ) : (
-                      <div className="me-5 ms-5"></div>
-                    )}
-                  </div>
-                  <div className=" col-3  justify-content-end ">
+              ) : (
+                ""
+              )}
+              {this.props.post_type !== "adsPost" ? (
+                <div className="d-flex flex-row-reverse ms-auto">
+                  <div
+                    className=" d-flex flex-row-end col-md-12 col-8 mt-md-0 mt-3 justify-content-end align-self-end align-items-end
+                  "
+                  >
                     {/* <div className="col-md-4"></div> */}
                     <BsBookmark
                       id="BsBookmark"
                       color="#1e4274"
-                      className="fs-2 align-self-center col-md-2 col-4"
-                      path="0px"
+                      className=" col-md-2 col-3"
+                      size={30}
                     />
-                    <button
-                      className="applyBtn px-1 py-0 col-md-6 col-8"
-                      Onclick={(e) => this.toggleSave(e)}
-                    >
+                    <button className="applyBtn px-4 py-0 col-md-auto col-12">
                       Apply
                     </button>
                   </div>
                 </div>
-              </div>
+              ) : (
+                ""
+              )}
             </div>
           </div>
         </div>
