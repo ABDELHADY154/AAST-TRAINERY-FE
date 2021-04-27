@@ -110,6 +110,8 @@ span {
   font-family: SF light;
   border: 1px solid #cd8930;
   border-radius: 5px;
+  /* margin-left: auto !important;
+  margin-right: auto !important; */
 }
 .contactBtn:hover {
   background-color: #cd8930;
@@ -154,4 +156,6 @@ span {
     width: 100% !important;
     margin: 0 !important;
   }
+}
+.contactBtnW {
 }
