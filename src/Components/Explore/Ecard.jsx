@@ -35,40 +35,41 @@ export class Ecard extends Component {
       <div>
         <div className="card my-4">
           <div className="card-body">
-            {this.props.advisor.map((x) => {
-              return x ? (
-                <div className="">
-                  <div className="">
+            <div className="">
+              <div className="">
+                {this.props.post_type == "advisorPost" ? (
+                  <div>
+                    {" "}
                     <div className="d-flex col-md-6 col-6 col-sm-7">
-                      <Link to={`/advisorProfile`}>
+                      <Link to={`/advisorProfile/${this.props.advisor.id}`}>
                         <img
                           className=" me-1 rounded"
                           id="advisorlogo"
                           style={{ height: 55, width: 55 }}
-                          src={x !== "null" ? x.image : ""}
+                          src={this.props.advisor.image}
                         />
                       </Link>
 
-                      <Link to={`/advisorProfile`}>
+                      <Link to={`/advisorProfile/${this.props.advisor.id}`}>
                         <p id="" className="card-title fs-6 mt-2 ms-2">
-                          {x.name}{" "}
+                          {this.props.advisor.name}{" "}
                         </p>
                       </Link>
-                    </div>
+                    </div>{" "}
+                    <hr />
+                  </div>
+                ) : (
+                  ""
+                )}
 
-                    {/* <div className='d-flex flex-row-reverse'>
+                {/* <div className='d-flex flex-row-reverse'>
                       <div class='gray'>2 min ago</div>
                     </div> */}
-                  </div>
+              </div>
+            </div>
 
-                  <hr />
-                </div>
-              ) : (
-                ""
-              );
-            })}
             <div className="d-flex flex-row n">
-              <Link to={`/CompanyProfile`}>
+              <Link to={`/CompanyProfile/${this.props.company_id}`}>
                 {" "}
                 <img
                   className=" mt-0 d-flex flex-row  col-md-1 col-2 me-1 rounded"
@@ -77,7 +78,7 @@ export class Ecard extends Component {
                 />
               </Link>
               <Link
-                to={`/Opportunity`}
+                to={`/Opportunity/${this.props.id}`}
                 className="card-title ms-2 mt-2 col-md-8 col-7 col-sm-6 col-xs-7 d-flex align-items-center"
               >
                 <h5 style={{ marginRight: 24 }}>
@@ -95,7 +96,7 @@ export class Ecard extends Component {
             </div>
             <div className="row">
               <div id="" className="d-flex flex-row ms-3 ">
-                <Link to={`/CompanyProfile`}>
+                <Link to={`/CompanyProfile/${this.props.company_id}`}>
                   <div className="ms-5" style={{ marginLeft: 20 }}>
                     {this.props.post_type !== "adsPost"
                       ? this.props.company_name
@@ -216,14 +217,14 @@ export class Ecard extends Component {
                     )}
                     {this.props.applied == true ? (
                       <Link
-                        to={`/Opportunity`}
+                        to={`/Opportunity/${this.props.id}`}
                         className="text-center appliedBtn px-1 py-0 col-md-5 col-8 col-sm-5"
                       >
                         Applied
                       </Link>
                     ) : this.props.applied == false ? (
                       <Link
-                        to={`/Opportunity`}
+                        to={`/Opportunity/${this.props.id}`}
                         className="text-center applyBtn px-1 py-0 col-md-5 col-8 col-sm-5"
                       >
                         Apply

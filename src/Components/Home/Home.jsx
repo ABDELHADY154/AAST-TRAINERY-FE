@@ -39,7 +39,7 @@ class Home extends Component {
     await resolve(
       axios
         .get("/W/student/get-profile")
-        .then(res => {
+        .then((res) => {
           if (res.status === 200) {
             this.setState({
               user: res.data.response.data,
@@ -48,7 +48,7 @@ class Home extends Component {
             });
           }
         })
-        .catch(error => {
+        .catch((error) => {
           this.setState({
             error: {
               usernameErr: error.response.status,
@@ -57,11 +57,11 @@ class Home extends Component {
           if (this.state.error.usernameErr === 401) {
             window.location.reload();
           }
-        }),
+        })
     );
     await axios
       .get("/W/student/studentApplied")
-      .then(res => {
+      .then((res) => {
         this.setState({
           id: res.data.response.data.id,
           data: res.data.response.data,
@@ -70,19 +70,19 @@ class Home extends Component {
         });
         // console.log(res.data.response.data.advisor.name);
       })
-      .catch(err => {
+      .catch((err) => {
         this.setState({ FormLoading: true });
         console.log(err);
       });
     await axios
       .get("/W/student/posts")
-      .then(res => {
+      .then((res) => {
         this.setState({
           explorePosts: res.data.response.data,
         });
         // console.log(res.data.response.data.advisor.name);
       })
-      .catch(err => {
+      .catch((err) => {
         this.setState({ FormLoading: true });
         console.log(err);
       });
@@ -424,6 +424,7 @@ class Home extends Component {
                   <>
                     <AppliedCard
                       id={this.state.data[0].id}
+                      company_id={this.state.data[0].company_id}
                       key={this.state.data[0].id}
                       title={this.state.data[0].title}
                       company_name={this.state.data[0].company_name}
@@ -441,6 +442,7 @@ class Home extends Component {
                     />
                     <AppliedCard
                       id={this.state.data[1].id}
+                      company_id={this.state.data[1].company_id}
                       key={this.state.data[1].id}
                       title={this.state.data[1].title}
                       company_name={this.state.data[1].company_name}
@@ -483,6 +485,8 @@ class Home extends Component {
                 <>
                   <ExploreCard
                     id={this.state.explorePosts[0].id}
+                    company_id={this.state.explorePosts[0].company_id}
+                    advisor_id={this.state.explorePosts[0].advisor.id}
                     key={this.state.explorePosts[0].id}
                     title={this.state.explorePosts[0].title}
                     company_name={this.state.explorePosts[0].company_name}
@@ -514,6 +518,8 @@ class Home extends Component {
                 <>
                   <ExploreCard
                     id={this.state.explorePosts[1].id}
+                    company_id={this.state.explorePosts[1].company_id}
+                    advisor_id={this.state.explorePosts[1].advisor.id}
                     key={this.state.explorePosts[1].id}
                     title={this.state.explorePosts[1].title}
                     company_name={this.state.explorePosts[1].company_name}
@@ -609,8 +615,7 @@ class AppliedCard extends Component {
         <div className="card">
           <div className="card-body">
             <div className="d-flex flex-row ">
-              <Link to={`/CompanyProfile`}>
-                {" "}
+              <Link to={`/CompanyProfile/${this.props.company_id}`}>
                 <img
                   className=" mt-0 d-flex flex-column  col-2 rounded"
                   id="imgicon"
@@ -628,8 +633,7 @@ class AppliedCard extends Component {
               </div>
             </div>
             <div id="job" className=" d-flex flex-row ms-5 flex-wrap  ">
-              <Link to={`/CompanyProfile`}>
-                {" "}
+              <Link to={`/CompanyProfile/${this.props.company_id}`}>
                 <div className="d-flex ms-3 flex-row">
                   {this.props.company_name}
                 </div>
@@ -639,7 +643,7 @@ class AppliedCard extends Component {
                 id="gold"
                 className=" ms-2 departments d-flex flex-row flex-wrap "
               >
-                {this.props.departments.map(item => {
+                {this.props.departments.map((item) => {
                   return (
                     <Departments
                       id={item.id}
@@ -654,7 +658,7 @@ class AppliedCard extends Component {
             <p className="card-text mt-2 Lines">{this.props.description}</p>
 
             <div className="d-flex flex-row flex-wrap " id="">
-              {this.props.tags.map(item => {
+              {this.props.tags.map((item) => {
                 return (
                   <Interest
                     id={item.id}
@@ -716,13 +720,13 @@ class Interest extends Component {
   }
 }
 
-const ExploreCard = props => {
+const ExploreCard = (props) => {
   console.log(props);
   return (
     <div className="card">
       <div className="card-body">
         <div className="d-flex flex-row flex-wrap">
-          <Link to={`/advisorProfile`}>
+          <Link to={`/advisorProfile/${props.id}`}>
             <img
               className=" me-1 rounded"
               id="advisorlogo"
@@ -730,7 +734,7 @@ const ExploreCard = props => {
               src={props.advisor.image}
             />
           </Link>
-          <Link to={`/advisorProfile`}>
+          <Link to={`/advisorProfile/${props.advisor_id}`}>
             <p id="" className="card-title fs-6 mt-2 ms-2">
               {props.advisor.name}
             </p>
@@ -738,7 +742,7 @@ const ExploreCard = props => {
         </div>
         <hr />
         <div className="d-flex flex-row">
-          <Link to={`/CompanyProfile`}>
+          <Link to={`/CompanyProfile/${props.advisor_id}`}>
             <img
               className=" mt-0 d-flex flex-row  col-md-1 col-2 me-1 rounded"
               id="imgicon"
@@ -746,7 +750,7 @@ const ExploreCard = props => {
             />
           </Link>
           <Link
-            to={`/Opportunity`}
+            to={`/Opportunity/${props.id}`}
             className="card-title ms-2 mt-2 col-md-8 col-7 col-sm-6 col-xs-7 d-flex align-items-center"
           >
             <h5 style={{ marginRight: 24 }}>{props.title}</h5>
@@ -759,7 +763,10 @@ const ExploreCard = props => {
           </div>
         </div>
         <div id="job" className="d-flex flex-row ms-5 ">
-          <div className="d-flex ms-3 flex-column">{props.company_name}</div>
+          <Link to={`/CompanyProfile/${props.company_id}`}>
+            {" "}
+            <div className="d-flex ms-3 flex-column">{props.company_name}</div>
+          </Link>
           <div id="gold" className="d-flex ms-2 flex-column">
             Finance
           </div>

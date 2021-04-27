@@ -34,7 +34,7 @@ export default class advisorProfile extends Component {
   async componentDidMount() {
     this.setState({ FormLoading: true });
     await axios
-      .get(`/W/student/advisor/${1}`)
+      .get(`/W/student/advisor/${this.props.match.params.id}`)
       .then((res) => {
         this.setState({
           id: res.data.response.data.id,
@@ -222,14 +222,14 @@ class CompanyPost extends Component {
                     {this.props.application_deadline}
                   </p>
                 </div>
-                <div className="  d-flex flex-row col-12 col-md-2 justify-content-start me-1">
+                {/* <div className="  d-flex flex-row col-12 col-md-2 justify-content-start me-1">
                   <BsArrowUpRight
                     className="me-2"
                     color="#cd8930"
                     fill="#cd8930"
                   />
                   <p id="gold">Promoted</p>
-                </div>
+                </div> */}
               </div>
             </div>
           </div>

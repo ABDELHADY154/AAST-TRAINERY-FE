@@ -34,7 +34,7 @@ export default class CompanyProfile extends Component {
   async componentDidMount() {
     this.setState({ FormLoading: true });
     await axios
-      .get(`/W/student/company/${3}`)
+      .get(`/W/student/company/${this.props.match.params.id}`)
       .then((res) => {
         this.setState({
           id: res.data.response.data.id,
@@ -154,17 +154,7 @@ export default class CompanyProfile extends Component {
 
                   {this.state.internshipPosts.open
                     ? this.state.internshipPosts.open.map((item) => {
-                        return item.post_type == "adsPost" ? (
-                          <CompanyPostADS
-                            id={item.id}
-                            key={item.id}
-                            company_logo={item.company_logo}
-                            description={item.description}
-                            company_name={item.company_name}
-                            sponsor_image={item.sponsor_image}
-                            saved={item.saved}
-                          />
-                        ) : item.post_type == "companyPost" ? (
+                        return item.post_type == "companyPost" ? (
                           <CompanyPost
                             id={item.id}
                             key={item.id}
@@ -202,17 +192,7 @@ export default class CompanyProfile extends Component {
                   <h4 className="companyTitel">Ended Internship</h4>
                   {this.state.internshipPosts.ended
                     ? this.state.internshipPosts.ended.map((item) => {
-                        return item.post_type == "adsPost" ? (
-                          <CompanyPostADS
-                            id={item.id}
-                            key={item.id}
-                            company_logo={item.company_logo}
-                            description={item.description}
-                            company_name={item.company_name}
-                            saved={item.saved}
-                            sponsor_image={item.sponsor_image}
-                          />
-                        ) : item.post_type == "companyPost" ? (
+                        return item.post_type == "companyPost" ? (
                           <CompanyPost
                             id={item.id}
                             key={item.id}
@@ -310,7 +290,7 @@ class CompanyPostPromoted extends Component {
         <div className="col-md-12">
           <div className="card">
             <div className="card-body">
-              <div className="d-flex flex-row">
+              {/* <div className="d-flex flex-row">
                 <img
                   className=" mt-0 d-flex flex-column col-md-4 col-2 me-1"
                   id="imgicon"
@@ -330,7 +310,7 @@ class CompanyPostPromoted extends Component {
                   2 min ago
                 </div>
               </div>
-              <hr />
+              <hr /> */}
               <div className="d-flex flex-row">
                 <img
                   className=" mt-0 d-flex flex-column col-md-4 col-2 me-1"

@@ -95,6 +95,8 @@ class Accepted extends Component {
                       departments={item.departments}
                       tags={item.tags}
                       saved={item.saved}
+                      company_id={item.company_id}
+                      advisor_id={item.advisor.id}
                     />
                   ) : item.post_type == "companyPost" ? (
                     <CompanyPost
@@ -111,6 +113,7 @@ class Accepted extends Component {
                       departments={item.departments}
                       tags={item.tags}
                       saved={item.saved}
+                      company_id={item.company_id}
                     />
                   ) : item.post_type == "promotedPost" ? (
                     <PromptedPost
@@ -127,6 +130,7 @@ class Accepted extends Component {
                       departments={item.departments}
                       tags={item.tags}
                       saved={item.saved}
+                      company_id={item.company_id}
                     />
                   ) : (
                     ""
@@ -158,7 +162,7 @@ class CompanyPost extends Component {
           <div className="card">
             <div className="card-body">
               <div className="d-flex flex-row">
-                <Link to={`/CompanyProfile`}>
+                <Link to={`/CompanyProfile/${this.props.company_id}`}>
                   <img
                     className="rounded mt-0 d-flex flex-column col-md-4 col-2 me-1"
                     id="imgicon"
@@ -166,7 +170,7 @@ class CompanyPost extends Component {
                   />
                 </Link>
                 <Link
-                  to={`/Opportunity`}
+                  to={`/Opportunity/${this.props.id}`}
                   className="fs-5 mt-2 ms-2 col-md-10 col-8 align-items-center"
                 >
                   <h5 style={{ marginRight: 24 }}>{this.props.title}</h5>
@@ -177,12 +181,13 @@ class CompanyPost extends Component {
               </div>
               <div id="job" className="d-flex flex-row ms-5 ">
                 <div className="column">
-                  <Link to={`/CompanyProfile`}>
+                  <Link to={`/CompanyProfile/${this.props.company_id}`}>
                     {" "}
                     <div className="d-flex ms-3 flex-column">
                       {this.props.company_name}
                     </div>
                   </Link>
+
                   <div className="mt-1 ms-2 departments d-flex flex-row flex-wrap ">
                     {this.props.departments.map((item) => {
                       return (
@@ -272,7 +277,7 @@ class AdvisorPost extends Component {
             <div className="card-body">
               <div className="d-flex flex-row">
                 <div className="d-flex flex-row flex-wrap">
-                  <Link to={`/advisorProfile`}>
+                  <Link to={`/advisorProfile/${this.props.advisor_id}`}>
                     <img
                       className=" me-1 rounded"
                       id="advisorlogo"
@@ -280,7 +285,7 @@ class AdvisorPost extends Component {
                       src={this.props.advisor.image}
                     />
                   </Link>
-                  <Link to={`/advisorProfile`}>
+                  <Link to={`/advisorProfile/${this.props.advisor_id}`}>
                     <p id="" className="card-title fs-6 mt-2 ms-2">
                       {this.props.advisor.name}
                     </p>
@@ -289,7 +294,7 @@ class AdvisorPost extends Component {
               </div>
               <hr />
               <div className="d-flex flex-row">
-                <Link to={`/CompanyProfile`}>
+                <Link to={`/CompanyProfile/${this.props.company_id}`}>
                   <img
                     className="rounded mt-0 d-flex flex-column col-md-4 col-2 me-1"
                     id="imgicon"
@@ -297,7 +302,7 @@ class AdvisorPost extends Component {
                   />
                 </Link>
                 <Link
-                  to={`/Opportunity`}
+                  to={`/Opportunity/${this.props.id}`}
                   className="fs-5 mt-2 ms-2 col-md-10 col-8 align-items-center"
                 >
                   <h5 style={{ marginRight: 24 }}>{this.props.title}</h5>
@@ -308,7 +313,7 @@ class AdvisorPost extends Component {
               </div>
               <div id="job" className="d-flex flex-row ms-5 ">
                 <div className="column">
-                  <Link to={`/CompanyProfile`}>
+                  <Link to={`/CompanyProfile/${this.props.company_id}`}>
                     {" "}
                     <div className="d-flex ms-3 flex-column">
                       {this.props.company_name}
@@ -403,7 +408,7 @@ class PromptedPost extends Component {
           <div className="card">
             <div className="card-body">
               <div className="d-flex flex-row">
-                <Link to={`/CompanyProfile`}>
+                <Link to={`/CompanyProfile/${this.props.company_id}`}>
                   <img
                     className="rounded mt-0 d-flex flex-column col-md-4 col-2 me-1"
                     id="imgicon"
@@ -411,7 +416,7 @@ class PromptedPost extends Component {
                   />
                 </Link>
                 <Link
-                  to={`/Opportunity`}
+                  to={`/Opportunity/${this.props.id}`}
                   className="fs-5 mt-2 ms-2 col-md-10 col-8 align-items-center"
                 >
                   <h5 style={{ marginRight: 24 }}>{this.props.title}</h5>
@@ -422,7 +427,7 @@ class PromptedPost extends Component {
               </div>
               <div id="job" className="d-flex flex-row ms-5 ">
                 <div className="column">
-                  <Link to={`/CompanyProfile`}>
+                  <Link to={`/CompanyProfile/${this.props.company_id}`}>
                     {" "}
                     <div className="d-flex ms-3 flex-column">
                       {this.props.company_name}
