@@ -1,5 +1,4 @@
 import React, { Component, useState } from "react";
-import { Redirect } from "react-router-dom";
 import { axios } from "../../Api/axios";
 import { Link } from "react-router-dom";
 import "../../layout/Profiless.css";
@@ -7,13 +6,8 @@ import img from "../../Components/assests/imgs/rec2.png";
 import img2 from "../../Components/assests/imgs/cib.png";
 import "../../layout/Home.css";
 import Footer2 from "../Common/Footer2";
-import { FiPhone, FiSearch, FiUsers } from "react-icons/fi";
-import { IoLocationOutline } from "react-icons/io5";
-import { AiOutlineGlobal, AiOutlineMail } from "react-icons/ai";
 import { BsChevronRight, BsChevronLeft } from "react-icons/bs";
 import { BsBookmark } from "react-icons/bs";
-import { GoPrimitiveDot } from "react-icons/go";
-import { CarouselReviews } from "./CarouselReviews";
 import ReactStars from "react-rating-stars-component";
 import LoadingOverlay from "react-loading-overlay";
 import BounceLoader from "react-spinners/BounceLoader";
@@ -74,11 +68,13 @@ export default class advisorProfile extends Component {
         >
           <div className="container ">
             <div className="d-flex flex-row mb-3 ">
-              <img
-                // src={img}
-                src={this.state.data.company_logo}
-                className="ms-1 me-3 col-2 rounded-circle companyImg"
-              />
+              <Link to={`/CompanyProfile`}>
+                {" "}
+                <img
+                  src={this.state.data.company_logo}
+                  className="ms-1 me-3 col-2 rounded-circle companyImg"
+                />
+              </Link>
               <div className="col-12 mt-3 ">
                 <div className="d-flex flex-row w-7">
                   <h4 className="opportunity col-md-12 col-12">
@@ -86,9 +82,12 @@ export default class advisorProfile extends Component {
                   </h4>
                 </div>
                 <div className="row">
-                  <p className="col-10 col-md-10 col-sm-10 col-xs-10  company">
-                    {this.state.data.company_name}
-                  </p>
+                  <Link to={`/CompanyProfile`}>
+                    {" "}
+                    <p className="col-10 col-md-10 col-sm-10 col-xs-10  company">
+                      {this.state.data.company_name}
+                    </p>
+                  </Link>
                   <p className="col-2 col-md-2 col-sm-2 col-xs-3 paid">
                     {this.state.data.salary}
                   </p>
@@ -154,8 +153,6 @@ export default class advisorProfile extends Component {
                       <a
                         className="overvireTxt location mb-1 "
                         href={`http://maps.google.com/?q=1200:${this.state.data.location}`}
-                        // href={`${this.state.data.location_url}`}
-                        // href="http://maps.google.com/?q=1200 Pennsylvania Ave SE, Washington, District of Columbia, 20003"
                       >
                         {this.state.data.location}
                       </a>

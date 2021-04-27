@@ -1,8 +1,6 @@
 import React, { Component } from "react";
-import { BrowserRouter as Router, Route, NavLink } from "react-router-dom";
 import { Link } from "react-router-dom";
 import ActivityNavbar from "./Navbar";
-import img2 from "../../Components/assests/imgs/cib.png";
 import { BsArrowUpRight } from "react-icons/bs";
 import Footer2 from "../Common/Footer2";
 import { BsFillBookmarkFill } from "react-icons/bs";
@@ -310,9 +308,7 @@ class AdvisorPost extends Component {
                       {this.props.company_name}
                     </div>
                   </Link>
-                  {/* <div id="gold" className="d-flex ms-2 flex-column">
-                  Finance
-                </div> */}
+
                   <div className="mt-1 ms-2 departments d-flex flex-row flex-wrap ">
                     {this.props.departments.map((item) => {
                       return (
@@ -417,9 +413,7 @@ class PromptedPost extends Component {
                       {this.props.company_name}
                     </div>
                   </Link>
-                  {/* <div id="gold" className="d-flex ms-2 flex-column">
-                  Finance
-                </div> */}
+
                   <div className="mt-1 ms-2 departments d-flex flex-row flex-wrap ">
                     {this.props.departments.map((item) => {
                       return (
@@ -464,7 +458,6 @@ class PromptedPost extends Component {
                     fill="#cd8930"
                   />
                   <p id="gold">Promoted</p>
-                  {/* <div className="  d-flex flex-row col-12 col-md-4 justify-content-end btnmovement"> */}
                   <BsFillBookmarkFill
                     id="BsBookmark"
                     fill="#1e4274"
@@ -483,8 +476,7 @@ class PromptedPost extends Component {
                   ) : (
                     ""
                   )}
-                </div>{" "}
-                {/* </div> */}
+                </div>
               </div>
             </div>
           </div>

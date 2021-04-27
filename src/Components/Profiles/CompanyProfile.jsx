@@ -93,7 +93,6 @@ export default class CompanyProfile extends Component {
                 <div className="row mt-3">
                   <p className="col-lg-2 col-2 col-md-2 col-sm-12 col-xs-12 companyInfoTxt ">
                     <a
-                      // href=`tel:${this.state.data.phone_number}`
                       href={`tel:${this.state.data.phone_number}`}
                       className="websiteLink"
                       target="_blank"
@@ -134,7 +133,6 @@ export default class CompanyProfile extends Component {
                   <p className="col-xl-4 col-lg-4 col-4 col-md-4 col-sm-12 col-xs-12 companyInfoTxt text-break text-wrap">
                     <a
                       href={`mailto:${this.state.data.email}`}
-                      // ?subject = Feedback&body = Message"
                       className="websiteLink"
                       target="_blank"
                     >
@@ -154,13 +152,6 @@ export default class CompanyProfile extends Component {
                     Opened Internship
                   </h4>
 
-                  {/* {this.state.internshipPosts.open !== [] ? (
-                    <p>opened</p>
-                  ) : this.state.internshipPosts.open == [] ? (
-                    <p>not</p>
-                  ) : (
-                    ""
-                  )} */}
                   {this.state.internshipPosts.open
                     ? this.state.internshipPosts.open.map((item) => {
                         return item.post_type == "adsPost" ? (
@@ -295,7 +286,6 @@ class CompanyPostADS extends Component {
                 <img
                   className=" mt-0 adsImg col-md-11 col-11 me-1 w-100"
                   src={this.props.sponsor_image}
-                  // src={img1}
                 />
               </div>
             </div>
@@ -331,9 +321,7 @@ class CompanyPostPromoted extends Component {
                     id=""
                     className="card-title fw-bold"
                     style={{ fontSize: 18 }}
-                  >
-                    {/* {this.props.advisor.name} */}
-                  </p>
+                  ></p>
                 </div>
                 <div
                   id="graytab"
@@ -367,9 +355,7 @@ class CompanyPostPromoted extends Component {
                   <div className="d-flex ms-3 flex-column">
                     {this.props.company_name}
                   </div>
-                  {/* <div id="gold" className="d-flex ms-2 flex-column">
-                  Finance
-                </div> */}
+
                   <div className="mt-1 ms-2 departments d-flex flex-row flex-wrap ">
                     {this.props.departments.map((item) => {
                       return (

@@ -43,7 +43,6 @@ export default class advisorProfile extends Component {
           FormLoading: false,
         });
         console.log(res.data.response.data.internshipPosts);
-        // console.log(res.data.response.data.internshipPosts.description);
       })
       .catch((err) => {
         this.setState({ FormLoading: true });
@@ -69,17 +68,12 @@ export default class advisorProfile extends Component {
           <div className="container ">
             <div className="row ">
               <img
-                // src={img}
                 src={this.state.data.image}
                 className="ms-3 me-2 col-3 rounded-circle companyImg"
               />
               <div className="col-6  mt-3 ">
-                <h4 className="companyName ">
-                  {this.state.data.name}
-                  {/* Dr. Rehab Elbadrawy */}
-                </h4>
+                <h4 className="companyName ">{this.state.data.name}</h4>
                 <p className="">
-                  {/* BIS  */}
                   {this.state.data.title}
                   {"   "}
                   Training advisor
@@ -95,7 +89,6 @@ export default class advisorProfile extends Component {
                   <p className="col-lg-3 col-3 col-md-6 col-sm-12 col-xs-12 companyInfoTxt">
                     <a
                       href={`mailto:${this.state.data.email}`}
-                      // ?subject = Feedback&body = Message"
                       className="websiteLink"
                       target="_blank"
                     >
@@ -185,12 +178,10 @@ class CompanyPost extends Component {
                   src={this.props.company_logo}
                 />
                 <div className=" fs-5 mt-2 ms-2 col-md-10 col-8">
-                  {/* UI/UX Designer */}
                   {this.props.title}
                 </div>
                 <div id="goldtab" className=" fs-6 mt-2 col-2 col-md-1">
                   {this.props.salary}
-                  {/* Paid */}
                 </div>
               </div>
               <div id="job" className="ms-5 ">
@@ -208,14 +199,7 @@ class CompanyPost extends Component {
                   })}
                 </div>
               </div>
-              <p className="card-text mt-2">
-                {this.props.description}
-                {/* Lorem ipsum dolor sit amet consectetur adipisicing
-              elit. Ipsam repudiandae aut possimus. Repellendus at
-              nostrum iste doloremque. Ea omnis ipsam, eum nam
-              tempore culpa illum consequuntur quis nobis adipisci
-              et? */}
-              </p>
+              <p className="card-text mt-2">{this.props.description}</p>
 
               <div className="d-flex flex-row flex-wrap ">
                 {this.props.tags.map((item) => {
@@ -227,14 +211,7 @@ class CompanyPost extends Component {
                     />
                   );
                 })}
-                {/* <div
-                  className="d-flex flex-column col-4 col-md-1 me-4 "
-                  id="firsttagipad"
-                >
-                  <a href="#" className="tagsipad  " id="tags">
-                    Banking
-                  </a>
-                </div> */}
+
                 <div
                   id="drop"
                   className="d-flex flex-column col-md-3  
@@ -243,7 +220,6 @@ class CompanyPost extends Component {
                   <p>
                     Deadline {"        "}
                     {this.props.application_deadline}
-                    {/* 11 Dec 2021 */}
                   </p>
                 </div>
                 <div className="  d-flex flex-row col-12 col-md-2 justify-content-start me-1">

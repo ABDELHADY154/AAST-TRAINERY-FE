@@ -19,8 +19,6 @@
 .tabBtn {
   color: #1e4274 !important;
 
-  /* padding: 0 !important;
-  margin: 1em !important; */
   margin-bottom: 1em !important;
   border: none !important;
 }
@@ -31,13 +29,11 @@
 .tabBtn:after {
   display: block;
   content: "";
-  /* transform: scaleX(1); */
   transform: scale(1, 1);
   border: none !important;
   transition: transform 300ms ease-in-out;
 }
 .tabBtn:hover:after {
-  /* transform: scaleX(0); */
   transform: scale(0.5, 1);
   border-bottom: 2px solid #1e4274 !important;
 }
@@ -48,7 +44,6 @@
 .tabBtn.active:after {
   display: block;
   content: "";
-  /* transform: scaleX(1); */
   transform: scale(1, 1);
   border: none !important;
   transition: transform 300ms ease-in-out;
@@ -66,11 +61,9 @@
     overflow-x: auto;
     overflow-y: hidden;
     flex-wrap: nowrap;
-    /* overflow: auto; */
     white-space: nowrap;
   }
   .infoTabsUl::-webkit-scrollbar {
-    /* width: 2px !important; */
     height: 2px !important;
   }
   .infoTabs {
@@ -116,7 +109,6 @@
 }
 
 .hrSkills {
-  /* width: 953px; */
   color: #e0e0e0;
   margin-bottom: 0 !important;
 }
@@ -272,9 +264,6 @@ ReactStars:active {
   margin-left: -1.7em;
 }
 /* ...........Mohannad........... */
-/* .global-class-name {
-  margin-top: 100px;
-} */
 
 .fromLoader {
   display: flex;
@@ -296,8 +285,6 @@ ReactStars:active {
   border-bottom: 1px solid #1e4274 !important;
 }
 .signInput:focus + .ico {
-  /* border: none !important;
-  margin-top: 10px; */
   border-bottom: 1px solid #cd8930 !important;
 }
 .checkBoxExpert {
@@ -342,7 +329,6 @@ ReactStars:active {
   stroke-linecap: round;
   stroke-linejoin: round;
   fill: none;
-  /* margin-left: auto !important; */
 }
 
 @media (max-width: 768px) {

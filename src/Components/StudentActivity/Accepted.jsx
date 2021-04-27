@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import { BrowserRouter as Router, Route, NavLink } from "react-router-dom";
 import { Link } from "react-router-dom";
 import ActivityNavbar from "./Navbar";
 import none from "../../Components/assests/imgs/none.png";
@@ -315,9 +314,7 @@ class AdvisorPost extends Component {
                       {this.props.company_name}
                     </div>
                   </Link>
-                  {/* <div id="gold" className="d-flex ms-2 flex-column">
-                  Finance
-                </div> */}
+
                   <div className="mt-1 ms-2 departments d-flex flex-row flex-wrap ">
                     {this.props.departments.map((item) => {
                       return (
@@ -431,9 +428,7 @@ class PromptedPost extends Component {
                       {this.props.company_name}
                     </div>
                   </Link>
-                  {/* <div id="gold" className="d-flex ms-2 flex-column">
-                  Finance
-                </div> */}
+
                   <div className="mt-1 ms-2 departments d-flex flex-row flex-wrap ">
                     {this.props.departments.map((item) => {
                       return (

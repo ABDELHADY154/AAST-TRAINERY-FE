@@ -110,8 +110,6 @@ span {
   font-family: SF light;
   border: 1px solid #cd8930;
   border-radius: 5px;
-  /* margin-left: auto !important;
-  margin-right: auto !important; */
 }
 .contactBtn:hover {
   background-color: #cd8930;
@@ -122,19 +120,8 @@ span {
   .carouselRow {
     margin-left: -1rem !important;
   }
-  /* .contactBtn {
-    margin-left: 8rem !important;
-  } */
 }
-/* @media (max-width: 2560) {
-  .carouselRow {
-    margin-left: -23rem !important;
-    padding-left: -23rem !important;
-  }
-  .contactBtn {
-    margin-left: 8rem !important;
-  }
-} */
+
 @media (max-width: 991px) {
   #CoachCont {
     display: flex !important;

@@ -4,7 +4,6 @@ import { axios } from "../../Api/axios";
 import { Loader } from "../../loader";
 import img from "../../Components/assests/imgs/girlavi.png";
 import MaleAvatar from "../../Components/assests/imgs/boyavi.png";
-import img2 from "../../Components/assests/imgs/cib.png";
 import rec1 from "../../Components/assests/imgs/rec1.png";
 import rec2 from "../../Components/assests/imgs/rec2.png";
 import rec3 from "../../Components/assests/imgs/rec3.png";
@@ -19,7 +18,6 @@ import {
 import Footer2 from "../Common/Footer2";
 import "react-step-progress-bar/styles.css";
 import { ProgressBar, Step } from "react-step-progress-bar";
-// import { BsBookmark } from "react-icons/bs";
 import { IoClose } from "react-icons/io5";
 import { Link } from "react-router-dom";
 
@@ -43,7 +41,6 @@ class Home extends Component {
         .get("/W/student/get-profile")
         .then((res) => {
           if (res.status === 200) {
-            // sessionStorage.setItem("avatar", res.data.response.data.image);
             this.setState({
               user: res.data.response.data,
               loading: true,
@@ -81,10 +78,6 @@ class Home extends Component {
       .get("/W/student/posts")
       .then((res) => {
         this.setState({
-          // id: res.data.response.data.id,
-          // data: res.data.response.data,
-          // advisor: res.data.response.data.advisor,
-          // FormLoading: false,
           explorePosts: res.data.response.data,
         });
         // console.log(res.data.response.data.advisor.name);
@@ -570,7 +563,6 @@ class Home extends Component {
                 </Link>
               </div>
             </div>
-            {/* <div className="col-1 d-flex"></div> */}
             <div id="widths" className=" mt-3 containerrr  col-md-3 col-12 ">
               <img id="imagehover" src={rec3} />
               <div class="overlay">
@@ -584,7 +576,6 @@ class Home extends Component {
                 </Link>
               </div>
             </div>
-            {/* <div className="col-1 d-flex"></div> */}
             <div id="widths" className=" mt-3 containerrr  col-md-3 col-12 ">
               <img id="imagehover" src={rec2} />
               <div class="overlay">
@@ -684,15 +675,6 @@ class AppliedCard extends Component {
                   {this.props.application_deadline}
                 </p>
               </div>
-              {/* <div
-                id="promoted"
-                className="  d-flex flex-row col-12 col-md-2  "
-              >
-                <BsArrowUpRight size="22" fill="#cd8930" />
-                <p id="gold" style={{ marginLeft: 2 }}>
-                  Promoted
-                </p>
-              </div> */}
             </div>
           </div>
         </div>

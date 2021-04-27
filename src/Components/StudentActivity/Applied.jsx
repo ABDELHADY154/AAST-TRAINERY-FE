@@ -183,9 +183,7 @@ class CompanyPost extends Component {
                       {this.props.company_name}
                     </div>
                   </Link>
-                  {/* <div id="gold" className="d-flex ms-2 flex-column">
-                  Finance
-                </div> */}
+
                   <div className="mt-1 ms-2 departments d-flex flex-row flex-wrap ">
                     {this.props.departments.map((item) => {
                       return (
@@ -304,9 +302,7 @@ class PromptedPost extends Component {
                       {this.props.company_name}
                     </div>
                   </Link>
-                  {/* <div id="gold" className="d-flex ms-2 flex-column">
-                  Finance
-                </div> */}
+
                   <div className="mt-1 ms-2 departments d-flex flex-row flex-wrap ">
                     {this.props.departments.map((item) => {
                       return (
@@ -351,8 +347,6 @@ class PromptedPost extends Component {
                     fill="#cd8930"
                   />
                   <p id="gold">Promoted</p>
-                  {/* </div> */}
-                  {/* <div className="  d-flex flex-row col-12 col-md-4 justify-content-end btnmovement"> */}
                   {this.props.saved == true ? (
                     <BsFillBookmarkFill
                       id="BsBookmark"
@@ -434,15 +428,7 @@ class AdvisorPost extends Component {
                 >
                   <h5 style={{ marginRight: 24 }}>{this.props.title}</h5>
                 </Link>
-                {/* <div className=" fs-5 mt-2 ms-2 col-md-10 col-8">
-                  <p
-                    id=""
-                    className="card-title fw-bold"
-                    style={{ fontSize: 18 }}
-                  >
-                    {this.props.title}
-                  </p>
-                </div> */}
+
                 <div id="goldtab" className=" fs-6 mt-2  col-2 col-md-1">
                   {this.props.salary}
                 </div>
@@ -455,9 +441,7 @@ class AdvisorPost extends Component {
                       {this.props.company_name}
                     </div>
                   </Link>
-                  {/* <div id="gold" className="d-flex ms-2 flex-column">
-                  Finance
-                </div> */}
+
                   <div className="mt-1 ms-2 departments d-flex flex-row flex-wrap ">
                     {this.props.departments.map((item) => {
                       return (
