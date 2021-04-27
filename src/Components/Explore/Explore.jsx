@@ -15,9 +15,8 @@ import "react-step-progress-bar/styles.css";
 import { ProgressBar, Step } from "react-step-progress-bar";
 import { BsBookmark, BsBookmarkFill } from "react-icons/bs";
 import { IoClose } from "react-icons/io5";
-import { Link } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
 import "../../layout/Explore.css";
-import paginate from "paginate-array";
 
 import { GrSearch } from "react-icons/gr";
 
@@ -38,6 +37,8 @@ class Explore extends Component {
       size: 10,
       page: 1,
       currPage: null,
+      redirect: false,
+      disabled: true,
     };
     this.toggleSave = this.toggleSave.bind(this);
     // this.previousPage = this.previousPage.bind(this);
@@ -47,9 +48,9 @@ class Explore extends Component {
   async componentDidMount() {
     await resolve(
       axios
-        .get(`/W/student/posts?q=${this.state.size}`)
+        .get(`/W/student/posts?page=${this.state.page}`)
 
-        .then((todos) => {
+        .then(todos => {
           if (todos.status === 200) {
             this.setState({
               posts: todos.data.response.data,
@@ -61,20 +62,8 @@ class Explore extends Component {
             console.log(1);
             console.log(this.state.posts);
           }
-
-          const currPage = paginate(
-            todos.data.response.data,
-            this.state.page,
-            this.state.size
-          );
-          this.setState({
-            ...this.state,
-            todos,
-            currPage,
-          });
-          console.log(currPage.data);
         })
-        .catch((error) => {
+        .catch(error => {
           if (
             error.response.data.status === 401 ||
             error.response.data.status === 404
@@ -84,12 +73,75 @@ class Explore extends Component {
             this.setState({ loggedIn: false });
             window.location.reload();
           }
-        })
+        }),
     );
   }
-  toggleSave = (e) => {
+  toggleSave = e => {
     this.setState({ saved: !this.state.saved ? true : false });
     console.log(this.state.saved);
+  };
+
+  previousPage = async e => {
+    if (this.state.page > 1) {
+      const newPage = this.state.page - 1;
+      this.setState({
+        posts: [],
+        page: newPage,
+      });
+      await resolve(
+        axios
+          .get(`/W/student/posts?page=${newPage}`)
+          .then(todos => {
+            if (todos.status === 200) {
+              this.setState({
+                posts: todos.data.response.data,
+                loading: true,
+              });
+            }
+          })
+          .catch(error => {
+            if (
+              error.response.data.status === 401 ||
+              error.response.data.status === 404
+            ) {
+              sessionStorage.clear("token");
+              sessionStorage.clear("status");
+              this.setState({ loggedIn: false });
+              window.location.reload();
+            }
+          }),
+      );
+    }
+  };
+  nextPage = async e => {
+    const newPage = this.state.page + 1;
+    this.setState({
+      posts: [],
+      page: newPage,
+    });
+    await resolve(
+      axios
+        .get(`/W/student/posts?page=${newPage}`)
+        .then(todos => {
+          if (todos.status === 200) {
+            this.setState({
+              posts: todos.data.response.data,
+              loading: true,
+            });
+          }
+        })
+        .catch(error => {
+          if (
+            error.response.data.status === 401 ||
+            error.response.data.status === 404
+          ) {
+            sessionStorage.clear("token");
+            sessionStorage.clear("status");
+            this.setState({ loggedIn: false });
+            window.location.reload();
+          }
+        }),
+    );
   };
   // async handleSearch() {
   //   await resolve(axois.get);
@@ -134,9 +186,21 @@ class Explore extends Component {
   //     currPage: newCurrPage,
   //   });
   // }
+  handleSubmit = () => {
+    this.setState({ redirect: true });
+  };
   render() {
     const { page, size, currPage } = this.state;
-
+    if (this.state.redirect == true) {
+      return (
+        <Redirect
+          to={{
+            pathname: "/Search",
+            params: { val: this.state.Search },
+          }}
+        />
+      );
+    }
     if (this.state.user.profile_updated === false) {
       var Alert =
         this.state.alert == true ? (
@@ -190,43 +254,39 @@ class Explore extends Component {
           <div className="fs-3 mt-5 mb-3 text-center">
             Explore Training Opportunities
           </div>
-          <p className="text-center mt-2 stext">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit.
-          </p>
+          <p className="text-center mt-2 stext">Your Career is Our Business</p>
           {/* BIG CARD WITH ADVISOR */}
 
           <div id="custom-search-input" className="my-4">
-            <form id="fromSearch">
-              <div class="input-group col-md-12">
+            <form onSubmit={this.handleSubmit} id="fromSearch">
+              <div class="input-group col-md-12 ">
                 <input
                   type="text"
                   class="form-control input-lg"
-                  // style={{ height: "5%" }}
-                  placeholder="Write some thing"
-                  onChange={(e) => {
+                  placeholder="Write something"
+                  // onChange={this.handleChange}
+                  onChange={e => {
                     this.setState({ Search: e.target.value });
                   }}
+                  value={this.state.Search ? this.state.Search : ""}
+                  required
                 />
-                <span class="input-group-btn">
-                  <Link
-                    class="btn border-left btn-lg"
-                    type="button"
-                    to={{
-                      pathname: "/Search",
-                      params: { val: this.state.Search },
-                    }}
-                  >
-                    <GrSearch fill="#1E4274" color="#1E4274" />
-                  </Link>
-                </span>
+
+                <div class="input-group-btn">
+                  <span class="input-group-btn">
+                    <button class="btn border-left btn-lg" type="submit">
+                      <GrSearch fill="#1E4274" color="#1E4274" />
+                    </button>
+                  </span>
+                </div>
               </div>
             </form>
           </div>
           <div className="flex-column mb-4">
             <div className="col-md-12">
               <div className="col-md-12">
-                {currPage
-                  ? currPage.data.map((data) => {
+                {this.state.posts
+                  ? this.state.posts.map(data => {
                       return (
                         <Ecard
                           title={data.title}
@@ -278,12 +338,23 @@ class Explore extends Component {
         <div className="text-center stext  my-4">
           <nav aria-label="Page navigation example">
             <ul class="pagination justify-content-center">
-              <li class="page-item disabled">
-                <a class="page-link" href="#" tabindex="-1">
+              <li
+                class={
+                  this.state.disabled == true
+                    ? "page-item disabled"
+                    : "page-item"
+                }
+              >
+                <button
+                  class="page-link"
+                  onClick={this.previousPage}
+                  tabindex="-1"
+                  style={{ color: "#1E4274" }}
+                >
                   Previous
-                </a>
+                </button>
               </li>
-              <li class="page-item">
+              {/* <li class="page-item">
                 <a class="page-link" href="#" style={{ color: "#1E4274" }}>
                   1
                 </a>
@@ -297,11 +368,15 @@ class Explore extends Component {
                 <a class="page-link" href="#" style={{ color: "#1E4274" }}>
                   3
                 </a>
-              </li>
+              </li> */}
               <li class="page-item">
-                <a class="page-link" href="#" style={{ color: "#1E4274" }}>
+                <button
+                  class="page-link"
+                  onClick={this.nextPage}
+                  style={{ color: "#1E4274" }}
+                >
                   Next
-                </a>
+                </button>
               </li>
             </ul>
           </nav>

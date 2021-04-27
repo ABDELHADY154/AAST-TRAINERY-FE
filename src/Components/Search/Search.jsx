@@ -37,7 +37,7 @@ class Search extends Component {
     this.toggleSave = this.toggleSave.bind(this);
     this.onChangeValue = this.onChangeValue.bind(this);
   }
-  createEcardElement = (data) => (
+  createEcardElement = data => (
     <Ecard
       key={data.id}
       title={data.title}
@@ -65,7 +65,7 @@ class Search extends Component {
       this.setState({ Search: this.props.location.params.val });
       await axios
         .get(`/W/student/search/${this.props.location.params.val}`)
-        .then((res) => {
+        .then(res => {
           if (res.status === 200) {
             // this.setState({ posts: res.data.response.data, isloading: true });
             this.wfuction(res.data.response.data);
@@ -78,13 +78,13 @@ class Search extends Component {
     this.setState({ saved: !this.state.saved ? true : false });
     console.log(this.state.saved);
   };
-  handleChange = (e) => {
+  handleChange = e => {
     this.setState({ Search: e.target.value });
   };
-  handleSubmit = async (e) => {
+  handleSubmit = async e => {
     e.preventDefault();
 
-    await axios.get(`/W/student/search/${this.state.Search}`).then((res) => {
+    await axios.get(`/W/student/search/${this.state.Search}`).then(res => {
       if (res.status === 200) {
         this.setState({
           posts: res.data.response.data,
@@ -93,7 +93,7 @@ class Search extends Component {
       }
     });
   };
-  wfuction = (comp) => {
+  wfuction = comp => {
     // comp.map((e) => {
     //   // console.log(e);
     //   this.state.posts = e;
@@ -105,12 +105,12 @@ class Search extends Component {
     });
   };
 
-  onChangeValue = (event) => {
+  onChangeValue = event => {
     if (this.state.posts !== undefined) {
       this.state.posts &&
-        this.state.posts.forEach((req) => {
+        this.state.posts.forEach(req => {
           if (req.departments !== 0) {
-            req.departments.forEach((rec) => {
+            req.departments.forEach(rec => {
               if (rec.dep_name == event) {
                 this.state.searchdep = [];
                 this.state.searchdep.push(req);
@@ -190,7 +190,7 @@ class Search extends Component {
 
                 <div class="input-group-btn">
                   <span class="input-group-btn">
-                    <button class="btn border-left btn-lg" type="button">
+                    <button class="btn border-left btn-lg" type="submit">
                       <GrSearch fill="#1E4274" color="#1E4274" />
                     </button>
                   </span>
@@ -246,7 +246,7 @@ class Search extends Component {
                     id="radio signInput"
                     value="option1"
                     type="radio"
-                    onChange={(e) => this.onChangeValue(e.target.value)}
+                    onChange={e => this.onChangeValue(e.target.value)}
                   />
                   All
                 </label>
@@ -259,7 +259,7 @@ class Search extends Component {
                     id="radio signInput"
                     type="radio"
                     value="Business Information Systems"
-                    onChange={(e) => this.onChangeValue(e.target.value)}
+                    onChange={e => this.onChangeValue(e.target.value)}
                   />
                   BIS/IT
                 </label>
@@ -272,7 +272,7 @@ class Search extends Component {
                     id="radio signInput"
                     value="Accounting"
                     type="radio"
-                    onChange={(e) => this.onChangeValue(e.target.value)}
+                    onChange={e => this.onChangeValue(e.target.value)}
                   />
                   Accounting
                 </label>
@@ -285,7 +285,7 @@ class Search extends Component {
                     id="radio signInput"
                     value="Marketing"
                     type="radio"
-                    onChange={(e) => this.onChangeValue(e.target.value)}
+                    onChange={e => this.onChangeValue(e.target.value)}
                   />
                   Marketing
                 </label>
@@ -298,7 +298,7 @@ class Search extends Component {
                     id="radio signInput"
                     value="Media Management"
                     type="radio"
-                    onChange={(e) => this.onChangeValue(e.target.value)}
+                    onChange={e => this.onChangeValue(e.target.value)}
                   />
                   Media Management
                 </label>
@@ -311,7 +311,7 @@ class Search extends Component {
                     id="radio signInput"
                     value="Finance"
                     type="radio"
-                    onChange={(e) => this.onChangeValue(e.target.value)}
+                    onChange={e => this.onChangeValue(e.target.value)}
                   />
                   Finance
                 </label>
@@ -324,7 +324,7 @@ class Search extends Component {
                     id="radio signInput"
                     value="Humanities"
                     type="radio"
-                    onChange={(e) => this.onChangeValue(e.target.value)}
+                    onChange={e => this.onChangeValue(e.target.value)}
                   />
                   Humanities
                 </label>
@@ -338,7 +338,7 @@ class Search extends Component {
                     id="radio signInput"
                     value="Political Science"
                     type="radio"
-                    onChange={(e) => this.onChangeValue(e.target.value)}
+                    onChange={e => this.onChangeValue(e.target.value)}
                   />
                   Political science
                 </label>
@@ -351,7 +351,7 @@ class Search extends Component {
                     id="radio signInput"
                     value="Language and translation"
                     type="radio"
-                    onChange={(e) => this.onChangeValue(e.target.value)}
+                    onChange={e => this.onChangeValue(e.target.value)}
                   />
                   Language and translation
                 </label>
@@ -365,7 +365,7 @@ class Search extends Component {
                     id="radio signInput"
                     value="Media"
                     type="radio"
-                    onChange={(e) => this.onChangeValue(e.target.value)}
+                    onChange={e => this.onChangeValue(e.target.value)}
                   />
                   Media
                 </label>
