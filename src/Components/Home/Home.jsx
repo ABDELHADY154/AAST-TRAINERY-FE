@@ -21,6 +21,7 @@ import { ProgressBar, Step } from "react-step-progress-bar";
 import { IoClose } from "react-icons/io5";
 import { Link } from "react-router-dom";
 import BigCard from "../Explore/BigCard";
+import SmallCard from "../Explore/SmallCard";
 
 class Home extends Component {
   constructor() {
@@ -61,7 +62,7 @@ class Home extends Component {
         })
     );
     await axios
-      .get("/W/student/studentApplied")
+      .get("/W/activity")
       .then((res) => {
         this.setState({
           id: res.data.response.data.id,
@@ -95,7 +96,7 @@ class Home extends Component {
   // }
 
   render() {
-    console.log(this.state.explorePosts);
+    console.log(this.state.data);
     if (this.state.user.profile_updated === false) {
       var Alert =
         this.state.alert == true ? (
@@ -415,15 +416,47 @@ class Home extends Component {
               )}
             </div>
           </div>
-          <div className="card mt-2 mt-5 w-70 mb-2 ">
-            <div className="card-body">
-              <h5 id="tabtitle" className="card-title fs-3 my-3">
-                Your Activities
-              </h5>
-              <div id="tabcard" className="row">
-                {this.state.data && this.state.data.length !== 0 ? (
+          <div className="card mt-2 mt-5  mb-2 ">
+            <h5 id="tabtitle" className="card-title fs-3 my-3 ms-3">
+              Your Activities
+            </h5>
+            <div
+              className=" d-flex justify-content-between"
+              style={{ paddingLeft: 5, paddingRight: 5 }}
+            >
+              <div id="tabcard" className="d-flex flex-row">
+                {this.state.data.length == 0 ? (
+                  <div className="col-12">
+                    <p className="text-center">No Activity</p>
+                  </div>
+                ) : (
+                  this.state.data.map((data) => {
+                    return (
+                      <SmallCard
+                        title={data.title}
+                        company_logo={data.company_logo}
+                        salary={data.salary}
+                        company_name={data.company_name}
+                        departments={data.departments}
+                        description={data.description}
+                        tags={data.tags}
+                        application_deadline={data.application_deadline}
+                        advisor={data.advisor}
+                        post_type={data.post_type}
+                        sponsor_image={data.sponsor_image}
+                        key={data.id}
+                        saved={data.saved}
+                        applied={data.applied}
+                        id={data.id}
+                        company_id={data.company_id}
+                        accepted={data.accepted}
+                      />
+                    );
+                  })
+                )}
+                {/* {this.state.data && this.state.data.length !== 0 ? (
                   <>
-                    <AppliedCard
+                    <SmallCard
                       id={this.state.data[0].id}
                       company_id={this.state.data[0].company_id}
                       key={this.state.data[0].id}
@@ -440,8 +473,10 @@ class Home extends Component {
                       departments={this.state.data[0].departments}
                       tags={this.state.data[0].tags}
                       saved={this.state.data[0].saved}
+                      applied={this.state.data[0].applied}
+                      accepted={this.state.data[0].accepted}
                     />
-                    <AppliedCard
+                    <SmallCard
                       id={this.state.data[1].id}
                       company_id={this.state.data[1].company_id}
                       key={this.state.data[1].id}
@@ -458,11 +493,13 @@ class Home extends Component {
                       departments={this.state.data[1].departments}
                       tags={this.state.data[1].tags}
                       saved={this.state.data[1].saved}
+                      applied={this.state.data[0].applied}
+                      accepted={this.state.data[0].accepted}
                     />
                   </>
                 ) : (
                   <p className="text-center">No Activity</p>
-                )}
+                )} */}
               </div>
             </div>
             <hr className="breakliner mb-3" />
@@ -488,7 +525,7 @@ class Home extends Component {
                   <BigCard
                     id={this.state.explorePosts[0].id}
                     company_id={this.state.explorePosts[0].company_id}
-                    advisor_id={this.state.explorePosts[0].advisor.id}
+                    advisor={this.state.explorePosts[0].advisor}
                     key={this.state.explorePosts[0].id}
                     title={this.state.explorePosts[0].title}
                     company_name={this.state.explorePosts[0].company_name}
@@ -504,12 +541,13 @@ class Home extends Component {
                     tags={this.state.explorePosts[0].tags}
                     saved={this.state.explorePosts[0].saved}
                     applied={this.state.explorePosts[0].applied}
+                    accepted={this.state.explorePosts[0].accepted}
                   />
 
                   <BigCard
                     id={this.state.explorePosts[1].id}
                     company_id={this.state.explorePosts[1].company_id}
-                    advisor_id={this.state.explorePosts[1].advisor.id}
+                    advisor={this.state.explorePosts[1].advisor}
                     key={this.state.explorePosts[1].id}
                     title={this.state.explorePosts[1].title}
                     company_name={this.state.explorePosts[1].company_name}
@@ -525,6 +563,7 @@ class Home extends Component {
                     tags={this.state.explorePosts[1].tags}
                     saved={this.state.explorePosts[1].saved}
                     applied={this.state.explorePosts[1].applied}
+                    accepted={this.state.explorePosts[0].accepted}
                   />
                 </>
               ) : (

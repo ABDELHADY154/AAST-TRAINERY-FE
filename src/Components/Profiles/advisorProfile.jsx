@@ -153,6 +153,7 @@ export default class advisorProfile extends Component {
                         applied={data.applied}
                         id={data.id}
                         company_id={data.company_id}
+                        accepted={data.accepted}
                       />
                     );
                   })}

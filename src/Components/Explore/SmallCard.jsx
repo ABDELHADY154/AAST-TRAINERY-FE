@@ -32,8 +32,8 @@ export class SmallCard extends Component {
   }
   render() {
     return (
-      <div className="d-flex flex-row flex-wrap ">
-        <div className="card mb-2   col-md-6 col-lg-6 col-12 col-sm-12 ">
+      <div className=" " style={{ paddingLeft: 5, paddingRight: 5 }}>
+        <div className="card mb-2 ">
           <div className="card-body">
             <div className="">
               <div className="">

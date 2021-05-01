@@ -303,6 +303,7 @@ class Explore extends Component {
                           key={data.id}
                           saved={data.saved}
                           applied={data.applied}
+                          accepted={data.accepted}
                           id={data.id}
                           company_id={data.company_id}
                         />

@@ -191,6 +191,7 @@ export default class CompanyProfile extends Component {
                           applied={data.applied}
                           id={data.id}
                           company_id={data.company_id}
+                          accepted={data.accepted}
                         />
                       );
                     })
@@ -226,6 +227,7 @@ export default class CompanyProfile extends Component {
                           applied={data.applied}
                           id={data.id}
                           company_id={data.company_id}
+                          accepted={data.accepted}
                         />
                       );
                     })
