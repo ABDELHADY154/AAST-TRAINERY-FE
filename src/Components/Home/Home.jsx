@@ -469,7 +469,7 @@ class Home extends Component {
             <a
               href="/Profile/Activity/Applied"
               id="gold"
-              className="align-self-center pb-2 "
+              className="d-flex text-center justify-content-center pb-2 "
             >
               See all activities
             </a>

@@ -8,7 +8,7 @@ import "react-step-progress-bar/styles.css";
 import "../../layout/Explore.css";
 import "../../layout/Home.css";
 
-export class BigCard extends Component {
+export class SmallCard extends Component {
   constructor() {
     super();
     this.state = {
@@ -32,14 +32,14 @@ export class BigCard extends Component {
   }
   render() {
     return (
-      <div>
-        <div className="card mb-2">
+      <div className="d-flex flex-row flex-wrap ">
+        <div className="card mb-2   col-md-6 col-lg-6 col-12 col-sm-12 ">
           <div className="card-body">
             <div className="">
               <div className="">
                 {this.props.post_type == "advisorPost" ? (
                   <div>
-                    <div className=" col-md-6 col-6 col-sm-7 d-flex align-items-center">
+                    <div className=" col-md-8 col-8 col-sm-9 d-flex align-items-center">
                       <Link to={`/advisorProfile/${this.props.advisor.id}`}>
                         <img
                           className=" me-1 rounded"
@@ -69,7 +69,7 @@ export class BigCard extends Component {
             <div className="row ">
               <Link
                 to={`/CompanyProfile/${this.props.company_id}`}
-                className="col-md-1 col-sm-2 col-2 col-lg-1 titleRow"
+                className="col-md-2 col-sm-2 col-2 col-lg-2 titleRow"
               >
                 <img
                   className=" me-1 rounded"
@@ -89,7 +89,7 @@ export class BigCard extends Component {
                 <div className="d-flex flex-row d-flex align-items-center">
                   <Link
                     to={`/Opportunity/${this.props.id}`}
-                    className="  col-md-11 col-10 col-sm-10 col-xs-10  d-flex align-items-center"
+                    className=" col-md-9 col-10 col-sm-11 col-lg-9 d-flex align-items-center"
                   >
                     <h6 className="fw-bold mb-0">
                       {this.props.post_type === "adsPost"
@@ -99,7 +99,7 @@ export class BigCard extends Component {
                   </Link>
                   <small
                     id="goldtab"
-                    className="mb-0 d-flex flex-row-reverse col-md-2 col-lg-1 col-2 d-flex align-items-center"
+                    className="mb-0 d-flex flex-row-reverse col-sm-2 col-md-3 col-lg-2 col-2 d-flex align-items-center"
                   >
                     {this.props.salary ? this.props.salary : ""}
                   </small>
@@ -264,4 +264,4 @@ export class BigCard extends Component {
   }
 }
 
-export default BigCard;
+export default SmallCard;
