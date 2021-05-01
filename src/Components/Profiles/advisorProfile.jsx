@@ -14,6 +14,8 @@ import { BsArrowUpRight } from "react-icons/bs";
 import { BsBookmark } from "react-icons/bs";
 import LoadingOverlay from "react-loading-overlay";
 import BounceLoader from "react-spinners/BounceLoader";
+import BigCard from "../Explore/BigCard";
+
 export default class advisorProfile extends Component {
   constructor(props) {
     super(props);
@@ -130,19 +132,25 @@ export default class advisorProfile extends Component {
                 <div>
                   <h4 className="companyTitel">Published Internship</h4>
 
-                  {this.state.internshipPosts.map((item) => {
+                  {this.state.internshipPosts.map((data) => {
                     return (
-                      <CompanyPost
-                        id={item.id}
-                        key={item.id}
-                        title={item.title}
-                        description={item.description}
-                        company_name={item.company_name}
-                        application_deadline={item.application_deadline}
-                        salary={item.salary}
-                        departments={item.departments}
-                        company_logo={item.company_logo}
-                        tags={item.tags}
+                      <BigCard
+                        title={data.title}
+                        company_logo={data.company_logo}
+                        salary={data.salary}
+                        company_name={data.company_name}
+                        departments={data.departments}
+                        description={data.description}
+                        tags={data.tags}
+                        application_deadline={data.application_deadline}
+                        // advisor={data.advisor}
+                        // post_type={data.post_type}
+                        sponsor_image={data.sponsor_image}
+                        key={data.id}
+                        saved={data.saved}
+                        applied={data.applied}
+                        id={data.id}
+                        company_id={data.company_id}
                       />
                     );
                   })}

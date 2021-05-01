@@ -9,7 +9,7 @@ import img3 from "../../Components/assests/imgs/cibExplore.png";
 import "../../layout/Home.css";
 import { BsCheck, BsArrowUpRight } from "react-icons/bs";
 import Footer2 from "../Common/Footer2";
-import Ecard from "./Ecard";
+import BigCard from "./BigCard";
 
 import "react-step-progress-bar/styles.css";
 import { ProgressBar, Step } from "react-step-progress-bar";
@@ -288,7 +288,7 @@ class Explore extends Component {
                 {this.state.posts
                   ? this.state.posts.map((data) => {
                       return (
-                        <Ecard
+                        <BigCard
                           title={data.title}
                           company_logo={data.company_logo}
                           salary={data.salary}
@@ -305,7 +305,6 @@ class Explore extends Component {
                           applied={data.applied}
                           id={data.id}
                           company_id={data.company_id}
-                          // advisor_id={data.advisor.id}
                         />
                       );
                     })

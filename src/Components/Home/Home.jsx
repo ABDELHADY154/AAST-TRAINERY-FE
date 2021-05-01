@@ -20,6 +20,7 @@ import "react-step-progress-bar/styles.css";
 import { ProgressBar, Step } from "react-step-progress-bar";
 import { IoClose } from "react-icons/io5";
 import { Link } from "react-router-dom";
+import BigCard from "../Explore/BigCard";
 
 class Home extends Component {
   constructor() {
@@ -476,14 +477,15 @@ class Home extends Component {
           <div className="fs-3 mt-5 mb-3" id="">
             Explore recommended opportunities
           </div>
-          {/* BIG CARD WITH ADVISOR */}
+          {/* recomended */}
 
-          <div className="row mb-4">
+          <div className="row">
             <div className="col-md-12">
               {this.state.explorePosts &&
-              this.state.explorePosts.length !== 0 ? (
+              this.state.explorePosts.length !== 0 &&
+              this.state.explorePosts.length !== 1 ? (
                 <>
-                  <ExploreCard
+                  <BigCard
                     id={this.state.explorePosts[0].id}
                     company_id={this.state.explorePosts[0].company_id}
                     advisor_id={this.state.explorePosts[0].advisor.id}
@@ -503,20 +505,8 @@ class Home extends Component {
                     saved={this.state.explorePosts[0].saved}
                     applied={this.state.explorePosts[0].applied}
                   />
-                </>
-              ) : (
-                <p className="text-center">No Recommended Posts</p>
-              )}
-            </div>
-          </div>
-          {/* BIG CARD */}
 
-          <div className="row">
-            <div className="col-md-12">
-              {this.state.explorePosts &&
-              this.state.explorePosts.length !== 0 ? (
-                <>
-                  <ExploreCard
+                  <BigCard
                     id={this.state.explorePosts[1].id}
                     company_id={this.state.explorePosts[1].company_id}
                     advisor_id={this.state.explorePosts[1].advisor.id}
@@ -538,10 +528,11 @@ class Home extends Component {
                   />
                 </>
               ) : (
-                <p className="text-center">No Activity</p>
+                <p className="text-center">No Recommended Posts</p>
               )}
             </div>
           </div>
+          {/* cards end */}
           <div className="flex-row d-flex mt-3">
             <div className="d-flex flex-column col-md-11"></div>
             <a

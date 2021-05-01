@@ -15,6 +15,8 @@ import { AiOutlineGlobal, AiOutlineMail, AiOutlinePhone } from "react-icons/ai";
 import { GoLocation } from "react-icons/go";
 import LoadingOverlay from "react-loading-overlay";
 import BounceLoader from "react-spinners/BounceLoader";
+import BigCard from "../Explore/BigCard";
+
 export default class CompanyProfile extends Component {
   constructor(props) {
     super(props);
@@ -22,6 +24,8 @@ export default class CompanyProfile extends Component {
       scrollPixelsY: 0,
       data: {},
       internshipPosts: [],
+      openedPosts: [],
+      endedPosts: [],
       FormLoading: true,
     };
     window.scrollTo(0, 0);
@@ -39,7 +43,8 @@ export default class CompanyProfile extends Component {
         this.setState({
           id: res.data.response.data.id,
           data: res.data.response.data,
-          internshipPosts: res.data.response.data.internshipPosts,
+          openedPosts: res.data.response.data.internshipPosts.open,
+          endedPosts: res.data.response.data.internshipPosts.ended,
           FormLoading: false,
         });
         // console.log(res.data.response.data.internshipPosts.ended);
@@ -106,14 +111,21 @@ export default class CompanyProfile extends Component {
                       {this.state.data.phone_number}
                     </a>
                   </p>
-                  <p className="col-lg-4 col-4 col-md-4 col-sm-12 col-xs-12 companyInfoTxt  align-items-start">
-                    <GoLocation
-                      id="iconss"
-                      className="me-2 "
-                      size="20"
-                      style={{ color: "#cd8930 " }}
-                    />
-                    {this.state.data.address}
+                  <p className="col-lg-3 col-3 col-md-3 col-sm-12 col-xs-12 companyInfoTxt  align-items-start">
+                    <a
+                      // href={this.state.data.address}
+                      href={`http://maps.google.com/?q=1200:${this.state.data.address}`}
+                      className="websiteLink"
+                      target="_blank"
+                    >
+                      <GoLocation
+                        id="iconss"
+                        className="me-2 "
+                        size="20"
+                        style={{ color: "#cd8930 " }}
+                      />
+                      {this.state.data.address}
+                    </a>
                   </p>
                   <p className="col-lg-2 col-2 col-md-2 col-sm-12 col-xs-12 companyInfoTxt align-items-start">
                     <a
@@ -151,80 +163,73 @@ export default class CompanyProfile extends Component {
                   <h4 className="companyTitel" style={{ marginLeft: -2 }}>
                     Opened Internship
                   </h4>
-
-                  {this.state.internshipPosts.open
-                    ? this.state.internshipPosts.open.map((item) => {
-                        return item.post_type == "companyPost" ? (
-                          <CompanyPost
-                            id={item.id}
-                            key={item.id}
-                            company_logo={item.company_logo}
-                            description={item.description}
-                            title={item.title}
-                            company_name={item.company_name}
-                            application_deadline={item.application_deadline}
-                            salary={item.salary}
-                            departments={item.departments}
-                            tags={item.tags}
-                            saved={item.saved}
-                          />
-                        ) : item.post_type == "promotedPost" ? (
-                          <CompanyPostPromoted
-                            id={item.id}
-                            key={item.id}
-                            company_logo={item.company_logo}
-                            description={item.description}
-                            title={item.title}
-                            company_name={item.company_name}
-                            application_deadline={item.application_deadline}
-                            salary={item.salary}
-                            departments={item.departments}
-                            tags={item.tags}
-                            saved={item.saved}
-                          />
-                        ) : (
-                          ""
-                        );
-                      })
-                    : ""}
+                  {this.state.openedPosts.length == 0 ? (
+                    <div className="col-12">
+                      <p
+                        className="row mb-5 mt-2 d-flex justify-content-center explore"
+                        to="/Explore"
+                      >
+                        No Opened Internships
+                      </p>
+                    </div>
+                  ) : (
+                    this.state.openedPosts.map((data) => {
+                      return (
+                        <BigCard
+                          title={data.title}
+                          company_logo={data.company_logo}
+                          salary={data.salary}
+                          company_name={data.company_name}
+                          departments={data.departments}
+                          description={data.description}
+                          tags={data.tags}
+                          application_deadline={data.application_deadline}
+                          // post_type={data.post_type}
+                          sponsor_image={data.sponsor_image}
+                          key={data.id}
+                          saved={data.saved}
+                          applied={data.applied}
+                          id={data.id}
+                          company_id={data.company_id}
+                        />
+                      );
+                    })
+                  )}
                 </div>
                 <div>
-                  <h4 className="companyTitel">Ended Internship</h4>
-                  {this.state.internshipPosts.ended
-                    ? this.state.internshipPosts.ended.map((item) => {
-                        return item.post_type == "companyPost" ? (
-                          <CompanyPost
-                            id={item.id}
-                            key={item.id}
-                            company_logo={item.company_logo}
-                            description={item.description}
-                            title={item.title}
-                            company_name={item.company_name}
-                            application_deadline={item.application_deadline}
-                            salary={item.salary}
-                            departments={item.departments}
-                            tags={item.tags}
-                            saved={item.saved}
-                          />
-                        ) : item.post_type == "promotedPost" ? (
-                          <CompanyPostPromoted
-                            id={item.id}
-                            key={item.id}
-                            company_logo={item.company_logo}
-                            description={item.description}
-                            title={item.title}
-                            company_name={item.company_name}
-                            application_deadline={item.application_deadline}
-                            salary={item.salary}
-                            departments={item.departments}
-                            tags={item.tags}
-                            saved={item.saved}
-                          />
-                        ) : (
-                          ""
-                        );
-                      })
-                    : ""}
+                  <h4 className="companyTitel mt-4">Ended Internships</h4>
+                  {this.state.endedPosts.length == 0 ? (
+                    <div className="col-12">
+                      <p
+                        className="row mb-5 mt-2 d-flex justify-content-center explore"
+                        to="/Explore"
+                      >
+                        No Ended Internships
+                      </p>
+                    </div>
+                  ) : (
+                    this.state.endedPosts.map((data) => {
+                      return (
+                        <BigCard
+                          title={data.title}
+                          company_logo={data.company_logo}
+                          salary={data.salary}
+                          company_name={data.company_name}
+                          departments={data.departments}
+                          description={data.description}
+                          tags={data.tags}
+                          application_deadline={data.application_deadline}
+                          // post_type={data.post_type}
+                          sponsor_image={data.sponsor_image}
+                          key={data.id}
+                          saved={data.saved}
+                          applied={data.applied}
+                          id={data.id}
+                          company_id={data.company_id}
+                        />
+                      );
+                    })
+                  )}
                 </div>
               </div>
             </div>
