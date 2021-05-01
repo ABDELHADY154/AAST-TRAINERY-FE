@@ -153,7 +153,21 @@
 }
 
 #imgicon {
-  width: 3.3em !important;
+  /* width: 3.3em !important; */
+  object-fit: contain !important;
+}
+@media (max-width: 1700px) and (min-width: 1200px) {
+  .titleRow {
+    margin-right: -2.2em;
+  }
+}
+@media (max-width: 760px) and (min-width: 500px) {
+  .titleRow {
+    margin-right: -1.2em;
+  }
+}
+
+#comlogo {
   object-fit: contain !important;
 }
 #advisorlogo {

@@ -14,6 +14,8 @@ import { BsArrowUpRight } from "react-icons/bs";
 import { BsBookmark } from "react-icons/bs";
 import LoadingOverlay from "react-loading-overlay";
 import BounceLoader from "react-spinners/BounceLoader";
+import BigCard from "../Explore/BigCard";
+
 export default class advisorProfile extends Component {
   constructor(props) {
     super(props);
@@ -67,18 +69,20 @@ export default class advisorProfile extends Component {
         >
           <div className="container ">
             <div className="row ">
-              <img
-                src={this.state.data.image}
-                className="ms-3 me-2 col-3 rounded-circle companyImg"
-              />
-              <div className="col-6  mt-3 ">
-                <h4 className="companyName ">{this.state.data.name}</h4>
-                <p className="">
-                  {this.state.data.title}
-                  {"   "}
-                  Training advisor
-                </p>
+              <div className="d-flex flex-row">
+                <img
+                  // src={img1}
+                  src={this.state.data.image}
+                  className="ms-1 me-3 col-2 rounded-circle advisorImg"
+                />
+                <div className="col-8 mt-3 ">
+                  <div className=" w-10">
+                    <h4 className="companyName ">{this.state.data.name}</h4>
+                    <p className=""> {this.state.data.title}</p>
+                  </div>
+                </div>
               </div>
+
               <div className="mt-4">
                 <h5 className="companyTitel">Advisor Profile</h5>
                 <p className="companyDesc">{this.state.data.bio}</p>
@@ -130,19 +134,25 @@ export default class advisorProfile extends Component {
                 <div>
                   <h4 className="companyTitel">Published Internship</h4>
 
-                  {this.state.internshipPosts.map((item) => {
+                  {this.state.internshipPosts.map((data) => {
                     return (
-                      <CompanyPost
-                        id={item.id}
-                        key={item.id}
-                        title={item.title}
-                        description={item.description}
-                        company_name={item.company_name}
-                        application_deadline={item.application_deadline}
-                        salary={item.salary}
-                        departments={item.departments}
-                        company_logo={item.company_logo}
-                        tags={item.tags}
+                      <BigCard
+                        title={data.title}
+                        company_logo={data.company_logo}
+                        salary={data.salary}
+                        company_name={data.company_name}
+                        departments={data.departments}
+                        description={data.description}
+                        tags={data.tags}
+                        application_deadline={data.application_deadline}
+                        // advisor={data.advisor}
+                        // post_type={data.post_type}
+                        sponsor_image={data.sponsor_image}
+                        key={data.id}
+                        saved={data.saved}
+                        applied={data.applied}
+                        id={data.id}
+                        company_id={data.company_id}
                       />
                     );
                   })}

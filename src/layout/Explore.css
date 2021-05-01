@@ -138,6 +138,7 @@
   display: flex;
 }
 #tagsipad {
+  padding: 5px;
   text-align: center;
   justify-items: center;
   border-radius: 20px !important;
@@ -145,7 +146,7 @@
   background-color: #f2f2f2 !important;
   font-size: 12px;
   display: inline-block;
-  font-weight: 700;
+  /* font-weight: 700; */
   line-height: 1;
   color: #fff;
   text-align: center !important;
