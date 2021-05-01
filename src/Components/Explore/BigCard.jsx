@@ -140,11 +140,12 @@ export class BigCard extends Component {
             {this.props.post_type === "adsPost" ? (
               <div className=" mb-0">
                 <img
-                  className="img-fluid mt-0 d-flex flex-column col-md-6 col-2 me-1 w-100"
-                  height="400"
+                  className="adsImg img-fluid mt-0 d-flex flex-column col-md-6 col-2 me-1 w-100"
+                  // height="100"
+                  style={{ height: 270 }}
                   src={this.props.sponsor_image}
                 />
-                <div className="d-flex flex-row flex-nowrap smallres">
+                <div className="mt-1 d-flex flex-row flex-nowrap smallres">
                   <div
                     id="promoted"
                     className="  d-flex flex-row col-12 col-md-2 fs-7 fw-bold"
