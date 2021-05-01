@@ -167,6 +167,9 @@
   }
 }
 
+#comlogo {
+  object-fit: contain !important;
+}
 #advisorlogo {
   object-fit: cover !important;
 }

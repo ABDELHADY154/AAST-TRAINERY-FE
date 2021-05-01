@@ -73,7 +73,7 @@ export class BigCard extends Component {
               >
                 <img
                   className=" me-1 rounded"
-                  id="advisorlogo"
+                  id="comlogo"
                   style={{ height: 48, width: 48 }}
                   src={this.props.company_logo}
                 />
@@ -162,7 +162,7 @@ export class BigCard extends Component {
               id='imgicon'
               src={this.props.sponsor_image}
             /> */}
-            <div className="me-4 mb-1 col-12  col-md-12">
+            <div className=" mt-2 mb-1 col-12  col-md-12">
               {this.props.tags
                 ? this.props.tags.map((x, i) => {
                     return (

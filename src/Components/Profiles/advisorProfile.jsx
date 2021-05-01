@@ -69,18 +69,20 @@ export default class advisorProfile extends Component {
         >
           <div className="container ">
             <div className="row ">
-              <img
-                src={this.state.data.image}
-                className="ms-3 me-2 col-3 rounded-circle companyImg"
-              />
-              <div className="col-6  mt-3 ">
-                <h4 className="companyName ">{this.state.data.name}</h4>
-                <p className="">
-                  {this.state.data.title}
-                  {"   "}
-                  Training advisor
-                </p>
+              <div className="d-flex flex-row">
+                <img
+                  // src={img1}
+                  src={this.state.data.image}
+                  className="ms-1 me-3 col-2 rounded-circle advisorImg"
+                />
+                <div className="col-8 mt-3 ">
+                  <div className=" w-10">
+                    <h4 className="companyName ">{this.state.data.name}</h4>
+                    <p className=""> {this.state.data.title}</p>
+                  </div>
+                </div>
               </div>
+
               <div className="mt-4">
                 <h5 className="companyTitel">Advisor Profile</h5>
                 <p className="companyDesc">{this.state.data.bio}</p>
