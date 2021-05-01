@@ -3,21 +3,15 @@ import { Link } from "react-router-dom";
 import "../../layout/CareerCoaching.css";
 import Footer2 from "../Common/Footer2";
 import img from "../assests/imgs/career1.jpg";
-import img1 from "../assests/imgs/coach1.jpg";
-import img2 from "../assests/imgs/coach2.jpg";
-import img3 from "../assests/imgs/coach3.jpg";
+
 import { ImQuotesLeft } from "react-icons/im";
 import ReactDOM from "react-dom";
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
-import { Carousel } from "react-responsive-carousel";
-// import careerbottom from "../assests/imgs/careerbottom.jpg";
+
 import CoachCaro from "../CareerCoaching/CoachCaro";
-import career1 from "../assests/imgs/career1.png";
-import career2 from "../assests/imgs/career2.png";
-import career3 from "../assests/imgs/career3.png";
-import career4 from "../assests/imgs/career4.png";
+
 import ReactStars from "react-rating-stars-component";
-import { FaFacebookF, FaLinkedinIn, FaYoutube } from "react-icons/fa";
+import { axios } from "../../Api/axios";
 
 import DateTimePicker from "react-datetime-picker";
 
@@ -32,6 +26,21 @@ export default class CareerCoaching extends Component {
   //     this.props.value(e);
   //   };
   // }
+  state = {
+    data: [],
+  };
+  async componentDidMount() {
+    await axios
+      .get("/W/sessions")
+      .then((res) => {
+        this.setState({
+          data: res.data.response.data,
+        });
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }
   constructor(props) {
     super(props);
     this.state = {
@@ -91,204 +100,55 @@ export default class CareerCoaching extends Component {
           <CoachCaro />
         </div>
 
-        <div className="container mt-5">
-          {/* CAREER CARD 1 */}
-          <div className="row">
-            <div className="col-md-12">
-              <div className="card">
-                <div className="card-body">
-                  <div className="d-flex flex-row mt-2">
-                    <img
-                      className=" mt-0 d-md-flex d-none flex-column  col-md-3 me-5 col-2 me-1 careerimg "
-                      src={career1}
-                    />
+        <div className="container ">
+          {!this.state.data
+            ? " "
+            : this.state.data.map((data) => {
+                return (
+                  <div className="row mt-5">
+                    <div className="col-md-12">
+                      <div className="card">
+                        <div className="card-body">
+                          <div className="d-flex flex-row mt-2">
+                            <img
+                              className=" mt-0 d-md-flex d-none flex-column  col-md-3 me-5 col-2 me-1 careerimg "
+                              src={data.image}
+                            />
 
-                    <div className="d-flex flex-column col-md-9">
-                      <p className=" fs-3">CV writing service</p>
-                      <p className="card-text mt-2 cardtextt">
-                        Our aim is to make you 100% satisfied with your CV;
-                        that’s why we offer a first draft that you approve
-                        before you receive the final version of your document.
-                        <br />
-                        Now you can get expert feedback on your CV and profile,
-                        Perfect your CV & profile to better reflect your skills,
-                        and Refine your job search strategy
-                      </p>
-                      {/* <DateTimePicker/> */}
-                      {/* <DateTimePicker onChange={onChange()} value={value} /> */}
+                            <div className="d-flex flex-column col-md-9">
+                              <p className=" fs-3">{data.title}</p>
+                              <p className="card-text mt-2 cardtextt">
+                                {data.desc}
+                              </p>
+                              {/* <DateTimePicker/> */}
+                              {/* <DateTimePicker onChange={onChange()} value={value} /> */}
 
-                      <div className="d-flex  mt-2 flex-row flex-wrap ">
-                        <div className=" mb-1 d-flex mt-1 flex-row col-12 col-md-7 justify-content-start ">
-                          <p id="gold">
-                            Please check your email for all details
-                          </p>
-                        </div>
-                        <div className=" mb-1 d-flex flex-row mt-1 col-4 col-md-3 justify-content-center  ">
-                          <p id="gold">150 L.E</p>
-                        </div>
-                        <div className=" d-flex flex-row col-6 col-md-2 mt-0 justify-content-end">
-                          <Link to="/CareerCoaching/CvWriting">
-                            {" "}
-                            <button className="applyBtn px-4 py-0 bookbtn">
-                              Book
-                            </button>
-                          </Link>
+                              <div className="d-flex  mt-2 flex-row flex-wrap ">
+                                <div className=" mb-1 d-flex mt-1 flex-row col-12 col-md-7 justify-content-start ">
+                                  <p id="gold">
+                                    Please check your email for all details
+                                  </p>
+                                </div>
+                                <div className=" mb-1 d-flex flex-row mt-1 col-4 col-md-3 justify-content-center  ">
+                                  <p id="gold">{data.price} L.E</p>
+                                </div>
+                                <div className=" d-flex flex-row col-6 col-md-2 mt-0 justify-content-end">
+                                  <Link to="`/CareerCoaching/${data.id}`">
+                                    <button className="applyBtn px-4 py-0 bookbtn">
+                                      Book
+                                    </button>
+                                  </Link>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
                         </div>
                       </div>
                     </div>
                   </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div className="row mt-5">
-            <div className="col-md-12">
-              <div className="card">
-                <div className="card-body">
-                  <div className="d-flex flex-row mt-2">
-                    <img
-                      className=" mt-0 d-md-flex d-none flex-column col-md-3 me-5 col-2 me-1 careerimg"
-                      src={career2}
-                    />
+                );
+              })}
 
-                    <div className="d-flex flex-column col-md-9">
-                      <p className=" fs-3">Interview coaching</p>
-                      <p className="card-text mt-2 cardtextt">
-                        Our career coaches will help you overcome your interview
-                        fears and refine your answers, to enhance your chances
-                        of getting the job. you will understand your strengths
-                        and blind spots in interviews through a personality
-                        assessment, Practice and rehearse your answers to your
-                        most challenging interview questions, Get detailed,
-                        personalized feedback on your interview answers, body
-                        language, manner of speaking, etc.
-                      </p>
-                      {/* <DateTimePicker/> */}
-
-                      <div className="d-flex   mt-2 flex-row flex-wrap ">
-                        <div className=" mb-1 d-flex mt-1 flex-row col-12 col-md-7 justify-content-start ">
-                          <p id="gold">
-                            Please check your email for all details
-                          </p>
-                        </div>
-                        <div className=" mb-1 d-flex flex-row mt-1 col-4 col-md-3 justify-content-center  ">
-                          <p id="gold">150 L.E</p>
-                        </div>
-                        <div className=" d-flex flex-row col-6 col-md-2 mt-0 justify-content-end">
-                          <Link to="/CareerCoaching/InterviewCoaching">
-                            {" "}
-                            <button className="applyBtn px-4 py-0 bookbtn">
-                              Book
-                            </button>
-                          </Link>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div className="row mt-5">
-            <div className="col-md-12">
-              <div className="card">
-                <div className="card-body">
-                  <div className="d-flex flex-row mt-2">
-                    <img
-                      className=" mt-0 d-md-flex d-none flex-column col-md-3 me-5 col-2 me-1 careerimg"
-                      src={career3}
-                    />
-
-                    <div className="d-flex flex-column col-md-9">
-                      <p className=" fs-3">Make the right career move</p>
-                      <p className="card-text mt-2 cardtextt">
-                        Do you want to fully prepare yourself for the right
-                        career path? your dedicated career coach will help you
-                        answer the question, “what is the best career for me?”
-                        through identifying your personality, skills, interests,
-                        and career values, Accurately identify how ready you are
-                        for your targeted career and how satisfied you would be
-                        in this career, Put together a tailored and detailed
-                        career plan for your next career move.
-                      </p>
-                      {/* <DateTimePicker/> */}
-
-                      <div className="d-flex  mt-2 flex-row flex-wrap ">
-                        <div className=" mb-1 d-flex mt-1 flex-row col-12 col-md-7 justify-content-start ">
-                          <p id="gold">
-                            Please check your email for all details
-                          </p>
-                        </div>
-                        <div className=" mb-1 d-flex flex-row mt-1 col-4 col-md-3 justify-content-center  ">
-                          <p id="gold">150 L.E</p>
-                        </div>
-                        <div className=" d-flex flex-row col-6 col-md-2 justify-content-end">
-                          <Link to="/CareerCoaching/CareerMove">
-                            {" "}
-                            <button className="applyBtn px-4 py-0 bookbtn ">
-                              Book
-                            </button>
-                          </Link>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div className="row mt-5">
-            <div className="col-md-12">
-              <div className="card">
-                <div className="card-body">
-                  <div className="d-flex flex-row mt-2">
-                    <img
-                      className=" mt-0 d-md-flex d-none flex-column col-md-3 me-5 col-2 me-1 careerimg"
-                      src={career4}
-                    />
-
-                    <div className="d-flex flex-column col-md-9">
-                      <p className=" fs-3">
-                        Career Coaching & Advising Services
-                      </p>
-                      <p className="card-text mt-2 cardtextt">
-                        Get a career package that includes CV & Profile Review
-                        and Interview Coaching plus the career path coaching you
-                        will enhance your CV & profile to better reflect your
-                        skills, Refine your job search strategy, Understand your
-                        strengths and blind spots in interviews through a
-                        personality and body language assessment, Practice and
-                        rehearse your answers to the most challenging interview
-                        questions, and identifying your personality, skills,
-                        interests, and career values, and how ready you are for
-                        your targeted career.
-                      </p>
-                      {/* <DateTimePicker/> */}
-
-                      <div className="d-flex  mt-2 flex-row flex-wrap ">
-                        <div className=" mb-1 d-flex mt-1 flex-row col-12 col-md-7 justify-content-start ">
-                          <p id="gold">
-                            Please check your email for all details
-                          </p>
-                        </div>
-                        <div className=" mb-1 d-flex flex-row mt-1 col-4 col-md-3 justify-content-center  ">
-                          <p id="gold">150 L.E</p>
-                        </div>
-                        <div className=" d-flex flex-row col-6 col-md-2 mt-0 justify-content-end">
-                          <Link to="/CareerCoaching/Advising">
-                            {" "}
-                            <button className="applyBtn px-4 py-0 bookbtn">
-                              Book
-                            </button>
-                          </Link>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
           <div className="d-flex flex-row mb-3 mt-3">
             <div className="d-flex flex-column col-md-12 col-12  text-wrap bg-none me-5 ">
               <div className="fs-3 " id="Title">

@@ -5,6 +5,7 @@ import Footer2 from "../Common/Footer2";
 import img from "../assests/imgs/img4.png";
 import ReactStars from "react-rating-stars-component";
 import DateTimePicker from "react-datetime-picker";
+import { axios } from "../../Api/axios";
 
 export default class CareerCoaching extends Component {
   constructor(props) {
@@ -19,6 +20,21 @@ export default class CareerCoaching extends Component {
       scrollPixelsY: window.scrollY,
     });
   };
+  state = {
+    data: [],
+  };
+  async componentDidMount() {
+    await axios
+      .get("/W/session/${data.id}")
+      .then((res) => {
+        this.setState({
+          data: res.data.response.data,
+        });
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }
   render() {
     return (
       <div className="container-fluid ">
