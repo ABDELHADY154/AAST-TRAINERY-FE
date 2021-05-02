@@ -7,7 +7,7 @@ import { IoClose } from "react-icons/io5";
 import { Link } from "react-router-dom";
 import "../../layout/Explore.css";
 import search from "../../Components/assests/imgs/search.png";
-import { GrSearch } from "react-icons/gr";
+import { BsSearch } from "react-icons/bs";
 import SmallCard from "../Explore/SmallCard";
 import LoadingOverlay from "react-loading-overlay";
 import BounceLoader from "react-spinners/BounceLoader";
@@ -250,8 +250,8 @@ class Search extends Component {
 
                   <div class='input-group-btn'>
                     <span class='input-group-btn'>
-                      <button class='btn border-left btn-lg' type='submit'>
-                        <GrSearch fill='#1E4274' color='#1E4274' />
+                      <button class='btn border-left btn-lg primarycolor22' type='submit'>
+                        <BsSearch value={{ color: "blue" }} />
                       </button>
                     </span>
                   </div>

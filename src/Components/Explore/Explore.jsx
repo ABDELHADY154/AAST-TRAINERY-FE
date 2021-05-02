@@ -6,12 +6,10 @@ import "../../layout/Home.css";
 import Footer2 from "../Common/Footer2";
 
 import "react-step-progress-bar/styles.css";
-
 import { IoClose } from "react-icons/io5";
 import { Link, Redirect } from "react-router-dom";
 import "../../layout/Explore.css";
-
-import { GrSearch } from "react-icons/gr";
+import { BsSearch } from "react-icons/bs";
 import BigCard from "./BigCard";
 
 import LoadingOverlay from "react-loading-overlay";
@@ -66,6 +64,10 @@ class Explore extends Component {
         })
     );
   }
+
+  toggleSave = (e) => {
+    this.setState({ saved: !this.state.saved ? true : false });
+  };
 
   previousPage = async (e) => {
     if (this.state.page > 1) {
@@ -225,13 +227,14 @@ class Explore extends Component {
                   <div class='input-group-btn'>
                     <span class='input-group-btn'>
                       <button class='btn border-left btn-lg' type='submit'>
-                        <GrSearch fill='#1E4274' color='#1E4274' />
+                        <BsSearch value={{ color: "blue" }} />
                       </button>
                     </span>
                   </div>
                 </div>
               </form>
             </div>
+
             <div className='flex-column mb-4'>
               <div className='col-md-12'>
                 <div className='col-md-12'>
@@ -261,10 +264,11 @@ class Explore extends Component {
                       })
                     : ""}
                 </div>
-              </div>
-            </div>{" "}
+              </div>{" "}
+            </div>
           </LoadingOverlay>
         </div>
+
         <div className='text-center stext  my-4'>
           <nav aria-label='Page navigation example'>
             <ul class='pagination justify-content-center'>
