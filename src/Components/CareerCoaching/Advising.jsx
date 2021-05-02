@@ -14,6 +14,7 @@ export default class CareerCoaching extends Component {
       scrollPixelsY: 0,
     };
     window.scrollTo(0, 0);
+    this.setDate = this.setDate.bind(this);
   }
   handleScroll = () => {
     this.setState({
@@ -30,12 +31,23 @@ export default class CareerCoaching extends Component {
     booked: false,
     booking_date: "",
   };
-  book = async (e) => {
+  setDate = (date) => {
+    var today = new Date(date.getTime() - date.getTimezoneOffset() * 60000)
+      .toISOString()
+      .replace(/T/, " ")
+      .replace(/\..+/, "");
+    this.setState({ booking_date: today });
+  };
+  book = async () => {
     return await axios({
       method: "POST",
       url: `/W/bookSession/${this.props.match.params.id}`,
       headers: {
         "Content-Type": "application/json",
+      },
+      data: {
+        booking_date: this.state.booking_date,
+        booked: true,
       },
     })
       .then((e) => {
@@ -66,7 +78,6 @@ export default class CareerCoaching extends Component {
       });
   }
   render() {
-    console.log(this.state.booking_date);
     return (
       <div className="container-fluid ">
         <div className="container">
@@ -84,10 +95,7 @@ export default class CareerCoaching extends Component {
                   </div>
                   <div className="fs-6 mt-3">{this.state.desc}</div>{" "}
                   <div className="d-flex flex-row flex-wrap mt-5">
-                    <DatePicker
-                      // onChange={this.props.onChange}
-                      value={this.state.booking_date}
-                    />
+                    <DatePicker setDateFn={this.setDate} />
                   </div>
                   <div className="d-flex flex-row flex-wrap mt-2">
                     <div className=" mb-4 d-flex mt-1 flex-row col-12 col-md-7 justify-content-start ">
@@ -167,19 +175,23 @@ export default class CareerCoaching extends Component {
   }
 }
 
-function DatePicker() {
+function DatePicker(props) {
   const [value, onChange] = useState(new Date());
-  let date = value;
+  // let date = value;
 
-  var today = new Date(date.getTime() - date.getTimezoneOffset() * 60000)
-    .toISOString()
-    .replace(/T/, " ")
-    .replace(/\..+/, "");
-
+  // // console.log("here");
+  // props.setDateFn(today);
   // console.log(today);
+  // console.log(props);
   return (
     <div>
-      <DateTimePicker onChange={onChange} value={value} />
+      <DateTimePicker
+        onChange={(value) => {
+          onChange(value);
+          props.setDateFn(value);
+        }}
+        value={value}
+      />
     </div>
   );
 }
