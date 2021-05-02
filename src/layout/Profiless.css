@@ -243,6 +243,6 @@ ul .reuirLi {
   border: none;
 }
 .adsImg {
-  height: 8em !important;
-  object-fit: contain !important;
+  /* height: 8em !important; */
+  object-fit: cover !important;
 }

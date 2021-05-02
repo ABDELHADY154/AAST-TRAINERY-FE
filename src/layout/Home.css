@@ -346,3 +346,13 @@
   text-decoration: none !important;
   color: #1e4274 !important;
 }
+::-moz-selection {
+  /* Code for Firefox */
+  color: #cd8930;
+  background: #1e4274;
+}
+
+::selection {
+  color: #cd8930;
+  background: #1e4274;
+}
