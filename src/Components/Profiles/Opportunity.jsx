@@ -122,7 +122,7 @@ export default class advisorProfile extends Component {
                 <div className="col-xl-4 col-xxl-4 col-lg-4 col-md-6 ">
                   <div className="row d-flex justify-content-between">
                     <div className="col-6 col-xl-5 col-xxl-5 col-lg-6 col-md-5 col-sm-6 col-xs-6  titleCol">
-                      <p className="overvireTitle mb-1">Puplished on:</p>
+                      <p className="overvireTitle mb-1">Published on:</p>
                       <p className="overvireTitle mb-1">Vacancy:</p>
                       <p className="overvireTitle mb-1">Gender:</p>
                       <p className="overvireTitle mb-1">Type:</p>

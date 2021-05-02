@@ -133,7 +133,9 @@ export default class CareerCoaching extends Component {
                                   <p id="gold">{data.price} L.E</p>
                                 </div>
                                 <div className=" d-flex flex-row col-6 col-md-2 mt-0 justify-content-end">
-                                  <Link to="`/CareerCoaching/${data.id}`">
+                                  <Link
+                                    to={`/CareerCoaching/Advising/${data.id}`}
+                                  >
                                     <button className="applyBtn px-4 py-0 bookbtn">
                                       Book
                                     </button>

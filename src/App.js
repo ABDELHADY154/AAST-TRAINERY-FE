@@ -181,7 +181,7 @@ class App extends React.Component {
                 />
                 <AuthRoute
                   exact
-                  path="/CareerCoaching/Advising"
+                  path="/CareerCoaching/Advising/:id"
                   component={Advising}
                 />
                 <AuthRoute
