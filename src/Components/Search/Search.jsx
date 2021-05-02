@@ -32,6 +32,8 @@ class Search extends Component {
       disabled: true,
       FormLoading: false,
     };
+    window.scrollTo(0, 0);
+
     this.onChangeValue = this.onChangeValue.bind(this);
   }
   createEcardElement = (data) => (

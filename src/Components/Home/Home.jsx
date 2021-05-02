@@ -30,6 +30,7 @@ class Home extends Component {
       alert: true,
       explorePosts: [],
     };
+    window.scrollTo(0, 0);
   }
 
   async componentDidMount() {

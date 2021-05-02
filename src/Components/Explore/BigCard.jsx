@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 
-import { BsArrowUpRight, BsBookmark, BsFillBookmarkFill } from "react-icons/bs";
+import {  BsBookmark, BsFillBookmarkFill } from "react-icons/bs";
 import { RiAdvertisementLine } from "react-icons/ri";
 import { Link } from "react-router-dom";
 import { resolve } from "../../Api/Resolvers/resolver";

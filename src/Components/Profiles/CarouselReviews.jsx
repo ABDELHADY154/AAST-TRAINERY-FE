@@ -3,7 +3,8 @@ import "../../layout/Profiless.css";
 import ReactStars from "react-rating-stars-component";
 
 export class CarouselReviews extends Component {
-  render() {
+  render() {    window.scrollTo(0, 0);
+
     return (
       <div
         id="carouselExampleDark"
