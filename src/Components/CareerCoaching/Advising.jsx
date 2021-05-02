@@ -84,7 +84,10 @@ export default class CareerCoaching extends Component {
                   </div>
                   <div className="fs-6 mt-3">{this.state.desc}</div>{" "}
                   <div className="d-flex flex-row flex-wrap mt-5">
-                    <DatePicker />
+                    <DatePicker
+                      // onChange={this.props.onChange}
+                      value={this.state.booking_date}
+                    />
                   </div>
                   <div className="d-flex flex-row flex-wrap mt-2">
                     <div className=" mb-4 d-flex mt-1 flex-row col-12 col-md-7 justify-content-start ">
@@ -113,42 +116,48 @@ export default class CareerCoaching extends Component {
                   />
                 </div>
               </div>
-              <div className="d-flex flex-row ">
-                <div className="d-flex flex-column col-md-7 me-2  text-wrap bg-none me-5 ">
-                  <div className="fs-3 mb-0" id="Title">
-                    Add Your Review
+              {this.state.booked == true ? (
+                <>
+                  <div className="d-flex flex-row ">
+                    <div className="d-flex flex-column col-md-7 me-2  text-wrap bg-none me-5 ">
+                      <div className="fs-3 mb-0" id="Title">
+                        Add Your Review
+                      </div>
+                      <ReactStars
+                        className="reviewstars"
+                        count={5}
+                        // value={this.state.rating}
+                        onChange={(value) => {
+                          this.setState({ value: value });
+                          // console.log(`${value}`);
+                        }}
+                        size={28}
+                        activeColor="#F2A23A"
+                        edit={true}
+                      />
+                    </div>
                   </div>
-                  <ReactStars
-                    className="reviewstars"
-                    count={5}
-                    // value={this.state.rating}
-                    onChange={(value) => {
-                      this.setState({ value: value });
-                      // console.log(`${value}`);
-                    }}
-                    size={28}
-                    activeColor="#F2A23A"
-                    edit={true}
-                  />
-                </div>
-              </div>
-              <div className="d-flex flex-row mt-3 mb-5 ">
-                <textarea
-                  id="reviewbox"
-                  placeholder="Enter Your Review Here..."
-                  type="text"
-                  name="name"
-                  className="reviewbox d-flex flex-column col-md-12 col-12 pt-2  px-3"
-                ></textarea>
-              </div>
-              <div className="d-flex flex-row mb-5 justify-content-end ">
-                <button
-                  className="applyBtn px-1 py-0 col-md-1 col-4 "
-                  // onClick="/CvWriting"
-                >
-                  Review
-                </button>
-              </div>
+                  <div className="d-flex flex-row mt-3 mb-5 ">
+                    <textarea
+                      id="reviewbox"
+                      placeholder="Enter Your Review Here..."
+                      type="text"
+                      name="name"
+                      className="reviewbox d-flex flex-column col-md-12 col-12 pt-2  px-3"
+                    ></textarea>
+                  </div>
+                  <div className="d-flex flex-row mb-5 justify-content-end ">
+                    <button
+                      className="applyBtn px-1 py-0 col-md-1 col-4 "
+                      // onClick="/CvWriting"
+                    >
+                      Review
+                    </button>
+                  </div>
+                </>
+              ) : (
+                " "
+              )}
             </>
           )}
         </div>
@@ -170,7 +179,7 @@ function DatePicker() {
   // console.log(today);
   return (
     <div>
-      <DateTimePicker onChange={onChange} value={today} />
+      <DateTimePicker onChange={onChange} value={value} />
     </div>
   );
 }
