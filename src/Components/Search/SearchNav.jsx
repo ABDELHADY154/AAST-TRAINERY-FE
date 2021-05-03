@@ -42,7 +42,10 @@ class SearchNav extends Component {
               id='Education-tab'
               activeClassName='active'
               className='nav-link tabBtn '
-              to='/Search/s'
+              to={{
+                pathname: "/Search/s",
+                params: { value: this.props.value },
+              }}
             >
               State
             </NavLink>
