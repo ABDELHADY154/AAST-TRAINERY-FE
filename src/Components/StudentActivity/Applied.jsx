@@ -45,7 +45,7 @@ class Accepted extends Component {
       })
       .catch((err) => {
         this.setState({ FormLoading: true });
-        console.log(err);
+        // console.log(err);
       });
   }
   render() {
