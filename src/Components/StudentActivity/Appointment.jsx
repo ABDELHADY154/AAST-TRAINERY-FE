@@ -45,28 +45,26 @@ class Appointment extends Component {
                           />
                         </div>
 
-                        <div class="col-md-8 col-sm-7 col-8 ms-3 mt-3">
-                          <div class="">
-                            <h5 class="fw-bold">{data.title}</h5>
-                            <div className="d-flex flex-row ">
-                              <p className="me-3">Date Booked</p>
-                              <p>15 Oct 2020</p>
-                            </div>
-                            <div className="d-flex flex-row ">
-                              <p className="me-3">Time Booked</p>
-                              <p>9:00 AM</p>
-                            </div>
-                            <p class="">
-                              <small id="gold">Resend this email</small>
-                            </p>
+                        <div class="col-md-8 col-sm-7 col-8 mt-3">
+                          <h5 class="fw-bold ">{data.title}</h5>
+                          <div className="d-flex flex-row ">
+                            <p className="me-3 mb-0">Date Booked</p>
+                            <p className="mb-0">15 Oct 2020</p>
                           </div>
+                          <div className="d-flex flex-row mb-0">
+                            <p className="me-3 mb-0">Time Booked</p>
+                            <p className="mb-0">9:00 AM</p>
+                          </div>
+                          <p class="">
+                            <small id="gold">Resend this email</small>
+                          </p>
                         </div>
-                        <div className="row mb-3">
-                          <div className="d-flex justify-content-end mb-4">
+                        <div className="row ">
+                          <div className="d-flex justify-content-end">
                             <button className="applyBtn col-md-2 col-lg-1 col-sm-2 col-4  me-2">
                               Contact
                             </button>
-                            <button className="applyBtn col-lg-1 col-md-2 col-sm-2 col-4 mb-5">
+                            <button className="applyBtn col-lg-1 col-md-2 col-sm-2 col-4 mb-3">
                               Review
                             </button>
                           </div>

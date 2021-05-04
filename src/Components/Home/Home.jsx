@@ -426,8 +426,10 @@ class Home extends Component {
             >
               <div id="tabcard" className="d-flex flex-row">
                 {this.state.data.length == 0 ? (
-                  <div className="col-12">
-                    <p className="text-center">No Activity</p>
+                  <div className=" ">
+                    <p className="text-center justify-content-center align-items-center">
+                      No Activity
+                    </p>
                   </div>
                 ) : (
                   this.state.data.map((data) => {
@@ -454,52 +456,6 @@ class Home extends Component {
                     );
                   })
                 )}
-                {/* {this.state.data && this.state.data.length !== 0 ? (
-                  <>
-                    <SmallCard
-                      id={this.state.data[0].id}
-                      company_id={this.state.data[0].company_id}
-                      key={this.state.data[0].id}
-                      title={this.state.data[0].title}
-                      company_name={this.state.data[0].company_name}
-                      company_logo={this.state.data[0].company_logo}
-                      description={this.state.data[0].description}
-                      application_deadline={
-                        this.state.data[0].application_deadline
-                      }
-                      salary={this.state.data[0].salary}
-                      advisor={this.state.data[0].advisor}
-                      post_type={this.state.data[0].post_type}
-                      departments={this.state.data[0].departments}
-                      tags={this.state.data[0].tags}
-                      saved={this.state.data[0].saved}
-                      applied={this.state.data[0].applied}
-                      accepted={this.state.data[0].accepted}
-                    />
-                    <SmallCard
-                      id={this.state.data[1].id}
-                      company_id={this.state.data[1].company_id}
-                      key={this.state.data[1].id}
-                      title={this.state.data[1].title}
-                      company_name={this.state.data[1].company_name}
-                      company_logo={this.state.data[1].company_logo}
-                      description={this.state.data[1].description}
-                      application_deadline={
-                        this.state.data[1].application_deadline
-                      }
-                      salary={this.state.data[1].salary}
-                      advisor={this.state.data[1].advisor}
-                      post_type={this.state.data[1].post_type}
-                      departments={this.state.data[1].departments}
-                      tags={this.state.data[1].tags}
-                      saved={this.state.data[1].saved}
-                      applied={this.state.data[0].applied}
-                      accepted={this.state.data[0].accepted}
-                    />
-                  </>
-                ) : (
-                  <p className="text-center">No Activity</p>
-                )} */}
               </div>
             </div>
             <hr className="breakliner mb-3" />
