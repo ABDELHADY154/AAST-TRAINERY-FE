@@ -12,8 +12,8 @@ class Login extends React.Component {
   constructor() {
     super();
     this.state = {
-      token: sessionStorage.getItem("token"),
-      status: sessionStorage.getItem("status"),
+      token: localStorage.getItem("token"),
+      status: localStorage.getItem("status"),
       email: "",
       error: {},
       hidden: true,
@@ -40,8 +40,8 @@ class Login extends React.Component {
     return await axios
       .post("/login", data)
       .then(response => {
-        sessionStorage.setItem("token", response.data.response.data.token);
-        sessionStorage.setItem("status", response.statusText);
+        localStorage.setItem("token", response.data.response.data.token);
+        localStorage.setItem("status", response.statusText);
         this.props.setUser(true);
         this.setState({
           loggedIn: true,
@@ -59,8 +59,8 @@ class Login extends React.Component {
       });
   };
   componentDidMount = () => {
-    const token = sessionStorage.getItem("token");
-    const status = sessionStorage.getItem("status");
+    const token = localStorage.getItem("token");
+    const status = localStorage.getItem("status");
     if (status && token) {
       return this.setState({ loggedIn: true });
     }

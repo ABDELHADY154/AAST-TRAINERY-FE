@@ -88,8 +88,8 @@ class ExperienceForm extends Component {
         })
         .catch((error) => {
           if (error.response.data.status === 401 || error.response.data.status === 404) {
-            sessionStorage.clear("token");
-            sessionStorage.clear("status");
+            localStorage.clear("token");
+            localStorage.clear("status");
             this.setState({ loggedIn: false, FormLoading: false });
             window.location.reload();
           }
@@ -152,8 +152,8 @@ class ExperienceForm extends Component {
             FormLoading: false,
           });
           if (error.response.data.status === 401) {
-            sessionStorage.clear("token");
-            sessionStorage.clear("status");
+            localStorage.clear("token");
+            localStorage.clear("status");
             this.setState({ loggedIn: false });
             window.location.reload();
           }
@@ -192,8 +192,8 @@ class ExperienceForm extends Component {
             FormLoading: false,
           });
           if (error.response.data.status === 401 || error.response.data.status === 404) {
-            sessionStorage.clear("token");
-            sessionStorage.clear("status");
+            localStorage.clear("token");
+            localStorage.clear("status");
             this.setState({ loggedIn: false, FormLoading: false });
             window.location.reload();
           }

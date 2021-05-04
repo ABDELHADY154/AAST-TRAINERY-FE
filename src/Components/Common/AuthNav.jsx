@@ -22,8 +22,8 @@ class AuthNav extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      token: sessionStorage.getItem("token"),
-      status: sessionStorage.getItem("status"),
+      token: localStorage.getItem("token"),
+      status: localStorage.getItem("status"),
       loading: false,
       isLoggedIn: false,
       fullname: "",
@@ -39,14 +39,14 @@ class AuthNav extends React.Component {
   //   this.componentDidMount;
   // };
   handleLogout = () => {
-    sessionStorage.clear("token");
-    sessionStorage.clear("status");
+    localStorage.clear("token");
+    localStorage.clear("status");
     this.props.setUser(false);
   };
 
   componentDidMount = async () => {
     axios.defaults.headers.common["Authorization"] =
-      "Bearer " + sessionStorage.getItem("token");
+      "Bearer " + localStorage.getItem("token");
 
     await resolve(
       axios
@@ -63,8 +63,8 @@ class AuthNav extends React.Component {
 
         .catch((error) => {
           if (error.response.data.status === 401) {
-            sessionStorage.clear("token");
-            sessionStorage.clear("status");
+            localStorage.clear("token");
+            localStorage.clear("status");
             this.setState({ validToken: false });
           }
         })
@@ -80,8 +80,8 @@ class AuthNav extends React.Component {
     } else {
       // console.log("11");
     }
-    let token = sessionStorage.getItem("token");
-    let status = sessionStorage.getItem("status");
+    let token = localStorage.getItem("token");
+    let status = localStorage.getItem("status");
     if (status && token) {
       return this.setState({ loggedIn: true });
     }
