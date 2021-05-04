@@ -15,7 +15,7 @@ export class BigCard extends Component {
     this.state = {
       data: "",
       loading: false,
-      token: sessionStorage.getItem("token"),
+      token: localStorage.getItem("token"),
       saved: false,
     };
     // this.handleSave = this.handleSave.bind(this);
@@ -47,8 +47,8 @@ export class BigCard extends Component {
       })
       .catch((error) => {
         if (error.response.data.status === 401 || error.response.data.status === 404) {
-          sessionStorage.clear("token");
-          sessionStorage.clear("status");
+          localStorage.clear("token");
+          localStorage.clear("status");
           this.setState({ loggedIn: false });
           window.location.reload();
         }
@@ -69,8 +69,8 @@ export class BigCard extends Component {
       })
       .catch((error) => {
         if (error.response.data.status === 401 || error.response.data.status === 404) {
-          sessionStorage.clear("token");
-          sessionStorage.clear("status");
+          localStorage.clear("token");
+          localStorage.clear("status");
           this.setState({ loggedIn: false });
           window.location.reload();
         }

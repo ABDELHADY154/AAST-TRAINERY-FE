@@ -27,8 +27,8 @@ class Landing extends React.Component {
     loading: false,
   };
   componentWillMount() {
-    const token = sessionStorage.getItem("token");
-    const status = sessionStorage.getItem("status");
+    const token = localStorage.getItem("token");
+    const status = localStorage.getItem("status");
     if (status && token) {
       return this.setState({ loggedIn: true });
     }

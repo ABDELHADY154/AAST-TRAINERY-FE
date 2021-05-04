@@ -35,8 +35,8 @@ class Interest extends Component {
         })
         .catch((error) => {
           if (error.response.data.status === 401) {
-            sessionStorage.clear("token");
-            sessionStorage.clear("status");
+            localStorage.clear("token");
+            localStorage.clear("status");
             this.setState({ loggedIn: false });
             window.location.reload();
           }
@@ -75,8 +75,8 @@ class Interest extends Component {
         })
         .catch((error) => {
           if (error.response.data.status === 401) {
-            sessionStorage.clear("token");
-            sessionStorage.clear("status");
+            localStorage.clear("token");
+            localStorage.clear("status");
             this.setState({ loggedIn: false });
             window.location.reload();
           }
@@ -98,8 +98,8 @@ class Interest extends Component {
         })
         .catch((error) => {
           if (error.response.data.status === 401) {
-            sessionStorage.clear("token");
-            sessionStorage.clear("status");
+            localStorage.clear("token");
+            localStorage.clear("status");
             this.setState({ loggedIn: false });
             window.location.reload();
           }

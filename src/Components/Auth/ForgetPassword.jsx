@@ -10,8 +10,8 @@ class Forget extends React.Component {
   constructor() {
     super();
     this.state = {
-      token: sessionStorage.getItem("token"),
-      status: sessionStorage.getItem("status"),
+      token: localStorage.getItem("token"),
+      status: localStorage.getItem("status"),
       error: "",
       forgot: false,
     };
@@ -40,8 +40,8 @@ class Forget extends React.Component {
   };
 
   componentDidMount = () => {
-    const token = sessionStorage.getItem("token");
-    const status = sessionStorage.getItem("status");
+    const token = localStorage.getItem("token");
+    const status = localStorage.getItem("status");
     if (status && token) {
       return this.setState({ loggedIn: true });
     }
