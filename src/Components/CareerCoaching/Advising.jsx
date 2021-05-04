@@ -28,7 +28,7 @@ export default class CareerCoaching extends Component {
     desc: "",
     price: 0,
     image: "",
-    booked: false,
+    booked: null,
     booking_date: "",
   };
   setDate = (date) => {
@@ -39,22 +39,48 @@ export default class CareerCoaching extends Component {
     this.setState({ booking_date: today });
   };
   book = async () => {
+    const datas = {
+      booking_date: this.state.booking_date,
+      booked: this.state.booked,
+    };
     return await axios({
       method: "POST",
       url: `/W/bookSession/${this.props.match.params.id}`,
+      data: datas,
       headers: {
         "Content-Type": "application/json",
       },
-      data: {
-        booking_date: this.state.booking_date,
-        booked: true,
-      },
     })
-      .then((e) => {
+      .then(() => {
         this.setState({
           booked: true,
           booking_date: this.state.booking_date,
         });
+        console.log("BOOKED!");
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+  unbook = async () => {
+    const datas = {
+      // booking_date: this.state.booking_date,
+      booked: this.state.booked,
+    };
+    return await axios({
+      method: "POST",
+      url: `/W/bookSession/cancelBooking/${this.props.match.params.id}`,
+      data: datas,
+      headers: {
+        "Content-Type": "application/json",
+      },
+    })
+      .then(() => {
+        this.setState({
+          booked: false,
+          // booking_date: this.state.booking_date,
+        });
+        console.log("NOT BOOKED!");
       })
       .catch((err) => {
         console.log(err);
@@ -65,6 +91,7 @@ export default class CareerCoaching extends Component {
       .get(`/W/session/${this.props.match.params.id}`)
       .then((res) => {
         this.setState({
+          booked: res.data.response.data.booked,
           data: res.data.response.data,
           id: res.data.response.data.id,
           title: res.data.response.data.title,
@@ -78,6 +105,7 @@ export default class CareerCoaching extends Component {
       });
   }
   render() {
+    // console.log(this.state.booked);
     return (
       <div className="container-fluid ">
         <div className="container">
@@ -104,14 +132,29 @@ export default class CareerCoaching extends Component {
                     <div className=" mb-4 d-flex flex-row mt-1 col-4 col-md-3 justify-content-end  ">
                       <p id="gold">{this.state.price} L.E</p>
                     </div>
-                    <div className=" d-flex flex-row col-6 col-md-2 justify-content-end">
-                      <button
-                        className="applyBtn px-4 py-0 "
-                        onClick={this.book}
-                      >
-                        Book
-                      </button>
-                    </div>
+                    {this.state.booked == true ? (
+                      <div className=" d-flex flex-row col-6 col-md-2 justify-content-end">
+                        <button
+                          className="appliedBtn px-4 py-0 "
+                          // style={{
+                          //   color: "#ffffff",
+                          //   backgroundColor: "#1e4274",
+                          // }}
+                          onClick={this.unbook}
+                        >
+                          Booked
+                        </button>
+                      </div>
+                    ) : (
+                      <div className=" d-flex flex-row col-6 col-md-2 justify-content-end">
+                        <button
+                          className="applyBtn px-4 py-0 "
+                          onClick={this.book}
+                        >
+                          Book
+                        </button>
+                      </div>
+                    )}
                   </div>
                 </div>
                 <div
@@ -177,12 +220,6 @@ export default class CareerCoaching extends Component {
 
 function DatePicker(props) {
   const [value, onChange] = useState(new Date());
-  // let date = value;
-
-  // // console.log("here");
-  // props.setDateFn(today);
-  // console.log(today);
-  // console.log(props);
   return (
     <div>
       <DateTimePicker
