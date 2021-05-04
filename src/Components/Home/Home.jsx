@@ -414,6 +414,7 @@ class Home extends Component {
                 {this.state.data.length == 0 ? (
                   <div className='col-12'>
                     <p className='text-center'>No Activity</p>
+
                   </div>
                 ) : (
                   this.state.data.map((data) => {

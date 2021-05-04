@@ -25,10 +25,7 @@ import SearchD from "./Components/Search/SearchD";
 import SearchP from "./Components/Search/SearchP";
 import SearchS from "./Components/Search/SearchS";
 
-import CvWriting from "./Components/CareerCoaching/CvWriting";
 import Advising from "./Components/CareerCoaching/Advising";
-import CareerMove from "./Components/CareerCoaching/CareerMove";
-import InterviewCoaching from "./Components/CareerCoaching/InterviewCoaching";
 
 import Applied from "../src/Components/StudentActivity/Applied";
 import Accepted from "../src/Components/StudentActivity/Accepted";
@@ -158,21 +155,38 @@ class App extends React.Component {
                 <AuthRoute exact path='/CareerCoaching/CvWriting' component={CvWriting} />
                 <AuthRoute
                   exact
-                  path='/CareerCoaching/InterviewCoaching'
-                  component={InterviewCoaching}
+
+                  path="/Profile/Interest"
+                  component={Interest}
                 />
                 <AuthRoute
                   exact
-                  path='/CareerCoaching/CareerMove'
-                  component={CareerMove}
+                  path="/CareerCoaching"
+                  component={CareerCoaching}
                 />
-                <AuthRoute exact path='/CareerCoaching/Advising' component={Advising} />
-                <AuthRoute exact path='/Profile/Accounts' component={AccountsForm} />
-                <AuthRoute exact path='/Profile/Accounts/:id' component={AccountsForm} />
-                <AuthRoute exact path='/Profile/Activity/Applied' component={Applied} />
                 <AuthRoute
                   exact
-                  path='/Profile/Activity/Accepted'
+                  path="/CareerCoaching/Advising/:id"
+                  component={Advising}
+                />
+                <AuthRoute
+                  exact
+                  path="/Profile/Accounts"
+                  component={AccountsForm}
+                />
+                <AuthRoute
+                  exact
+                  path="/Profile/Accounts/:id"
+                  component={AccountsForm}
+                />
+                <AuthRoute
+                  exact
+                  path="/Profile/Activity/Applied"
+                  component={Applied}
+                />
+                <AuthRoute
+                  exact
+                  path="/Profile/Activity/Accepted"
                   component={Accepted}
                 />{" "}
                 <AuthRoute exact path='/Profile/Activity/Saved' component={Saved} />

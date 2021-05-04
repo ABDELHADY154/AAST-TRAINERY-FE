@@ -201,19 +201,22 @@ export default class advisorProfile extends Component {
                 return <Interest id={item.id} key={item.id} interest={item.interest} />;
               })}
             </div>
-            <div className='mt-4'>
-              <h5 className='companyTitel'>Overview</h5>
-              <div className='row d-flex justify-content-between'>
-                <div className='col-xl-4 col-xxl-4 col-lg-4 col-md-6 '>
-                  <div className='row d-flex justify-content-between'>
-                    <div className='col-6 col-xl-5 col-xxl-5 col-lg-6 col-md-5 col-sm-6 col-xs-6  titleCol'>
-                      <p className='overvireTitle mb-1'>Puplished on:</p>
-                      <p className='overvireTitle mb-1'>Vacancy:</p>
-                      <p className='overvireTitle mb-1'>Gender:</p>
-                      <p className='overvireTitle mb-1'>Type:</p>
-                      <p className='overvireTitle mb-1'>Salary:</p>
-                      <p className='overvireTitle mb-1'>Application deadline:</p>
-                      <p className='overvireTitle mb-1'>location:</p>
+
+            <div className="mt-4">
+              <h5 className="companyTitel">Overview</h5>
+              <div className="row d-flex justify-content-between">
+                <div className="col-xl-4 col-xxl-4 col-lg-4 col-md-6 ">
+                  <div className="row d-flex justify-content-between">
+                    <div className="col-6 col-xl-5 col-xxl-5 col-lg-6 col-md-5 col-sm-6 col-xs-6  titleCol">
+                      <p className="overvireTitle mb-1">Published on:</p>
+                      <p className="overvireTitle mb-1">Vacancy:</p>
+                      <p className="overvireTitle mb-1">Gender:</p>
+                      <p className="overvireTitle mb-1">Type:</p>
+                      <p className="overvireTitle mb-1">Salary:</p>
+                      <p className="overvireTitle mb-1">
+                        Application deadline:
+                      </p>
+                      <p className="overvireTitle mb-1">location:</p>
                     </div>
                     <div className='col-6 col-xl-7 col-xxl-7 col-lg-6 col-md-7 col-sm-6 col-xs-6 discCol'>
                       <p className=' overvireTxt mb-1'>{this.state.data.published_on}</p>
