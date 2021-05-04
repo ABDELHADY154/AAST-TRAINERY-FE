@@ -88,11 +88,13 @@ export class SearchD extends Component {
     this.setState({ FormLoading: true });
 
     if (
-      this.state.dep != undefined &&
-      this.state.dep != "all" &&
-      this.state.Search != "" &&
-      this.state.Search != undefined
+      this.state.state != undefined &&
+      this.state.state != "all" &&
+      this.state.Search != undefined &&
+      this.state.Search.length !== 0
     ) {
+      this.setState({ Search: this.state.Search.trim() });
+
       await axios
         .post(`/W/student/filterDep/${this.state.Search}?page=1`, data)
         .then((res) => {
@@ -104,7 +106,12 @@ export class SearchD extends Component {
           }
           console.log(data);
         });
-    } else if (this.state.dep == "all" || this.state.Search != undefined) {
+    } else if (
+      this.state.state === "all" &&
+      this.state.Search !== undefined &&
+      this.state.Search.length !== 0
+    ) {
+      this.setState({ Search: this.state.Search.trim() });
       await axios
         .get(`/W/student/search/${this.state.Search}`)
         .then((res) => {
@@ -112,6 +119,7 @@ export class SearchD extends Component {
             this.setState({
               posts: res.data.response.data,
               FormLoading: false,
+              Error: "Search AAST-Trainery",
             });
           }
         })
@@ -127,11 +135,13 @@ export class SearchD extends Component {
     this.setState({ FormLoading: true });
     var data = { department_id: this.state.dep };
     if (
-      this.state.dep != undefined &&
-      this.state.dep != "all" &&
-      this.state.Search != "" &&
-      this.state.Search != undefined
+      this.state.state != undefined &&
+      this.state.state != "all" &&
+      this.state.Search != undefined &&
+      this.state.Search.length !== 0
     ) {
+      this.setState({ Search: this.state.Search.trim() });
+
       await axios
         .post(`/W/student/filterDep/${this.state.Search}?page=1`, data)
         .then((res) => {
@@ -141,9 +151,15 @@ export class SearchD extends Component {
               FormLoading: false,
             });
           }
-          console.log(data);
+          // console.log(data);
         });
-    } else if (this.state.dep == "all" || this.state.Search != undefined) {
+    } else if (
+      this.state.state === "all" &&
+      this.state.Search !== undefined &&
+      this.state.Search.length !== 0
+    ) {
+      this.setState({ Search: this.state.Search.trim() });
+
       await axios
         .get(`/W/student/search/${this.state.Search}`)
         .then((res) => {
@@ -151,11 +167,12 @@ export class SearchD extends Component {
             this.setState({
               posts: res.data.response.data,
               FormLoading: false,
+              Error: "Search AAST-Trainery",
             });
           }
         })
         .catch((error) => {
-          console.log(error);
+          console.log(error, "error");
         });
     } else {
       this.setState({ Error: "Search AAST-Trainery", FormLoading: false });
@@ -171,11 +188,13 @@ export class SearchD extends Component {
       });
       var data = { department_id: this.state.dep };
       if (
-        this.state.dep != undefined &&
-        this.state.dep != "all" &&
-        this.state.Search != "" &&
-        this.state.Search != undefined
+        this.state.state != undefined &&
+        this.state.state != "all" &&
+        this.state.Search != undefined &&
+        this.state.Search.length !== 0
       ) {
+        this.setState({ Search: this.state.Search.trim() });
+
         await axios
           .post(`/W/student/filterDep/${this.state.Search}?page=${newPage}`, data)
           .then((res) => {
@@ -185,9 +204,14 @@ export class SearchD extends Component {
                 FormLoading: false,
               });
             }
-            console.log(data);
           });
-      } else if (this.state.dep == "all" || this.state.Search != undefined) {
+      } else if (
+        this.state.state === "all" &&
+        this.state.Search !== undefined &&
+        this.state.Search.length !== 0
+      ) {
+        this.setState({ Search: this.state.Search.trim() });
+
         await axios
           .get(`/W/student/search/${this.state.Search}`)
           .then((res) => {
@@ -214,11 +238,13 @@ export class SearchD extends Component {
     });
     var data = { department_id: this.state.dep };
     if (
-      this.state.dep != undefined &&
-      this.state.dep != "all" &&
-      this.state.Search != "" &&
-      this.state.Search != undefined
+      this.state.state != undefined &&
+      this.state.state != "all" &&
+      this.state.Search != undefined &&
+      this.state.Search.length !== 0
     ) {
+      this.setState({ Search: this.state.Search.trim() });
+
       await axios
         .post(`/W/student/filterDep/${this.state.Search}?page=${newPage}`, data)
         .then((res) => {
@@ -228,9 +254,14 @@ export class SearchD extends Component {
               FormLoading: false,
             });
           }
-          console.log(data);
         });
-    } else if (this.state.dep == "all" || this.state.Search != undefined) {
+    } else if (
+      this.state.state === "all" &&
+      this.state.Search !== undefined &&
+      this.state.Search.length !== 0
+    ) {
+      this.setState({ Search: this.state.Search.trim() });
+
       await axios
         .get(`/W/student/search/${this.state.Search}`)
         .then((res) => {

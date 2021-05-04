@@ -27,6 +27,7 @@ export class SearchS extends Component {
       disabled: true,
       FormLoading: false,
       checked: false,
+      state: "all",
     };
     window.scrollTo(0, 0);
   }
@@ -76,14 +77,16 @@ export class SearchS extends Component {
   };
   handleFormSubmit = async (e) => {
     e.preventDefault();
+    // console.log();
     var data = { state: this.state.state };
     this.setState({ FormLoading: true });
     if (
       this.state.state != undefined &&
       this.state.state != "all" &&
-      this.state.Search != "" &&
-      this.state.Search != undefined
+      this.state.Search != undefined &&
+      this.state.Search.length !== 0
     ) {
+      this.setState({ Search: this.state.Search.trim() });
       await axios
         .post(`/W/student/filterState/${this.state.Search}?page=1`, data)
         .then((res) => {
@@ -93,9 +96,13 @@ export class SearchS extends Component {
               FormLoading: false,
             });
           }
-          console.log(data);
         });
-    } else if (this.state.state === "all" || this.state.Search != undefined) {
+    } else if (
+      this.state.state === "all" &&
+      this.state.Search !== undefined &&
+      this.state.Search.length !== 0
+    ) {
+      this.setState({ Search: this.state.Search.trim() });
       await axios
         .get(`/W/student/search/${this.state.Search}`)
         .then((res) => {
@@ -121,9 +128,11 @@ export class SearchS extends Component {
     if (
       this.state.state != undefined &&
       this.state.state != "all" &&
-      this.state.Search != "" &&
-      this.state.Search != undefined
+      this.state.Search != undefined &&
+      this.state.Search.length !== 0
     ) {
+      this.setState({ Search: this.state.Search.trim() });
+
       await axios
         .post(`/W/student/filterState/${this.state.Search}?page=1`, data)
         .then((res) => {
@@ -135,16 +144,22 @@ export class SearchS extends Component {
           }
         });
     } else if (
-      this.state.state === "all" ||
-      (this.state.Search !== undefined && this.state.Search != "")
+      this.state.state === "all" &&
+      this.state.Search !== undefined &&
+      this.state.Search.length !== 0
     ) {
+      this.setState({ Search: this.state.Search.trim() });
+
       await axios
         .get(`/W/student/search/${this.state.Search}`)
         .then((res) => {
+          console.log(res);
+
           if (res.status === 200) {
             this.setState({
               posts: res.data.response.data,
               FormLoading: false,
+              Error: "Search AAST-Trainery",
             });
           }
         })
@@ -167,9 +182,11 @@ export class SearchS extends Component {
       if (
         this.state.state != undefined &&
         this.state.state != "all" &&
-        this.state.Search != "" &&
-        this.state.Search != undefined
+        this.state.Search != undefined &&
+        this.state.Search.length !== 0
       ) {
+        this.setState({ Search: this.state.Search.trim() });
+
         await axios
           .post(`/W/student/filterState/${this.state.Search}?page=${newPage}`, data)
           .then((res) => {
@@ -181,13 +198,20 @@ export class SearchS extends Component {
             }
             console.log(data);
           });
-      } else if (this.state.state == "all" || this.state.Search != undefined) {
+      } else if (
+        this.state.state === "all" &&
+        this.state.Search !== undefined &&
+        this.state.Search.length !== 0
+      ) {
+        this.setState({ Search: this.state.Search.trim() });
+
         await axios
           .get(`/W/student/search/${this.state.Search}`)
           .then((res) => {
             if (res.status === 200) {
               this.setState({
                 posts: res.data.response.data,
+                Error: "Search AAST-Trainery",
               });
             }
           })
@@ -210,9 +234,11 @@ export class SearchS extends Component {
     if (
       this.state.state != undefined &&
       this.state.state != "all" &&
-      this.state.Search != "" &&
-      this.state.Search != undefined
+      this.state.Search != undefined &&
+      this.state.Search.length !== 0
     ) {
+      this.setState({ Search: this.state.Search.trim() });
+
       await axios
         .post(`/W/student/filterState/${this.state.Search}?page=${newPage}`, data)
         .then((res) => {
@@ -224,7 +250,13 @@ export class SearchS extends Component {
           }
           console.log(data);
         });
-    } else if (this.state.dep == "all" || this.state.Search != undefined) {
+    } else if (
+      this.state.state === "all" &&
+      this.state.Search !== undefined &&
+      this.state.Search.length !== 0
+    ) {
+      this.setState({ Search: this.state.Search.trim() });
+
       await axios
         .get(`/W/student/search/${this.state.Search}`)
         .then((res) => {
