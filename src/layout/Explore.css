@@ -56,6 +56,11 @@
   /* padding-bottom: 2px; */
   height: 0.1rem;
 }
+.primarycolor22 {
+  /* background-color: #cd8930; */
+  color: #cd8930 !important;
+  fill: #cd8930;
+}
 .s {
   width: 61%;
   height: 15px;

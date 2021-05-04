@@ -74,7 +74,7 @@ body {
   }
 }
 
-@media (max-height:580px) {
+@media (max-height: 580px) {
   .invs {
     display: none !important;
   }
@@ -324,6 +324,9 @@ BsXOctagon svg {
 .navPage:active:after {
   color: #cd8930 !important;
   border-bottom: solid 3px #cd8930;
+}
+.navActive {
+  color: #cd8930 !important;
 }
 .navPage:focus {
   color: #cd8930 !important;
