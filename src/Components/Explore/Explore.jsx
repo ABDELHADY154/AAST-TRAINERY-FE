@@ -21,7 +21,7 @@ class Explore extends Component {
     this.state = {
       user: "",
       loading: false,
-      token: localStorage.getItem("token"),
+      token: sessionStorage.getItem("token"),
       avatar: "",
       alert: true,
       saved: false,
@@ -56,8 +56,8 @@ class Explore extends Component {
         })
         .catch((error) => {
           if (error.response.data.status === 401 || error.response.data.status === 404) {
-            localStorage.clear("token");
-            localStorage.clear("status");
+            sessionStorage.clear("token");
+            sessionStorage.clear("status");
             this.setState({ loggedIn: false });
             window.location.reload();
           }
@@ -93,8 +93,8 @@ class Explore extends Component {
               error.response.data.status === 401 ||
               error.response.data.status === 404
             ) {
-              localStorage.clear("token");
-              localStorage.clear("status");
+              sessionStorage.clear("token");
+              sessionStorage.clear("status");
               this.setState({ loggedIn: false });
               window.location.reload();
             }
@@ -122,8 +122,8 @@ class Explore extends Component {
         })
         .catch((error) => {
           if (error.response.data.status === 401 || error.response.data.status === 404) {
-            localStorage.clear("token");
-            localStorage.clear("status");
+            sessionStorage.clear("token");
+            sessionStorage.clear("status");
             this.setState({ loggedIn: false });
             window.location.reload();
           }

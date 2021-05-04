@@ -45,8 +45,8 @@ class App extends React.Component {
   constructor() {
     super();
     this.state = {
-      status: localStorage.getItem("status"),
-      token: localStorage.getItem("token"),
+      status: sessionStorage.getItem("status"),
+      token: sessionStorage.getItem("token"),
       loggedIn: false,
       avatar: "",
       fallback: false,

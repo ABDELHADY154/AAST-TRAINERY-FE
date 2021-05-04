@@ -112,8 +112,8 @@ export default class EducationForm extends Component {
         })
         .catch((error) => {
           if (error.response.data.status === 401 || error.response.data.status === 404) {
-            localStorage.clear("token");
-            localStorage.clear("status");
+            sessionStorage.clear("token");
+            sessionStorage.clear("status");
             this.setState({ loggedIn: false });
             window.location.reload();
           }
@@ -170,8 +170,8 @@ export default class EducationForm extends Component {
             FormLoading: false,
           });
           if (error.response.data.status === 401) {
-            localStorage.clear("token");
-            localStorage.clear("status");
+            sessionStorage.clear("token");
+            sessionStorage.clear("status");
             this.setState({ loggedIn: false });
             window.location.reload();
           }
@@ -209,8 +209,8 @@ export default class EducationForm extends Component {
             FormLoading: false,
           });
           if (error.response.data.status === 401) {
-            localStorage.clear("token");
-            localStorage.clear("status");
+            sessionStorage.clear("token");
+            sessionStorage.clear("status");
             this.setState({ loggedIn: false });
             window.location.reload();
           }

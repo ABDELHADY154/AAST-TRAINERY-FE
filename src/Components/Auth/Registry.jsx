@@ -37,7 +37,7 @@ class Registry extends React.Component {
       },
       hidden: true,
     };
-    if (localStorage.getItem("token")) {
+    if (sessionStorage.getItem("token")) {
       this.setState({ loggedIn: true });
     }
     this.handlePasswordChange = this.handlePasswordChange.bind(this);
@@ -52,8 +52,8 @@ class Registry extends React.Component {
   }
 
   async componentDidMount() {
-    const token = localStorage.getItem("token");
-    const status = localStorage.getItem("status");
+    const token = sessionStorage.getItem("token");
+    const status = sessionStorage.getItem("status");
     if (status && token) {
       return this.setState({ loggedIn: true });
     }
@@ -79,11 +79,11 @@ class Registry extends React.Component {
     await axios
       .post("/register", data)
       .then((response) => {
-        localStorage.setItem("token", response.data.response.data.token);
-        localStorage.setItem("status", response.statusText);
+        sessionStorage.setItem("token", response.data.response.data.token);
+        sessionStorage.setItem("status", response.statusText);
         this.setState({
-          token: localStorage.getItem("token"),
-          status: localStorage.getItem("status"),
+          token: sessionStorage.getItem("token"),
+          status: sessionStorage.getItem("status"),
           loggedIn: true,
         });
         this.props.setUser(true);

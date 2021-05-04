@@ -24,7 +24,7 @@ class Home extends Component {
     this.state = {
       user: "",
       loading: false,
-      token: localStorage.getItem("token"),
+      token: sessionStorage.getItem("token"),
       avatar: "",
       data: [],
       alert: true,

@@ -37,8 +37,8 @@ class Language extends Component {
         })
         .catch((error) => {
           if (error.response.data.status === 401) {
-            localStorage.clear("token");
-            localStorage.clear("status");
+            sessionStorage.clear("token");
+            sessionStorage.clear("status");
             this.setState({ loggedIn: false });
             window.location.reload();
           }
@@ -67,8 +67,8 @@ class Language extends Component {
         })
         .catch((error) => {
           if (error.response.data.status === 401) {
-            localStorage.clear("token");
-            localStorage.clear("status");
+            sessionStorage.clear("token");
+            sessionStorage.clear("status");
             this.setState({ loggedIn: false });
             window.location.reload();
           }
@@ -93,8 +93,8 @@ class Language extends Component {
         })
         .catch((error) => {
           if (error.response.data.status === 401) {
-            localStorage.clear("token");
-            localStorage.clear("status");
+            sessionStorage.clear("token");
+            sessionStorage.clear("status");
             this.setState({ loggedIn: false });
             window.location.reload();
           }

@@ -12,8 +12,15 @@ export class SearchS extends Component {
   constructor() {
     super();
     this.state = {
-  
+      user: "",
+      loading: false,
+      token: sessionStorage.getItem("token"),
+      avatar: "",
+      alert: true,
+      saved: false,
+      isloading: false,
       posts: [],
+      searchdep: [],
       size: 10,
       page: 1,
       currPage: null,
