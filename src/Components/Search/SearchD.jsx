@@ -54,6 +54,9 @@ export class SearchD extends Component {
     />
   );
   async componentDidMount() {
+    this.setState({
+      FormLoading: true,
+    });
     await axios.get("/departments").then((dep) => {
       this.setState({
         departs: dep.data.response.data,
@@ -61,21 +64,20 @@ export class SearchD extends Component {
       });
     });
     if (this.props.location.params && this.props.location.params.value !== undefined) {
-      var data = { department_id: this.state.dep };
-
       this.setState({ Search: this.props.location.params.value });
-      await axios.get(`/W/student/search/${this.state.Search}`).then((res) => {
-        if (res.status === 200) {
-          this.setState({
-            posts: res.data.response.data,
-            FormLoading: false,
-            size: 5,
-            page: 1,
-            dep: "",
-          });
-        }
-      });
+      await axios
+        .get(`/W/student/search/${this.props.location.params.value}`)
+        .then((res) => {
+          if (res.status === 200) {
+            this.setState({
+              posts: res.data.response.data,
+              FormLoading: false,
+            });
+          }
+        });
       this.props.location.params = null;
+    } else {
+      this.setState({ FormLoading: false });
     }
   }
 
@@ -281,7 +283,6 @@ export class SearchD extends Component {
   render() {
     return (
       <div>
-        {" "}
         <LoadingOverlay
           active={this.state.FormLoading}
           spinner={<BounceLoader color='#cd8930' />}
@@ -312,6 +313,7 @@ export class SearchD extends Component {
                       class='form-control input-lg'
                       onChange={this.handleChange}
                       value={this.state.Search ? this.state.Search : ""}
+                      required
                     />
 
                     <div class='input-group-btn'>
@@ -333,7 +335,7 @@ export class SearchD extends Component {
               <SearchNav value={this.state.Search} />
               <form onSubmit={this.handleSubmit} id='depFrom'>
                 <ul
-                  className='nav  infoTabsUl text-nowrap nomargin align-items-center py-2'
+                  className='nav   text-nowrap nomargin align-items-center py-2'
                   id='myTab'
                   role='tablist'
                 >
@@ -346,8 +348,6 @@ export class SearchD extends Component {
                         type='radio'
                         value='all'
                         onClick={(e) => this.handleSubmit(e.target.value)}
-                        // checked='checked'
-                        // {this.state.checked ? ' checked' : ' disabled'}
                       />
                       All
                     </label>

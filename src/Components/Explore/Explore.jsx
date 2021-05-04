@@ -140,7 +140,7 @@ class Explore extends Component {
       return (
         <Redirect
           to={{
-            pathname: "/Search",
+            pathname: "/Search/d",
             params: { val: this.state.Search },
           }}
         />

@@ -21,7 +21,6 @@ import SkillsForm from "./Components/EditProfile/SkillsForm";
 import Interest from "./Components/EditProfile/InterestForm";
 import Language from "./Components/EditProfile/LanguageForm";
 import Explore from "./Components/Explore/Explore";
-import Search from "./Components/Search/Search";
 import SearchD from "./Components/Search/SearchD";
 import SearchP from "./Components/Search/SearchP";
 import SearchS from "./Components/Search/SearchS";
@@ -151,11 +150,9 @@ class App extends React.Component {
                   render={(Interests) => <Interest {...Interests} />}
                 />
                 <AuthRoute exact path='/Explore' component={Explore} />
-                <AuthRoute exact path='/Search' component={Search} />
                 <AuthRoute exact path='/Search/d' component={SearchD} />
                 <AuthRoute exact path='/Search/s' component={SearchS} />
                 <AuthRoute exact path='/Search/p' component={SearchP} />
-
                 <AuthRoute exact path='/Profile/Interest' component={Interest} />
                 <AuthRoute exact path='/CareerCoaching' component={CareerCoaching} />
                 <AuthRoute exact path='/CareerCoaching/CvWriting' component={CvWriting} />

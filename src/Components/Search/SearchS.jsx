@@ -55,21 +55,23 @@ export class SearchS extends Component {
   );
   async componentDidMount() {
     if (this.props.location.params && this.props.location.params.value !== undefined) {
-      var data = { state: this.state.state };
-
-      this.setState({ Search: this.props.location.params.value });
-      await axios.get(`/W/student/search/${this.state.Search}`).then((res) => {
-        if (res.status === 200) {
-          this.setState({
-            posts: res.data.response.data,
-            FormLoading: false,
-            size: 5,
-            page: 1,
-            state: "",
-          });
-        }
-      });
+      this.setState({ Search: this.props.location.params.value, FormLoading: true });
+      await axios
+        .get(`/W/student/search/${this.props.location.params.value}`)
+        .then((res) => {
+          if (res.status === 200) {
+            this.setState({
+              posts: res.data.response.data,
+              FormLoading: false,
+              size: 5,
+              page: 1,
+              state: "",
+            });
+          }
+        });
       this.props.location.params = null;
+    } else {
+      this.setState({ FormLoading: false });
     }
   }
   handleChange = (e) => {
@@ -307,6 +309,7 @@ export class SearchS extends Component {
                       class='form-control input-lg'
                       onChange={this.handleChange}
                       value={this.state.Search ? this.state.Search : ""}
+                      required
                     />
 
                     <div class='input-group-btn'>
@@ -325,10 +328,10 @@ export class SearchS extends Component {
               <h3 className=' d-flex justify-content-start ' id='gold'>
                 Filter your result
               </h3>
-              <SearchNav />
+              <SearchNav value={this.state.Search} />
               <form onSubmit={this.handleSubmit} id='depFrom'>
                 <ul
-                  className='nav  infoTabsUl text-nowrap nomargin align-items-center py-2'
+                  className='nav   text-nowrap nomargin align-items-center py-2'
                   id='myTab'
                   role='tablist'
                 >
