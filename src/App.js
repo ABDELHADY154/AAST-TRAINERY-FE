@@ -152,7 +152,6 @@ class App extends React.Component {
                 <AuthRoute exact path='/Search/p' component={SearchP} />
                 <AuthRoute exact path='/Profile/Interest' component={Interest} />
                 <AuthRoute exact path='/CareerCoaching' component={CareerCoaching} />
-                <AuthRoute exact path='/CareerCoaching/CvWriting' component={CvWriting} />
                 <AuthRoute
                   exact
 
