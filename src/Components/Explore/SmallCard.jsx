@@ -8,7 +8,7 @@ import "react-step-progress-bar/styles.css";
 import "../../layout/Explore.css";
 import "../../layout/Home.css";
 
-export class Ecard extends Component {
+export class SmallCard extends Component {
   constructor() {
     super();
     this.state = {
@@ -32,94 +32,111 @@ export class Ecard extends Component {
   }
   render() {
     return (
-      <div>
-        <div className="card my-4">
+      <div className=" " style={{ paddingLeft: 5, paddingRight: 5 }}>
+        <div className="card mb-2 ">
           <div className="card-body">
             <div className="">
               <div className="">
                 {this.props.post_type == "advisorPost" ? (
                   <div>
-                    {" "}
-                    <div className="d-flex col-md-6 col-6 col-sm-7">
+                    <div className=" col-md-8 col-8 col-sm-9 d-flex align-items-center">
                       <Link to={`/advisorProfile/${this.props.advisor.id}`}>
                         <img
                           className=" me-1 rounded"
                           id="advisorlogo"
-                          style={{ height: 55, width: 55 }}
+                          style={{ height: 36, width: 36 }}
                           src={this.props.advisor.image}
                         />
                       </Link>
 
                       <Link to={`/advisorProfile/${this.props.advisor.id}`}>
-                        <p id="" className="card-title fs-6 mt-2 ms-2">
-                          {this.props.advisor.name}{" "}
-                        </p>
+                        <h6 id="" className="card-title ms-2 fw-bold">
+                          {this.props.advisor.name}
+                        </h6>
                       </Link>
-                    </div>{" "}
-                    <hr />
+                    </div>
+                    <hr style={{ marginTop: 10, marginBottom: 10 }} />
                   </div>
                 ) : (
                   ""
                 )}
-
                 {/* <div className='d-flex flex-row-reverse'>
                       <div class='gray'>2 min ago</div>
                     </div> */}
               </div>
             </div>
 
-            <div className="d-flex flex-row n">
-              <Link to={`/CompanyProfile/${this.props.company_id}`}>
-                {" "}
+            <div className="row ">
+              <Link
+                to={`/CompanyProfile/${this.props.company_id}`}
+                className="col-md-2 col-sm-2 col-2 col-lg-2 titleRow"
+              >
                 <img
-                  className=" mt-0 d-flex flex-row  col-md-1 col-2 me-1 rounded"
-                  id="imgicon"
+                  className=" me-1 rounded"
+                  id="comlogo"
+                  style={{ height: 48, width: 48 }}
                   src={this.props.company_logo}
                 />
+                {/* <img
+                  className="rounded"
+                  id="imgicon"
+                  src={this.props.company_logo}
+                  style={{ height: 44, width: 44 }}
+                /> */}
               </Link>
-              <Link
-                to={`/Opportunity/${this.props.id}`}
-                className="card-title ms-2 mt-2 col-md-8 col-7 col-sm-6 col-xs-7 d-flex align-items-center"
-              >
-                <h5 style={{ marginRight: 24 }}>
-                  {this.props.post_type === "adsPost"
-                    ? this.props.company_name
-                    : this.props.title}
-                </h5>
-              </Link>
-              <div
-                id="goldtab"
-                className=" d-flex flex-row-reverse align-items-center col-md-2 col-2"
-              >
-                {this.props.salary ? this.props.salary : ""}
-              </div>
-            </div>
-            <div className="row">
-              <div id="" className="d-flex flex-row ms-3 ">
-                <Link to={`/CompanyProfile/${this.props.company_id}`}>
-                  <div className="ms-5" style={{ marginLeft: 20 }}>
-                    {this.props.post_type !== "adsPost"
-                      ? this.props.company_name
-                      : this.props.title}
+
+              <div className="col-10  ">
+                <div className="d-flex flex-row d-flex align-items-center">
+                  <Link
+                    to={`/Opportunity/${this.props.id}`}
+                    className=" col-md-9 col-10 col-sm-11 col-lg-9 d-flex align-items-center"
+                  >
+                    <h6 className="fw-bold mb-0">
+                      {this.props.post_type === "adsPost"
+                        ? this.props.company_name
+                        : this.props.title}
+                    </h6>
+                  </Link>
+                  <small
+                    id="goldtab"
+                    className="mb-0 d-flex flex-row-reverse col-sm-2 col-md-3 col-lg-2 col-2 d-flex align-items-center"
+                  >
+                    {this.props.salary ? this.props.salary : ""}
+                  </small>
+                </div>
+                <div className="row">
+                  <div id="" className="row ">
+                    <Link
+                      to={`/CompanyProfile/${this.props.company_id}`}
+                      className="mb-0"
+                    >
+                      <p className="mb-0">
+                        {this.props.post_type !== "adsPost"
+                          ? this.props.company_name
+                          : this.props.title}
+                      </p>
+                    </Link>
                   </div>
-                </Link>
-              </div>
-              <div
-                id="gold"
-                className="col-10 col-lg-12 col-md-11 col-sm-10 d-flex flex-row flex-wrap ms-5"
-              >
-                {this.props.departments
-                  ? this.props.departments.map((x) => {
-                      return (
-                        <div id="gold " className="ms-3  goldenn" key={x.id}>
-                          {x.dep_name}
-                        </div>
-                      );
-                    })
-                  : ""}
+                  <div id="gold" className=" d-flex flex-row flex-wrap">
+                    {this.props.departments
+                      ? this.props.departments.map((x) => {
+                          return (
+                            <p
+                              id="gold "
+                              className="me-3 mb-0 goldenn"
+                              key={x.id}
+                            >
+                              {x.dep_name}
+                            </p>
+                          );
+                        })
+                      : ""}
+                  </div>
+                </div>
               </div>
             </div>
-            <p className="card-text mt-2">{this.props.description}</p>
+
+            <p className="card-text mt-2 mb-0">{this.props.description}</p>
             {this.props.post_type === "adsPost" ? (
               <div>
                 <img
@@ -145,15 +162,11 @@ export class Ecard extends Component {
               id='imgicon'
               src={this.props.sponsor_image}
             /> */}
-            <div className="me-4 mb-1 col-12  col-md-12">
+            <div className=" mt-2 mb-1 col-12  col-md-12">
               {this.props.tags
                 ? this.props.tags.map((x, i) => {
                     return (
-                      <a
-                        href="#"
-                        className=" broker-tag ms-1 d-inline-block"
-                        id="tagsipad"
-                      >
+                      <a href="#" className=" ms-1" id="tagsipad">
                         {x.interest ? x.interest : ""}
                       </a>
                     );
@@ -161,29 +174,35 @@ export class Ecard extends Component {
                 : ""}
             </div>
             <div
-              className="d-flex flex-row  justify-content-between smallres align-items-end mt-4 "
+              className="d-flex flex-row justify-content-between smallres align-items-end "
               id="bottom"
             >
-              <div className="d-flex  flex-wrap col-6 col-md-2 ">
-                {this.props.application_deadline
-                  ? "Deadline " + this.props.application_deadline
-                  : ""}
-              </div>
-              {this.props.post_type == "promotedPost" ? (
-                <div className="d-flex  flex-wrap promotedPost me-auto col-5 col-md-3">
-                  <BsArrowUpRight
-                    className="m-0 "
-                    color="#cd8930"
-                    fill="#cd8930"
-                    size={18}
-                  />
-                  <p id="gold" className="m-0">
-                    Promoted
-                  </p>
+              <div className="d-flex flex-row">
+                <div className=" col-7 col-md-9 col-sm-4 col-lg-12">
+                  <small className="d-flex flex-wrap ">
+                    {this.props.application_deadline
+                      ? "Deadline " + this.props.application_deadline
+                      : ""}
+                  </small>
                 </div>
-              ) : (
-                ""
-              )}
+                {this.props.post_type == "promotedPost" ? (
+                  <div className="row">
+                    <div className="d-flex flex-wrap promotedPost me-auto col-4 col-md-4 col-lg-4">
+                      {/* <BsArrowUpRight
+                        className="m-0 "
+                        color="#cd8930"
+                        fill="#cd8930"
+                        size={15}
+                      /> */}
+                      <small id="gold" className="m-0">
+                        Promoted
+                      </small>
+                    </div>
+                  </div>
+                ) : (
+                  ""
+                )}
+              </div>
               {this.props.post_type !== "adsPost" ? (
                 <div className="d-flex flex-row-reverse ms-auto">
                   <div
@@ -245,4 +264,4 @@ export class Ecard extends Component {
   }
 }
 
-export default Ecard;
+export default SmallCard;

@@ -56,6 +56,11 @@
   /* padding-bottom: 2px; */
   height: 0.1rem;
 }
+.primarycolor22 {
+  /* background-color: #cd8930; */
+  color: #cd8930 !important;
+  fill: #cd8930;
+}
 .s {
   width: 61%;
   height: 15px;
@@ -138,6 +143,7 @@
   display: flex;
 }
 #tagsipad {
+  padding: 5px;
   text-align: center;
   justify-items: center;
   border-radius: 20px !important;
@@ -145,7 +151,7 @@
   background-color: #f2f2f2 !important;
   font-size: 12px;
   display: inline-block;
-  font-weight: 700;
+  /* font-weight: 700; */
   line-height: 1;
   color: #fff;
   text-align: center !important;

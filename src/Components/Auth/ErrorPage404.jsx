@@ -3,24 +3,42 @@ import logo from "../../Components/assests/imgs/logo.png";
 import error from "../../Components/assests/imgs/error.png";
 import "../../layout/ErrorPage.css";
 import { MdWarning } from "react-icons/md";
+import { Link, NavLink } from "react-router-dom";
 
 class ErrorPage extends React.Component {
-  componentDidMount() {
-    var nav = document.getElementsByClassName("navBottom")[0].remove(nav);
+  constructor(props) {
+    super(props);
+    this.state = {
+      fallback: true,
+    };
   }
+
+  componentDidMount() {
+    if (this.props.fallbackVal === false) {
+      this.props.fallback(this.state.fallback);
+      this.setState({ fallback: this.props.fallbackVal });
+    }
+  }
+  handlemove = () => {
+    this.props.fallback(false);
+  };
   render() {
     return (
       <div className='container-fluid'>
         <nav className='navbar '>
-          <a className='navbar-brand' href='#'>
+          <Link
+            className='navbar-brand mx-2'
+            renderAs='button'
+            to='/Home'
+            onClick={this.handlemove}
+          >
             <img
+              className='navbar-brand profileImage'
               src={logo}
+              width='170'
               alt=''
-              width='200'
-              height='38'
-              className=' d-inline-block align-top img-fluid logo'
-            />
-          </a>
+            ></img>
+          </Link>
         </nav>
         <div className='content d-flex flex-column flex-lg-row justify-content-Center'>
           <div className='col-lg-6 col-12 errolCol'>

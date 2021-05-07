@@ -20,32 +20,24 @@
 }
 .companyName {
   font-family: SF med;
-  font-size: 1.7em;
 }
 .companyImg {
-  /* border: 3px solid red; */
   width: 6em;
   height: 6em;
   object-fit: contain !important;
-  /* padding-left: -2em !important; */
-  /* padding-right: -2em !important; */
+}
+.advisorImg {
+  width: 6em;
+  height: 6em;
+  object-fit: cover !important;
 }
 .companyTitel {
   font-family: SF med;
-  font-size: 1.2em;
-}
-.companyDesc {
-  font-family: SF light;
-  font-size: 1em;
 }
 .companyInfoTxt {
-  font-family: SF light;
-  font-size: 1em;
   color: #cd8930;
 }
 .companyInfoTxt2 {
-  font-family: SF light;
-  font-size: 1em;
   color: #1e4274;
 }
 @media (max-width: 1410px) {
@@ -54,9 +46,7 @@
     width: 20em !important;
   }
 }
-/* .FiPhone svg {
-  color: #cd8930 !important;
-} */
+
 @media (max-width: 1410px) {
   .companyInfoTxt {
     display: flex;
@@ -65,11 +55,10 @@
 }
 .overvireTitle {
   font-family: SF med;
-  font-size: 0.9em;
 }
 .overvireTxt {
-  font-family: SF light;
-  font-size: 0.9em;
+  /* font-family: SF light;
+  font-size: 0.9em; */
   text-transform: capitalize;
   /* margin-top: 0.35em; */
 }
@@ -254,6 +243,6 @@ ul .reuirLi {
   border: none;
 }
 .adsImg {
-  height: 8em !important;
-  object-fit: contain !important;
+  /* height: 8em !important; */
+  object-fit: cover !important;
 }
