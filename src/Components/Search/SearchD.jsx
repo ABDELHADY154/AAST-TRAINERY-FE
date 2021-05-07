@@ -27,6 +27,7 @@ export class SearchD extends Component {
       disabled: true,
       FormLoading: false,
       checked: false,
+      dep: "all",
     };
     window.scrollTo(0, 0);
   }
@@ -74,6 +75,12 @@ export class SearchD extends Component {
               FormLoading: false,
             });
           }
+        })
+        .catch((error) => {
+          this.setState({
+            Error: "Search AAST-Trainery",
+            FormLoading: false,
+          });
         });
       this.props.location.params = null;
     } else {
@@ -86,16 +93,19 @@ export class SearchD extends Component {
   };
   handleFormSubmit = async (e) => {
     e.preventDefault();
-    var data = { department_id: this.state.dep };
+    if (this.state.dep !== "all") {
+      var data = { department_id: this.state.dep };
+    }else {
+      var data = { department_id: 1 };
+    }
     this.setState({ FormLoading: true });
 
     if (
-      this.state.state != undefined &&
-      this.state.state != "all" &&
-      this.state.Search != undefined &&
-      this.state.Search.length !== 0
+      this.state.dep != "all" ||
+      (this.state.Search != undefined && this.state.Search.length !== 0)
     ) {
       this.setState({ Search: this.state.Search.trim() });
+      console.log(this.state.Search);
 
       await axios
         .post(`/W/student/filterDep/${this.state.Search}?page=1`, data)
@@ -107,13 +117,20 @@ export class SearchD extends Component {
             });
           }
           console.log(data);
+        })
+        .catch((error) => {
+          this.setState({
+            Error: "Search AAST-Trainery",
+            FormLoading: false,
+          });
         });
     } else if (
-      this.state.state === "all" &&
-      this.state.Search !== undefined &&
-      this.state.Search.length !== 0
+      this.state.dep === "all" &&
+      this.state.Search !== undefined
+      // this.state.Search.length !== 0
     ) {
       this.setState({ Search: this.state.Search.trim() });
+      console.log(this.state.Search);
       await axios
         .get(`/W/student/search/${this.state.Search}`)
         .then((res) => {
@@ -126,7 +143,10 @@ export class SearchD extends Component {
           }
         })
         .catch((error) => {
-          console.log(error);
+          this.setState({
+            Error: "Search AAST-Trainery",
+            FormLoading: false,
+          });
         });
     } else {
       this.setState({ Error: "Search AAST-Trainery", FormLoading: false });
@@ -137,8 +157,8 @@ export class SearchD extends Component {
     this.setState({ FormLoading: true });
     var data = { department_id: this.state.dep };
     if (
-      this.state.state != undefined &&
-      this.state.state != "all" &&
+      this.state.dep != undefined &&
+      this.state.dep != "all" &&
       this.state.Search != undefined &&
       this.state.Search.length !== 0
     ) {
@@ -154,9 +174,15 @@ export class SearchD extends Component {
             });
           }
           // console.log(data);
+        })
+        .catch((error) => {
+          this.setState({
+            Error: "Search AAST-Trainery",
+            FormLoading: false,
+          });
         });
     } else if (
-      this.state.state === "all" &&
+      this.state.dep === "all" &&
       this.state.Search !== undefined &&
       this.state.Search.length !== 0
     ) {
@@ -174,7 +200,10 @@ export class SearchD extends Component {
           }
         })
         .catch((error) => {
-          console.log(error, "error");
+          this.setState({
+            Error: "Search AAST-Trainery",
+            FormLoading: false,
+          });
         });
     } else {
       this.setState({ Error: "Search AAST-Trainery", FormLoading: false });
@@ -190,8 +219,8 @@ export class SearchD extends Component {
       });
       var data = { department_id: this.state.dep };
       if (
-        this.state.state != undefined &&
-        this.state.state != "all" &&
+        this.state.dep != undefined &&
+        this.state.dep != "all" &&
         this.state.Search != undefined &&
         this.state.Search.length !== 0
       ) {
@@ -206,9 +235,15 @@ export class SearchD extends Component {
                 FormLoading: false,
               });
             }
+          })
+          .catch((error) => {
+            this.setState({
+              Error: "Search AAST-Trainery",
+              FormLoading: false,
+            });
           });
       } else if (
-        this.state.state === "all" &&
+        this.state.dep === "all" &&
         this.state.Search !== undefined &&
         this.state.Search.length !== 0
       ) {
@@ -224,7 +259,10 @@ export class SearchD extends Component {
             }
           })
           .catch((error) => {
-            console.log(error);
+            this.setState({
+              Error: "Search AAST-Trainery",
+              FormLoading: false,
+            });
           });
       } else {
         this.setState({ Error: "Search AAST-Trainery" });
@@ -240,8 +278,8 @@ export class SearchD extends Component {
     });
     var data = { department_id: this.state.dep };
     if (
-      this.state.state != undefined &&
-      this.state.state != "all" &&
+      this.state.dep != undefined &&
+      this.state.dep != "all" &&
       this.state.Search != undefined &&
       this.state.Search.length !== 0
     ) {
@@ -256,9 +294,15 @@ export class SearchD extends Component {
               FormLoading: false,
             });
           }
+        })
+        .catch((error) => {
+          this.setState({
+            Error: "Search AAST-Trainery",
+            FormLoading: false,
+          });
         });
     } else if (
-      this.state.state === "all" &&
+      this.state.dep === "all" &&
       this.state.Search !== undefined &&
       this.state.Search.length !== 0
     ) {
@@ -274,7 +318,10 @@ export class SearchD extends Component {
           }
         })
         .catch((error) => {
-          console.log(error);
+          this.setState({
+            Error: "Search AAST-Trainery",
+            FormLoading: false,
+          });
         });
     } else {
       this.setState({ Error: "Search AAST-Trainery" });

@@ -53,9 +53,8 @@ class SearchP extends Component {
     />
   );
   async componentDidMount() {
-    console.log(this.props.location.params);
     if (this.props.location.params && this.props.location.params.value !== undefined) {
-      this.setState({ Search: this.props.location.params.value });
+      this.setState({ Search: this.props.location.params.value, FormLoading: true });
       await axios
         .get(`/W/student/search/${this.props.location.params.value}`)
         .then((res) => {
@@ -68,6 +67,12 @@ class SearchP extends Component {
               state: "",
             });
           }
+        })
+        .catch((error) => {
+          this.setState({
+            Error: "Search AAST-Trainery",
+            FormLoading: false,
+          });
         });
       this.props.location.params = null;
     } else {
@@ -80,7 +85,12 @@ class SearchP extends Component {
   handleFormSubmit = async (e) => {
     e.preventDefault();
     // console.log();
-    var data = { payment: this.state.pay };
+    if (this.state.pay !== "all") {
+      var data = { payment: this.state.pay };
+    } else {
+      var data = { payment: 1 };
+    }
+    console.log(this.state.pay);
     this.setState({ FormLoading: true });
     if (
       this.state.pay != undefined &&
@@ -98,6 +108,12 @@ class SearchP extends Component {
               FormLoading: false,
             });
           }
+        })
+        .catch((error) => {
+          this.setState({
+            Error: "Search AAST-Trainery",
+            FormLoading: false,
+          });
         });
     } else if (
       this.state.pay === "all" &&
@@ -116,7 +132,10 @@ class SearchP extends Component {
           }
         })
         .catch((error) => {
-          console.log(error);
+          this.setState({
+            Error: "Search AAST-Trainery",
+            FormLoading: false,
+          });
         });
     } else {
       this.setState({ Error: "Search AAST-Trainery", FormLoading: false });
@@ -143,6 +162,12 @@ class SearchP extends Component {
               FormLoading: false,
             });
           }
+        })
+        .catch((error) => {
+          this.setState({
+            Error: "Search AAST-Trainery",
+            FormLoading: false,
+          });
         });
     } else if (
       this.state.pay === "all" &&
@@ -164,7 +189,10 @@ class SearchP extends Component {
           }
         })
         .catch((error) => {
-          console.log(error);
+          this.setState({
+            Error: "Search AAST-Trainery",
+            FormLoading: false,
+          });
         });
     } else {
       this.setState({ Error: "Search AAST-Trainery", FormLoading: false });
@@ -196,7 +224,12 @@ class SearchP extends Component {
                 FormLoading: false,
               });
             }
-            console.log(data);
+          })
+          .catch((error) => {
+            this.setState({
+              Error: "Search AAST-Trainery",
+              FormLoading: false,
+            });
           });
       } else if (
         this.state.pay === "all" &&
@@ -216,7 +249,10 @@ class SearchP extends Component {
             }
           })
           .catch((error) => {
-            console.log(error);
+            this.setState({
+              Error: "Search AAST-Trainery",
+              FormLoading: false,
+            });
           });
       } else {
         this.setState({ Error: "Search AAST-Trainery" });
@@ -248,7 +284,12 @@ class SearchP extends Component {
               FormLoading: false,
             });
           }
-          console.log(data);
+        })
+        .catch((error) => {
+          this.setState({
+            Error: "Search AAST-Trainery",
+            FormLoading: false,
+          });
         });
     } else if (
       this.state.pay === "all" &&
@@ -267,7 +308,10 @@ class SearchP extends Component {
           }
         })
         .catch((error) => {
-          console.log(error);
+          this.setState({
+            Error: "Search AAST-Trainery",
+            FormLoading: false,
+          });
         });
     } else {
       this.setState({ Error: "Search AAST-Trainery" });
@@ -306,7 +350,8 @@ class SearchP extends Component {
                       type='text'
                       class='form-control input-lg'
                       onChange={this.handleChange}
-                      value={this.state.Search ? this.state.Search : ""}required
+                      value={this.state.Search ? this.state.Search : ""}
+                      required
                     />
 
                     <div class='input-group-btn'>

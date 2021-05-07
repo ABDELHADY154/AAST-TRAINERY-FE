@@ -141,7 +141,7 @@ class Explore extends Component {
         <Redirect
           to={{
             pathname: "/Search/d",
-            params: { val: this.state.Search },
+            params: { value: this.state.Search },
           }}
         />
       );
