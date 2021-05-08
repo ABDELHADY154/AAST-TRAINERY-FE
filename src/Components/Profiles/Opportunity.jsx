@@ -357,7 +357,7 @@ export default class advisorProfile extends Component {
                 /> */}
                 {this.state.applied == true ? (
                   <button
-                    className="applyBtn px-1 py-0 col-md-3 col-8 appliedBtn "
+                    className="text-center applyBtn px-1 py-0 col-md-4 col-lg-6 col-8 col-sm-8 "
                     onClick={() => {
                       this.handleunApple();
                     }}
@@ -366,7 +366,7 @@ export default class advisorProfile extends Component {
                   </button>
                 ) : (
                   <button
-                    className="applyBtn px-1 py-0 col-md-3 col-8"
+                    className="text-center applyBtn px-1 py-0 col-md-4 col-lg-6 col-8 col-sm-8"
                     onClick={() => {
                       this.handleApple();
                     }}
@@ -378,29 +378,26 @@ export default class advisorProfile extends Component {
             </div>
             {/* carousel */}
             <div className="col-12">
+              <p className="companyTitel ">Company internship reviews</p>
+
               <>
                 <div>
                   <Slider {...settings}>
                     {this.state.review.length == 0 ? (
-                      <div className="position-absolute top-50 start-50 translate-middle">
-                        <p className="text-center">No Activity</p>
+                      <div className="">
+                        <p className="text-center">No Reviews Were Added</p>
                       </div>
                     ) : (
                       this.state.review.map((data) => {
                         return (
-                          <>
-                            <p className="companyTitel ">
-                              Company internship reviews
-                            </p>
-                            <CarouselReviews
-                              id={data.id}
-                              key={data.id}
-                              comment={data.comment}
-                              fullName={data.fullName}
-                              training_role={data.training_role}
-                              rate={data.rate}
-                            />
-                          </>
+                          <CarouselReviews
+                            id={data.id}
+                            key={data.id}
+                            comment={data.comment}
+                            fullName={data.fullName}
+                            training_role={data.training_role}
+                            rate={data.rate}
+                          />
                         );
                       })
                     )}
