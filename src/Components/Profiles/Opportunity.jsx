@@ -378,26 +378,29 @@ export default class advisorProfile extends Component {
             </div>
             {/* carousel */}
             <div className="col-12">
-              <p className="companyTitel ">Company internship reviews</p>
-
               <>
                 <div>
                   <Slider {...settings}>
-                    {this.state.review.length < 1 ? (
+                    {this.state.review.length == 0 ? (
                       <div className="position-absolute top-50 start-50 translate-middle">
                         <p className="text-center">No Activity</p>
                       </div>
                     ) : (
                       this.state.review.map((data) => {
                         return (
-                          <CarouselReviews
-                            id={data.id}
-                            key={data.id}
-                            comment={data.comment}
-                            fullName={data.fullName}
-                            training_role={data.training_role}
-                            rate={data.rate}
-                          />
+                          <>
+                            <p className="companyTitel ">
+                              Company internship reviews
+                            </p>
+                            <CarouselReviews
+                              id={data.id}
+                              key={data.id}
+                              comment={data.comment}
+                              fullName={data.fullName}
+                              training_role={data.training_role}
+                              rate={data.rate}
+                            />
+                          </>
                         );
                       })
                     )}
@@ -405,37 +408,43 @@ export default class advisorProfile extends Component {
                 </div>
               </>
             </div>
-            <div className="d-flex flex-row ">
-              <div className="d-flex flex-column col-md-7 me-2  text-wrap bg-none me-5 ">
-                <p className="mb-0 companyTitel" id="Title">
-                  Add Your Review
-                </p>
-                <ReactStars
-                  className="reviewstars"
-                  count={5}
-                  value="3"
-                  onChange={(value) => {
-                    this.setState({ value: value });
-                  }}
-                  size={28}
-                  activeColor="#F2A23A"
-                  edit={true}
-                />
-              </div>
-            </div>
-            <div className="d-flex flex-row mt-3 mb-5 ">
-              <textarea
-                placeholder="Enter Your Review Here..."
-                type="text"
-                name="name"
-                className="reviewbox d-flex flex-column col-md-12 col-12 pt-2  px-3"
-              ></textarea>
-            </div>
-            <div className="d-flex flex-row mb-5 justify-content-end ">
-              <button className="applyBtn px-1 py-0 col-md-1 col-4 ">
-                Review
-              </button>
-            </div>
+            {this.state.data.accomplished == true ? (
+              <>
+                <div className="d-flex flex-row ">
+                  <div className="d-flex flex-column col-md-7 me-2  text-wrap bg-none me-5 ">
+                    <p className="mb-0 companyTitel" id="Title">
+                      Add Your Review
+                    </p>
+                    <ReactStars
+                      className="reviewstars"
+                      count={5}
+                      value="3"
+                      onChange={(value) => {
+                        this.setState({ value: value });
+                      }}
+                      size={28}
+                      activeColor="#F2A23A"
+                      edit={true}
+                    />
+                  </div>
+                </div>
+                <div className="d-flex flex-row mt-3 mb-5 ">
+                  <textarea
+                    placeholder="Enter Your Review Here..."
+                    type="text"
+                    name="name"
+                    className="reviewbox d-flex flex-column col-md-12 col-12 pt-2  px-3"
+                  ></textarea>
+                </div>
+                <div className="d-flex flex-row mb-5 justify-content-end ">
+                  <button className="applyBtn px-1 py-0 col-md-1 col-4 ">
+                    Review
+                  </button>
+                </div>
+              </>
+            ) : (
+              ""
+            )}
           </div>
           <Footer2 />
         </LoadingOverlay>
