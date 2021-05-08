@@ -66,44 +66,45 @@ class Accepted extends Component {
             <Link to="/Profile/Activity/Accepted" />
             <div className="container">
               <ActivityNavbar setactive={"Accepted"} />
+              <div className="mb-5">
+                {this.state.data.length == 0 ? (
+                  <div className="col-12">
+                    <Link
+                      className="row mb-5 mt-2 d-flex justify-content-center explore"
+                      to="/Explore"
+                    >
+                      Explore our new internship
+                      <span className="sr-only" />
+                    </Link>
 
-              {this.state.data.length == 0 ? (
-                <div className="col-12">
-                  <Link
-                    className="row mb-5 mt-2 d-flex justify-content-center explore"
-                    to="/Explore"
-                  >
-                    Explore our new internship
-                    <span className="sr-only" />
-                  </Link>
-
-                  <img className="row center img-fluid" src={none} />
-                </div>
-              ) : (
-                this.state.data.map((data) => {
-                  return (
-                    <BigCard
-                      title={data.title}
-                      company_logo={data.company_logo}
-                      salary={data.salary}
-                      company_name={data.company_name}
-                      departments={data.departments}
-                      description={data.description}
-                      tags={data.tags}
-                      application_deadline={data.application_deadline}
-                      advisor={data.advisor}
-                      post_type={data.post_type}
-                      sponsor_image={data.sponsor_image}
-                      key={data.id}
-                      saved={data.saved}
-                      applied={data.applied}
-                      id={data.id}
-                      company_id={data.company_id}
-                      accepted={data.accepted}
-                    />
-                  );
-                })
-              )}
+                    <img className="row center img-fluid" src={none} />
+                  </div>
+                ) : (
+                  this.state.data.map((data) => {
+                    return (
+                      <BigCard
+                        title={data.title}
+                        company_logo={data.company_logo}
+                        salary={data.salary}
+                        company_name={data.company_name}
+                        departments={data.departments}
+                        description={data.description}
+                        tags={data.tags}
+                        application_deadline={data.application_deadline}
+                        advisor={data.advisor}
+                        post_type={data.post_type}
+                        sponsor_image={data.sponsor_image}
+                        key={data.id}
+                        saved={data.saved}
+                        applied={data.applied}
+                        id={data.id}
+                        company_id={data.company_id}
+                        accepted={data.accepted}
+                      />
+                    );
+                  })
+                )}
+              </div>
             </div>
           </div>
           <Footer2 id="footer" />

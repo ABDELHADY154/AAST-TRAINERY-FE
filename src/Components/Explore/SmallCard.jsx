@@ -101,7 +101,8 @@ export class SmallCard extends Component {
                     id="goldtab"
                     className="mb-0 d-flex flex-row-reverse col-sm-2 col-md-3 col-lg-2 col-2 d-flex align-items-center"
                   >
-                    {this.props.salary ? this.props.salary : ""}
+                    {this.props.salary == "Paid" ? "Paid" : "Unpaid"}
+                    {/* {this.props.salary ? this.props.salary : ""} */}
                   </small>
                 </div>
                 <div className="row">

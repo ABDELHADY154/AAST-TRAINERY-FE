@@ -6,17 +6,22 @@ import img from "../../Components/assests/imgs/rec2.png";
 import img2 from "../../Components/assests/imgs/cib.png";
 import "../../layout/Home.css";
 import Footer2 from "../Common/Footer2";
-import { BsChevronRight, BsChevronLeft } from "react-icons/bs";
 import ReactStars from "react-rating-stars-component";
 import LoadingOverlay from "react-loading-overlay";
 import BounceLoader from "react-spinners/BounceLoader";
 import { BsBookmark, BsFillBookmarkFill } from "react-icons/bs";
+// import { CarouselReviews } from "./CarouselReviews";
+import { BsChevronRight, BsChevronLeft } from "react-icons/bs";
+import Slider from "react-slick";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 
 export default class advisorProfile extends Component {
   constructor(props) {
     super(props);
     this.state = {
       scrollPixelsY: 0,
+      review: [],
       data: {},
       departments: [],
       tags: [],
@@ -54,10 +59,21 @@ export default class advisorProfile extends Component {
             applied: true,
           });
         }
-        console.log(this.state.data.applied);
+        // console.log(this.state.data.applied);
       })
       .catch((err) => {
         this.setState({ FormLoading: true });
+        console.log(err);
+      });
+    await axios
+      .get(`/W/student/review/${this.props.match.params.id}`)
+      .then((res) => {
+        this.setState({
+          id: res.data.response.data.id,
+          review: res.data.response.data,
+        });
+      })
+      .catch((err) => {
         console.log(err);
       });
   }
@@ -73,7 +89,10 @@ export default class advisorProfile extends Component {
         }
       })
       .catch((error) => {
-        if (error.response.data.status === 401 || error.response.data.status === 404) {
+        if (
+          error.response.data.status === 401 ||
+          error.response.data.status === 404
+        ) {
           sessionStorage.clear("token");
           sessionStorage.clear("status");
           this.setState({ loggedIn: false });
@@ -94,7 +113,10 @@ export default class advisorProfile extends Component {
         }
       })
       .catch((error) => {
-        if (error.response.data.status === 401 || error.response.data.status === 404) {
+        if (
+          error.response.data.status === 401 ||
+          error.response.data.status === 404
+        ) {
           sessionStorage.clear("token");
           sessionStorage.clear("status");
           this.setState({ loggedIn: false });
@@ -115,7 +137,10 @@ export default class advisorProfile extends Component {
         }
       })
       .catch((error) => {
-        if (error.response.data.status === 401 || error.response.data.status === 404) {
+        if (
+          error.response.data.status === 401 ||
+          error.response.data.status === 404
+        ) {
           sessionStorage.clear("token");
           sessionStorage.clear("status");
           this.setState({ loggedIn: false });
@@ -136,7 +161,10 @@ export default class advisorProfile extends Component {
         }
       })
       .catch((error) => {
-        if (error.response.data.status === 401 || error.response.data.status === 404) {
+        if (
+          error.response.data.status === 401 ||
+          error.response.data.status === 404
+        ) {
           sessionStorage.clear("token");
           sessionStorage.clear("status");
           this.setState({ loggedIn: false });
@@ -146,11 +174,20 @@ export default class advisorProfile extends Component {
   };
 
   render() {
+    console.log(this.state.review);
+    const settings = {
+      dots: true,
+      infinite: true,
+      speed: 500,
+      slidesToShow: 1,
+      slidesToScroll: 1,
+    };
+
     return (
-      <div className='profileMT'>
+      <div className="profileMT">
         <LoadingOverlay
           active={this.state.FormLoading}
-          spinner={<BounceLoader color='#cd8930' />}
+          spinner={<BounceLoader color="#cd8930" />}
           color={"#cd8930"}
           styles={{
             overlay: (base) => ({
@@ -160,29 +197,34 @@ export default class advisorProfile extends Component {
             }),
           }}
         >
-          <div className='container '>
-            <div className='d-flex flex-row mb-3 '>
+          <div className="container ">
+            <div className="d-flex flex-row mb-3 ">
               <Link to={`/CompanyProfile/${this.state.data.company_id}`}>
                 <img
                   src={this.state.data.company_logo}
-                  className='ms-1 me-3 col-2 rounded-circle companyImg'
+                  className="ms-1 me-3 col-2 rounded-circle companyImg"
                 />
               </Link>
-              <div className='col-12 mt-3 '>
-                <div className='d-flex flex-row w-7'>
-                  <h4 className='opportunity col-md-12 col-12'>
+              <div className="col-12 mt-3 ">
+                <div className="d-flex flex-row w-7">
+                  <h4 className="opportunity col-md-12 col-12">
                     {this.state.data.title}
                   </h4>
                 </div>
-                <div className='d-flex flex-row'>
-                  <Link className='col-10 col-md-10 col-sm-10 ' to={`/CompanyProfile`}>
-                    <p className=' company'>{this.state.data.company_name}</p>
+                <div className="d-flex flex-row">
+                  <Link
+                    className="col-10 col-md-10 col-sm-10 "
+                    to={`/CompanyProfile`}
+                  >
+                    <p className=" company">{this.state.data.company_name}</p>
                   </Link>
-                  <p className='col-2 col-md-2 col-sm-2 col-xs-3 paid'>
+                  <p className="col-2 col-md-2 col-sm-2 col-xs-3 paid">
+                    {/* {this.props.salary == "Paid" ? "Paid" : "Unpaid"} */}
+
                     {this.state.data.salary}
                   </p>
                 </div>
-                <div className=' departments d-flex flex-row'>
+                <div className=" departments d-flex flex-row">
                   {this.state.departments.map((item) => {
                     return (
                       <Departments
@@ -196,9 +238,15 @@ export default class advisorProfile extends Component {
                 </div>
               </div>
             </div>
-            <div className=' d-flex flex-row flex-wrap col-12 col-md-12'>
+            <div className=" d-flex flex-row flex-wrap col-12 col-md-12">
               {this.state.tags.map((item) => {
-                return <Interest id={item.id} key={item.id} interest={item.interest} />;
+                return (
+                  <Interest
+                    id={item.id}
+                    key={item.id}
+                    interest={item.interest}
+                  />
+                );
               })}
             </div>
 
@@ -218,17 +266,25 @@ export default class advisorProfile extends Component {
                       </p>
                       <p className="overvireTitle mb-1">location:</p>
                     </div>
-                    <div className='col-6 col-xl-7 col-xxl-7 col-lg-6 col-md-7 col-sm-6 col-xs-6 discCol'>
-                      <p className=' overvireTxt mb-1'>{this.state.data.published_on}</p>
-                      <p className='overvireTxt mb-1'>{this.state.data.vacancy}</p>
-                      <p className='overvireTxt mb-1'>{this.state.data.gender}</p>
-                      <p className='overvireTxt mb-1'>{this.state.data.type}</p>
-                      <p className='overvireTxt mb-1'>{this.state.data.salary}</p>
-                      <p className='overvireTxt mb-1'>
+                    <div className="col-6 col-xl-7 col-xxl-7 col-lg-6 col-md-7 col-sm-6 col-xs-6 discCol">
+                      <p className=" overvireTxt mb-1">
+                        {this.state.data.published_on}
+                      </p>
+                      <p className="overvireTxt mb-1">
+                        {this.state.data.vacancy}
+                      </p>
+                      <p className="overvireTxt mb-1">
+                        {this.state.data.gender}
+                      </p>
+                      <p className="overvireTxt mb-1">{this.state.data.type}</p>
+                      <p className="overvireTxt mb-1">
+                        {this.state.data.salary}
+                      </p>
+                      <p className="overvireTxt mb-1">
                         {this.state.data.application_deadline}
                       </p>
                       <a
-                        className='overvireTxt location mb-1 '
+                        className="overvireTxt location mb-1 "
                         href={`http://maps.google.com/?q=1200:${this.state.data.location}`}
                       >
                         {this.state.data.location}
@@ -238,14 +294,14 @@ export default class advisorProfile extends Component {
                 </div>
               </div>
 
-              <div className='mt-4'>
-                <h5 className='companyTitel'>Description</h5>
-                <p className='companyDesc'>{this.state.data.description}</p>
+              <div className="mt-4">
+                <h5 className="companyTitel">Description</h5>
+                <p className="companyDesc">{this.state.data.description}</p>
               </div>
 
-              <div className='mt-4'>
-                <h5 className='companyTitel'>Requirements</h5>
-                <ul className='reuirLi'>
+              <div className="mt-4">
+                <h5 className="companyTitel">Requirements</h5>
+                <ul className="reuirLi">
                   {this.state.requirements.map((item) => {
                     return (
                       <Requirements
@@ -259,33 +315,33 @@ export default class advisorProfile extends Component {
                 </ul>
               </div>
             </div>
-            <div className='d-flex flex-row flex-wrap mb-4 mt-5'>
-              <div className='d-flex flex-column col-4 col-md-1 me-4 '></div>
-              <div className='d-flex flex-column col-4  col-md-1 me-4 '></div>
+            <div className="d-flex flex-row flex-wrap mb-4 mt-5">
+              <div className="d-flex flex-column col-4 col-md-1 me-4 "></div>
+              <div className="d-flex flex-column col-4  col-md-1 me-4 "></div>
               <div
-                id='drop'
-                className='d-flex flex-column col-md-3  
-                             justify-space-between'
+                id="drop"
+                className="d-flex flex-column col-md-3  
+                             justify-space-between"
               ></div>
-              <div className='  d-flex flex-row col-12 col-md-2 justify-content-start me-1'></div>
-              <div className='  d-flex flex-row col-12 col-md-4 justify-content-end btnmovement'>
+              <div className="  d-flex flex-row col-12 col-md-2 justify-content-start me-1"></div>
+              <div className="  d-flex flex-row col-12 col-md-4 justify-content-end btnmovement">
                 {this.state.saved == true ? (
                   <BsFillBookmarkFill
-                    id='BsBookmark'
-                    fill='#1e4274'
-                    className='fs-2 align-self-center col-md-2 col-4'
+                    id="BsBookmark"
+                    fill="#1e4274"
+                    className="fs-2 align-self-center col-md-2 col-4"
                     // style={{ marginTop: -5 }}
                     onClick={() => {
                       this.handleUnSave();
                     }}
-                    path='0px'
+                    path="0px"
                   />
                 ) : this.state.saved == false ? (
                   <BsBookmark
-                    id='BsBookmark'
-                    fill='#1e4274'
-                    className='fs-2 align-self-center col-md-2 col-4'
-                    path='0px'
+                    id="BsBookmark"
+                    fill="#1e4274"
+                    className="fs-2 align-self-center col-md-2 col-4"
+                    path="0px"
                     onClick={() => {
                       this.handleSave();
                     }}
@@ -301,7 +357,7 @@ export default class advisorProfile extends Component {
                 /> */}
                 {this.state.applied == true ? (
                   <button
-                    className='applyBtn px-1 py-0 col-md-3 col-8 appliedBtn '
+                    className="applyBtn px-1 py-0 col-md-3 col-8 appliedBtn "
                     onClick={() => {
                       this.handleunApple();
                     }}
@@ -310,7 +366,7 @@ export default class advisorProfile extends Component {
                   </button>
                 ) : (
                   <button
-                    className='applyBtn px-1 py-0 col-md-3 col-8'
+                    className="applyBtn px-1 py-0 col-md-3 col-8"
                     onClick={() => {
                       this.handleApple();
                     }}
@@ -321,175 +377,125 @@ export default class advisorProfile extends Component {
               </div>
             </div>
             {/* carousel */}
-            <div className='col-12'>
-              <p className='companyTitel '>Company internship reviews</p>
-              {/* <CarouselReviews /> */}
+            <div className="col-12">
+              <p className="companyTitel ">Company internship reviews</p>
+
               <>
-                <div
-                  id='carouselExampleControls'
-                  className='carousel slide '
-                  data-bs-ride='carousel'
-                >
-                  <div className='carousel-inner mb-5'>
-                    <div className='carousel-item active'>
-                      <div className='flex-row d-flex justify-content-center'>
-                        <div className='col-md-12'>
-                          <div className='d-flex flex-row justify-content-center'>
-                            <div className=' carouselCaption text-center col-md-11 mb-2 col-11'>
-                              <p className='txtCarousel lh-sm'>
-                                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                                Ipsam repudiandae aut possimus. Repellendus at nostrum
-                                iste doloremque. Ea omnis ipsam, eum nam tempore culpa
-                                illum consequuntur quis nobis adipisci et? Lorem ipsum
-                                dolor sit amet consectetur adipisicing elit. Ipsam
-                                repudiandae aut possimus. Repellendus at nostrum iste
-                                doloremque. Ea omnis ipsam, eum nam tempore culpa illum
-                                consequuntur quis nobis adipisci et?
-                              </p>
-                            </div>
-                          </div>
-
-                          <center>
-                            <div className='hrReviews position-absolute top-40 start-50 translate-middle '></div>
-                          </center>
-                          <div className='d-flex flex-row col-12 col-md-12 text-center fs-5  '>
-                            <div className='d-flex flex-column col-12 col-md-12'>
-                              <center>
-                                <p className='txtName'>full name</p>
-                              </center>
-                            </div>
-                          </div>
-                          <div className='d-flex flex-row  col-12 col-md-12 text-center fs-5  '>
-                            <div className='d-flex flex-column col-12 col-md-12'>
-                              <center>
-                                <p className='txtRole'>Trainig role</p>
-                              </center>
-                            </div>
-                          </div>
-                          <div className='d-flex flex-row  col-12 col-md-12 text-center justify-content-center  mb-2 starsReview'>
-                            <div className='d-flex flex-column justify-content-center col-md-12 align-items-center'>
-                              <ReactStars
-                                count={5}
-                                value='4'
-                                edit={false}
-                                size={23}
-                                activeColor='#F2A23A'
-                              />
-                            </div>
-                          </div>
-                        </div>
+                <div>
+                  <Slider {...settings}>
+                    {this.state.review.length < 1 ? (
+                      <div className="position-absolute top-50 start-50 translate-middle">
+                        <p className="text-center">No Activity</p>
                       </div>
-                    </div>
-                    <div className='carousel-item '>
-                      <div className='flex-row d-flex justify-content-center'>
-                        <div className='col-md-12'>
-                          <div className='d-flex flex-row justify-content-center'>
-                            <div className=' carouselCaption text-center col-md-11 mb-2 col-11'>
-                              <p className='txtCarousel lh-sm '>
-                                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                                Ipsam repudiandae aut possimus. Repellendus at nostrum
-                                iste doloremque. Ea omnis ipsam, eum nam tempore culpa
-                                illum consequuntur quis nobis adipisci et?
-                              </p>
-                            </div>
-                          </div>
-
-                          <center>
-                            <div className='hrReviews position-absolute top-40 start-50 translate-middle '></div>
-                          </center>
-                          <div className='d-flex flex-row col-12 col-md-12 text-center fs-5  '>
-                            <div className='d-flex flex-column col-12 col-md-12'>
-                              <center>
-                                <p className='txtName'>full name</p>
-                              </center>
-                            </div>
-                          </div>
-                          <div className='d-flex flex-row  col-12 col-md-12 text-center fs-5  '>
-                            <div className='d-flex flex-column col-12 col-md-12'>
-                              <center>
-                                <p className='txtRole'>Trainig role</p>
-                              </center>
-                            </div>
-                          </div>
-                          <div className='d-flex flex-row  col-12 col-md-12 text-center justify-content-center mb-2 '>
-                            <div className='d-flex flex-column justify-content-center col-md-12 align-items-center'>
-                              <ReactStars
-                                count={5}
-                                value='1'
-                                edit={false}
-                                size={23}
-                                activeColor='#F2A23A'
-                              />
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <button
-                      className='carousel-control-prev prevBtnReviews'
-                      type='button'
-                      data-bs-target='#carouselExampleControls'
-                      data-bs-slide='prev'
-                    >
-                      <span
-                        className='carousel-control-prev-icon'
-                        aria-hidden='true'
-                      ></span>
-                      <span className='visually-shown'>
-                        <BsChevronLeft id='iconss' size='20' />
-                      </span>
-                    </button>
-                    <button
-                      className='carousel-control-next nextBtnReviews'
-                      type='button'
-                      data-bs-target='#carouselExampleControls'
-                      data-bs-slide='next'
-                    >
-                      <span
-                        className='carousel-control-next-icon'
-                        aria-hidden='true'
-                      ></span>
-                      <span className='visually-shown'>
-                        <BsChevronRight id='iconss' size='20' />
-                      </span>
-                    </button>
-                  </div>
+                    ) : (
+                      this.state.review.map((data) => {
+                        return (
+                          <CarouselReviews
+                            id={data.id}
+                            key={data.id}
+                            comment={data.comment}
+                            fullName={data.fullName}
+                            training_role={data.training_role}
+                            rate={data.rate}
+                          />
+                        );
+                      })
+                    )}
+                  </Slider>
                 </div>
               </>
             </div>
-            <div className='d-flex flex-row '>
-              <div className='d-flex flex-column col-md-7 me-2  text-wrap bg-none me-5 '>
-                <p className='mb-0 companyTitel' id='Title'>
+            <div className="d-flex flex-row ">
+              <div className="d-flex flex-column col-md-7 me-2  text-wrap bg-none me-5 ">
+                <p className="mb-0 companyTitel" id="Title">
                   Add Your Review
                 </p>
                 <ReactStars
-                  className='reviewstars'
+                  className="reviewstars"
                   count={5}
-                  value='3'
+                  value="3"
                   onChange={(value) => {
                     this.setState({ value: value });
                   }}
                   size={28}
-                  activeColor='#F2A23A'
+                  activeColor="#F2A23A"
                   edit={true}
                 />
               </div>
             </div>
-            <div className='d-flex flex-row mt-3 mb-5 '>
+            <div className="d-flex flex-row mt-3 mb-5 ">
               <textarea
-                placeholder='Enter Your Review Here...'
-                type='text'
-                name='name'
-                className='reviewbox d-flex flex-column col-md-12 col-12 pt-2  px-3'
+                placeholder="Enter Your Review Here..."
+                type="text"
+                name="name"
+                className="reviewbox d-flex flex-column col-md-12 col-12 pt-2  px-3"
               ></textarea>
             </div>
-            <div className='d-flex flex-row mb-5 justify-content-end '>
-              <button className='applyBtn px-1 py-0 col-md-1 col-4 '>Review</button>
+            <div className="d-flex flex-row mb-5 justify-content-end ">
+              <button className="applyBtn px-1 py-0 col-md-1 col-4 ">
+                Review
+              </button>
             </div>
           </div>
           <Footer2 />
         </LoadingOverlay>
       </div>
+    );
+  }
+}
+
+class CarouselReviews extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {};
+  }
+  render() {
+    const settings = {
+      dots: true,
+      infinite: true,
+      speed: 500,
+      slidesToShow: 1,
+      slidesToScroll: 1,
+    };
+
+    return (
+      <>
+        <div>
+          <div className="d-flex flex-row justify-content-center">
+            <div className=" carouselCaption text-center col-md-11 mb-2 col-11">
+              <p className="txtCarousel lh-sm">{this.props.comment}</p>
+            </div>
+          </div>
+          <center>
+            <div className="hrReview position-absolute top-40 start-50 translate-middle "></div>
+          </center>
+          <div className="d-flex flex-row col-12 col-md-12 text-center fs-5  ">
+            <div className="d-flex flex-column col-12 col-md-12">
+              <center>
+                <p className="txtName">{this.props.fullName}</p>
+              </center>
+            </div>
+          </div>
+          <div className="d-flex flex-row  col-12 col-md-12 text-center fs-5  ">
+            <div className="d-flex flex-column col-12 col-md-12">
+              <center>
+                <p className="txtRole">{this.props.training_role}</p>
+              </center>
+            </div>
+          </div>
+          <div className="d-flex flex-row  col-12 col-md-12 text-center justify-content-center  mb-2 starsReview">
+            <div className="d-flex flex-column justify-content-center col-md-12 align-items-center">
+              <ReactStars
+                count={5}
+                value={this.props.rate}
+                edit={false}
+                size={23}
+                activeColor="#F2A23A"
+              />
+            </div>
+          </div>
+        </div>
+      </>
     );
   }
 }
@@ -500,7 +506,7 @@ class Departments extends Component {
     this.state = {};
   }
   render() {
-    return <p className='dep me-2'>{this.props.dep_name}</p>;
+    return <p className="dep me-2">{this.props.dep_name}</p>;
   }
 }
 
@@ -511,10 +517,10 @@ class Interest extends Component {
   }
   render() {
     return (
-      <div className='d-flex flex-row me-2 fs-5 '>
+      <div className="d-flex flex-row me-2 fs-5 ">
         <p
           style={{ textTransform: "capitalize" }}
-          className=' d-flex flex-row flex-wrap col-12 col-md-12 tag '
+          className=" d-flex flex-row flex-wrap col-12 col-md-12 tag "
         >
           {this.props.interest}
         </p>
@@ -528,6 +534,6 @@ class Requirements extends Component {
     this.state = {};
   }
   render() {
-    return <li className=' companyDesc reuirLi'>{this.props.req} </li>;
+    return <li className=" companyDesc reuirLi">{this.props.req} </li>;
   }
 }

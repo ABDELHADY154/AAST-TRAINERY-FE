@@ -217,3 +217,14 @@
   -webkit-box-orient: vertical;
   overflow: hidden;
 }
+@media (max-width: 400px) {
+  .wrapSalary {
+    display: flex;
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    margin-left: 1.5em !important;
+  }
+  /* .goldtab {
+    margin-left: 6em !important;
+  } */
+}
