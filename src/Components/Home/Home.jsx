@@ -444,11 +444,10 @@ class Home extends Component {
                         post_type={data.post_type}
                         sponsor_image={data.sponsor_image}
                         key={data.id}
-                        saved={data.saved}
-                        applied={data.applied}
+                        reviewed={data.reviewed}
+                        status={data.status}
                         id={data.id}
                         company_id={data.company_id}
-                        accepted={data.accepted}
                       />
                     );
                   })
@@ -492,9 +491,9 @@ class Home extends Component {
                     post_type={this.state.explorePosts[0].post_type}
                     departments={this.state.explorePosts[0].departments}
                     tags={this.state.explorePosts[0].tags}
-                    saved={this.state.explorePosts[0].saved}
-                    applied={this.state.explorePosts[0].applied}
-                    accepted={this.state.explorePosts[0].accepted}
+                    reviewed={this.state.explorePosts[0].reviewed}
+                    status={this.state.explorePosts[0].status}
+                    // accepted={this.state.explorePosts[0].accepted}
                   />
 
                   <BigCard
