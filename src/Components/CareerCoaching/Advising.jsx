@@ -6,6 +6,12 @@ import img from "../assests/imgs/img4.png";
 import ReactStars from "react-rating-stars-component";
 import DateTimePicker from "react-datetime-picker";
 import { axios } from "../../Api/axios";
+import Slider from "react-slick";
+import "slick-carousel/slick/slick.css";
+import "../../layout/Profiless.css";
+import "../../layout/Home.css";
+
+import "slick-carousel/slick/slick-theme.css";
 
 export default class CareerCoaching extends Component {
   constructor(props) {
@@ -30,6 +36,7 @@ export default class CareerCoaching extends Component {
     image: "",
     booked: null,
     booking_date: "",
+    review: [],
   };
   setDate = (date) => {
     var today = new Date(date.getTime() - date.getTimezoneOffset() * 60000)
@@ -88,6 +95,19 @@ export default class CareerCoaching extends Component {
   };
   async componentDidMount() {
     await axios
+      .get(`/W/student/review/${this.props.match.params.id}`)
+      .then((res) => {
+        this.setState({
+          id: res.data.response.data.id,
+          review: res.data.response.data,
+        });
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }
+  async componentDidMount() {
+    await axios
       .get(`/W/session/${this.props.match.params.id}`)
       .then((res) => {
         this.setState({
@@ -105,7 +125,14 @@ export default class CareerCoaching extends Component {
       });
   }
   render() {
-    // console.log(this.state.booked);
+    console.log(this.state.reviews);
+    const settings = {
+      dots: true,
+      infinite: true,
+      speed: 500,
+      slidesToShow: 1,
+      slidesToScroll: 1,
+    };
     return (
       <div className="container-fluid ">
         <div className="container">
@@ -123,30 +150,39 @@ export default class CareerCoaching extends Component {
                   </div>
                   <div className="fs-6 mt-3">{this.state.desc}</div>{" "}
                   <div className="d-flex flex-row flex-wrap mt-5">
-                    <DatePicker setDateFn={this.setDate} />
+                    {this.state.booked == false ? (
+                      <>
+                        <div className="marginating">
+                          <DatePicker setDateFn={this.setDate} />
+                        </div>
+                        <p>
+                          Please choose a suitable timing in order to get
+                          confirmed
+                        </p>
+                      </>
+                    ) : (
+                      ""
+                    )}
                   </div>
                   <div className="d-flex flex-row flex-wrap mt-2">
                     <div className=" mb-4 d-flex mt-1 flex-row col-12 col-md-7 justify-content-start ">
                       <p id="gold">Please check your email for all details</p>
                     </div>
-                    <div className=" mb-4 d-flex flex-row mt-1 col-4 col-md-3 justify-content-end  ">
+                    <div className=" mb-4 d-flex flex-row mt-1 col-4 col-md-2 justify-content-end  ">
                       <p id="gold">{this.state.price} L.E</p>
                     </div>
+                    <div className=" mb-4 d-flex flex-row mt-1 col-1 col-md-1"></div>
                     {this.state.booked == true ? (
-                      <div className=" d-flex flex-row col-6 col-md-2 justify-content-end">
+                      <div className=" d-flex flex-row col-6 col-md-2 justify-content-center">
                         <button
                           className="appliedBtn px-4 py-0 "
-                          // style={{
-                          //   color: "#ffffff",
-                          //   backgroundColor: "#1e4274",
-                          // }}
                           onClick={this.unbook}
                         >
                           Booked
                         </button>
                       </div>
                     ) : (
-                      <div className=" d-flex flex-row col-6 col-md-2 justify-content-end">
+                      <div className=" d-flex flex-row col-6 col-md-2 justify-content-center">
                         <button
                           className="applyBtn px-4 py-0 "
                           onClick={this.book}
@@ -207,7 +243,36 @@ export default class CareerCoaching extends Component {
                   </div>
                 </>
               ) : (
-                " "
+                <>
+                  <div className="col-12">
+                    <p className="companyTitel fs-3"> Reviews on this </p>
+
+                    <>
+                      <div>
+                        <Slider {...settings}>
+                          {!this.state.review ? (
+                            <div className="position-absolute top-50 start-50 translate-middle">
+                              <p className="text-center">No Activity</p>
+                            </div>
+                          ) : (
+                            this.state.review.map((data) => {
+                              return (
+                                <CarouselReviews
+                                // id={data.id}
+                                // key={data.id}
+                                // comment={data.comment}
+                                // fullName={data.fullName}
+                                // training_role={data.training_role}
+                                // rate={data.rate}
+                                />
+                              );
+                            })
+                          )}
+                        </Slider>
+                      </div>
+                    </>
+                  </div>
+                </>
               )}
             </>
           )}
@@ -231,4 +296,70 @@ function DatePicker(props) {
       />
     </div>
   );
+}
+
+class CarouselReviews extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {};
+  }
+  render() {
+    const settings = {
+      dots: true,
+      infinite: true,
+      speed: 500,
+      slidesToShow: 1,
+      slidesToScroll: 1,
+    };
+
+    return (
+      <>
+        <div>
+          <div className="d-flex flex-row justify-content-center">
+            <div className=" carouselCaption text-center col-md-11 mb-2 col-11">
+              <p className="txtCarousel lh-sm">
+                {/* {this.props.comment}  */}
+                YASMIN
+              </p>
+            </div>
+          </div>
+          <center>
+            <div className="hrReview position-absolute top-40 start-50 translate-middle "></div>
+          </center>
+          <div className="d-flex flex-row col-12 col-md-12 text-center fs-5  ">
+            <div className="d-flex flex-column col-12 col-md-12">
+              <center>
+                <p className="txtName">
+                  {/* {this.props.fullName} */}
+                  ALO
+                </p>
+              </center>
+            </div>
+          </div>
+          <div className="d-flex flex-row  col-12 col-md-12 text-center fs-5  ">
+            <div className="d-flex flex-column col-12 col-md-12">
+              <center>
+                <p className="txtRole">
+                  {/* {this.props.training_role} */}
+                  ALO
+                </p>
+              </center>
+            </div>
+          </div>
+          <div className="d-flex flex-row  col-12 col-md-12 text-center justify-content-center  mb-2 starsReview">
+            <div className="d-flex flex-column justify-content-center col-md-12 align-items-center">
+              <ReactStars
+                count={5}
+                value={4}
+                // {this.props.rate}
+                edit={false}
+                size={23}
+                activeColor="#F2A23A"
+              />
+            </div>
+          </div>
+        </div>
+      </>
+    );
+  }
 }

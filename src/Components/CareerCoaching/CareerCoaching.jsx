@@ -16,16 +16,6 @@ import { axios } from "../../Api/axios";
 import DateTimePicker from "react-datetime-picker";
 
 export default class CareerCoaching extends Component {
-  // constructor(props) {
-  //   super(props);
-  //   this.state = {
-  //     value: [],
-  //   };
-  //   onChange = (e) => {
-  //     this.setState({ value: e });
-  //     this.props.value(e);
-  //   };
-  // }
   state = {
     data: [],
   };
@@ -120,8 +110,6 @@ export default class CareerCoaching extends Component {
                               <p className="card-text mt-2 cardtextt">
                                 {data.desc}
                               </p>
-                              {/* <DateTimePicker/> */}
-                              {/* <DateTimePicker onChange={onChange()} value={value} /> */}
 
                               <div className="d-flex  mt-2 flex-row flex-wrap ">
                                 <div className=" mb-1 d-flex mt-1 flex-row col-12 col-md-7 justify-content-start ">

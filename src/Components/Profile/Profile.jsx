@@ -185,7 +185,7 @@ class Profile extends Component {
                   <Link
                     renderAs="button"
                     className="btn shadow-none goldbtn"
-                    // to="/Register"
+                    to="/Cv-Portfolio"
                   >
                     My Portfolio
                   </Link>
