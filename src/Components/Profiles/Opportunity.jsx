@@ -22,6 +22,9 @@ export default class advisorProfile extends Component {
     this.state = {
       scrollPixelsY: 0,
       review: [],
+      comment: "",
+      rate: 0,
+      error: {},
       data: {},
       departments: [],
       tags: [],
@@ -72,6 +75,7 @@ export default class advisorProfile extends Component {
           id: res.data.response.data.id,
           review: res.data.response.data,
         });
+        // console.log(res.data.response.data.errors);
       })
       .catch((err) => {
         console.log(err);
@@ -172,7 +176,41 @@ export default class advisorProfile extends Component {
         }
       });
   };
+  handleReview = async (e) => {
+    this.setState({ FormLoading: true });
+    e.preventDefault();
+    const review = {
+      comment: this.state.comment,
+      rate: this.state.rate,
+      id: this.state.id,
+    };
 
+    return await axios
+      .post(`/W/student/review/${this.props.match.params.id}`, review)
+      .then((response) => {
+        this.setState({
+          loggedIn: true,
+
+          FormLoading: false,
+        });
+        window.location.reload();
+      })
+      .catch((error) => {
+        if (error.response.data.status === 401) {
+          sessionStorage.clear("token");
+          sessionStorage.clear("status");
+          this.setState({ loggedIn: false });
+          window.location.reload();
+        }
+        this.setState({
+          error: {
+            rateErr: error.response.data.errors.rate,
+            commentErr: error.response.data.errors.comment,
+          },
+          FormLoading: false,
+        });
+      });
+  };
   render() {
     console.log(this.state.review);
     const settings = {
@@ -219,9 +257,9 @@ export default class advisorProfile extends Component {
                     <p className=" company">{this.state.data.company_name}</p>
                   </Link>
                   <p className="col-2 col-md-2 col-sm-2 col-xs-3 paid">
-                    {/* {this.props.salary == "Paid" ? "Paid" : "Unpaid"} */}
+                    {this.props.salary == "Paid" ? "Paid" : "Unpaid"}
 
-                    {this.state.data.salary}
+                    {/* {this.state.data.salary} */}
                   </p>
                 </div>
                 <div className=" departments d-flex flex-row">
@@ -382,7 +420,7 @@ export default class advisorProfile extends Component {
 
               <>
                 <div>
-                  <Slider {...settings}>
+                  <Slider {...settings} className="mb-5">
                     {this.state.review.length == 0 ? (
                       <div className="">
                         <p className="text-center">No Reviews Were Added</p>
@@ -405,7 +443,7 @@ export default class advisorProfile extends Component {
                 </div>
               </>
             </div>
-            {this.state.data.accomplished == true ? (
+            {this.state.data.reviewed == false ? (
               <>
                 <div className="d-flex flex-row ">
                   <div className="d-flex flex-column col-md-7 me-2  text-wrap bg-none me-5 ">
@@ -415,28 +453,51 @@ export default class advisorProfile extends Component {
                     <ReactStars
                       className="reviewstars"
                       count={5}
-                      value="3"
-                      onChange={(value) => {
-                        this.setState({ value: value });
+                      // value="3"
+                      value={this.state.rate}
+                      onChange={(rate) => {
+                        this.setState({ rate: rate });
                       }}
                       size={28}
                       activeColor="#F2A23A"
                       edit={true}
                     />
+                    {this.state.error && this.state.error.rateErr ? (
+                      <p className="editerror text-capitalize">
+                        {this.state.error.rateErr}
+                      </p>
+                    ) : (
+                      ""
+                    )}
                   </div>
                 </div>
-                <div className="d-flex flex-row mt-3 mb-5 ">
+                <div className="d-flex flex-row mt-3  ">
                   <textarea
                     placeholder="Enter Your Review Here..."
                     type="text"
                     name="name"
                     className="reviewbox d-flex flex-column col-md-12 col-12 pt-2  px-3"
+                    onChange={(e) => this.setState({ comment: e.target.value })}
+                    value={this.state.comment}
                   ></textarea>
                 </div>
-                <div className="d-flex flex-row mb-5 justify-content-end ">
-                  <button className="applyBtn px-1 py-0 col-md-1 col-4 ">
-                    Review
-                  </button>
+                {this.state.error && this.state.error.commentErr ? (
+                  <p className="editerror text-capitalize ">
+                    {this.state.error.commentErr}
+                  </p>
+                ) : (
+                  ""
+                )}
+                <div className="row mb-5 mt-3 ">
+                  <div className="col-6"></div>
+                  <form
+                    onSubmit={this.handleReview}
+                    className="d-flex justify-content-end "
+                  >
+                    <button type="submit" className="applyBtn col-1 ">
+                      Review
+                    </button>
+                  </form>
                 </div>
               </>
             ) : (

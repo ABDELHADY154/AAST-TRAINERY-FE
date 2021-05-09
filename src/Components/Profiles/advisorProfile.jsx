@@ -149,11 +149,10 @@ export default class advisorProfile extends Component {
                         // post_type={data.post_type}
                         sponsor_image={data.sponsor_image}
                         key={data.id}
-                        saved={data.saved}
-                        applied={data.applied}
+                        reviewed={data.reviewed}
+                        status={data.status}
                         id={data.id}
                         company_id={data.company_id}
-                        accepted={data.accepted}
                       />
                     );
                   })}
