@@ -40,7 +40,7 @@ export default class advisorProfile extends Component {
     this.setState({ FormLoading: true });
     await axios
       .get(`/W/student/post/${this.props.match.params.id}`)
-      .then((res) => {
+      .then(res => {
         this.setState({
           id: res.data.response.data.id,
           data: res.data.response.data,
@@ -61,34 +61,34 @@ export default class advisorProfile extends Component {
         }
         // console.log(this.state.data.applied);
       })
-      .catch((err) => {
+      .catch(err => {
         this.setState({ FormLoading: true });
         console.log(err);
       });
     await axios
       .get(`/W/student/review/${this.props.match.params.id}`)
-      .then((res) => {
+      .then(res => {
         this.setState({
           id: res.data.response.data.id,
           review: res.data.response.data,
         });
       })
-      .catch((err) => {
+      .catch(err => {
         console.log(err);
       });
   }
-  handleSave = async (e) => {
+  handleSave = async e => {
     this.setState({ saved: !this.state.saved ? true : false });
     await axios
-      .post(`/W/student/save/${this.state.id}`)
-      .then((save) => {
+      .post(`/W/student/save/${this.state.data.id}`)
+      .then(save => {
         if (save.status === 200) {
           this.setState({
             saved: true,
           });
         }
       })
-      .catch((error) => {
+      .catch(error => {
         if (
           error.response.data.status === 401 ||
           error.response.data.status === 404
@@ -100,19 +100,19 @@ export default class advisorProfile extends Component {
         }
       });
   };
-  handleUnSave = async (e) => {
+  handleUnSave = async e => {
     this.setState({ saved: !this.state.saved ? true : false });
 
     await axios
-      .post(`/W/student/unsave/${this.state.id}`)
-      .then((save) => {
+      .post(`/W/student/unsave/${this.state.data.id}`)
+      .then(save => {
         if (save.status === 200) {
           this.setState({
             saved: false,
           });
         }
       })
-      .catch((error) => {
+      .catch(error => {
         if (
           error.response.data.status === 401 ||
           error.response.data.status === 404
@@ -124,19 +124,19 @@ export default class advisorProfile extends Component {
         }
       });
   };
-  handleApple = async (e) => {
+  handleApple = async e => {
     this.setState({ applied: !this.state.applied ? true : false });
 
     await axios
-      .post(`/W/student/apply/${this.state.id}`)
-      .then((apply) => {
+      .post(`/W/student/apply/${this.state.data.id}`)
+      .then(apply => {
         if (apply.status === 200) {
           this.setState({
             applied: true,
           });
         }
       })
-      .catch((error) => {
+      .catch(error => {
         if (
           error.response.data.status === 401 ||
           error.response.data.status === 404
@@ -148,19 +148,19 @@ export default class advisorProfile extends Component {
         }
       });
   };
-  handleunApple = async (e) => {
+  handleunApple = async e => {
     this.setState({ applied: !this.state.applied ? true : false });
 
     await axios
-      .post(`/W/student/apply/${this.state.id}`)
-      .then((unapply) => {
+      .post(`/W/student/apply/${this.state.data.id}`)
+      .then(unapply => {
         if (unapply.status === 200) {
           this.setState({
             applied: false,
           });
         }
       })
-      .catch((error) => {
+      .catch(error => {
         if (
           error.response.data.status === 401 ||
           error.response.data.status === 404
@@ -190,7 +190,7 @@ export default class advisorProfile extends Component {
           spinner={<BounceLoader color="#cd8930" />}
           color={"#cd8930"}
           styles={{
-            overlay: (base) => ({
+            overlay: base => ({
               ...base,
               background: "rgb(255, 255, 255)",
               stroke: "rgba(255, 0, 0, 0.5)",
@@ -225,7 +225,7 @@ export default class advisorProfile extends Component {
                   </p>
                 </div>
                 <div className=" departments d-flex flex-row">
-                  {this.state.departments.map((item) => {
+                  {this.state.departments.map(item => {
                     return (
                       <Departments
                         id={item.id}
@@ -239,7 +239,7 @@ export default class advisorProfile extends Component {
               </div>
             </div>
             <div className=" d-flex flex-row flex-wrap col-12 col-md-12">
-              {this.state.tags.map((item) => {
+              {this.state.tags.map(item => {
                 return (
                   <Interest
                     id={item.id}
@@ -302,7 +302,7 @@ export default class advisorProfile extends Component {
               <div className="mt-4">
                 <h5 className="companyTitel">Requirements</h5>
                 <ul className="reuirLi">
-                  {this.state.requirements.map((item) => {
+                  {this.state.requirements.map(item => {
                     return (
                       <Requirements
                         id={item.id}
@@ -388,7 +388,7 @@ export default class advisorProfile extends Component {
                         <p className="text-center">No Reviews Were Added</p>
                       </div>
                     ) : (
-                      this.state.review.map((data) => {
+                      this.state.review.map(data => {
                         return (
                           <CarouselReviews
                             id={data.id}
@@ -416,7 +416,7 @@ export default class advisorProfile extends Component {
                       className="reviewstars"
                       count={5}
                       value="3"
-                      onChange={(value) => {
+                      onChange={value => {
                         this.setState({ value: value });
                       }}
                       size={28}
