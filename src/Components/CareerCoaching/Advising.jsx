@@ -6,12 +6,15 @@ import img from "../assests/imgs/img4.png";
 import ReactStars from "react-rating-stars-component";
 import DateTimePicker from "react-datetime-picker";
 import { axios } from "../../Api/axios";
+import LoadingOverlay from "react-loading-overlay";
+import BounceLoader from "react-spinners/BounceLoader";
 
 export default class CareerCoaching extends Component {
   constructor(props) {
     super(props);
     this.state = {
       scrollPixelsY: 0,
+      FormLoading: true,
     };
     window.scrollTo(0, 0);
     this.setDate = this.setDate.bind(this);
@@ -87,6 +90,7 @@ export default class CareerCoaching extends Component {
       });
   };
   async componentDidMount() {
+    this.setState({ FormLoading: true });
     await axios
       .get(`/W/session/${this.props.match.params.id}`)
       .then((res) => {
@@ -98,9 +102,11 @@ export default class CareerCoaching extends Component {
           image: res.data.response.data.image,
           desc: res.data.response.data.desc,
           price: res.data.response.data.price,
+          FormLoading: false,
         });
       })
       .catch((err) => {
+        this.setState({ FormLoading: true });
         console.log(err);
       });
   }
@@ -108,111 +114,125 @@ export default class CareerCoaching extends Component {
     // console.log(this.state.booked);
     return (
       <div className="container-fluid ">
-        <div className="container">
-          {!this.state.data ? (
-            " "
-          ) : (
-            <>
-              <div className="d-flex flex-row fs-2 pagetitlec mb-5">
-                <div>Career Coaching</div>
-              </div>
-              <div className="d-flex flex-row mt-5">
-                <div className="d-flex flex-column col-md-7 me-2  text-wrap bg-none me-3 ">
-                  <div className="fs-3 " id="Title">
-                    {this.state.title}
-                  </div>
-                  <div className="fs-6 mt-3">{this.state.desc}</div>{" "}
-                  <div className="d-flex flex-row flex-wrap mt-5">
-                    <DatePicker setDateFn={this.setDate} />
-                  </div>
-                  <div className="d-flex flex-row flex-wrap mt-2">
-                    <div className=" mb-4 d-flex mt-1 flex-row col-12 col-md-7 justify-content-start ">
-                      <p id="gold">Please check your email for all details</p>
+        {" "}
+        <LoadingOverlay
+          active={this.state.FormLoading}
+          spinner={<BounceLoader color="#cd8930" />}
+          color={"#cd8930"}
+          styles={{
+            overlay: (base) => ({
+              ...base,
+              background: "rgb(255, 255, 255)",
+              stroke: "rgba(255, 0, 0, 0.5)",
+            }),
+          }}
+        >
+          <div className="container">
+            {!this.state.data ? (
+              " "
+            ) : (
+              <>
+                <div className="d-flex flex-row fs-2 pagetitlec mb-5">
+                  <div>Career Coaching</div>
+                </div>
+                <div className="d-flex flex-row mt-5">
+                  <div className="d-flex flex-column col-md-7 me-2  text-wrap bg-none me-3 ">
+                    <div className="fs-3 " id="Title">
+                      {this.state.title}
                     </div>
-                    <div className=" mb-4 d-flex flex-row mt-1 col-4 col-md-3 justify-content-end  ">
-                      <p id="gold">{this.state.price} L.E</p>
+                    <div className="fs-6 mt-3">{this.state.desc}</div>{" "}
+                    <div className="d-flex flex-row flex-wrap mt-5">
+                      <DatePicker setDateFn={this.setDate} />
                     </div>
-                    {this.state.booked == true ? (
-                      <div className=" d-flex flex-row col-6 col-md-2 justify-content-end">
-                        <button
-                          className="appliedBtn px-4 py-0 "
-                          // style={{
-                          //   color: "#ffffff",
-                          //   backgroundColor: "#1e4274",
-                          // }}
-                          onClick={this.unbook}
-                        >
-                          Booked
-                        </button>
+                    <div className="d-flex flex-row flex-wrap mt-2">
+                      <div className=" mb-4 d-flex mt-1 flex-row col-12 col-md-7 justify-content-start ">
+                        <p id="gold">Please check your email for all details</p>
                       </div>
-                    ) : (
-                      <div className=" d-flex flex-row col-6 col-md-2 justify-content-end">
-                        <button
-                          className="applyBtn px-4 py-0 "
-                          onClick={this.book}
-                        >
-                          Book
-                        </button>
+                      <div className=" mb-4 d-flex flex-row mt-1 col-4 col-md-3 justify-content-end  ">
+                        <p id="gold">{this.state.price} L.E</p>
                       </div>
-                    )}
+                      {this.state.booked == true ? (
+                        <div className=" d-flex flex-row col-6 col-md-2 justify-content-end">
+                          <button
+                            className="appliedBtn px-4 py-0 "
+                            // style={{
+                            //   color: "#ffffff",
+                            //   backgroundColor: "#1e4274",
+                            // }}
+                            onClick={this.unbook}
+                          >
+                            Booked
+                          </button>
+                        </div>
+                      ) : (
+                        <div className=" d-flex flex-row col-6 col-md-2 justify-content-end">
+                          <button
+                            className="applyBtn px-4 py-0 "
+                            onClick={this.book}
+                          >
+                            Book
+                          </button>
+                        </div>
+                      )}
+                    </div>
+                  </div>
+                  <div
+                    id="Experienceimg"
+                    className="d-flex flex-column col-md-1 d-none d-md-flex "
+                  >
+                    <img
+                      className="h-75 w-100 careercourseimg"
+                      src={this.state.image}
+                    />
                   </div>
                 </div>
-                <div
-                  id="Experienceimg"
-                  className="d-flex flex-column col-md-1 d-none d-md-flex "
-                >
-                  <img
-                    className="h-75 w-100 careercourseimg"
-                    src={this.state.image}
-                  />
-                </div>
-              </div>
-              {this.state.booked == true ? (
-                <>
-                  <div className="d-flex flex-row ">
-                    <div className="d-flex flex-column col-md-7 me-2  text-wrap bg-none me-5 ">
-                      <div className="fs-3 mb-0" id="Title">
-                        Add Your Review
+                {this.state.booked == true ? (
+                  <>
+                    <div className="d-flex flex-row ">
+                      <div className="d-flex flex-column col-md-7 me-2  text-wrap bg-none me-5 ">
+                        <div className="fs-3 mb-0" id="Title">
+                          Add Your Review
+                        </div>
+                        <ReactStars
+                          className="reviewstars"
+                          count={5}
+                          // value={this.state.rating}
+                          onChange={(value) => {
+                            this.setState({ value: value });
+                            // console.log(`${value}`);
+                          }}
+                          size={28}
+                          activeColor="#F2A23A"
+                          edit={true}
+                        />
                       </div>
-                      <ReactStars
-                        className="reviewstars"
-                        count={5}
-                        // value={this.state.rating}
-                        onChange={(value) => {
-                          this.setState({ value: value });
-                          // console.log(`${value}`);
-                        }}
-                        size={28}
-                        activeColor="#F2A23A"
-                        edit={true}
-                      />
                     </div>
-                  </div>
-                  <div className="d-flex flex-row mt-3 mb-5 ">
-                    <textarea
-                      id="reviewbox"
-                      placeholder="Enter Your Review Here..."
-                      type="text"
-                      name="name"
-                      className="reviewbox d-flex flex-column col-md-12 col-12 pt-2  px-3"
-                    ></textarea>
-                  </div>
-                  <div className="d-flex flex-row mb-5 justify-content-end ">
-                    <button
-                      className="applyBtn px-1 py-0 col-md-1 col-4 "
-                      // onClick="/CvWriting"
-                    >
-                      Review
-                    </button>
-                  </div>
-                </>
-              ) : (
-                " "
-              )}
-            </>
-          )}
-        </div>
-        <Footer2 />
+                    <div className="d-flex flex-row mt-3 mb-5 ">
+                      <textarea
+                        id="reviewbox"
+                        placeholder="Enter Your Review Here..."
+                        type="text"
+                        name="name"
+                        className="reviewbox d-flex flex-column col-md-12 col-12 pt-2  px-3"
+                      ></textarea>
+                    </div>
+                    <div className="d-flex flex-row mb-5 justify-content-end ">
+                      <button
+                        className="applyBtn px-1 py-0 col-md-1 col-4 "
+                        // onClick="/CvWriting"
+                      >
+                        Review
+                      </button>
+                    </div>
+                  </>
+                ) : (
+                  " "
+                )}
+              </>
+            )}
+          </div>
+          <Footer2 />
+        </LoadingOverlay>
       </div>
     );
   }

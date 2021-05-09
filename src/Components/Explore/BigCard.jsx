@@ -298,14 +298,14 @@ export class BigCard extends Component {
                         to={`/Opportunity/${this.props.id}`}
                         className="text-center appliedBtn px-1 py-0 col-md-4 col-lg-6 col-8 col-sm-8"
                       >
-                        achieved
+                        Achieved
                       </Link>
                     ) : this.props.status == "accepted" ? (
                       <Link
                         to={`/Opportunity/${this.props.id}`}
                         className="text-center appliedBtn px-1 py-0 col-md-4 col-lg-6 col-8 col-sm-8"
                       >
-                        accepted
+                        Accepted
                       </Link>
                     ) : this.props.status == "applied" ? (
                       <Link

@@ -235,22 +235,34 @@ export class SmallCard extends Component {
                     ) : (
                       ""
                     )}
-                    {this.props.applied == true ? (
+                    {this.props.status == "achieved" ? (
                       <Link
                         to={`/Opportunity/${this.props.id}`}
-                        className="text-center appliedBtn px-1 py-0 col-md-5 col-8 col-sm-5"
+                        className="text-center appliedBtn px-1 py-0 col-md-4 col-lg-6 col-8 col-sm-8"
+                      >
+                        Achieved
+                      </Link>
+                    ) : this.props.status == "accepted" ? (
+                      <Link
+                        to={`/Opportunity/${this.props.id}`}
+                        className="text-center appliedBtn px-1 py-0 col-md-4 col-lg-6 col-8 col-sm-8"
+                      >
+                        Accepted
+                      </Link>
+                    ) : this.props.status == "applied" ? (
+                      <Link
+                        to={`/Opportunity/${this.props.id}`}
+                        className="text-center appliedBtn px-1 py-0 col-md-4 col-lg-6 col-8 col-sm-8"
                       >
                         Applied
                       </Link>
-                    ) : this.props.applied == false ? (
+                    ) : (
                       <Link
                         to={`/Opportunity/${this.props.id}`}
-                        className="text-center applyBtn px-1 py-0 col-md-5 col-8 col-sm-5"
+                        className="text-center applyBtn px-1 py-0 col-md-4 col-lg-6 col-8 col-sm-8"
                       >
                         Apply
                       </Link>
-                    ) : (
-                      ""
                     )}
                   </div>
                 </div>
