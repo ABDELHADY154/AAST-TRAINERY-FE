@@ -9,6 +9,7 @@ import {
 import { BsChevronUp } from "react-icons/bs";
 import ScrollTop from "react-scrolltop-button";
 import "../../layout/Footer.css";
+import { Link } from "react-router-dom";
 
 export default class Footer extends React.Component {
   render() {
@@ -69,9 +70,11 @@ export default class Footer extends React.Component {
                           <a href="#">About Us</a>
                         </li>
                         <li>
-                          <a href="#" className="pb-4">
-                            Contact Us
-                          </a>
+                          <Link to={`/contactUs`}>
+                            <a href="#" className="pb-4">
+                              Contact Us
+                            </a>{" "}
+                          </Link>
                         </li>
                         <li>
                           <a href="#" className="pb-4">
