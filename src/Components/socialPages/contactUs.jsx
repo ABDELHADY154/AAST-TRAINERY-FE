@@ -5,7 +5,7 @@ import LoadingOverlay from "react-loading-overlay";
 import BounceLoader from "react-spinners/BounceLoader";
 import Footer2 from "../Common/Footer2";
 import "../../layout/Home.css";
-import "../../layout/Sign.css";
+// import "../../layout/Sign.css";
 
 import { HiOutlineMail } from "react-icons/hi";
 import { MdSettingsPhone } from "react-icons/md";
@@ -17,6 +17,7 @@ class contactUs extends React.Component {
       scrollPixelsY: 0,
       // FormLoading: true,
     };
+    window.scrollTo(0, 0);
   }
   handleScroll = () => {
     this.setState({
@@ -54,13 +55,14 @@ class contactUs extends React.Component {
                     <input type="text" className="form-control contactInput" />
                   </div>
                   <div class="d-flex flex-column col-11 mb-3">
-                    <label for="">Works with selects</label>
+                    {/* <label for="">Works with selects</label> */}
+
                     <select
                       type="text"
-                      className="form-control dep contactSelect "
+                      className="form-control  contactSelect "
                       id="departs"
                     >
-                      <option selected>Open this select menu</option>
+                      <option selected>What can we help you with</option>
                       <option value="1">One</option>
                       <option value="2">Two</option>
                       <option value="3">Three</option>
@@ -86,8 +88,8 @@ class contactUs extends React.Component {
                   </div>
                 </form>
               </div>
-              <div className="container d-flex flex-md-column-reverse  col-11 col-lg-5 col-md-11 col-sm-10 reachUs rounded mb-5 mt-2">
-                <div className="align-self-center align-items-center  ">
+              <div className="container d-flex   col-11 col-lg-5 col-md-11 col-sm-10 reachUs rounded mb-5 mt-2">
+                <div className="align-item-center align-self-center justify-content-center">
                   <h1 className="text-center fs-4 fw-bold text-white mb-3">
                     Reach Us
                   </h1>
@@ -149,6 +151,38 @@ class contactUs extends React.Component {
                 </div>
               </div>
             </div>
+          </div>
+          <div
+            id="footer"
+            className="Container
+        
+       flex-row "
+          >
+            <footer
+              className="footer-area footer  m-auto prim"
+              style={{
+                backgroundColor: "#F2F2F2",
+              }}
+            >
+              <div className="pb-4">
+                <div className="container pt-4 ">
+                  <div className="row ">
+                    <h5 className="d-flex col-9 col-md-8 col-lg-9 col-sm-9 justify-content-start ">
+                      Check our help center to find the most asked questions
+                    </h5>
+                    <div className="col-md-2 col-sm-0 col-0 col-lg-2 space "></div>
+                    <div className=" col-3 col-md-2 col-sm-3 col-lg-1 d-flex justify-content-end">
+                      <button
+                        type="submit"
+                        className="col-12 col-md-12 col-sm-12 col-lg-12 btn FAQBtn"
+                      >
+                        FAQ
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </footer>
           </div>
           <Footer2 />
         </LoadingOverlay>

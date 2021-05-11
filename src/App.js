@@ -37,6 +37,7 @@ import Opportunity from "./Components/Profiles/Opportunity";
 import { AuthRoute } from "./Components/Auth/AuthRoute";
 
 import contactUs from "./Components/socialPages/contactUs";
+import helpCenter from "./Components/socialPages/helpCenter";
 // import Education from "./EditProfile/Education";
 
 import "./layout/Footer.css";
@@ -252,6 +253,7 @@ class App extends React.Component {
                   path="/Opportunity/:id"
                   component={Opportunity}
                 />
+                <AuthRoute exact path="/helpCenter" component={helpCenter} />
                 <AuthRoute exact path="/contactUs" component={contactUs} />
                 <Route
                   exact

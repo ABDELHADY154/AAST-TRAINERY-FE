@@ -52,7 +52,9 @@ export default class Footer extends React.Component {
                           <a href="#">Activity</a>
                         </li>
                         <li>
-                          <a href="#">Help Center</a>
+                          <Link to={`/helpCenter`}>
+                            <a href="#">Help Center</a>
+                          </Link>
                         </li>
                       </ul>
                     </div>
