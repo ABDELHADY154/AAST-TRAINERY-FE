@@ -136,3 +136,13 @@ option {
   border-radius: 0 !important;
   color: #cd8930;
 }
+.divBorder {
+  border: 1px solid #f2f2f2;
+  padding: 1em;
+  /* width: 35em; */
+}
+
+.divBorder:hover {
+  border: 1px solid #f2f2f2;
+  border-left: #cd8930 3px solid;
+}

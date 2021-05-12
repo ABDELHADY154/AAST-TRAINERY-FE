@@ -169,7 +169,7 @@ class helpCenter extends React.Component {
                         type="submit"
                         className="col-12 col-md-12 col-sm-12 col-lg-12 btn FAQBtn"
                       >
-                        FAQ
+                        Send
                       </button>
                     </div>
                   </div>
