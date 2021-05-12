@@ -69,13 +69,17 @@ export default class Footer extends React.Component {
                           <a href="#">Profile</a>
                         </li>
                         <li>
-                          <a href="#">About Us</a>
+                          <Link to={`/AboutUs`}>
+                            <a href="#" className="pb-4">
+                              About Us
+                            </a>
+                          </Link>
                         </li>
                         <li>
                           <Link to={`/contactUs`}>
                             <a href="#" className="pb-4">
                               Contact Us
-                            </a>{" "}
+                            </a>
                           </Link>
                         </li>
                         <li>
