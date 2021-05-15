@@ -43,7 +43,7 @@ export default class advisorProfile extends Component {
     this.setState({ FormLoading: true });
     await axios
       .get(`/W/student/post/${this.props.match.params.id}`)
-      .then(res => {
+      .then((res) => {
         this.setState({
           id: res.data.response.data.id,
           data: res.data.response.data,
@@ -64,35 +64,35 @@ export default class advisorProfile extends Component {
         }
         // console.log(this.state.data.applied);
       })
-      .catch(err => {
+      .catch((err) => {
         this.setState({ FormLoading: true });
         console.log(err);
       });
     await axios
       .get(`/W/student/review/${this.props.match.params.id}`)
-      .then(res => {
+      .then((res) => {
         this.setState({
           id: res.data.response.data.id,
           review: res.data.response.data,
         });
         // console.log(res.data.response.data.errors);
       })
-      .catch(err => {
+      .catch((err) => {
         console.log(err);
       });
   }
-  handleSave = async e => {
+  handleSave = async (e) => {
     this.setState({ saved: !this.state.saved ? true : false });
     await axios
       .post(`/W/student/save/${this.state.data.id}`)
-      .then(save => {
+      .then((save) => {
         if (save.status === 200) {
           this.setState({
             saved: true,
           });
         }
       })
-      .catch(error => {
+      .catch((error) => {
         if (
           error.response.data.status === 401 ||
           error.response.data.status === 404
@@ -104,19 +104,19 @@ export default class advisorProfile extends Component {
         }
       });
   };
-  handleUnSave = async e => {
+  handleUnSave = async (e) => {
     this.setState({ saved: !this.state.saved ? true : false });
 
     await axios
       .post(`/W/student/unsave/${this.state.data.id}`)
-      .then(save => {
+      .then((save) => {
         if (save.status === 200) {
           this.setState({
             saved: false,
           });
         }
       })
-      .catch(error => {
+      .catch((error) => {
         if (
           error.response.data.status === 401 ||
           error.response.data.status === 404
@@ -128,19 +128,19 @@ export default class advisorProfile extends Component {
         }
       });
   };
-  handleApple = async e => {
+  handleApple = async (e) => {
     this.setState({ applied: !this.state.applied ? true : false });
 
     await axios
       .post(`/W/student/apply/${this.state.data.id}`)
-      .then(apply => {
+      .then((apply) => {
         if (apply.status === 200) {
           this.setState({
             applied: true,
           });
         }
       })
-      .catch(error => {
+      .catch((error) => {
         if (
           error.response.data.status === 401 ||
           error.response.data.status === 404
@@ -152,19 +152,19 @@ export default class advisorProfile extends Component {
         }
       });
   };
-  handleunApple = async e => {
+  handleunApple = async (e) => {
     this.setState({ applied: !this.state.applied ? true : false });
 
     await axios
       .post(`/W/student/apply/${this.state.data.id}`)
-      .then(unapply => {
+      .then((unapply) => {
         if (unapply.status === 200) {
           this.setState({
             applied: false,
           });
         }
       })
-      .catch(error => {
+      .catch((error) => {
         if (
           error.response.data.status === 401 ||
           error.response.data.status === 404
@@ -176,7 +176,7 @@ export default class advisorProfile extends Component {
         }
       });
   };
-  handleReview = async e => {
+  handleReview = async (e) => {
     this.setState({ FormLoading: true });
     e.preventDefault();
     const review = {
@@ -187,7 +187,7 @@ export default class advisorProfile extends Component {
 
     return await axios
       .post(`/W/student/review/${this.props.match.params.id}`, review)
-      .then(response => {
+      .then((response) => {
         this.setState({
           loggedIn: true,
 
@@ -195,7 +195,7 @@ export default class advisorProfile extends Component {
         });
         window.location.reload();
       })
-      .catch(error => {
+      .catch((error) => {
         if (error.response.data.status === 401) {
           sessionStorage.clear("token");
           sessionStorage.clear("status");
@@ -228,7 +228,7 @@ export default class advisorProfile extends Component {
           spinner={<BounceLoader color="#cd8930" />}
           color={"#cd8930"}
           styles={{
-            overlay: base => ({
+            overlay: (base) => ({
               ...base,
               background: "rgb(255, 255, 255)",
               stroke: "rgba(255, 0, 0, 0.5)",
@@ -263,7 +263,7 @@ export default class advisorProfile extends Component {
                   </p>
                 </div>
                 <div className=" departments d-flex flex-row">
-                  {this.state.departments.map(item => {
+                  {this.state.departments.map((item) => {
                     return (
                       <Departments
                         id={item.id}
@@ -277,7 +277,7 @@ export default class advisorProfile extends Component {
               </div>
             </div>
             <div className=" d-flex flex-row flex-wrap col-12 col-md-12">
-              {this.state.tags.map(item => {
+              {this.state.tags.map((item) => {
                 return (
                   <Interest
                     id={item.id}
@@ -340,7 +340,7 @@ export default class advisorProfile extends Component {
               <div className="mt-4">
                 <h5 className="companyTitel">Requirements</h5>
                 <ul className="reuirLi">
-                  {this.state.requirements.map(item => {
+                  {this.state.requirements.map((item) => {
                     return (
                       <Requirements
                         id={item.id}
@@ -426,7 +426,7 @@ export default class advisorProfile extends Component {
                         <p className="text-center">No Reviews Were Added</p>
                       </div>
                     ) : (
-                      this.state.review.map(data => {
+                      this.state.review.map((data) => {
                         return (
                           <CarouselReviews
                             id={data.id}
@@ -443,63 +443,69 @@ export default class advisorProfile extends Component {
                 </div>
               </>
             </div>
-            {this.state.data.reviewed == false ? (
-              <>
-                <div className="d-flex flex-row ">
-                  <div className="d-flex flex-column col-md-7 me-2  text-wrap bg-none me-5 ">
-                    <p className="mb-0 companyTitel" id="Title">
-                      Add Your Review
-                    </p>
-                    <ReactStars
-                      className="reviewstars"
-                      count={5}
-                      // value="3"
-                      value={this.state.rate}
-                      onChange={rate => {
-                        this.setState({ rate: rate });
-                      }}
-                      size={28}
-                      activeColor="#F2A23A"
-                      edit={true}
-                    />
-                    {this.state.error && this.state.error.rateErr ? (
-                      <p className="editerror text-capitalize">
-                        {this.state.error.rateErr}
+            {this.props.status == "achieved" ? (
+              this.state.data.reviewed == false ? (
+                <>
+                  <div className="d-flex flex-row ">
+                    <div className="d-flex flex-column col-md-7 me-2  text-wrap bg-none me-5 ">
+                      <p className="mb-0 companyTitel" id="Title">
+                        Add Your Review
                       </p>
-                    ) : (
-                      ""
-                    )}
+                      <ReactStars
+                        className="reviewstars"
+                        count={5}
+                        // value="3"
+                        value={this.state.rate}
+                        onChange={(rate) => {
+                          this.setState({ rate: rate });
+                        }}
+                        size={28}
+                        activeColor="#F2A23A"
+                        edit={true}
+                      />
+                      {this.state.error && this.state.error.rateErr ? (
+                        <p className="editerror text-capitalize">
+                          {this.state.error.rateErr}
+                        </p>
+                      ) : (
+                        ""
+                      )}
+                    </div>
                   </div>
-                </div>
-                <div className="d-flex flex-row mt-3  ">
-                  <textarea
-                    placeholder="Enter Your Review Here..."
-                    type="text"
-                    name="name"
-                    className="reviewbox d-flex flex-column col-md-12 col-12 pt-2  px-3"
-                    onChange={e => this.setState({ comment: e.target.value })}
-                    value={this.state.comment}
-                  ></textarea>
-                </div>
-                {this.state.error && this.state.error.commentErr ? (
-                  <p className="editerror text-capitalize ">
-                    {this.state.error.commentErr}
-                  </p>
-                ) : (
-                  ""
-                )}
-                <div className="row mb-5 mt-3 ">
-                  <div className="col-6"></div>
-                  <form
-                    onSubmit={this.handleReview}
-                    className="d-flex justify-content-end "
-                  >
-                    <button type="submit" className="applyBtn col-1 ">
-                      Review
-                    </button>
-                  </form>
-                </div>
-              </>
+                  <div className="d-flex flex-row mt-3  ">
+                    <textarea
+                      placeholder="Enter Your Review Here..."
+                      type="text"
+                      name="name"
+                      className="reviewbox d-flex flex-column col-md-12 col-12 pt-2  px-3"
+                      onChange={(e) =>
+                        this.setState({ comment: e.target.value })
+                      }
+                      value={this.state.comment}
+                    ></textarea>
+                  </div>
+                  {this.state.error && this.state.error.commentErr ? (
+                    <p className="editerror text-capitalize ">
+                      {this.state.error.commentErr}
+                    </p>
+                  ) : (
+                    ""
+                  )}
+                  <div className="row mb-5 mt-3 ">
+                    <div className="col-6"></div>
+                    <form
+                      onSubmit={this.handleReview}
+                      className="d-flex justify-content-end "
+                    >
+                      <button type="submit" className="applyBtn col-1 ">
+                        Review
+                      </button>
+                    </form>
+                  </div>
+                </>
+              ) : (
+                ""
+              )
             ) : (
               ""
             )}
