@@ -208,12 +208,6 @@ export default class CareerCoaching extends Component {
                 })}
               </Slider>
             </>
-
-            {/* <center>
-            <div className="d-none d-md-flex flex-row col-md-12 careerbottom">
-              <img src={careerbottom} />
-            </div>
-          </center> */}
           </div>
           <Footer2 />
         </LoadingOverlay>

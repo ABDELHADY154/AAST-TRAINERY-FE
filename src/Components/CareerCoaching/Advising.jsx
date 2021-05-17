@@ -31,6 +31,7 @@ export default class CareerCoaching extends Component {
       fullName: "",
       comment: "",
       session_type: "",
+      reviewed: null,
     };
     window.scrollTo(0, 0);
     this.setDate = this.setDate.bind(this);
@@ -53,6 +54,8 @@ export default class CareerCoaching extends Component {
           image: res.data.response.data.image,
           desc: res.data.response.data.desc,
           price: res.data.response.data.price,
+          reviewed: res.data.response.data.reviewed,
+
           FormLoading: false,
         });
       })
@@ -138,13 +141,11 @@ export default class CareerCoaching extends Component {
     return await axios
       .post(`/W/student/sessionReview/${this.props.match.params.id}`, review)
       .then(() => {
-        this.setState({ status: "reviewed" });
+        this.setState({ reviewed: true });
+        // console.log(" reviewed!");
       })
       .catch((err) => {
         // console.log(err, "not reviewed!");
-        this.setState({
-          status: "reviewed",
-        });
       });
   };
 
@@ -156,7 +157,7 @@ export default class CareerCoaching extends Component {
       slidesToShow: 1,
       slidesToScroll: 1,
     };
-    console.log(this.state.status);
+    console.log(this.state.reviewed);
     return (
       <div className="container-fluid ">
         {" "}
@@ -233,26 +234,8 @@ export default class CareerCoaching extends Component {
                     />
                   </div>
                 </div>
-                {/* {this.state.status == "reviewed" ||
-                "booked" ||
-                "accepted" ||
-                "unbooked" ? (
-                  <>
-                    <Slider {...settings} className="mb-5">
-                      {this.state.review.map((data) => {
-                        return (
-                          <CarouselReviews
-                            comment={data.comment}
-                            fullName={data.fullName}
-                            session_type={data.session_type}
-                            rate={data.rate}
-                          />
-                        );
-                      })}
-                    </Slider>
-                  </>
-                ) : */}
-                {this.state.status == "achieved" ? (
+
+                {this.state.reviewed == false ? (
                   <>
                     <div className="d-flex flex-row ">
                       <div className="d-flex flex-column col-md-7 me-2  text-wrap bg-none me-5 ">
@@ -264,7 +247,6 @@ export default class CareerCoaching extends Component {
                           count={5}
                           onChange={(rate) => {
                             this.setState({ rate: rate });
-                            // console.log(`${rate}`);
                           }}
                           size={28}
                           activeColor="#F2A23A"
