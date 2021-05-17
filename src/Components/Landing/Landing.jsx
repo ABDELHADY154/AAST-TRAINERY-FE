@@ -61,10 +61,10 @@ class Landing extends React.Component {
                 We Provide The Best Experience
               </div>
               <div className="fs-6 " id="DescProv">
-                Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-                Reiciendis numquam similique eum repellat nesciunt beatae error
-                quod, tenetur aspernatur a cumque, non maxime sit nulla
-                excepturi pariatur inventore illum placeat.
+                You don't have to be experienced in order to land internship
+                opportunities whether they were online internships or offline
+                internships. With Trainery, you can easily get on job training
+                as an undergraduate without any fear of lacking soft skills.
               </div>
               <div
                 id="Num"
@@ -123,13 +123,13 @@ class Landing extends React.Component {
           </div>
           <div className="d-flex flex-row" id="CoachCont">
             <div className="fs-6 " id="DescProv">
-              Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-              Reiciendis numquam similique eum repellat nesciunt beatae error
-              quod, tenetur aspernatur a cumque, non maxime sit nulla excepturi
-              pariatur inventore illum placeat. orem ipsum dolor sit amet
-              consectetur, adipisicing elit. Reiciendis numquam similique eum
-              repellat nesciunt beatae error quod, tenetur aspernatur a cumque,
-              non maxime sit nulla excepturi pariatur inventore illum placeat.
+              If you think you don't have what it takes to know what goes on in
+              the labor market regarding future jobs just because you're a
+              university student them let us change your mind. We offer various
+              career coaching sessions that enhance your technical skills and
+              give you the boost of confidence needed to be more aware of your
+              career path, alongside step by step with professioinal career
+              coaches.
             </div>
           </div>
           <div className="d-flex flex-row flex-wrap  " id="CoachCont">
@@ -164,10 +164,7 @@ class Landing extends React.Component {
                   src={img2}
                   height="200"
                 />
-                <div
-                  className="carousel-caption2"
-                  // style={{ marginRight: "-15%", paddingBottom: "10%" }}
-                >
+                <div className="carousel-caption2">
                   <h5 className="textt ">Career Coaching Path</h5>
                 </div>
               </div>
@@ -183,34 +180,32 @@ class Landing extends React.Component {
                 Why Join Us?
               </div>
               <div className="fs-6 " id="DescProv">
-                Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-                Reiciendis numquam similique eum repellat nesciunt beatae error
-                quod, tenetur aspernatur a cumque, non maxime sit nulla
-                excepturi pariatur inventore illum placeat.
+                Trainery is a platform made by university students for
+                university students, so we know what AAST students need the most
+                to excel through-out their college years.
               </div>
               <div>
                 <div id="checklist" className="d-flex flex-column mt-3 ">
                   <div>
                     <BsCheck color="#cd8930" fill="#cd8930" className="fs-3" />
-                    {"    "}
                     <span>
-                      Lorem ipsum, dolor sit amet consectetur adipisicing elit.
+                      Explore University internships opportunities for students{" "}
                     </span>
                   </div>
 
                   <div className="mt-3">
                     <BsCheck color="#cd8930" fill="#cd8930" className="fs-3" />
-                    {"    "}
                     <span>
-                      Lorem ipsum, dolor sit amet consectetur adipisicing elit.
+                      Students have the ability to make CVs and Portfolios with
+                      minimal to zero effort
                     </span>
                   </div>
 
                   <div className="mt-3">
                     <BsCheck ccolor="#cd8930" fill="#cd8930" className="fs-3" />
-                    {"    "}
                     <span>
-                      Lorem ipsum, dolor sit amet consectetur adipisicing elit.
+                      The platforms are easy to browse through just like using
+                      AAST portal
                     </span>
                   </div>
                   <div className="d-flex flex-column justify-content-center align-items-center w-100">
