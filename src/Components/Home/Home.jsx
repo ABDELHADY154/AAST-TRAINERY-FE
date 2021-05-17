@@ -34,6 +34,7 @@ class Home extends Component {
       data: [],
       alert: true,
       explorePosts: [],
+      career: [],
     };
     window.scrollTo(0, 0);
   }
@@ -85,6 +86,16 @@ class Home extends Component {
       })
       .catch((err) => {
         this.setState({ FormLoading: true });
+        console.log(err);
+      });
+    await axios
+      .get("/W/sessions")
+      .then((res) => {
+        this.setState({
+          career: res.data.response.data,
+        });
+      })
+      .catch((err) => {
         console.log(err);
       });
   }
@@ -538,45 +549,28 @@ class Home extends Component {
             Check our career coaching services
           </div>
           <div className="d-flex flex-row flex-wrap text-wrap text-center justify-content-center">
-            <div id="widths" className=" mt-3 containerrr  col-md-3 col-12 ">
-              <img id="imagehover" src={rec1} />
-              <div class="overlay">
-                <Link
-                  to="/CareerCoaching/CvWriting"
-                  id="linksss"
-                  href="#"
-                  class="texttt fs-3 col-12 col-md-12 "
-                >
-                  CV Review
-                </Link>
-              </div>
-            </div>
-            <div id="widths" className=" mt-3 containerrr  col-md-3 col-12 ">
-              <img id="imagehover" src={rec3} />
-              <div class="overlay">
-                <Link
-                  to="/CareerCoaching/CareerMove"
-                  id="linksss"
-                  href="#"
-                  class="texttt fs-3 col-12 col-md-12 "
-                >
-                  Career Coaching Path
-                </Link>
-              </div>
-            </div>
-            <div id="widths" className=" mt-3 containerrr  col-md-3 col-12 ">
-              <img id="imagehover" src={rec2} />
-              <div class="overlay">
-                <Link
-                  to="/CareerCoaching/InterviewCoaching"
-                  id="linksss"
-                  href="#"
-                  class="texttt fs-3 col-12 col-md-12 "
-                >
-                  Interview Preperation
-                </Link>
-              </div>
-            </div>
+            {!this.state.career
+              ? ""
+              : this.state.career.map((career) => {
+                  return (
+                    <div
+                      id="widths"
+                      className=" mt-3 containerrr  col-md-2 col-12 "
+                    >
+                      <img id="imagehover" src={career.image} />
+                      <div class="overlay">
+                        <Link
+                          to={`../CareerCoaching/Advising/${career.id}`}
+                          id="linksss"
+                          href="#"
+                          class="texttt fs-3 col-12 col-md-12 "
+                        >
+                          {career.title}
+                        </Link>
+                      </div>
+                    </div>
+                  );
+                })}
           </div>
         </div>
         <Footer2 />

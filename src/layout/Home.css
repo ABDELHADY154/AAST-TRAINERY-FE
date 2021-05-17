@@ -174,7 +174,7 @@
   object-fit: cover !important;
 }
 #widths {
-  width: 20.9375em !important;
+  width: 15.9375em !important;
   margin: 1em 2em !important;
 }
 .applyBtn {
@@ -233,7 +233,7 @@
 #imagehover {
   display: block;
   width: 100%;
-  height: auto;
+  height: 100%;
 }
 
 .overlay {

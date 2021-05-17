@@ -30,16 +30,7 @@ export default class CareerCoaching extends Component {
       scrollPixelsY: window.scrollY,
     });
   };
-  // constructor(props) {
-  //   super(props);
-  //   this.state = {
-  //     value: [],
-  //   };
-  //   onChange = (e) => {
-  //     this.setState({ value: e });
-  //     this.props.value(e);
-  //   };
-  // }
+
   state = {
     data: [],
   };

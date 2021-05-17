@@ -8,6 +8,9 @@ import DateTimePicker from "react-datetime-picker";
 import { axios } from "../../Api/axios";
 import LoadingOverlay from "react-loading-overlay";
 import BounceLoader from "react-spinners/BounceLoader";
+import Slider from "react-slick";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 
 export default class CareerCoaching extends Component {
   constructor(props) {
@@ -15,6 +18,19 @@ export default class CareerCoaching extends Component {
     this.state = {
       scrollPixelsY: 0,
       FormLoading: true,
+      data: {},
+      id: 0,
+      title: "",
+      desc: "",
+      price: 0,
+      image: "",
+      status: "",
+      booking_date: "",
+      review: [],
+      rate: 0,
+      fullName: "",
+      comment: "",
+      session_type: "",
     };
     window.scrollTo(0, 0);
     this.setDate = this.setDate.bind(this);
@@ -24,78 +40,13 @@ export default class CareerCoaching extends Component {
       scrollPixelsY: window.scrollY,
     });
   };
-  state = {
-    data: {},
-    id: 0,
-    title: "",
-    desc: "",
-    price: 0,
-    image: "",
-    booked: null,
-    booking_date: "",
-  };
-  setDate = (date) => {
-    var today = new Date(date.getTime() - date.getTimezoneOffset() * 60000)
-      .toISOString()
-      .replace(/T/, " ")
-      .replace(/\..+/, "");
-    this.setState({ booking_date: today });
-  };
-  book = async () => {
-    const datas = {
-      booking_date: this.state.booking_date,
-      booked: this.state.booked,
-    };
-    return await axios({
-      method: "POST",
-      url: `/W/bookSession/${this.props.match.params.id}`,
-      data: datas,
-      headers: {
-        "Content-Type": "application/json",
-      },
-    })
-      .then(() => {
-        this.setState({
-          booked: true,
-          booking_date: this.state.booking_date,
-        });
-        console.log("BOOKED!");
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  };
-  unbook = async () => {
-    const datas = {
-      // booking_date: this.state.booking_date,
-      booked: this.state.booked,
-    };
-    return await axios({
-      method: "POST",
-      url: `/W/bookSession/cancelBooking/${this.props.match.params.id}`,
-      data: datas,
-      headers: {
-        "Content-Type": "application/json",
-      },
-    })
-      .then(() => {
-        this.setState({
-          booked: false,
-          // booking_date: this.state.booking_date,
-        });
-        console.log("NOT BOOKED!");
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  };
   async componentDidMount() {
     this.setState({ FormLoading: true });
     await axios
       .get(`/W/session/${this.props.match.params.id}`)
       .then((res) => {
         this.setState({
-          booked: res.data.response.data.booked,
+          status: res.data.response.data.status,
           data: res.data.response.data,
           id: res.data.response.data.id,
           title: res.data.response.data.title,
@@ -109,9 +60,103 @@ export default class CareerCoaching extends Component {
         this.setState({ FormLoading: true });
         console.log(err);
       });
+    await axios
+      .get(`/W/student/sessionReview/${this.props.match.params.id}`)
+      .then((res) => {
+        this.setState({
+          review: res.data.response.data,
+        });
+        // console.log(res.data.response.data.errors);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   }
+
+  setDate = (date) => {
+    var today = new Date(date.getTime() - date.getTimezoneOffset() * 60000)
+      .toISOString()
+      .replace(/T/, " ")
+      .replace(/\..+/, "");
+    this.setState({ booking_date: today });
+  };
+  book = async () => {
+    const datas = {
+      booking_date: this.state.booking_date,
+      status: this.state.status,
+    };
+    return await axios({
+      method: "POST",
+      url: `/W/bookSession/${this.props.match.params.id}`,
+      data: datas,
+      headers: {
+        "Content-Type": "application/json",
+      },
+    })
+      .then(() => {
+        this.setState({
+          status: "booked",
+          booking_date: this.state.booking_date,
+        });
+        console.log("BOOKED!");
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+  unbook = async () => {
+    const datas = {
+      // booking_date: this.state.booking_date,
+      status: this.state.status,
+    };
+    return await axios({
+      method: "POST",
+      url: `/W/bookSession/cancelBooking/${this.props.match.params.id}`,
+      data: datas,
+      headers: {
+        "Content-Type": "application/json",
+      },
+    })
+      .then(() => {
+        this.setState({
+          status: "unbooked",
+        });
+        console.log("UNBOOKED!");
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+  review = async (e) => {
+    const review = {
+      comment: this.state.comment,
+      rate: this.state.rate,
+      fullName: this.state.fullName,
+      session_type: this.state.session_type,
+    };
+
+    return await axios
+      .post(`/W/student/sessionReview/${this.props.match.params.id}`, review)
+      .then(() => {
+        this.setState({ status: "reviewed" });
+      })
+      .catch((err) => {
+        // console.log(err, "not reviewed!");
+        this.setState({
+          status: "reviewed",
+        });
+      });
+  };
+
   render() {
-    // console.log(this.state.booked);
+    const settings = {
+      dots: true,
+      infinite: true,
+      speed: 500,
+      slidesToShow: 1,
+      slidesToScroll: 1,
+    };
+    console.log(this.state.status);
     return (
       <div className="container-fluid ">
         {" "}
@@ -142,7 +187,13 @@ export default class CareerCoaching extends Component {
                     </div>
                     <div className="fs-6 mt-3">{this.state.desc}</div>{" "}
                     <div className="d-flex flex-row flex-wrap mt-5">
-                      <DatePicker setDateFn={this.setDate} />
+                      {this.state.status == "booked" ? (
+                        " "
+                      ) : (
+                        <>
+                          <DatePicker setDateFn={this.setDate} />
+                        </>
+                      )}
                     </div>
                     <div className="d-flex flex-row flex-wrap mt-2">
                       <div className=" mb-4 d-flex mt-1 flex-row col-12 col-md-7 justify-content-start ">
@@ -151,14 +202,10 @@ export default class CareerCoaching extends Component {
                       <div className=" mb-4 d-flex flex-row mt-1 col-4 col-md-3 justify-content-end  ">
                         <p id="gold">{this.state.price} L.E</p>
                       </div>
-                      {this.state.booked == true ? (
+                      {this.state.status == "booked" ? (
                         <div className=" d-flex flex-row col-6 col-md-2 justify-content-end">
                           <button
                             className="appliedBtn px-4 py-0 "
-                            // style={{
-                            //   color: "#ffffff",
-                            //   backgroundColor: "#1e4274",
-                            // }}
                             onClick={this.unbook}
                           >
                             Booked
@@ -167,7 +214,7 @@ export default class CareerCoaching extends Component {
                       ) : (
                         <div className=" d-flex flex-row col-6 col-md-2 justify-content-end">
                           <button
-                            className="applyBtn px-4 py-0 "
+                            className="appliedBtn px-4 py-0 "
                             onClick={this.book}
                           >
                             Book
@@ -186,7 +233,26 @@ export default class CareerCoaching extends Component {
                     />
                   </div>
                 </div>
-                {this.state.booked == true ? (
+                {/* {this.state.status == "reviewed" ||
+                "booked" ||
+                "accepted" ||
+                "unbooked" ? (
+                  <>
+                    <Slider {...settings} className="mb-5">
+                      {this.state.review.map((data) => {
+                        return (
+                          <CarouselReviews
+                            comment={data.comment}
+                            fullName={data.fullName}
+                            session_type={data.session_type}
+                            rate={data.rate}
+                          />
+                        );
+                      })}
+                    </Slider>
+                  </>
+                ) : */}
+                {this.state.status == "achieved" ? (
                   <>
                     <div className="d-flex flex-row ">
                       <div className="d-flex flex-column col-md-7 me-2  text-wrap bg-none me-5 ">
@@ -196,10 +262,9 @@ export default class CareerCoaching extends Component {
                         <ReactStars
                           className="reviewstars"
                           count={5}
-                          // value={this.state.rating}
-                          onChange={(value) => {
-                            this.setState({ value: value });
-                            // console.log(`${value}`);
+                          onChange={(rate) => {
+                            this.setState({ rate: rate });
+                            // console.log(`${rate}`);
                           }}
                           size={28}
                           activeColor="#F2A23A"
@@ -213,20 +278,37 @@ export default class CareerCoaching extends Component {
                         placeholder="Enter Your Review Here..."
                         type="text"
                         name="name"
+                        onChange={(e) =>
+                          this.setState({ comment: e.target.value })
+                        }
+                        value={this.state.comment}
                         className="reviewbox d-flex flex-column col-md-12 col-12 pt-2  px-3"
                       ></textarea>
                     </div>
                     <div className="d-flex flex-row mb-5 justify-content-end ">
                       <button
                         className="applyBtn px-1 py-0 col-md-1 col-4 "
-                        // onClick="/CvWriting"
+                        onClick={this.review}
                       >
                         Review
                       </button>
                     </div>
                   </>
                 ) : (
-                  " "
+                  <>
+                    <Slider {...settings} className="mb-5">
+                      {this.state.review.map((data) => {
+                        return (
+                          <CarouselReviews
+                            comment={data.comment}
+                            fullName={data.fullName}
+                            session_type={data.session_type}
+                            rate={data.rate}
+                          />
+                        );
+                      })}
+                    </Slider>
+                  </>
                 )}
               </>
             )}
@@ -251,4 +333,51 @@ function DatePicker(props) {
       />
     </div>
   );
+}
+class CarouselReviews extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {};
+  }
+  render() {
+    return (
+      <>
+        <div>
+          <div className="d-flex flex-row justify-content-center">
+            <div className=" carouselCaption text-center col-md-11 mb-2 col-11">
+              <p className="txtCarousel lh-sm">{this.props.comment}</p>
+            </div>
+          </div>
+          <center>
+            <hr className="hrReview   " />
+          </center>
+          <div className="d-flex flex-row col-12 col-md-12 text-center fs-5  ">
+            <div className="d-flex flex-column col-12 col-md-12">
+              <center>
+                <p className="txtName">{this.props.fullName}</p>
+              </center>
+            </div>
+          </div>
+          <div className="d-flex flex-row  col-12 col-md-12 text-center fs-5  ">
+            <div className="d-flex flex-column col-12 col-md-12">
+              <center>
+                <p className="txtRole">{this.props.session_type}</p>
+              </center>
+            </div>
+          </div>
+          <div className="d-flex flex-row  col-12 col-md-12 text-center justify-content-center  mb-2 starsReview">
+            <div className="d-flex flex-column justify-content-center col-md-12 align-items-center">
+              <ReactStars
+                count={5}
+                value={this.props.rate}
+                edit={false}
+                size={23}
+                activeColor="#F2A23A"
+              />
+            </div>
+          </div>
+        </div>
+      </>
+    );
+  }
 }
