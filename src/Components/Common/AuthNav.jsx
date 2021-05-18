@@ -365,7 +365,11 @@ class AuthNav extends React.Component {
                               </a>
                             </li>
                             <li>
-                              <a class="row " href="#">
+                              <Link
+                                class="row "
+                                to="/Setting"
+                                renderAs="button"
+                              >
                                 <MdSettings
                                   color="red"
                                   className="col-3 mt-1 ms-2"
@@ -374,7 +378,7 @@ class AuthNav extends React.Component {
                                   pull="left"
                                 />
                                 <p className="col-9">Account setting</p>
-                              </a>
+                              </Link>
                             </li>
                             <li>
                               <a class="row " href="#">

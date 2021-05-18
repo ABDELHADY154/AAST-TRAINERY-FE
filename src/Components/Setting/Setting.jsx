@@ -1,186 +1,427 @@
-import React from "react";
-import "../../layout/socialPages.css";
-import { Link, NavLink } from "react-router-dom";
+import React, { Component, useEffect } from "react";
+import ReactStars from "react-rating-stars-component";
+import "@pathofdev/react-tag-input/build/index.css";
+import "../../layout/EditInfo.css";
+import Footer2 from "../Common/Footer2";
+import { Redirect } from "react-router-dom";
+import { axios } from "../../Api/axios";
 import LoadingOverlay from "react-loading-overlay";
 import BounceLoader from "react-spinners/BounceLoader";
-import Footer2 from "../Common/Footer2";
-import "../../layout/Home.css";
-// import "../../layout/Sign.css";
 
-import { HiOutlineMail } from "react-icons/hi";
-import { MdSettingsPhone } from "react-icons/md";
+// import { Link } from "react-router-dom";
 
-class Setting extends React.Component {
+class Setting extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      scrollPixelsY: 0,
-      // FormLoading: true,
+      language: "",
+      id: 0,
+      level: 0,
+      error: {},
+      FormLoading: false,
     };
-    window.scrollTo(0, 0);
   }
-  handleScroll = () => {
-    this.setState({
-      scrollPixelsY: window.scrollY,
-    });
+  async componentDidMount() {
+    if (this.props.match.params.id) {
+      this.setState({ FormLoading: true });
+      await axios
+        .get(`/W/student/profile/language/${this.props.match.params.id}`)
+        .then((res) => {
+          this.setState({
+            language: res.data.response.data.language,
+            level: res.data.response.data.level,
+            id: res.data.response.data.id,
+            FormLoading: false,
+          });
+        })
+        .catch((error) => {
+          if (error.response.data.status === 401) {
+            sessionStorage.clear("token");
+            sessionStorage.clear("status");
+            this.setState({ loggedIn: false });
+            window.location.reload();
+          }
+          this.setState({ FormLoading: false });
+        });
+    }
+    // console.log(this.props.match.params.id);
+  }
+  handleSubmitLanguage = async (e) => {
+    this.setState({ FormLoading: true });
+
+    e.preventDefault();
+    const data = {
+      language: this.state.language,
+      level: this.state.level,
+      id: this.state.id,
+    };
+    if (this.props.match.params.id) {
+      await axios
+        .put(`/W/student/profile/language/${this.props.match.params.id}`, data)
+        .then((response) => {
+          this.setState({
+            loggedIn: true,
+            FormLoading: false,
+          });
+        })
+        .catch((error) => {
+          if (error.response.data.status === 401) {
+            sessionStorage.clear("token");
+            sessionStorage.clear("status");
+            this.setState({ loggedIn: false });
+            window.location.reload();
+          }
+          this.setState({
+            FormLoading: false,
+
+            error: {
+              languageErr: error.response.data.errors.language,
+              LanguageLevelErr: error.response.data.errors.level,
+              LanguageIdErr: error.response.data.errors.id,
+            },
+          });
+        });
+    } else {
+      await axios
+        .post("/W/student/profile/language", data)
+        .then((response) => {
+          this.setState({
+            loggedIn: true,
+            FormLoading: false,
+          });
+        })
+        .catch((error) => {
+          if (error.response.data.status === 401) {
+            sessionStorage.clear("token");
+            sessionStorage.clear("status");
+            this.setState({ loggedIn: false });
+            window.location.reload();
+          }
+          this.setState({
+            FormLoading: false,
+            error: {
+              languageErr: error.response.data.errors.language,
+              LanguageLevelErr: error.response.data.errors.level,
+              LanguageIdErr: error.response.data.errors.id,
+            },
+          });
+        });
+    }
+  };
+  handleDeleteLanguage = async (e) => {
+    this.setState({ FormLoading: true });
+    await axios
+      .delete(`/W/student/profile/language/${this.props.match.params.id}`)
+      .then((response) => {
+        this.setState({
+          loggedIn: true,
+          FormLoading: false,
+        });
+      })
+      .catch((error) => {
+        if (error.response) {
+          this.setState({
+            loggedIn: false,
+            error: true,
+            FormLoading: false,
+          });
+        }
+        window.location.reload();
+      });
   };
 
   render() {
+    if (this.state.loggedIn === true) {
+      return <Redirect to="/Profile" />;
+    }
+    // console.log(this.state.level);
     return (
       <div>
-        <LoadingOverlay
-          active={this.state.FormLoading}
-          spinner={<BounceLoader color="#cd8930" />}
-          color={"#cd8930"}
-          styles={{
-            overlay: (base) => ({
-              ...base,
-              background: "rgb(255, 255, 255)",
-              stroke: "rgba(255, 0, 0, 0.5)",
-            }),
-          }}
-        >
-          <div className="container">
-            <div className="mt-3">
-              <h1 className="text-center fs-3 fw-bold">Account Setting</h1>
-              <p className="text-center">
-                Any questios or remarks? Just write us a message!
-              </p>
-            </div>
-            <div className="mb-5">
-              <div className="mb-4">
-                <p>
-                  <a
-                    class="btn accordionLink col-12 d-flex align-item-start "
-                    data-bs-toggle="collapse"
-                    href="#collapse1"
-                    role="button"
-                    aria-expanded="false"
-                    aria-controls="collapse1"
-                    style={{ color: "#1E4274" }}
-                  >
-                    Link with href
-                  </a>
-                </p>
-                <div class="collapse mb-3" id="collapse1">
-                  <div class="card card-body">
-                    Some placeholder content for the collapse component. This
-                    panel is hidden by default but revealed when the user
-                    activates the relevant trigger.
-                  </div>
-                </div>
-              </div>
-              <div className="mb-4">
-                <p>
-                  <a
-                    class="btn accordionLink col-12 d-flex align-item-start "
-                    data-bs-toggle="collapse"
-                    href="#collapse2"
-                    role="button"
-                    aria-expanded="false"
-                    aria-controls="collapse2"
-                    style={{ color: "#1E4274" }}
-                  >
-                    Link with href
-                  </a>
-                </p>
-                <div class="collapse mb-3" id="collapse2">
-                  <div class="card card-body">
-                    Some placeholder content for the collapse component. This
-                    panel is hidden by default but revealed when the user
-                    activates the relevant trigger.
-                  </div>
-                </div>
-              </div>
-              <div className="mb-4">
-                <p>
-                  <a
-                    class="btn accordionLink col-12 d-flex align-item-start "
-                    data-bs-toggle="collapse"
-                    href="#collapse3"
-                    role="button"
-                    aria-expanded="false"
-                    aria-controls="collapse3"
-                    style={{ color: "#1E4274" }}
-                  >
-                    Link with href
-                  </a>
-                </p>
-                <div class="collapse mb-3" id="collapse3">
-                  <div class="card card-body">
-                    Some placeholder content for the collapse component. This
-                    panel is hidden by default but revealed when the user
-                    activates the relevant trigger.
-                  </div>
-                </div>
-              </div>
-              <div className="mb-4">
-                <p>
-                  <a
-                    class="btn accordionLink col-12 d-flex align-item-start "
-                    data-bs-toggle="collapse"
-                    href="#collapse4"
-                    role="button"
-                    aria-expanded="false"
-                    aria-controls="collapse4"
-                    style={{ color: "#1E4274" }}
-                  >
-                    Link with href
-                  </a>
-                </p>
-                <div class="collapse mb-3" id="collapse4">
-                  <div class="card card-body">
-                    Some placeholder content for the collapse component. This
-                    panel is hidden by default but revealed when the user
-                    activates the relevant trigger.
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div
-            id="footer"
-            className="Container
-        
-       flex-row "
-          >
-            <footer
-              className="footer-area footer  m-auto prim"
-              style={{
-                backgroundColor: "#F2F2F2",
-              }}
+        <div className="container wrapper">
+          <div>
+            <form
+              className="row g-3 mb-3 mt-1"
+              onSubmit={this.handleSubmitLanguage}
             >
-              <div className="pb-4">
-                <div className="container pt-4 ">
-                  <div className="row ">
-                    <h5 className="d-flex  justify-content-start ">
-                      Check our help center to find the most asked questions
-                    </h5>
-                  </div>
-                  <div className="row ">
-                    <p className="d-flex col-9 col-md-8 col-lg-9 col-sm-9 justify-content-start ">
-                      We understand y ou may have question that are not answered
-                      in our FAQ, If you cannot find the answer to your question
-                      please feel free to contact us
+              <LoadingOverlay
+                active={this.state.FormLoading}
+                spinner={<BounceLoader color="#cd8930" />}
+                styles={{
+                  overlay: (base) => ({
+                    ...base,
+                    background: "rgb(255, 255, 255)",
+                  }),
+                }}
+              >
+                <div className="col-lg-10 col-11 col-md-10 col-sm-12 col-xs-12 mt-3 mt-sm-0">
+                  <label
+                    for="inputSkill"
+                    className="form-label editLabel fw-bold "
+                  >
+                    Change Password
+                  </label>
+                  <p>
+                    To change your account password, enter your current
+                    password, then enter your new password and confirm it.
+                  </p>
+                  <input
+                    type="Password"
+                    className={
+                      this.state.error && this.state.error.languageErr
+                        ? "form-control editInput wrong"
+                        : "form-control editInput "
+                    }
+                    id="Password"
+                    placeholder="Current Password"
+                    onChange={(e) =>
+                      this.setState({ language: e.target.value })
+                    }
+                    value={this.state.language}
+                  />
+                  {this.state.error && this.state.error.LanguageLevelErr ? (
+                    <p className="editerror text-capitalize">
+                      {this.state.error.LanguageLevelErr}
                     </p>
-                    <div className="col-md-2 col-sm-0 col-0 col-lg-2 space "></div>
-                    <div className=" col-3 col-md-2 col-sm-3 col-lg-1 d-flex justify-content-end">
-                      <button
-                        type="submit"
-                        className="col-12 col-md-12 col-sm-12 col-lg-12 btn FAQBtn"
-                      >
-                        Send
-                      </button>
-                    </div>
-                  </div>
+                  ) : (
+                    ""
+                  )}
+                  <input
+                    style={{ marginTop: 10 }}
+                    type="Password"
+                    className={
+                      this.state.error && this.state.error.languageErr
+                        ? " form-control editInput wrong"
+                        : "form-control editInput "
+                    }
+                    id="Password"
+                    placeholder="New Password "
+                    onChange={(e) =>
+                      this.setState({ language: e.target.value })
+                    }
+                    value={this.state.language}
+                  />
+                  {this.state.error && this.state.error.LanguageLevelErr ? (
+                    <p className="editerror text-capitalize">
+                      {this.state.error.LanguageLevelErr}
+                    </p>
+                  ) : (
+                    ""
+                  )}
+                  <input
+                    style={{ marginTop: 10 }}
+                    type="Password"
+                    className={
+                      this.state.error && this.state.error.languageErr
+                        ? "form-control editInput wrong"
+                        : "form-control editInput "
+                    }
+                    id="Password"
+                    placeholder="Confirm Password  "
+                    onChange={(e) =>
+                      this.setState({ language: e.target.value })
+                    }
+                    value={this.state.language}
+                  />
+                  {this.state.error && this.state.error.LanguageLevelErr ? (
+                    <p className="editerror text-capitalize">
+                      {this.state.error.LanguageLevelErr}
+                    </p>
+                  ) : (
+                    ""
+                  )}
                 </div>
-              </div>
-            </footer>
+                <div class="mt-5 col-lg-10 col-11 col-md-10 col-sm-12 col-xs-12 d-flex justify-content-end">
+                  <button type="submit" class="btn updateBtn shadow-none">
+                    Update
+                  </button>
+                </div>
+              </LoadingOverlay>
+            </form>
+            <hr className="w-75 " />
+            <form
+              className="row g-3 mb-3 mt-1"
+              onSubmit={this.handleSubmitLanguage}
+            >
+              <LoadingOverlay
+                active={this.state.FormLoading}
+                spinner={<BounceLoader color="#cd8930" />}
+                styles={{
+                  overlay: (base) => ({
+                    ...base,
+                    background: "rgb(255, 255, 255)",
+                  }),
+                }}
+              >
+                <div className="col-lg-10 col-11 col-md-10 col-sm-12 col-xs-12 mt-3 mt-sm-0">
+                  <label
+                    for="inputSkill"
+                    className="form-label editLabel fw-bold"
+                  >
+                    Account Email
+                  </label>
+                  <p>
+                    You are already registered with the following email:{" "}
+                    <span style={{ color: "#cd8930" }} className="text-wrap">
+                      basmaamostafa27@student.aast.edu{" "}
+                    </span>
+                    If you would like to sign-in and receive emails on a
+                    different address, write this new email here:
+                  </p>
+                  <input
+                    type="Password"
+                    className={
+                      this.state.error && this.state.error.languageErr
+                        ? "form-control editInput wrong"
+                        : "form-control editInput "
+                    }
+                    id="Password"
+                    placeholder="New Email"
+                    onChange={(e) =>
+                      this.setState({ language: e.target.value })
+                    }
+                    value={this.state.language}
+                  />
+                  {this.state.error && this.state.error.LanguageLevelErr ? (
+                    <p className="editerror text-capitalize">
+                      {this.state.error.LanguageLevelErr}
+                    </p>
+                  ) : (
+                    ""
+                  )}
+                </div>
+                <div class="mt-5 col-lg-10 col-11 col-md-10 col-sm-12 col-xs-12 d-flex justify-content-end">
+                  <button type="submit" class="btn updateBtn shadow-none">
+                    Update
+                  </button>
+                </div>
+              </LoadingOverlay>
+            </form>
+            <hr className="w-75 " />
+            <form
+              className="row g-3 mb-3 mt-1"
+              onSubmit={this.handleSubmitLanguage}
+            >
+              <LoadingOverlay
+                active={this.state.FormLoading}
+                spinner={<BounceLoader color="#cd8930" />}
+                styles={{
+                  overlay: (base) => ({
+                    ...base,
+                    background: "rgb(255, 255, 255)",
+                  }),
+                }}
+              >
+                <div className="col-lg-10 col-11 col-md-10 col-sm-12 col-xs-12 mt-3 mt-sm-0">
+                  <label
+                    for="inputSkill"
+                    className="form-label editLabel fw-bold"
+                  >
+                    My Subscriptions
+                  </label>
+                  <p>
+                    You will receive emails containing the latest jobs which
+                    match your preferences.
+                  </p>
+                  {/* <div class="col-4 col-lg-5 col-md-4 col-sm-4 col-xs-3 male form-check form-check-inline d-flex"> */}
+                  <input
+                    type="checkbox"
+                    name="inlineRadioOptions"
+                    id="inlineRadio1"
+                    value="male"
+                    className="checkbox signInput"
+                    onChange={(e) => this.setState({ gender: e.target.value })}
+                  />
+                  <label
+                    class="form-check-label checkboxLabel"
+                    for="inlineCheckbox3"
+                  >
+                    Receive newsletter
+                  </label>
+                  {/* </div> */}
+                  {this.state.error && this.state.error.LanguageLevelErr ? (
+                    <p className="editerror text-capitalize">
+                      {this.state.error.LanguageLevelErr}
+                    </p>
+                  ) : (
+                    ""
+                  )}
+                </div>
+                <div class="col-lg-10 col-11 col-md-10 col-sm-12 col-xs-12 d-flex justify-content-end">
+                  <button type="submit" class="btn updateBtn shadow-none">
+                    Update
+                  </button>
+                </div>
+              </LoadingOverlay>
+            </form>{" "}
+            <hr className="w-75 " />
+            <form
+              className="row g-3 mb-3 mt-1"
+              onSubmit={this.handleSubmitLanguage}
+            >
+              <LoadingOverlay
+                active={this.state.FormLoading}
+                spinner={<BounceLoader color="#cd8930" />}
+                styles={{
+                  overlay: (base) => ({
+                    ...base,
+                    background: "rgb(255, 255, 255)",
+                  }),
+                }}
+              >
+                <div className="col-lg-10 col-11 col-md-10 col-sm-12 col-xs-12 mt-3 mt-sm-0">
+                  <label
+                    for="inputSkill"
+                    className="form-label editLabel fw-bold"
+                  >
+                    Ad-Cancellation
+                  </label>
+                  <p>Monthly pay to advois seeing Ads</p>
+                </div>
+                <div class="mt-1 col-lg-10 col-11 col-md-10 col-sm-12 col-xs-12 d-flex justify-content-end">
+                  <button type="submit" class="btn updateBtn shadow-none">
+                    Subscribe
+                  </button>
+                </div>
+              </LoadingOverlay>
+            </form>{" "}
+            <hr className="w-75 " />
+            <form
+              className="row g-3 mb-3 mt-1"
+              onSubmit={this.handleSubmitLanguage}
+            >
+              <LoadingOverlay
+                active={this.state.FormLoading}
+                spinner={<BounceLoader color="#cd8930" />}
+                styles={{
+                  overlay: (base) => ({
+                    ...base,
+                    background: "rgb(255, 255, 255)",
+                  }),
+                }}
+              >
+                <div className="col-lg-10 col-11 col-md-10 col-sm-12 col-xs-12 mt-3 mt-sm-0">
+                  <label
+                    for="inputSkill"
+                    className="form-label editLabel fw-bold"
+                  >
+                    Delete Account
+                  </label>
+                  <p>Permanently delete my account</p>
+                </div>
+                <div class="mt-5 col-lg-10 col-11 col-md-10 col-sm-12 col-xs-12 d-flex justify-content-end">
+                  <button type="submit" class="btn deleteBtn shadow-none">
+                    Delete
+                  </button>
+                </div>
+              </LoadingOverlay>
+            </form>
           </div>
+        </div>
+        <div>
           <Footer2 />
-        </LoadingOverlay>
+        </div>{" "}
       </div>
     );
   }
 }
-export default helpCenter;
+export default Setting;
