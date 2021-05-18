@@ -60,7 +60,7 @@ class AboutUs extends React.Component {
           }}
         >
           <div className="container">
-            <div className="mt-3 mb-3">
+            <div className="mt-5 mb-3">
               <h1 className="text-center fs-3 fw-bold ">About Us</h1>
             </div>
             <div className="d-flex flex-row ">
@@ -89,7 +89,7 @@ class AboutUs extends React.Component {
                 <img className="" src={img} />
               </div>
             </div>
-            <div className="row mb-5">
+            <div className="row mb-5 mt-5">
               <div className="col-12 col-sm-12 col-lg-6 col-md-6">
                 <div className="col-12 mt-3 divBorder">
                   <h5>Explore Training Opportinities</h5>
