@@ -57,9 +57,9 @@ class Landing extends React.Component {
               id="DescCont"
               className="d-flex flex-column text-wrap bg-none "
             >
-              <div className="fs-2" id="Title">
+              <h1 className="fs-2" id="Title">
                 We Provide The Best Experience
-              </div>
+              </h1>
               <div className="fs-6 " id="DescProv">
                 You don't have to be experienced in order to land internship
                 opportunities whether they were online internships or offline
@@ -113,7 +113,10 @@ class Landing extends React.Component {
               id="Experienceimg"
               className="d-flex flex-column d-none d-md-flex ms-5 "
             >
-              <img className="" src={img} />
+              <img
+                alt="three individuals looking at a laptop one is pointing at the laptop explaining"
+                src={img}
+              />
             </div>
           </div>
           <div className="d-flex flex-row">
@@ -136,6 +139,7 @@ class Landing extends React.Component {
             <div className=" mt-3 col-md-4 col-12">
               <div className="card m-md-5" id="bd">
                 <img
+                  alt="two women partially visible with focus on their hands one is taking notes for CV template"
                   className="cardImg img-responsive"
                   src={img1}
                   height="200"
@@ -148,6 +152,7 @@ class Landing extends React.Component {
             <div className=" mt-3  col-md-4 col-12">
               <div id="bd" className=" card m-md-5">
                 <img
+                  alt="two women sitting next to each other and talking as a part of interview help session"
                   className="cardImg img-responsive"
                   src={img3}
                   height="200"
@@ -160,6 +165,7 @@ class Landing extends React.Component {
             <div className=" mt-3 col-md-4 col-12">
               <div id="bd" className=" card m-md-5">
                 <img
+                  alt="a woman standing with her back to the wall holding a book and thinking while looking at the book"
                   className="cardImg img-responsive"
                   src={img2}
                   height="200"
@@ -187,14 +193,24 @@ class Landing extends React.Component {
               <div>
                 <div id="checklist" className="d-flex flex-column mt-3 ">
                   <div>
-                    <BsCheck color="#cd8930" fill="#cd8930" className="fs-3" />
+                    <BsCheck
+                      alt="checkmark"
+                      color="#cd8930"
+                      fill="#cd8930"
+                      className="fs-3"
+                    />
                     <span>
                       Explore University internships opportunities for students{" "}
                     </span>
                   </div>
 
                   <div className="mt-3">
-                    <BsCheck color="#cd8930" fill="#cd8930" className="fs-3" />
+                    <BsCheck
+                      alt="checkmark"
+                      color="#cd8930"
+                      fill="#cd8930"
+                      className="fs-3"
+                    />
                     <span>
                       Students have the ability to make CVs and Portfolios with
                       minimal to zero effort
@@ -202,7 +218,12 @@ class Landing extends React.Component {
                   </div>
 
                   <div className="mt-3">
-                    <BsCheck ccolor="#cd8930" fill="#cd8930" className="fs-3" />
+                    <BsCheck
+                      alt="checkmark"
+                      ccolor="#cd8930"
+                      fill="#cd8930"
+                      className="fs-3"
+                    />
                     <span>
                       The platforms are easy to browse through just like using
                       AAST portal
@@ -216,10 +237,20 @@ class Landing extends React.Component {
                     </div>
                     <div className="my-3 d-flex flex-row flex-wrap">
                       <a href="#">
-                        <img className="mx-1" src={google} height="40" />
+                        <img
+                          alt="google play store logo and download Trainery app link"
+                          className="mx-1"
+                          src={google}
+                          height="40"
+                        />
                       </a>
                       <a href="#">
-                        <img className="mx-1" src={apple} height="40" />
+                        <img
+                          alt="apple app store logo and download Trainery app link"
+                          className="mx-1"
+                          src={apple}
+                          height="40"
+                        />
                       </a>
                     </div>
                   </div>
@@ -230,7 +261,10 @@ class Landing extends React.Component {
               id="Experienceimg"
               className="d-flex flex-column d-none d-md-flex ms-5 "
             >
-              <img src={img4} />
+              <img
+                src={img4}
+                alt="a woman holding stacked books with a backpack on her shoulder as a college student"
+              />
             </div>
           </div>
 
@@ -241,22 +275,16 @@ class Landing extends React.Component {
           </div>
           <div className="d-flex flex-row" id="CoachCont">
             <div className="fs-6 mb-1  " id="DescProv">
-              Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-              Reiciendis numquam similique eum repellat nesciunt beatae error
-              quod, tenetur aspernatur a cumque, non maxime sit nulla excepturi
-              pariatur inventore illum placeat.
+              We got all the opportunities you might need here with the help of
+              the below companies in order to give you the chance to get your
+              training and enhance your skills with us without the burden of
+              having to go through a long and routine-filled process.
             </div>
           </div>
         </div>
         <div className="container">
           <CarouselLogos />
-          {/* {this.state.loading === false ? (
-              <div>
-                <LogoesCarousel />
-              </div>
-            ) : (
-              <CarouselLogos />
-            )} */}
+
           <div className="mb-4 mt-5 d-flex justify-content-center">
             <button className="d-flex justify-content-center contactBtn col-md-2 col-4 col-lg-1 col-sm-4 text-center  py-1">
               Contact

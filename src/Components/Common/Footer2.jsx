@@ -28,7 +28,12 @@ export default class Footer extends React.Component {
                 <div className=" col-md-5 col-12 d-flex flex-row loremipad">
                   <div className="footer-widget ">
                     <div className="mt-2 flex-row ">
-                      <img id="footlogo" src={logo} width="40%"></img>
+                      <img
+                        id="footlogo"
+                        src={logo}
+                        width="40%"
+                        alt="AAST Trainery Logo"
+                      ></img>
                       <p className="mt-2 ">
                         Lorem ipsum dolor sit amet, consectetur adipiscing elit.
                         Consectetur dictumst nisi blandit ornare viverra
