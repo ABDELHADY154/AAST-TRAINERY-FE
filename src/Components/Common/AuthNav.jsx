@@ -76,7 +76,7 @@ class AuthNav extends React.Component {
         this.setState({
           notifications: res.data.response.data,
         });
-        console.log(res.data.response.data);
+        // console.log(res.data.response.data);
       })
       .catch((err) => {
         // this.setState({  });
@@ -100,7 +100,7 @@ class AuthNav extends React.Component {
     }
   };
   render() {
-    console.log(this.state.notifications.type);
+    // console.log(this.state.notifications.type);
     if (this.props.updated == true) {
       window.location = window.location;
     }

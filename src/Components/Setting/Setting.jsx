@@ -14,9 +14,8 @@ class Setting extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      language: "",
+      email: "",
       id: 0,
-      level: 0,
       error: {},
       FormLoading: false,
     };
@@ -25,14 +24,13 @@ class Setting extends Component {
     if (this.props.match.params.id) {
       this.setState({ FormLoading: true });
       await axios
-        .get(`/W/student/profile/language/${this.props.match.params.id}`)
+        .put("/W/student/updateEmail")
         .then((res) => {
           this.setState({
-            language: res.data.response.data.language,
-            level: res.data.response.data.level,
-            id: res.data.response.data.id,
+            email: res.data.response.data,
             FormLoading: false,
           });
+          console.log(res.data.response.data);
         })
         .catch((error) => {
           if (error.response.data.status === 401) {
@@ -46,18 +44,16 @@ class Setting extends Component {
     }
     // console.log(this.props.match.params.id);
   }
-  handleSubmitLanguage = async (e) => {
+  handleupdateEmail = async (e) => {
     this.setState({ FormLoading: true });
 
     e.preventDefault();
     const data = {
-      language: this.state.language,
-      level: this.state.level,
-      id: this.state.id,
+      email: this.state.email,
     };
     if (this.props.match.params.id) {
       await axios
-        .put(`/W/student/profile/language/${this.props.match.params.id}`, data)
+        .put("/W/student/updateEmail", data)
         .then((response) => {
           this.setState({
             loggedIn: true,
@@ -75,59 +71,11 @@ class Setting extends Component {
             FormLoading: false,
 
             error: {
-              languageErr: error.response.data.errors.language,
-              LanguageLevelErr: error.response.data.errors.level,
-              LanguageIdErr: error.response.data.errors.id,
-            },
-          });
-        });
-    } else {
-      await axios
-        .post("/W/student/profile/language", data)
-        .then((response) => {
-          this.setState({
-            loggedIn: true,
-            FormLoading: false,
-          });
-        })
-        .catch((error) => {
-          if (error.response.data.status === 401) {
-            sessionStorage.clear("token");
-            sessionStorage.clear("status");
-            this.setState({ loggedIn: false });
-            window.location.reload();
-          }
-          this.setState({
-            FormLoading: false,
-            error: {
-              languageErr: error.response.data.errors.language,
-              LanguageLevelErr: error.response.data.errors.level,
-              LanguageIdErr: error.response.data.errors.id,
+              emailErr: error.response.data.errors.email,
             },
           });
         });
     }
-  };
-  handleDeleteLanguage = async (e) => {
-    this.setState({ FormLoading: true });
-    await axios
-      .delete(`/W/student/profile/language/${this.props.match.params.id}`)
-      .then((response) => {
-        this.setState({
-          loggedIn: true,
-          FormLoading: false,
-        });
-      })
-      .catch((error) => {
-        if (error.response) {
-          this.setState({
-            loggedIn: false,
-            error: true,
-            FormLoading: false,
-          });
-        }
-        window.location.reload();
-      });
   };
 
   render() {
@@ -268,22 +216,20 @@ class Setting extends Component {
                     different address, write this new email here:
                   </p>
                   <input
-                    type="Password"
+                    type="email"
                     className={
-                      this.state.error && this.state.error.languageErr
+                      this.state.error && this.state.error.emailErr
                         ? "form-control editInput wrong"
                         : "form-control editInput "
                     }
-                    id="Password"
-                    placeholder="New Email"
-                    onChange={(e) =>
-                      this.setState({ language: e.target.value })
-                    }
-                    value={this.state.language}
+                    id="email"
+                    placeholder="new email"
+                    onChange={(e) => this.setState({ email: e.target.value })}
+                    value={this.state.email}
                   />
-                  {this.state.error && this.state.error.LanguageLevelErr ? (
+                  {this.state.error && this.state.error.emailErr ? (
                     <p className="editerror text-capitalize">
-                      {this.state.error.LanguageLevelErr}
+                      {this.state.error.emailErr}
                     </p>
                   ) : (
                     ""
