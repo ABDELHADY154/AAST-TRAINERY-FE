@@ -254,9 +254,9 @@ class App extends React.Component {
                   path="/Opportunity/:id"
                   component={Opportunity}
                 />
-                <AuthRoute exact path="/helpCenter" component={helpCenter} />
-                <AuthRoute exact path="/contactUs" component={contactUs} />
-                <AuthRoute exact path="/AboutUs" component={AboutUs} />
+                <Route exact path="/helpCenter" component={helpCenter} />
+                <Route exact path="/contactUs" component={contactUs} />
+                <Route exact path="/AboutUs" component={AboutUs} />
                 <Route
                   exact
                   path="*"
