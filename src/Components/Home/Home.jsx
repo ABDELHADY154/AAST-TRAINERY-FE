@@ -43,7 +43,7 @@ class Home extends Component {
     await resolve(
       axios
         .get("/W/student/get-profile")
-        .then(res => {
+        .then((res) => {
           if (res.status === 200) {
             this.setState({
               user: res.data.response.data,
@@ -52,7 +52,7 @@ class Home extends Component {
             });
           }
         })
-        .catch(error => {
+        .catch((error) => {
           this.setState({
             error: {
               usernameErr: error.response.status,
@@ -61,11 +61,11 @@ class Home extends Component {
           if (this.state.error.usernameErr === 401) {
             window.location.reload();
           }
-        }),
+        })
     );
     await axios
       .get("/W/activity")
-      .then(res => {
+      .then((res) => {
         this.setState({
           id: res.data.response.data.id,
           data: res.data.response.data,
@@ -73,44 +73,43 @@ class Home extends Component {
           FormLoading: false,
         });
       })
-      .catch(err => {
+      .catch((err) => {
         this.setState({ FormLoading: true });
         console.log(err);
       });
     await axios
       .get("/W/student/posts")
-      .then(res => {
+      .then((res) => {
         this.setState({
           explorePosts: res.data.response.data,
         });
       })
-      .catch(err => {
+      .catch((err) => {
         this.setState({ FormLoading: true });
         console.log(err);
       });
     await axios
       .get("/W/sessions")
-      .then(res => {
+      .then((res) => {
         this.setState({
           career: res.data.response.data,
         });
       })
-      .catch(err => {
+      .catch((err) => {
         console.log(err);
       });
   }
 
-  // handleRemove(){
-  //   var alert = document.getElementsBy("navBottom")[0].remove(alert);
-
-  // }
-
   render() {
-    // console.log(this.state.data);
+    console.log(this.state.data);
     if (this.state.user.profile_updated === false) {
       var Alert =
         this.state.alert == true ? (
-          <div id="alerting" className="d-flex flex-row  flex-wrap py-2  mb-3 ">
+          <div
+            id="alerting"
+            className="d-flex flex-row  flex-wrap py-2  mb-3 "
+            alt="alert banner"
+          >
             <div className="container d-flex flex-row  flex-wrap ">
               <div
                 id="alertingtitle"
@@ -142,6 +141,7 @@ class Home extends Component {
                   data-bs-target="#alerting"
                   aria-expanded="true"
                   aria-controls="alerting"
+                  alt="close this banner X"
                 >
                   <IoClose fill="red" color="red" />
                 </button>
@@ -176,6 +176,7 @@ class Home extends Component {
                   <div className="d-flex flex-row d-md-none mt-3 ms-5">
                     <div className="d-flex flex-column col-8 ms-5">
                       <ProgressBar
+                        alt="your profile done percentage"
                         percent={
                           this.state.user.profile_score
                             ? this.state.user.profile_score
@@ -417,6 +418,7 @@ class Home extends Component {
             <div className="d-flex flex-column d-none d-md-flex col-md-2 ">
               {this.state.user.gender ? (
                 <img
+                  alt="Your Avatar based on your gender"
                   id="girl"
                   className=""
                   src={this.state.user.gender == "female" ? img : MaleAvatar}
@@ -440,7 +442,7 @@ class Home extends Component {
                     <p className="text-center">No Activity</p>
                   </div>
                 ) : (
-                  this.state.data.map(data => {
+                  this.state.data.map((data) => {
                     return (
                       <SmallCard
                         title={data.title}
@@ -551,13 +553,17 @@ class Home extends Component {
           <div className="d-flex flex-row flex-wrap text-wrap text-center justify-content-center">
             {!this.state.career
               ? ""
-              : this.state.career.map(career => {
+              : this.state.career.map((career) => {
                   return (
                     <div
                       id="widths"
-                      className=" mt-3 containerrr  col-md-3 col-12 "
+                      className=" mt-3 containerrr  col-md-2 col-12 "
                     >
-                      <img id="imagehover" src={career.image} />
+                      <img
+                        id="imagehover"
+                        src={career.image}
+                        alt={career.title}
+                      />
                       <div class="overlay">
                         <Link
                           to={`../CareerCoaching/Advising/${career.id}`}
@@ -580,88 +586,6 @@ class Home extends Component {
 }
 export default Home;
 
-class AppliedCard extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {};
-  }
-  render() {
-    return (
-      <div className=" mt-2 col-md-6" id="tabcontainer">
-        <div className="card">
-          <div className="card-body">
-            <div className="d-flex flex-row ">
-              <Link to={`/CompanyProfile/${this.props.company_id}`}>
-                <img
-                  className=" mt-0 d-flex flex-column  col-2 rounded"
-                  id="imgicon"
-                  src={this.props.company_logo}
-                />
-              </Link>
-              <Link
-                to={`/Opportunity/${this.props.id}`}
-                className=" fs-5 mt-2 ms-2 col-md-9 col-7 mb-2"
-              >
-                <div>{this.props.title}</div>
-              </Link>
-              <div id="gold" className=" fs-6 mt-2  col-2 col-md-2">
-                {this.props.salary}
-              </div>
-            </div>
-            <div id="job" className=" d-flex flex-row ms-5 flex-wrap  ">
-              <Link to={`/CompanyProfile/${this.props.company_id}`}>
-                <div className="d-flex ms-3 flex-row">
-                  {this.props.company_name}
-                </div>
-              </Link>
-
-              <div
-                id="gold"
-                className=" ms-2 departments d-flex flex-row flex-wrap "
-              >
-                {this.props.departments.map(item => {
-                  return (
-                    <Departments
-                      id={item.id}
-                      key={item.id}
-                      departments={item.departments}
-                      dep_name={item.dep_name}
-                    />
-                  );
-                })}
-              </div>
-            </div>
-            <p className="card-text mt-2 Lines">{this.props.description}</p>
-
-            <div className="d-flex flex-row flex-wrap " id="">
-              {this.props.tags.map(item => {
-                return (
-                  <Interest
-                    id={item.id}
-                    key={item.id}
-                    interest={item.interest}
-                  />
-                );
-              })}
-            </div>
-            <div className="d-flex flex-row flex-wrap ">
-              <div
-                id="drop"
-                className="d-flex flex-column me-4  col-md-5  
-                             justify-space-between"
-              >
-                <p>
-                  Deadline {"        "}
-                  {this.props.application_deadline}
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    );
-  }
-}
 class Departments extends Component {
   constructor(props) {
     super(props);
@@ -675,149 +599,3 @@ class Departments extends Component {
     );
   }
 }
-class Interest extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {};
-  }
-  render() {
-    return (
-      <div className=" me-2 tags  mt-1 mb-1" id="firsttagipad">
-        <a
-          href="#"
-          className="tagsipad tagsP"
-          id="tags"
-          style={{ paddingLeft: 10, paddingRight: 10 }}
-        >
-          {this.props.interest}
-        </a>
-      </div>
-    );
-  }
-}
-
-const ExploreCard = props => {
-  console.log(props);
-  return (
-    <div className="card">
-      <div className="card-body">
-        <div className="d-flex flex-row flex-wrap">
-          <Link to={`/advisorProfile/${props.id}`}>
-            <img
-              className=" me-1 rounded"
-              id="advisorlogo"
-              style={{ height: 55, width: 55 }}
-              src={props.advisor.image}
-            />
-          </Link>
-          <Link to={`/advisorProfile/${props.advisor_id}`}>
-            <p id="" className="card-title fs-6 mt-2 ms-2">
-              {props.advisor.name}
-            </p>
-          </Link>
-        </div>
-        <hr />
-        <div className="d-flex flex-row">
-          <Link to={`/CompanyProfile/${props.advisor_id}`}>
-            <img
-              className=" mt-0 d-flex flex-row  col-md-1 col-2 me-1 rounded"
-              id="imgicon"
-              src={props.company_logo}
-            />
-          </Link>
-          <Link
-            to={`/Opportunity/${props.id}`}
-            className="card-title ms-2 mt-2 col-md-8 col-7 col-sm-6 col-xs-7 d-flex align-items-center"
-          >
-            <h5 style={{ marginRight: 24 }}>{props.title}</h5>
-          </Link>
-          <div
-            id="goldtab"
-            className=" d-flex flex-row-reverse align-items-center col-md-2 col-2"
-          >
-            {props.salary}
-          </div>
-        </div>
-        <div id="job" className="d-flex flex-row ms-5 ">
-          <Link to={`/CompanyProfile/${props.company_id}`}>
-            {" "}
-            <div className="d-flex ms-3 flex-column">{props.company_name}</div>
-          </Link>
-          <div id="gold" className="d-flex ms-2 flex-column">
-            Finance
-          </div>
-        </div>
-        <p className="card-text mt-2 Lines">{props.description}</p>
-        <div className="d-flex flex-row flex-wrap ">
-          <div
-            className="d-flex flex-column  col-4 col-md-1 me-4 "
-            id="firsttagipad"
-          >
-            <a href="#" className="tagsipad" id="tags">
-              Finance
-            </a>
-          </div>
-          <div
-            className="d-flex flex-column col-4  col-md-1 me-4 mb-1 "
-            id="firsttagipad"
-          >
-            <a href="#" className="tagsipad  " id="tags">
-              Banking
-            </a>
-          </div>
-          <div id="drop" className="d-flex  flex-wrap col-6 col-md-2">
-            <p>Deadline {"        "}11 Dec 2021</p>
-          </div>
-          <div className="d-flex  flex-wrap promotedPost me-auto col-5 col-md-3">
-            <BsArrowUpRight className="me-2" color="#cd8930" fill="#cd8930" />
-            <p id="gold">Promoted</p>
-          </div>
-          <div className="  d-flex flex-row col-12 col-md-4 justify-content-end btnmovement">
-            {/* <div className="col-md-4"></div> */}
-            {props.saved == true ? (
-              <BsFillBookmarkFill
-                id="BsBookmark"
-                fill="#1e4274"
-                className="fs-2 align-self-center col-md-2 col-4"
-                style={{ marginTop: -14 }}
-                path="0px"
-              />
-            ) : props.saved == false ? (
-              <BsBookmark
-                id="BsBookmark"
-                fill="#1e4274"
-                className="fs-2 align-self-center col-md-2 col-4"
-                style={{ marginTop: -10 }}
-                path="0px"
-                onClick={() => {
-                  this.setState({
-                    saved: props.saved,
-                  });
-                }}
-              />
-            ) : (
-              ""
-            )}
-            {props.applied == true ? (
-              <Link
-                to={`/Opportunity`}
-                className="text-center appliedBtn px-1 py-0 col-md-5 col-8 col-sm-5"
-              >
-                Applied
-              </Link>
-            ) : props.applied == false ? (
-              <Link
-                to={`/Opportunity`}
-                className="text-center applyBtn px-1 py-0 col-md-5 col-8 col-sm-5"
-              >
-                Apply
-              </Link>
-            ) : (
-              ""
-            )}
-          </div>
-        </div>
-      </div>
-    </div>
-  );
-};
