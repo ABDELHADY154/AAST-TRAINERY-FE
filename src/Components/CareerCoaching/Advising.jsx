@@ -157,7 +157,7 @@ export default class CareerCoaching extends Component {
       slidesToShow: 1,
       slidesToScroll: 1,
     };
-    console.log(this.state.reviewed);
+    console.log(this.state.status);
     return (
       <div className="container-fluid ">
         {" "}
@@ -279,6 +279,9 @@ export default class CareerCoaching extends Component {
                   </>
                 ) : (
                   <>
+                    <h3>Reviews on this</h3>
+                    <br />
+                    <br />
                     <Slider {...settings} className="mb-5">
                       {this.state.review.map((data) => {
                         return (

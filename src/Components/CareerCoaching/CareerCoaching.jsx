@@ -26,6 +26,7 @@ export default class CareerCoaching extends Component {
       scrollPixelsY: 0,
       FormLoading: true,
       review: [],
+      // status: "",
     };
     window.scrollTo(0, 0);
   }
@@ -46,6 +47,7 @@ export default class CareerCoaching extends Component {
         this.setState({
           data: res.data.response.data,
           FormLoading: false,
+          // status: res.data.response.data.status,
         });
       })
       .catch((err) => {
@@ -72,6 +74,8 @@ export default class CareerCoaching extends Component {
       slidesToShow: 1,
       slidesToScroll: 1,
     };
+    console.log(this.state.data);
+
     return (
       <div className="container-fluid ">
         <LoadingOverlay
@@ -165,9 +169,15 @@ export default class CareerCoaching extends Component {
                                     <Link
                                       to={`/CareerCoaching/Advising/${data.id}`}
                                     >
-                                      <button className="applyBtn px-4 py-0 bookbtn">
-                                        Book
-                                      </button>
+                                      {data.status == "unbooked" ? (
+                                        <button className="applyBtn px-4 py-0 bookbtn">
+                                          Book
+                                        </button>
+                                      ) : (
+                                        <button className="applyBtn px-4 py-0 bookbtn">
+                                          Booked
+                                        </button>
+                                      )}
                                     </Link>
                                   </div>
                                 </div>

@@ -57,9 +57,9 @@ class Landing extends React.Component {
               id="DescCont"
               className="d-flex flex-column text-wrap bg-none "
             >
-              <h1 className="fs-2" id="Title">
+              <h2 className="fs-2" id="Title">
                 We Provide The Best Experience
-              </h1>
+              </h2>
               <div className="fs-6 " id="DescProv">
                 You don't have to be experienced in order to land internship
                 opportunities whether they were online internships or offline

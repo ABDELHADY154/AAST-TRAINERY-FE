@@ -291,6 +291,7 @@ class AuthNav extends React.Component {
                                 <div className="col-10">
                                   <span
                                     className="nameText  text-wrap"
+                                    style={{ textTransform: "capitalize" }}
                                     // style={{
                                     //   flexDirection: "column",
                                     //   flexWrap: "wrap",
