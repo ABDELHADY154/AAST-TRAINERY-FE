@@ -27,7 +27,6 @@ export default class StudentEdu extends Component {
           >
             <Link to={`/Profile/Education/${id}`}>
               <BiPencil
-                alt="edit info"
                 id="skillnamepen"
                 className="skillnamepencil"
                 fill="#cd8930"
@@ -43,7 +42,7 @@ export default class StudentEdu extends Component {
         </div>
         <div className="d-flex flex-row fs-6 ">
           <div className=" d-flex flex-row col-12 col-md-12">
-            {this.props.fromDate} to {this.props.toDate}
+            {this.props.fromDate} to {this.props.toDate} ·
           </div>
         </div>
         <div className="d-flex flex-row flex-wrap fs-6 mt-2 ">
@@ -75,7 +74,6 @@ export default class StudentEdu extends Component {
                 target="_blank"
               >
                 <CgFileDocument
-                  alt="View PDF"
                   size="20px"
                   id="docicon"
                   fill="#cd8930"

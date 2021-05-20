@@ -10,16 +10,15 @@ class Nav extends React.Component {
       <div className="mb-5">
         <nav class="navbar navbar-expand-lg navBg fixed-top ">
           <div className="container">
-            <Link className="navbar-brand mx-2" alt="AAST Trainery Logo" to="/">
+            <Link className="navbar-brand mx-2" to="/">
               <img
-                alt="AAST Trainery Logo"
                 className="navbar-brand "
                 src={logo}
                 width="170"
+                alt=""
               ></img>
             </Link>
             <button
-              alt="hamburger menu"
               id="hamburgermenu"
               className="navbar-toggler"
               type="button"
@@ -29,17 +28,10 @@ class Nav extends React.Component {
               aria-expanded="false"
               aria-label="Toggle navigation"
             >
-              <span
-                className="navbar-toggler-icon"
-                alt="toggle hamburger menu"
-              ></span>
+              <span className="navbar-toggler-icon"></span>
             </button>
-            <div
-              className="collapse navbar-collapse justify-content-end"
-              id="navbarScroll"
-            >
-              {/* hasbyalah w ne3mel wakeel */}
-              {/* <ul className="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll">
+            <div className="collapse navbar-collapse" id="navbarScroll">
+              <ul className="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll">
                 <li className="nav-item"></li>
 
                 <li className="nav-item">
@@ -49,18 +41,16 @@ class Nav extends React.Component {
                     aria-disabled="true"
                   />
                 </li>
-              </ul> */}
-              <div className="d-flex ">
+              </ul>
+              <div className="d-flex justify-content-center">
                 <Link
                   className="btn signIn shadow-none btn-nav col-xm-6  mx-1"
                   to="/Login"
                   renderAs="button"
-                  alt="Sign in link"
                 >
                   Sign In
                 </Link>
                 <Link
-                  alt="Sign up link"
                   renderAs="button"
                   className="btn btn-nav shadow-none signUp col-xm-6  mx-1"
                   to="/Register"

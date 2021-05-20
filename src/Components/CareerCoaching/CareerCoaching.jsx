@@ -16,16 +16,12 @@ import { axios } from "../../Api/axios";
 import DateTimePicker from "react-datetime-picker";
 import LoadingOverlay from "react-loading-overlay";
 import BounceLoader from "react-spinners/BounceLoader";
-import Slider from "react-slick";
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
 export default class CareerCoaching extends Component {
   constructor(props) {
     super(props);
     this.state = {
       scrollPixelsY: 0,
       FormLoading: true,
-      review: [],
     };
     window.scrollTo(0, 0);
   }
@@ -34,7 +30,16 @@ export default class CareerCoaching extends Component {
       scrollPixelsY: window.scrollY,
     });
   };
-
+  // constructor(props) {
+  //   super(props);
+  //   this.state = {
+  //     value: [],
+  //   };
+  //   onChange = (e) => {
+  //     this.setState({ value: e });
+  //     this.props.value(e);
+  //   };
+  // }
   state = {
     data: [],
   };
@@ -52,26 +57,9 @@ export default class CareerCoaching extends Component {
         this.setState({ FormLoading: true });
         console.log(err);
       });
-    await axios
-      .get(`/W/student/careerCoachingReviews`)
-      .then((res) => {
-        this.setState({
-          review: res.data.response.data,
-        });
-      })
-      .catch((err) => {
-        console.log(err);
-      });
   }
 
   render() {
-    const settings = {
-      dots: true,
-      infinite: true,
-      speed: 500,
-      slidesToShow: 1,
-      slidesToScroll: 1,
-    };
     return (
       <div className="container-fluid ">
         <LoadingOverlay
@@ -194,20 +182,180 @@ export default class CareerCoaching extends Component {
                 </div>
               </div>
             </div>
-            <>
-              <Slider {...settings} className="mb-5">
-                {this.state.review.map((data) => {
-                  return (
-                    <CarouselReviews
-                      comment={data.comment}
-                      fullName={data.fullName}
-                      session_type={data.session_type}
-                      rate={data.rate}
-                    />
-                  );
-                })}
-              </Slider>
-            </>
+            <div className="d-flex flex-row">
+              <div className="d-flex flex-row col-md-12 col-12 justify-content-center text-center">
+                <>
+                  {/* <div
+                  id="carouselExampleIndicators"
+                  className="carousel slide"
+                  data-bs-ride="carousel"
+                > */}
+                  {/* <div class="carousel-indicators">
+                    <button
+                      type="button"
+                      data-bs-target="#carouselExampleIndicators"
+                      data-bs-slide-to="0"
+                      class="active"
+                      aria-current="true"
+                      aria-label="Slide 1"
+                    ></button>
+                    <button
+                      type="button"
+                      data-bs-target="#carouselExampleIndicators"
+                      data-bs-slide-to="1"
+                      aria-label="Slide 2"
+                    ></button>
+                  </div> */}
+                  <div
+                    id="carouselExampleControls"
+                    className="carousel slide"
+                    data-bs-ride="carousel"
+                  >
+                    <div className="carousel-inner mb-5">
+                      <div className="carousel-item active">
+                        <div className="flex-row d-flex justify-content-center">
+                          <div className="col-md-12">
+                            <div className="d-flex flex-row justify-content-center">
+                              <div className=" fs-6   col-md-12 mb-2 col-12">
+                                <p className="card-text ">
+                                  Lorem ipsum dolor sit amet consectetur
+                                  adipisicing elit. Ipsam repudiandae aut
+                                  possimus. Repellendus at nostrum iste
+                                  doloremque. Ea omnis ipsam, eum nam tempore
+                                  culpa illum consequuntur quis nobis adipisci
+                                  et?
+                                  {/* {this.state.colleauge_comment} */}
+                                </p>
+                              </div>
+                            </div>
+
+                            <center>
+                              <hr className="commentgoldline d-flex flex-column justify-content-center col-md-3" />
+                            </center>
+                            <div className="d-flex flex-row  col-12 col-md-12 text-center fs-5  ">
+                              <div className="d-flex flex-column col-12 col-md-12">
+                                <center>
+                                  {" "}
+                                  <p className="boldtext"> Yasmin Sabry</p>
+                                </center>
+                                {/* {this.state.colleauge_name} */}
+                              </div>
+                            </div>
+                            <div className="d-flex flex-row  col-12 col-md-12 text-center fs-5  ">
+                              <div className="d-flex flex-column col-12 col-md-12">
+                                <center>
+                                  <p> CV WRITING</p>
+                                </center>
+                                {/* {this.state.colleauge_service} */}
+                              </div>
+                            </div>
+                            <div className="d-flex flex-row  col-12 col-md-12 text-center justify-content-center fs-5 mb-2 ">
+                              {/* <div className="d-flex flex-column justify-content-center col-md-4 me-5"></div> */}
+                              <div className="d-flex flex-column justify-content-center col-md-12 align-items-center">
+                                <ReactStars
+                                  count={5}
+                                  value="1"
+                                  // value={this.props.years_of_exp}
+                                  edit={false}
+                                  size={23}
+                                  activeColor="#F2A23A"
+                                />
+                              </div>
+                              {/* <div className="d-flex flex-column justify-content-center col-md-3"></div> */}
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div className="carousel-item ">
+                        <div className="flex-row d-flex justify-content-center">
+                          <div className="col-md-12">
+                            <div className="d-flex flex-row justify-content-center">
+                              <div className=" fs-6   col-md-12 mb-2 col-12">
+                                <p className="card-text ">
+                                  Lorem ipsum dolor sit amet consectetur
+                                  adipisicing elit. Ipsam repudiandae aut
+                                  possimus. Repellendus at nostrum iste
+                                  doloremque. Ea omnis ipsam, eum nam tempore
+                                  culpa illum consequuntur quis nobis adipisci
+                                  et?
+                                  {/* {this.state.colleauge_comment} */}
+                                </p>
+                              </div>
+                            </div>
+                            <center>
+                              <hr className="commentgoldline d-flex flex-column justify-content-center col-md-3" />
+                            </center>
+                            <div className="d-flex flex-row  col-12 col-md-12 text-center fs-5  ">
+                              <div className="d-flex flex-column col-12 col-md-12">
+                                <center>
+                                  <p className="boldtext">
+                                    Basma Mostafa
+                                    {/* {this.state.colleauge_name} */}
+                                  </p>
+                                </center>
+                              </div>
+                            </div>
+                            <div className="d-flex flex-row  col-12 col-md-12 text-center fs-5  ">
+                              <div className="d-flex flex-column col-12 col-md-12">
+                                <center>
+                                  <p>
+                                    CV WRITING
+                                    {/* {this.state.colleauge_service} */}
+                                  </p>
+                                </center>
+                              </div>
+                            </div>
+                            <div className="d-flex flex-row  col-12 col-md-12 text-center justify-content-center fs-5 mb-2 ">
+                              {/* <div className="d-flex flex-column justify-content-center col-md-4"></div> */}
+                              <div className="d-flex flex-column justify-self-center align-items-center col-md-12 ">
+                                <ReactStars
+                                  count={5}
+                                  value="3"
+                                  // value={this.props.years_of_exp}
+                                  edit={false}
+                                  size={23}
+                                  activeColor="#F2A23A"
+                                />
+                              </div>{" "}
+                              {/* <div className="d-flex flex-column justify-content-center col-md-3"></div> */}
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <button
+                        className="carousel-control-prev"
+                        type="button"
+                        data-bs-target="#carouselExampleControls"
+                        data-bs-slide="prev"
+                      >
+                        <span
+                          className="carousel-control-prev-icon"
+                          aria-hidden="true"
+                        ></span>
+                        <span className="visually-hidden">Previous</span>
+                      </button>
+                      <button
+                        className="carousel-control-next"
+                        type="button"
+                        data-bs-target="#carouselExampleControls"
+                        data-bs-slide="next"
+                      >
+                        <span
+                          className="carousel-control-next-icon"
+                          aria-hidden="true"
+                        ></span>
+                        <span className="visually-hidden">Next</span>
+                      </button>
+                    </div>
+                  </div>
+                </>
+              </div>
+            </div>
+            {/* <center>
+            <div className="d-none d-md-flex flex-row col-md-12 careerbottom">
+              <img src={careerbottom} />
+            </div>
+          </center> */}
           </div>
           <Footer2 />
         </LoadingOverlay>
@@ -215,50 +363,13 @@ export default class CareerCoaching extends Component {
     );
   }
 }
-class CarouselReviews extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {};
-  }
-  render() {
-    return (
-      <>
-        <div>
-          <div className="d-flex flex-row justify-content-center">
-            <div className=" carouselCaption text-center col-md-11 mb-2 col-11">
-              <p className="txtCarousel lh-sm">{this.props.comment}</p>
-            </div>
-          </div>
-          <center>
-            <hr className="hrReview   " />
-          </center>
-          <div className="d-flex flex-row col-12 col-md-12 text-center fs-5  ">
-            <div className="d-flex flex-column col-12 col-md-12">
-              <center>
-                <p className="txtName">{this.props.fullName}</p>
-              </center>
-            </div>
-          </div>
-          <div className="d-flex flex-row  col-12 col-md-12 text-center fs-5  ">
-            <div className="d-flex flex-column col-12 col-md-12">
-              <center>
-                <p className="txtRole">{this.props.session_type}</p>
-              </center>
-            </div>
-          </div>
-          <div className="d-flex flex-row  col-12 col-md-12 text-center justify-content-center  mb-2 starsReview">
-            <div className="d-flex flex-column justify-content-center col-md-12 align-items-center">
-              <ReactStars
-                count={5}
-                value={this.props.rate}
-                edit={false}
-                size={23}
-                activeColor="#F2A23A"
-              />
-            </div>
-          </div>
-        </div>
-      </>
-    );
-  }
+
+function DatePicker() {
+  const [value, onChange] = useState(new Date());
+
+  return (
+    <div>
+      <DateTimePicker onChange={onChange} value={value} />
+    </div>
+  );
 }
