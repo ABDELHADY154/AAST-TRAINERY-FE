@@ -28,12 +28,14 @@ export default class Footer extends React.Component {
                       <img
                         id="footlogo"
                         alt="AAST Trainery Logo"
+
                         src={logo}
                         width="40%"
                       ></img>
                       <p className="mt-2 ">
                         AAST Trainery was established in september 2020 by AAST
                         undergraduate students. Your Career is Our Business.
+
                       </p>
                     </div>
                   </div>
@@ -44,10 +46,10 @@ export default class Footer extends React.Component {
                       <h4 className="footer-widget-title pt-3">About</h4>
                       <ul>
                         <li>
-                          <a href="#">About Us</a>
+                          <a href="/AboutUs">About Us</a>
                         </li>
                         <li>
-                          <a href="#">Contact Us</a>
+                          <a href="/contactUs">Contact Us</a>
                         </li>
 
                         <li>
@@ -58,6 +60,7 @@ export default class Footer extends React.Component {
                           >
                             <FaInstagram
                               alt="instagram page link logo"
+
                               color="#ffffff"
                               fill="#ffffff"
                               id="instagram"
@@ -70,6 +73,7 @@ export default class Footer extends React.Component {
                           >
                             <FaFacebookF
                               alt="facebook logo"
+
                               color="#ffffff"
                               fill="#ffffff"
                               className="m-2"
@@ -78,6 +82,7 @@ export default class Footer extends React.Component {
                           <a href="#" alt="linkedin page link" target="_blank">
                             <FaLinkedinIn
                               alt="linkedin logo"
+
                               color="#ffffff"
                               fill="#ffffff"
                               className="m-2"
@@ -86,6 +91,7 @@ export default class Footer extends React.Component {
                           <a href="#" alt="youtube page link" target="_blank">
                             <FaYoutube
                               alt="youtube logo"
+
                               color="#ffffff"
                               fill="#ffffff"
                               className="m-2"
@@ -121,6 +127,7 @@ export default class Footer extends React.Component {
           <ScrollTop
             id="ST"
             alt="Scroll to top "
+
             text={<BsChevronUp id="st" fontSize="20px" fill="#cd8930" />}
             style={{
               backgroundColor: "transparent",

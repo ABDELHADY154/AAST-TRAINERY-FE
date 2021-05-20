@@ -56,7 +56,8 @@ export default class Footer extends React.Component {
                           <Link to="/Activity">Activity</Link>
                         </li>
                         <li>
-                          <Link to="/">Help Center</Link>
+                          <Link to="/helpCenter">Help Center</Link>
+
                         </li>
                       </ul>
                     </div>
@@ -71,11 +72,12 @@ export default class Footer extends React.Component {
                           <Link to="/Profile">Profile</Link>
                         </li>
                         <li>
-                          <Link to="/">About Us</Link>
+                          <Link to="/AboutUs">About Us</Link>
                         </li>
                         <li>
-                          <Link to="/" className="pb-4">
+                          <Link to="/contactUs" className="pb-4">
                             Contact Us
+
                           </Link>
                         </li>
                         <li>

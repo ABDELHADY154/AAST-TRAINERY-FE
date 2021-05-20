@@ -183,7 +183,9 @@
   font-family: SF light;
   border: 1px solid #1e4274;
   border-radius: 5px !important;
-  /* height: 30px; */
+  height: 30px;
+  justify-content: center;
+  align-items: center;
 }
 .appliedBtn {
   background-color: #1e4274 !important;

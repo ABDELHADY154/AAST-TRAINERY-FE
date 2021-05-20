@@ -1,0 +1,148 @@
+@font-face {
+  font-family: SF reg;
+
+  src: url("../Components/assests/Fonts/SF-Compact-Display-Regular.otf");
+}
+@font-face {
+  font-family: SF bold;
+  src: url("../Components/assests/Fonts/SF-Compact-Display-Bold.otf");
+}
+@font-face {
+  font-family: SF light;
+  src: url("../Components/assests/Fonts/SF-Compact-Display-Light.otf");
+}
+@font-face {
+  font-family: SF med;
+  src: url("../Components/assests/Fonts/SF-Compact-Display-Medium.otf");
+}
+.reachUs {
+  background-color: #1e4274;
+  height: 18em !important;
+  font-family: sf light;
+
+  /* margin-left: 10px !important; */
+}
+#reachData {
+  font-family: sf light;
+}
+.contactInput {
+  border: 0 !important;
+  outline: 0 !important;
+  background: transparent;
+  border-radius: 0 !important;
+  border-bottom: 1px solid #1e4274 !important;
+  width: 100%;
+  box-shadow: none;
+  color: #1e4274;
+}
+.contactInput:focus {
+  border: 0 !important;
+  outline: 0 !important;
+  background: transparent;
+  border-bottom: 1px solid #cd8930 !important;
+}
+.contactInput:focus,
+.contactInput:valid {
+  font-size: 14px;
+  top: -24px;
+  color: #cd8930;
+  box-shadow: none !important;
+  outline: 0 !important;
+}
+
+select option {
+  margin: -1rem !important;
+  padding: -1rem !important;
+}
+option:hover {
+  background-color: #1e4274 !important;
+}
+option {
+  color: #1e4274;
+  border: none !important;
+  border-bottom: solid 1px #cd8930 !important;
+  border-radius: 0 !important;
+}
+.contactSelect {
+  background: url("https://api.iconify.design/mdi:chevron-down.svg?color=%231e4274")
+    no-repeat center center / contain;
+  background-position: right calc(0.375em + 0.1875rem) center;
+  background-size: calc(0.9em + 0.675rem) calc(0.9em + 0.675rem);
+  padding-right: calc(1.5em + 0.75rem);
+
+  box-shadow: none !important;
+  border: none !important;
+  border-bottom: solid 1px #1e4274 !important;
+  border-radius: 0 !important;
+}
+.contactSelect:focus {
+  background: url("https://api.iconify.design/mdi:chevron-up.svg?color=%23cd8930")
+    no-repeat center center / contain;
+  background-position: right calc(0.375em + 0.1875rem) center;
+  background-size: calc(0.9em + 0.675rem) calc(0.9em + 0.675rem);
+  padding-right: calc(1.5em + 0.75rem);
+  box-shadow: none !important;
+  border: none !important;
+  border-bottom: solid 2px #cd8930 !important;
+  border-radius: 0 !important;
+  color: #1e4274;
+}
+.contactSelect option:checked {
+  background: #1e4274 -webkit-linear-gradient(bottom, #cd8930 0%, #cd8930 100%);
+  color: #fff;
+}
+.FAQBtn {
+  background-color: transparent !important;
+  color: #cd8930;
+  font-family: SF light;
+  border: 1px solid #cd8930;
+  border-radius: 5px !important;
+  height: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-self: center;
+}
+.FAQBtn:hover {
+  background-color: #cd8930 !important;
+  color: #fff;
+}
+/* @media (max-width: 576px) and (min-width: 766px) {
+  .space {
+    margin-right: 5em !important;
+  }
+} */
+.accordionLink {
+  background: url("https://api.iconify.design/akar-icons:plus.svg?color=%231e4274")
+    no-repeat center center / contain;
+  background-position: right calc(0.375em + 0.1875rem) center;
+  background-size: calc(0.7em + 0.475rem) calc(0.7em + 0.475rem);
+  padding-right: calc(1.5em + 0.75rem);
+
+  box-shadow: none !important;
+  border: none !important;
+  border-bottom: solid 1px #1e4274 !important;
+  border-radius: 0 !important;
+}
+.accordionLink:focus {
+  background: url("https://api.iconify.design/akar-icons:minus.svg?color=%23cd8930")
+    no-repeat center center / contain;
+  background-position: right calc(0.375em + 0.1875rem) center;
+  background-size: calc(0.7em + 0.475rem) calc(0.7em + 0.475rem);
+  padding-right: calc(1.5em + 0.75rem);
+  box-shadow: none !important;
+  border: none !important;
+  border-bottom: solid 2px #cd8930 !important;
+  border-radius: 0 !important;
+  color: #cd8930;
+}
+.divBorder {
+  border: 1px solid #f2f2f2;
+  padding: 1em;
+  /* width: 35em; */
+}
+
+.divBorder:hover {
+  border: 1px solid #f2f2f2;
+  border-left: #cd8930 3px solid;
+}
