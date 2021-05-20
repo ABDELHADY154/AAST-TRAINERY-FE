@@ -53,7 +53,7 @@ export default class Footer extends React.Component {
                           <Link to="/CareerCoaching">Career Coaching</Link>
                         </li>
                         <li>
-                          <Link to="/Activity">Activity</Link>
+                          <Link to="/Profile/Activity/Applied">Activity</Link>
                         </li>
                         <li>
                           <Link to="/helpCenter">Help Center</Link>
