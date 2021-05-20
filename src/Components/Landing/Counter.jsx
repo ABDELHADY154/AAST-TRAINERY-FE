@@ -18,7 +18,7 @@ const Ticker = ({ className, ...rest }) => {
             }}
             delayedCall
           >
-            <h4 className={className} ref={countUpRef} />
+            <h3 className={className} ref={countUpRef} />
           </VisibilitySensor>
         );
       }}
