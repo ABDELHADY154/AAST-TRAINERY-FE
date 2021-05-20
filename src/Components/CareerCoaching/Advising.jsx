@@ -235,7 +235,8 @@ export default class CareerCoaching extends Component {
                   </div>
                 </div>
 
-                {this.state.reviewed == false ? (
+                {this.state.reviewed == false &&
+                this.state.status == "achieved" ? (
                   <>
                     <div className="d-flex flex-row ">
                       <div className="d-flex flex-column col-md-7 me-2  text-wrap bg-none me-5 ">
