@@ -57,14 +57,14 @@ class Landing extends React.Component {
               id="DescCont"
               className="d-flex flex-column text-wrap bg-none "
             >
-              <h1 className="fs-2" id="Title">
+              <div className="fs-2" id="Title">
                 We Provide The Best Experience
-              </h1>
+              </div>
               <div className="fs-6 " id="DescProv">
-                You don't have to be experienced in order to land internship
-                opportunities whether they were online internships or offline
-                internships. With Trainery, you can easily get on job training
-                as an undergraduate without any fear of lacking soft skills.
+                Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+                Reiciendis numquam similique eum repellat nesciunt beatae error
+                quod, tenetur aspernatur a cumque, non maxime sit nulla
+                excepturi pariatur inventore illum placeat.
               </div>
               <div
                 id="Num"
@@ -83,7 +83,6 @@ class Landing extends React.Component {
                         className="Numbers"
                         start={0}
                         end={this.state.opportunities}
-                        alt={this.state.opportunities}
                       />
 
                       <div className="NumTitle">Opportunities</div>
@@ -93,7 +92,6 @@ class Landing extends React.Component {
                         className="Numbers"
                         start={0}
                         end={this.state.students}
-                        alt={this.state.students}
                       />
 
                       <div className="NumTitle">Students</div>
@@ -103,7 +101,6 @@ class Landing extends React.Component {
                         className="Numbers"
                         start={0}
                         end={this.state.applied}
-                        alt={this.state.applied}
                       />
 
                       <div className="NumTitle">Accepted</div>
@@ -116,10 +113,7 @@ class Landing extends React.Component {
               id="Experienceimg"
               className="d-flex flex-column d-none d-md-flex ms-5 "
             >
-              <img
-                alt="three individuals looking at a laptop one is pointing at the laptop explaining"
-                src={img}
-              />
+              <img className="" src={img} />
             </div>
           </div>
           <div className="d-flex flex-row">
@@ -129,20 +123,19 @@ class Landing extends React.Component {
           </div>
           <div className="d-flex flex-row" id="CoachCont">
             <div className="fs-6 " id="DescProv">
-              If you think you don't have what it takes to know what goes on in
-              the labor market regarding future jobs just because you're a
-              university student them let us change your mind. We offer various
-              career coaching sessions that enhance your technical skills and
-              give you the boost of confidence needed to be more aware of your
-              career path, alongside step by step with professioinal career
-              coaches.
+              Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+              Reiciendis numquam similique eum repellat nesciunt beatae error
+              quod, tenetur aspernatur a cumque, non maxime sit nulla excepturi
+              pariatur inventore illum placeat. orem ipsum dolor sit amet
+              consectetur, adipisicing elit. Reiciendis numquam similique eum
+              repellat nesciunt beatae error quod, tenetur aspernatur a cumque,
+              non maxime sit nulla excepturi pariatur inventore illum placeat.
             </div>
           </div>
           <div className="d-flex flex-row flex-wrap  " id="CoachCont">
             <div className=" mt-3 col-md-4 col-12">
               <div className="card m-md-5" id="bd">
                 <img
-                  alt="two women partially visible with focus on their hands one is taking notes for CV template"
                   className="cardImg img-responsive"
                   src={img1}
                   height="200"
@@ -155,7 +148,6 @@ class Landing extends React.Component {
             <div className=" mt-3  col-md-4 col-12">
               <div id="bd" className=" card m-md-5">
                 <img
-                  alt="two women sitting next to each other and talking as a part of interview help session"
                   className="cardImg img-responsive"
                   src={img3}
                   height="200"
@@ -168,12 +160,14 @@ class Landing extends React.Component {
             <div className=" mt-3 col-md-4 col-12">
               <div id="bd" className=" card m-md-5">
                 <img
-                  alt="a woman standing with her back to the wall holding a book and thinking while looking at the book"
                   className="cardImg img-responsive"
                   src={img2}
                   height="200"
                 />
-                <div className="carousel-caption2">
+                <div
+                  className="carousel-caption2"
+                  // style={{ marginRight: "-15%", paddingBottom: "10%" }}
+                >
                   <h5 className="textt ">Career Coaching Path</h5>
                 </div>
               </div>
@@ -189,47 +183,34 @@ class Landing extends React.Component {
                 Why Join Us?
               </div>
               <div className="fs-6 " id="DescProv">
-                Trainery is a platform made by university students for
-                university students, so we know what AAST students need the most
-                to excel through-out their college years.
+                Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+                Reiciendis numquam similique eum repellat nesciunt beatae error
+                quod, tenetur aspernatur a cumque, non maxime sit nulla
+                excepturi pariatur inventore illum placeat.
               </div>
               <div>
                 <div id="checklist" className="d-flex flex-column mt-3 ">
                   <div>
-                    <BsCheck
-                      alt="checkmark"
-                      color="#cd8930"
-                      fill="#cd8930"
-                      className="fs-3"
-                    />
+                    <BsCheck color="#cd8930" fill="#cd8930" className="fs-3" />
+                    {"    "}
                     <span>
-                      Explore University internships opportunities for students{" "}
+                      Lorem ipsum, dolor sit amet consectetur adipisicing elit.
                     </span>
                   </div>
 
                   <div className="mt-3">
-                    <BsCheck
-                      alt="checkmark"
-                      color="#cd8930"
-                      fill="#cd8930"
-                      className="fs-3"
-                    />
+                    <BsCheck color="#cd8930" fill="#cd8930" className="fs-3" />
+                    {"    "}
                     <span>
-                      Students have the ability to make CVs and Portfolios with
-                      minimal to zero effort
+                      Lorem ipsum, dolor sit amet consectetur adipisicing elit.
                     </span>
                   </div>
 
                   <div className="mt-3">
-                    <BsCheck
-                      alt="checkmark"
-                      ccolor="#cd8930"
-                      fill="#cd8930"
-                      className="fs-3"
-                    />
+                    <BsCheck ccolor="#cd8930" fill="#cd8930" className="fs-3" />
+                    {"    "}
                     <span>
-                      The platforms are easy to browse through just like using
-                      AAST portal
+                      Lorem ipsum, dolor sit amet consectetur adipisicing elit.
                     </span>
                   </div>
                   <div className="d-flex flex-column justify-content-center align-items-center w-100">
@@ -240,20 +221,10 @@ class Landing extends React.Component {
                     </div>
                     <div className="my-3 d-flex flex-row flex-wrap">
                       <a href="#">
-                        <img
-                          alt="google play store logo and download Trainery app link"
-                          className="mx-1"
-                          src={google}
-                          height="40"
-                        />
+                        <img className="mx-1" src={google} height="40" />
                       </a>
                       <a href="#">
-                        <img
-                          alt="apple app store logo and download Trainery app link"
-                          className="mx-1"
-                          src={apple}
-                          height="40"
-                        />
+                        <img className="mx-1" src={apple} height="40" />
                       </a>
                     </div>
                   </div>
@@ -264,10 +235,7 @@ class Landing extends React.Component {
               id="Experienceimg"
               className="d-flex flex-column d-none d-md-flex ms-5 "
             >
-              <img
-                src={img4}
-                alt="a woman holding stacked books with a backpack on her shoulder as a college student"
-              />
+              <img src={img4} />
             </div>
           </div>
 
@@ -278,16 +246,22 @@ class Landing extends React.Component {
           </div>
           <div className="d-flex flex-row" id="CoachCont">
             <div className="fs-6 mb-1  " id="DescProv">
-              We got all the opportunities you might need here with the help of
-              the below companies in order to give you the chance to get your
-              training and enhance your skills with us without the burden of
-              having to go through a long and routine-filled process.
+              Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+              Reiciendis numquam similique eum repellat nesciunt beatae error
+              quod, tenetur aspernatur a cumque, non maxime sit nulla excepturi
+              pariatur inventore illum placeat.
             </div>
           </div>
         </div>
         <div className="container">
           <CarouselLogos />
-
+          {/* {this.state.loading === false ? (
+              <div>
+                <LogoesCarousel />
+              </div>
+            ) : (
+              <CarouselLogos />
+            )} */}
           <div className="mb-4 mt-5 d-flex justify-content-center">
             <button className="d-flex justify-content-center contactBtn col-md-2 col-4 col-lg-1 col-sm-4 text-center  py-1">
               Contact

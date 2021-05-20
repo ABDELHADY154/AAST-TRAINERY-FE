@@ -29,15 +29,11 @@ export default class Footer extends React.Component {
                 <div className=" col-md-5 col-12 d-flex flex-row loremipad">
                   <div className="footer-widget ">
                     <div className="mt-2 flex-row ">
-                      <img
-                        id="footlogo"
-                        src={logo}
-                        width="40%"
-                        alt="AAST Trainery Logo"
-                      ></img>
+                      <img id="footlogo" src={logo} width="40%"></img>
                       <p className="mt-2 ">
-                        AAST Trainery was established in september 2020 by AAST
-                        undergraduate students. Your Career is Our Business.
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                        Consectetur dictumst nisi blandit ornare viverra
+                        eleifend
                       </p>
                     </div>
                   </div>
@@ -47,17 +43,18 @@ export default class Footer extends React.Component {
                     <div id="About" className="footer-menu flex-column mt-3 ">
                       <ul>
                         <li>
-                          <Link to="/Explore">Explore</Link>
+                          <a href="#">Explore</a>
                         </li>
                         <li>
-                          <Link to="/CareerCoaching">Career Coaching</Link>
+                          <a href="#">Career Coaching</a>
                         </li>
                         <li>
-                          <Link to="/Activity">Activity</Link>
+                          <a href="#">Activity</a>
                         </li>
                         <li>
-                          <Link to="/helpCenter">Help Center</Link>
-
+                          <Link to={`/helpCenter`}>
+                            <a href="#">Help Center</a>
+                          </Link>
                         </li>
                       </ul>
                     </div>
@@ -69,19 +66,26 @@ export default class Footer extends React.Component {
                     <div id="About" className="footer-menu flex-column mt-3 ">
                       <ul>
                         <li>
-                          <Link to="/Profile">Profile</Link>
+                          <a href="#">Profile</a>
                         </li>
                         <li>
-                          <Link to="/AboutUs">About Us</Link>
-                        </li>
-                        <li>
-                          <Link to="/contactUs" className="pb-4">
-                            Contact Us
-
+                          <Link to={`/AboutUs`}>
+                            <a href="#" className="pb-4">
+                              About Us
+                            </a>
                           </Link>
                         </li>
                         <li>
-                          <Link to="/">Terms & Conditions</Link>
+                          <Link to={`/contactUs`}>
+                            <a href="#" className="pb-4">
+                              Contact Us
+                            </a>
+                          </Link>
+                        </li>
+                        <li>
+                          <a href="#" className="pb-4">
+                            Terms & Conditions
+                          </a>
                         </li>
                       </ul>
                     </div>
@@ -95,44 +99,35 @@ export default class Footer extends React.Component {
 
                 <div className="col-md-2 col-12 ">
                   <li>
-                    <a
-                      href="https://www.instagram.com/trainerys/"
-                      alt="instagram page link"
-                      target="_blank"
-                    >
+                    <a href="#">
                       <FaInstagram
-                        alt="instagram page link logo"
                         color="#ffffff"
                         fill="#ffffff"
-                        id="instagram"
+                        id="Socialmediafooticon"
                       />
                     </a>
-                    <a
-                      href="https://www.facebook.com/trainerys/"
-                      alt="facebook page link"
-                      target="_blank"
-                    >
+                    <a href="#">
                       <FaFacebookF
-                        alt="facebook page link logo"
                         color="#ffffff"
                         fill="#ffffff"
                         className="m-2"
+                        id="Socialmediafooticon"
                       />
                     </a>
-                    <a href="#" alt="linkedin page link" target="_blank">
+                    <a href="#">
                       <FaLinkedinIn
-                        alt="linkedin page link logo"
                         color="#ffffff"
                         fill="#ffffff"
                         className="m-2"
+                        id="Socialmediafooticon"
                       />
                     </a>
-                    <a href="#" alt="youtube page link" target="_blank">
+                    <a href="#">
                       <FaYoutube
-                        alt="youtube page link logo"
                         color="#ffffff"
                         fill="#ffffff"
                         className="m-2"
+                        id="Socialmediafooticon"
                       />
                     </a>
                   </li>
@@ -141,7 +136,6 @@ export default class Footer extends React.Component {
             </div>
           </div>
           <ScrollTop
-            alt="Scroll to top "
             id="ST"
             text={<BsChevronUp id="st" fontSize="20px" fill="#cd8930" />}
             style={{

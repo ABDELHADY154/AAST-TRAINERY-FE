@@ -95,7 +95,6 @@ export class BigCard extends Component {
                     <div className=" col-md-6 col-6 col-sm-7 d-flex align-items-center">
                       <Link to={`/advisorProfile/${this.props.advisor.id}`}>
                         <img
-                          alt={this.props.advisor.name}
                           className=" me-1 rounded"
                           id="advisorlogo"
                           style={{ height: 36, width: 36 }}
@@ -126,7 +125,6 @@ export class BigCard extends Component {
                 className="col-md-1 col-sm-2 col-2 col-lg-1 titleRow"
               >
                 <img
-                  alt={this.props.company_name}
                   className=" me-1 rounded"
                   id="comlogo"
                   style={{ height: 48, width: 48 }}
@@ -198,7 +196,6 @@ export class BigCard extends Component {
             {this.props.post_type === "adsPost" ? (
               <div className=" mb-0">
                 <img
-                  alt="sponsored image"
                   className="adsImg img-fluid mt-0 d-flex flex-column col-md-6 col-2 me-1 w-100"
                   // height="100"
                   style={{ height: 270 }}
@@ -228,12 +225,7 @@ export class BigCard extends Component {
               {this.props.tags
                 ? this.props.tags.map((x, i) => {
                     return (
-                      <a
-                        // href="#"
-                        className=" ms-1"
-                        id="tagsipad"
-                        alt="post tags"
-                      >
+                      <a href="#" className=" ms-1" id="tagsipad">
                         {x.interest ? x.interest : ""}
                       </a>
                     );
@@ -279,7 +271,6 @@ export class BigCard extends Component {
                     {/* <div className="col-md-4"></div> */}
                     {this.state.saved == true ? (
                       <BsFillBookmarkFill
-                        alt="saved internship opportunity post"
                         id="BsBookmark"
                         fill="#1e4274"
                         className="fs-2 align-self-center col-md-2 col-4"
@@ -291,7 +282,6 @@ export class BigCard extends Component {
                       />
                     ) : this.state.saved == false ? (
                       <BsBookmark
-                        alt="save internship opportunity post for later"
                         id="BsBookmark"
                         fill="#1e4274"
                         className="fs-2 align-self-center col-md-2 col-4"

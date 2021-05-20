@@ -100,7 +100,7 @@ class AuthNav extends React.Component {
     }
   };
   render() {
-
+    // console.log(this.state.notifications.type);
     if (this.props.updated == true) {
       window.location = window.location;
     }
@@ -116,14 +116,12 @@ class AuthNav extends React.Component {
                   className="navbar-brand mx-2"
                   renderAs="button"
                   to="/Home"
-                  alt="AAST Trainery Logo"
                 >
                   <img
-                    alt="AAST Trainery Logo"
                     className="navbar-brand profileImage"
                     src={logo}
                     width="170"
-
+                    alt=""
                   ></img>
                 </Link>
                 <button
@@ -166,9 +164,7 @@ class AuthNav extends React.Component {
                       </NavLink>
                     </li>
                   </ul>
-                  {/* la ilah ela allah */}
-                  {/* <ul className="navbar-nav me-auto my-2">
-
+                  <ul className="navbar-nav me-auto my-2">
                     <li className="nav-item"></li>
 
                     <li className="nav-item">
@@ -178,15 +174,11 @@ class AuthNav extends React.Component {
                         aria-disabled="true"
                       ></a>
                     </li>
-                  </ul> */}
+                  </ul>
                   {/* notification */}
-                  <div
-                    className="collapse navbar-collapse justify-content-end"
-                    id="navbarScroll"
-                  >
-                    <ul className="nav my-1 mx-3 col-auto  dropstart justify-content-end">
-                      <div className="justify-self-end">
-
+                  <div className="d-flex justify-content-center ">
+                    <ul className="nav my-1 mx-3 col-auto  dropstart ">
+                      <div>
                         <a className="nav-item item col-6 " href="#">
                           <a
                             className="dropdown-toggle"
@@ -195,7 +187,6 @@ class AuthNav extends React.Component {
                             aria-expanded="false"
                           >
                             <IoIosNotificationsOutline
-                              alt="notifications"
                               value={{
                                 color: "#007BC2",
                                 className: "global-class-name mt-0",
@@ -211,7 +202,6 @@ class AuthNav extends React.Component {
                             <p className="text-center  mb-2 notificationTitle">
                               Notications
                             </p>
-
 
                             {this.state.notifications.length !== 0
                               ? this.state.notifications.map((e) => {
@@ -375,7 +365,6 @@ class AuthNav extends React.Component {
                               </a>
                             </li>
                             <li>
-
                               <Link
                                 class="row "
                                 to="/Setting"
@@ -389,7 +378,6 @@ class AuthNav extends React.Component {
                                   pull="left"
                                 />
                                 <p className="col-9">Account setting</p>
-
                               </Link>
                             </li>
                             <li>

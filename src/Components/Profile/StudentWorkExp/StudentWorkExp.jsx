@@ -31,7 +31,6 @@ export default class StudentWorkExp extends Component {
           >
             <Link renderAs="button" to={`/Profile/Experience/${id}`}>
               <BiPencil
-                alt="edit info"
                 className="skillnamepencil"
                 id="skillnamepen"
                 fill="#cd8930"
@@ -53,7 +52,6 @@ export default class StudentWorkExp extends Component {
           <div className="col-3 col-md-2 mt-1 ">
             {/* <div > */}
             <p
-              alt=" internship type tag"
               id="worktag"
               className="d-flex justify-content-center align-items-center flex-row flex-wrap fs-6 "
             >
@@ -64,7 +62,7 @@ export default class StudentWorkExp extends Component {
         </div>
         <div className="d-flex flex-row fs-6 ">
           <div className=" d-flex flex-row col-12 col-md-12">
-            {this.props.from} to {this.props.to} {/* {diffDays} Years */}
+            {this.props.from} to {this.props.to} ·{/* {diffDays} Years */}
           </div>
         </div>
         <div className="d-flex flex-row flex-wrap fs-6 mt-2 ">
@@ -96,7 +94,6 @@ export default class StudentWorkExp extends Component {
                 target="_blank"
               >
                 <CgFileDocument
-                  alt="View PDF"
                   size="20px"
                   id="docicon"
                   fill="#cd8930"
