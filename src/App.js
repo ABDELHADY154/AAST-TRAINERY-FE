@@ -64,15 +64,15 @@ class App extends React.Component {
     window.scrollTo(0, 0);
   }
 
-  setUser = data => {
+  setUser = (data) => {
     return this.setState({ loggedIn: data });
   };
-  setAvatar = data => {
+  setAvatar = (data) => {
     this.setState({ avatar: data });
     if (this.state.avatar) {
     }
   };
-  fallback = data => {
+  fallback = (data) => {
     this.setState({ fallback: data });
   };
 
@@ -182,7 +182,7 @@ class App extends React.Component {
                   exact
                   path="/Profile/Interest/:id"
                   component={Interest}
-                  render={Interests => <Interest {...Interests} />}
+                  render={(Interests) => <Interest {...Interests} />}
                 />
                 <AuthRoute exact path="/Explore" component={Explore} />
                 <AuthRoute exact path="/Search/d" component={SearchD} />
@@ -257,7 +257,7 @@ class App extends React.Component {
                   exact
                   path="/Opportunity/:id"
                   component={Opportunity}
-                />{" "}
+                />
                 <AuthRoute exact path="/Setting" component={Setting} />
                 <Route exact path="/helpCenter" component={helpCenter} />
                 <Route exact path="/contactUs" component={contactUs} />

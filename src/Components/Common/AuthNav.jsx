@@ -343,7 +343,7 @@ class AuthNav extends React.Component {
                               </Link>
                             </li>
                             <li>
-                              <a class="row " href="#">
+                              <Link class="row " to="/Cv-Portfolio">
                                 <MdAssignment
                                   color="red"
                                   className="col-3 mt-1 ms-2"
@@ -352,7 +352,7 @@ class AuthNav extends React.Component {
                                   pull="left"
                                 />
                                 <p className="col-7">Portfolio</p>
-                              </a>
+                              </Link>
                             </li>
 
                             <hr class="dropdown-divider profileHr invs" />
