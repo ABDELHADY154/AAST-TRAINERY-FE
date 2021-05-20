@@ -173,6 +173,7 @@ class Login extends React.Component {
                 src={loginBG}
                 class="img-fluid bg-image-no-img h-100  "
                 width="100%"
+                alt="silhouette of unversity students throwing their caps in an arc shape in a landscape"
               />
             </div>
           </div>

@@ -107,6 +107,7 @@ class Profile extends Component {
           <div className="d-flex flex-row flex-wrap">
             {this.state.image ? (
               <img
+                alt="user profile picture"
                 className="d-flex flex-column col-2 col-md-1 me-4 profileImage"
                 id="profilepp"
                 src={this.state.image}
@@ -265,6 +266,7 @@ class Profile extends Component {
               <div className="d-flex flex-row titlecard profiletitle fs-4 mb-2">
                 Education
                 <Link
+                  alt="add new "
                   renderAs="button"
                   className="ms-3 plus"
                   to="Profile/Education"
@@ -296,6 +298,7 @@ class Profile extends Component {
               <div className="d-flex flex-row titlecard profiletitle fs-4 mb-2">
                 Work Experience
                 <Link
+                  alt="add new "
                   renderAs="button"
                   className="  ms-3 plus"
                   to="Profile/Experience"
@@ -330,6 +333,7 @@ class Profile extends Component {
               <div className="d-flex flex-row titlecard profiletitle fs-4 mb-2">
                 Courses
                 <Link
+                  alt="add new "
                   renderAs="button"
                   className="  ms-3 plus"
                   to="Profile/Courses"
@@ -363,6 +367,7 @@ class Profile extends Component {
               <div className=" d-flex flex-row flex-wrap col-12 mb-2 col-md-12 me-1 fs-5">
                 Tools and Fields of Expertise{" "}
                 <Link
+                  alt="add new "
                   renderAs="button"
                   className="  ms-3 plus"
                   to="Profile/Skills"
@@ -389,6 +394,7 @@ class Profile extends Component {
                 </div>
                 <div className="d-flex flex-column col-6 col-md-9 fs-5 ms-0 me-3 interestmobile interestmobilee">
                   <Link
+                    alt="add new "
                     renderAs="button"
                     className=" plus plusmarginback "
                     to="Profile/Interest"
@@ -436,6 +442,7 @@ class Profile extends Component {
               <div className=" d-flex flex-row flex-wrap col-12 mb-2 col-md-12 me-1 fs-5">
                 Languages
                 <Link
+                  alt="add new "
                   renderAs="button"
                   className=" plus ms-3 plusmarginback"
                   to="Profile/Language"
@@ -464,6 +471,7 @@ class Profile extends Component {
                 <div className="d-flex titlecard flex-row profiletitle col-md-11 col-10 me-5 ">
                   Accounts
                   <Link
+                    alt="add new "
                     renderAs="button"
                     className="  ms-3 plus"
                     to="Profile/Accounts"

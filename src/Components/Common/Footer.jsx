@@ -57,7 +57,7 @@ export default class Footer extends React.Component {
                             target="_blank"
                           >
                             <FaInstagram
-                              alt="instagram logo"
+                              alt="instagram page link logo"
                               color="#ffffff"
                               fill="#ffffff"
                               id="instagram"
@@ -120,7 +120,7 @@ export default class Footer extends React.Component {
           </div>
           <ScrollTop
             id="ST"
-            alt="Scroll to top button"
+            alt="Scroll to top "
             text={<BsChevronUp id="st" fontSize="20px" fill="#cd8930" />}
             style={{
               backgroundColor: "transparent",

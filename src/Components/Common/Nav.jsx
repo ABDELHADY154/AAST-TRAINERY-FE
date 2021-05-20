@@ -10,15 +10,14 @@ class Nav extends React.Component {
       <div className="mb-5">
         <nav class="navbar navbar-expand-lg navBg fixed-top ">
           <div className="container">
-            {/* <Link className="navbar-brand mx-2" alt="AAST Trainery Logo"> */}
-            <img
-              alt="AAST Trainery Logo"
-              className="navbar-brand "
-              src={logo}
-              width="170"
-              alt=""
-            ></img>
-            {/* </Link> */}
+            <Link className="navbar-brand mx-2" alt="AAST Trainery Logo" to="/">
+              <img
+                alt="AAST Trainery Logo"
+                className="navbar-brand "
+                src={logo}
+                width="170"
+              ></img>
+            </Link>
             <button
               alt="hamburger menu"
               id="hamburgermenu"

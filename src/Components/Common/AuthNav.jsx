@@ -109,7 +109,6 @@ class AuthNav extends React.Component {
                     className="navbar-brand profileImage"
                     src={logo}
                     width="170"
-                    alt=""
                   ></img>
                 </Link>
                 <button
@@ -152,7 +151,8 @@ class AuthNav extends React.Component {
                       </NavLink>
                     </li>
                   </ul>
-                  <ul className="navbar-nav me-auto my-2">
+                  {/* la ilah ela allah */}
+                  {/* <ul className="navbar-nav me-auto my-2">
                     <li className="nav-item"></li>
 
                     <li className="nav-item">
@@ -162,11 +162,14 @@ class AuthNav extends React.Component {
                         aria-disabled="true"
                       ></a>
                     </li>
-                  </ul>
+                  </ul> */}
                   {/* notification */}
-                  <div className="d-flex justify-content-center ">
-                    <ul className="nav my-1 mx-3 col-auto  dropstart ">
-                      <div>
+                  <div
+                    className="collapse navbar-collapse justify-content-end"
+                    id="navbarScroll"
+                  >
+                    <ul className="nav my-1 mx-3 col-auto  dropstart justify-content-end">
+                      <div className="justify-self-end">
                         <a className="nav-item item col-6 " href="#">
                           <a
                             className="dropdown-toggle"
@@ -175,6 +178,7 @@ class AuthNav extends React.Component {
                             aria-expanded="false"
                           >
                             <IoIosNotificationsOutline
+                              alt="notifications"
                               value={{
                                 color: "#007BC2",
                                 className: "global-class-name mt-0",

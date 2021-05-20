@@ -110,7 +110,11 @@ class Home extends Component {
     if (this.state.user.profile_updated === false) {
       var Alert =
         this.state.alert == true ? (
-          <div id="alerting" className="d-flex flex-row  flex-wrap py-2  mb-3 ">
+          <div
+            id="alerting"
+            className="d-flex flex-row  flex-wrap py-2  mb-3 "
+            alt="alert banner "
+          >
             <div className="container d-flex flex-row  flex-wrap ">
               <div
                 id="alertingtitle"
@@ -142,6 +146,7 @@ class Home extends Component {
                   data-bs-target="#alerting"
                   aria-expanded="true"
                   aria-controls="alerting"
+                  alt="close this banner X"
                 >
                   <IoClose fill="red" color="red" />
                 </button>
@@ -176,6 +181,7 @@ class Home extends Component {
                   <div className="d-flex flex-row d-md-none mt-3 ms-5">
                     <div className="d-flex flex-column col-8 ms-5">
                       <ProgressBar
+                        alt="your profile done percentage"
                         percent={
                           this.state.user.profile_score
                             ? this.state.user.profile_score
@@ -417,6 +423,7 @@ class Home extends Component {
             <div className="d-flex flex-column d-none d-md-flex col-md-2 ">
               {this.state.user.gender ? (
                 <img
+                  alt="Your Avatar based on your gender"
                   id="girl"
                   className=""
                   src={this.state.user.gender == "female" ? img : MaleAvatar}
@@ -557,7 +564,11 @@ class Home extends Component {
                       id="widths"
                       className=" mt-3 containerrr  col-md-2 col-12 "
                     >
-                      <img id="imagehover" src={career.image} />
+                      <img
+                        id="imagehover"
+                        src={career.image}
+                        alt={career.title}
+                      />
                       <div class="overlay">
                         <Link
                           to={`../CareerCoaching/Advising/${career.id}`}

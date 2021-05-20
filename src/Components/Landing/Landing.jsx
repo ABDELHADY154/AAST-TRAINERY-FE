@@ -83,6 +83,7 @@ class Landing extends React.Component {
                         className="Numbers"
                         start={0}
                         end={this.state.opportunities}
+                        alt={this.state.opportunities}
                       />
 
                       <div className="NumTitle">Opportunities</div>
@@ -92,6 +93,7 @@ class Landing extends React.Component {
                         className="Numbers"
                         start={0}
                         end={this.state.students}
+                        alt={this.state.students}
                       />
 
                       <div className="NumTitle">Students</div>
@@ -101,6 +103,7 @@ class Landing extends React.Component {
                         className="Numbers"
                         start={0}
                         end={this.state.applied}
+                        alt={this.state.applied}
                       />
 
                       <div className="NumTitle">Accepted</div>
