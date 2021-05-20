@@ -30,7 +30,7 @@ class Login extends React.Component {
     this.setState({ hidden: !this.state.hidden });
   }
 
-  handleSubmit = async e => {
+  handleSubmit = async (e) => {
     e.preventDefault();
     e.target.reset();
     const data = {
@@ -39,7 +39,7 @@ class Login extends React.Component {
     };
     return await axios
       .post("/login", data)
-      .then(response => {
+      .then((response) => {
         sessionStorage.setItem("token", response.data.response.data.token);
         sessionStorage.setItem("status", response.statusText);
         this.props.setUser(true);
@@ -47,7 +47,7 @@ class Login extends React.Component {
           loggedIn: true,
         });
       })
-      .catch(error => {
+      .catch((error) => {
         if (error.response) {
           this.setState({
             error: {
@@ -77,7 +77,7 @@ class Login extends React.Component {
                 <div className="container">
                   <div className="row">
                     <div className="col-md-11 col-lg-9 mx-auto signup h-100">
-                      <h3 className=" mb-5 signTitle">Sign In </h3>
+                      <h1 className=" mb-5 signTitle">Sign In </h1>
                       <form
                         className="col-md-8 col-lg-10"
                         onSubmit={this.handleSubmit}
@@ -86,13 +86,14 @@ class Login extends React.Component {
                           <div className="col-md-11 col-lg-11 form-label-group input-field field">
                             <label className="label">Student Email</label>
                             <input
+                              alt="enter your email please"
                               type="email"
                               className={
                                 this.state.error.emailErr
                                   ? "wrong signInput"
                                   : "signInput"
                               }
-                              onChange={e =>
+                              onChange={(e) =>
                                 this.setState({ email: e.target.value })
                               }
                             />
@@ -107,6 +108,7 @@ class Login extends React.Component {
                             <label className="label">Password</label>
                             <div className="d-flex">
                               <input
+                                alt="enter your password please"
                                 type={this.state.hidden ? "password" : "text"}
                                 onChange={this.handlePasswordChange}
                                 className={
@@ -117,6 +119,7 @@ class Login extends React.Component {
                               />
                               {this.state.hidden ? (
                                 <AiOutlineEye
+                                  alt="show password"
                                   color="red"
                                   className=" ico"
                                   animation="tada"
@@ -126,6 +129,7 @@ class Login extends React.Component {
                                 />
                               ) : (
                                 <AiOutlineEyeInvisible
+                                  alt="hide password"
                                   color="red"
                                   className=" ico"
                                   animation="tada"
@@ -169,6 +173,7 @@ class Login extends React.Component {
                 src={loginBG}
                 class="img-fluid bg-image-no-img h-100  "
                 width="100%"
+                alt="silhouette of unversity students throwing their caps in an arc shape in a landscape"
               />
             </div>
           </div>

@@ -27,14 +27,13 @@ export default class Footer extends React.Component {
                     <div className="mt-2 flex-column">
                       <img
                         id="footlogo"
-                        // className="navbar-brand img-rounded m-auto "
+                        alt="AAST Trainery Logo"
                         src={logo}
                         width="40%"
                       ></img>
                       <p className="mt-2 ">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                        Consectetur dictumst nisi blandit ornare viverra
-                        eleifend
+                        AAST Trainery was established in september 2020 by AAST
+                        undergraduate students. Your Career is Our Business.
                       </p>
                     </div>
                   </div>
@@ -45,40 +44,48 @@ export default class Footer extends React.Component {
                       <h4 className="footer-widget-title pt-3">About</h4>
                       <ul>
                         <li>
-                          <Link to={`/AboutUs`}>
-                            <a href="#">About Us</a>
-                          </Link>{" "}
+                          <a href="/AboutUs">About Us</a>
                         </li>
                         <li>
-                          <Link to={`/contactUs`}>
-                            <a href="#">Contact Us</a>
-                          </Link>
+                          <a href="/contactUs">Contact Us</a>
                         </li>
 
                         <li>
-                          <a href="#">
+                          <a
+                            href="https://www.instagram.com/trainerys/"
+                            alt="instagram page link"
+                            target="_blank"
+                          >
                             <FaInstagram
+                              alt="instagram page link logo"
                               color="#ffffff"
                               fill="#ffffff"
                               id="instagram"
                             />
                           </a>
-                          <a href="#">
+                          <a
+                            href="https://www.facebook.com/trainerys/"
+                            alt="facebook page link"
+                            target="_blank"
+                          >
                             <FaFacebookF
+                              alt="facebook logo"
                               color="#ffffff"
                               fill="#ffffff"
                               className="m-2"
                             />
                           </a>
-                          <a href="#">
+                          <a href="#" alt="linkedin page link" target="_blank">
                             <FaLinkedinIn
+                              alt="linkedin logo"
                               color="#ffffff"
                               fill="#ffffff"
                               className="m-2"
                             />
                           </a>
-                          <a href="#">
+                          <a href="#" alt="youtube page link" target="_blank">
                             <FaYoutube
+                              alt="youtube logo"
                               color="#ffffff"
                               fill="#ffffff"
                               className="m-2"
@@ -113,6 +120,7 @@ export default class Footer extends React.Component {
           </div>
           <ScrollTop
             id="ST"
+            alt="Scroll to top "
             text={<BsChevronUp id="st" fontSize="20px" fill="#cd8930" />}
             style={{
               backgroundColor: "transparent",

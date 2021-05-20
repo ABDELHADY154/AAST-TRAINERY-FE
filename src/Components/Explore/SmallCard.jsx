@@ -42,6 +42,7 @@ export class SmallCard extends Component {
                     <div className=" col-md-8 col-8 col-sm-9 d-flex align-items-center">
                       <Link to={`/advisorProfile/${this.props.advisor.id}`}>
                         <img
+                          alt={this.props.advisor.name}
                           className=" me-1 rounded"
                           id="advisorlogo"
                           style={{ height: 36, width: 36 }}
@@ -72,6 +73,7 @@ export class SmallCard extends Component {
                 className="col-md-2 col-sm-2 col-2 col-lg-2 titleRow"
               >
                 <img
+                  alt={this.props.company_name}
                   className=" me-1 rounded"
                   id="comlogo"
                   style={{ height: 48, width: 48 }}
@@ -141,6 +143,7 @@ export class SmallCard extends Component {
             {this.props.post_type === "adsPost" ? (
               <div>
                 <img
+                  alt="sponsored image"
                   className=" mt-0 d-flex flex-column col-md-6 col-2 me-1 w-100"
                   height="400"
                   src={this.props.sponsor_image}

@@ -121,7 +121,7 @@ class Registry extends React.Component {
               <div className="container">
                 <div className="row">
                   <div className="col-md-11 col-lg-9 mx-auto signup h-100">
-                    <h3 className="mb-5 signTitle">Sign Up</h3>
+                    <h1 className="mb-5 signTitle">Sign Up</h1>
                     <form
                       className="col-md-8 col-lg-10"
                       onSubmit={this.handleSubmit}
@@ -134,6 +134,7 @@ class Registry extends React.Component {
                           <div className="col-md-10 col-lg-11 form-label-group input-field">
                             <label className="label">Full Name</label>
                             <input
+                              alt="please enter your full name"
                               type="name"
                               className={
                                 this.state.error.fullName
@@ -155,6 +156,7 @@ class Registry extends React.Component {
                           <div className="col-md-10 col-lg-11 form-label-group input-field">
                             <label className="label">Student Email</label>
                             <input
+                              alt="please enter your student Email"
                               type="email"
                               id="Email"
                               className={
@@ -179,6 +181,7 @@ class Registry extends React.Component {
                           <div className="row ">
                             <div class="col-4 col-lg-5 col-md-4 col-sm-4 col-xs-3 male form-check form-check-inline d-flex">
                               <input
+                                alt="gender male choice"
                                 type="radio"
                                 name="inlineRadioOptions"
                                 id="inlineRadio1"
@@ -197,6 +200,7 @@ class Registry extends React.Component {
                             </div>
                             <div class=" female col-4 col-lg-5 col-md-4 col-sm-5 col-xs-3 checkbox form-check-inline d-flex">
                               <input
+                                alt="gender female choice"
                                 className="radio signInput"
                                 type="radio"
                                 name="inlineRadioOptions"
@@ -226,6 +230,7 @@ class Registry extends React.Component {
                             <label className="label">Password</label>
                             <div className="d-flex">
                               <input
+                                alt="please enter your password"
                                 type={this.state.hidden ? "password" : "text"}
                                 onChange={this.handlePasswordChange}
                                 className={
@@ -236,6 +241,7 @@ class Registry extends React.Component {
                               />
                               {this.state.hidden ? (
                                 <AiOutlineEye
+                                  alt="show password"
                                   color="red"
                                   className=" ico"
                                   animation="tada"
@@ -245,6 +251,7 @@ class Registry extends React.Component {
                                 />
                               ) : (
                                 <AiOutlineEyeInvisible
+                                  alt="hide password"
                                   color="red"
                                   className=" ico"
                                   animation="tada"
@@ -268,6 +275,7 @@ class Registry extends React.Component {
                           <div className="col-md-10 col-lg-11 form-label-group input-field">
                             <label className="label">Confirm Password</label>
                             <input
+                              alt="please enter your confirmed password"
                               type={this.state.hidden ? "password" : "text"}
                               className={
                                 this.state.error.passwordConfErr
@@ -303,7 +311,11 @@ class Registry extends React.Component {
                                 <option>Please Select Your Department</option>
 
                                 {this.state.departs.map((depart) => (
-                                  <option value={depart.id} key={depart.id}>
+                                  <option
+                                    value={depart.id}
+                                    key={depart.id}
+                                    alt={depart.dep_name}
+                                  >
                                     {depart.dep_name}
                                   </option>
                                 ))}
@@ -320,6 +332,7 @@ class Registry extends React.Component {
                           <div className="col-md-10 col-lg-11 form-label-group input-field">
                             <label className="label">Registration Number</label>
                             <input
+                              alt="please enter your regestration number"
                               type="number"
                               className={
                                 this.state.error.regnumErr
@@ -367,6 +380,7 @@ class Registry extends React.Component {
           </div>
           <div className="img-fluid d-md-flex col-md-3 col-lg-4 ">
             <img
+              alt="silhouette of unversity students throwing their caps in an arc shape in a landscape"
               src={loginBG}
               class="img-fluid bg-image-no-img h-100  d-none  d-sm-block"
               width="100%"

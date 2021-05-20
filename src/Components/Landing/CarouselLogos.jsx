@@ -16,7 +16,7 @@ export class CarouselLogos extends Component {
   };
 
   async componentDidMount() {
-    await axios.get("/W/landingLogoes").then(data => {
+    await axios.get("/W/landingLogoes").then((data) => {
       // console.log(data.data.response.data);
       this.setState({
         logos: data.data.response.data,
@@ -67,10 +67,14 @@ export class CarouselLogos extends Component {
     return (
       <Slider {...settings}>
         {this.state.logos
-          ? this.state.logos.map(item => {
+          ? this.state.logos.map((item) => {
               return (
                 <div className="logo1">
-                  <img className="logoCaroImg" src={item.logo} />
+                  <img
+                    alt="associated company logo"
+                    className="logoCaroImg"
+                    src={item.logo}
+                  />
                 </div>
               );
             })
