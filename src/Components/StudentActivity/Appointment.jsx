@@ -29,14 +29,14 @@ class Appointment extends Component {
     return (
       <div>
         <Link to="/Profile/Activity/Appointment" />
-        <div className="container mb-5">
+        <div className="container ">
           <ActivityNavbar setactive={"Appointment"} />
           {!this.state.data
             ? ""
             : this.state.data.map((data) => {
                 return (
                   <Link to={`/CareerCoaching/Advising/${data.id}`}>
-                    <div class="card mb-5 mt-3">
+                    <div class="card mb-3 mt-3">
                       <div class="row ">
                         <div class="d-flex flex-column col-md-2 col-sm-3 col-1 d-none d-sm-flex ms-3">
                           <img
@@ -60,11 +60,11 @@ class Appointment extends Component {
                           </p>
                         </div>
                         <div className="row ">
-                          <div className="d-flex justify-content-end">
+                          <div className="d-flex justify-content-end mb-2">
                             <button className="applyBtn col-md-2 col-lg-1 col-sm-2 col-4  me-2">
                               Contact
                             </button>
-                            <button className="applyBtn col-lg-1 col-md-2 col-sm-2 col-4 mb-3">
+                            <button className="applyBtn col-md-2 col-lg-1 col-sm-2 col-4  me-2">
                               Review
                             </button>
                           </div>

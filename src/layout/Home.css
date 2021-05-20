@@ -184,6 +184,8 @@
   border: 1px solid #1e4274;
   border-radius: 5px !important;
   height: 30px;
+  justify-content: center;
+  align-items: center;
 }
 .appliedBtn {
   background-color: #1e4274 !important;
@@ -358,4 +360,9 @@
 ::selection {
   color: #cd8930;
   background: #1e4274;
+}
+.hrReview {
+  background-color: #cd8930;
+  border: 0.7px solid #cd8930;
+  width: 6em;
 }

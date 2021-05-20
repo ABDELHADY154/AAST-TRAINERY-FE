@@ -220,14 +220,13 @@ export default class CompanyProfile extends Component {
                           description={data.description}
                           tags={data.tags}
                           application_deadline={data.application_deadline}
-                          // post_type={data.post_type}
+                          post_type={data.post_type}
                           sponsor_image={data.sponsor_image}
+                          reviewed={data.reviewed}
+                          status={data.status}
                           key={data.id}
-                          saved={data.saved}
-                          applied={data.applied}
                           id={data.id}
                           company_id={data.company_id}
-                          accepted={data.accepted}
                         />
                       );
                     })

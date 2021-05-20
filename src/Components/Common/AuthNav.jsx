@@ -29,6 +29,7 @@ class AuthNav extends React.Component {
       fullname: "",
       active: false,
       fallback: "",
+      notifications: [],
     };
 
     if (this.state.token) {
@@ -51,7 +52,7 @@ class AuthNav extends React.Component {
     await resolve(
       axios
         .get("/W/studentImg")
-        .then((res) => {
+        .then(res => {
           if (res.status === 200) {
             this.setState({
               avatar: res.data.response.data.image,
@@ -61,14 +62,26 @@ class AuthNav extends React.Component {
           }
         })
 
-        .catch((error) => {
+        .catch(error => {
           if (error.response.data.status === 401) {
             sessionStorage.clear("token");
             sessionStorage.clear("status");
             this.setState({ validToken: false });
           }
-        })
+        }),
     );
+    await axios
+      .get("/W/student/notifications")
+      .then(res => {
+        this.setState({
+          notifications: res.data.response.data,
+        });
+        // console.log(res.data.response.data);
+      })
+      .catch(err => {
+        // this.setState({  });
+        console.log(err);
+      });
 
     if (this.props.fallbackVal) {
       this.props.fallback(true);
@@ -87,6 +100,7 @@ class AuthNav extends React.Component {
     }
   };
   render() {
+    // console.log(this.state.notifications.type);
     if (this.props.updated == true) {
       window.location = window.location;
     }
@@ -188,153 +202,39 @@ class AuthNav extends React.Component {
                             <p className="text-center  mb-2 notificationTitle">
                               Notications
                             </p>
-                            {/* Notication 1 */}
-                            <div class="alert itemAlert " role="alert">
-                              <div className=" row NoticationContent ">
-                                <div className="row col-2 notificationStyle d-flex align-items-center">
-                                  <div
-                                    class="alertLine"
-                                    style={{
-                                      backgroundColor: "#f44336",
-                                    }}
-                                  >
-                                    <AiOutlineWarning
-                                      style={{ fill: "red" }}
-                                      // color="#F44336"
-                                      className="notificationIcon me-1 ms-2 d-flex align-items-center"
-                                      animation="tada"
-                                      size="18px"
-                                      pull="left"
-                                    />
-                                  </div>
-                                </div>
 
-                                <div className="notificationText col-10 ">
-                                  <h4 className="  ">
-                                    Unfortunately, you were rejected in the
-                                    applied internship
-                                  </h4>
-                                  <h5 className="">Tap for more information</h5>
-                                </div>
-                              </div>
-                            </div>
-                            {/* Notication 2 */}
-                            <div class="alert itemAlert " role="alert">
-                              <div className=" row NoticationContent ">
-                                <div className="row col-2 notificationStyle d-flex align-items-center">
-                                  <div
-                                    class="alertLine "
-                                    style={{
-                                      backgroundColor: "#007BC2",
-                                    }}
-                                  >
-                                    <MdInfoOutline
-                                      style={{ fill: "#007BC2" }} // color="red"
-                                      className="notificationIcon me-1 ms-2 d-flex align-items-center"
-                                      animation="tada"
-                                      size="18px"
-                                      pull="left"
-                                    />
-                                  </div>
-                                </div>
-
-                                <div className="notificationText col-10 mt-2">
-                                  <h4 className="  ">
-                                    Review your finished session
-                                  </h4>
-                                  <h5 className="">Tap for more information</h5>
-                                </div>
-                              </div>
-                            </div>
-                            {/* Notication 3 */}
-                            <div class="alert itemAlert " role="alert">
-                              <div className=" row NoticationContent ">
-                                <div className="row col-2 notificationStyle d-flex align-items-center">
-                                  <div
-                                    class="alertLine "
-                                    style={{
-                                      backgroundColor: "#007BC2",
-                                    }}
-                                  >
-                                    <MdInfoOutline
-                                      style={{ fill: "#007BC2" }}
-                                      // color="red"
-                                      className="notificationIcon me-1 ms-2 d-flex align-items-center"
-                                      animation="tada"
-                                      size="18px"
-                                      pull="left"
-                                    />
-                                  </div>
-                                </div>
-
-                                <div className="notificationText col-10 ">
-                                  <h4 className="  ">
-                                    You have a recomendation to apply for an
-                                    internship
-                                  </h4>
-                                  <h5 className="">Tap for more information</h5>
-                                </div>
-                              </div>
-                            </div>
-                            {/* Notication 4 */}
-                            <div class="alert itemAlert " role="alert">
-                              <div className=" row NoticationContent ">
-                                <div className="row col-2 notificationStyle d-flex align-items-center">
-                                  <div
-                                    class="alertLine "
-                                    style={{
-                                      backgroundColor: "#4CAF50",
-                                    }}
-                                  >
-                                    <AiOutlineCheckCircle
-                                      style={{ fill: "#4CAF50" }}
-                                      // color="green"
-                                      className="notificationIcon me-1 ms-2 d-flex align-items-center"
-                                      animation="tada"
-                                      size="18px"
-                                      pull="left"
-                                    />
-                                  </div>
-                                </div>
-
-                                <div className="notificationText col-10 ">
-                                  <h4 className="  ">
-                                    Congratulations you got accepted in the
-                                    applied internship
-                                  </h4>
-                                  <h5 className="">Tap for more information</h5>
-                                </div>
-                              </div>
-                            </div>
-                            {/* Notication 5 */}
-                            <div class="alert itemAlert " role="alert">
-                              <div className=" row NoticationContent ">
-                                <div className="row col-2 notificationStyle d-flex align-items-center">
-                                  <div
-                                    class="alertLine "
-                                    style={{
-                                      backgroundColor: "#4CAF50",
-                                    }}
-                                  >
-                                    <AiOutlineCheckCircle
-                                      style={{ fill: "#4CAF50" }}
-                                      // color="green"
-                                      className="notificationIcon me-1 ms-2 d-flex align-items-center"
-                                      animation="tada"
-                                      size="18px"
-                                      pull="left"
-                                    />
-                                  </div>
-                                </div>
-
-                                <div className="notificationText col-10 ">
-                                  <h4 className="  ">
-                                    Your session has been booked successfully
-                                  </h4>
-                                  <h5 className="">Tap for more information</h5>
-                                </div>
-                              </div>
-                            </div>
+                            {this.state.notifications.length !== 0
+                              ? this.state.notifications.map(e => {
+                                  if (e.category == "rejected") {
+                                    return (
+                                      <RejectCard
+                                        id={e.id}
+                                        key={e.id}
+                                        data={e}
+                                      />
+                                    );
+                                  } else if (e.category == "success") {
+                                    return (
+                                      <AcceptedCard
+                                        id={e.id}
+                                        key={e.id}
+                                        data={e}
+                                      />
+                                    );
+                                  } else if (e.category == "important") {
+                                    return (
+                                      <ImportantCard
+                                        id={e.id}
+                                        key={e.id}
+                                        data={e}
+                                      />
+                                    );
+                                  }
+                                })
+                              : ""}
+                            {/* <RejectCard />
+                            <AcceptedCard />
+                            <ImportantCard /> */}
                           </ul>
                         </a>
                         {/* profile */}
@@ -465,7 +365,11 @@ class AuthNav extends React.Component {
                               </a>
                             </li>
                             <li>
-                              <a class="row " href="#">
+                              <Link
+                                class="row "
+                                to="/Setting"
+                                renderAs="button"
+                              >
                                 <MdSettings
                                   color="red"
                                   className="col-3 mt-1 ms-2"
@@ -474,7 +378,7 @@ class AuthNav extends React.Component {
                                   pull="left"
                                 />
                                 <p className="col-9">Account setting</p>
-                              </a>
+                              </Link>
                             </li>
                             <li>
                               <a class="row " href="#">
@@ -522,3 +426,138 @@ class AuthNav extends React.Component {
   }
 }
 export default AuthNav;
+
+class RejectCard extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {};
+  }
+  render() {
+    console.log(this.props.data);
+    return (
+      <div class="alert itemAlert " role="alert">
+        <div className=" row NoticationContent ">
+          <div className="row col-2 notificationStyle d-flex align-items-center justify-content-center">
+            <div
+              class="alertLine "
+              style={{
+                backgroundColor: "#f44336",
+              }}
+            >
+              <AiOutlineWarning
+                style={{ fill: "red" }}
+                // color="#F44336"
+                className="notificationIcon me-1 ms-2 d-flex align-items-center justify-content-center"
+                animation="tada"
+                size="18px"
+                pull="left"
+              />
+            </div>
+          </div>
+
+          <div className="notificationText col-10 mt-1 fw-bold">
+            <h4 className=" fw-bold  ">
+              {this.props.data.type == "internship"
+                ? this.props.data.internship.title
+                : this.props.data.session.title}
+            </h4>
+            <h4 className="text-wrap  ">{this.props.data.message} </h4>
+            <h5
+              className=""
+              style={{
+                marginBottom: 0,
+                paddingBottom: 0,
+              }}
+            >
+              Tap for more information
+            </h5>
+          </div>
+        </div>
+      </div>
+    );
+  }
+}
+class ImportantCard extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {};
+  }
+  render() {
+    return (
+      <div class="alert itemAlert " role="alert">
+        <div className=" row NoticationContent ">
+          <div className="row col-2 notificationStyle d-flex align-items-center justify-content-center">
+            <div
+              class="alertLine "
+              style={{
+                backgroundColor: "#007BC2",
+              }}
+            >
+              <MdInfoOutline
+                style={{ fill: "#007BC2" }} // color="red"
+                className="notificationIcon me-1 ms-2 d-flex align-items-center justify-content-center"
+                animation="tada"
+                size="18px"
+                pull="left"
+              />
+            </div>
+          </div>
+
+          <div className="notificationText col-10 mt-2">
+            <h4 className="   fw-bold">
+              {" "}
+              {this.props.data.type == "internship"
+                ? this.props.data.internship.title
+                : this.props.data.session.title}
+            </h4>
+            <h4 className="text-wrap  "> {this.props.data.message}</h4>
+            <h5 className="">Tap for more information</h5>
+          </div>
+        </div>
+      </div>
+    );
+  }
+}
+
+class AcceptedCard extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {};
+  }
+  render() {
+    return (
+      <div class="alert itemAlert " role="alert">
+        <div className=" row NoticationContent ">
+          <div className="row col-2 notificationStyle d-flex align-items-center justify-content-center">
+            <div
+              class="alertLine "
+              style={{
+                backgroundColor: "#4CAF50",
+              }}
+            >
+              <AiOutlineCheckCircle
+                style={{ fill: "#4CAF50" }}
+                // color="green"
+                className="notificationIcon me-1 ms-2 d-flex align-items-center justify-content-center"
+                animation="tada"
+                size="18px"
+                pull="left"
+              />
+            </div>
+          </div>
+
+          <div className="notificationText col-10 ">
+            <h4 className="   fw-bold">
+              {" "}
+              {this.props.data.type == "internship"
+                ? this.props.data.internship.title
+                : this.props.data.session.title}
+            </h4>
+            <h4 className=" text-wrap "> {this.props.data.message}</h4>
+            <h5 className="">Tap for more information</h5>
+          </div>
+        </div>
+      </div>
+    );
+  }
+}

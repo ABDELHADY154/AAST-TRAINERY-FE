@@ -43,7 +43,7 @@ class Home extends Component {
     await resolve(
       axios
         .get("/W/student/get-profile")
-        .then((res) => {
+        .then(res => {
           if (res.status === 200) {
             this.setState({
               user: res.data.response.data,
@@ -52,7 +52,7 @@ class Home extends Component {
             });
           }
         })
-        .catch((error) => {
+        .catch(error => {
           this.setState({
             error: {
               usernameErr: error.response.status,
@@ -61,11 +61,11 @@ class Home extends Component {
           if (this.state.error.usernameErr === 401) {
             window.location.reload();
           }
-        })
+        }),
     );
     await axios
       .get("/W/activity")
-      .then((res) => {
+      .then(res => {
         this.setState({
           id: res.data.response.data.id,
           data: res.data.response.data,
@@ -73,29 +73,29 @@ class Home extends Component {
           FormLoading: false,
         });
       })
-      .catch((err) => {
+      .catch(err => {
         this.setState({ FormLoading: true });
         console.log(err);
       });
     await axios
       .get("/W/student/posts")
-      .then((res) => {
+      .then(res => {
         this.setState({
           explorePosts: res.data.response.data,
         });
       })
-      .catch((err) => {
+      .catch(err => {
         this.setState({ FormLoading: true });
         console.log(err);
       });
     await axios
       .get("/W/sessions")
-      .then((res) => {
+      .then(res => {
         this.setState({
           career: res.data.response.data,
         });
       })
-      .catch((err) => {
+      .catch(err => {
         console.log(err);
       });
   }
@@ -436,13 +436,13 @@ class Home extends Component {
             >
               <div id="tabcard" className="d-flex flex-row">
                 {this.state.data.length == 0 ? (
-                  <div className="col-12">
+                  <div className="position-absolute top-50 start-50 translate-middle">
                     <p className="text-center">No Activity</p>
                   </div>
                 ) : (
-                  this.state.data.map((data) => {
+                  this.state.data.map(data => {
                     return (
-                      <BigCard
+                      <SmallCard
                         title={data.title}
                         company_logo={data.company_logo}
                         salary={data.salary}
@@ -455,11 +455,10 @@ class Home extends Component {
                         post_type={data.post_type}
                         sponsor_image={data.sponsor_image}
                         key={data.id}
-                        saved={data.saved}
-                        applied={data.applied}
+                        reviewed={data.reviewed}
+                        status={data.status}
                         id={data.id}
                         company_id={data.company_id}
-                        accepted={data.accepted}
                       />
                     );
                   })
@@ -503,9 +502,9 @@ class Home extends Component {
                     post_type={this.state.explorePosts[0].post_type}
                     departments={this.state.explorePosts[0].departments}
                     tags={this.state.explorePosts[0].tags}
-                    saved={this.state.explorePosts[0].saved}
-                    applied={this.state.explorePosts[0].applied}
-                    accepted={this.state.explorePosts[0].accepted}
+                    reviewed={this.state.explorePosts[0].reviewed}
+                    status={this.state.explorePosts[0].status}
+                    // accepted={this.state.explorePosts[0].accepted}
                   />
 
                   <BigCard
@@ -552,7 +551,7 @@ class Home extends Component {
           <div className="d-flex flex-row flex-wrap text-wrap text-center justify-content-center">
             {!this.state.career
               ? ""
-              : this.state.career.map((career) => {
+              : this.state.career.map(career => {
                   return (
                     <div
                       id="widths"
@@ -620,7 +619,7 @@ class AppliedCard extends Component {
                 id="gold"
                 className=" ms-2 departments d-flex flex-row flex-wrap "
               >
-                {this.props.departments.map((item) => {
+                {this.props.departments.map(item => {
                   return (
                     <Departments
                       id={item.id}
@@ -635,7 +634,7 @@ class AppliedCard extends Component {
             <p className="card-text mt-2 Lines">{this.props.description}</p>
 
             <div className="d-flex flex-row flex-wrap " id="">
-              {this.props.tags.map((item) => {
+              {this.props.tags.map(item => {
                 return (
                   <Interest
                     id={item.id}
@@ -697,7 +696,7 @@ class Interest extends Component {
   }
 }
 
-const ExploreCard = (props) => {
+const ExploreCard = props => {
   console.log(props);
   return (
     <div className="card">
