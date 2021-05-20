@@ -52,7 +52,7 @@ class AuthNav extends React.Component {
     await resolve(
       axios
         .get("/W/studentImg")
-        .then((res) => {
+        .then(res => {
           if (res.status === 200) {
             this.setState({
               avatar: res.data.response.data.image,
@@ -62,23 +62,23 @@ class AuthNav extends React.Component {
           }
         })
 
-        .catch((error) => {
+        .catch(error => {
           if (error.response.data.status === 401) {
             sessionStorage.clear("token");
             sessionStorage.clear("status");
             this.setState({ validToken: false });
           }
-        })
+        }),
     );
     await axios
       .get("/W/student/notifications")
-      .then((res) => {
+      .then(res => {
         this.setState({
           notifications: res.data.response.data,
         });
         // console.log(res.data.response.data);
       })
-      .catch((err) => {
+      .catch(err => {
         // this.setState({  });
         console.log(err);
       });
@@ -204,7 +204,7 @@ class AuthNav extends React.Component {
                             </p>
 
                             {this.state.notifications.length !== 0
-                              ? this.state.notifications.map((e) => {
+                              ? this.state.notifications.map(e => {
                                   if (e.category == "rejected") {
                                     return (
                                       <RejectCard
@@ -338,7 +338,7 @@ class AuthNav extends React.Component {
                               </Link>
                             </li>
                             <li>
-                              <a class="row " href="#">
+                              <Link class="row " to="/Cv-Portfolio">
                                 <MdAssignment
                                   color="red"
                                   className="col-3 mt-1 ms-2"
@@ -347,7 +347,7 @@ class AuthNav extends React.Component {
                                   pull="left"
                                 />
                                 <p className="col-7">Portfolio</p>
-                              </a>
+                              </Link>
                             </li>
 
                             <hr class="dropdown-divider profileHr invs" />

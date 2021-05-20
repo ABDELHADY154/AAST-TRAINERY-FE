@@ -4,6 +4,8 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Registry from "./Components/Auth/Registry";
 import Home from "./Components/Home/Home";
+import Cv from "./Components/Cv/Cv";
+
 import Login from "./Components/Auth/Login";
 import Nav from "./Components/Common/Nav";
 import AuthNav from "./Components/Common/AuthNav";
@@ -62,15 +64,15 @@ class App extends React.Component {
     window.scrollTo(0, 0);
   }
 
-  setUser = (data) => {
+  setUser = data => {
     return this.setState({ loggedIn: data });
   };
-  setAvatar = (data) => {
+  setAvatar = data => {
     this.setState({ avatar: data });
     if (this.state.avatar) {
     }
   };
-  fallback = (data) => {
+  fallback = data => {
     this.setState({ fallback: data });
   };
 
@@ -119,6 +121,7 @@ class App extends React.Component {
                   }}
                 />
                 <AuthRoute exact path="/Profile" component={Profile} />
+                <AuthRoute exact path="/Cv-Portfolio" component={Cv} />
                 {/* <AuthRoute exact path="/GeneralInfo" component={GeneralInfo} /> */}
                 <AuthRoute
                   exact
@@ -179,7 +182,7 @@ class App extends React.Component {
                   exact
                   path="/Profile/Interest/:id"
                   component={Interest}
-                  render={(Interests) => <Interest {...Interests} />}
+                  render={Interests => <Interest {...Interests} />}
                 />
                 <AuthRoute exact path="/Explore" component={Explore} />
                 <AuthRoute exact path="/Search/d" component={SearchD} />

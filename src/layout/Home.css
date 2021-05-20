@@ -332,7 +332,9 @@
     width: 100% !important ;
   }
 }
-
+.marginating {
+  margin-right: 1em !important;
+}
 .generalinfolink {
   text-decoration: none !important;
   color: #1e4274 !important;

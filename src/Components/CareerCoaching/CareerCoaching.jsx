@@ -47,13 +47,13 @@ export default class CareerCoaching extends Component {
     this.setState({ FormLoading: true });
     await axios
       .get("/W/sessions")
-      .then((res) => {
+      .then(res => {
         this.setState({
           data: res.data.response.data,
           FormLoading: false,
         });
       })
-      .catch((err) => {
+      .catch(err => {
         this.setState({ FormLoading: true });
         console.log(err);
       });
@@ -67,7 +67,7 @@ export default class CareerCoaching extends Component {
           spinner={<BounceLoader color="#cd8930" />}
           color={"#cd8930"}
           styles={{
-            overlay: (base) => ({
+            overlay: base => ({
               ...base,
               background: "rgb(255, 255, 255)",
               stroke: "rgba(255, 0, 0, 0.5)",
@@ -120,7 +120,7 @@ export default class CareerCoaching extends Component {
           <div className="container ">
             {!this.state.data
               ? " "
-              : this.state.data.map((data) => {
+              : this.state.data.map(data => {
                   return (
                     <div className="row mt-5">
                       <div className="col-md-12">
@@ -137,8 +137,6 @@ export default class CareerCoaching extends Component {
                                 <p className="card-text mt-2 cardtextt">
                                   {data.desc}
                                 </p>
-                                {/* <DateTimePicker/> */}
-                                {/* <DateTimePicker onChange={onChange()} value={value} /> */}
 
                                 <div className="d-flex  mt-2 flex-row flex-wrap ">
                                   <div className=" mb-1 d-flex mt-1 flex-row col-12 col-md-7 justify-content-start ">

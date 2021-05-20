@@ -34,6 +34,7 @@ class Home extends Component {
       data: [],
       alert: true,
       explorePosts: [],
+      career: [],
     };
     window.scrollTo(0, 0);
   }
@@ -42,7 +43,7 @@ class Home extends Component {
     await resolve(
       axios
         .get("/W/student/get-profile")
-        .then((res) => {
+        .then(res => {
           if (res.status === 200) {
             this.setState({
               user: res.data.response.data,
@@ -51,7 +52,7 @@ class Home extends Component {
             });
           }
         })
-        .catch((error) => {
+        .catch(error => {
           this.setState({
             error: {
               usernameErr: error.response.status,
@@ -60,11 +61,11 @@ class Home extends Component {
           if (this.state.error.usernameErr === 401) {
             window.location.reload();
           }
-        })
+        }),
     );
     await axios
       .get("/W/activity")
-      .then((res) => {
+      .then(res => {
         this.setState({
           id: res.data.response.data.id,
           data: res.data.response.data,
@@ -72,19 +73,29 @@ class Home extends Component {
           FormLoading: false,
         });
       })
-      .catch((err) => {
+      .catch(err => {
         this.setState({ FormLoading: true });
         console.log(err);
       });
     await axios
       .get("/W/student/posts")
-      .then((res) => {
+      .then(res => {
         this.setState({
           explorePosts: res.data.response.data,
         });
       })
-      .catch((err) => {
+      .catch(err => {
         this.setState({ FormLoading: true });
+        console.log(err);
+      });
+    await axios
+      .get("/W/sessions")
+      .then(res => {
+        this.setState({
+          career: res.data.response.data,
+        });
+      })
+      .catch(err => {
         console.log(err);
       });
   }
@@ -95,7 +106,7 @@ class Home extends Component {
   // }
 
   render() {
-    console.log(this.state.data);
+    // console.log(this.state.data);
     if (this.state.user.profile_updated === false) {
       var Alert =
         this.state.alert == true ? (
@@ -429,7 +440,7 @@ class Home extends Component {
                     <p className="text-center">No Activity</p>
                   </div>
                 ) : (
-                  this.state.data.map((data) => {
+                  this.state.data.map(data => {
                     return (
                       <SmallCard
                         title={data.title}
@@ -538,45 +549,28 @@ class Home extends Component {
             Check our career coaching services
           </div>
           <div className="d-flex flex-row flex-wrap text-wrap text-center justify-content-center">
-            <div id="widths" className=" mt-3 containerrr  col-md-3 col-12 ">
-              <img id="imagehover" src={rec1} />
-              <div class="overlay">
-                <Link
-                  to="/CareerCoaching/CvWriting"
-                  id="linksss"
-                  href="#"
-                  class="texttt fs-3 col-12 col-md-12 "
-                >
-                  CV Review
-                </Link>
-              </div>
-            </div>
-            <div id="widths" className=" mt-3 containerrr  col-md-3 col-12 ">
-              <img id="imagehover" src={rec3} />
-              <div class="overlay">
-                <Link
-                  to="/CareerCoaching/CareerMove"
-                  id="linksss"
-                  href="#"
-                  class="texttt fs-3 col-12 col-md-12 "
-                >
-                  Career Coaching Path
-                </Link>
-              </div>
-            </div>
-            <div id="widths" className=" mt-3 containerrr  col-md-3 col-12 ">
-              <img id="imagehover" src={rec2} />
-              <div class="overlay">
-                <Link
-                  to="/CareerCoaching/InterviewCoaching"
-                  id="linksss"
-                  href="#"
-                  class="texttt fs-3 col-12 col-md-12 "
-                >
-                  Interview Preperation
-                </Link>
-              </div>
-            </div>
+            {!this.state.career
+              ? ""
+              : this.state.career.map(career => {
+                  return (
+                    <div
+                      id="widths"
+                      className=" mt-3 containerrr  col-md-3 col-12 "
+                    >
+                      <img id="imagehover" src={career.image} />
+                      <div class="overlay">
+                        <Link
+                          to={`../CareerCoaching/Advising/${career.id}`}
+                          id="linksss"
+                          href="#"
+                          class="texttt fs-3 col-12 col-md-12 "
+                        >
+                          {career.title}
+                        </Link>
+                      </div>
+                    </div>
+                  );
+                })}
           </div>
         </div>
         <Footer2 />
@@ -625,7 +619,7 @@ class AppliedCard extends Component {
                 id="gold"
                 className=" ms-2 departments d-flex flex-row flex-wrap "
               >
-                {this.props.departments.map((item) => {
+                {this.props.departments.map(item => {
                   return (
                     <Departments
                       id={item.id}
@@ -640,7 +634,7 @@ class AppliedCard extends Component {
             <p className="card-text mt-2 Lines">{this.props.description}</p>
 
             <div className="d-flex flex-row flex-wrap " id="">
-              {this.props.tags.map((item) => {
+              {this.props.tags.map(item => {
                 return (
                   <Interest
                     id={item.id}
@@ -702,7 +696,7 @@ class Interest extends Component {
   }
 }
 
-const ExploreCard = (props) => {
+const ExploreCard = props => {
   console.log(props);
   return (
     <div className="card">
