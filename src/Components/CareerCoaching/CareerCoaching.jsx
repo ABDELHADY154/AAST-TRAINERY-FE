@@ -122,7 +122,11 @@ export default class CareerCoaching extends Component {
                 id="Experienceimg"
                 className="d-flex flex-column col-md-6 d-none d-md-flex ms-5"
               >
-                <img className="h-100 w-100 careerimgh" src={img} />
+                <img
+                  className="h-100 w-100 careerimgh"
+                  src={img}
+                  alt="Two men greeting eachother with a smile"
+                />
               </div>
             </div>
             <div className="d-flex flex-row fs-3 pagetitlec mt-5">
@@ -144,6 +148,7 @@ export default class CareerCoaching extends Component {
                           <div className="card-body">
                             <div className="d-flex flex-row mt-2">
                               <img
+                                alt={data.title}
                                 className=" mt-0 d-md-flex d-none flex-column  col-md-3 me-5 col-2 me-1 careerimg "
                                 src={data.image}
                               />
@@ -200,6 +205,7 @@ export default class CareerCoaching extends Component {
                     fill="#cd8930"
                     color="#cd8930"
                     className="fs-1"
+                    alt="quote icon"
                   />
                 </div>
               </div>

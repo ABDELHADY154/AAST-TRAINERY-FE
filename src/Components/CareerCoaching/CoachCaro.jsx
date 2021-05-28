@@ -74,6 +74,7 @@ export default class CoachCaro extends Component {
                 return (
                   <div className="containerrr col-md-12 col-12">
                     <img
+                      alt={data.name}
                       src={data.image}
                       id="imagehoverr"
                       className="d-flex flex-column col-md-3 col-12 rounded "
@@ -97,6 +98,7 @@ export default class CoachCaro extends Component {
                         <li>
                           <a href={data.fb_url}>
                             <FaFacebookF
+                              alt="facebook page  "
                               color="#ffffff"
                               fill="#ffffff"
                               className="m-2"
@@ -104,6 +106,7 @@ export default class CoachCaro extends Component {
                           </a>
                           <a href={data.in_url}>
                             <FaLinkedinIn
+                              alt="linkedin page  "
                               color="#ffffff"
                               fill="#ffffff"
                               className="m-2"
@@ -111,6 +114,7 @@ export default class CoachCaro extends Component {
                           </a>
                           <a href={data.y_url}>
                             <FaYoutube
+                              alt="youtube page "
                               color="#ffffff"
                               fill="#ffffff"
                               className="m-2"

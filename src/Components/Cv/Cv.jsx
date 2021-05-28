@@ -34,7 +34,7 @@ export default class Cv extends Component {
               free
             </p>
           ) : (
-            "lol"
+            ""
           )}
         </div>
       </div>

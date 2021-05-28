@@ -239,6 +239,7 @@ export default class advisorProfile extends Component {
             <div className="d-flex flex-row mb-3 ">
               <Link to={`/CompanyProfile/${this.state.data.company_id}`}>
                 <img
+                  alt={this.state.data.company_name}
                   src={this.state.data.company_logo}
                   className="ms-1 me-3 col-2 rounded-circle companyImg"
                 />
@@ -365,6 +366,7 @@ export default class advisorProfile extends Component {
               <div className="  d-flex flex-row col-12 col-md-4 justify-content-end btnmovement">
                 {this.state.saved == true ? (
                   <BsFillBookmarkFill
+                    alt="saved internship opportunity post"
                     id="BsBookmark"
                     fill="#1e4274"
                     className="fs-2 align-self-center col-md-2 col-4"
@@ -376,6 +378,7 @@ export default class advisorProfile extends Component {
                   />
                 ) : this.state.saved == false ? (
                   <BsBookmark
+                    alt="save internship opportunity post for later"
                     id="BsBookmark"
                     fill="#1e4274"
                     className="fs-2 align-self-center col-md-2 col-4"
@@ -387,12 +390,7 @@ export default class advisorProfile extends Component {
                 ) : (
                   ""
                 )}
-                {/* <BsBookmark
-                  id='BsBookmark'
-                  color='#1e4274'
-                  className='fs-2 align-self-center col-md-2 col-4'
-                  path='0px'
-                /> */}
+
                 {this.state.applied == true ? (
                   <button
                     className="text-center applyBtn px-1 py-0 col-md-4 col-lg-6 col-8 col-sm-8 "
@@ -564,6 +562,8 @@ class CarouselReviews extends Component {
                 edit={false}
                 size={23}
                 activeColor="#F2A23A"
+                aria-label={this.props.rate}
+                alt={this.props.rate}
               />
             </div>
           </div>

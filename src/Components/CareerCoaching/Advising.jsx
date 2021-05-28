@@ -229,6 +229,7 @@ export default class CareerCoaching extends Component {
                     className="d-flex flex-column col-md-1 d-none d-md-flex "
                   >
                     <img
+                      alt={this.state.title}
                       className="h-75 w-100 careercourseimg"
                       src={this.state.image}
                     />
