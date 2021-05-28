@@ -86,7 +86,7 @@ class Login extends React.Component {
                           <div className="col-md-11 col-lg-11 form-label-group input-field field">
                             <label className="label">Student Email</label>
                             <input
-                              alt="enter your email please"
+                              alt="enter your email  "
                               type="email"
                               className={
                                 this.state.error.emailErr
@@ -108,7 +108,7 @@ class Login extends React.Component {
                             <label className="label">Password</label>
                             <div className="d-flex">
                               <input
-                                alt="enter your password please"
+                                alt="enter your password  "
                                 type={this.state.hidden ? "password" : "text"}
                                 onChange={this.handlePasswordChange}
                                 className={

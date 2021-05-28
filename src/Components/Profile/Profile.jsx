@@ -107,6 +107,7 @@ class Profile extends Component {
           <div className="d-flex flex-row flex-wrap">
             {this.state.image ? (
               <img
+                alt=" Student Profile picture"
                 className="d-flex flex-column col-2 col-md-1 me-4 profileImage"
                 id="profilepp"
                 src={this.state.image}
@@ -161,6 +162,7 @@ class Profile extends Component {
               <div className="d-flex flex-row">
                 <div className="d-flex flex-column col-6 col-md-6">
                   <Link
+                    alt="generate Cv button"
                     id="bluebtn1"
                     renderAs="button"
                     className="btn shadow-none "

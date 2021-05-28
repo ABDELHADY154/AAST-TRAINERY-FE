@@ -12,6 +12,7 @@ export class Carousel extends Component {
         id="carouselExampleDark"
         className="carousel  slide mb-5"
         data-bs-ride="carousel"
+        // aria-label="Header carousel"
       >
         <div className="carousel-indicators ">
           <button
@@ -20,7 +21,7 @@ export class Carousel extends Component {
             data-bs-slide-to="0"
             className="active "
             aria-current="true"
-            aria-label="Slide 1"
+            aria-label=" header carousel Slide 1"
           ></button>
           <button
             type="button"

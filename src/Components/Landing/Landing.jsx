@@ -197,7 +197,7 @@ class Landing extends React.Component {
                 <div id="checklist" className="d-flex flex-column mt-3 ">
                   <div>
                     <BsCheck
-                      alt="checkmark"
+                      alt="bullet 1"
                       color="#cd8930"
                       fill="#cd8930"
                       className="fs-3"
@@ -209,7 +209,7 @@ class Landing extends React.Component {
 
                   <div className="mt-3">
                     <BsCheck
-                      alt="checkmark"
+                      alt="bullet 2"
                       color="#cd8930"
                       fill="#cd8930"
                       className="fs-3"
@@ -222,7 +222,7 @@ class Landing extends React.Component {
 
                   <div className="mt-3">
                     <BsCheck
-                      alt="checkmark"
+                      alt="bullet 3"
                       ccolor="#cd8930"
                       fill="#cd8930"
                       className="fs-3"

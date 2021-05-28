@@ -134,7 +134,7 @@ class Registry extends React.Component {
                           <div className="col-md-10 col-lg-11 form-label-group input-field">
                             <label className="label">Full Name</label>
                             <input
-                              alt="please enter your full name"
+                              alt="  enter your full name"
                               type="name"
                               className={
                                 this.state.error.fullName
@@ -156,7 +156,7 @@ class Registry extends React.Component {
                           <div className="col-md-10 col-lg-11 form-label-group input-field">
                             <label className="label">Student Email</label>
                             <input
-                              alt="please enter your student Email"
+                              alt="  enter your student Email"
                               type="email"
                               id="Email"
                               className={
@@ -181,7 +181,7 @@ class Registry extends React.Component {
                           <div className="row ">
                             <div class="col-4 col-lg-5 col-md-4 col-sm-4 col-xs-3 male form-check form-check-inline d-flex">
                               <input
-                                alt="gender male choice"
+                                alt="gender male "
                                 type="radio"
                                 name="inlineRadioOptions"
                                 id="inlineRadio1"
@@ -200,7 +200,7 @@ class Registry extends React.Component {
                             </div>
                             <div class=" female col-4 col-lg-5 col-md-4 col-sm-5 col-xs-3 checkbox form-check-inline d-flex">
                               <input
-                                alt="gender female choice"
+                                alt="gender female "
                                 className="radio signInput"
                                 type="radio"
                                 name="inlineRadioOptions"
@@ -230,7 +230,7 @@ class Registry extends React.Component {
                             <label className="label">Password</label>
                             <div className="d-flex">
                               <input
-                                alt="please enter your password"
+                                alt="  enter your password"
                                 type={this.state.hidden ? "password" : "text"}
                                 onChange={this.handlePasswordChange}
                                 className={
@@ -275,7 +275,7 @@ class Registry extends React.Component {
                           <div className="col-md-10 col-lg-11 form-label-group input-field">
                             <label className="label">Confirm Password</label>
                             <input
-                              alt="please enter your confirmed password"
+                              alt="  enter your confirmed password"
                               type={this.state.hidden ? "password" : "text"}
                               className={
                                 this.state.error.passwordConfErr
@@ -332,7 +332,7 @@ class Registry extends React.Component {
                           <div className="col-md-10 col-lg-11 form-label-group input-field">
                             <label className="label">Registration Number</label>
                             <input
-                              alt="please enter your regestration number"
+                              alt="  enter your registration number"
                               type="number"
                               className={
                                 this.state.error.regnumErr
