@@ -33,7 +33,7 @@ export default class Footer extends React.Component {
                         id="footlogo"
                         src={logo}
                         width="40%"
-                        alt="AAST Trainery Logo"
+                        alt="AAST Trainery AAST Trainery Logo"
                       ></img>
                       <p className="mt-2 ">
                         AAST Trainery was established in september 2020 by AAST
@@ -95,11 +95,11 @@ export default class Footer extends React.Component {
                   <li>
                     <a
                       href="https://www.instagram.com/trainerys/"
-                      alt="instagram page link"
+                      alt="AAST Trainery instagram page link"
                       target="_blank"
                     >
                       <FaInstagram
-                        alt="instagram page link logo"
+                        alt="AAST Trainery instagram page link logo"
                         color="#ffffff"
                         fill="#ffffff"
                         id="instagram"
@@ -107,19 +107,23 @@ export default class Footer extends React.Component {
                     </a>
                     <a
                       href="https://www.facebook.com/trainerys/"
-                      alt="facebook page link"
+                      alt="AAST Trainery facebook page link"
                       target="_blank"
                     >
                       <FaFacebookF
-                        alt="facebook page link logo"
+                        alt="AAST Trainery facebook page link logo"
                         color="#ffffff"
                         fill="#ffffff"
                         className="m-2"
                       />
                     </a>
-                    <a href="#" alt="linkedin page link" target="_blank">
+                    <a
+                      href="#"
+                      alt="AAST Trainery linkedin page link"
+                      target="_blank"
+                    >
                       <FaLinkedinIn
-                        alt="linkedin page link logo"
+                        alt="AAST Trainery linkedin page link logo"
                         color="#ffffff"
                         fill="#ffffff"
                         className="m-2"
@@ -139,7 +143,7 @@ export default class Footer extends React.Component {
             </div>
           </div>
           <ScrollTop
-            alt="Scroll to top "
+            alt="AAST Trainery Scroll to top "
             id="ST"
             text={<BsChevronUp id="st" fontSize="20px" fill="#cd8930" />}
             style={{

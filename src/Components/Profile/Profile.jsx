@@ -107,7 +107,7 @@ class Profile extends Component {
           <div className="d-flex flex-row flex-wrap">
             {this.state.image ? (
               <img
-                alt=" Student Profile picture"
+                alt="AAST Trainery Student Profile picture"
                 className="d-flex flex-column col-2 col-md-1 me-4 profileImage"
                 id="profilepp"
                 src={this.state.image}
@@ -162,7 +162,7 @@ class Profile extends Component {
               <div className="d-flex flex-row">
                 <div className="d-flex flex-column col-6 col-md-6">
                   <Link
-                    alt="generate Cv button"
+                    alt="AAST Trainery generate Cv button"
                     id="bluebtn1"
                     renderAs="button"
                     className="btn shadow-none "
@@ -240,6 +240,7 @@ class Profile extends Component {
                 </div>
                 <div className="d-flex flex-row info">
                   <MdSettingsPhone
+                    alt="Phone icon"
                     fill="white"
                     color="white"
                     className="me-2 icon"
@@ -251,6 +252,7 @@ class Profile extends Component {
                   style={{ textTransform: "capitalize" }}
                 >
                   <HiOutlineMail
+                    alt="mail icon"
                     fill="white"
                     color="white"
                     className="me-2 icon"
@@ -270,6 +272,7 @@ class Profile extends Component {
                   renderAs="button"
                   className="ms-3 plus"
                   to="Profile/Education"
+                  alt="add new "
                 >
                   +
                 </Link>
@@ -302,6 +305,7 @@ class Profile extends Component {
                   className="  ms-3 plus"
                   to="Profile/Experience"
                   // to="/Register"
+                  alt="add new "
                 >
                   +
                 </Link>
@@ -335,6 +339,7 @@ class Profile extends Component {
                   renderAs="button"
                   className="  ms-3 plus"
                   to="Profile/Courses"
+                  alt="add new "
                 >
                   +
                 </Link>
@@ -369,6 +374,7 @@ class Profile extends Component {
                   className="  ms-3 plus"
                   to="Profile/Skills"
                   style={{ width: " 1.5em", alignContent: "center" }}
+                  alt="add new "
                 >
                   +
                 </Link>
@@ -395,6 +401,7 @@ class Profile extends Component {
                     className=" plus plusmarginback "
                     to="Profile/Interest"
                     style={{ width: " 1.5em", alignContent: "center" }}
+                    alt="add new "
                   >
                     +
                   </Link>
@@ -442,6 +449,7 @@ class Profile extends Component {
                   className=" plus ms-3 plusmarginback"
                   to="Profile/Language"
                   style={{ width: " 1.5em", alignContent: "center" }}
+                  alt="add new "
                 >
                   +
                 </Link>
