@@ -8,6 +8,52 @@ import BigCard from "../Explore/BigCard";
 import BounceLoader from "react-spinners/BounceLoader";
 import LoadingOverlay from "react-loading-overlay";
 
+import algoliasearch from "algoliasearch/lite";
+import {
+  InstantSearch,
+  SearchBox,
+  Hits,
+  Pagination,
+} from "react-instantsearch-dom";
+const searchClient = algoliasearch(
+  "EC3VZ4G3BR",
+  "fb9c194ef7916f92cd83a53640839c34",
+);
+
+const getAdvisor = async id => {
+  await axios.get(`/W/student/advisor/${id}`).then(res => {
+    console.log(res.id);
+  });
+};
+const App = () => (
+  <InstantSearch searchClient={searchClient} indexName="posts_index">
+    <SearchBox autoFocus showLoadingIndicator />
+    <Hits
+      hitComponent={data => {
+        return (
+          <BigCard
+            title={data.hit.internship_title}
+            company_logo={data.hit.company.company_logo}
+            salary={data.hit.salary}
+            company_name={data.hit.company.company_name}
+            departments={data.hit.departments}
+            description={data.hit.desc}
+            tags={data.hit._tags}
+            application_deadline={data.hit.application_deadline}
+            advisor={data.hit.advisor}
+            post_type={data.hit.post_type}
+            sponsor_image={data.hit.sponsor_image}
+            key={data.hit.id}
+            // reviewed={data.hit.reviewed}
+            status={data.hit.status}
+            id={data.hit.id}
+            company_id={data.hit.company_id}
+          />
+        );
+      }}
+    />
+  </InstantSearch>
+);
 export class SearchD extends Component {
   constructor() {
     super();
@@ -32,7 +78,7 @@ export class SearchD extends Component {
     window.scrollTo(0, 0);
   }
 
-  createEcardElement = (data) => (
+  createEcardElement = data => (
     <BigCard
       key={data.id}
       title={data.title}
@@ -58,7 +104,7 @@ export class SearchD extends Component {
     this.setState({
       FormLoading: true,
     });
-    await axios.get("/departments").then((dep) => {
+    await axios.get("/departments").then(dep => {
       this.setState({
         departs: dep.data.response.data,
         loading: true,
@@ -71,7 +117,7 @@ export class SearchD extends Component {
       this.setState({ Search: this.props.location.params.value });
       await axios
         .get(`/W/student/search/${this.props.location.params.value}`)
-        .then((res) => {
+        .then(res => {
           if (res.status === 200) {
             this.setState({
               posts: res.data.response.data,
@@ -79,7 +125,7 @@ export class SearchD extends Component {
             });
           }
         })
-        .catch((error) => {
+        .catch(error => {
           this.setState({
             Error: "Search AAST-Trainery",
             FormLoading: false,
@@ -91,10 +137,10 @@ export class SearchD extends Component {
     }
   }
 
-  handleChange = (e) => {
+  handleChange = e => {
     this.setState({ Search: e.target.value });
   };
-  handleFormSubmit = async (e) => {
+  handleFormSubmit = async e => {
     e.preventDefault();
     if (this.state.dep !== "all") {
       var data = { department_id: this.state.dep };
@@ -112,7 +158,7 @@ export class SearchD extends Component {
 
       await axios
         .post(`/W/student/filterDep/${this.state.Search}?page=1`, data)
-        .then((res) => {
+        .then(res => {
           if (res.status === 200) {
             this.setState({
               posts: res.data.response.data,
@@ -121,7 +167,7 @@ export class SearchD extends Component {
           }
           console.log(data);
         })
-        .catch((error) => {
+        .catch(error => {
           this.setState({
             Error: "Search AAST-Trainery",
             FormLoading: false,
@@ -136,7 +182,7 @@ export class SearchD extends Component {
       console.log(this.state.Search);
       await axios
         .get(`/W/student/search/${this.state.Search}`)
-        .then((res) => {
+        .then(res => {
           if (res.status === 200) {
             this.setState({
               posts: res.data.response.data,
@@ -145,7 +191,7 @@ export class SearchD extends Component {
             });
           }
         })
-        .catch((error) => {
+        .catch(error => {
           this.setState({
             Error: "Search AAST-Trainery",
             FormLoading: false,
@@ -155,7 +201,7 @@ export class SearchD extends Component {
       this.setState({ Error: "Search AAST-Trainery", FormLoading: false });
     }
   };
-  handleSubmit = async (e) => {
+  handleSubmit = async e => {
     this.state.dep = e;
     this.setState({ FormLoading: true });
     var data = { department_id: this.state.dep };
@@ -169,7 +215,7 @@ export class SearchD extends Component {
 
       await axios
         .post(`/W/student/filterDep/${this.state.Search}?page=1`, data)
-        .then((res) => {
+        .then(res => {
           if (res.status === 200) {
             this.setState({
               posts: res.data.response.data,
@@ -178,7 +224,7 @@ export class SearchD extends Component {
           }
           // console.log(data);
         })
-        .catch((error) => {
+        .catch(error => {
           this.setState({
             Error: "Search AAST-Trainery",
             FormLoading: false,
@@ -193,7 +239,7 @@ export class SearchD extends Component {
 
       await axios
         .get(`/W/student/search/${this.state.Search}`)
-        .then((res) => {
+        .then(res => {
           if (res.status === 200) {
             this.setState({
               posts: res.data.response.data,
@@ -202,7 +248,7 @@ export class SearchD extends Component {
             });
           }
         })
-        .catch((error) => {
+        .catch(error => {
           this.setState({
             Error: "Search AAST-Trainery",
             FormLoading: false,
@@ -212,7 +258,7 @@ export class SearchD extends Component {
       this.setState({ Error: "Search AAST-Trainery", FormLoading: false });
     }
   };
-  previousPage = async (e) => {
+  previousPage = async e => {
     if (this.state.page > 1) {
       const newPage = this.state.page - 1;
       this.setState({
@@ -232,9 +278,9 @@ export class SearchD extends Component {
         await axios
           .post(
             `/W/student/filterDep/${this.state.Search}?page=${newPage}`,
-            data
+            data,
           )
-          .then((res) => {
+          .then(res => {
             if (res.status === 200) {
               this.setState({
                 posts: res.data.response.data,
@@ -242,7 +288,7 @@ export class SearchD extends Component {
               });
             }
           })
-          .catch((error) => {
+          .catch(error => {
             this.setState({
               Error: "Search AAST-Trainery",
               FormLoading: false,
@@ -257,14 +303,14 @@ export class SearchD extends Component {
 
         await axios
           .get(`/W/student/search/${this.state.Search}`)
-          .then((res) => {
+          .then(res => {
             if (res.status === 200) {
               this.setState({
                 posts: res.data.response.data,
               });
             }
           })
-          .catch((error) => {
+          .catch(error => {
             this.setState({
               Error: "Search AAST-Trainery",
               FormLoading: false,
@@ -275,7 +321,7 @@ export class SearchD extends Component {
       }
     }
   };
-  nextPage = async (e) => {
+  nextPage = async e => {
     const newPage = this.state.page + 1;
     this.setState({
       posts: [],
@@ -293,7 +339,7 @@ export class SearchD extends Component {
 
       await axios
         .post(`/W/student/filterDep/${this.state.Search}?page=${newPage}`, data)
-        .then((res) => {
+        .then(res => {
           if (res.status === 200) {
             this.setState({
               posts: res.data.response.data,
@@ -301,7 +347,7 @@ export class SearchD extends Component {
             });
           }
         })
-        .catch((error) => {
+        .catch(error => {
           this.setState({
             Error: "Search AAST-Trainery",
             FormLoading: false,
@@ -316,14 +362,14 @@ export class SearchD extends Component {
 
       await axios
         .get(`/W/student/search/${this.state.Search}`)
-        .then((res) => {
+        .then(res => {
           if (res.status === 200) {
             this.setState({
               posts: res.data.response.data,
             });
           }
         })
-        .catch((error) => {
+        .catch(error => {
           this.setState({
             Error: "Search AAST-Trainery",
             FormLoading: false,
@@ -342,7 +388,7 @@ export class SearchD extends Component {
           color={"#cd8930"}
           className="mx-5"
           styles={{
-            overlay: (base) => ({
+            overlay: base => ({
               ...base,
               background: "rgb(255, 255, 255)",
               stroke: "rgba(255, 0, 0, 0.5)",
@@ -357,9 +403,10 @@ export class SearchD extends Component {
                 id={this.state.Error ? "gold" : ""}
               >
                 {this.state.Error ? this.state.Error : "Search"}
-              </div>
+              </div>{" "}
+              <App />
               <div id="custom-search-input" className="my-4">
-                <form onSubmit={this.handleFormSubmit} id="fromSearch">
+                {/* <form onSubmit={this.handleFormSubmit} id="fromSearch">
                   <div class="input-group col-md-12 ">
                     <input
                       type="text"
@@ -380,7 +427,7 @@ export class SearchD extends Component {
                       </span>
                     </div>
                   </div>
-                </form>
+                </form> */}
               </div>{" "}
               <h3 className=" d-flex justify-content-start " id="gold">
                 Filter your result
@@ -400,13 +447,13 @@ export class SearchD extends Component {
                         id="radio signInput "
                         type="radio"
                         value="all"
-                        onClick={(e) => this.handleSubmit(e.target.value)}
+                        onClick={e => this.handleSubmit(e.target.value)}
                       />
                       All
                     </label>
                   </li>
                   {this.state.departs &&
-                    this.state.departs.map((departs) => (
+                    this.state.departs.map(departs => (
                       <li
                         className="nav-item infoTabs"
                         role="presentation"
@@ -417,7 +464,7 @@ export class SearchD extends Component {
                           name="inlineRadio1"
                           type="radio"
                           value={departs.id}
-                          onClick={(e) => this.handleSubmit(e.target.value)}
+                          onClick={e => this.handleSubmit(e.target.value)}
                         />
                         {departs.dep_name}
                       </li>

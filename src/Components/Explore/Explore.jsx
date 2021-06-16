@@ -44,7 +44,7 @@ class Explore extends Component {
       axios
         .get(`/W/student/posts?page=${this.state.page}`)
 
-        .then((todos) => {
+        .then(todos => {
           if (todos.status === 200) {
             this.setState({
               posts: todos.data.response.data,
@@ -54,7 +54,7 @@ class Explore extends Component {
             });
           }
         })
-        .catch((error) => {
+        .catch(error => {
           if (
             error.response.data.status === 401 ||
             error.response.data.status === 404
@@ -64,15 +64,15 @@ class Explore extends Component {
             this.setState({ loggedIn: false });
             window.location.reload();
           }
-        })
+        }),
     );
   }
 
-  toggleSave = (e) => {
+  toggleSave = e => {
     this.setState({ saved: !this.state.saved ? true : false });
   };
 
-  previousPage = async (e) => {
+  previousPage = async e => {
     if (this.state.page > 1) {
       const newPage = this.state.page - 1;
       this.setState({
@@ -83,7 +83,7 @@ class Explore extends Component {
       await resolve(
         axios
           .get(`/W/student/posts?page=${newPage}`)
-          .then((todos) => {
+          .then(todos => {
             if (todos.status === 200) {
               this.setState({
                 posts: todos.data.response.data,
@@ -91,7 +91,7 @@ class Explore extends Component {
               });
             }
           })
-          .catch((error) => {
+          .catch(error => {
             if (
               error.response.data.status === 401 ||
               error.response.data.status === 404
@@ -101,11 +101,11 @@ class Explore extends Component {
               this.setState({ loggedIn: false });
               window.location.reload();
             }
-          })
+          }),
       );
     }
   };
-  nextPage = async (e) => {
+  nextPage = async e => {
     const newPage = this.state.page + 1;
     this.setState({
       posts: [],
@@ -115,7 +115,7 @@ class Explore extends Component {
     await resolve(
       axios
         .get(`/W/student/posts?page=${newPage}`)
-        .then((todos) => {
+        .then(todos => {
           if (todos.status === 200) {
             this.setState({
               posts: todos.data.response.data,
@@ -123,7 +123,7 @@ class Explore extends Component {
             });
           }
         })
-        .catch((error) => {
+        .catch(error => {
           if (
             error.response.data.status === 401 ||
             error.response.data.status === 404
@@ -133,7 +133,7 @@ class Explore extends Component {
             this.setState({ loggedIn: false });
             window.location.reload();
           }
-        })
+        }),
     );
   };
 
@@ -213,7 +213,7 @@ class Explore extends Component {
             color={"#cd8930"}
             className="mx-5"
             styles={{
-              overlay: (base) => ({
+              overlay: base => ({
                 ...base,
                 background: "rgb(255, 255, 255)",
                 stroke: "rgba(255, 0, 0, 0.5)",
@@ -228,7 +228,7 @@ class Explore extends Component {
                     class="form-control input-lg"
                     placeholder="Write something"
                     // onChange={this.handleChange}
-                    onChange={(e) => {
+                    onChange={e => {
                       this.setState({ Search: e.target.value });
                     }}
                     value={this.state.Search ? this.state.Search : ""}
@@ -245,12 +245,14 @@ class Explore extends Component {
                 </div>
               </form>
             </div>
-
+            {/* <div id="custom-search-input" className="my-4"> */}
+            {/* <App /> */}
+            {/* </div> */}
             <div className="flex-column mb-4">
               <div className="col-md-12">
                 <div className="col-md-12">
                   {this.state.posts
-                    ? this.state.posts.map((data) => {
+                    ? this.state.posts.map(data => {
                         return (
                           <BigCard
                             title={data.title}

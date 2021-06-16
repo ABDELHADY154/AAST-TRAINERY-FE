@@ -31,7 +31,7 @@ export class SearchS extends Component {
     };
     window.scrollTo(0, 0);
   }
-  createEcardElement = (data) => (
+  createEcardElement = data => (
     <BigCard
       key={data.id}
       title={data.title}
@@ -64,7 +64,7 @@ export class SearchS extends Component {
       });
       await axios
         .get(`/W/student/search/${this.props.location.params.value}`)
-        .then((res) => {
+        .then(res => {
           if (res.status === 200) {
             this.setState({
               posts: res.data.response.data,
@@ -75,7 +75,7 @@ export class SearchS extends Component {
             });
           }
         })
-        .catch((error) => {
+        .catch(error => {
           this.setState({
             Error: "Search AAST-Trainery",
             FormLoading: false,
@@ -86,10 +86,10 @@ export class SearchS extends Component {
       this.setState({ FormLoading: false });
     }
   }
-  handleChange = (e) => {
+  handleChange = e => {
     this.setState({ Search: e.target.value });
   };
-  handleFormSubmit = async (e) => {
+  handleFormSubmit = async e => {
     e.preventDefault();
     // console.log();
     if (this.state.state !== "all") {
@@ -108,7 +108,7 @@ export class SearchS extends Component {
       this.setState({ Search: this.state.Search.trim() });
       await axios
         .post(`/W/student/filterState/${this.state.Search}?page=1`, data)
-        .then((res) => {
+        .then(res => {
           if (res.status === 200) {
             this.setState({
               posts: res.data.response.data,
@@ -116,7 +116,7 @@ export class SearchS extends Component {
             });
           }
         })
-        .catch((error) => {
+        .catch(error => {
           this.setState({
             Error: "Search AAST-Trainery",
             FormLoading: false,
@@ -130,7 +130,7 @@ export class SearchS extends Component {
       this.setState({ Search: this.state.Search.trim() });
       await axios
         .get(`/W/student/search/${this.state.Search}`)
-        .then((res) => {
+        .then(res => {
           if (res.status === 200) {
             this.setState({
               posts: res.data.response.data,
@@ -138,7 +138,7 @@ export class SearchS extends Component {
             });
           }
         })
-        .catch((error) => {
+        .catch(error => {
           this.setState({
             Error: "Search AAST-Trainery",
             FormLoading: false,
@@ -148,7 +148,7 @@ export class SearchS extends Component {
       this.setState({ Error: "Search AAST-Trainery", FormLoading: false });
     }
   };
-  handleSubmit = async (e) => {
+  handleSubmit = async e => {
     this.state.state = e;
     console.log(this.state.state);
     this.setState({ FormLoading: true });
@@ -163,7 +163,7 @@ export class SearchS extends Component {
 
       await axios
         .post(`/W/student/filterState/${this.state.Search}?page=1`, data)
-        .then((res) => {
+        .then(res => {
           if (res.status === 200) {
             this.setState({
               posts: res.data.response.data,
@@ -171,7 +171,7 @@ export class SearchS extends Component {
             });
           }
         })
-        .catch((error) => {
+        .catch(error => {
           this.setState({
             Error: "Search AAST-Trainery",
             FormLoading: false,
@@ -186,7 +186,7 @@ export class SearchS extends Component {
 
       await axios
         .get(`/W/student/search/${this.state.Search}`)
-        .then((res) => {
+        .then(res => {
           console.log(res);
 
           if (res.status === 200) {
@@ -197,7 +197,7 @@ export class SearchS extends Component {
             });
           }
         })
-        .catch((error) => {
+        .catch(error => {
           this.setState({
             Error: "Search AAST-Trainery",
             FormLoading: false,
@@ -207,7 +207,7 @@ export class SearchS extends Component {
       this.setState({ Error: "Search AAST-Trainery", FormLoading: false });
     }
   };
-  previousPage = async (e) => {
+  previousPage = async e => {
     if (this.state.page > 1) {
       const newPage = this.state.page - 1;
       this.setState({
@@ -227,9 +227,9 @@ export class SearchS extends Component {
         await axios
           .post(
             `/W/student/filterState/${this.state.Search}?page=${newPage}`,
-            data
+            data,
           )
-          .then((res) => {
+          .then(res => {
             if (res.status === 200) {
               this.setState({
                 posts: res.data.response.data,
@@ -238,7 +238,7 @@ export class SearchS extends Component {
             }
             console.log(data);
           })
-          .catch((error) => {
+          .catch(error => {
             this.setState({
               Error: "Search AAST-Trainery",
               FormLoading: false,
@@ -253,7 +253,7 @@ export class SearchS extends Component {
 
         await axios
           .get(`/W/student/search/${this.state.Search}`)
-          .then((res) => {
+          .then(res => {
             if (res.status === 200) {
               this.setState({
                 posts: res.data.response.data,
@@ -261,7 +261,7 @@ export class SearchS extends Component {
               });
             }
           })
-          .catch((error) => {
+          .catch(error => {
             this.setState({
               Error: "Search AAST-Trainery",
               FormLoading: false,
@@ -272,7 +272,7 @@ export class SearchS extends Component {
       }
     }
   };
-  nextPage = async (e) => {
+  nextPage = async e => {
     const newPage = this.state.page + 1;
     this.setState({
       posts: [],
@@ -291,9 +291,9 @@ export class SearchS extends Component {
       await axios
         .post(
           `/W/student/filterState/${this.state.Search}?page=${newPage}`,
-          data
+          data,
         )
-        .then((res) => {
+        .then(res => {
           if (res.status === 200) {
             this.setState({
               posts: res.data.response.data,
@@ -302,7 +302,7 @@ export class SearchS extends Component {
           }
           console.log(data);
         })
-        .catch((error) => {
+        .catch(error => {
           this.setState({
             Error: "Search AAST-Trainery",
             FormLoading: false,
@@ -317,14 +317,14 @@ export class SearchS extends Component {
 
       await axios
         .get(`/W/student/search/${this.state.Search}`)
-        .then((res) => {
+        .then(res => {
           if (res.status === 200) {
             this.setState({
               posts: res.data.response.data,
             });
           }
         })
-        .catch((error) => {
+        .catch(error => {
           this.setState({
             Error: "Search AAST-Trainery",
             FormLoading: false,
@@ -344,7 +344,7 @@ export class SearchS extends Component {
           color={"#cd8930"}
           className="mx-5"
           styles={{
-            overlay: (base) => ({
+            overlay: base => ({
               ...base,
               background: "rgb(255, 255, 255)",
               stroke: "rgba(255, 0, 0, 0.5)",
@@ -385,7 +385,7 @@ export class SearchS extends Component {
                 </form>
               </div>
               <h3 className=" d-flex justify-content-start " id="gold">
-                Filter your result
+                Filter your resultttt
               </h3>
               <SearchNav value={this.state.Search} />
               <form onSubmit={this.handleSubmit} id="depFrom">
@@ -402,7 +402,7 @@ export class SearchS extends Component {
                         id="radio signInput "
                         type="radio"
                         value="all"
-                        onClick={(e) => this.handleSubmit(e.target.value)}
+                        onClick={e => this.handleSubmit(e.target.value)}
                       />
                       All
                     </label>
@@ -414,7 +414,7 @@ export class SearchS extends Component {
                         name="inlineRadio1"
                         type="radio"
                         value="full time"
-                        onClick={(e) => this.handleSubmit(e.target.value)}
+                        onClick={e => this.handleSubmit(e.target.value)}
                       />
                       Full time
                     </label>
@@ -426,7 +426,7 @@ export class SearchS extends Component {
                         name="inlineRadio1"
                         type="radio"
                         value="part time"
-                        onClick={(e) => this.handleSubmit(e.target.value)}
+                        onClick={e => this.handleSubmit(e.target.value)}
                       />
                       Part time
                     </label>
