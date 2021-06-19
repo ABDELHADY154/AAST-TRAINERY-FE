@@ -27,31 +27,48 @@ const getAdvisor = async id => {
 };
 const App = () => (
   <InstantSearch searchClient={searchClient} indexName="posts_index">
-    <SearchBox autoFocus showLoadingIndicator />
-    <Hits
-      hitComponent={data => {
-        return (
-          <BigCard
-            title={data.hit.internship_title}
-            company_logo={data.hit.company.company_logo}
-            salary={data.hit.salary}
-            company_name={data.hit.company.company_name}
-            departments={data.hit.departments}
-            description={data.hit.desc}
-            tags={data.hit._tags}
-            application_deadline={data.hit.application_deadline}
-            advisor={data.hit.advisor}
-            post_type={data.hit.post_type}
-            sponsor_image={data.hit.sponsor_image}
-            key={data.hit.id}
-            // reviewed={data.hit.reviewed}
-            status={data.hit.status}
-            id={data.hit.id}
-            company_id={data.hit.company_id}
+    <div className="container">
+      <SearchBox autoFocus showLoadingIndicator />
+      <div className="mt-3">
+        <div className="col-12 d-flex flex-row nav">
+          <Hits
+            hitComponent={data => {
+              return (
+                <BigCard
+                  title={data.hit.internship_title}
+                  company_logo={data.hit.company.company_logo}
+                  salary={data.hit.salary}
+                  company_name={data.hit.company.company_name}
+                  departments={data.hit.departments}
+                  description={data.hit.desc}
+                  tags={data.hit._tags}
+                  application_deadline={data.hit.application_deadline}
+                  advisor={data.hit.advisor}
+                  post_type={data.hit.post_type}
+                  sponsor_image={data.hit.sponsor_image}
+                  key={data.hit.id}
+                  // reviewed={data.hit.reviewed}
+                  status={data.hit.status}
+                  id={data.hit.id}
+                  company_id={data.hit.company_id}
+                />
+              );
+            }}
           />
-        );
-      }}
-    />
+          <Pagination
+            // Optional parameters
+            defaultRefinement={1}
+            // showFirst={boolean}
+            // showPrevious={boolean}
+            // showNext={boolean}
+            // showLast={boolean}
+            // padding={number}
+            // totalPages={number}
+            // translations={object}
+          />
+        </div>
+      </div>
+    </div>
   </InstantSearch>
 );
 export class SearchD extends Component {
@@ -404,9 +421,8 @@ export class SearchD extends Component {
               >
                 {this.state.Error ? this.state.Error : "Search"}
               </div>{" "}
-              <App />
-              <div id="custom-search-input" className="my-4">
-                {/* <form onSubmit={this.handleFormSubmit} id="fromSearch">
+              {/* <div id="custom-search-input" className="my-4"> */}
+              {/* <form onSubmit={this.handleFormSubmit} id="fromSearch">
                   <div class="input-group col-md-12 ">
                     <input
                       type="text"
@@ -428,8 +444,8 @@ export class SearchD extends Component {
                     </div>
                   </div>
                 </form> */}
-              </div>{" "}
-              <h3 className=" d-flex justify-content-start " id="gold">
+              {/* </div>{" "} */}
+              {/* <h3 className=" d-flex justify-content-start " id="gold">
                 Filter your result
               </h3>{" "}
               <SearchNav value={this.state.Search} />
@@ -470,18 +486,18 @@ export class SearchD extends Component {
                       </li>
                     ))}
                 </ul>
-              </form>
+              </form> */}
             </div>
             <div className="container">
-              <div className="   ">
+              {/* <div className="   ">
                 <div className=" col-12 d-flex flex-row nav">
                   {this.state.posts != null &&
                     this.state.posts.map(this.createEcardElement)}
                 </div>
-              </div>
+              </div> */}
             </div>
           </div>
-          {this.state.posts.length == 0 ? (
+          {/* {this.state.posts.length == 0 ? (
             <div className="col-12">
               <img className="row center img-fluid mt-4 mb-5" src={search} />
             </div>
@@ -516,8 +532,10 @@ export class SearchD extends Component {
                 </ul>
               </nav>
             </div>
-          )}
+          )} */}
+          <App />
         </LoadingOverlay>
+
         <Footer2 />
       </div>
     );
