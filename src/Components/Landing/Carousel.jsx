@@ -1,4 +1,6 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
+
 import "../../layout/carousel.css";
 import img1 from "./Assets/bg1.png";
 import img2 from "./Assets/bg12.png";
@@ -10,6 +12,7 @@ export class Carousel extends Component {
         id="carouselExampleDark"
         className="carousel  slide mb-5"
         data-bs-ride="carousel"
+        // aria-label="Header carousel"
       >
         <div className="carousel-indicators ">
           <button
@@ -18,7 +21,7 @@ export class Carousel extends Component {
             data-bs-slide-to="0"
             className="active "
             aria-current="true"
-            aria-label="Slide 1"
+            aria-label=" header carousel Slide 1"
           ></button>
           <button
             type="button"
@@ -34,68 +37,79 @@ export class Carousel extends Component {
           ></button>
         </div>
         <div className="carousel-inner">
-          <div className="carousel-item active img1">
+          <div
+            className="carousel-item active img1"
+            alt="a laptop with a screen that reads Join us online"
+          >
             <div className="carousel-caption text-start caption ">
-              <h5 className="titleCarousel ">Your Career is Our Business</h5>
+              <h1 className="titleCarousel ">Your Career is Our Business</h1>
               <p className="textCarousel lh-sm">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut
-                dolor quis morbi sagittis donec sed massa. Velit malesuada amet
-                pretium turpis in commodo aliquet pulvinar ultrices.
+                We firmly believe that success starts from university years for
+                undergraduate students, and for that we want to secure your
+                success early on to excel in your chosen career path and guide
+                you through those years.
               </p>
 
-              <button className="btn btn-md carouselBtn shadow-none " href="#">
-                Sign up today
-              </button>
+              <Link to="/Register">
+                <button className="btn btn-md carouselBtn shadow-none">
+                  Sign Up today
+                </button>
+              </Link>
             </div>
           </div>
 
-          <div className="carousel-item img2" data-bs-interval="10000">
-            {/* <picture>
-              <source
-                srcset="https://dummyimage.com/2000x500/007aeb/4196e5"
-                media="(min-width: 1400px)"
-              />
-              <source
-                srcset="https://dummyimage.com/1400x500/#007aeb/4196e5"
-                media="(min-width: 769px)"
-              />
-              <source
-                srcset="https://dummyimage.com/800x500/007aeb/4196e5"
-                media="(min-width: 577px)"
-              />
-              <img
-                srcset="https://dummyimage.com/600x500/007aeb/4196e5"
-                alt="responsive image"
-                class="d-block img-fluid"
-              />
-            </picture> */}
+          <div
+            className="carousel-item img2"
+            data-bs-interval="10000"
+            alt="an eagle eye view of people sitting on a cafe casually and an old man walking past the tables"
+          >
             <div className="carousel-caption text-start caption">
-              <h5 className="titleCarousel">
+              <h1 className="titleCarousel">
                 Start Your Non-Experience Career
-              </h5>
+              </h1>
               <p className="textCarousel lh-sm">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut
-                dolor quis morbi sagittis donec sed massa. Velit malesuada amet
-                pretium turpis in commodo aliquet pulvinar ultrices.
+                A lot may think that you should have multiple skills in order to
+                earn an internship opportunity for your major or preffered area.
+                With Trainery, you won't only land impressive training jobs but
+                also you'll be able to grow and enhance your skill with us.
               </p>
-              <button className="btn btn-md carouselBtn shadow-none" href="#">
-                Sign up today
-              </button>
+              <Link
+                // renderAs="button"
+                // className="btn btn-nav shadow-none signUp col-xm-6  mx-1"
+                to="/Register"
+              >
+                <button className="btn btn-md carouselBtn shadow-none">
+                  Sign Up today
+                </button>
+              </Link>
             </div>
           </div>
-          <div className="carousel-item img3" data-bs-interval="10000">
+          <div
+            className="carousel-item img3"
+            data-bs-interval="10000"
+            alt="a man sitting on a desk with his back facing and focusing on the screen"
+          >
             <div className="carousel-caption  text-start caption">
-              <h5 className="titleCarousel">
+              <h1 className="titleCarousel">
                 Start Your Career Coaching Session
-              </h5>
+              </h1>
               <p className="textCarousel lh-sm">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut
-                dolor quis morbi sagittis donec sed massa. Velit malesuada amet
-                pretium turpis in commodo aliquet pulvinar ultrices.{" "}
+                We got your back anywhere and anytime to help you improve your
+                soft and technical skills and give you the guidance you need
+                with professional coaches to learn more about your future career
+                and job market
               </p>
-              <button className="btn btn-md carouselBtn shadow-none" href="#">
-                Sign up today
-              </button>
+
+              <Link
+                // renderAs="button"
+                // className="btn btn-nav shadow-none signUp col-xm-6  mx-1"
+                to="/Register"
+              >
+                <button className="btn btn-md carouselBtn shadow-none">
+                  Sign Up today
+                </button>
+              </Link>
+              {/* </button> */}
             </div>
           </div>
         </div>

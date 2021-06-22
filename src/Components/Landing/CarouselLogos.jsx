@@ -16,7 +16,7 @@ export class CarouselLogos extends Component {
   };
 
   async componentDidMount() {
-    await axios.get("/W/landingLogoes").then(data => {
+    await axios.get("/W/landingLogoes").then((data) => {
       // console.log(data.data.response.data);
       this.setState({
         logos: data.data.response.data,
@@ -67,71 +67,19 @@ export class CarouselLogos extends Component {
     return (
       <Slider {...settings}>
         {this.state.logos
-          ? this.state.logos.map(item => {
+          ? this.state.logos.map((item) => {
               return (
                 <div className="logo1">
-                  <img className="logoCaroImg" src={item.logo} />
+                  <img
+                    alt={item.company_name}
+                    className="logoCaroImg"
+                    src={item.logo}
+                  />
                 </div>
               );
             })
           : ""}
-        {/* <div>
-          <h3>1</h3>
-        </div> */}
       </Slider>
-      // <div>
-      //   <h2> Multiple items </h2>
-      //   <Slider {...settings}>
-      //     {this.state.logos? this.state.logos.map(item => {
-      //           return (
-      //             <div>
-      //               <img src={item.logo} />
-      //             </div>
-      //           );
-      //         })
-      //       : ""}
-      //     {/* <div>
-      //     <h3>1</h3>
-      //   </div> */}
-      //   </Slider>
-      // </div>
-      // <div
-      //   class="  LogoCarousel col-lg-9 col-10 col-sm-7 col-md-9 "
-      //   data-flickity='{ "freeScroll": true, "prevNextButtons": false, "groupCells": true, "asNavFor": ".carousel-main"}'
-      // >
-      // {this.state.logos    ? this.state.logos.map(item => {
-      //       return (
-      //         <div class=" logo1 size-180 carousel-cell-logo">
-      //           <img src={item.logo} className="img-responsive" />
-      //         </div>
-      //       );
-      //     })
-      //   : ""}
-
-      /* <div class=" logo1 size-180 carousel-cell-logo">
-          <img src={logo1} className="img-responsive" />
-        </div>
-        <div class=" logo1 size-180 carousel-cell-logo">
-          <img src={logo1} className="img-responsive" />
-        </div>
-        <div class=" logo1 size-180 carousel-cell-logo">
-          <img src={logo1} className="img-responsive" />
-        </div>
-        <div class=" logo1 size-180 carousel-cell-logo">
-          <img src={logo1} className="img-responsive" />
-        </div>
-        <div class="logo1 size-180 carousel-cell-logo">
-          <img src={logo1} className="img-responsive" />
-        </div>
-        <div class=" logo1 size-180 carousel-cell-logo">
-          <img src={logo1} className="img-responsive" />
-        </div>
-        <div class=" logo1 size-180 carousel-cell-logo">
-          <img src={logo1} className="img-responsive" />
-        </div>
-        <div class="logo1 size-180 carousel-cell-logo">
-          <img src={logo1} className="img-responsive" />
-        </div> */
     );
   }
 }

@@ -44,7 +44,7 @@ class Explore extends Component {
       axios
         .get(`/W/student/posts?page=${this.state.page}`)
 
-        .then((todos) => {
+        .then(todos => {
           if (todos.status === 200) {
             this.setState({
               posts: todos.data.response.data,
@@ -54,22 +54,25 @@ class Explore extends Component {
             });
           }
         })
-        .catch((error) => {
-          if (error.response.data.status === 401 || error.response.data.status === 404) {
+        .catch(error => {
+          if (
+            error.response.data.status === 401 ||
+            error.response.data.status === 404
+          ) {
             sessionStorage.clear("token");
             sessionStorage.clear("status");
             this.setState({ loggedIn: false });
             window.location.reload();
           }
-        })
+        }),
     );
   }
 
-  toggleSave = (e) => {
+  toggleSave = e => {
     this.setState({ saved: !this.state.saved ? true : false });
   };
 
-  previousPage = async (e) => {
+  previousPage = async e => {
     if (this.state.page > 1) {
       const newPage = this.state.page - 1;
       this.setState({
@@ -80,7 +83,7 @@ class Explore extends Component {
       await resolve(
         axios
           .get(`/W/student/posts?page=${newPage}`)
-          .then((todos) => {
+          .then(todos => {
             if (todos.status === 200) {
               this.setState({
                 posts: todos.data.response.data,
@@ -88,7 +91,7 @@ class Explore extends Component {
               });
             }
           })
-          .catch((error) => {
+          .catch(error => {
             if (
               error.response.data.status === 401 ||
               error.response.data.status === 404
@@ -98,11 +101,11 @@ class Explore extends Component {
               this.setState({ loggedIn: false });
               window.location.reload();
             }
-          })
+          }),
       );
     }
   };
-  nextPage = async (e) => {
+  nextPage = async e => {
     const newPage = this.state.page + 1;
     this.setState({
       posts: [],
@@ -112,7 +115,7 @@ class Explore extends Component {
     await resolve(
       axios
         .get(`/W/student/posts?page=${newPage}`)
-        .then((todos) => {
+        .then(todos => {
           if (todos.status === 200) {
             this.setState({
               posts: todos.data.response.data,
@@ -120,14 +123,17 @@ class Explore extends Component {
             });
           }
         })
-        .catch((error) => {
-          if (error.response.data.status === 401 || error.response.data.status === 404) {
+        .catch(error => {
+          if (
+            error.response.data.status === 401 ||
+            error.response.data.status === 404
+          ) {
             sessionStorage.clear("token");
             sessionStorage.clear("status");
             this.setState({ loggedIn: false });
             window.location.reload();
           }
-        })
+        }),
     );
   };
 
@@ -141,7 +147,7 @@ class Explore extends Component {
         <Redirect
           to={{
             pathname: "/Search/d",
-            params: { val: this.state.Search },
+            params: { value: this.state.Search },
           }}
         />
       );
@@ -149,37 +155,40 @@ class Explore extends Component {
     if (this.state.user.profile_updated === false) {
       var Alert =
         this.state.alert == true ? (
-          <div id='alerting' className='d-flex flex-row  flex-wrap py-2  mb-3 '>
-            <div className='container d-flex flex-row  flex-wrap '>
-              <div id='alertingtitle' className='d-flex flex-column col-md-6 col-12 mt-1'>
-                Here to help, Update your profile information to get the best matching
-                opportunities.
+          <div id="alerting" className="d-flex flex-row  flex-wrap py-2  mb-3 ">
+            <div className="container d-flex flex-row  flex-wrap ">
+              <div
+                id="alertingtitle"
+                className="d-flex flex-column col-md-6 col-12 mt-1"
+              >
+                Here to help, Update your profile information to get the best
+                matching opportunities.
               </div>
-              <div className='d-flex flex-column col-md-4 col-12  mt-1'>
+              <div className="d-flex flex-column col-md-4 col-12  mt-1">
                 <Link
-                  className='texttt fs-3 col-12 col-md-12 '
-                  renderAs='button'
-                  id='redlink'
-                  className=' shadow-none  '
-                  to='/Profile/General'
+                  className="texttt fs-3 col-12 col-md-12 "
+                  renderAs="button"
+                  id="redlink"
+                  className=" shadow-none  "
+                  to="/Profile/General"
                 >
                   Update Now
                 </Link>
               </div>
-              <div className='d-flex flex-column col-md-2'>
+              <div className="d-flex flex-column col-md-2">
                 <button
                   onClick={() => {
                     this.setState({ alert: false });
                   }}
-                  id='closed'
-                  className='btn p-0'
-                  type='button'
-                  data-bs-toggle='collapse'
-                  data-bs-target='#alerting'
-                  aria-expanded='true'
-                  aria-controls='alerting'
+                  id="closed"
+                  className="btn p-0"
+                  type="button"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#alerting"
+                  aria-expanded="true"
+                  aria-controls="alerting"
                 >
-                  <IoClose fill='red' color='red' />
+                  <IoClose fill="red" color="red" />
                 </button>
               </div>
             </div>
@@ -190,43 +199,45 @@ class Explore extends Component {
     }
 
     return (
-      <div className='container-fluid mt-5 '>
+      <div className="container-fluid mt-5 ">
         {Alert}
-        <div className='container'>
-          <div className='fs-3 mt-5 mb-3 text-center'>Explore Training Opportunities</div>
-          <p className='text-center mt-2 stext'>Your Career is Our Business</p>
+        <div className="container">
+          <div className="fs-3 mt-5 mb-3 text-center">
+            Explore Training Opportunities
+          </div>
+          <p className="text-center mt-2 stext">Your Career is Our Business</p>
           {/* BIG CARD WITH ADVISOR */}
           <LoadingOverlay
             active={this.state.FormLoading}
-            spinner={<BounceLoader color='#cd8930' />}
+            spinner={<BounceLoader color="#cd8930" />}
             color={"#cd8930"}
-            className='mx-5'
+            className="mx-5"
             styles={{
-              overlay: (base) => ({
+              overlay: base => ({
                 ...base,
                 background: "rgb(255, 255, 255)",
                 stroke: "rgba(255, 0, 0, 0.5)",
               }),
             }}
           >
-            <div id='custom-search-input' className='my-4'>
-              <form onSubmit={this.handleSubmit} id='fromSearch'>
-                <div class='input-group col-md-12 '>
+            <div id="custom-search-input" className="my-4">
+              <form onSubmit={this.handleSubmit} id="fromSearch">
+                <div class="input-group col-md-12 ">
                   <input
-                    type='text'
-                    class='form-control input-lg'
-                    placeholder='Write something'
+                    type="text"
+                    class="form-control input-lg"
+                    placeholder="Write something"
                     // onChange={this.handleChange}
-                    onChange={(e) => {
+                    onChange={e => {
                       this.setState({ Search: e.target.value });
                     }}
                     value={this.state.Search ? this.state.Search : ""}
                     required
                   />
 
-                  <div class='input-group-btn'>
-                    <span class='input-group-btn'>
-                      <button class='btn border-left btn-lg' type='submit'>
+                  <div class="input-group-btn">
+                    <span class="input-group-btn">
+                      <button class="btn border-left btn-lg" type="submit">
                         <BsSearch value={{ color: "blue" }} />
                       </button>
                     </span>
@@ -234,12 +245,15 @@ class Explore extends Component {
                 </div>
               </form>
             </div>
-
-            <div className='flex-column mb-4'>
-              <div className='col-md-12'>
-                <div className='col-md-12'>
+            {/* <div id="custom-search-input" className="my-4"> */}
+            {/* <App /> */}
+            {/* </div> */}
+            <div className="flex-column mb-4">
+              <div className="col-md-12">
+                <div className="col-md-12">
                   {this.state.posts
-                    ? this.state.posts.map((data) => {
+                    ? this.state.posts.map(data => {
+                        console.log(data.sponsor_image);
                         return (
                           <BigCard
                             title={data.title}
@@ -254,9 +268,8 @@ class Explore extends Component {
                             post_type={data.post_type}
                             sponsor_image={data.sponsor_image}
                             key={data.id}
-                            saved={data.saved}
-                            applied={data.applied}
-                            accepted={data.accepted}
+                            reviewed={data.reviewed}
+                            status={data.status}
                             id={data.id}
                             company_id={data.company_id}
                           />
@@ -269,23 +282,27 @@ class Explore extends Component {
           </LoadingOverlay>
         </div>
 
-        <div className='text-center stext  my-4'>
-          <nav aria-label='Page navigation example'>
-            <ul class='pagination justify-content-center'>
-              <li class={this.state.page > 1 ? "page-item " : "page-item disabled"}>
+        <div className="text-center stext  my-4">
+          <nav aria-label="Page navigation example">
+            <ul class="pagination justify-content-center">
+              <li
+                class={
+                  this.state.page > 1 ? "page-item " : "page-item disabled"
+                }
+              >
                 <button
-                  class='page-link'
+                  class="page-link"
                   onClick={this.previousPage}
-                  tabindex='-1'
+                  tabindex="-1"
                   style={{ color: "#1E4274" }}
                 >
                   Previous
                 </button>
               </li>
 
-              <li class='page-item'>
+              <li class="page-item">
                 <button
-                  class='page-link'
+                  class="page-link"
                   onClick={this.nextPage}
                   style={{ color: "#1E4274" }}
                 >

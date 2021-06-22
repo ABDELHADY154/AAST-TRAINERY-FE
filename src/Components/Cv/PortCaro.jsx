@@ -8,7 +8,7 @@ import { axios } from "../../Api/axios";
 import { FaFacebookF, FaLinkedinIn, FaYoutube } from "react-icons/fa";
 import "../../layout/CareerCoaching.css";
 
-export default class CoachCaro extends Component {
+export default class PortCaro extends Component {
   state = {
     data: [],
   };
@@ -32,8 +32,8 @@ export default class CoachCaro extends Component {
       dots: true,
       infinite: true,
       speed: 500,
-      slidesToShow: 4,
-      slidesToScroll: 4,
+      slidesToShow: 3,
+      slidesToScroll: 3,
       initialSlide: 0,
       pauseOnHover: true,
       // fade: true,
@@ -42,8 +42,8 @@ export default class CoachCaro extends Component {
         {
           breakpoint: 1024,
           settings: {
-            slidesToShow: 3,
-            slidesToScroll: 3,
+            slidesToShow: 2,
+            slidesToScroll: 2,
             infinite: true,
             dots: true,
           },
@@ -51,8 +51,8 @@ export default class CoachCaro extends Component {
         {
           breakpoint: 600,
           settings: {
-            slidesToShow: 2,
-            slidesToScroll: 2,
+            slidesToShow: 1,
+            slidesToScroll: 1,
             initialSlide: 2,
           },
         },
@@ -74,7 +74,6 @@ export default class CoachCaro extends Component {
                 return (
                   <div className="containerrr col-md-12 col-12">
                     <img
-                      alt={data.name}
                       src={data.image}
                       id="imagehoverr"
                       className="d-flex flex-column col-md-3 col-12 rounded "
@@ -98,7 +97,6 @@ export default class CoachCaro extends Component {
                         <li>
                           <a href={data.fb_url}>
                             <FaFacebookF
-                              alt="facebook page  "
                               color="#ffffff"
                               fill="#ffffff"
                               className="m-2"
@@ -106,7 +104,6 @@ export default class CoachCaro extends Component {
                           </a>
                           <a href={data.in_url}>
                             <FaLinkedinIn
-                              alt="linkedin page  "
                               color="#ffffff"
                               fill="#ffffff"
                               className="m-2"
@@ -114,7 +111,6 @@ export default class CoachCaro extends Component {
                           </a>
                           <a href={data.y_url}>
                             <FaYoutube
-                              alt="youtube page "
                               color="#ffffff"
                               fill="#ffffff"
                               className="m-2"
