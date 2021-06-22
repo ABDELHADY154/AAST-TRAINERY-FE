@@ -253,6 +253,7 @@ class Explore extends Component {
                 <div className="col-md-12">
                   {this.state.posts
                     ? this.state.posts.map(data => {
+                        console.log(data.sponsor_image);
                         return (
                           <BigCard
                             title={data.title}
