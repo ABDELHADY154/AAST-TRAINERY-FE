@@ -120,7 +120,10 @@ export class SearchD extends Component {
       this.props.location.params &&
       this.props.location.params.value !== undefined
     ) {
-      this.setState({ Search: this.props.location.params.value });
+      this.setState({
+        Search: this.props.location.params.value,
+        FormLoading: false,
+      });
       // await axios
       //   .get(`/W/student/search/${this.props.location.params.value}`)
       //   .then(res => {
