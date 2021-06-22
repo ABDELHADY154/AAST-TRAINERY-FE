@@ -73,7 +73,7 @@ const App = props => (
                   application_deadline={data.hit.application_deadline}
                   advisor={data.hit.advisor}
                   post_type={data.hit.post_type}
-                  sponsor_image={data.hit.sponsor_image}
+                  sponsor_image={data.hit.ad}
                   key={data.hit.id}
                   // reviewed={data.hit.reviewed}
                   status={data.hit.status}
@@ -129,6 +129,7 @@ export class SearchD extends Component {
         Search: this.props.location.params.value,
         FormLoading: false,
       });
+
       this.props.location.params = null;
     } else {
       this.setState({ FormLoading: false });

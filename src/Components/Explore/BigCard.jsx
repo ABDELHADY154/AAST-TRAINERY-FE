@@ -195,6 +195,7 @@ export class BigCard extends Component {
             <p className="card-text mt-2 mb-0 Lines">
               {this.props.description}
             </p>
+
             {this.props.post_type === "adsPost" ? (
               <div className=" mb-0">
                 <img
@@ -224,22 +225,26 @@ export class BigCard extends Component {
               id='imgicon'
               src={this.props.sponsor_image}
             /> */}
-            <div className=" mt-2 mb-1 col-12  col-md-12">
-              {this.props.tags
-                ? this.props.tags.map((x, i) => {
-                    return (
-                      <a
-                        // href="#"
-                        className=" ms-1"
-                        id="tagsipad"
-                        alt="AAST Trainery post tags"
-                      >
-                        {x.interest ? x.interest : ""}
-                      </a>
-                    );
-                  })
-                : ""}
-            </div>
+            {this.props.post_type !== "adsPost" ? (
+              <div className=" mt-2 mb-1 col-12  col-md-12">
+                {this.props.tags
+                  ? this.props.tags.map((x, i) => {
+                      return (
+                        <a
+                          // href="#"
+                          className=" ms-1"
+                          id="tagsipad"
+                          alt="AAST Trainery post tags"
+                        >
+                          {x.interest ? x.interest : ""}
+                        </a>
+                      );
+                    })
+                  : ""}
+              </div>
+            ) : (
+              ""
+            )}
             <div
               className="d-flex flex-row justify-content-between smallres align-items-end "
               id="bottom"
