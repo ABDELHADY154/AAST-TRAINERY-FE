@@ -1,0 +1,5 @@
+RewriteEngine on
+RewriteCond %{HTTP_HOST} ^aast-trainery.com$ [NC,OR]
+RewriteCond %{HTTP_HOST} ^www.aast-trainery.com$
+RewriteCond %{REQUEST_URI} !trainery/
+RewriteRule (.*) /trainery/$1 [L]
