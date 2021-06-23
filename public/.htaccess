@@ -1,7 +1,4 @@
-
-
-
-{HTTP_HOST} ^aast-trainery.com$ [NC,OR]
-RewriteCond %{HTTP_HOST} ^www.aast-trainery.com$
-RewriteCond %{REQUEST_URI} !trainery/build/
-RewriteRule (.*) /trainery/build/$1 [L]
+Options -MultiViews
+RewriteEngine On
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^ index.html [QSA,L]
