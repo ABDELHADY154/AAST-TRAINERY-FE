@@ -15,7 +15,7 @@ import {
   Hits,
   Pagination,
   PoweredBy,
-  HitsPerPage,
+  SortBy,
   RefinementList,
 } from "react-instantsearch-dom";
 const searchClient = algoliasearch(
@@ -41,14 +41,14 @@ const App = props => (
           flexWrap: "wrap",
         }}
       >
-        <div className="col-md-10 col-12">
+        <div className="col-md-11 col-12">
           <SearchBox
             autoFocus
             showLoadingIndicator
             defaultRefinement={props.value}
           />
         </div>
-        <div className="col-md-2 col-12">
+        <div className="col-md-1 col-12">
           <PoweredBy />
         </div>
       </div>

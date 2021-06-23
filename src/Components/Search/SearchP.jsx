@@ -41,10 +41,14 @@ const App = props => (
           flexWrap: "wrap",
         }}
       >
-        <div className="col-md-10 col-12">
-          <SearchBox autoFocus showLoadingIndicator />
+        <div className="col-md-11 col-12">
+          <SearchBox
+            autoFocus
+            showLoadingIndicator
+            defaultRefinement={props.value}
+          />
         </div>
-        <div className="col-md-2 col-12">
+        <div className="col-md-1 col-12">
           <PoweredBy />
         </div>
       </div>
@@ -124,22 +128,6 @@ class SearchD extends Component {
         Search: this.props.location.params.value,
         FormLoading: false,
       });
-      // await axios
-      //   .get(`/W/student/search/${this.props.location.params.value}`)
-      //   .then(res => {
-      //     if (res.status === 200) {
-      //       this.setState({
-      //         posts: res.data.response.data,
-      //         FormLoading: false,
-      //       });
-      //     }
-      //   })
-      //   .catch(error => {
-      //     this.setState({
-      //       Error: "Search AAST-Trainery",
-      //       FormLoading: false,
-      //     });
-      //   });
 
       this.props.location.params = null;
     } else {
