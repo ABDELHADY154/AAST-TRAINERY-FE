@@ -91,7 +91,7 @@ const App = props => (
     </div>
   </InstantSearch>
 );
-export class SearchD extends Component {
+class SearchD extends Component {
   constructor() {
     super();
     this.state = {

@@ -145,6 +145,10 @@ class SearchD extends Component {
     } else {
       this.setState({ FormLoading: false });
     }
+    this.setState({
+      // Search: this.props.location.params.value,
+      FormLoading: false,
+    });
   }
 
   render() {
