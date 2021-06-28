@@ -21,6 +21,7 @@ export class BigCard extends Component {
     // this.handleSave = this.handleSave.bind(this);
   }
   componentDidMount() {
+    console.log(this.props)
     if (this.props.saved === true) {
       this.setState({
         saved: true,

@@ -16,7 +16,7 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
-export default class advisorProfile extends Component {
+export default class Opportunity extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -31,6 +31,7 @@ export default class advisorProfile extends Component {
       requirements: [],
       FormLoading: true,
       saved: false,
+      applied:false,
     };
     window.scrollTo(0, 0);
   }
@@ -50,6 +51,8 @@ export default class advisorProfile extends Component {
           departments: res.data.response.data.departments,
           tags: res.data.response.data.tags,
           requirements: res.data.response.data.requirements,
+          saved:res.data.response.data.saved,
+          applied:res.data.response.data.status,
           FormLoading: false,
         });
         if (this.state.data.saved === true) {
@@ -57,7 +60,7 @@ export default class advisorProfile extends Component {
             saved: true,
           });
         }
-        if (this.state.data.applied === true) {
+        if (this.state.applied == "applied") {
           this.setState({
             applied: true,
           });
@@ -72,7 +75,7 @@ export default class advisorProfile extends Component {
       .get(`/W/student/review/${this.props.match.params.id}`)
       .then((res) => {
         this.setState({
-          id: res.data.response.data.id,
+          // id: res.data.response.data.id,
           review: res.data.response.data,
         });
         // console.log(res.data.response.data.errors);
@@ -83,6 +86,7 @@ export default class advisorProfile extends Component {
   }
   handleSave = async (e) => {
     this.setState({ saved: !this.state.saved ? true : false });
+    console.log()
     await axios
       .post(`/W/student/save/${this.state.data.id}`)
       .then((save) => {
@@ -154,9 +158,8 @@ export default class advisorProfile extends Component {
   };
   handleunApple = async (e) => {
     this.setState({ applied: !this.state.applied ? true : false });
-
-    await axios
-      .post(`/W/student/apply/${this.state.data.id}`)
+ await axios
+      .post(`/W/student/unApply/${this.state.data.id}`)
       .then((unapply) => {
         if (unapply.status === 200) {
           this.setState({
@@ -175,6 +178,7 @@ export default class advisorProfile extends Component {
           window.location.reload();
         }
       });
+   
   };
   handleReview = async (e) => {
     this.setState({ FormLoading: true });
@@ -212,7 +216,7 @@ export default class advisorProfile extends Component {
       });
   };
   render() {
-    console.log(this.state.review);
+    // console.log(this.state.review);
     const settings = {
       dots: true,
       infinite: true,
