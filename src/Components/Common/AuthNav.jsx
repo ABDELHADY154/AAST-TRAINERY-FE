@@ -359,12 +359,11 @@ class AuthNav extends React.Component {
                             <hr class="dropdown-divider profileHr invs" />
 
                             <li>
-                            <Link
+                              <Link
                                 class="row "
                                 to="/AboutUs"
                                 renderAs="button"
                               >
-                              <a class="row " href="#">
                                 <MdInfoOutline
                                   color="red"
                                   className="col-3 mt-1 ms-2"
@@ -373,8 +372,7 @@ class AuthNav extends React.Component {
                                   pull="left"
                                 />
                                 <p className="col-7">About Us</p>
-                              </a>
-                              </Link >
+                              </Link>
                             </li>
                             <li>
                               <Link
@@ -389,17 +387,16 @@ class AuthNav extends React.Component {
                                   size="18px"
                                   pull="left"
                                 />
-                                <p className="col-9">Account setting</p>
+                                <p className="col-9">Account settings</p>
                               </Link>
                             </li>
 
                             <li>
-                            <Link
+                              <Link
                                 class="row "
-                                to="/contactus"
+                                to="/contactUs"
                                 renderAs="button"
                               >
-                              <a class="row " href="#">
                                 <MdPermPhoneMsg
                                   color="red"
                                   className="col-3 mt-1 ms-2"
@@ -408,7 +405,6 @@ class AuthNav extends React.Component {
                                   pull="left"
                                 />
                                 <p className="col-7">Contact Us</p>
-                              </a>
                               </Link>
                             </li>
 
