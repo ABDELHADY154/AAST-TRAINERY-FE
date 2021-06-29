@@ -11,19 +11,8 @@ import { HiOutlineMail } from "react-icons/hi";
 import { MdSettingsPhone } from "react-icons/md";
 
 class contactUs extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      scrollPixelsY: 0,
-      // FormLoading: true,
-    };
-    window.scrollTo(0, 0);
-  }
-  handleScroll = () => {
-    this.setState({
-      scrollPixelsY: window.scrollY,
-    });
-  };
+
+
 
   render() {
     return (
@@ -88,8 +77,8 @@ class contactUs extends React.Component {
                   </div>
                 </form>
               </div>
-              <div className="container d-flex   col-11 col-lg-5 col-md-11 col-sm-10 reachUs rounded mb-5 mt-2">
-                <div className="align-item-center align-self-center justify-content-center">
+              <div className="container d-flex   col-11 col-lg-5 col-md-11 col-sm-10 reachUs rounded mb-5 mt-2 text-center" >
+                <div className="align-item-center align-self-center justify-content-center m-auto">
                   <h1 className="text-center fs-4 fw-bold text-white mb-3">
                     Reach Us
                   </h1>

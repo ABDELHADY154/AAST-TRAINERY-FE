@@ -359,6 +359,11 @@ class AuthNav extends React.Component {
                             <hr class="dropdown-divider profileHr invs" />
 
                             <li>
+                            <Link
+                                class="row "
+                                to="/AboutUs"
+                                renderAs="button"
+                              >
                               <a class="row " href="#">
                                 <MdInfoOutline
                                   color="red"
@@ -369,6 +374,7 @@ class AuthNav extends React.Component {
                                 />
                                 <p className="col-7">About Us</p>
                               </a>
+                              </Link >
                             </li>
                             <li>
                               <Link
@@ -386,7 +392,13 @@ class AuthNav extends React.Component {
                                 <p className="col-9">Account setting</p>
                               </Link>
                             </li>
+
                             <li>
+                            <Link
+                                class="row "
+                                to="/contactus"
+                                renderAs="button"
+                              >
                               <a class="row " href="#">
                                 <MdPermPhoneMsg
                                   color="red"
@@ -397,6 +409,7 @@ class AuthNav extends React.Component {
                                 />
                                 <p className="col-7">Contact Us</p>
                               </a>
+                              </Link>
                             </li>
 
                             <hr class="dropdown-divider profileHr invs" />
