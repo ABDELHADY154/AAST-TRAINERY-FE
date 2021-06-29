@@ -117,7 +117,7 @@ export default class Footer extends React.Component {
                         className="m-2"
                       />
                     </a>
-                    <a
+                    {/* <a
                       href="#"
                       alt="AAST Trainery linkedin page link"
                       target="_blank"
@@ -136,7 +136,7 @@ export default class Footer extends React.Component {
                         fill="#ffffff"
                         className="m-2"
                       />
-                    </a>
+                    </a> */}
                   </li>
                 </div>
               </div>

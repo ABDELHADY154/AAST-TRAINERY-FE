@@ -75,22 +75,22 @@ export default class Footer extends React.Component {
                               className="m-2"
                             />
                           </a>
-                          <a href="#" alt="linkedin page link" target="_blank">
+                          {/* <a href="#" alt="linkedin page link" target="_blank">
                             <FaLinkedinIn
                               alt="linkedin logo"
                               color="#ffffff"
                               fill="#ffffff"
                               className="m-2"
                             />
-                          </a>
-                          <a href="#" alt="youtube page link" target="_blank">
+                          </a> */}
+                          {/* <a href="#" alt="youtube page link" target="_blank">
                             <FaYoutube
                               alt="youtube logo"
                               color="#ffffff"
                               fill="#ffffff"
                               className="m-2"
                             />
-                          </a>
+                          </a> */}
                         </li>
                       </ul>
                     </div>

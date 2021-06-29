@@ -115,8 +115,8 @@ class Home extends Component {
                 id="alertingtitle"
                 className="d-flex flex-column col-md-10 col-9 mt-1"
               >
-                Here to help, Update your profile information to get the best
-                matching opportunities.
+                We're here to help, Update your profile information to get the
+                best matching opportunities.
               </div>
               <div className="d-flex flex-column col-md-1 col-2   mt-1">
                 <Link

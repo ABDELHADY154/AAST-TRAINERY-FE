@@ -380,7 +380,7 @@ class Registry extends React.Component {
           </div>
           <div className="img-fluid d-md-flex col-md-3 col-lg-4 ">
             <img
-              alt="silhouette of unversity students throwing their caps in an arc shape in a landscape"
+              alt="silhouette of unversity undergraduate students throwing their caps in an arc shape in a landscape"
               src={loginBG}
               class="img-fluid bg-image-no-img h-100  d-none  d-sm-block"
               width="100%"
