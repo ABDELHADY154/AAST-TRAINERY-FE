@@ -30,7 +30,7 @@ class contactUs extends React.Component {
           <div className="mt-3">
             <h1 className="text-center fs-3 fw-bold">Contact Us</h1>
             <p className="text-center">
-              Any questios or remarks? Just send us a message!
+              Any questions or remarks? Just send us a message!
             </p>
           </div>
           <div className="row ">
@@ -49,9 +49,9 @@ class contactUs extends React.Component {
                     id="departs"
                   >
                     <option selected>What can we help you with</option>
-                    <option value="1">One</option>
-                    <option value="2">Two</option>
-                    <option value="3">Three</option>
+                    <option value="1">Account settings</option>
+                    <option value="2">Cannot access account </option>
+                    <option value="3">Other</option>
                   </select>
                 </div>
                 <div class="d-flex flex-column col-11 mb-3">
@@ -65,6 +65,7 @@ class contactUs extends React.Component {
                 <div className="d-flex  mb-3">
                   <div className="col-11 d-flex justify-content-end">
                     <button
+                      // SUBMIT FUNCTION!!!!
                       type="submit"
                       className="col-2 btn applyBtn d-flex flex-row justify-content-center"
                     >
@@ -90,6 +91,7 @@ class contactUs extends React.Component {
                       className="text-center text-white fw-lighter"
                       id="reachData"
                     >
+                      {/* PUT MAIL LINK */}
                       aast-trainery@gmail.com
                     </h6>
                   </div>
@@ -107,6 +109,7 @@ class contactUs extends React.Component {
                       (480) 555-0103
                     </h6>
                   </div>
+                  {/* PUT FB AND INSTA LINKS */}
                   <div className="d-flex flex-row justify-content-center ">
                     <HiOutlineMail
                       fill="white"

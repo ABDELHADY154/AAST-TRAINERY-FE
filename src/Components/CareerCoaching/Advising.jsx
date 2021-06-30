@@ -158,6 +158,8 @@ export default class CareerCoaching extends Component {
       slidesToScroll: 1,
     };
     console.log(this.state.status);
+    console.log(this.state.reviewed);
+
     return (
       <div className="container-fluid ">
         {" "}
@@ -188,12 +190,14 @@ export default class CareerCoaching extends Component {
                     </div>
                     <div className="fs-6 mt-3">{this.state.desc}</div>{" "}
                     <div className="d-flex flex-row flex-wrap mt-5">
-                      {this.state.status == "booked" ? (
-                        " "
-                      ) : (
+                      {this.state.status == "unbooked" ||
+                      "rejected" ||
+                      this.state.reviewed == "true" ? (
                         <>
                           <DatePicker setDateFn={this.setDate} />
                         </>
+                      ) : (
+                        ""
                       )}
                     </div>
                     <div className="d-flex flex-row flex-wrap mt-2">
@@ -212,15 +216,26 @@ export default class CareerCoaching extends Component {
                             Booked
                           </button>
                         </div>
-                      ) : (
+                      ) : this.state.status == "accepted" ? (
                         <div className=" d-flex flex-row col-6 col-md-2 justify-content-end">
                           <button
                             className="appliedBtn px-4 py-0 "
                             onClick={this.book}
                           >
-                            Book
+                            Accepted
                           </button>
                         </div>
+                      ) : (
+                        <>
+                          <div className=" d-flex flex-row col-6 col-md-2 justify-content-end">
+                            <button
+                              className="appliedBtn px-4 py-0 "
+                              onClick={this.book}
+                            >
+                              Book
+                            </button>
+                          </div>
+                        </>
                       )}
                     </div>
                   </div>
@@ -236,8 +251,8 @@ export default class CareerCoaching extends Component {
                   </div>
                 </div>
 
-                {this.state.reviewed == false &&
-                this.state.status == "achieved" ? (
+                {this.state.status == "achieved" &&
+                this.state.reviewed == false ? (
                   <>
                     <div className="d-flex flex-row ">
                       <div className="d-flex flex-column col-md-7 me-2  text-wrap bg-none me-5 ">
