@@ -43,7 +43,6 @@ import helpCenter from "./Components/socialPages/helpCenter";
 import AboutUs from "./Components/socialPages/AboutUs";
 import Setting from "./Components/Setting/Setting";
 // import Education from "./EditProfile/Education";
-
 import "./layout/Footer.css";
 
 class App extends React.Component {
@@ -94,8 +93,10 @@ class App extends React.Component {
 
         <div className="app">
           <div className="auth-wrapper">
-            <div className="auth-inner">
+            <div className="auth-inner">        
+
               <Switch>
+
                 {/* <== Home for Guest */}
                 <Route
                   exact
@@ -260,7 +261,7 @@ class App extends React.Component {
                 />
                 <AuthRoute exact path="/Setting" component={Setting} />
                 <Route exact path="/helpCenter" component={helpCenter} />
-                <Route exact path="/contactUs" component={contactUs} />
+                <Route exact path="/contactus" component={contactUs} />
                 <Route exact path="/AboutUs" component={AboutUs} />
                 <Route
                   exact

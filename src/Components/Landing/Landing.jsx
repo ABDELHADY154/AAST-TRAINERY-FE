@@ -117,7 +117,7 @@ class Landing extends React.Component {
               className="d-flex flex-column d-none d-md-flex ms-5 "
             >
               <img
-                alt="three individuals looking at a laptop one is pointing at the laptop explaining"
+                alt="three people looking at a laptop as a form of career internship for undergraduates"
                 src={img}
               />
             </div>
@@ -142,7 +142,7 @@ class Landing extends React.Component {
             <div className=" mt-3 col-md-4 col-12">
               <div className="card m-md-5" id="bd">
                 <img
-                  alt="two women partially visible with focus on their hands one is taking notes for CV template"
+                  alt="two women one is taking notes for CV template coaching guidance"
                   className="cardImg img-responsive"
                   src={img1}
                   height="200"
@@ -155,7 +155,7 @@ class Landing extends React.Component {
             <div className=" mt-3  col-md-4 col-12">
               <div id="bd" className=" card m-md-5">
                 <img
-                  alt="two women sitting next to each other and talking as a part of interview help session"
+                  alt="two women sitting and talking in an interview guidance career coaching session"
                   className="cardImg img-responsive"
                   src={img3}
                   height="200"
@@ -168,7 +168,7 @@ class Landing extends React.Component {
             <div className=" mt-3 col-md-4 col-12">
               <div id="bd" className=" card m-md-5">
                 <img
-                  alt="a woman standing with her back to the wall holding a book and thinking while looking at the book"
+                  alt="a student standing holding a book thinking about internship opportunities"
                   className="cardImg img-responsive"
                   src={img2}
                   height="200"
@@ -266,7 +266,7 @@ class Landing extends React.Component {
             >
               <img
                 src={img4}
-                alt="a woman holding stacked books with a backpack on her shoulder as a college student"
+                alt="an undergraduate student holding stacked books with a backpack on her shoulder for CV portfolio career coaching"
               />
             </div>
           </div>

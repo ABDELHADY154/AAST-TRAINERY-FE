@@ -359,7 +359,11 @@ class AuthNav extends React.Component {
                             <hr class="dropdown-divider profileHr invs" />
 
                             <li>
-                              <a class="row " href="#">
+                              <Link
+                                class="row "
+                                to="/AboutUs"
+                                renderAs="button"
+                              >
                                 <MdInfoOutline
                                   color="red"
                                   className="col-3 mt-1 ms-2"
@@ -368,7 +372,7 @@ class AuthNav extends React.Component {
                                   pull="left"
                                 />
                                 <p className="col-7">About Us</p>
-                              </a>
+                              </Link>
                             </li>
                             <li>
                               <Link
@@ -383,11 +387,16 @@ class AuthNav extends React.Component {
                                   size="18px"
                                   pull="left"
                                 />
-                                <p className="col-9">Account setting</p>
+                                <p className="col-9">Account settings</p>
                               </Link>
                             </li>
+
                             <li>
-                              <a class="row " href="#">
+                              <Link
+                                class="row "
+                                to="/contactUs"
+                                renderAs="button"
+                              >
                                 <MdPermPhoneMsg
                                   color="red"
                                   className="col-3 mt-1 ms-2"
@@ -396,7 +405,7 @@ class AuthNav extends React.Component {
                                   pull="left"
                                 />
                                 <p className="col-7">Contact Us</p>
-                              </a>
+                              </Link>
                             </li>
 
                             <hr class="dropdown-divider profileHr invs" />

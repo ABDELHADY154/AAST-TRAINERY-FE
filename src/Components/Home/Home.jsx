@@ -83,6 +83,9 @@ class Home extends Component {
         this.setState({
           explorePosts: res.data.response.data,
         });
+
+        console.log(res.data.response.data);
+
       })
       .catch((err) => {
         this.setState({ FormLoading: true });
@@ -115,8 +118,8 @@ class Home extends Component {
                 id="alertingtitle"
                 className="d-flex flex-column col-md-10 col-9 mt-1"
               >
-                Here to help, Update your profile information to get the best
-                matching opportunities.
+                We're here to help, Update your profile information to get the
+                best matching opportunities.
               </div>
               <div className="d-flex flex-column col-md-1 col-2   mt-1">
                 <Link
@@ -495,7 +498,8 @@ class Home extends Component {
                     title={this.state.explorePosts[0].title}
                     company_name={this.state.explorePosts[0].company_name}
                     company_logo={this.state.explorePosts[0].company_logo}
-                    description={this.state.explorePosts[0].description}
+                    description={this.state.explorePosts[0].description}     
+                    sponsor_image={this.state.explorePosts[0].sponsor_image}
                     application_deadline={
                       this.state.explorePosts[0].application_deadline
                     }
@@ -506,7 +510,6 @@ class Home extends Component {
                     tags={this.state.explorePosts[0].tags}
                     reviewed={this.state.explorePosts[0].reviewed}
                     status={this.state.explorePosts[0].status}
-                    // accepted={this.state.explorePosts[0].accepted}
                   />
 
                   <BigCard
@@ -521,6 +524,7 @@ class Home extends Component {
                     application_deadline={
                       this.state.explorePosts[1].application_deadline
                     }
+                    sponsor_image={this.state.explorePosts[1].sponsor_image}
                     salary={this.state.explorePosts[1].salary}
                     advisor={this.state.explorePosts[1].advisor}
                     post_type={this.state.explorePosts[1].post_type}
