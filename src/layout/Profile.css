@@ -274,7 +274,7 @@
   color: #cd8930;
   text-decoration: none !important;
 }
-.skillnamepencil {
+/* .skillnamepencil {
   fill: transparent;
   color: transparent;
   transition: 300ms;
@@ -284,7 +284,7 @@
   color: #cd8930 !important;
   opacity: 100% !important;
   transition: 300ms !important;
-}
+} */
 
 #education {
   border-top: solid 0.1px #1e4274;
