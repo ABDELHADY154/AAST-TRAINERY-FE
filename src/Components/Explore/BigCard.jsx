@@ -21,7 +21,7 @@ export class BigCard extends Component {
     // this.handleSave = this.handleSave.bind(this);
   }
   componentDidMount() {
-    console.log(this.props)
+    console.log(this.props);
     if (this.props.saved === true) {
       this.setState({
         saved: true,
@@ -33,12 +33,12 @@ export class BigCard extends Component {
       });
     }
   }
-  handleSave = async e => {
+  handleSave = async (e) => {
     this.setState({ saved: !this.state.saved ? true : false });
 
     await axios
       .post(`/W/student/save/${this.props.id}`)
-      .then(save => {
+      .then((save) => {
         if (save.status === 200) {
           this.setState({
             saved: true,
@@ -46,7 +46,7 @@ export class BigCard extends Component {
           console.log(save, "save");
         }
       })
-      .catch(error => {
+      .catch((error) => {
         if (
           error.response.data.status === 401 ||
           error.response.data.status === 404
@@ -58,12 +58,12 @@ export class BigCard extends Component {
         }
       });
   };
-  handleUnSave = async e => {
+  handleUnSave = async (e) => {
     this.setState({ saved: !this.state.saved ? true : false });
 
     await axios
       .post(`/W/student/unsave/${this.props.id}`)
-      .then(save => {
+      .then((save) => {
         if (save.status === 200) {
           this.setState({
             saved: false,
@@ -71,7 +71,7 @@ export class BigCard extends Component {
           console.log(save, "unsave");
         }
       })
-      .catch(error => {
+      .catch((error) => {
         if (
           error.response.data.status === 401 ||
           error.response.data.status === 404
@@ -176,7 +176,7 @@ export class BigCard extends Component {
                   </div>
                   <div id="gold" className=" d-flex flex-row flex-wrap">
                     {this.props.departments
-                      ? this.props.departments.map(x => {
+                      ? this.props.departments.map((x) => {
                           return (
                             <p
                               id="gold "

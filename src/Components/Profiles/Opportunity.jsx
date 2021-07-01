@@ -31,7 +31,7 @@ export default class Opportunity extends Component {
       requirements: [],
       FormLoading: true,
       saved: false,
-      applied:false,
+      applied: false,
     };
     window.scrollTo(0, 0);
   }
@@ -51,8 +51,8 @@ export default class Opportunity extends Component {
           departments: res.data.response.data.departments,
           tags: res.data.response.data.tags,
           requirements: res.data.response.data.requirements,
-          saved:res.data.response.data.saved,
-          applied:res.data.response.data.status,
+          saved: res.data.response.data.saved,
+          applied: res.data.response.data.status,
           FormLoading: false,
         });
         if (this.state.data.saved === true) {
@@ -86,7 +86,7 @@ export default class Opportunity extends Component {
   }
   handleSave = async (e) => {
     this.setState({ saved: !this.state.saved ? true : false });
-    console.log()
+    console.log();
     await axios
       .post(`/W/student/save/${this.state.data.id}`)
       .then((save) => {
@@ -158,7 +158,7 @@ export default class Opportunity extends Component {
   };
   handleunApple = async (e) => {
     this.setState({ applied: !this.state.applied ? true : false });
- await axios
+    await axios
       .post(`/W/student/unApply/${this.state.data.id}`)
       .then((unapply) => {
         if (unapply.status === 200) {
@@ -178,7 +178,6 @@ export default class Opportunity extends Component {
           window.location.reload();
         }
       });
-   
   };
   handleReview = async (e) => {
     this.setState({ FormLoading: true });
@@ -245,26 +244,24 @@ export default class Opportunity extends Component {
                 <img
                   alt={this.state.data.company_name}
                   src={this.state.data.company_logo}
-                  className="ms-1 me-3 col-2 rounded-circle companyImg"
+                  className="ms-1 me-3 col-2 rounded-circle companyImg col-xs-12"
                 />
               </Link>
               <div className="col-12 mt-3 ">
                 <div className="d-flex flex-row w-7">
-                  <h4 className="opportunity col-md-12 col-12">
+                  <h4 className="opportunity col-md-7 col-7">
                     {this.state.data.title}
                   </h4>
                 </div>
                 <div className="d-flex flex-row">
                   <Link
-                    className="col-10 col-md-10 col-sm-10 "
+                    className="col-6 col-lg-10 col-md-6 col-sm-6 "
                     to={`/CompanyProfile`}
                   >
                     <p className=" company">{this.state.data.company_name}</p>
                   </Link>
-                  <p className="col-2 col-md-2 col-sm-2 col-xs-3 paid">
+                  <p className="col-2 col-md-2 col-sm-2 col-xs-2 paid">
                     {this.props.salary == "Paid" ? "Paid" : "Unpaid"}
-
-                    {/* {this.state.data.salary} */}
                   </p>
                 </div>
                 <div className=" departments d-flex flex-row">
@@ -397,7 +394,7 @@ export default class Opportunity extends Component {
 
                 {this.state.applied == true ? (
                   <button
-                    className="text-center applyBtn px-1 py-0 col-md-4 col-lg-6 col-8 col-sm-8 "
+                    className="text-center appliedBtn yBtn px-1 py-0 col-md-4 col-lg-6 col-8 col-sm-8 "
                     onClick={() => {
                       this.handleunApple();
                     }}

@@ -199,6 +199,7 @@
   -ms-border-radius: 5px !important;
   -o-border-radius: 5px !important;
 }
+
 .appliedBtn:hover {
   background-color: #fff !important;
   color: #1e4274;
