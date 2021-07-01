@@ -154,7 +154,7 @@ class helpCenter extends React.Component {
                 <div className="container pt-4 ">
                   <div className="row ">
                     <h5 className="d-flex  justify-content-start ">
-                      Check our help center to find the most asked questions
+                      Contact Us
                     </h5>
                   </div>
                   <div className="row ">
@@ -165,12 +165,12 @@ class helpCenter extends React.Component {
                     </p>
                     <div className="col-md-2 col-sm-0 col-0 col-lg-2 space "></div>
                     <div className=" col-3 col-md-2 col-sm-3 col-lg-1 d-flex justify-content-end">
-                      <button
-                        type="submit"
+                      <Link
+                        to={`/contactus`}
                         className="col-12 col-md-12 col-sm-12 col-lg-12 btn FAQBtn"
                       >
                         Send
-                      </button>
+                      </Link>
                     </div>
                   </div>
                 </div>
