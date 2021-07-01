@@ -72,21 +72,26 @@ class AboutUs extends React.Component {
                   What make us diffrent
                 </h5>
                 <p className="" id="DescProv">
-                  Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-                  Reiciendis numquam similique eum repellat nesciunt beatae
-                  error quod, tenetur aspernatur a cumque, non maxime sit nulla
-                  excepturi pariatur inventore illum placeat. Lorem ipsum dolor
-                  sit amet consectetur, adipisicing elit. Reiciendis numquam
-                  similique eum repellat nesciunt beatae error quod, tenetur
-                  aspernatur a cumque, non maxime sit nulla excepturi pariatur
-                  inventore illum placeat.
+                  AAST Trainery is made by undergraduate students for
+                  undergraduate students, <br />
+                  so who's better in knowing what students look for during their
+                  academics need than their colleagues?
+                  <br /> We've conducted full-on analysis to be able to provide
+                  the overlooked and underestimated services free of charge to
+                  all eligible students to ensure that everyone is able to
+                  unleash their full potential and grow along with us as we too
+                  aim for constant growth with each step you take. <br />
+                  Your career is our business.
                 </p>
               </div>
               <div
                 id="Experienceimg"
                 className="d-flex flex-column  d-none d-md-flex ms-5 "
               >
-                <img className="" src={img} />
+                <img
+                  alt="three images representing career coaching, undergraduate student internships and graduating."
+                  src={img}
+                />
               </div>
             </div>
             <div className="row mb-5 mt-5">
@@ -94,39 +99,40 @@ class AboutUs extends React.Component {
                 <div className="col-12 mt-3 divBorder">
                   <h5>Explore Training Opportinities</h5>
                   <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                    Consectetur dictumst nisi blandit ornare viverra eleifend
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                    Consectetur dictumst nisi blandit ornare viverra eleifend{" "}
+                    AAST Trainery offers you a set collection of internship
+                    opportunities for you to apply on and the sky is the limit
+                    when it comes to the variety of the offered internships, so
+                    don't worry you'll find opportunities that perfectly fit
+                    your needs.
                   </p>
                 </div>
                 <div className="col-12 mt-3 divBorder">
-                  <h5>Explore Training Opportinities</h5>
+                  <h5>Create Your Personal Profile</h5>
                   <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                    Consectetur dictumst nisi blandit ornare viverra eleifend
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                    Consectetur dictumst nisi blandit ornare viverra eleifend{" "}
+                    AAST Trainery enables you to create your profile freely from
+                    adding your personal information, your profile picture all
+                    the way to your educational information, experiences,
+                    skills, and languages to unlock your full potential.
                   </p>
                 </div>
               </div>
               <div className="col-12 col-sm-12 col-lg-6 col-md-6">
                 <div className="col-12 mt-3 divBorder">
-                  <h5>Explore Training Opportinities</h5>
+                  <h5>Book Career Coaching Sessions</h5>
                   <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                    Consectetur dictumst nisi blandit ornare viverra eleifend
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                    Consectetur dictumst nisi blandit ornare viverra eleifend{" "}
+                    AAST Trainery aims for your growth and skill development, so
+                    we offer you a selection of career coaching session that
+                    enable you to enhance your soft and technical skills along
+                    with professional and well-known coaches that help you to be
+                    prepared for the future labor market.
                   </p>
                 </div>
                 <div className="col-12 mt-3 divBorder">
-                  <h5>Explore Training Opportinities</h5>
+                  <h5>Generate CVs and Portfolios</h5>
                   <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                    Consectetur dictumst nisi blandit ornare viverra eleifend
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                    Consectetur dictumst nisi blandit ornare viverra eleifend{" "}
+                    With just a click of a button you're able to choose and
+                    create your personal CV and portfolio to match todays trends
+                    in applying to opportunities in the market.
                   </p>
                 </div>
               </div>{" "}
@@ -169,7 +175,7 @@ class AboutUs extends React.Component {
                   end={this.state.applied}
                 />
 
-                <div className="NumTitle">CV Genarated</div>
+                <div className="NumTitle">CVs Genarated</div>
               </div>
             </div>
           </div>
@@ -190,10 +196,7 @@ class AboutUs extends React.Component {
                 <div className="container pt-4 ">
                   <div className="row ">
                     <h6 className="lh-base d-flex justify-content-center  text-center ">
-                      Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                      Porttitor quis vitae volutpat.Lorem ipsum dolor sit amet,
-                      consectetur adipiscing elit. Porttitor quis vitae
-                      volutpat.
+                      "Your Career is Our Business"
                     </h6>
                   </div>
                   <div className="row ">
@@ -201,7 +204,7 @@ class AboutUs extends React.Component {
                       className="d-flex  justify-content-center"
                       style={{ color: "#cd8930" }}
                     >
-                      Trainery Team
+                      AAST Trainery Team
                     </p>
                   </div>
                 </div>

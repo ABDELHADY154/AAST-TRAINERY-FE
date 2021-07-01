@@ -24,37 +24,40 @@ class ErrorPage extends React.Component {
   };
   render() {
     return (
-      <div className='container-fluid'>
-        <nav className='navbar '>
+      <div className="container-fluid">
+        <nav className="navbar ">
           <Link
-            className='navbar-brand mx-2'
-            renderAs='button'
-            to='/Home'
+            className="navbar-brand mx-2"
+            renderAs="button"
+            to="/Home"
             onClick={this.handlemove}
           >
             <img
-              className='navbar-brand profileImage'
+              className="navbar-brand profileImage"
               src={logo}
-              width='170'
-              alt=''
+              width="170"
+              alt=""
             ></img>
           </Link>
         </nav>
-        <div className='content d-flex flex-column flex-lg-row justify-content-Center'>
-          <div className='col-lg-6 col-12 errolCol'>
-            <div className='d-flex justify-content-center align-items-center'>
-              <h1 className='Four'>4</h1>
-              <MdWarning className='Warning mb-2' />
-              <h1 className='Four'>4</h1>
+        <div className="content d-flex flex-column flex-lg-row justify-content-Center">
+          <div className="col-lg-6 col-12 errolCol">
+            <div className="d-flex justify-content-center align-items-center">
+              <h1 className="Four">4</h1>
+              <MdWarning className="Warning mb-2" />
+              <h1 className="Four">4</h1>
             </div>
-            <p className='text '>
+            <p className="text ">
               We’re not quite sure what went wrong. You can
-              <span className='link'> Go Back </span>, or try looking on our
-              <span className='link'> Help Center </span> if you need a hand.
+              <span className="link"> Go Back </span>, or try looking on our
+              <Link to="/helpCenter">
+                <span className="link"> {"  "} Help Center</span>{" "}
+              </Link>
+              if you need a hand.
             </p>
           </div>
-          <div className='col'></div>
-          <img src={error} alt='' class=' col-lg-4 col-12  ' />
+          <div className="col"></div>
+          <img src={error} alt="" class=" col-lg-4 col-12  " />
         </div>
       </div>
     );

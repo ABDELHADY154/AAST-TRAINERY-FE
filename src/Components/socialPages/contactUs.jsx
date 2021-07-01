@@ -95,7 +95,7 @@ class contactUs extends React.Component {
                       {/* PUT MAIL LINK */}
                       <a
                         style={{ color: "#fff" }}
-                        href="aast-trainery@gmail.com"
+                        href="mailto:admin@aast-trainery.com?body=Hi Trainery"
                       >
                         aast-trainery@gmail.com
                       </a>
@@ -178,16 +178,18 @@ class contactUs extends React.Component {
               <div className="container pt-4 ">
                 <div className="row ">
                   <h5 className="d-flex col-9 col-md-8 col-lg-9 col-sm-9 justify-content-start ">
-                    Check our help center to find the most asked questions
+                    Check our help center to find the frequently asked questions
                   </h5>
                   <div className="col-md-2 col-sm-0 col-0 col-lg-2 space "></div>
                   <div className=" col-3 col-md-2 col-sm-3 col-lg-1 d-flex justify-content-end">
-                    <button
-                      type="submit"
-                      className="col-12 col-md-12 col-sm-12 col-lg-12 btn FAQBtn"
-                    >
-                      FAQ
-                    </button>
+                    <Link to="/helpCenter">
+                      <button
+                        type="submit"
+                        className="col-12 col-md-12 col-sm-12 col-lg-12 btn FAQBtn"
+                      >
+                        FAQ
+                      </button>
+                    </Link>
                   </div>
                 </div>
               </div>

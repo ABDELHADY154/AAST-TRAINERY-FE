@@ -79,7 +79,9 @@ export default class Footer extends React.Component {
                           </Link>
                         </li>
                         <li>
-                          <Link to="/">Terms & Conditions</Link>
+                          <Link to="/TermsandConditions">
+                            Terms & Conditions
+                          </Link>
                         </li>
                       </ul>
                     </div>

@@ -358,7 +358,7 @@ class Registry extends React.Component {
                         </Link>
                         <p className="agree ">
                           By creating an account, you agree to the
-                          <Link to="/">
+                          <Link to="/TermsandConditions">
                             <span className="terms">
                               {"  "} Terms and Conditions{"  "}
                             </span>
