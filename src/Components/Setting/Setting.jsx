@@ -274,14 +274,20 @@ class Setting extends Component {
                     name="inlineRadioOptions"
                     id="inlineRadio1"
                     value="male"
+                    style={{ marginBottom: 5 }}
                     className="checkbox signInput"
                     onChange={(e) => this.setState({ gender: e.target.value })}
+                    // style={{ marginTop: -20 }}
                   />
                   <label
                     class="form-check-label checkboxLabel"
                     for="inlineCheckbox3"
+                    // style={{
+                    //   background: "red",
+                    //   marginTop: 5,
+                    // }}
                   >
-                    Receive newsletter
+                    Receive Newsletter
                   </label>
                   {/* </div> */}
                   {this.state.error && this.state.error.LanguageLevelErr ? (

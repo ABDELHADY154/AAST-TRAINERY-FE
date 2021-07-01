@@ -163,7 +163,9 @@ class helpCenter extends React.Component {
                 <div className="container pt-4 ">
                   <div className="row ">
                     <h5 className="d-flex  justify-content-start ">
-                      Contact us for more help!{" "}
+
+                      Contact us for more help!
+
                     </h5>
                   </div>
                   <div className="row ">
@@ -174,6 +176,7 @@ class helpCenter extends React.Component {
                     </p>
                     <div className="col-md-2 col-sm-0 col-0 col-lg-2 space "></div>
                     <div className=" col-3 col-md-2 col-sm-3 col-lg-1 d-flex justify-content-end">
+
                       <a href="mailto:admin@aast-trainery.com?body=Hi Trainery">
                         <button
                           type="submit"

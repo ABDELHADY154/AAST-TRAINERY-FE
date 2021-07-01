@@ -182,13 +182,12 @@ class contactUs extends React.Component {
                   </h5>
                   <div className="col-md-2 col-sm-0 col-0 col-lg-2 space "></div>
                   <div className=" col-3 col-md-2 col-sm-3 col-lg-1 d-flex justify-content-end">
-                    <Link to="/helpCenter">
-                      <button
-                        type="submit"
-                        className="col-12 col-md-12 col-sm-12 col-lg-12 btn FAQBtn"
-                      >
-                        FAQ
-                      </button>
+
+                    <Link
+                      to={`/helpCenter`}
+                      className="col-12 col-md-12 col-sm-12 col-lg-12 btn FAQBtn"
+                    >
+                      FAQ
                     </Link>
                   </div>
                 </div>
