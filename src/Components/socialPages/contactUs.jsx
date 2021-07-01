@@ -23,7 +23,7 @@ class contactUs extends React.Component {
   }
   sendEmail = e => {
     e.preventDefault();
-
+    data = {};
     emailjs
       .sendForm(
         "Trainery",
@@ -68,7 +68,11 @@ class contactUs extends React.Component {
               <form action="" className="mb-5" onSubmit={this.sendEmail}>
                 <div className="d-flex flex-column col-11 mb-3">
                   <label htmlFor="">Email</label>
-                  <input type="text" className="form-control contactInput" />
+                  <input
+                    type="text"
+                    className="form-control contactInput"
+                    id="Email"
+                  />
                 </div>
                 <div class="d-flex flex-column col-11 mb-3">
                   {/* <label for="">Works with selects</label> */}
