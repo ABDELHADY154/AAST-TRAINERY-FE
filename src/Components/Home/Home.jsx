@@ -85,7 +85,6 @@ class Home extends Component {
         });
 
         console.log(res.data.response.data);
-
       })
       .catch((err) => {
         this.setState({ FormLoading: true });
@@ -413,7 +412,7 @@ class Home extends Component {
 
                 <div className="col-12 col-md-6 d-flex mt-2 ">
                   <Link to={`/Profile/General`} className="generalinfolink">
-                    Complete Your General Information
+                    Update Your General Information
                   </Link>
                 </div>
               </div>
@@ -431,7 +430,7 @@ class Home extends Component {
               )}
             </div>
           </div>
-          <div className="card mt-2 mt-5  mb-2 ">
+          {/*  <div className="card mt-2 mt-5  mb-2 ">
             <h5 id="tabtitle" className="card-title fs-3 my-3 ms-3">
               Your Activities
             </h5>
@@ -478,7 +477,7 @@ class Home extends Component {
             >
               See all activities
             </a>
-          </div>
+          </div> */}
           <div className="fs-3 mt-5 mb-3" id="">
             Explore recommended opportunities
           </div>
@@ -498,7 +497,7 @@ class Home extends Component {
                     title={this.state.explorePosts[0].title}
                     company_name={this.state.explorePosts[0].company_name}
                     company_logo={this.state.explorePosts[0].company_logo}
-                    description={this.state.explorePosts[0].description}     
+                    description={this.state.explorePosts[0].description}
                     sponsor_image={this.state.explorePosts[0].sponsor_image}
                     application_deadline={
                       this.state.explorePosts[0].application_deadline
@@ -531,8 +530,7 @@ class Home extends Component {
                     departments={this.state.explorePosts[1].departments}
                     tags={this.state.explorePosts[1].tags}
                     saved={this.state.explorePosts[1].saved}
-                    applied={this.state.explorePosts[1].applied}
-                    accepted={this.state.explorePosts[0].accepted}
+                    status={this.state.explorePosts[1].status}
                   />
                 </>
               ) : (

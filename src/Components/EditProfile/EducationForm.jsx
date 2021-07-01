@@ -111,7 +111,10 @@ export default class EducationForm extends Component {
           });
         })
         .catch((error) => {
-          if (error.response.data.status === 401 || error.response.data.status === 404) {
+          if (
+            error.response.data.status === 401 ||
+            error.response.data.status === 404
+          ) {
             sessionStorage.clear("token");
             sessionStorage.clear("status");
             this.setState({ loggedIn: false });
@@ -237,19 +240,19 @@ export default class EducationForm extends Component {
   render() {
     const { country, region } = this.state;
     if (this.state.loggedIn === false) {
-      return <Redirect to='/login' />;
+      return <Redirect to="/login" />;
     }
     if (this.state.done === true) {
-      return <Redirect to='/Profile' />;
+      return <Redirect to="/Profile" />;
     }
     // console.log(this.state);
     return (
       <div>
-        <div className='container'>
-          <form class='g-3 mb-3 text-left ' onSubmit={this.handleSubmit}>
+        <div className="container">
+          <form class="g-3 mb-3 text-left " onSubmit={this.handleSubmit}>
             <LoadingOverlay
               active={this.state.FormLoading}
-              spinner={<BounceLoader color='#cd8930' />}
+              spinner={<BounceLoader color="#cd8930" />}
               styles={{
                 overlay: (base) => ({
                   ...base,
@@ -259,31 +262,37 @@ export default class EducationForm extends Component {
             >
               <EditNav setactive={"Education"} />
 
-              <div className=' row'>
-                <div class='col-lg-10 col-11 col-md-10 col-sm-12 col-xs-12 mt-3 mt-sm-0'>
-                  <label for='inputfullname' class='form-label editLabel '>
-                    School Name <span className='red'>*</span>
+              <div className=" row">
+                <div class="col-lg-10 col-11 col-md-10 col-sm-12 col-xs-12 mt-3 mt-sm-0">
+                  <label for="inputfullname" class="form-label editLabel ">
+                    School Name <span className="red">*</span>
                   </label>
                   <input
-                    type='text'
-                    className='form-control editInput'
-                    id='fullname'
+                    type="text"
+                    className="form-control editInput"
+                    id="fullname"
                     className={
                       this.state.error && this.state.error.schoolNameErr
                         ? "form-control editInput wrong "
                         : "form-control editInput"
                     }
-                    onChange={(e) => this.setState({ SchoolName: e.target.value })}
-                    placeholder='Enter School Name'
+                    onChange={(e) =>
+                      this.setState({ SchoolName: e.target.value })
+                    }
+                    placeholder="Enter School Name"
                     value={this.state.SchoolName ? this.state.SchoolName : ""}
                   />
-                  {this.state.error && this.state.error.schoolNameErr !== "" && (
-                    <p className='editerror'> {this.state.error.schoolNameErr}</p>
-                  )}
+                  {this.state.error &&
+                    this.state.error.schoolNameErr !== "" && (
+                      <p className="editerror">
+                        {" "}
+                        {this.state.error.schoolNameErr}
+                      </p>
+                    )}
                 </div>
-                <div className='col-lg-5 col-11 col-md-5 col-sm-12 col-xs-12'>
-                  <label for='inputCountry' className='form-label editLabel'>
-                    Country
+                <div className="col-lg-5 col-11 col-md-5 col-sm-12 col-xs-12">
+                  <label for="inputCountry" className="form-label editLabel">
+                    Country <span className="red">*</span>
                   </label>
                   <CountryDropdown
                     value={this.state.country ? this.state.country : country}
@@ -293,19 +302,19 @@ export default class EducationForm extends Component {
                         ? "form-control editInput wrong "
                         : "form-control editInput"
                     }
-                    id='validationServer04'
-                    aria-describedby='validationServer04Feedback'
+                    id="validationServer04"
+                    aria-describedby="validationServer04Feedback"
                   />
 
                   {this.state.error && this.state.error.countryErr ? (
-                    <p className='editerror'>{this.state.error.countryErr}</p>
+                    <p className="editerror">{this.state.error.countryErr}</p>
                   ) : (
                     ""
                   )}
                 </div>
-                <div className='col-lg-5 col-11 col-md-5 col-sm-12 col-xs-12 '>
-                  <label for='inputCity' className='form-label editLabel'>
-                    City
+                <div className="col-lg-5 col-11 col-md-5 col-sm-12 col-xs-12 ">
+                  <label for="inputCity" className="form-label editLabel">
+                    City <span className="red">*</span>
                   </label>
                   <RegionDropdown
                     country={country}
@@ -316,25 +325,25 @@ export default class EducationForm extends Component {
                         ? "form-control editInput wrong "
                         : "form-control editInput"
                     }
-                    id='validationServer04'
-                    aria-describedby='validationServer04Feedback'
+                    id="validationServer04"
+                    aria-describedby="validationServer04Feedback"
                     // value={(e) => this.setState({ City: e.target.value })}
                   />
 
                   {this.state.error && this.state.error.cityErr ? (
-                    <p className='editerror'>{this.state.error.cityErr}</p>
+                    <p className="editerror">{this.state.error.cityErr}</p>
                   ) : (
                     ""
                   )}
                 </div>
-                <div className='col-lg-5 col-11 col-md-5 col-sm-12 col-xs-12 '>
-                  <label for='bdaymonth' className='form-label editLabel '>
-                    From
+                <div className="col-lg-5 col-11 col-md-5 col-sm-12 col-xs-12 ">
+                  <label for="bdaymonth" className="form-label editLabel ">
+                    From <span className="red">*</span>
                   </label>
                   <input
-                    type='date'
-                    id='bdaymonth'
-                    className='form-control editInput'
+                    type="date"
+                    id="bdaymonth"
+                    className="form-control editInput"
                     onChange={(e) => this.setState({ From: e.target.value })}
                     value={this.state.From ? this.state.From : ""}
                   />
@@ -346,19 +355,19 @@ export default class EducationForm extends Component {
                       </p>
                     ))} */}
                   {this.state.error && this.state.error.fromErr ? (
-                    <p className='editerror'>{this.state.error.fromErr}</p>
+                    <p className="editerror">{this.state.error.fromErr}</p>
                   ) : (
                     ""
                   )}
                 </div>
-                <div class='col-lg-5 col-11 col-md-5 col-sm-12 col-xs-12'>
-                  <label for='bdaymonth' className='form-label editLabel '>
-                    To <span className='red'>*</span>
+                <div class="col-lg-5 col-11 col-md-5 col-sm-12 col-xs-12">
+                  <label for="bdaymonth" className="form-label editLabel ">
+                    To <span className="red">*</span>
                   </label>
                   <input
-                    type='date'
-                    id='bdaymonth'
-                    className='form-control editInput '
+                    type="date"
+                    id="bdaymonth"
+                    className="form-control editInput "
                     onChange={(e) => this.setState({ To: e.target.value })}
                     value={this.state.To ? this.state.To : ""}
                   />
@@ -369,77 +378,88 @@ export default class EducationForm extends Component {
                       </p>
                     ))} */}
                   {this.state.error && this.state.error.toErr ? (
-                    <p className='editerror d-inline'> {this.state.error.toErr}</p>
+                    <p className="editerror d-inline">
+                      {" "}
+                      {this.state.error.toErr}
+                    </p>
                   ) : (
                     ""
                   )}
                 </div>
-                <div class='col-lg-5 col-11 col-md-5 col-sm-12 col-xs-12 '>
-                  <label for='inputTerm' className='form-label editLabel'>
-                    Credential URL <span className='red'>*</span>
+                <div class="col-lg-5 col-11 col-md-5 col-sm-12 col-xs-12 ">
+                  <label for="inputTerm" className="form-label editLabel">
+                    Credential URL
                   </label>
                   <input
-                    type='text'
+                    type="text"
                     className={
                       this.state.error && this.state.error.credErr
                         ? "form-control editInput wrong "
                         : "form-control editInput "
                     }
-                    id='fullname'
-                    onChange={(e) => this.setState({ SchoolUrl: e.target.value })}
+                    id="fullname"
+                    onChange={(e) =>
+                      this.setState({ SchoolUrl: e.target.value })
+                    }
                     value={this.state.SchoolUrl ? this.state.SchoolUrl : ""}
-                    placeholder='Enter Credential URL'
+                    placeholder="Enter Credential URL"
                   />
                   {this.state.error && this.state.error.credErr !== "" && (
-                    <p className='editerror'> {this.state.error.credErr}</p>
+                    <p className="editerror"> {this.state.error.credErr}</p>
                   )}
                 </div>
-                <div className='col-lg-5 col-11 col-md-5 col-sm-12 col-xs-12  '>
+                <div className="col-lg-5 col-11 col-md-5 col-sm-12 col-xs-12  ">
                   <label
-                    htmlFor='files'
-                    className='form-control editInput uploadBtn d-flex '
+                    htmlFor="files"
+                    className="form-control editInput uploadBtn d-flex "
                   >
                     {this.state.UrlName ? this.state.UrlName : "Upload"}
                     {this.state.UrlName ? (
-                      <FiCheck className='uploadIcon ms-auto ' />
+                      <FiCheck className="uploadIcon ms-auto " />
                     ) : (
-                      <FiUpload className='uploadIcon ms-auto ' />
+                      <FiUpload className="uploadIcon ms-auto " />
                     )}
                     <input
-                      className='form-control editInput'
+                      className="form-control editInput"
                       hidden
-                      type='file'
-                      id='files'
+                      type="file"
+                      id="files"
                       onChange={(e) => this.handleUpload(e)}
                     />
                   </label>
 
                   {this.state.error && this.state.error.creddErr ? (
-                    <p className='editerror'>{this.state.error.creddErr}</p>
+                    <p className="editerror">{this.state.error.creddErr}</p>
                   ) : (
                     ""
                   )}
                 </div>
                 {this.props.match.params.id ? (
-                  <div class='col-lg-10 col-11 col-md-10 col-sm-12 col-xs-12 d-flex justify-content-end mt-5 '>
+                  <div class="col-lg-10 col-11 col-md-10 col-sm-12 col-xs-12 d-flex justify-content-end mt-5 ">
                     <button
                       // type={this.handleDelete}
-                      class='btn deleteBtn me-2 my-2  shadow-none  '
+                      class="btn deleteBtn me-2 my-2  shadow-none  "
                       onClick={() => this.handleDelete()}
-                      value='deleted'
+                      value="deleted"
                     >
                       Delete
                     </button>
-                    <button type='submit' class='btn updateBtn shadow-none my-2 '>
+                    <button
+                      type="submit"
+                      class="btn updateBtn shadow-none my-2 "
+                    >
                       Update
                     </button>
                   </div>
                 ) : (
-                  <div class='col-lg-10 col-11 col-md-10 col-sm-12 col-xs-12 d-flex justify-content-end mt-5'>
-                    <Link class='btn me-2 my-2 cancelBtn shadow-none' to='/Profile'>
+                  <div class="col-lg-10 col-11 col-md-10 col-sm-12 col-xs-12 d-flex justify-content-end mt-5">
+                    <Link
+                      class="btn me-2 my-2 cancelBtn shadow-none"
+                      to="/Profile"
+                    >
                       Cancel
                     </Link>
-                    <button type='submit' class='btn doneBtn shadow-none my-2 '>
+                    <button type="submit" class="btn doneBtn shadow-none my-2 ">
                       Add
                     </button>
                   </div>

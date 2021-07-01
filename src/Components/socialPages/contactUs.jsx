@@ -9,6 +9,7 @@ import "../../layout/Home.css";
 
 import { HiOutlineMail } from "react-icons/hi";
 import { MdSettingsPhone } from "react-icons/md";
+import { FaFacebookF, FaInstagram } from "react-icons/fa";
 
 class contactUs extends React.Component {
   render() {
@@ -80,7 +81,7 @@ class contactUs extends React.Component {
                 <h1 className="text-center fs-4 fw-bold text-white mb-3">
                   Reach Us
                 </h1>
-                <div className="d-flex flex-column text-center align-items-start ">
+                <div className="d-flex flex-column text-center align-items-start mt-2">
                   <div className="d-flex flex-row justify-content-center text-center">
                     <HiOutlineMail
                       fill="white"
@@ -92,10 +93,15 @@ class contactUs extends React.Component {
                       id="reachData"
                     >
                       {/* PUT MAIL LINK */}
-                      aast-trainery@gmail.com
+                      <a
+                        style={{ color: "#fff" }}
+                        href="aast-trainery@gmail.com"
+                      >
+                        aast-trainery@gmail.com
+                      </a>
                     </h6>
                   </div>
-                  <div className="d-flex flex-row justify-content-center ">
+                  <div className="d-flex flex-row justify-content-center mt-2">
                     <MdSettingsPhone
                       fill="white"
                       color="white"
@@ -106,34 +112,49 @@ class contactUs extends React.Component {
                       className="text-center text-white fw-lighter"
                       id="reachData"
                     >
-                      (480) 555-0103
+                      <a style={{ color: "#fff" }} href="tel:+496170961709">
+                        496170961709
+                      </a>
                     </h6>
                   </div>
                   {/* PUT FB AND INSTA LINKS */}
-                  <div className="d-flex flex-row justify-content-center ">
-                    <HiOutlineMail
+                  <div className="d-flex flex-row justify-content-center mt-2">
+                    <FaFacebookF
                       fill="white"
                       color="white"
                       className="me-2 icon"
+                      size="18"
                     />
                     <h6
                       className="text-center text-white fw-lighter"
                       id="reachData"
                     >
-                      aast-trainery@gmail.com
+                      <a
+                        href="https://www.facebook.com/trainerys"
+                        style={{ color: "#fff" }}
+                      >
+                        Facebook Page
+                      </a>
                     </h6>
                   </div>
-                  <div className="d-flex flex-row justify-content-center ">
-                    <HiOutlineMail
+                  <div className="d-flex flex-row justify-content-center mt-2">
+                    <FaInstagram
                       fill="white"
                       color="white"
+                      size="18"
                       className="me-2 icon"
                     />
                     <h6
+                      href="https://www.facebook.com/trainerys"
                       className="text-center text-white fw-lighter"
                       id="reachData"
                     >
-                      aast-trainery@gmail.com
+                      <a
+                        href="https://www.instagram.com/trainerys/"
+                        style={{ color: "#fff" }}
+                      >
+                        Instagram Page
+                      </a>
                     </h6>
                   </div>
                 </div>

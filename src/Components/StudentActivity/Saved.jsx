@@ -96,10 +96,9 @@ class Accepted extends Component {
                         sponsor_image={data.sponsor_image}
                         key={data.id}
                         saved={data.saved}
-                        applied={data.applied}
                         id={data.id}
                         company_id={data.company_id}
-                        accepted={data.accepted}
+                        status={data.status}
                       />
                     );
                   })
