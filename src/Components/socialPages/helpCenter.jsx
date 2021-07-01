@@ -6,6 +6,7 @@ import BounceLoader from "react-spinners/BounceLoader";
 import Footer2 from "../Common/Footer2";
 import "../../layout/Home.css";
 // import "../../layout/Sign.css";
+import Footer from "../Common/Footer";
 
 import { HiOutlineMail } from "react-icons/hi";
 import { MdSettingsPhone } from "react-icons/md";
@@ -16,6 +17,7 @@ class helpCenter extends React.Component {
     this.state = {
       scrollPixelsY: 0,
       // FormLoading: true,
+      token: sessionStorage.getItem("token"),
     };
     window.scrollTo(0, 0);
   }
@@ -33,7 +35,7 @@ class helpCenter extends React.Component {
           spinner={<BounceLoader color="#cd8930" />}
           color={"#cd8930"}
           styles={{
-            overlay: (base) => ({
+            overlay: base => ({
               ...base,
               background: "rgb(255, 255, 255)",
               stroke: "rgba(255, 0, 0, 0.5)",
@@ -169,7 +171,9 @@ class helpCenter extends React.Component {
                         type="submit"
                         className="col-12 col-md-12 col-sm-12 col-lg-12 btn FAQBtn"
                       >
-                        Send
+                        <Link className=" " to="/contactus">
+                          Send
+                        </Link>
                       </button>
                     </div>
                   </div>
@@ -177,7 +181,7 @@ class helpCenter extends React.Component {
               </div>
             </footer>
           </div>
-          <Footer2 />
+          {this.state.token ? <Footer2 /> : <Footer />}
         </LoadingOverlay>
       </div>
     );

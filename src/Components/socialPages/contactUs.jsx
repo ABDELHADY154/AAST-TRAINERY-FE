@@ -4,6 +4,9 @@ import { Link, NavLink } from "react-router-dom";
 import LoadingOverlay from "react-loading-overlay";
 import BounceLoader from "react-spinners/BounceLoader";
 import Footer2 from "../Common/Footer2";
+import Footer from "../Common/Footer";
+import emailjs from "emailjs-com";
+
 import "../../layout/Home.css";
 // import "../../layout/Sign.css";
 
@@ -12,6 +15,32 @@ import { MdSettingsPhone } from "react-icons/md";
 import { FaFacebookF, FaInstagram } from "react-icons/fa";
 
 class contactUs extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      token: sessionStorage.getItem("token"),
+    };
+  }
+  sendEmail = e => {
+    e.preventDefault();
+
+    emailjs
+      .sendForm(
+        "Trainery",
+        "template_ba4h8xr",
+        e.target,
+        "user_ItSXGJkOeKWkLEjdfmAR2",
+      )
+      .then(
+        result => {
+          console.log(result);
+        },
+        error => {
+          console.log(error.text);
+        },
+      );
+  };
+
   render() {
     return (
       <div>
@@ -28,7 +57,7 @@ class contactUs extends React.Component {
           }}
         > */}
         <div className="container mb-5">
-          <div className="mt-3">
+          <div className={this.state.token ? "mt-3" : " pt-3"}>
             <h1 className="text-center fs-3 fw-bold">Contact Us</h1>
             <p className="text-center">
               Any questions or remarks? Just send us a message!
@@ -36,7 +65,7 @@ class contactUs extends React.Component {
           </div>
           <div className="row ">
             <div className="d-flex flex-column-reverse col-12 col-lg-7 col-md-12 col-sm-12">
-              <form action="" className="mb-5">
+              <form action="" className="mb-5" onSubmit={this.sendEmail}>
                 <div className="d-flex flex-column col-11 mb-3">
                   <label htmlFor="">Email</label>
                   <input type="text" className="form-control contactInput" />
@@ -184,9 +213,11 @@ class contactUs extends React.Component {
                   <div className=" col-3 col-md-2 col-sm-3 col-lg-1 d-flex justify-content-end">
                     <button
                       type="submit"
-                      className="col-12 col-md-12 col-sm-12 col-lg-12 btn FAQBtn"
+                      className="col-12 col-md-12 col-sm-12 col-lg-12 btn    "
                     >
-                      FAQ
+                      <Link className="FAQBtn " to="/helpCenter">
+                        FAQ
+                      </Link>
                     </button>
                   </div>
                 </div>
@@ -194,7 +225,7 @@ class contactUs extends React.Component {
             </div>
           </footer>
         </div>
-        <Footer2 />
+        {this.state.token ? <Footer2 /> : <Footer />}
         {/* </LoadingOverlay> */}
       </div>
     );
