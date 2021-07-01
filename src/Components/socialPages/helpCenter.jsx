@@ -40,11 +40,11 @@ class helpCenter extends React.Component {
             }),
           }}
         >
-          <div className="container">
+          <div className="container mt-3">
             <div className="mt-3">
               <h1 className="text-center fs-3 fw-bold">Help Center</h1>
               <p className="text-center">
-                Any questios or remarks? Just write us a message!
+                Any questions or remarks? Just send us a message!
               </p>
             </div>
             <div className="mb-5">
@@ -59,14 +59,22 @@ class helpCenter extends React.Component {
                     aria-controls="collapse1"
                     style={{ color: "#1E4274" }}
                   >
-                    Link with href
+                    What is Trainery and how does it work?{" "}
                   </a>
                 </p>
                 <div class="collapse mb-3" id="collapse1">
                   <div class="card card-body">
-                    Some placeholder content for the collapse component. This
-                    panel is hidden by default but revealed when the user
-                    activates the relevant trigger.
+                    Trainery is a platform didicated to provide undergraduate
+                    students with their desired internships and aims to enhance
+                    the process of acquiring and going through gaining
+                    experience as well as providing curated career coaching
+                    sessions that help students in leveling up and gaining more
+                    technical and soft skills. You also can develop your own CV
+                    and portfolio with just a click of a button, how cool is
+                    that? <br />
+                    In order to access the website you must have a valid student
+                    mail and sign up for your account then you will have full
+                    access to all our services through minimal steps.
                   </div>
                 </div>
               </div>
@@ -81,14 +89,14 @@ class helpCenter extends React.Component {
                     aria-controls="collapse2"
                     style={{ color: "#1E4274" }}
                   >
-                    Link with href
+                    Do I have to be an AAST student to sign up?{" "}
                   </a>
                 </p>
                 <div class="collapse mb-3" id="collapse2">
                   <div class="card card-body">
-                    Some placeholder content for the collapse component. This
-                    panel is hidden by default but revealed when the user
-                    activates the relevant trigger.
+                    Our services are currently designed fot AAST-CMT and
+                    AAST-CLC students, but we are aiming to provide all
+                    undergraduate students from all backgrounds.
                   </div>
                 </div>
               </div>
@@ -103,14 +111,14 @@ class helpCenter extends React.Component {
                     aria-controls="collapse3"
                     style={{ color: "#1E4274" }}
                   >
-                    Link with href
+                    Do I have to add payment methods to use Trainery?{" "}
                   </a>
                 </p>
                 <div class="collapse mb-3" id="collapse3">
                   <div class="card card-body">
-                    Some placeholder content for the collapse component. This
-                    panel is hidden by default but revealed when the user
-                    activates the relevant trigger.
+                    No, you don't. Most of our services are free of charge
+                    except portfolio development and career coaching sessions
+                    and it's not obligatory to add your card information.
                   </div>
                 </div>
               </div>
@@ -125,14 +133,15 @@ class helpCenter extends React.Component {
                     aria-controls="collapse4"
                     style={{ color: "#1E4274" }}
                   >
-                    Link with href
+                    I forgot my password to access my account, what do I do?{" "}
                   </a>
                 </p>
                 <div class="collapse mb-3" id="collapse4">
                   <div class="card card-body">
-                    Some placeholder content for the collapse component. This
-                    panel is hidden by default but revealed when the user
-                    activates the relevant trigger.
+                    Don't worry, your account is still safe and you can change
+                    your password by accessing the forgot password page and
+                    submitting your E-mail to get the one-time access link and
+                    change your password to access your Trainery account.
                   </div>
                 </div>
               </div>
@@ -154,23 +163,28 @@ class helpCenter extends React.Component {
                 <div className="container pt-4 ">
                   <div className="row ">
                     <h5 className="d-flex  justify-content-start ">
-                      Contact Us
+
+                      Contact us for more help!
+
                     </h5>
                   </div>
                   <div className="row ">
                     <p className="d-flex col-9 col-md-8 col-lg-9 col-sm-9 justify-content-start ">
-                      We understand y ou may have question that are not answered
-                      in our FAQ, If you cannot find the answer to your question
-                      please feel free to contact us
+                      We understand that you may have question that are not
+                      answered in our FAQ, If you cannot find the answer to your
+                      question please feel free to contact us
                     </p>
                     <div className="col-md-2 col-sm-0 col-0 col-lg-2 space "></div>
                     <div className=" col-3 col-md-2 col-sm-3 col-lg-1 d-flex justify-content-end">
-                      <Link
-                        to={`/contactus`}
-                        className="col-12 col-md-12 col-sm-12 col-lg-12 btn FAQBtn"
-                      >
-                        Send
-                      </Link>
+
+                      <a href="mailto:admin@aast-trainery.com?body=Hi Trainery">
+                        <button
+                          type="submit"
+                          className="col-12 col-md-12 col-sm-12 col-lg-12 btn FAQBtn"
+                        >
+                          E-mail
+                        </button>
+                      </a>
                     </div>
                   </div>
                 </div>

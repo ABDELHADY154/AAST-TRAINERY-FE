@@ -174,7 +174,8 @@ export default class CareerCoaching extends Component {
                                     <Link
                                       to={`/CareerCoaching/Advising/${data.id}`}
                                     >
-                                      {data.status == "unbooked" ? (
+                                      {!data.status == "booked" ||
+                                      "accepted" ? (
                                         <button className="applyBtn px-4 py-0 bookbtn">
                                           Book
                                         </button>

@@ -356,7 +356,9 @@ class CarouselReviews extends Component {
           <div className="d-flex flex-row col-12 col-md-12 text-center fs-5  ">
             <div className="d-flex flex-column col-12 col-md-12">
               <center>
-                <p className="txtName">{this.props.fullName}</p>
+                <p style={{ textTransform: "capitalize" }} className="txtName">
+                  {this.props.fullName}
+                </p>
               </center>
             </div>
           </div>
