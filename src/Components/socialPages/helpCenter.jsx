@@ -35,14 +35,14 @@ class helpCenter extends React.Component {
           spinner={<BounceLoader color="#cd8930" />}
           color={"#cd8930"}
           styles={{
-            overlay: base => ({
+            overlay: (base) => ({
               ...base,
               background: "rgb(255, 255, 255)",
               stroke: "rgba(255, 0, 0, 0.5)",
             }),
           }}
         >
-          <div className="container mt-3">
+          <div className="container mt-5">
             <div className="mt-3">
               <h1 className="text-center fs-3 fw-bold">Help Center</h1>
               <p className="text-center">
@@ -165,9 +165,7 @@ class helpCenter extends React.Component {
                 <div className="container pt-4 ">
                   <div className="row ">
                     <h5 className="d-flex  justify-content-start ">
-
                       Contact us for more help!
-
                     </h5>
                   </div>
                   <div className="row ">
@@ -178,16 +176,14 @@ class helpCenter extends React.Component {
                     </p>
                     <div className="col-md-2 col-sm-0 col-0 col-lg-2 space "></div>
                     <div className=" col-3 col-md-2 col-sm-3 col-lg-1 d-flex justify-content-end">
-                      <button
-                        type="submit"
-                        className="col-12 col-md-12 col-sm-12 col-lg-12 btn FAQBtn"
-                      >
-                        <Link className=" " to="/contactus">
+                      <Link className=" " to="/contactus">
+                        <button
+                          type="submit"
+                          className="col-12 col-md-12 col-sm-12 col-lg-12 btn FAQBtn"
+                        >
                           Send
-                        </Link>
-                      </button>
-
-            
+                        </button>
+                      </Link>
                     </div>
                   </div>
                 </div>
