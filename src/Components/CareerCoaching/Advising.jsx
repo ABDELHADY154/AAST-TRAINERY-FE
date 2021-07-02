@@ -101,7 +101,7 @@ export default class CareerCoaching extends Component {
           status: "booked",
           booking_date: this.state.booking_date,
         });
-        console.log("BOOKED!");
+        // console.log("BOOKED!");
       })
       .catch((err) => {
         console.log(err);
@@ -124,7 +124,7 @@ export default class CareerCoaching extends Component {
         this.setState({
           status: "unbooked",
         });
-        console.log("UNBOOKED!");
+        // console.log("UNBOOKED!");
       })
       .catch((err) => {
         console.log(err);
