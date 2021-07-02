@@ -67,18 +67,32 @@ class Appointment extends Component {
                           <p className="me-3 mb-0">Time Booked</p>
                           <p className="mb-0">9:00 AM</p>
                         </div>
+
                         <p class="">
-                          <small id="gold">Resend this email</small>
+                          {/* <small id="gold">Resend this email</small> */}
                         </p>
                       </div>
                       <div className="row ">
                         <div className="d-flex justify-content-end mb-2">
-                          <button className="applyBtn col-md-2 col-lg-1 col-sm-2 col-4  me-2">
+                          {/* <button className="applyBtn col-md-2 col-lg-1 col-sm-2 col-4  me-2">
                             Contact
-                          </button>
-                          <button className="applyBtn col-md-2 col-lg-1 col-sm-2 col-4  me-2">
+                          </button> */}
+                          {data.status == "achieved" ? (
+                            <button className="applyBtn col-md-2 col-lg-1 col-sm-2 col-4  me-2">
+                              Review
+                            </button>
+                          ) : (
+                            <button
+                              disabled
+                              className=" disabledBtn col-md-2 col-lg-1 col-sm-2 col-4  me-2"
+                            >
+                              Review
+                            </button>
+                          )}
+
+                          {/* <button className="applyBtn col-md-2 col-lg-1 col-sm-2 col-4  me-2">
                             Review
-                          </button>
+                          </button> */}
                         </div>
                       </div>
                     </div>
