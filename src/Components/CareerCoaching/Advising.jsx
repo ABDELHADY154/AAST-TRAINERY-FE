@@ -202,7 +202,10 @@ export default class CareerCoaching extends Component {
                     </div>
                     <div className="d-flex flex-row flex-wrap mt-2">
                       <div className=" mb-4 d-flex mt-1 flex-row col-12 col-md-7 justify-content-start ">
-                        <p id="gold">Please check your email for all details</p>
+                        <p id="gold">
+                          Please check your email for all details <br /> Choose
+                          suitable time for the session
+                        </p>
                       </div>
                       <div className=" mb-4 d-flex flex-row mt-1 col-4 col-md-3 justify-content-end  ">
                         <p id="gold">{this.state.price} L.E</p>
