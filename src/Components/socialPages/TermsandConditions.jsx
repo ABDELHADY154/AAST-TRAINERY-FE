@@ -12,7 +12,7 @@ export default class TermsandConditions extends React.Component {
   render() {
     return (
       <div>
-        <div className="container mb-5">
+        <div className="container mb-5 mt-5">
           <h1>AAST Trainery Terms & Conditions</h1>
           <p>Updated at 2021-07-01</p>
 

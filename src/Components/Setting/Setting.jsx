@@ -18,6 +18,9 @@ class Setting extends Component {
       id: 0,
       error: {},
       FormLoading: false,
+      curpw: "",
+      newpw: "",
+      newpw2: "",
     };
   }
   async componentDidMount() {
@@ -78,6 +81,35 @@ class Setting extends Component {
     }
   };
 
+  handlechangepassword = async (e) => {
+    this.setState({ FormLoading: true });
+    const data = {
+      old_password: this.state.curpw,
+      password: this.state.newpw,
+      password_confirmation: this.state.newpw2,
+    };
+    await axios
+      .put("/W/student/updatePassword", data)
+      .then((res) => {
+        this.setState({
+          loggedIn: true,
+          FormLoading: false,
+        });
+        console.log(res);
+      })
+
+      .catch((err) => {
+        this.setState({
+          error: {
+            curpwErr: err.response.data.errors.old_password,
+            newpwErr: err.response.data.errors.password,
+          },
+          FormLoading: false,
+        });
+        console.log(this.state.error.curpwErr);
+      });
+  };
+
   render() {
     if (this.state.loggedIn === true) {
       return <Redirect to="/Profile" />;
@@ -115,20 +147,18 @@ class Setting extends Component {
                   <input
                     type="Password"
                     className={
-                      this.state.error && this.state.error.languageErr
+                      this.state.error && this.state.error.curpwErr
                         ? "form-control editInput wrong"
                         : "form-control editInput "
                     }
                     id="Password"
                     placeholder="Current Password"
-                    onChange={(e) =>
-                      this.setState({ language: e.target.value })
-                    }
+                    onChange={(e) => this.setState({ curpw: e.target.value })}
                     value={this.state.language}
                   />
-                  {this.state.error && this.state.error.LanguageLevelErr ? (
+                  {this.state.error && this.state.error.curpwErr ? (
                     <p className="editerror text-capitalize">
-                      {this.state.error.LanguageLevelErr}
+                      {this.state.error.curpwErr}
                     </p>
                   ) : (
                     ""
@@ -143,9 +173,7 @@ class Setting extends Component {
                     }
                     id="Password"
                     placeholder="New Password "
-                    onChange={(e) =>
-                      this.setState({ language: e.target.value })
-                    }
+                    onChange={(e) => this.setState({ nw: e.target.value })}
                     value={this.state.language}
                   />
                   {this.state.error && this.state.error.LanguageLevelErr ? (
