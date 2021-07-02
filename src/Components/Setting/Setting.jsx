@@ -18,30 +18,32 @@ class Setting extends Component {
       id: 0,
       error: {},
       FormLoading: false,
+      curpw: "",
+      newpw: "",
+      newpw2: "",
     };
   }
   async componentDidMount() {
-    if (this.props.match.params.id) {
-      this.setState({ FormLoading: true });
-      await axios
-        .put("/W/student/updateEmail")
-        .then((res) => {
-          this.setState({
-            email: res.data.response.data,
-            FormLoading: false,
-          });
-          console.log(res.data.response.data);
-        })
-        .catch((error) => {
-          if (error.response.data.status === 401) {
-            sessionStorage.clear("token");
-            sessionStorage.clear("status");
-            this.setState({ loggedIn: false });
-            window.location.reload();
-          }
-          this.setState({ FormLoading: false });
+    this.setState({ FormLoading: true });
+    await axios
+      .get("/W/student/studentAccount")
+      .then((res) => {
+        this.setState({
+          email: res.data.response.data.email,
+          subscribed: res.data.response.data.subscribed,
+          FormLoading: false,
         });
-    }
+      })
+      .catch((error) => {
+        if (error.response.data.status === 401) {
+          sessionStorage.clear("token");
+          sessionStorage.clear("status");
+          this.setState({ loggedIn: false });
+          window.location.reload();
+        }
+        this.setState({ FormLoading: false });
+      });
+
     // console.log(this.props.match.params.id);
   }
   handleupdateEmail = async (e) => {
@@ -49,16 +51,109 @@ class Setting extends Component {
 
     e.preventDefault();
     const data = {
-      email: this.state.email,
+      email: this.state.email1,
     };
-    if (this.props.match.params.id) {
+    // if (this.props.match.params.id) {
+    await axios
+      .put("/W/student/updateEmail", data)
+      .then((response) => {
+        this.setState({
+          loggedIn: true,
+          FormLoading: false,
+        });
+      })
+      .catch((error) => {
+        if (error.response.data.status === 401) {
+          sessionStorage.clear("token");
+          sessionStorage.clear("status");
+          this.setState({ loggedIn: false });
+          window.location.reload();
+        }
+        this.setState({
+          FormLoading: false,
+
+          error: {
+            emailErr: error.response.data.errors.email,
+          },
+        });
+        console.log(error);
+      });
+    // }
+  };
+  handlechangepassword = async (e) => {
+    e.preventDefault();
+    this.setState({ FormLoading: true });
+    const data = {
+      old_password: this.state.curpw,
+      password: this.state.nwpw,
+      password_confirmation: this.state.nwpw2,
+    };
+
+    await axios
+      .put("/W/student/updatePassword", data)
+      .then((response) => {
+        this.setState({
+          FormLoading: false,
+          loggedIn: true,
+        });
+      })
+      .catch((error) => {
+        if (error.response.data.status === 401) {
+          sessionStorage.clear("token");
+          sessionStorage.clear("status");
+          this.setState({ loggedIn: false });
+          window.location.reload();
+        }
+        this.setState({
+          FormLoading: false,
+          error: {
+            curpwErr: error.response.data.errors.old_password,
+            nwpwErr: error.response.data.errors.password,
+          },
+        });
+      });
+  };
+
+  handleSubscription = async (e) => {
+    this.setState({ FormLoading: true });
+    e.preventDefault();
+
+    if (this.state.subscribed == false) {
       await axios
-        .put("/W/student/updateEmail", data)
+        .get("/W/student/subscribe")
+        .then((response) => {
+          this.setState({
+            FormLoading: false,
+            subscribe: false,
+            loggedIn: true,
+          });
+          window.location.reload();
+        })
+        .catch((error) => {
+          if (error.response.data.status === 401) {
+            sessionStorage.clear("token");
+            sessionStorage.clear("status");
+            this.setState({ loggedIn: true, FormLoading: false });
+            window.location.reload();
+          }
+        });
+    }
+  };
+
+  handleunSubscription = async (e) => {
+    this.setState({ FormLoading: true });
+    e.preventDefault();
+
+    if (this.state.subscribed == true) {
+      await axios
+        .get("/W/student/unsubscribe")
         .then((response) => {
           this.setState({
             loggedIn: true,
             FormLoading: false,
+            subscribe: true,
           });
+          window.location.reload();
         })
         .catch((error) => {
           if (error.response.data.status === 401) {
@@ -69,19 +164,78 @@ class Setting extends Component {
           }
           this.setState({
             FormLoading: false,
-
-            error: {
-              emailErr: error.response.data.errors.email,
-            },
+            loggedIn: true,
           });
         });
     }
   };
+  handleDelete = async (e) => {
+    this.setState({ FormLoading: true });
+    e.preventDefault();
+    var data = {
+      password: this.state.currpw,
+      password_confirmation: this.state.currpw,
+    };
+    await axios
+      .post("/W/student/deleteAccount", data)
+      .then((response) => {
+        this.setState({
+          loggedIn: true,
+          FormLoading: false,
+          // subscribe: true,
+        });
+        sessionStorage.clear("token");
+        sessionStorage.clear("status");
+        this.setState({ loggedIn: false });
+        window.location.reload();
+      })
+      .catch((error) => {
+        if (error.response.data.status === 401) {
+          sessionStorage.clear("token");
+          sessionStorage.clear("status");
+          this.setState({ loggedIn: false });
+          window.location.reload();
+        }
+        this.setState({
+          FormLoading: false,
+          currpwErr: error.response.data.errors.password,
+        });
+      });
+  };
+
+  handlechangepassword = async (e) => {
+    this.setState({ FormLoading: true });
+    const data = {
+      old_password: this.state.curpw,
+      password: this.state.newpw,
+      password_confirmation: this.state.newpw2,
+    };
+    await axios
+      .put("/W/student/updatePassword", data)
+      .then((res) => {
+        this.setState({
+          loggedIn: true,
+          FormLoading: false,
+        });
+        console.log(res);
+      })
+
+      .catch((err) => {
+        this.setState({
+          error: {
+            curpwErr: err.response.data.errors.old_password,
+            newpwErr: err.response.data.errors.password,
+          },
+          FormLoading: false,
+        });
+        console.log(this.state.error.curpwErr);
+      });
+  };
 
   render() {
-    if (this.state.loggedIn === true) {
-      return <Redirect to="/Profile" />;
-    }
+    // if (this.state.loggedIn === true) {
+    //   return <Redirect to="/Profile" />;
+    // }
     // console.log(this.state.level);
     return (
       <div>
@@ -115,20 +269,16 @@ class Setting extends Component {
                   <input
                     type="Password"
                     className={
-                      this.state.error && this.state.error.languageErr
+                      this.state.error && this.state.error.curpwErr
                         ? "form-control editInput wrong"
                         : "form-control editInput "
                     }
-                    id="Password"
                     placeholder="Current Password"
-                    onChange={(e) =>
-                      this.setState({ language: e.target.value })
-                    }
-                    value={this.state.language}
+                    onChange={(e) => this.setState({ curpw: e.target.value })}
                   />
-                  {this.state.error && this.state.error.LanguageLevelErr ? (
+                  {this.state.error && this.state.error.curpwErr ? (
                     <p className="editerror text-capitalize">
-                      {this.state.error.LanguageLevelErr}
+                      {this.state.error.curpwErr}
                     </p>
                   ) : (
                     ""
@@ -137,20 +287,16 @@ class Setting extends Component {
                     style={{ marginTop: 10 }}
                     type="Password"
                     className={
-                      this.state.error && this.state.error.languageErr
+                      this.state.error && this.state.error.nwpwErr
                         ? " form-control editInput wrong"
                         : "form-control editInput "
                     }
-                    id="Password"
-                    placeholder="New Password "
-                    onChange={(e) =>
-                      this.setState({ language: e.target.value })
-                    }
-                    value={this.state.language}
+                    placeholder="New Password"
+                    onChange={(e) => this.setState({ nwpw: e.target.value })}
                   />
-                  {this.state.error && this.state.error.LanguageLevelErr ? (
+                  {this.state.error && this.state.error.nwpwErr ? (
                     <p className="editerror text-capitalize">
-                      {this.state.error.LanguageLevelErr}
+                      {this.state.error.nwpwErr}
                     </p>
                   ) : (
                     ""
@@ -163,12 +309,8 @@ class Setting extends Component {
                         ? "form-control editInput wrong"
                         : "form-control editInput "
                     }
-                    id="Password"
                     placeholder="Confirm Password  "
-                    onChange={(e) =>
-                      this.setState({ language: e.target.value })
-                    }
-                    value={this.state.language}
+                    onChange={(e) => this.setState({ nwpw2: e.target.value })}
                   />
                   {this.state.error && this.state.error.LanguageLevelErr ? (
                     <p className="editerror text-capitalize">
@@ -179,17 +321,18 @@ class Setting extends Component {
                   )}
                 </div>
                 <div class="mt-5 col-lg-10 col-11 col-md-10 col-sm-12 col-xs-12 d-flex justify-content-end">
-                  <button type="submit" class="btn updateBtn shadow-none">
+                  <button
+                    type="submit"
+                    class="btn updateBtn shadow-none"
+                    onClick={this.handlechangepassword}
+                  >
                     Update
                   </button>
                 </div>
               </LoadingOverlay>
             </form>
             <hr className="w-75 " />
-            <form
-              className="row g-3 mb-3 mt-1"
-              onSubmit={this.handleSubmitLanguage}
-            >
+            <form className="row g-3 mb-3 mt-1">
               <LoadingOverlay
                 active={this.state.FormLoading}
                 spinner={<BounceLoader color="#cd8930" />}
@@ -210,7 +353,7 @@ class Setting extends Component {
                   <p>
                     You are already registered with the following email:{" "}
                     <span style={{ color: "#cd8930" }} className="text-wrap">
-                      basmaamostafa27@student.aast.edu{" "}
+                      {this.state.email + " "}
                     </span>
                     If you would like to sign-in and receive emails on a
                     different address, write this new email here:
@@ -223,9 +366,8 @@ class Setting extends Component {
                         : "form-control editInput "
                     }
                     id="email"
-                    placeholder="new email"
-                    onChange={(e) => this.setState({ email: e.target.value })}
-                    value={this.state.email}
+                    placeholder="new email must be @student.aast.edu"
+                    onChange={(e) => this.setState({ email1: e.target.value })}
                   />
                   {this.state.error && this.state.error.emailErr ? (
                     <p className="editerror text-capitalize">
@@ -236,17 +378,18 @@ class Setting extends Component {
                   )}
                 </div>
                 <div class="mt-5 col-lg-10 col-11 col-md-10 col-sm-12 col-xs-12 d-flex justify-content-end">
-                  <button type="submit" class="btn updateBtn shadow-none">
+                  <button
+                    type="submit"
+                    class="btn updateBtn shadow-none"
+                    onClick={this.handleupdateEmail}
+                  >
                     Update
                   </button>
                 </div>
               </LoadingOverlay>
             </form>
             <hr className="w-75 " />
-            <form
-              className="row g-3 mb-3 mt-1"
-              onSubmit={this.handleSubmitLanguage}
-            >
+            <form className="row g-3 mb-3 mt-1">
               <LoadingOverlay
                 active={this.state.FormLoading}
                 spinner={<BounceLoader color="#cd8930" />}
@@ -268,37 +411,65 @@ class Setting extends Component {
                     You will receive emails containing the latest jobs which
                     match your preferences.
                   </p>
-                  {/* <div class="col-4 col-lg-5 col-md-4 col-sm-4 col-xs-3 male form-check form-check-inline d-flex"> */}
-                  <input
-                    type="checkbox"
-                    name="inlineRadioOptions"
-                    id="inlineRadio1"
-                    value="male"
-                    className="checkbox signInput"
-                    onChange={(e) => this.setState({ gender: e.target.value })}
-                  />
-                  <label
-                    class="form-check-label checkboxLabel"
-                    for="inlineCheckbox3"
-                  >
-                    Receive newsletter
-                  </label>
-                  {/* </div> */}
-                  {this.state.error && this.state.error.LanguageLevelErr ? (
-                    <p className="editerror text-capitalize">
-                      {this.state.error.LanguageLevelErr}
-                    </p>
+
+                  {this.state.subscribed === true ? (
+                    <div className="">
+                      <input
+                        type="checkbox"
+                        name="inlineRadioOptions"
+                        style={{ marginBottom: 5 }}
+                        className="checkbox signInput"
+                        checked
+                      />
+                      <label
+                        class="form-check-label mx-2"
+                        for="inlineCheckbox3"
+                      >
+                        {" "}
+                        Receive Newsletter
+                      </label>
+                    </div>
                   ) : (
-                    ""
+                    <div className="">
+                      {" "}
+                      <input
+                        type="checkbox"
+                        name="inlineRadioOptions"
+                        style={{ marginBottom: 5 }}
+                        className="checkbox signInput"
+                      />
+                      <label
+                        class="form-check-label mx-2"
+                        for="inlineCheckbox3"
+                      >
+                        {" "}
+                        Receive Newsletter
+                      </label>
+                    </div>
                   )}
                 </div>
                 <div class="col-lg-10 col-11 col-md-10 col-sm-12 col-xs-12 d-flex justify-content-end">
-                  <button type="submit" class="btn updateBtn shadow-none">
-                    Update
-                  </button>
+                  {this.state.subscribed == true ? (
+                    <button
+                      type="submit"
+                      class="btn updateBtn shadow-none"
+                      onClick={this.handleunSubscription}
+                    >
+                      Unsubscribe
+                    </button>
+                  ) : (
+                    <button
+                      type="submit"
+                      class="btn updateBtn shadow-none"
+                      onClick={this.handleSubscription}
+                    >
+                      Update
+                    </button>
+                  )}
                 </div>
               </LoadingOverlay>
             </form>{" "}
+            {/*
             <hr className="w-75 " />
             <form
               className="row g-3 mb-3 mt-1"
@@ -324,12 +495,12 @@ class Setting extends Component {
                   <p>Monthly pay to advois seeing Ads</p>
                 </div>
                 <div class="mt-1 col-lg-10 col-11 col-md-10 col-sm-12 col-xs-12 d-flex justify-content-end">
-                  <button type="submit" class="btn updateBtn shadow-none">
-                    Subscribe
+                  <button type="submit" class="btn updateBtn shadow-none hide">
+                    Up
                   </button>
-                </div>
+                </div> 
               </LoadingOverlay>
-            </form>{" "}
+            </form>{" "}*/}
             <hr className="w-75 " />
             <form
               className="row g-3 mb-3 mt-1"
@@ -353,9 +524,30 @@ class Setting extends Component {
                     Delete Account
                   </label>
                   <p>Permanently delete my account</p>
+                  <input
+                    type="Password"
+                    className={
+                      this.state.currpwErr
+                        ? "form-control editInput wrong"
+                        : "form-control editInput "
+                    }
+                    placeholder="Please Enter Your Password"
+                    onChange={(e) => this.setState({ currpw: e.target.value })}
+                  />
+                  {this.state.currpwErr ? (
+                    <p className="editerror text-capitalize">
+                      {this.state.currpwErr}
+                    </p>
+                  ) : (
+                    ""
+                  )}
                 </div>
                 <div class="mt-5 col-lg-10 col-11 col-md-10 col-sm-12 col-xs-12 d-flex justify-content-end">
-                  <button type="submit" class="btn deleteBtn shadow-none">
+                  <button
+                    type="submit"
+                    class="btn deleteBtn shadow-none"
+                    onClick={this.handleDelete}
+                  >
                     Delete
                   </button>
                 </div>

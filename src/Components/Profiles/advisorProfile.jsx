@@ -35,9 +35,10 @@ export default class advisorProfile extends Component {
   };
   async componentDidMount() {
     this.setState({ FormLoading: true });
+    console.log(this.props.match.params.id);
     await axios
       .get(`/W/student/advisor/${this.props.match.params.id}`)
-      .then((res) => {
+      .then(res => {
         this.setState({
           id: res.data.response.data.id,
           data: res.data.response.data,
@@ -46,7 +47,7 @@ export default class advisorProfile extends Component {
         });
         console.log(res.data.response.data.internshipPosts);
       })
-      .catch((err) => {
+      .catch(err => {
         this.setState({ FormLoading: true });
         console.log(err);
       });
@@ -60,7 +61,7 @@ export default class advisorProfile extends Component {
           spinner={<BounceLoader color="#cd8930" />}
           color={"#cd8930"}
           styles={{
-            overlay: (base) => ({
+            overlay: base => ({
               ...base,
               background: "rgb(255, 255, 255)",
               stroke: "rgba(255, 0, 0, 0.5)",
@@ -134,7 +135,7 @@ export default class advisorProfile extends Component {
                 <div>
                   <h4 className="companyTitel">Published Internship</h4>
 
-                  {this.state.internshipPosts.map((data) => {
+                  {this.state.internshipPosts.map(data => {
                     return (
                       <BigCard
                         title={data.title}
@@ -197,7 +198,7 @@ class CompanyPost extends Component {
               <div id="job" className="ms-5 ">
                 <div className=" ms-3  mt-1 ">{this.props.company_name}</div>
                 <div className="mt-1 ms-2  d-flex flex-row departments">
-                  {this.props.departments.map((item) => {
+                  {this.props.departments.map(item => {
                     return (
                       <Departments
                         id={item.id}
@@ -212,7 +213,7 @@ class CompanyPost extends Component {
               <p className="card-text mt-2">{this.props.description}</p>
 
               <div className="d-flex flex-row flex-wrap ">
-                {this.props.tags.map((item) => {
+                {this.props.tags.map(item => {
                   return (
                     <Interest
                       id={item.id}

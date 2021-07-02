@@ -262,15 +262,15 @@ class Registry extends React.Component {
                               )}
                             </div>
                             <PasswordStrengthBar
-                              password={password}
+                              password={`${this.state.password}`}
                               minLength="8"
                               className="mt-2"
                             />
 
-                            {this.state.error.passwordErr !== "" &&
+                            {/* {this.state.error.passwordErr !== "" &&
                               this.state.error.passwordErr.map((name) => (
                                 <p className="red d-inline"> {name} </p>
-                              ))}
+                              ))} */}
                           </div>
                           <div className="col-md-10 col-lg-11 form-label-group input-field">
                             <label className="label">Confirm Password</label>
@@ -358,7 +358,7 @@ class Registry extends React.Component {
                         </Link>
                         <p className="agree ">
                           By creating an account, you agree to the
-                          <Link to="/">
+                          <Link to="/TermsandConditions">
                             <span className="terms">
                               {"  "} Terms and Conditions{"  "}
                             </span>

@@ -19,7 +19,7 @@ export default class Footer extends React.Component {
       <div
         id="footer"
         className="Container
-        
+        pt-2
        flex-row "
       >
         <footer className="footer-area footer    footer--light m-auto prim">
@@ -79,7 +79,9 @@ export default class Footer extends React.Component {
                           </Link>
                         </li>
                         <li>
-                          <Link to="/">Terms & Conditions</Link>
+                          <Link to="/TermsandConditions">
+                            Terms & Conditions
+                          </Link>
                         </li>
                       </ul>
                     </div>

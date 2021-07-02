@@ -28,12 +28,7 @@ export default class StudentAccount extends Component {
                   <div id="job" className="d-flex flex-row ms-5 ">
                     <div className="d-flex ms-3 flex-column">CIB</div>
                   </div>
-                  <p className="card-text mt-2">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    Ipsam repudiandae aut possimus. Repellendus at nostrum iste
-                    doloremque. Ea omnis ipsam, eum nam tempore culpa illum
-                    consequuntur quis nobis adipisci et?
-                  </p>
+                  <p className="card-text mt-2">Amazing hardworking student</p>
                 </div>
               </div>
             </div>
@@ -53,12 +48,7 @@ export default class StudentAccount extends Component {
                   <div id="job" className="d-flex flex-row ms-5 ">
                     <div className="d-flex ms-3 flex-column">CIB</div>
                   </div>
-                  <p className="card-text mt-2">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    Ipsam repudiandae aut possimus. Repellendus at nostrum iste
-                    doloremque. Ea omnis ipsam, eum nam tempore culpa illum
-                    consequuntur quis nobis adipisci et?
-                  </p>
+                  <p className="card-text mt-2">Bright student and worker</p>
                 </div>
               </div>
             </div>

@@ -1,6 +1,6 @@
 import React from "react";
 import { axios } from "../../Api/axios";
-import { Redirect } from "react-router-dom";
+import { Redirect, Link } from "react-router-dom";
 import Footer from "../Common/Footer";
 import img from "./Assets/bg2.png";
 import img1 from "./Assets/Rectangle1.png";
@@ -34,7 +34,7 @@ class Landing extends React.Component {
     }
   }
   async componentDidMount() {
-    await axios.get("/W/landingCount").then((data) => {
+    await axios.get("/W/landingCount").then(data => {
       this.setState({
         loading: true,
         students: data.data.response.data.students,
@@ -289,9 +289,12 @@ class Landing extends React.Component {
           <CarouselLogos />
 
           <div className="mb-4 mt-5 d-flex justify-content-center">
-            <button className="d-flex justify-content-center contactBtn col-md-2 col-4 col-lg-1 col-sm-4 text-center  py-1">
+            <Link
+              className="d-flex justify-content-center contactBtn col-md-2 col-4 col-lg-1 col-sm-4 text-center  py-1"
+              to="/contactus"
+            >
               Contact
-            </button>
+            </Link>
           </div>
         </div>
         <Footer />

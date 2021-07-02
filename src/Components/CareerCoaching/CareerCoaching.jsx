@@ -162,19 +162,20 @@ export default class CareerCoaching extends Component {
                                 {/* <DateTimePicker onChange={onChange()} value={value} /> */}
 
                                 <div className="d-flex  mt-2 flex-row flex-wrap ">
-                                  <div className=" mb-1 d-flex mt-1 flex-row col-12 col-md-7 justify-content-start ">
+                                  <div className=" mb-1 d-flex mt-1 flex-row col-12 col-md-5 justify-content-start ">
                                     <p id="gold">
                                       Please check your email for all details
                                     </p>
                                   </div>
-                                  <div className=" mb-1 d-flex flex-row mt-1 col-4 col-md-3 justify-content-center  ">
+                                  <div className=" mb-1 d-flex flex-row mt-1 col-4 col-md-4 justify-content-center  ">
                                     <p id="gold">{data.price} L.E</p>
                                   </div>
-                                  <div className=" d-flex flex-row col-6 col-md-2 mt-0 justify-content-end">
+                                  <div className=" d-flex flex-row col-6 col-md-3 mt-0 justify-content-end">
                                     <Link
                                       to={`/CareerCoaching/Advising/${data.id}`}
                                     >
-                                      {data.status == "unbooked" ? (
+                                      {/* {!data.status == "booked" ||
+                                      "accepted" ? (
                                         <button className="applyBtn px-4 py-0 bookbtn">
                                           Book
                                         </button>
@@ -182,6 +183,37 @@ export default class CareerCoaching extends Component {
                                         <button className="applyBtn px-4 py-0 bookbtn">
                                           Booked
                                         </button>
+                                      )} */}
+                                      {data.status == "booked" ? (
+                                        <button
+                                          className="appliedBtn px-4 py-0 "
+                                          onClick={this.unbook}
+                                        >
+                                          Booked
+                                        </button>
+                                      ) : data.status == "accepted" ? (
+                                        <button
+                                          className="appliedBtn px-4 py-0 "
+                                          onClick={this.book}
+                                        >
+                                          Accepted
+                                        </button>
+                                      ) : data.status == "achieved" ? (
+                                        <button
+                                          className="appliedBtn px-4 py-0 "
+                                          onClick={this.book}
+                                        >
+                                          Achieved
+                                        </button>
+                                      ) : (
+                                        <>
+                                          <button
+                                            className="appliedBtn px-4 py-0 "
+                                            onClick={this.book}
+                                          >
+                                            Book
+                                          </button>
+                                        </>
                                       )}
                                     </Link>
                                   </div>
@@ -246,7 +278,7 @@ class CarouselReviews extends Component {
             </div>
           </div>
           <center>
-            <hr className="hrReview   " />
+            <hr className="hrReview" />
           </center>
           <div className="d-flex flex-row col-12 col-md-12 text-center fs-5  ">
             <div className="d-flex flex-column col-12 col-md-12">
@@ -269,7 +301,7 @@ class CarouselReviews extends Component {
                 value={this.props.rate}
                 edit={false}
                 size={23}
-                activeColor="#F2A23A"
+                activeColor="#cd8930"
               />
             </div>
           </div>

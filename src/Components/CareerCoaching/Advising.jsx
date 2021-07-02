@@ -101,7 +101,7 @@ export default class CareerCoaching extends Component {
           status: "booked",
           booking_date: this.state.booking_date,
         });
-        console.log("BOOKED!");
+        // console.log("BOOKED!");
       })
       .catch((err) => {
         console.log(err);
@@ -124,7 +124,7 @@ export default class CareerCoaching extends Component {
         this.setState({
           status: "unbooked",
         });
-        console.log("UNBOOKED!");
+        // console.log("UNBOOKED!");
       })
       .catch((err) => {
         console.log(err);
@@ -158,6 +158,8 @@ export default class CareerCoaching extends Component {
       slidesToScroll: 1,
     };
     console.log(this.state.status);
+    console.log(this.state.reviewed);
+
     return (
       <div className="container-fluid ">
         {" "}
@@ -188,17 +190,26 @@ export default class CareerCoaching extends Component {
                     </div>
                     <div className="fs-6 mt-3">{this.state.desc}</div>{" "}
                     <div className="d-flex flex-row flex-wrap mt-5">
-                      {this.state.status == "booked" ? (
-                        " "
-                      ) : (
+                      {this.state.status == "unbooked" ||
+                      "rejected" ||
+                      this.state.reviewed == "true" ? (
                         <>
-                          <DatePicker setDateFn={this.setDate} />
+                          <DatePicker
+                            clearIcon={null}
+                            clearAriaLabel={null}
+                            setDateFn={this.setDate}
+                          />
                         </>
+                      ) : (
+                        ""
                       )}
                     </div>
                     <div className="d-flex flex-row flex-wrap mt-2">
                       <div className=" mb-4 d-flex mt-1 flex-row col-12 col-md-7 justify-content-start ">
-                        <p id="gold">Please check your email for all details</p>
+                        <p id="gold">
+                          Please check your email for all details <br /> Choose
+                          suitable time for the session
+                        </p>
                       </div>
                       <div className=" mb-4 d-flex flex-row mt-1 col-4 col-md-3 justify-content-end  ">
                         <p id="gold">{this.state.price} L.E</p>
@@ -212,15 +223,35 @@ export default class CareerCoaching extends Component {
                             Booked
                           </button>
                         </div>
-                      ) : (
+                      ) : this.state.status == "accepted" ? (
                         <div className=" d-flex flex-row col-6 col-md-2 justify-content-end">
                           <button
                             className="appliedBtn px-4 py-0 "
                             onClick={this.book}
                           >
-                            Book
+                            Accepted
                           </button>
                         </div>
+                      ) : this.state.status == "achieved" ? (
+                        <div className=" d-flex flex-row col-6 col-md-2 justify-content-end">
+                          <button
+                            className="appliedBtn px-4 py-0 "
+                            onClick={this.book}
+                          >
+                            Achieved
+                          </button>
+                        </div>
+                      ) : (
+                        <>
+                          <div className=" d-flex flex-row col-6 col-md-2 justify-content-end">
+                            <button
+                              className="appliedBtn px-4 py-0 "
+                              onClick={this.book}
+                            >
+                              Book
+                            </button>
+                          </div>
+                        </>
                       )}
                     </div>
                   </div>
@@ -236,8 +267,8 @@ export default class CareerCoaching extends Component {
                   </div>
                 </div>
 
-                {this.state.reviewed == false &&
-                this.state.status == "achieved" ? (
+                {this.state.status == "achieved" &&
+                this.state.reviewed == false ? (
                   <>
                     <div className="d-flex flex-row ">
                       <div className="d-flex flex-column col-md-7 me-2  text-wrap bg-none me-5 ">
@@ -312,6 +343,7 @@ function DatePicker(props) {
   return (
     <div>
       <DateTimePicker
+        clearIcon={null}
         onChange={(value) => {
           onChange(value);
           props.setDateFn(value);
@@ -341,7 +373,9 @@ class CarouselReviews extends Component {
           <div className="d-flex flex-row col-12 col-md-12 text-center fs-5  ">
             <div className="d-flex flex-column col-12 col-md-12">
               <center>
-                <p className="txtName">{this.props.fullName}</p>
+                <p style={{ textTransform: "capitalize" }} className="txtName">
+                  {this.props.fullName}
+                </p>
               </center>
             </div>
           </div>

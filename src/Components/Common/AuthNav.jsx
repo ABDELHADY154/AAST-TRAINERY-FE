@@ -3,6 +3,7 @@ import { Link, NavLink } from "react-router-dom";
 import logo from "../../Components/assests/icons/Main-Logo.png";
 import { AvatarLoader } from "../../loader";
 import { IoIosNotificationsOutline } from "react-icons/io";
+import { AiOutlineReload } from "react-icons/ai";
 import { resolve } from "../../Api/Resolvers/resolver";
 import { AiOutlineCheckCircle, AiOutlineWarning } from "react-icons/ai";
 import { axios } from "../../Api/axios";
@@ -36,15 +37,25 @@ class AuthNav extends React.Component {
       this.setState({ loading: true });
     }
   }
-  // handleUpdate = () => {
-  //   this.componentDidMount;
-  // };
   handleLogout = () => {
     sessionStorage.clear("token");
     sessionStorage.clear("status");
     this.props.setUser(false);
   };
-
+  handleNotifications = async () => {
+    var class1 = document.getElementById("dropdownMenu2").classList.add("show");
+    var class2 = document.getElementById("dorpList").classList.add("show");
+    await axios
+      .get("/W/student/notifications")
+      .then((res) => {
+        this.setState({
+          notifications: res.data.response.data,
+        });
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
   componentDidMount = async () => {
     axios.defaults.headers.common["Authorization"] =
       "Bearer " + sessionStorage.getItem("token");
@@ -58,15 +69,16 @@ class AuthNav extends React.Component {
               avatar: res.data.response.data.image,
               fullname: res.data.response.data.fullName,
             });
-            // console.log(this.props.updated);
           }
         })
 
-        .catch((error) => {
+        .catch(error => {
           if (error.response.data.status === 401) {
             sessionStorage.clear("token");
             sessionStorage.clear("status");
             this.setState({ validToken: false });
+            window.location.reload();
+
           }
         })
     );
@@ -76,10 +88,8 @@ class AuthNav extends React.Component {
         this.setState({
           notifications: res.data.response.data,
         });
-        // console.log(res.data.response.data);
       })
       .catch((err) => {
-        // this.setState({  });
         console.log(err);
       });
 
@@ -149,9 +159,6 @@ class AuthNav extends React.Component {
                       >
                         Explore
                       </NavLink>
-                      {/* <Link className='nav-link item navPage mt-2 ' to='/Explore'>
-                    <span className='sr-only' />
-                  </Link> */}
                     </li>
                     <li className="nav-item ">
                       <NavLink
@@ -164,19 +171,7 @@ class AuthNav extends React.Component {
                       </NavLink>
                     </li>
                   </ul>
-                  {/* <ul className="navbar-nav me-auto my-2">
 
-                    <li className="nav-item"></li>
-
-                    <li className="nav-item">
-                      <a
-                        className="nav-link disabled"
-                        href="#"
-                        aria-disabled="true"
-                      ></a>
-                    </li>
-                  </ul> */}
-                  {/* notification */}
                   <div
                     className="collapse navbar-collapse justify-content-end"
                     id="navbarScroll"
@@ -185,7 +180,7 @@ class AuthNav extends React.Component {
                       <div className="justify-self-end">
                         <a className="nav-item item col-6 " href="#">
                           <a
-                            className="dropdown-toggle"
+                            className="dropdown"
                             id="dropdownMenu2"
                             data-bs-toggle="dropdown"
                             aria-expanded="false"
@@ -197,49 +192,86 @@ class AuthNav extends React.Component {
                                 className: "global-class-name mt-0",
                               }}
                               className="noti mt-2 d-inline-block"
+                              id="not"
                             />
                           </a>
                           <ul
-                            className="dropdown-menu notificationMenu col-sm-6 col-md-6"
+                            className="dropdown-menu notificationMenu col-sm-12 col-md-6"
+                            id="dorpList"
                             lass="dropdown-menu"
                             aria-labelledby="dropdownMenu2"
                           >
-                            <p className="text-center  mb-2 notificationTitle">
+                            <p className="text-center  mb-2 notificationTitle ">
                               Notications
+                              <AiOutlineReload
+                                className="mx-md-2 float-end icon-refresh icon-spin"
+                                onClick={this.handleNotifications}
+                              />
                             </p>
 
                             {this.state.notifications.length !== 0
                               ? this.state.notifications.map((e) => {
                                   if (e.category == "rejected") {
                                     return (
-                                      <RejectCard
-                                        id={e.id}
+                                      //
+                                      <Link
+                                        to={
+                                          e.type == "internship"
+                                            ? `/Opportunity/${e.id}`
+                                            : e.type == "session"
+                                            ? `/CareerCoaching/Advising/${e.session.id}`
+                                            : ""
+                                        }
                                         key={e.id}
-                                        data={e}
-                                      />
+                                      >
+                                        <RejectCard
+                                          id={e.id}
+                                          key={e.id}
+                                          data={e}
+                                        />
+                                      </Link>
                                     );
                                   } else if (e.category == "success") {
                                     return (
-                                      <AcceptedCard
-                                        id={e.id}
+                                      <Link
+                                        to={
+                                          e.type == "internship"
+                                            ? `/Opportunity/${e.id}`
+                                            : e.type == "session"
+                                            ? `/CareerCoaching/Advising/${e.session.id}`
+                                            : ""
+                                        }
                                         key={e.id}
-                                        data={e}
-                                      />
+                                      >
+                                        <AcceptedCard
+                                          id={e.id}
+                                          key={e.id}
+                                          data={e}
+                                        />
+                                      </Link>
                                     );
                                   } else if (e.category == "important") {
                                     return (
-                                      <ImportantCard
-                                        id={e.id}
+                                      <Link
+                                        to={
+                                          e.type == "internship"
+                                            ? `/Opportunity/${e.id}`
+                                            : e.type == "session"
+                                            ? `/CareerCoaching/Advising/${e.session.id}`
+                                            : ""
+                                        }
                                         key={e.id}
-                                        data={e}
-                                      />
+                                      >
+                                        <ImportantCard
+                                          id={e.id}
+                                          key={e.id}
+                                          data={e}
+                                        />
+                                      </Link>
                                     );
                                   }
                                 })
                               : ""}
-                            {/* <RejectCard />
-                            <AcceptedCard />
-                            <ImportantCard /> */}
                           </ul>
                         </a>
                         {/* profile */}
@@ -344,7 +376,10 @@ class AuthNav extends React.Component {
                               </Link>
                             </li>
                             <li>
-                              <Link class="row " to="/Cv-Portfolio">
+                              <Link
+                                class="row "
+                                // to="/Cv-Portfolio"
+                              >
                                 <MdAssignment
                                   color="red"
                                   className="col-3 mt-1 ms-2"
@@ -352,7 +387,14 @@ class AuthNav extends React.Component {
                                   size="18px"
                                   pull="left"
                                 />
-                                <p className="col-7">Portfolio</p>
+                                <p className="col-7">
+                                  Portfolio{"    "}
+                                  <small
+                                    style={{ color: "#CD894B", fontSize: 12 }}
+                                  >
+                                    SOON
+                                  </small>
+                                </p>
                               </Link>
                             </li>
 
@@ -448,7 +490,6 @@ class RejectCard extends React.Component {
     this.state = {};
   }
   render() {
-    console.log(this.props.data);
     return (
       <div class="alert itemAlert " role="alert">
         <div className=" row NoticationContent ">

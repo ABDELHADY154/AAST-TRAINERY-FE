@@ -73,7 +73,7 @@ class Accepted extends Component {
                       className="row mb-5 mt-2 d-flex justify-content-center explore"
                       to="/Explore"
                     >
-                      Explore our new internship
+                      Explore our new internships
                       <span className="sr-only" />
                     </Link>
 
@@ -96,10 +96,9 @@ class Accepted extends Component {
                         sponsor_image={data.sponsor_image}
                         key={data.id}
                         saved={data.saved}
-                        applied={data.applied}
                         id={data.id}
                         company_id={data.company_id}
-                        accepted={data.accepted}
+                        status={data.status}
                       />
                     );
                   })

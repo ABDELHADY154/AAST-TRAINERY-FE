@@ -97,7 +97,7 @@ export class Carousel extends Component {
                 We got your back anywhere and anytime to help you improve your
                 soft and technical skills and give you the guidance you need
                 with professional coaches to learn more about your future career
-                and job market
+                and job market.
               </p>
 
               <Link

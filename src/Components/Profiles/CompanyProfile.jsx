@@ -18,8 +18,8 @@ import BounceLoader from "react-spinners/BounceLoader";
 import BigCard from "../Explore/BigCard";
 
 export default class CompanyProfile extends Component {
-  constructor(props) {
-    super(props);
+  constructor() {
+    super();
     this.state = {
       scrollPixelsY: 0,
       data: {},
@@ -37,9 +37,10 @@ export default class CompanyProfile extends Component {
   };
   async componentDidMount() {
     this.setState({ FormLoading: true });
+    console.log(this.props.match.params);
     await axios
       .get(`/W/student/company/${this.props.match.params.id}`)
-      .then((res) => {
+      .then(res => {
         this.setState({
           id: res.data.response.data.id,
           data: res.data.response.data,
@@ -49,7 +50,7 @@ export default class CompanyProfile extends Component {
         });
         // console.log(res.data.response.data.internshipPosts.ended);
       })
-      .catch((err) => {
+      .catch(err => {
         this.setState({ FormLoading: true });
         console.log(err);
       });
@@ -57,7 +58,7 @@ export default class CompanyProfile extends Component {
 
   render() {
     let id = this.props.id;
-    console.log(this.state.internshipPosts.open);
+    // console.log(this.state.internshipPosts.open);
     return (
       <div className="">
         <LoadingOverlay
@@ -65,7 +66,7 @@ export default class CompanyProfile extends Component {
           spinner={<BounceLoader color="#cd8930" />}
           color={"#cd8930"}
           styles={{
-            overlay: (base) => ({
+            overlay: base => ({
               ...base,
               background: "rgb(255, 255, 255)",
               stroke: "rgba(255, 0, 0, 0.5)",
@@ -173,7 +174,8 @@ export default class CompanyProfile extends Component {
                       </p>
                     </div>
                   ) : (
-                    this.state.openedPosts.map((data) => {
+                    this.state.openedPosts.map(data => {
+                      // console.log(data);
                       return (
                         <BigCard
                           title={data.title}
@@ -184,7 +186,7 @@ export default class CompanyProfile extends Component {
                           description={data.description}
                           tags={data.tags}
                           application_deadline={data.application_deadline}
-                          // post_type={data.post_type}
+                          post_type={data.post_type}
                           sponsor_image={data.sponsor_image}
                           key={data.id}
                           saved={data.saved}
@@ -192,6 +194,7 @@ export default class CompanyProfile extends Component {
                           id={data.id}
                           company_id={data.company_id}
                           accepted={data.accepted}
+                          advisor={data.advisor}
                         />
                       );
                     })
@@ -209,7 +212,7 @@ export default class CompanyProfile extends Component {
                       </p>
                     </div>
                   ) : (
-                    this.state.endedPosts.map((data) => {
+                    this.state.endedPosts.map(data => {
                       return (
                         <BigCard
                           title={data.title}
@@ -227,6 +230,7 @@ export default class CompanyProfile extends Component {
                           key={data.id}
                           id={data.id}
                           company_id={data.company_id}
+                          advisor={data.advisor}
                         />
                       );
                     })
@@ -343,7 +347,7 @@ class CompanyPostPromoted extends Component {
                   </div>
 
                   <div className="mt-1 ms-2 departments d-flex flex-row flex-wrap ">
-                    {this.props.departments.map((item) => {
+                    {this.props.departments.map(item => {
                       return (
                         <Departments
                           id={item.id}
@@ -359,7 +363,7 @@ class CompanyPostPromoted extends Component {
               <p className="card-text mt-2">{this.props.description}</p>
               <div className="d-flex flex-row flex-wrap ">
                 <div className="d-flex flex-row flex-wrap " id="firsttagipad">
-                  {this.props.tags.map((item) => {
+                  {this.props.tags.map(item => {
                     return (
                       <Interest
                         id={item.id}
@@ -468,7 +472,7 @@ class CompanyPost extends Component {
                     {this.props.company_name}
                   </div>
                   <div className="mt-1 ms-2 departments d-flex flex-row flex-wrap ">
-                    {this.props.departments.map((item) => {
+                    {this.props.departments.map(item => {
                       return (
                         <Departments
                           id={item.id}
@@ -484,7 +488,7 @@ class CompanyPost extends Component {
               <p className="card-text mt-2">{this.props.description}</p>
               <div className="d-flex flex-row flex-wrap ">
                 <div className="d-flex flex-row flex-wrap " id="firsttagipad">
-                  {this.props.tags.map((item) => {
+                  {this.props.tags.map(item => {
                     return (
                       <Interest
                         id={item.id}

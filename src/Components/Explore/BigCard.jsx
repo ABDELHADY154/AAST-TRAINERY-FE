@@ -21,7 +21,7 @@ export class BigCard extends Component {
     // this.handleSave = this.handleSave.bind(this);
   }
   componentDidMount() {
-    console.log(this.props)
+    console.log(this.props);
     if (this.props.saved === true) {
       this.setState({
         saved: true,
@@ -85,6 +85,7 @@ export class BigCard extends Component {
   };
 
   render() {
+    // console.log(this.props.company_id);
     return (
       <div>
         <div className="card mb-3">
@@ -115,12 +116,8 @@ export class BigCard extends Component {
                 ) : (
                   ""
                 )}
-                {/* <div className='d-flex flex-row-reverse'>
-                      <div class='gray'>2 min ago</div>
-                    </div> */}
               </div>
             </div>
-
             <div className="row ">
               <Link
                 to={`/CompanyProfile/${this.props.company_id}`}
@@ -133,12 +130,6 @@ export class BigCard extends Component {
                   style={{ height: 48, width: 48 }}
                   src={this.props.company_logo}
                 />
-                {/* <img
-                  className="rounded"
-                  id="imgicon"
-                  src={this.props.company_logo}
-                  style={{ height: 44, width: 44 }}
-                /> */}
               </Link>
 
               <div className="col-10  ">
@@ -155,7 +146,7 @@ export class BigCard extends Component {
                   </Link>
                   <small
                     id="goldtab"
-                    className="salaryme mb-0 d-flex flex-row-reverse col-md-2 col-lg-1 col-2 d-flex align-items-center"
+                    className=" mb-0 d-flex flex-row-reverse col-md-2 col-lg-1 col-2 d-flex align-items-center"
                   >
                     {/* {this.props.salary ? this.props.salary : ""} */}
                     {this.props.salary == "Paid" ? "Paid" : "Unpaid"}
