@@ -72,11 +72,13 @@ class AuthNav extends React.Component {
           }
         })
 
-        .catch((error) => {
+        .catch(error => {
           if (error.response.data.status === 401) {
             sessionStorage.clear("token");
             sessionStorage.clear("status");
             this.setState({ validToken: false });
+            window.location.reload();
+
           }
         })
     );
