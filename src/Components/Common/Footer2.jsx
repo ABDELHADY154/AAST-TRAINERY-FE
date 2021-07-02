@@ -19,7 +19,7 @@ export default class Footer extends React.Component {
       <div
         id="footer"
         className="Container
-        
+        pt-2
        flex-row "
       >
         <footer className="footer-area footer    footer--light m-auto prim">

@@ -52,7 +52,7 @@ export default class Opportunity extends Component {
           tags: res.data.response.data.tags,
           requirements: res.data.response.data.requirements,
           saved: res.data.response.data.saved,
-          applied: res.data.response.data.status,
+          status: res.data.response.data.status,
           FormLoading: false,
         });
         if (this.state.data.saved === true) {
@@ -142,6 +142,7 @@ export default class Opportunity extends Component {
           this.setState({
             applied: true,
           });
+          window.location.reload();
         }
       })
       .catch((error) => {
@@ -165,6 +166,7 @@ export default class Opportunity extends Component {
           this.setState({
             applied: false,
           });
+          window.location.reload();
         }
       })
       .catch((error) => {
@@ -391,8 +393,21 @@ export default class Opportunity extends Component {
                 ) : (
                   ""
                 )}
-
-                {this.state.applied == true ? (
+                {this.state.status == "achieved" ? (
+                  <button
+                    // to={`/Opportunity/${this.props.id}`}
+                    className="text-center appliedBtn px-1 py-0 col-md-4 col-lg-6 col-8 col-sm-8"
+                  >
+                    Achieved
+                  </button>
+                ) : this.state.status == "accepted" ? (
+                  <button
+                    // to={`/Opportunity/${this.props.id}`}
+                    className="text-center appliedBtn px-1 py-0 col-md-4 col-lg-6 col-8 col-sm-8"
+                  >
+                    Accepted
+                  </button>
+                ) : this.state.status == "applied" ? (
                   <button
                     className="text-center appliedBtn yBtn px-1 py-0 col-md-4 col-lg-6 col-8 col-sm-8 "
                     onClick={() => {
@@ -411,6 +426,26 @@ export default class Opportunity extends Component {
                     Apply
                   </button>
                 )}
+
+                {/* {this.state.status == "applied" ? (
+                  <button
+                    className="text-center appliedBtn yBtn px-1 py-0 col-md-4 col-lg-6 col-8 col-sm-8 "
+                    onClick={() => {
+                      this.handleunApple();
+                    }}
+                  >
+                    Applied
+                  </button>
+                ) : (
+                  <button
+                    className="text-center applyBtn px-1 py-0 col-md-4 col-lg-6 col-8 col-sm-8"
+                    onClick={() => {
+                      this.handleApple();
+                    }}
+                  >
+                    Apply
+                  </button>
+                )} */}
               </div>
             </div>
             {/* carousel */}
@@ -442,7 +477,8 @@ export default class Opportunity extends Component {
                 </div>
               </>
             </div>
-            {this.props.status == "achieved" ? (
+
+            {this.state.status == "achieved" ? (
               this.state.data.reviewed == false ? (
                 <>
                   <div className="d-flex flex-row ">
