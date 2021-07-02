@@ -194,7 +194,11 @@ export default class CareerCoaching extends Component {
                       "rejected" ||
                       this.state.reviewed == "true" ? (
                         <>
-                          <DatePicker setDateFn={this.setDate} />
+                          <DatePicker
+                            clearIcon={null}
+                            clearAriaLabel={null}
+                            setDateFn={this.setDate}
+                          />
                         </>
                       ) : (
                         ""
@@ -330,6 +334,7 @@ function DatePicker(props) {
   return (
     <div>
       <DateTimePicker
+        clearIcon={null}
         onChange={(value) => {
           onChange(value);
           props.setDateFn(value);
