@@ -47,12 +47,12 @@ class AuthNav extends React.Component {
     var class2 = document.getElementById("dorpList").classList.add("show");
     await axios
       .get("/W/student/notifications")
-      .then(res => {
+      .then((res) => {
         this.setState({
           notifications: res.data.response.data,
         });
       })
-      .catch(err => {
+      .catch((err) => {
         console.log(err);
       });
   };
@@ -63,7 +63,7 @@ class AuthNav extends React.Component {
     await resolve(
       axios
         .get("/W/studentImg")
-        .then(res => {
+        .then((res) => {
           if (res.status === 200) {
             this.setState({
               avatar: res.data.response.data.image,
@@ -72,22 +72,22 @@ class AuthNav extends React.Component {
           }
         })
 
-        .catch(error => {
+        .catch((error) => {
           if (error.response.data.status === 401) {
             sessionStorage.clear("token");
             sessionStorage.clear("status");
             this.setState({ validToken: false });
           }
-        }),
+        })
     );
     await axios
       .get("/W/student/notifications")
-      .then(res => {
+      .then((res) => {
         this.setState({
           notifications: res.data.response.data,
         });
       })
-      .catch(err => {
+      .catch((err) => {
         console.log(err);
       });
 
@@ -208,7 +208,7 @@ class AuthNav extends React.Component {
                             </p>
 
                             {this.state.notifications.length !== 0
-                              ? this.state.notifications.map(e => {
+                              ? this.state.notifications.map((e) => {
                                   if (e.category == "rejected") {
                                     return (
                                       //
@@ -374,7 +374,10 @@ class AuthNav extends React.Component {
                               </Link>
                             </li>
                             <li>
-                              <Link class="row " to="/Cv-Portfolio">
+                              <Link
+                                class="row "
+                                // to="/Cv-Portfolio"
+                              >
                                 <MdAssignment
                                   color="red"
                                   className="col-3 mt-1 ms-2"
@@ -382,7 +385,14 @@ class AuthNav extends React.Component {
                                   size="18px"
                                   pull="left"
                                 />
-                                <p className="col-7">Portfolio</p>
+                                <p className="col-7">
+                                  Portfolio{"    "}
+                                  <small
+                                    style={{ color: "#CD894B", fontSize: 12 }}
+                                  >
+                                    SOON
+                                  </small>
+                                </p>
                               </Link>
                             </li>
 
