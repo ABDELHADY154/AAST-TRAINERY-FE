@@ -18,6 +18,7 @@ export default class EducationForm extends Component {
       region: "",
       image: "",
       imageURL: "",
+      SchoolUrl: "",
       done: false,
       SchoolName: "",
       FormLoading: false,
@@ -98,11 +99,11 @@ export default class EducationForm extends Component {
       await axios
         .get(`/W/student/profile/education/${this.props.match.params.id}`)
         .then((res) => {
-          // console.log(res);
+          console.log(res.data.response.data.city);
           this.setState({
             id: res.data.response.data.id,
             SchoolName: res.data.response.data.school_name,
-            region: res.data.response.data.city,
+            region2: res.data.response.data.city,
             country: res.data.response.data.country,
             From: res.data.response.data.from,
             To: res.data.response.data.to,
@@ -127,7 +128,6 @@ export default class EducationForm extends Component {
   handleSubmit = async (e) => {
     e.preventDefault();
     var formBody = new FormData();
-    // console.log(this.state.SchoolUrl);
     this.setState({
       FormLoading: true,
     });
@@ -318,7 +318,7 @@ export default class EducationForm extends Component {
                   </label>
                   <RegionDropdown
                     country={country}
-                    value={region}
+                    value={region !="" ? region : this.state.region2}
                     onChange={(val) => this.selectRegion(val)}
                     className={
                       this.state.error && this.state.error.cityErr
