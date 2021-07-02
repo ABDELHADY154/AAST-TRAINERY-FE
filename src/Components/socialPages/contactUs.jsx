@@ -4,6 +4,9 @@ import { Link, NavLink } from "react-router-dom";
 import LoadingOverlay from "react-loading-overlay";
 import BounceLoader from "react-spinners/BounceLoader";
 import Footer2 from "../Common/Footer2";
+import Footer from "../Common/Footer";
+import emailjs from "emailjs-com";
+
 import "../../layout/Home.css";
 // import "../../layout/Sign.css";
 
@@ -12,6 +15,70 @@ import { MdSettingsPhone } from "react-icons/md";
 import { FaFacebookF, FaInstagram } from "react-icons/fa";
 
 class contactUs extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      token: sessionStorage.getItem("token"),
+      email:"",
+      comment:"",
+      subject:"",
+    };
+    this.handleClick = this.handleClick.bind(this);
+  }
+  // handleClick = (e)  => {
+  //   e.preventDefault();
+  //    var data = {
+  //     email : this.state.email,
+  //     comment : this.state.comment,
+  //     subject : this.state.subject,
+  //   };
+  //   console.log(e);
+  //   // console.log(JSON.stringify(data));
+
+  //   emailjs
+  //     .sendForm(
+  //       "Trainery",
+  //       "template_ba4h8xr",
+  //       data,
+  //       "user_ItSXGJkOeKWkLEjdfmAR2",
+  //     )
+  //     .then(
+  //       result => {
+  //         console.log(result);
+  //       },
+  //       error => {
+  //         console.log(error.text);
+  //       },
+  //     );
+  // };
+
+
+   handleClick =(e) => {
+     e.preventDefault();
+         var message  = {
+        email : this.state.email,
+        comment : this.state.comment , 
+        subject : this.state.subject
+ };
+
+    emailjs.send("Trainery", "template_ba4h8xr", message, "user_ItSXGJkOeKWkLEjdfmAR2").then(
+      function (response) {
+        console.log(response);
+      },
+      function (err) {
+        console.log(err);
+      }
+    );
+  }
+
+
+
+
+
+
+
+
+
   render() {
     return (
       <div>
@@ -28,7 +95,7 @@ class contactUs extends React.Component {
           }}
         > */}
         <div className="container mb-5">
-          <div className="mt-3">
+          <div className={this.state.token ? "mt-3" : " pt-3"}>
             <h1 className="text-center fs-3 fw-bold">Contact Us</h1>
             <p className="text-center">
               Any questions or remarks? Just send us a message!
@@ -36,10 +103,16 @@ class contactUs extends React.Component {
           </div>
           <div className="row ">
             <div className="d-flex flex-column-reverse col-12 col-lg-7 col-md-12 col-sm-12">
-              <form action="" className="mb-5">
+              <div action="" className="mb-5" >
                 <div className="d-flex flex-column col-11 mb-3">
                   <label htmlFor="">Email</label>
-                  <input type="text" className="form-control contactInput" />
+                  <input
+                    type="text"
+                    className="form-control contactInput"
+                    id="email"
+                    onChange={(e) =>
+                      this.setState({ email: e.target.value })
+                    }    />
                 </div>
                 <div class="d-flex flex-column col-11 mb-3">
                   {/* <label for="">Works with selects</label> */}
@@ -47,12 +120,15 @@ class contactUs extends React.Component {
                   <select
                     type="text"
                     className="form-control  contactSelect "
-                    id="departs"
+                    id="subject"
+                    onChange={(e) =>
+                      this.setState({ subject: e.target.value })
+                    }   
                   >
                     <option selected>What can we help you with</option>
-                    <option value="1">Account settings</option>
-                    <option value="2">Cannot access account </option>
-                    <option value="3">Other</option>
+                    <option value="Account settings">Account settings</option>
+                    <option value="Cannot access account">Cannot access account </option>
+                    <option value="Other">Other</option>
                   </select>
                 </div>
                 <div class="d-flex flex-column col-11 mb-3">
@@ -61,6 +137,10 @@ class contactUs extends React.Component {
                     className="form-control contactInput"
                     placeholder="Leave a comment here"
                     // id="floatingTextarea"
+                    id="comment"
+                    onChange={(e) =>
+                      this.setState({ comment: e.target.value })
+                    }  
                   ></textarea>
                 </div>
                 <div className="d-flex  mb-3">
@@ -69,12 +149,14 @@ class contactUs extends React.Component {
                       // SUBMIT FUNCTION!!!!
                       type="submit"
                       className="col-2 btn applyBtn d-flex flex-row justify-content-center"
+                      onClick={this.handleClick}
+
                     >
                       Send
                     </button>
                   </div>
                 </div>
-              </form>
+              </div>
             </div>
             <div className="container d-flex   col-11 col-lg-5 col-md-11 col-sm-10 reachUs rounded mb-5 mt-2 text-center">
               <div className="align-item-center align-self-center justify-content-center m-auto">
@@ -183,6 +265,7 @@ class contactUs extends React.Component {
                   <div className="col-md-2 col-sm-0 col-0 col-lg-2 space "></div>
                   <div className=" col-3 col-md-2 col-sm-3 col-lg-1 d-flex justify-content-end">
 
+
                     <Link
                       to={`/helpCenter`}
                       className="col-12 col-md-12 col-sm-12 col-lg-12 btn FAQBtn"
@@ -195,7 +278,7 @@ class contactUs extends React.Component {
             </div>
           </footer>
         </div>
-        <Footer2 />
+        {this.state.token ? <Footer2 /> : <Footer />}
         {/* </LoadingOverlay> */}
       </div>
     );

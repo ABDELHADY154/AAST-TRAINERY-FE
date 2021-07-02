@@ -6,6 +6,8 @@ import { Link, NavLink } from "react-router-dom";
 import LoadingOverlay from "react-loading-overlay";
 import BounceLoader from "react-spinners/BounceLoader";
 import Footer2 from "../Common/Footer2";
+import Footer from "../Common/Footer";
+
 import "../../layout/Home.css";
 import "../../layout/Landing.css";
 
@@ -24,6 +26,7 @@ class AboutUs extends React.Component {
       students: 0,
       opportunities: 0,
       applied: 0,
+      token: sessionStorage.getItem("token"),
     };
     window.scrollTo(0, 0);
   }
@@ -33,7 +36,7 @@ class AboutUs extends React.Component {
     });
   };
   async componentDidMount() {
-    await axios.get("/W/landingCount").then((res) => {
+    await axios.get("/W/landingCount").then(res => {
       this.setState({
         // loading: true,
         students: res.data.response.data.students,
@@ -52,7 +55,7 @@ class AboutUs extends React.Component {
           spinner={<BounceLoader color="#cd8930" />}
           color={"#cd8930"}
           styles={{
-            overlay: (base) => ({
+            overlay: base => ({
               ...base,
               background: "rgb(255, 255, 255)",
               stroke: "rgba(255, 0, 0, 0.5)",
@@ -60,7 +63,7 @@ class AboutUs extends React.Component {
           }}
         >
           <div className="container">
-            <div className="mt-5 mb-3">
+            <div className={this.state.token ? "mt-5 mb-3" : "pt-4 mb-3"}>
               <h1 className="text-center fs-3 fw-bold ">About Us</h1>
             </div>
             <div className="d-flex flex-row ">
@@ -211,7 +214,7 @@ class AboutUs extends React.Component {
               </div>
             </footer>
           </div>
-          <Footer2 />
+          {this.state.token ? <Footer2 /> : <Footer />}
         </LoadingOverlay>
       </div>
     );
@@ -228,7 +231,7 @@ const Ticker = ({ className, ...rest }) => {
         return (
           <VisibilitySensor
             active={!viewPortEntered}
-            onChange={(isVisible) => {
+            onChange={isVisible => {
               if (isVisible) {
                 setViewPortEntered(true);
               }

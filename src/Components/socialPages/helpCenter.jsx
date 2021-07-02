@@ -6,6 +6,7 @@ import BounceLoader from "react-spinners/BounceLoader";
 import Footer2 from "../Common/Footer2";
 import "../../layout/Home.css";
 // import "../../layout/Sign.css";
+import Footer from "../Common/Footer";
 
 import { HiOutlineMail } from "react-icons/hi";
 import { MdSettingsPhone } from "react-icons/md";
@@ -16,6 +17,7 @@ class helpCenter extends React.Component {
     this.state = {
       scrollPixelsY: 0,
       // FormLoading: true,
+      token: sessionStorage.getItem("token"),
     };
     window.scrollTo(0, 0);
   }
@@ -33,7 +35,7 @@ class helpCenter extends React.Component {
           spinner={<BounceLoader color="#cd8930" />}
           color={"#cd8930"}
           styles={{
-            overlay: (base) => ({
+            overlay: base => ({
               ...base,
               background: "rgb(255, 255, 255)",
               stroke: "rgba(255, 0, 0, 0.5)",
@@ -176,22 +178,23 @@ class helpCenter extends React.Component {
                     </p>
                     <div className="col-md-2 col-sm-0 col-0 col-lg-2 space "></div>
                     <div className=" col-3 col-md-2 col-sm-3 col-lg-1 d-flex justify-content-end">
+                      <button
+                        type="submit"
+                        className="col-12 col-md-12 col-sm-12 col-lg-12 btn FAQBtn"
+                      >
+                        <Link className=" " to="/contactus">
+                          Send
+                        </Link>
+                      </button>
 
-                      <a href="mailto:admin@aast-trainery.com?body=Hi Trainery">
-                        <button
-                          type="submit"
-                          className="col-12 col-md-12 col-sm-12 col-lg-12 btn FAQBtn"
-                        >
-                          E-mail
-                        </button>
-                      </a>
+            
                     </div>
                   </div>
                 </div>
               </div>
             </footer>
           </div>
-          <Footer2 />
+          {this.state.token ? <Footer2 /> : <Footer />}
         </LoadingOverlay>
       </div>
     );
