@@ -57,7 +57,7 @@ class Registry extends React.Component {
     if (status && token) {
       return this.setState({ loggedIn: true });
     }
-    await axios.get("/departments").then((dep) => {
+    await axios.get("/departments").then(dep => {
       this.setState({
         departs: dep.data.response.data,
         loading: true,
@@ -65,7 +65,7 @@ class Registry extends React.Component {
     });
   }
 
-  handleSubmit = async (e) => {
+  handleSubmit = async e => {
     e.preventDefault();
     const data = {
       name: this.state.name,
@@ -78,7 +78,7 @@ class Registry extends React.Component {
     };
     await axios
       .post("/register", data)
-      .then((response) => {
+      .then(response => {
         sessionStorage.setItem("token", response.data.response.data.token);
         sessionStorage.setItem("status", response.statusText);
         this.setState({
@@ -88,7 +88,7 @@ class Registry extends React.Component {
         });
         this.props.setUser(true);
       })
-      .catch((error) => {
+      .catch(error => {
         this.setState({
           error: {
             fullName: error.response.data.errors.name,
@@ -141,7 +141,7 @@ class Registry extends React.Component {
                                   ? "wrong signInput"
                                   : "signInput"
                               }
-                              onChange={(e) =>
+                              onChange={e =>
                                 this.setState({ name: e.target.value })
                               }
                             />
@@ -164,7 +164,7 @@ class Registry extends React.Component {
                                   ? "wrong signInput"
                                   : "signInput"
                               }
-                              onChange={(e) =>
+                              onChange={e =>
                                 this.setState({ email: e.target.value })
                               }
                             />
@@ -187,7 +187,7 @@ class Registry extends React.Component {
                                 id="inlineRadio1"
                                 value="male"
                                 className="radio signInput"
-                                onChange={(e) =>
+                                onChange={e =>
                                   this.setState({ gender: e.target.value })
                                 }
                               />
@@ -206,7 +206,7 @@ class Registry extends React.Component {
                                 name="inlineRadioOptions"
                                 id="Gender"
                                 value="female"
-                                onChange={(e) =>
+                                onChange={e =>
                                   this.setState({ gender: e.target.value })
                                 }
                               />
@@ -262,13 +262,13 @@ class Registry extends React.Component {
                               )}
                             </div>
                             <PasswordStrengthBar
-                              password={password}
+                              password={this.state.password}
                               minLength="8"
                               className="mt-2"
                             />
 
                             {this.state.error.passwordErr !== "" &&
-                              this.state.error.passwordErr.map((name) => (
+                              this.state.error.passwordErr.map(name => (
                                 <p className="red d-inline"> {name} </p>
                               ))}
                           </div>
@@ -282,7 +282,7 @@ class Registry extends React.Component {
                                   ? "wrong signInput"
                                   : "signInput"
                               }
-                              onChange={(e) =>
+                              onChange={e =>
                                 this.setState({
                                   confirmPassword: e.target.value,
                                 })
@@ -302,7 +302,7 @@ class Registry extends React.Component {
                                 type="text"
                                 className="form-control dep signSelect "
                                 id="departs"
-                                onChange={(e) =>
+                                onChange={e =>
                                   this.setState({
                                     department_id: e.target.value,
                                   })
@@ -310,7 +310,7 @@ class Registry extends React.Component {
                               >
                                 <option>Please Select Your Department</option>
 
-                                {this.state.departs.map((depart) => (
+                                {this.state.departs.map(depart => (
                                   <option
                                     value={depart.id}
                                     key={depart.id}
@@ -340,7 +340,7 @@ class Registry extends React.Component {
                                   : "signInput"
                               }
                               // placeholder="Registration number"
-                              onChange={(e) =>
+                              onChange={e =>
                                 this.setState({ reg_no: e.target.value })
                               }
                             />
