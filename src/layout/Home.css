@@ -177,6 +177,16 @@
   width: 15.9375em !important;
   margin: 1em 2em !important;
 }
+.disabledBtn {
+  background-color: transparent !important;
+  color: #1e4274be;
+  font-family: SF light;
+  border: 1px solid #1e4274be;
+  border-radius: 5px !important;
+  height: 30px;
+  justify-content: center;
+  align-items: center;
+}
 .applyBtn {
   background-color: transparent !important;
   color: #1e4274;

@@ -174,7 +174,7 @@ export default class CareerCoaching extends Component {
                                     <Link
                                       to={`/CareerCoaching/Advising/${data.id}`}
                                     >
-                                      {!data.status == "booked" ||
+                                      {/* {!data.status == "booked" ||
                                       "accepted" ? (
                                         <button className="applyBtn px-4 py-0 bookbtn">
                                           Book
@@ -183,6 +183,37 @@ export default class CareerCoaching extends Component {
                                         <button className="applyBtn px-4 py-0 bookbtn">
                                           Booked
                                         </button>
+                                      )} */}
+                                      {data.status == "booked" ? (
+                                        <button
+                                          className="appliedBtn px-4 py-0 "
+                                          onClick={this.unbook}
+                                        >
+                                          Booked
+                                        </button>
+                                      ) : data.status == "accepted" ? (
+                                        <button
+                                          className="appliedBtn px-4 py-0 "
+                                          onClick={this.book}
+                                        >
+                                          Accepted
+                                        </button>
+                                      ) : data.status == "achieved" ? (
+                                        <button
+                                          className="appliedBtn px-4 py-0 "
+                                          onClick={this.book}
+                                        >
+                                          Achieved
+                                        </button>
+                                      ) : (
+                                        <>
+                                          <button
+                                            className="appliedBtn px-4 py-0 "
+                                            onClick={this.book}
+                                          >
+                                            Book
+                                          </button>
+                                        </>
                                       )}
                                     </Link>
                                   </div>

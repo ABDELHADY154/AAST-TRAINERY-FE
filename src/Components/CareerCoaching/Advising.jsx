@@ -232,6 +232,15 @@ export default class CareerCoaching extends Component {
                             Accepted
                           </button>
                         </div>
+                      ) : this.state.status == "achieved" ? (
+                        <div className=" d-flex flex-row col-6 col-md-2 justify-content-end">
+                          <button
+                            className="appliedBtn px-4 py-0 "
+                            onClick={this.book}
+                          >
+                            Achieved
+                          </button>
+                        </div>
                       ) : (
                         <>
                           <div className=" d-flex flex-row col-6 col-md-2 justify-content-end">
