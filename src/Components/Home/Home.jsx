@@ -43,7 +43,7 @@ class Home extends Component {
     await resolve(
       axios
         .get("/W/student/get-profile")
-        .then((res) => {
+        .then(res => {
           if (res.status === 200) {
             this.setState({
               user: res.data.response.data,
@@ -52,7 +52,7 @@ class Home extends Component {
             });
           }
         })
-        .catch((error) => {
+        .catch(error => {
           this.setState({
             error: {
               usernameErr: error.response.status,
@@ -61,11 +61,11 @@ class Home extends Component {
           if (this.state.error.usernameErr === 401) {
             window.location.reload();
           }
-        })
+        }),
     );
     await axios
       .get("/W/activity")
-      .then((res) => {
+      .then(res => {
         this.setState({
           id: res.data.response.data.id,
           data: res.data.response.data,
@@ -73,37 +73,36 @@ class Home extends Component {
           FormLoading: false,
         });
       })
-      .catch((err) => {
+      .catch(err => {
         this.setState({ FormLoading: true });
         console.log(err);
       });
     await axios
       .get("/W/student/posts")
-      .then((res) => {
+      .then(res => {
         this.setState({
           explorePosts: res.data.response.data,
         });
 
         console.log(res.data.response.data);
       })
-      .catch((err) => {
+      .catch(err => {
         this.setState({ FormLoading: true });
         console.log(err);
       });
     await axios
       .get("/W/sessions")
-      .then((res) => {
+      .then(res => {
         this.setState({
           career: res.data.response.data,
         });
       })
-      .catch((err) => {
+      .catch(err => {
         console.log(err);
       });
   }
 
   render() {
-    console.log(this.state.data);
     if (this.state.user.profile_updated === false) {
       var Alert =
         this.state.alert == true ? (
@@ -154,7 +153,6 @@ class Home extends Component {
           ""
         );
     }
-
     return (
       <div className="container-fluid mt-5 ">
         {Alert}
@@ -555,7 +553,7 @@ class Home extends Component {
           <div className="d-flex flex-row flex-wrap text-wrap text-center justify-content-center">
             {!this.state.career
               ? ""
-              : this.state.career.map((career) => {
+              : this.state.career.map(career => {
                   return (
                     <div
                       id="widths"
