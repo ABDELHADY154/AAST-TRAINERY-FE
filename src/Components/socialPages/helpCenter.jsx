@@ -42,7 +42,7 @@ class helpCenter extends React.Component {
             }),
           }}
         >
-          <div className="container mt-5">
+          <div className="container mt-5 pt-2">
             <div className="mt-3">
               <h1 className="text-center fs-3 fw-bold">Help Center</h1>
               <p className="text-center">
