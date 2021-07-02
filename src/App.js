@@ -41,6 +41,8 @@ import { AuthRoute } from "./Components/Auth/AuthRoute";
 import contactUs from "./Components/socialPages/contactUs";
 import helpCenter from "./Components/socialPages/helpCenter";
 import AboutUs from "./Components/socialPages/AboutUs";
+import TermsandConditions from "./Components/socialPages/TermsandConditions";
+
 import Setting from "./Components/Setting/Setting";
 // import Education from "./EditProfile/Education";
 import "./layout/Footer.css";
@@ -63,15 +65,15 @@ class App extends React.Component {
     window.scrollTo(0, 0);
   }
 
-  setUser = data => {
+  setUser = (data) => {
     return this.setState({ loggedIn: data });
   };
-  setAvatar = data => {
+  setAvatar = (data) => {
     this.setState({ avatar: data });
     if (this.state.avatar) {
     }
   };
-  fallback = data => {
+  fallback = (data) => {
     this.setState({ fallback: data });
   };
 
@@ -93,10 +95,8 @@ class App extends React.Component {
 
         <div className="app">
           <div className="auth-wrapper">
-            <div className="auth-inner">        
-
+            <div className="auth-inner">
               <Switch>
-
                 {/* <== Home for Guest */}
                 <Route
                   exact
@@ -183,7 +183,7 @@ class App extends React.Component {
                   exact
                   path="/Profile/Interest/:id"
                   component={Interest}
-                  render={Interests => <Interest {...Interests} />}
+                  render={(Interests) => <Interest {...Interests} />}
                 />
                 <AuthRoute exact path="/Explore" component={Explore} />
                 <AuthRoute exact path="/Search/d" component={SearchD} />
@@ -263,6 +263,11 @@ class App extends React.Component {
                 <Route exact path="/helpCenter" component={helpCenter} />
                 <Route exact path="/contactus" component={contactUs} />
                 <Route exact path="/AboutUs" component={AboutUs} />
+                <Route
+                  exact
+                  path="/TermsandConditions"
+                  component={TermsandConditions}
+                />
                 <Route
                   exact
                   path="*"

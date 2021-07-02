@@ -73,7 +73,7 @@ class Accepted extends Component {
                       className="row mb-5 mt-2 d-flex justify-content-center explore"
                       to="/Explore"
                     >
-                      Explore our new internship
+                      Explore our new internships
                       <span className="sr-only" />
                     </Link>
 

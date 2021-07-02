@@ -225,7 +225,7 @@ export default class Opportunity extends Component {
     };
 
     return (
-      <div className="profileMT">
+      <div>
         <LoadingOverlay
           active={this.state.FormLoading}
           spinner={<BounceLoader color="#cd8930" />}
