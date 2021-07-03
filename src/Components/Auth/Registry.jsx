@@ -262,7 +262,7 @@ class Registry extends React.Component {
                               )}
                             </div>
                             <PasswordStrengthBar
-                              password={this.state.password}
+                              password={`${this.state.password}`}
                               minLength="8"
                               className="mt-2"
                             />
