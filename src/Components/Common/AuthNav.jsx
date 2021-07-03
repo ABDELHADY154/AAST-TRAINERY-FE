@@ -19,7 +19,6 @@ import { FiLogOut } from "react-icons/fi";
 import "../../layout/Nav.css";
 import "../../layout/Main.css";
 
-
 class AuthNav extends React.Component {
   constructor(props) {
     super(props);
@@ -43,19 +42,20 @@ class AuthNav extends React.Component {
     sessionStorage.clear("status");
     this.props.setUser(false);
   };
-handleNotifications = async (e) => {
-e.preventDefault();
-      await axios
-  .get("/W/student/notifications")
-  .then((res) => {
-    this.setState({
-      notifications: res.data.response.data,
-    });
-  })
-  .catch((err) => {
-    console.log(err);
-  });
-}
+  handleNotifications = async () => {
+    var class1 = document.getElementById("dropdownMenu2").classList.add("show");
+    var class2 = document.getElementById("dorpList").classList.add("show");
+    await axios
+      .get("/W/student/notifications")
+      .then(res => {
+        this.setState({
+          notifications: res.data.response.data,
+        });
+      })
+      .catch(err => {
+        console.log(err);
+      });
+  };
   componentDidMount = async () => {
     axios.defaults.headers.common["Authorization"] =
       "Bearer " + sessionStorage.getItem("token");
@@ -63,7 +63,7 @@ e.preventDefault();
     await resolve(
       axios
         .get("/W/studentImg")
-        .then((res) => {
+        .then(res => {
           if (res.status === 200) {
             this.setState({
               avatar: res.data.response.data.image,
@@ -72,26 +72,24 @@ e.preventDefault();
           }
         })
 
-        .catch((error) => {
+        .catch(error => {
           if (error.response.data.status === 401) {
             sessionStorage.clear("token");
             sessionStorage.clear("status");
             this.setState({ validToken: false });
           }
-        })
+        }),
     );
     await axios
-  .get("/W/student/notifications")
-  .then((res) => {
-    this.setState({
-      notifications: res.data.response.data,
-    });
-
-
-  })
-  .catch((err) => {
-    console.log(err);
-  });
+      .get("/W/student/notifications")
+      .then(res => {
+        this.setState({
+          notifications: res.data.response.data,
+        });
+      })
+      .catch(err => {
+        console.log(err);
+      });
 
     if (this.props.fallbackVal) {
       this.props.fallback(true);
@@ -171,7 +169,7 @@ e.preventDefault();
                       </NavLink>
                     </li>
                   </ul>
-            
+
                   <div
                     className="collapse navbar-collapse justify-content-end"
                     id="navbarScroll"
@@ -190,59 +188,88 @@ e.preventDefault();
                               value={{
                                 color: "#007BC2",
                                 className: "global-class-name mt-0",
-
                               }}
-
                               className="noti mt-2 d-inline-block"
                               id="not"
                             />
                           </a>
                           <ul
                             className="dropdown-menu notificationMenu col-sm-12 col-md-6"
+                            id="dorpList"
                             lass="dropdown-menu"
                             aria-labelledby="dropdownMenu2"
                           >
                             <p className="text-center  mb-2 notificationTitle ">
                               Notications
-                              <AiOutlineReload className="mx-md-2 float-end icon-refresh icon-spin" onClick={this.handleNotifications}                                
-/>
+                              <AiOutlineReload
+                                className="mx-md-2 float-end icon-refresh icon-spin"
+                                onClick={this.handleNotifications}
+                              />
                             </p>
 
                             {this.state.notifications.length !== 0
-                              ? this.state.notifications.map((e) => {
+                              ? this.state.notifications.map(e => {
                                   if (e.category == "rejected") {
                                     return (
-                                  // 
-                                      <Link to={e.type == "internship" ? `/Opportunity/${e.id}`: e.type == "session" ? `/CareerCoaching/Advising/${e.session.id}` :""} key={e.id}> 
-                                      <RejectCard
-                                        id={e.id}
+                                      //
+                                      <Link
+                                        to={
+                                          e.type == "internship"
+                                            ? `/Opportunity/${e.id}`
+                                            : e.type == "session"
+                                            ? `/CareerCoaching/Advising/${e.session.id}`
+                                            : ""
+                                        }
                                         key={e.id}
-                                        data={e}
-                                      /></Link>
+                                      >
+                                        <RejectCard
+                                          id={e.id}
+                                          key={e.id}
+                                          data={e}
+                                        />
+                                      </Link>
                                     );
                                   } else if (e.category == "success") {
                                     return (
-                                      <Link to={e.type == "internship" ? `/Opportunity/${e.id}`: e.type == "session" ? `/CareerCoaching/Advising/${e.session.id}` :""} key={e.id}> 
-
-                                      <AcceptedCard
-                                        id={e.id}
+                                      <Link
+                                        to={
+                                          e.type == "internship"
+                                            ? `/Opportunity/${e.id}`
+                                            : e.type == "session"
+                                            ? `/CareerCoaching/Advising/${e.session.id}`
+                                            : ""
+                                        }
                                         key={e.id}
-                                        data={e}
-                                      /></Link>
+                                      >
+                                        <AcceptedCard
+                                          id={e.id}
+                                          key={e.id}
+                                          data={e}
+                                        />
+                                      </Link>
                                     );
                                   } else if (e.category == "important") {
-                                    return (        <Link to={e.type == "internship" ? `/Opportunity/${e.id}`: e.type == "session" ? `/CareerCoaching/Advising/${e.session.id}` :""} key={e.id}> 
-
-                                      <ImportantCard
-                                        id={e.id}
+                                    return (
+                                      <Link
+                                        to={
+                                          e.type == "internship"
+                                            ? `/Opportunity/${e.id}`
+                                            : e.type == "session"
+                                            ? `/CareerCoaching/Advising/${e.session.id}`
+                                            : ""
+                                        }
                                         key={e.id}
-                                        data={e}
-                                      /></Link>
+                                      >
+                                        <ImportantCard
+                                          id={e.id}
+                                          key={e.id}
+                                          data={e}
+                                        />
+                                      </Link>
                                     );
                                   }
                                 })
                               : ""}
-                     
                           </ul>
                         </a>
                         {/* profile */}
