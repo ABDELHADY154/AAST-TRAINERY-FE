@@ -255,13 +255,7 @@ class Landing extends React.Component {
         </div>
         <div className="container">
           <CarouselLogos />
-          {/* {this.state.loading === false ? (
-              <div>
-                <LogoesCarousel />
-              </div>
-            ) : (
-              <CarouselLogos />
-            )} */}
+
           <div className="mb-4 mt-5 d-flex justify-content-center">
             <button className="d-flex justify-content-center contactBtn col-md-2 col-4 col-lg-1 col-sm-4 text-center  py-1">
               Contact
@@ -274,3 +268,13 @@ class Landing extends React.Component {
   }
 }
 export default Landing;
+
+{
+  /* {this.state.loading === false ? (
+              <div>
+                <LogoesCarousel />
+              </div>
+            ) : (
+              <CarouselLogos />
+            )} */
+}
